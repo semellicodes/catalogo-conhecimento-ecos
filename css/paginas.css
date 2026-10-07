@@ -1,43 +1,116 @@
 /* ---------- Página inicial ---------- */
-/* Abertura curta de propósito. O catálogo precisa aparecer sem rolar. */
-.abertura { padding-block: var(--esp-7) var(--esp-6); border-bottom: var(--borda); }
+/* Faixa de abertura. Sangra de ponta a ponta da janela, o conteúdo respeita o
+   container. É uma superfície própria, distinta do fundo nos dois temas. */
+.abertura {
+  background: var(--cor-faixa);
+  color: var(--cor-faixa-texto);
+  padding-block: var(--esp-5);
+  border-bottom: 1px solid var(--cor-faixa-linha);
+}
 .abertura__interno { display: grid; gap: var(--esp-6); }
 @media (min-width: 64rem) {
-  .abertura__interno { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--esp-8); }
+  .abertura {
+    padding-block: var(--esp-7);
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+  }
+  .abertura__interno {
+    grid-template-columns: 55% minmax(0, 1fr);
+    grid-template-areas:
+      "texto  desenho"
+      "numeros numeros";
+    align-items: center;
+    column-gap: var(--esp-7);
+    row-gap: var(--esp-6);
+  }
+  .abertura__texto { grid-area: texto; }
+  .abertura__desenho { grid-area: desenho; }
+  .numeros { grid-area: numeros; }
 }
 .abertura__etiqueta {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cor-acento);
-  margin-bottom: var(--esp-2);
+  color: var(--cor-faixa-acento);
+  margin-bottom: var(--esp-3);
 }
-.abertura__titulo { font-size: var(--tam-xl); max-width: 22ch; }
+.abertura__titulo {
+  font-size: var(--tam-xl);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+}
 @media (min-width: 48rem) { .abertura__titulo { font-size: var(--tam-2xl); } }
+@media (min-width: 64rem) { .abertura__titulo { font-size: var(--tam-3xl); max-width: 24ch; } }
 .abertura__resumo {
-  margin-top: var(--esp-3);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
+  margin-top: var(--esp-4);
+  font-size: var(--tam-base);
+  color: var(--cor-faixa-suave);
+  max-width: 60ch;
+}
+@media (min-width: 64rem) { .abertura__resumo { font-size: var(--tam-md); } }
+
+/* O desenho é decorativo. No celular ele sai de cena para não roubar altura. */
+.abertura__desenho { display: none; }
+@media (min-width: 64rem) {
+  .abertura__desenho { display: block; justify-self: center; }
+}
+.desenho-ecos {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  color: var(--cor-faixa-acento);
+}
+.desenho-ecos__giro {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: girar-ecos 140s linear infinite;
+}
+@keyframes girar-ecos { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .desenho-ecos__giro { animation: none; }
 }
 
-.numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
-@media (min-width: 64rem) { .numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 24rem; } }
-.numero {
-  padding: var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
+/* Números no rodapé da faixa, numa linha só, separados por divisor fino. */
+.numeros {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: var(--esp-4);
+  border-top: 1px solid var(--cor-faixa-linha);
 }
-.numero__valor { font-family: var(--fonte-mono); font-size: var(--tam-lg); color: var(--cor-acento); }
-.numero__rotulo { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
+@media (min-width: 48rem) { .numeros { row-gap: 0; } }
+@media (min-width: 48rem) {
+  .numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.numero {
+  padding: var(--esp-2) var(--esp-4) 0;
+  border-left: 1px solid var(--cor-faixa-linha);
+}
+@media (min-width: 64rem) { .numero { padding-top: var(--esp-3); } }
+.numero:nth-child(2n + 1) { border-left: 0; padding-left: 0; }
+@media (min-width: 48rem) {
+  .numero:nth-child(2n + 1) { border-left: 1px solid var(--cor-faixa-linha); padding-left: var(--esp-4); }
+  .numero:first-child { border-left: 0; padding-left: 0; }
+}
+.numero__valor {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xl);
+  line-height: 1.1;
+  color: var(--cor-faixa-texto);
+}
+@media (min-width: 64rem) { .numero__valor { font-size: var(--tam-2xl); } }
+.numero__rotulo {
+  margin-top: var(--esp-1);
+  font-size: var(--tam-xs);
+  color: var(--cor-faixa-suave);
+}
 
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 #inicio, #catalogo, #estrutura { scroll-margin-top: 72px; }
-.secao-catalogo { padding-block: var(--esp-5) var(--esp-7); background: var(--cor-fundo); }
+.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 

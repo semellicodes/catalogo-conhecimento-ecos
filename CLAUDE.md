@@ -60,6 +60,7 @@ aviso de relação candidata. Virar `true` conhecimento por conhecimento, confor
 | `js/ficha.js` | Monta a ficha de um conhecimento |
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
+| `js/desenho.js` | Monta o SVG decorativo da faixa de abertura. Não lê dados e não é referenciado por nenhum conteúdo |
 | `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
@@ -94,6 +95,9 @@ nativamente pelo navegador com `type="module"`.
   que o fundo e quem separa é a borda, então `--sombra-1` é `none`
 - Etiqueta é pílula preenchida, com o par `--cor-<natureza>-pilula` e
   `--cor-<natureza>-pilula-texto`. Nível e dimensão usam o par neutro
+- A faixa de abertura sangra de ponta a ponta e tem superfície própria, com os tokens
+  `--cor-faixa`, `--cor-faixa-texto`, `--cor-faixa-suave`, `--cor-faixa-acento` e
+  `--cor-faixa-linha`. O conteúdo interno respeita a `.container`
 
 ## Escrita
 

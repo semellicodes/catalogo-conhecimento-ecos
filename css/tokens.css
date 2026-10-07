@@ -36,6 +36,13 @@
   --cor-neutro-pilula: #1B222B;
   --cor-neutro-pilula-texto: #B4BEC9;
 
+  /* Faixa de abertura. Superfície própria, distinta do fundo da página nos dois temas */
+  --cor-faixa: #0E3127;
+  --cor-faixa-texto: #EAF4EF;
+  --cor-faixa-suave: #A9CCBE;
+  --cor-faixa-acento: #5BD2AE;
+  --cor-faixa-linha: #1D4A3C;
+
   /* Profundidade. No escuro quem separa é a borda, então a sombra quase não entra */
   --sombra-1: none;
   --sombra-2: 0 16px 40px rgb(0 0 0 / 0.55);
@@ -48,9 +55,9 @@
   --tam-base: 1rem;
   --tam-md: 1.125rem;
   --tam-lg: 1.25rem;
-  --tam-xl: 1.875rem;
+  --tam-xl: 2rem;
   --tam-2xl: 2.5rem;
-  --tam-3xl: 3rem;
+  --tam-3xl: 3.25rem;
 
   /* Espaço */
   --esp-1: 0.25rem;
@@ -118,6 +125,12 @@
     --cor-neutro-pilula: #E9EDF1;
     --cor-neutro-pilula-texto: #3F4854;
 
+    --cor-faixa: #0A3B2D;
+    --cor-faixa-texto: #F2F7F4;
+    --cor-faixa-suave: #BFD9CE;
+    --cor-faixa-acento: #6FDCB6;
+    --cor-faixa-linha: #1F5C49;
+
     --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
     --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
   }
@@ -154,6 +167,13 @@
   --cor-tacito-tecnico-pilula-texto: #17406B;
   --cor-neutro-pilula: #E9EDF1;
   --cor-neutro-pilula-texto: #3F4854;
+
+
+  --cor-faixa: #0A3B2D;
+  --cor-faixa-texto: #F2F7F4;
+  --cor-faixa-suave: #BFD9CE;
+  --cor-faixa-acento: #6FDCB6;
+  --cor-faixa-linha: #1F5C49;
 
   --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
   --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);

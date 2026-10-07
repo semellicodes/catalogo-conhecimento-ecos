@@ -43,23 +43,15 @@
   flex: none;
   color: var(--cor-acento);
 }
-.marca__texto { display: flex; flex-direction: column; min-width: 0; }
 .marca__nome {
   font-size: var(--tam-sm);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.01em;
+  min-width: 0;
 }
 .marca__nome strong { font-weight: 600; color: var(--cor-acento); }
-.marca__slug {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-  line-height: 1.3;
-}
-/* No celular o nome por extenso vale mais que o slug, então o slug é que sai */
 @media (max-width: 29.99rem) {
-  .marca__slug { display: none; }
   .marca__nome { font-size: var(--tam-xs); }
 }
 
@@ -94,6 +86,11 @@
   font-size: var(--tam-sm);
   border-bottom: 2px solid transparent;
   transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
+}
+/* Com cinco itens, o celular precisa de menos folga lateral para caber numa linha */
+@media (max-width: 29.99rem) {
+  .navegacao { gap: 0; }
+  .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
 }
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
