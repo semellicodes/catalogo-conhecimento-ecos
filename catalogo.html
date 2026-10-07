@@ -3,98 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catálogo · Conhecimento em ECOS</title>
-<meta name="description" content="Listagem dos conhecimentos catalogados, com busca e filtros por natureza, nível no ECOS, dimensão do ECOS, tipo de ECOS e ação de gerência requerida.">
+<title>Catálogo de Conhecimento em ECOS</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="index.html">
 <script>
-  /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
-  try {
-    var tema = localStorage.getItem('tema');
-    if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
-  } catch (erro) {}
+  /* O catálogo virou uma seção da página inicial. A busca é preservada, para que
+     links antigos com filtro continuem abrindo o mesmo estado. */
+  location.replace('index.html' + location.search + '#catalogo');
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<meta http-equiv="refresh" content="0; url=index.html#catalogo">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/componentes.css">
-<link rel="stylesheet" href="css/paginas.css">
 </head>
 <body>
-<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
-
-<header class="cabecalho">
-  <div class="container cabecalho__interno">
-    <a class="marca" href="index.html" aria-label="Catálogo de Conhecimento em ECOS, ir para o início">
-      <svg class="marca__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.45"/>
-        <path d="M12 12 12 4.5M12 12 18.5 15.8M12 12 5.5 15.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.45"/>
-        <circle cx="12" cy="4.5" r="2.1" fill="currentColor"/>
-        <circle cx="18.5" cy="15.8" r="2.1" fill="currentColor"/>
-        <circle cx="5.5" cy="15.8" r="2.1" fill="currentColor"/>
-        <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
-      </svg>
-      <span class="marca__texto">
-        <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
-        <span class="marca__slug">catalogo-conhecimento/ecos</span>
-      </span>
-    </a>
-    <nav class="navegacao" aria-label="Principal">
-      <a href="index.html">Início</a>
-      <a href="catalogo.html" aria-current="page">Catálogo</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="referencias.html">Referências</a>
-    </nav>
-    <button class="botao-tema" id="botao-tema" type="button" aria-label="Alternar tema"></button>
-  </div>
-</header>
-
-<main id="conteudo" class="container catalogo">
-  <header class="catalogo__cabecalho">
-    <h1 class="secao__titulo">Conhecimentos</h1>
-    <p class="secao__intro">
-      Busque por nome, descrição ou ID, e combine as facetas para estreitar a lista. Dentro de uma
-      faceta os valores somam, entre facetas eles se cruzam.
-    </p>
-  </header>
-
-  <section class="filtros" aria-label="Busca e filtros">
-    <div class="filtros__linha">
-      <div class="filtros__busca">
-        <label class="filtros__titulo" for="busca">Buscar</label>
-        <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
-      </div>
-      <div class="filtros__principal" id="filtro-principal"></div>
-    </div>
-    <div class="filtros__secundarios">
-      <div class="filtros__grupos" id="painel-filtros"></div>
-      <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
-    </div>
-  </section>
-
-  <div class="catalogo__barra">
-    <p class="catalogo__contagem" id="contagem">Carregando</p>
-    <p class="catalogo__contagem">Abra um item para ver a ficha</p>
-  </div>
-  <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
-</main>
-
-<dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">
-  <div class="dialogo-ficha__topo">
-    <p class="codigo-id" id="dialogo-ficha-id"></p>
-    <button class="botao" id="fechar-ficha" type="button">Fechar</button>
-  </div>
-  <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
-</dialog>
-
-<footer class="rodape">
-  <div class="container rodape__interno">
-    <span>Catálogo de Conhecimento em Ecossistemas de Software</span>
-    <span>[AUTORAS] · [INSTITUIÇÃO] · [ANO]</span>
-  </div>
-</footer>
-
-<script type="module" src="js/tema.js"></script>
-<script type="module" src="js/catalogo.js"></script>
+<p style="padding: var(--esp-6)">
+  O catálogo agora fica na página inicial.
+  <a href="index.html#catalogo">Ir para o catálogo</a>.
+</p>
 </body>
 </html>

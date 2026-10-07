@@ -314,15 +314,28 @@
 .botao--principal:hover { background: var(--cor-acento-forte); border-color: var(--cor-acento-forte); color: var(--cor-contraste); }
 
 /* ---------- Card do conhecimento ---------- */
-.lista-conhecimentos { display: grid; gap: var(--esp-3); }
+.lista-conhecimentos {
+  display: grid;
+  gap: var(--esp-4);
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 48rem) {
+  .lista-conhecimentos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 64rem) {
+  .lista-conhecimentos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
   background: var(--cor-superficie);
   padding: var(--esp-5);
   text-decoration: none;
   color: inherit;
   border: var(--borda);
-  border-left: 3px solid var(--cor-linha);
+  border-top: 3px solid var(--cor-linha);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
   transition:
@@ -335,34 +348,39 @@
   color: inherit;
   box-shadow: var(--sombra-2);
 }
-.card--explicito { border-left-color: var(--cor-explicito); }
-.card--tacito-cognitivo { border-left-color: var(--cor-tacito-cognitivo); }
-.card--tacito-tecnico { border-left-color: var(--cor-tacito-tecnico); }
+.card--explicito { border-top-color: var(--cor-explicito); }
+.card--tacito-cognitivo { border-top-color: var(--cor-tacito-cognitivo); }
+.card--tacito-tecnico { border-top-color: var(--cor-tacito-tecnico); }
+
+.card__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+}
 .card__nome {
   display: block;
   font-size: var(--tam-lg);
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-block: var(--esp-2);
   line-height: 1.25;
 }
+/* Três linhas e corta com reticências, para os cards ficarem comparáveis. */
 .card__descricao {
-  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
   font-size: var(--tam-sm);
   font-weight: 400;
   color: var(--cor-texto-suave);
-  margin-bottom: var(--esp-3);
 }
-@media (min-width: 60rem) {
-  .card {
-    display: grid;
-    grid-template-columns: 4rem minmax(0, 1fr) 20rem;
-    gap: var(--esp-4);
-    align-items: start;
-    padding-block: var(--esp-4);
-  }
-  .card__nome { margin-top: 0; }
-  .card__etiquetas { justify-content: flex-end; }
+/* Empurrado para a base, então o rodapé alinha entre cards de alturas diferentes. */
+.card__rodape {
+  margin-top: auto;
+  padding-top: var(--esp-3);
+  border-top: 1px solid var(--cor-linha-suave);
 }
 
 /* ---------- Ficha ---------- */

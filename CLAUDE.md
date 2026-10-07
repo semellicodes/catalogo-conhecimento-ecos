@@ -45,8 +45,8 @@ aviso de relação candidata. Virar `true` conhecimento por conhecimento, confor
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Apresentação, números gerais, entrada pela natureza e mapa das camadas |
-| `catalogo.html` | Listagem com busca e filtros, e a ficha aberta em diálogo |
+| `index.html` | Página única com três seções ancoradas, `#inicio` com a abertura e os números, `#catalogo` com busca, filtros, grade de cards e a ficha em diálogo, e `#estrutura` com as camadas |
+| `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `sobre.html` | Método de pesquisa e esquemas de classificação |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
@@ -58,7 +58,8 @@ aviso de relação candidata. Virar `true` conhecimento por conhecimento, confor
 | `js/filtros.js` | Opera sobre listas. Não conhece o DOM |
 | `js/lista.js` | Monta os cards da listagem |
 | `js/ficha.js` | Monta a ficha de um conhecimento |
-| `js/catalogo.js` | Liga os módulos na página do catálogo |
+| `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
+| `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
@@ -76,7 +77,12 @@ nativamente pelo navegador com `type="module"`.
 
 ## Convenções de interface
 
-- Mobile primeiro. O card empilha no celular e vira três colunas a partir de 60rem
+- Mobile primeiro. A grade de cards é uma coluna no celular, duas a partir de 48rem e três a
+  partir de 64rem
+- O card mostra identificador e natureza no topo, nome em destaque, descrição cortada em três
+  linhas e as demais etiquetas no rodapé
+- A navegação do cabeçalho mistura âncora da própria página e link de página. As seções usam
+  `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1

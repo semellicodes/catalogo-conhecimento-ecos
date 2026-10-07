@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catálogo de Conhecimento em ECOS</title>
-<meta name="description" content="Catálogo dos conhecimentos que precisam ser gerenciados em ecossistemas de software, com as soluções relacionadas e os estudos primários que os sustentam.">
+<meta name="description" content="Catálogo dos conhecimentos que precisam ser gerenciados em ecossistemas de software, com busca, filtros, as soluções relacionadas e os estudos primários que os sustentam.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="css/paginas.css">
 </head>
 <body>
-<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+<a class="pular-para-conteudo" href="#catalogo">Pular para o catálogo</a>
 
 <header class="cabecalho">
   <div class="container cabecalho__interno">
@@ -40,8 +40,9 @@
       </span>
     </a>
     <nav class="navegacao" aria-label="Principal">
-      <a href="index.html" aria-current="page">Início</a>
-      <a href="catalogo.html">Catálogo</a>
+      <a href="#inicio" data-secao="inicio">Início</a>
+      <a href="#catalogo" data-secao="catalogo">Catálogo</a>
+      <a href="#estrutura" data-secao="estrutura">Estrutura</a>
       <a href="sobre.html">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
@@ -50,36 +51,55 @@
 </header>
 
 <main id="conteudo">
-  <section class="topo">
-    <div class="container">
-      <p class="topo__etiqueta">Revisão rápida · 18 estudos primários</p>
-      <h1 class="topo__titulo">Conhecimento que precisa circular no ecossistema</h1>
-      <p class="topo__resumo">
-        Este catálogo reúne os conhecimentos cuja gerência se torna necessária em razão das
-        características dos ecossistemas de software. Cada conhecimento é descrito por um conjunto
-        fixo de atributos, ligado às soluções relatadas na literatura e aos estudos primários que o
-        sustentam.
-      </p>
-      <div class="topo__acoes">
-        <a class="botao botao--principal" href="catalogo.html">Abrir o catálogo</a>
-        <a class="botao" href="sobre.html">Como foi construído</a>
+  <section class="abertura" id="inicio" aria-labelledby="titulo-abertura">
+    <div class="container abertura__interno">
+      <div class="abertura__texto">
+        <p class="abertura__etiqueta">Revisão rápida · 18 estudos primários</p>
+        <h1 class="abertura__titulo" id="titulo-abertura">Conhecimento que precisa circular no ecossistema</h1>
+        <p class="abertura__resumo">
+          Os conhecimentos cuja gerência se torna necessária em razão das características dos
+          ecossistemas de software, cada um descrito por um conjunto fixo de atributos e ligado às
+          soluções e aos estudos que o sustentam.
+        </p>
       </div>
+      <div class="numeros" id="numeros" aria-label="Números do catálogo"></div>
     </div>
   </section>
 
-  <section class="numeros container" id="numeros" aria-label="Números do catálogo"></section>
+  <section class="secao-catalogo" id="catalogo" aria-labelledby="titulo-catalogo">
+    <div class="container">
+      <header class="catalogo__cabecalho">
+        <h2 class="secao__titulo" id="titulo-catalogo">Conhecimentos</h2>
+        <p class="secao__intro">
+          Busque por nome, descrição ou ID, e combine as facetas para estreitar a lista. Dentro de
+          uma faceta os valores somam, entre facetas eles se cruzam.
+        </p>
+      </header>
 
-  <section class="secao container">
-    <h2 class="secao__titulo">Comece pela natureza do conhecimento</h2>
-    <p class="secao__intro">
-      A natureza epistemológica é a entrada principal do catálogo. Ela separa o que pode ser
-      formalizado em artefatos do que permanece na experiência de quem participa do ecossistema.
-    </p>
-    <div class="naturezas" id="naturezas"></div>
+      <section class="filtros" aria-label="Busca e filtros">
+        <div class="filtros__linha">
+          <div class="filtros__busca">
+            <label class="filtros__titulo" for="busca">Buscar</label>
+            <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
+          </div>
+          <div class="filtros__principal" id="filtro-principal"></div>
+        </div>
+        <div class="filtros__secundarios">
+          <div class="filtros__grupos" id="painel-filtros"></div>
+          <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
+        </div>
+      </section>
+
+      <div class="catalogo__barra">
+        <p class="catalogo__contagem" id="contagem">Carregando</p>
+        <p class="catalogo__contagem">Abra um item para ver a ficha</p>
+      </div>
+      <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
+    </div>
   </section>
 
-  <section class="secao container">
-    <h2 class="secao__titulo">As quatro camadas</h2>
+  <section class="secao container" id="estrutura" aria-labelledby="titulo-estrutura">
+    <h2 class="secao__titulo" id="titulo-estrutura">As quatro camadas</h2>
     <p class="secao__intro">
       A estrutura segue a lógica de camadas do Catálogo de Riscos em ECOS, com o conhecimento no
       lugar do risco como ponto de partida.
@@ -87,6 +107,19 @@
     <div class="camadas" id="camadas"></div>
   </section>
 </main>
+
+<dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">
+  <div class="dialogo-ficha__topo">
+    <p class="codigo-id" id="dialogo-ficha-id"></p>
+    <button class="botao" id="fechar-ficha" type="button">Fechar</button>
+  </div>
+  <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
+  <div class="dialogo-ficha__rodape" id="ficha-navegacao">
+    <button class="botao" id="ficha-anterior" type="button">Anterior</button>
+    <p class="dialogo-ficha__posicao" id="ficha-posicao" aria-live="polite"></p>
+    <button class="botao" id="ficha-proximo" type="button">Próximo</button>
+  </div>
+</dialog>
 
 <footer class="rodape">
   <div class="container rodape__interno">
@@ -96,6 +129,8 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
+<script type="module" src="js/navegacao.js"></script>
 <script type="module" src="js/inicio.js"></script>
+<script type="module" src="js/catalogo.js"></script>
 </body>
 </html>

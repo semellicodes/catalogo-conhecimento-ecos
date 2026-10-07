@@ -63,6 +63,12 @@ button, input, select {
 
 .mono { font-family: var(--fonte-mono); }
 
+/* Rolagem suave para as âncoras da página única. Quem pede menos movimento
+   continua com o salto seco. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 /* ---------- Transição entre páginas ---------- */
 /* Progressivo. Sem suporte, a navegação acontece do jeito de sempre. */
 @view-transition { navigation: auto; }

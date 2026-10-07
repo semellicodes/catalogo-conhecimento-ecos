@@ -1,10 +1,8 @@
 /**
- * Preenche os números e as camadas da página inicial.
+ * Preenche os números da abertura e as camadas da seção de estrutura.
  */
 
 import { carregar } from './dados.js';
-import { contar } from './filtros.js';
-import { classeNatureza } from './lista.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -59,24 +57,6 @@ async function iniciar() {
     camadas.append(bloco);
   });
 
-  const contagens = contar(dados.conhecimentos, 'natureza');
-  const naturezas = el('#naturezas');
-  dados.classificacoes.natureza.valores.forEach((v) => {
-    const card = document.createElement('a');
-    card.className = `natureza-card natureza-card--${classeNatureza(v.valor)}`;
-    card.href = `catalogo.html?natureza=${encodeURIComponent(v.valor)}`;
-    const contagem = document.createElement('p');
-    contagem.className = 'natureza-card__contagem mono';
-    contagem.textContent = contagens.get(v.valor) || 0;
-    const nome = document.createElement('p');
-    nome.className = 'natureza-card__nome';
-    nome.textContent = v.valor;
-    const texto = document.createElement('p');
-    texto.className = 'natureza-card__texto';
-    texto.textContent = v.descricao;
-    card.append(contagem, nome, texto);
-    naturezas.append(card);
-  });
 }
 
 iniciar();

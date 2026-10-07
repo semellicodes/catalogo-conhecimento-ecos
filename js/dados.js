@@ -12,7 +12,7 @@ const ARQUIVOS = {
   referencias: 'dados/referencias.json'
 };
 
-let cache = null;
+let promessa = null;
 
 async function lerJson(caminho) {
   const resposta = await fetch(caminho);
@@ -22,13 +22,23 @@ async function lerJson(caminho) {
   return resposta.json();
 }
 
-/** Carrega todos os arquivos de dados. Chamadas seguintes reaproveitam o cache. */
-export async function carregar() {
-  if (cache) return cache;
-  const chaves = Object.keys(ARQUIVOS);
-  const valores = await Promise.all(chaves.map((k) => lerJson(ARQUIVOS[k])));
-  cache = Object.fromEntries(chaves.map((k, i) => [k, valores[i]]));
-  return cache;
+/**
+ * Carrega todos os arquivos de dados. O que fica guardado é a promessa, não só o
+ * resultado, então dois módulos na mesma página compartilham a mesma leitura em
+ * vez de disparar dois conjuntos de requisições.
+ */
+export function carregar() {
+  if (!promessa) {
+    const chaves = Object.keys(ARQUIVOS);
+    promessa = Promise.all(chaves.map((k) => lerJson(ARQUIVOS[k])))
+      .then((valores) => Object.fromEntries(chaves.map((k, i) => [k, valores[i]])))
+      .catch((erro) => {
+        /* Uma falha não pode ficar guardada para sempre, senão não há como tentar de novo. */
+        promessa = null;
+        throw erro;
+      });
+  }
+  return promessa;
 }
 
 export const porId = (lista, id) => lista.find((item) => item.id === id) || null;

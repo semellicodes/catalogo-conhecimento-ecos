@@ -25,32 +25,32 @@ function montarCard(conhecimento, aoAbrir) {
   card.href = `?id=${conhecimento.id}`;
   card.dataset.id = conhecimento.id;
 
+  /* Topo. O identificador de um lado, a natureza do outro. */
+  const topo = document.createElement('span');
+  topo.className = 'card__topo';
   const id = document.createElement('span');
   id.className = 'codigo-id';
   id.textContent = conhecimento.id;
+  topo.append(id, etiqueta(conhecimento.natureza.toLowerCase(), natureza));
 
-  const corpo = document.createElement('span');
   const nome = document.createElement('span');
   nome.className = 'card__nome';
   nome.textContent = conhecimento.nome;
+
   const descricao = document.createElement('span');
   descricao.className = 'card__descricao';
   descricao.textContent = conhecimento.descricao;
-  corpo.append(nome, descricao);
 
-  const etiquetas = document.createElement('span');
-  etiquetas.className = 'etiquetas card__etiquetas';
-  etiquetas.append(
-    etiqueta(conhecimento.natureza.toLowerCase(), natureza),
-    etiqueta(conhecimento.nivel.toLowerCase()),
-    etiqueta(conhecimento.dimensao.toLowerCase())
-  );
+  /* Rodapé. As demais facetas e os estudos que sustentam o conhecimento. */
+  const rodape = document.createElement('span');
+  rodape.className = 'etiquetas card__rodape';
+  rodape.append(etiqueta(conhecimento.nivel.toLowerCase()), etiqueta(conhecimento.dimensao.toLowerCase()));
   if (!vazio(conhecimento.tipoEcos)) {
-    conhecimento.tipoEcos.forEach((t) => etiquetas.append(etiqueta(t.toLowerCase())));
+    conhecimento.tipoEcos.forEach((t) => rodape.append(etiqueta(t.toLowerCase())));
   }
-  etiquetas.append(etiqueta(conhecimento.estudos.join(', ')));
+  rodape.append(etiqueta(conhecimento.estudos.join(', ')));
 
-  card.append(id, corpo, etiquetas);
+  card.append(topo, nome, descricao, rodape);
   card.addEventListener('click', (evento) => {
     evento.preventDefault();
     aoAbrir(conhecimento.id);

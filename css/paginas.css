@@ -1,36 +1,43 @@
 /* ---------- Página inicial ---------- */
-.topo { padding-block: var(--esp-8) var(--esp-7); border-bottom: var(--borda); }
-.topo__etiqueta {
+/* Abertura curta de propósito. O catálogo precisa aparecer sem rolar. */
+.abertura { padding-block: var(--esp-6); border-bottom: var(--borda); }
+.abertura__interno { display: grid; gap: var(--esp-5); }
+@media (min-width: 64rem) {
+  .abertura__interno { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--esp-7); }
+}
+.abertura__etiqueta {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cor-acento);
-  margin-bottom: var(--esp-3);
+  margin-bottom: var(--esp-2);
 }
-.topo__titulo { font-size: var(--tam-2xl); max-width: 20ch; }
-@media (min-width: 48rem) { .topo__titulo { font-size: var(--tam-3xl); } }
-.topo__resumo { margin-top: var(--esp-4); font-size: var(--tam-md); color: var(--cor-texto-suave); max-width: var(--largura-texto); }
-.topo__acoes { display: flex; flex-wrap: wrap; gap: var(--esp-3); margin-top: var(--esp-5); }
+.abertura__titulo { font-size: var(--tam-xl); max-width: 22ch; }
+@media (min-width: 48rem) { .abertura__titulo { font-size: var(--tam-2xl); } }
+.abertura__resumo {
+  margin-top: var(--esp-3);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  max-width: 60ch;
+}
 
-.numeros {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--esp-3);
-  padding-block: var(--esp-6);
-}
-@media (min-width: 48rem) { .numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
+@media (min-width: 64rem) { .numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 24rem; } }
 .numero {
-  padding: var(--esp-5);
+  padding: var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
 }
-.numero__valor { font-family: var(--fonte-mono); font-size: var(--tam-xl); color: var(--cor-acento); }
-.numero__rotulo { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
+.numero__valor { font-family: var(--fonte-mono); font-size: var(--tam-lg); color: var(--cor-acento); }
+.numero__rotulo { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
 
 .secao { padding-block: var(--esp-8); }
+/* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
+#inicio, #catalogo, #estrutura { scroll-margin-top: 72px; }
+.secao-catalogo { padding-block: var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 
@@ -75,7 +82,6 @@
 
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
-.catalogo { padding-block: var(--esp-7); }
 .catalogo__cabecalho { margin-bottom: var(--esp-6); }
 .catalogo__barra {
   display: flex;
@@ -160,6 +166,29 @@
   gap: var(--esp-4);
 }
 .dialogo-ficha__corpo { padding: var(--esp-5) var(--esp-4) var(--esp-6); }
+.dialogo-ficha__rodape {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-fundo);
+  border-top: var(--borda);
+  border-radius: 0 0 var(--raio) var(--raio);
+}
+.dialogo-ficha__posicao {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+.botao[disabled] { opacity: 0.45; cursor: default; }
+.botao[disabled]:hover {
+  border-color: var(--cor-linha);
+  color: var(--cor-texto);
+  box-shadow: var(--sombra-1);
+}
 
 /* ---------- Páginas de texto ---------- */
 .prosa { max-width: var(--largura-texto); }

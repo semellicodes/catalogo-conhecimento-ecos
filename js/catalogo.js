@@ -11,6 +11,9 @@ const el = (seletor) => document.querySelector(seletor);
 
 let dados = null;
 let estado = filtros.estadoVazio();
+/* A ordem de navegação da ficha é a ordem filtrada no momento, não a ordem total. */
+let visiveis = [];
+let idAberto = null;
 
 /** Uma opção de faceta. Botão de verdade, com o estado em aria-pressed. */
 function montarOpcao(chave, opcao, contagem, modificador) {
@@ -128,24 +131,54 @@ function abrirFicha(id) {
   const corpo = el('#dialogo-ficha-corpo');
   corpo.replaceChildren(ficha.renderizar(dados, completo));
   el('#dialogo-ficha-id').textContent = `${completo.id} · ${completo.nome}`;
-  dialogo.showModal();
-  corpo.scrollTop = 0;
+  idAberto = id;
+  posicionarNavegacao();
+  if (!dialogo.open) dialogo.showModal();
+  /* Quem rola é o próprio diálogo, não o corpo, então é nele que o topo é reposto. */
+  dialogo.scrollTop = 0;
   sincronizarUrl(id);
 }
 
-function sincronizarUrl(idAberto) {
-  const query = filtros.escreverNaUrl(estado, idAberto);
-  const url = query ? `?${query}` : location.pathname;
+/** Índice do conhecimento aberto dentro da lista filtrada, ou menos um. */
+const posicaoAtual = () => visiveis.findIndex((c) => c.id === idAberto);
+
+function posicionarNavegacao() {
+  const indice = posicaoAtual();
+  const navegacao = el('#ficha-navegacao');
+  const anterior = el('#ficha-anterior');
+  const proximo = el('#ficha-proximo');
+
+  /* Aberto por link direto com um filtro que o exclui, não há ordem a seguir. */
+  navegacao.hidden = indice === -1;
+  if (indice === -1) return;
+
+  el('#ficha-posicao').textContent = `${indice + 1} de ${visiveis.length}`;
+  anterior.disabled = indice === 0;
+  proximo.disabled = indice === visiveis.length - 1;
+}
+
+function irPara(passo) {
+  const indice = posicaoAtual();
+  if (indice === -1) return;
+  const alvo = visiveis[indice + passo];
+  if (alvo) abrirFicha(alvo.id);
+}
+
+function sincronizarUrl(id) {
+  const query = filtros.escreverNaUrl(estado, id);
+  /* A âncora da seção é mantida, senão o link compartilhado perde o destino. */
+  const url = (query ? `?${query}` : location.pathname) + location.hash;
   history.replaceState(null, '', url);
 }
 
 function atualizar() {
-  const visiveis = filtros.aplicar(dados.conhecimentos, estado);
+  visiveis = filtros.aplicar(dados.conhecimentos, estado);
   lista.renderizar(el('#lista-conhecimentos'), visiveis, abrirFicha);
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
   marcarOpcoes();
-  sincronizarUrl(null);
+  if (idAberto) posicionarNavegacao();
+  sincronizarUrl(idAberto);
 }
 
 function ligarBusca() {
@@ -173,7 +206,12 @@ function ligarLimpar() {
 function ligarDialogo() {
   const dialogo = el('#dialogo-ficha');
   el('#fechar-ficha').addEventListener('click', () => dialogo.close());
-  dialogo.addEventListener('close', () => sincronizarUrl(null));
+  el('#ficha-anterior').addEventListener('click', () => irPara(-1));
+  el('#ficha-proximo').addEventListener('click', () => irPara(1));
+  dialogo.addEventListener('close', () => {
+    idAberto = null;
+    sincronizarUrl(null);
+  });
   dialogo.addEventListener('click', (evento) => {
     if (evento.target === dialogo) dialogo.close();
   });
