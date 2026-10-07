@@ -5,14 +5,28 @@
   position: sticky;
   top: 0;
   z-index: 5;
+  /* Tirado do retrato da transição para ficar parado na troca de página */
+  view-transition-name: cabecalho;
 }
 .cabecalho__interno {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "marca tema"
+    "nav   nav";
   align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-4);
+  gap: var(--esp-1) var(--esp-4);
   min-height: 60px;
-  flex-wrap: wrap;
+}
+.marca { grid-area: marca; }
+.navegacao { grid-area: nav; }
+.botao-tema { grid-area: tema; }
+@media (min-width: 48rem) {
+  .cabecalho__interno {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "marca nav tema";
+  }
+  .navegacao { justify-self: end; }
 }
 .marca {
   font-family: var(--fonte-mono);
@@ -23,6 +37,23 @@
   padding-block: var(--esp-2);
 }
 .marca span { color: var(--cor-texto-fraco); }
+
+/* ---------- Botão de tema ---------- */
+.botao-tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--cor-texto-suave);
+  cursor: pointer;
+  transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
+}
+.botao-tema:hover { color: var(--cor-acento); border-color: var(--cor-linha); }
+.botao-tema svg { display: block; width: 20px; height: 20px; }
 .navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
 .navegacao a {
   display: flex;
@@ -33,6 +64,7 @@
   text-decoration: none;
   font-size: var(--tam-sm);
   border-bottom: 2px solid transparent;
+  transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
@@ -114,7 +146,9 @@
   color: var(--cor-texto);
   font-family: var(--fonte-mono);
   font-size: var(--tam-sm);
+  transition: border-color var(--dur-rapida) var(--curva);
 }
+.campo-busca:hover { border-color: var(--cor-acento-linha); }
 .campo-busca::placeholder { color: var(--cor-texto-fraco); }
 
 .botao {
@@ -131,6 +165,7 @@
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
 .botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
 .botao--principal {
@@ -150,6 +185,7 @@
   text-decoration: none;
   color: inherit;
   border-left: 3px solid transparent;
+  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
 .card:hover { background: var(--cor-superficie-alta); color: inherit; }
 .card--explicito { border-left-color: var(--cor-explicito); }

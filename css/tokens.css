@@ -51,6 +51,16 @@
   --borda: 1px solid var(--cor-linha);
   --raio: 0;
   --alvo-toque: 44px;
+
+  /* Movimento */
+  --dur-rapida: 120ms;
+  --dur-media: 200ms;
+  --curva: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Véu do diálogo. O opaco atende quem não tem desfoque */
+  --cor-veu: rgb(0 0 0 / 0.45);
+  --cor-veu-opaco: rgb(0 0 0 / 0.72);
+  --desfoque-veu: 8px;
 }
 
 @media (prefers-color-scheme: light) {

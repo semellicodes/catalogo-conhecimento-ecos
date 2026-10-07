@@ -62,3 +62,32 @@ button, input, select {
 }
 
 .mono { font-family: var(--fonte-mono); }
+
+/* ---------- Transição entre páginas ---------- */
+/* Progressivo. Sem suporte, a navegação acontece do jeito de sempre. */
+@view-transition { navigation: auto; }
+
+/* ---------- Troca de tema ---------- */
+/* A classe só existe durante a troca, e anima cor, nunca posição ou tamanho. */
+:root.trocando-tema,
+:root.trocando-tema *,
+:root.trocando-tema *::before,
+:root.trocando-tema *::after {
+  transition:
+    background-color var(--dur-media) var(--curva),
+    border-color var(--dur-media) var(--curva),
+    color var(--dur-media) var(--curva),
+    fill var(--dur-media) var(--curva),
+    stroke var(--dur-media) var(--curva) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+
+  :root.trocando-tema,
+  :root.trocando-tema *,
+  :root.trocando-tema *::before,
+  :root.trocando-tema *::after { transition: none !important; }
+}

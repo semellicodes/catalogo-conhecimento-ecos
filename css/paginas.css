@@ -34,7 +34,8 @@
 
 .naturezas { display: grid; gap: var(--esp-4); }
 @media (min-width: 60rem) { .naturezas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.natureza-card { background: var(--cor-superficie); border: var(--borda); border-top: 3px solid var(--cor-linha); padding: var(--esp-4); display: block; text-decoration: none; color: inherit; }
+.natureza-card { background: var(--cor-superficie); border: var(--borda); border-top: 3px solid var(--cor-linha); padding: var(--esp-4); display: block; text-decoration: none; color: inherit;
+  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva); }
 .natureza-card:hover { background: var(--cor-superficie-alta); color: inherit; }
 .natureza-card--explicito { border-top-color: var(--cor-explicito); }
 .natureza-card--tacito-cognitivo { border-top-color: var(--cor-tacito-cognitivo); }
@@ -71,8 +72,46 @@
   width: min(100%, 72rem);
   max-width: calc(100vw - var(--esp-4) * 2);
   max-height: calc(100vh - var(--esp-6));
+  opacity: 0;
+  scale: 0.98;
+  /* overlay e display entram com allow-discrete para o fechamento também animar */
+  transition:
+    opacity var(--dur-media) var(--curva),
+    scale var(--dur-media) var(--curva),
+    overlay var(--dur-media) var(--curva) allow-discrete,
+    display var(--dur-media) var(--curva) allow-discrete;
 }
-.dialogo-ficha::backdrop { background: rgb(0 0 0 / 0.6); }
+.dialogo-ficha[open] { opacity: 1; scale: 1; }
+@starting-style {
+  .dialogo-ficha[open] { opacity: 0; scale: 0.98; }
+}
+
+.dialogo-ficha::backdrop {
+  /* Cor sólida para quem não tem desfoque */
+  background: var(--cor-veu-opaco);
+  opacity: 0;
+  transition:
+    opacity var(--dur-media) var(--curva),
+    overlay var(--dur-media) var(--curva) allow-discrete,
+    display var(--dur-media) var(--curva) allow-discrete;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dialogo-ficha::backdrop {
+    background: var(--cor-veu);
+    -webkit-backdrop-filter: blur(var(--desfoque-veu));
+    backdrop-filter: blur(var(--desfoque-veu));
+  }
+}
+.dialogo-ficha[open]::backdrop { opacity: 1; }
+@starting-style {
+  .dialogo-ficha[open]::backdrop { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialogo-ficha,
+  .dialogo-ficha::backdrop { transition: none; }
+  .dialogo-ficha { scale: 1; }
+}
 .dialogo-ficha__topo {
   position: sticky;
   top: 0;

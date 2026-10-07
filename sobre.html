@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sobre · Conhecimento em ECOS</title>
 <meta name="description" content="Método de pesquisa e esquemas de classificação adotados no Catálogo de Conhecimento em Ecossistemas de Software.">
+<script>
+  /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
+  try {
+    var tema = localStorage.getItem('tema');
+    if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
+  } catch (erro) {}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -25,6 +32,7 @@
       <a href="sobre.html" aria-current="page">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
+    <button class="botao-tema" id="botao-tema" type="button" aria-label="Alternar tema"></button>
   </div>
 </header>
 
@@ -98,6 +106,7 @@
   </div>
 </footer>
 
+<script type="module" src="js/tema.js"></script>
 <script type="module" src="js/sobre.js"></script>
 </body>
 </html>
