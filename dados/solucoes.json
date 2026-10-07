@@ -1,0 +1,541 @@
+[
+  {
+    "id": "S01",
+    "nome": "SAP Community: canal para dúvidas, respostas e experiências",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E06",
+      "E12"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C03",
+      "C15",
+      "C19"
+    ]
+  },
+  {
+    "id": "S02",
+    "nome": "Portal do Software Público Brasileiro (BPS Portal)",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E15"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": []
+  },
+  {
+    "id": "S03",
+    "nome": "Wiki: ferramenta para registro e atualização de conhecimento dos projetos",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E13"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": []
+  },
+  {
+    "id": "S04",
+    "nome": "Issue Tracker: ferramenta para registro de conhecimento sobre problemas e discussões",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E13"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": []
+  },
+  {
+    "id": "S05",
+    "nome": "SAP Help Portal: repositório de documentação técnica",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E06"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C03",
+      "C19"
+    ]
+  },
+  {
+    "id": "S06",
+    "nome": "KnowledgeRepository: repositório de casos de decisão",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E14"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C09"
+    ]
+  },
+  {
+    "id": "S07",
+    "nome": "NFR Engineering Repository (NFR Repo): repositório de conhecimento arquitetural",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S08",
+    "nome": "Collab-RS: ferramenta para recomendação de colaboradores",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E08"
+    ],
+    "avaliada": true,
+    "avaliacao": "Estudo de caso (E08)",
+    "conhecimentos": [
+      "C01",
+      "C12"
+    ]
+  },
+  {
+    "id": "S09",
+    "nome": "COACH (Component Options Analysis in Cooperation with Humans)",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E14"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C09"
+    ]
+  },
+  {
+    "id": "S10",
+    "nome": "Popup: ferramenta para inserção de conhecimento no NFR Repo",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S11",
+    "nome": "Facets: ferramenta para recuperação de conhecimento do NFR Repo",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S12",
+    "nome": "Spider: ferramenta para visualização de relações entre conhecimentos arquiteturais",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S13",
+    "nome": "Miner: ferramenta para extração de decisões arquiteturais reutilizáveis",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S14",
+    "nome": "ShareXP: ferramenta para compartilhamento de experiências sobre composições",
+    "tipo": "Ferramenta",
+    "estudos": [
+      "E17"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C12",
+      "C17"
+    ]
+  },
+  {
+    "id": "S15",
+    "nome": "Utilização de incentivos ao compartilhamento de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E01",
+      "E02",
+      "E04",
+      "E07"
+    ],
+    "avaliada": true,
+    "avaliacao": "Simulação (E01)",
+    "conhecimentos": [
+      "C02",
+      "C06",
+      "C13",
+      "C20"
+    ]
+  },
+  {
+    "id": "S16",
+    "nome": "Treinamento e capacitação para transferência de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E02",
+      "E07",
+      "E09",
+      "E15"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C02",
+      "C06",
+      "C07",
+      "C11",
+      "C13"
+    ]
+  },
+  {
+    "id": "S17",
+    "nome": "Utilização de feedback para evolução dos recursos de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E02",
+      "E12",
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C03",
+      "C04",
+      "C13",
+      "C15",
+      "C16"
+    ]
+  },
+  {
+    "id": "S18",
+    "nome": "Utilização de papéis de intermediação do conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E03",
+      "E05",
+      "E07"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C02",
+      "C05",
+      "C06",
+      "C12",
+      "C13",
+      "C14",
+      "C18"
+    ]
+  },
+  {
+    "id": "S19",
+    "nome": "Realização de eventos para troca de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E03",
+      "E06",
+      "E09"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C02",
+      "C03",
+      "C07",
+      "C11",
+      "C12",
+      "C18",
+      "C19"
+    ]
+  },
+  {
+    "id": "S20",
+    "nome": "Utilização de diretrizes documentadas para contribuidores",
+    "tipo": "Prática",
+    "estudos": [
+      "E02",
+      "E07",
+      "E13"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C06",
+      "C13"
+    ]
+  },
+  {
+    "id": "S21",
+    "nome": "Utilização de referências cruzadas entre projetos",
+    "tipo": "Prática",
+    "estudos": [
+      "E03"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C12",
+      "C18"
+    ]
+  },
+  {
+    "id": "S22",
+    "nome": "Adequação dos recursos de fronteira de conhecimento à finalidade de uso",
+    "tipo": "Prática",
+    "estudos": [
+      "E06"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C03",
+      "C19"
+    ]
+  },
+  {
+    "id": "S23",
+    "nome": "Realização de mentoria entre ecossistemas",
+    "tipo": "Prática",
+    "estudos": [
+      "E07"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C06",
+      "C13"
+    ]
+  },
+  {
+    "id": "S24",
+    "nome": "Compartilhamento de dados e inteligência de mercado",
+    "tipo": "Prática",
+    "estudos": [
+      "E09"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C02",
+      "C07",
+      "C11"
+    ]
+  },
+  {
+    "id": "S25",
+    "nome": "Utilização de programas de acesso antecipado",
+    "tipo": "Prática",
+    "estudos": [
+      "E09"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C01",
+      "C02",
+      "C07",
+      "C11"
+    ]
+  },
+  {
+    "id": "S26",
+    "nome": "Realização de onboarding para transferência de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E11"
+    ],
+    "avaliada": true,
+    "avaliacao": "Estudo observacional e análise quantitativa de repositórios (E11)",
+    "conhecimentos": [
+      "C08"
+    ]
+  },
+  {
+    "id": "S27",
+    "nome": "Utilização de alianças e spillovers para aquisição de conhecimento",
+    "tipo": "Prática",
+    "estudos": [
+      "E18"
+    ],
+    "avaliada": true,
+    "avaliacao": "Análise de regressão (E18)",
+    "conhecimentos": []
+  },
+  {
+    "id": "S28",
+    "nome": "Modelo de jogo diferencial para compartilhamento de conhecimento",
+    "tipo": "Modelo",
+    "estudos": [
+      "E01"
+    ],
+    "avaliada": true,
+    "avaliacao": "Simulação (E01)",
+    "conhecimentos": []
+  },
+  {
+    "id": "S29",
+    "nome": "Modelo híbrido de governança do fluxo de conhecimento",
+    "tipo": "Modelo",
+    "estudos": [
+      "E05"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C05",
+      "C14"
+    ]
+  },
+  {
+    "id": "S30",
+    "nome": "Modelo de uso de recursos de fronteira de conhecimento",
+    "tipo": "Modelo",
+    "estudos": [
+      "E06"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C02",
+      "C03",
+      "C19"
+    ]
+  },
+  {
+    "id": "S31",
+    "nome": "Ontologia SECOn: modelo para representação de elementos e relações do ECOS",
+    "tipo": "Modelo",
+    "estudos": [
+      "E08"
+    ],
+    "avaliada": true,
+    "avaliacao": "Estudo de caso (E08)",
+    "conhecimentos": [
+      "C01",
+      "C12"
+    ]
+  },
+  {
+    "id": "S32",
+    "nome": "Modelo GRADE (Goals, Roles, Assets, Decisions, and Environments)",
+    "tipo": "Modelo",
+    "estudos": [
+      "E14"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C09"
+    ]
+  },
+  {
+    "id": "S33",
+    "nome": "Modelo reutilizável de decisão arquitetural (Architectural Design Decision – ADD)",
+    "tipo": "Modelo",
+    "estudos": [
+      "E16"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C13",
+      "C16"
+    ]
+  },
+  {
+    "id": "S34",
+    "nome": "Modelagem de tópicos para geração de metaconhecimento",
+    "tipo": "Método",
+    "estudos": [
+      "E12"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C03",
+      "C15"
+    ]
+  },
+  {
+    "id": "S35",
+    "nome": "Raciocínio por analogia sobre casos anteriores",
+    "tipo": "Método",
+    "estudos": [
+      "E14"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": [
+      "C04",
+      "C09"
+    ]
+  },
+  {
+    "id": "S36",
+    "nome": "5W1H: framework para organização e compartilhamento de conhecimento",
+    "tipo": "Framework",
+    "estudos": [
+      "E15"
+    ],
+    "avaliada": false,
+    "avaliacao": "",
+    "conhecimentos": []
+  }
+]

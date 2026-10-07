@@ -1,0 +1,146 @@
+[
+  {
+    "id": "E01",
+    "titulo": "The optimal knowledge-sharing strategy for digital platform owners and third-party developers",
+    "autores": "Jiyou Shao, Lei Hua, Zhong Yang, Kun Ding",
+    "ano": 2025,
+    "pais": "China",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E02",
+    "titulo": "A Study of the Governance of Knowledge Sharing in Open-Source Communities",
+    "autores": "Yi, Chaonan; Ma, Lei; Liu, Zheng; Zhu, Junlin; Zhu, Baoqing",
+    "ano": 2025,
+    "pais": "China",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E03",
+    "titulo": "Collaboration Challenges and Opportunities in Developing Scientific Open-Source Software Ecosystems: A Case Study on Astropy",
+    "autores": "Sun, Jiayi; Patil, Aarya; Li, Youhai; Guo, Jin L.C.; Zhou, Shurui",
+    "ano": 2025,
+    "pais": "Canadá",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E04",
+    "titulo": "Innovation in Platform Ecosystems: Roles of Complementors' Experiential Knowledge and Community Engagement as an External Knowledge Source",
+    "autores": "Zhou, Xiaoxiao; Inoue, Yuki",
+    "ano": 2025,
+    "pais": "Japão",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E05",
+    "titulo": "Institutional complexity and governance in open-source ecosystems: A case study of the oil and gas industry",
+    "autores": "Moradi, Mahdis; Hepsø, Vidar; Schiefloe, Per Morten",
+    "ano": 2024,
+    "pais": "Noruega",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E06",
+    "titulo": "The role of knowledge boundary resources for platform ecosystems – insights and design implications from SAP’s Business Technology Platform",
+    "autores": "Kauschinger, Martin; Schreieck, Maximilian; Krcmar, Helmut",
+    "ano": 2024,
+    "pais": "Alemanha",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E07",
+    "titulo": "Health and Orchestration of Public-Sector Open-Source Software Ecosystems : Roles, rules and tools",
+    "autores": "Henttonen, Katja M.; Pulkkinen, Mirja; Tyrvainen, Pasi",
+    "ano": 2024,
+    "pais": "Finlândia",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E08",
+    "titulo": "Collab-RS: semantic recommendation of external collaborators for projects in software ecosystems",
+    "autores": "Oliveira, Márcio; Braga, Regina; Ghiotto, Gleiph; David, José Maria N; Campos, Fernanda; Ströele, Victor",
+    "ano": 2024,
+    "pais": "Brasil",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E09",
+    "titulo": "The Engagement of Complementors and the Role of Platform Boundary Resources in e-Commerce Platform Ecosystems",
+    "autores": "Engert, Martin; Evers, Julia; Hein, Andreas; Krcmar, Helmut",
+    "ano": 2022,
+    "pais": "Alemanha",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E10",
+    "titulo": "PSECO-IM: An Approach for Incident Management to Support Governance in Proprietary Software Ecosystems",
+    "autores": "Costa, Luiz Alexandre Martins; Fontão, Awdren Lima; Santos, Rodrigo Pereira dos",
+    "ano": 2022,
+    "pais": "Brasil",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E11",
+    "titulo": "Onboarding vs. Diversity, Productivity, and Quality – Empirical Study of the OpenStack Ecosystem",
+    "autores": "Foundjem, Armstrong; Eghan, Ellis; Adams, Bram",
+    "ano": 2021,
+    "pais": "Canadá",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E12",
+    "titulo": "Knowledge Sharing in Digital Platform Ecosystems – A Textual Analysis of SAP’s Developer Community",
+    "autores": "Kauschinger, Martin; Schreieck, Maximilian; Boehm, Markus; Krcmar, Helmut",
+    "ano": 2021,
+    "pais": "Alemanha",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E13",
+    "titulo": "A Topological Analysis of Communication Channels for Knowledge Sharing in Contemporary GitHub Projects",
+    "autores": "Tantisuwankul, Jirateep; Nugroho, Yusuf Sulistyo; Kula, Raula Gaikovina; Hata, Hideaki; Rungsawang, Arnon; Leelaprute, Pattara; Matsumoto, Kenichi",
+    "ano": 2019,
+    "pais": "Tailândia",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E14",
+    "titulo": "Towards the Architecture of a Decision Support Ecosystem for System Component Selection",
+    "autores": "Axelsson, Jakob; Franke, Ulrik; Carlson, Jan; Sentilles, Séverine; Cicchetti, Antonio",
+    "ano": 2017,
+    "pais": "Suécia",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E15",
+    "titulo": "Collective Intelligence Approach for Free Software Adoption by Municipalities",
+    "autores": "Cardoso Jr, Jarbas L; Costa, Ivanir; Andres, Frederic; Barbin, Silvio E",
+    "ano": 2015,
+    "pais": "Brasil",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E16",
+    "titulo": "Tool Support for the Architectural Design Decisions in Software Ecosystems",
+    "autores": "Stevanetic, Srdjan; Plakidas, Konstantinos; Ionescu, Tudor B; Li, Fei; Schall, Daniel; Zdun, Uwe",
+    "ano": 2015,
+    "pais": "Áustria",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E17",
+    "titulo": "Sharing Experience around Component Compositions – Application to the Eclipse Ecosystem",
+    "autores": "Bourguin, Grégory; Lewandowski, Arnaud; Lewkowicz, Myriam",
+    "ano": 2013,
+    "pais": "França",
+    "tipoEcos": ""
+  },
+  {
+    "id": "E18",
+    "titulo": "Dual Networks of Knowledge Flows: An Empirical Test of Complementarity in the Prepackaged Software Industry",
+    "autores": "Dreyfus, David; Iyer, Bala; Lee, Chi-Hyon; Venkatraman, N",
+    "ano": 2005,
+    "pais": "Estados Unidos",
+    "tipoEcos": ""
+  }
+]

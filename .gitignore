@@ -1,0 +1,26 @@
+# Sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+desktop.ini
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+
+# Log e temporário
+*.log
+*.tmp
+.cache/
+
+# Saída de servidor local e ferramenta externa
+.sass-cache/
+node_modules/

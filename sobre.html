@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre · Conhecimento em ECOS</title>
+<meta name="description" content="Método de pesquisa e esquemas de classificação adotados no Catálogo de Conhecimento em Ecossistemas de Software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html">catalogo-conhecimento<span>/ecos</span></a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="sobre.html" aria-current="page">Sobre</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container secao">
+  <h1 class="secao__titulo">Sobre o catálogo</h1>
+
+  <div class="prosa">
+    <p>
+      Catálogos são artefatos usados para organizar, compartilhar, reutilizar e evoluir o
+      conhecimento de um domínio, favorecendo sua recuperação e aplicação em diferentes contextos.
+      Na Engenharia de Software a noção já foi aplicada em outros domínios, como no ReQSI CI, no
+      NFR4ES e no SECO-Risk, o que indica o formato como adequado para sistematizar os achados de
+      uma revisão da literatura.
+    </p>
+
+    <h2>Classificação por facetas</h2>
+    <p>
+      O catálogo adota uma classificação por facetas, em que cada conhecimento é descrito por um
+      conjunto fixo de atributos, em vez de uma classificação enumerativa que exigiria definir todas
+      as classes previamente. Os valores possíveis de cada faceta vêm de esquemas já estabelecidos
+      na literatura, o que mantém o vocabulário controlado.
+    </p>
+
+    <h2>Origem dos dados</h2>
+    <p>
+      Todo o conteúdo vem de uma revisão rápida sobre gerência de conhecimento em ecossistemas de
+      software, conduzida sobre 18 estudos primários. Os conhecimentos correspondem à QP1, as
+      soluções à QP2, as avaliações à QP3 e os desafios à QP4.
+    </p>
+    <p>
+      Um catálogo não é estático. Ele representa o conhecimento acumulado até determinado momento e
+      deve ser atualizado conforme novas situações são encontradas por quem o utiliza.
+    </p>
+  </div>
+
+  <h2 class="secao__titulo" style="margin-top: var(--esp-7)">Atributos de cada conhecimento</h2>
+  <div class="tabela--rolavel">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Atributo</th>
+          <th scope="col">Valores possíveis</th>
+          <th scope="col">Pergunta que responde</th>
+          <th scope="col">Referência</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-atributos"></tbody>
+    </table>
+  </div>
+
+  <h2 class="secao__titulo" style="margin-top: var(--esp-7)">Tipos de solução</h2>
+  <p class="secao__intro">Classificação segundo Shaw (2003), aplicada às soluções identificadas na revisão.</p>
+  <div class="tabela--rolavel">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-tipos"></tbody>
+    </table>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="container rodape__interno">
+    <span>Catálogo de Conhecimento em Ecossistemas de Software</span>
+    <span>[AUTORAS] · [INSTITUIÇÃO] · [ANO]</span>
+  </div>
+</footer>
+
+<script type="module" src="js/sobre.js"></script>
+</body>
+</html>

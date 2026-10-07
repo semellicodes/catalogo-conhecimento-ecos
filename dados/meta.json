@@ -1,0 +1,40 @@
+{
+  "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
+  "subtitulo": "Conhecimentos que precisam ser gerenciados em ECOS, com as soluções e as evidências que os sustentam",
+  "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
+  "totalEstudos": 18,
+  "atualizadoEm": "2026-10-07",
+  "tiposSolucao": {
+    "Ferramenta": "Ferramenta implementada que materializa uma técnica, ou linguagem formal que apoia uma técnica ou modelo.",
+    "Prática": "Ações e recomendações aplicadas no dia a dia pelos atores do ecossistema.",
+    "Modelo": "Estrutura ou taxonomia de uma área de problema, modelo descritivo, empírico ou analítico.",
+    "Método": "Procedimento operacional que orienta a realização de uma tarefa, como análise ou avaliação.",
+    "Framework": "Estrutura que organiza princípios e orienta a organização de informações."
+  },
+  "camadas": [
+    {
+      "n": 1,
+      "nome": "Ponto de partida",
+      "conteudo": "20 conhecimentos específicos (C01 a C20)",
+      "origem": "QP1 da revisão rápida"
+    },
+    {
+      "n": 2,
+      "nome": "Atributos",
+      "conteudo": "Natureza, nível no ECOS, dimensão do ECOS, tipo de ECOS e ação de gerência requerida",
+      "origem": "QP1 e esquemas conceituais da literatura"
+    },
+    {
+      "n": 3,
+      "nome": "Soluções",
+      "conteudo": "36 soluções (S01 a S36) relacionadas a cada conhecimento",
+      "origem": "QP2 e QP3 da revisão rápida"
+    },
+    {
+      "n": 4,
+      "nome": "Base de evidências",
+      "conteudo": "18 estudos primários (E01 a E18)",
+      "origem": "Processo de seleção da revisão rápida"
+    }
+  ]
+}

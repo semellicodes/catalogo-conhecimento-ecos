@@ -1,0 +1,557 @@
+[
+  {
+    "id": "C01",
+    "nome": "Dependências técnicas entre componentes do ecossistema",
+    "descricao": "Relações de dependência entre os componentes, pacotes e projetos que integram o ecossistema, incluindo quais pacotes dependem de um template comum e quais tecnologias um projeto exige.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S08",
+      "S16",
+      "S18",
+      "S19",
+      "S21",
+      "S24",
+      "S25",
+      "S31"
+    ],
+    "estudos": [
+      "E03",
+      "E08",
+      "E09"
+    ],
+    "trechos": [
+      "E03 correção só alcança os pacotes cuja dependência os mantenedores conhecem",
+      "E08 conhecer previamente as dependências facilita a entrada do colaborador",
+      "E09 familiarizar-se com a plataforma envolve compreender as dependências dos módulos complementares"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C02",
+    "nome": "Arquitetura e tecnologias de base da plataforma",
+    "descricao": "Funcionalidades centrais, infraestrutura, configuração arquitetural e linguagem proprietária que formam a base tecnológica da plataforma.",
+    "natureza": "Explícito",
+    "nivel": "Plataforma",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S01",
+      "S05",
+      "S15",
+      "S16",
+      "S18",
+      "S19",
+      "S20",
+      "S22",
+      "S23",
+      "S24",
+      "S25",
+      "S30"
+    ],
+    "estudos": [
+      "E06",
+      "E07",
+      "E09"
+    ],
+    "trechos": [
+      "E06 desenvolvedores terceiros precisam adquirir amplo conhecimento específico da tecnologia antes de desenvolver",
+      "E07 a empresa nova precisa de tempo para se familiarizar com o produto e a arquitetura",
+      "E09 complementadores interagem com a plataforma para compreender sua infraestrutura e configuração arquitetural"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C03",
+    "nome": "Especificações técnicas de implementação da plataforma",
+    "descricao": "Especificações de implementação da plataforma, como sintaxe, parâmetros de função, estruturas de dados, autenticação, conectividade e banco de dados em nuvem.",
+    "natureza": "Explícito",
+    "nivel": "Plataforma",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S01",
+      "S05",
+      "S17",
+      "S19",
+      "S22",
+      "S30",
+      "S34"
+    ],
+    "estudos": [
+      "E06",
+      "E12"
+    ],
+    "trechos": [
+      "E06 o desenvolvedor terceiro busca sintaxe, parâmetros de função e estruturas de dados",
+      "E12 conhecimento complementar e especializado em autenticação, conectividade, banco de dados em nuvem e instalação"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C04",
+    "nome": "Decisões arquiteturais anteriores e seu contexto",
+    "descricao": "Decisões arquiteturais já tomadas e o contexto em que foram tomadas, inclusive por outras organizações do ecossistema, para reúso em situações semelhantes.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S06",
+      "S07",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S17",
+      "S32",
+      "S33",
+      "S35"
+    ],
+    "estudos": [
+      "E14",
+      "E16"
+    ],
+    "trechos": [
+      "E14 as informações de contexto são a base para julgar se um caso anterior é parecido o bastante",
+      "E16 documentar as decisões para que possam ser consultadas no futuro"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C05",
+    "nome": "Regras e estrutura de governança do ecossistema",
+    "descricao": "Regras, níveis de aprovação e dinâmica de poder que estruturam a governança do ecossistema.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S18",
+      "S29"
+    ],
+    "estudos": [
+      "E05"
+    ],
+    "trechos": [
+      "E05 o participante não entende por que a decisão precisa passar por todos os níveis de aprovação e a falta de diretrizes claras gera conflitos"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C06",
+    "nome": "Critérios de aceitação de contribuições externas",
+    "descricao": "Critérios que definem o que é exigido para uma contribuição externa ser aceita.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S15",
+      "S16",
+      "S18",
+      "S20",
+      "S23"
+    ],
+    "estudos": [
+      "E07"
+    ],
+    "trechos": [
+      "E07 as diretrizes devem estar disponíveis com critérios claros, porque a rejeição no fim do processo desperdiça recursos"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C07",
+    "nome": "Requisitos técnicos impostos pela plataforma",
+    "descricao": "Requisitos técnicos que a organização central impõe aos produtos externos, como especificações de design e padrões de qualidade de código.",
+    "natureza": "Explícito",
+    "nivel": "Plataforma",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S16",
+      "S19",
+      "S24",
+      "S25"
+    ],
+    "estudos": [
+      "E09"
+    ],
+    "trechos": [
+      "E09 os complementadores investem muitos recursos para seguir os requisitos técnicos do dono da plataforma"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C08",
+    "nome": "Processos e ferramentas nos níveis de ecossistema e projeto",
+    "descricao": "Diferenças entre processos, ferramentas e fluxos de trabalho do nível do ecossistema e do nível de projeto, como sincronizar ciclos de release.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S26"
+    ],
+    "estudos": [
+      "E11"
+    ],
+    "trechos": [
+      "E11 parte essencial do material de treinamento trata das diferenças entre processos e ferramentas dos dois níveis e precisa ser atualizado conforme os projetos evoluem"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C09",
+    "nome": "Boas práticas de tomada de decisão",
+    "descricao": "Métodos consolidados de apoio à tomada de decisão, tratados como conhecimento procedimental.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S06",
+      "S09",
+      "S32",
+      "S35"
+    ],
+    "estudos": [
+      "E14"
+    ],
+    "trechos": [
+      "E14 os métodos de boas práticas de decisão são conhecimento procedimental consolidado, melhor operacionalizado por módulos de software"
+    ],
+    "pendencia": "Verificar se este conhecimento é específico de ECOS ou se é genérico de tomada de decisão",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C10",
+    "nome": "Projetos que geram incidentes na plataforma",
+    "descricao": "Identificação de quais projetos de software geraram incidentes que causaram instabilidade no ambiente de produção da plataforma.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [],
+    "estudos": [
+      "E10"
+    ],
+    "trechos": [
+      "E10 o processo de diagnóstico fornece à equipe de gestão de TI informação sobre quais projetos geraram incidentes no ambiente produtivo"
+    ],
+    "pendencia": "Único conhecimento sem nenhuma solução extraída no mesmo estudo",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C11",
+    "nome": "Necessidades de mercado e lacunas do ecossistema",
+    "descricao": "Evolução do mercado, necessidades atuais dos clientes e o quanto elas já são atendidas pelos produtos disponíveis no ecossistema.",
+    "natureza": "Explícito",
+    "nivel": "Ecossistema",
+    "dimensao": "Negócio",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S16",
+      "S19",
+      "S24",
+      "S25"
+    ],
+    "estudos": [
+      "E09"
+    ],
+    "trechos": [
+      "E09 para se diferenciar, o complementador acompanha como o mercado evolui e o quanto as necessidades já são atendidas"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C12",
+    "nome": "Expertise dos atores do ecossistema",
+    "descricao": "Quem domina qual assunto no ecossistema e a quem recorrer, incluindo quem transita entre comunidades diferentes.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Ecossistema",
+    "dimensao": "Social",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S08",
+      "S14",
+      "S18",
+      "S19",
+      "S21",
+      "S31"
+    ],
+    "estudos": [
+      "E03",
+      "E08",
+      "E17"
+    ],
+    "trechos": [
+      "E03 a ausência de agentes de ligação entre fronteiras agrava os atrasos na resolução de problemas",
+      "E08 reconhecer a expertise fica por conta do recrutador, já que nenhum mecanismo de busca oferece busca especializada",
+      "E17 o desenvolvedor preferiu pedir orientação a um colega que ele sabia que já tinha feito esse tipo de tarefa"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C13",
+    "nome": "Necessidades e prioridades dos atores do ecossistema",
+    "descricao": "Necessidades, problemas e prioridades próprios de cada ator do ecossistema, que diferem entre si e precisam ser entendidos para a decisão conjunta.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Ecossistema",
+    "dimensao": "Negócio",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S07",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S15",
+      "S16",
+      "S17",
+      "S18",
+      "S20",
+      "S23",
+      "S33"
+    ],
+    "estudos": [
+      "E07",
+      "E16"
+    ],
+    "trechos": [
+      "E07 a decisão conjunta depende de construir entendimento das necessidades uns dos outros",
+      "E16 os desenvolvedores de aplicações priorizam escalabilidade e usabilidade, enquanto o governo se preocupa com segurança e conformidade"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C14",
+    "nome": "Competência e confiabilidade dos atores do ecossistema",
+    "descricao": "Competência e confiabilidade atribuídas aos atores do ecossistema, formadas a partir das competências reconhecidas no desenvolvimento.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Ecossistema",
+    "dimensao": "Social",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S18",
+      "S29"
+    ],
+    "estudos": [
+      "E05"
+    ],
+    "trechos": [
+      "E05 é difícil confiar em empresas pequenas por falta de competência, e a confiança se formou a partir das competências reconhecidas no desenvolvimento de código"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C15",
+    "nome": "Dificuldades dos desenvolvedores externos",
+    "descricao": "Pontos em que os desenvolvedores externos travam, revelados pelos erros recorrentes que cometem.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Plataforma",
+    "dimensao": "Negócio",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S01",
+      "S17",
+      "S34"
+    ],
+    "estudos": [
+      "E12"
+    ],
+    "trechos": [
+      "E12 os erros recorrentes indicam informação faltante, confusa ou desatualizada na documentação e mostram ao dono da plataforma onde esses atores travam"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C16",
+    "nome": "Impactos de mudanças de terceiros no negócio",
+    "descricao": "Como as ofertas de um terceiro chegam aos serviços escolhidos e como mudanças nesses serviços afetam o negócio em andamento.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Ecossistema",
+    "dimensao": "Negócio",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S07",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S17",
+      "S33"
+    ],
+    "estudos": [
+      "E16"
+    ],
+    "trechos": [
+      "E16 os stakeholders precisam entender como as mudanças em um serviço de terceiro afetam o negócio em andamento"
+    ],
+    "pendencia": "Único conhecimento sem nenhum desafio extraído no mesmo estudo",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C17",
+    "nome": "Composições de componentes para tarefas específicas",
+    "descricao": "Conhecimento incorporado nas composições de componentes, em que cada composição representa um ponto de vista sobre o ambiente de trabalho adequado a uma tarefa.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Produto",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S14"
+    ],
+    "estudos": [
+      "E17"
+    ],
+    "trechos": [
+      "E17 em sistemas personalizáveis o conhecimento fica incorporado nas composições, e cada composição representa um ponto de vista que melhor atende a uma tarefa específica"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C18",
+    "nome": "Funcionalidades e complementaridade no ecossistema",
+    "descricao": "Quais funcionalidades já existem no ecossistema e o que caracteriza uma contribuição complementar em vez de redundante.",
+    "natureza": "Tácito-cognitivo",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S18",
+      "S19",
+      "S21"
+    ],
+    "estudos": [
+      "E03"
+    ],
+    "trechos": [
+      "E03 uma contribuição foi recusada por ser apenas um subconjunto de funcionalidades que já existiam em outro projeto, sem trazer funcionalidade complementar"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C19",
+    "nome": "Problemas e soluções do ecossistema aplicáveis ao contexto",
+    "descricao": "Problemas já enfrentados no ecossistema e suas soluções, filtrados pelo encaixe no contexto e no ambiente de quem consulta.",
+    "natureza": "Tácito-técnico",
+    "nivel": "Ecossistema",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S01",
+      "S05",
+      "S19",
+      "S22",
+      "S30"
+    ],
+    "estudos": [
+      "E06"
+    ],
+    "trechos": [
+      "E06 o desenvolvedor busca problemas comparáveis e suas soluções, descartando respostas que não se encaixam no seu contexto ou ambiente"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  },
+  {
+    "id": "C20",
+    "nome": "Experiência externa com tecnologias do ecossistema",
+    "descricao": "Experiência acumulada pela execução repetida de tarefas com as tecnologias do ecossistema, internalizada nas habilidades e no julgamento do ator.",
+    "natureza": "Tácito-técnico",
+    "nivel": "Produto",
+    "dimensao": "Técnica",
+    "tipoEcos": [],
+    "acaoGerencia": [],
+    "portador": "",
+    "tipoSaber": "",
+    "solucoes": [
+      "S15"
+    ],
+    "estudos": [
+      "E04"
+    ],
+    "trechos": [
+      "E04 o conhecimento experiencial é acumulado pela execução repetida de tarefas, e quem não o tem tem dificuldade de inovar por não entender bem as tecnologias existentes"
+    ],
+    "pendencia": "",
+    "relacoesConfirmadas": false
+  }
+]

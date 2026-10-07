@@ -1,0 +1,124 @@
+{
+  "natureza": {
+    "rotulo": "Natureza epistemológica",
+    "principal": true,
+    "pergunta": "Esse conhecimento pode ser formalizado ou está na experiência das pessoas?",
+    "referencia": "nonaka1997, alavi2001",
+    "valores": [
+      {
+        "valor": "Explícito",
+        "descricao": "Pode ser formalizado, registrado e transmitido por meio de artefatos."
+      },
+      {
+        "valor": "Tácito-cognitivo",
+        "descricao": "Está em modelos mentais, percepções e interpretações dos atores."
+      },
+      {
+        "valor": "Tácito-técnico",
+        "descricao": "Está no saber fazer e nas habilidades práticas adquiridas pela experiência."
+      }
+    ]
+  },
+  "nivel": {
+    "rotulo": "Nível no ECOS",
+    "principal": false,
+    "pergunta": "Em qual escopo do ecossistema esse conhecimento se situa?",
+    "referencia": "johnson2020, kauschinger2021",
+    "valores": [
+      {
+        "valor": "Produto",
+        "descricao": "Soluções ou aplicações específicas construídas sobre a plataforma."
+      },
+      {
+        "valor": "Plataforma",
+        "descricao": "Base tecnológica comum que sustenta o ecossistema."
+      },
+      {
+        "valor": "Ecossistema",
+        "descricao": "Relações e interdependências entre os atores."
+      }
+    ]
+  },
+  "dimensao": {
+    "rotulo": "Dimensão do ECOS",
+    "principal": false,
+    "pergunta": "Esse conhecimento diz respeito à tecnologia, ao negócio ou às relações entre atores?",
+    "referencia": "santos2011",
+    "valores": [
+      {
+        "valor": "Técnica",
+        "descricao": "Plataforma, infraestrutura de desenvolvimento e governança técnica."
+      },
+      {
+        "valor": "Negócio",
+        "descricao": "Competitividade, inovação e interesses dos atores."
+      },
+      {
+        "valor": "Social",
+        "descricao": "Relações, colaboração e comunidade formada em torno da plataforma."
+      }
+    ]
+  },
+  "tipoEcos": {
+    "rotulo": "Tipo de ECOS observado",
+    "principal": false,
+    "pendente": true,
+    "pergunta": "Em que modelo de ecossistema esse conhecimento foi relatado?",
+    "referencia": "manikas2016",
+    "valores": [
+      {
+        "valor": "Código aberto",
+        "descricao": "Plataforma e código abertos à participação externa."
+      },
+      {
+        "valor": "Proprietário",
+        "descricao": "Plataforma controlada por uma organização central."
+      },
+      {
+        "valor": "Híbrido",
+        "descricao": "Combina elementos de ecossistema aberto e proprietário."
+      }
+    ]
+  },
+  "acaoGerencia": {
+    "rotulo": "Ação de gerência requerida",
+    "principal": false,
+    "pendente": true,
+    "pergunta": "O que precisa ser feito com esse conhecimento no ecossistema?",
+    "referencia": "",
+    "valores": [
+      {
+        "valor": "Disponibilização",
+        "descricao": ""
+      },
+      {
+        "valor": "Compartilhamento",
+        "descricao": ""
+      },
+      {
+        "valor": "Transferência",
+        "descricao": ""
+      },
+      {
+        "valor": "Registro",
+        "descricao": ""
+      },
+      {
+        "valor": "Localização",
+        "descricao": ""
+      },
+      {
+        "valor": "Compreensão",
+        "descricao": ""
+      },
+      {
+        "valor": "Manutenção",
+        "descricao": ""
+      },
+      {
+        "valor": "Reutilização",
+        "descricao": ""
+      }
+    ]
+  }
+}

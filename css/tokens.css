@@ -1,0 +1,100 @@
+/* Tokens do catálogo. Trocar a identidade visual começa e termina neste arquivo. */
+:root {
+  /* Cor */
+  --cor-fundo: #0D1117;
+  --cor-superficie: #11161D;
+  --cor-superficie-alta: #161C24;
+  --cor-linha: #232A33;
+  --cor-linha-suave: #1B2129;
+  --cor-texto: #E6EAF0;
+  --cor-texto-suave: #97A1AE;
+  --cor-texto-fraco: #6E7885;
+  --cor-acento: #5BD2AE;
+  --cor-acento-forte: #8EE6CC;
+  --cor-acento-fundo: #12241E;
+  --cor-acento-linha: #2E5A4C;
+  --cor-contraste: #0D1117;
+
+  /* Natureza, a classificação principal */
+  --cor-explicito: #5BD2AE;
+  --cor-explicito-linha: #2E5A4C;
+  --cor-tacito-cognitivo: #E0A34A;
+  --cor-tacito-cognitivo-linha: #6B5326;
+  --cor-tacito-tecnico: #7FB2F0;
+  --cor-tacito-tecnico-linha: #2F4A6B;
+
+  /* Tipografia */
+  --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
+  --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --tam-xs: 0.75rem;
+  --tam-sm: 0.875rem;
+  --tam-base: 1rem;
+  --tam-md: 1.0625rem;
+  --tam-lg: 1.3rem;
+  --tam-xl: 1.75rem;
+  --tam-2xl: 2.25rem;
+  --tam-3xl: 2.75rem;
+
+  /* Espaço */
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-7: 3rem;
+  --esp-8: 4rem;
+
+  /* Medida */
+  --largura-max: 1240px;
+  --largura-texto: 68ch;
+  --borda: 1px solid var(--cor-linha);
+  --raio: 0;
+  --alvo-toque: 44px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-tema="escuro"]) {
+    --cor-fundo: #FBFBFA;
+    --cor-superficie: #FFFFFF;
+    --cor-superficie-alta: #F4F5F6;
+    --cor-linha: #D9DDE2;
+    --cor-linha-suave: #E7EAEE;
+    --cor-texto: #14181D;
+    --cor-texto-suave: #4F5964;
+    --cor-texto-fraco: #6E7885;
+    --cor-acento: #126B52;
+    --cor-acento-forte: #0C4E3B;
+    --cor-acento-fundo: #E6F4EF;
+    --cor-acento-linha: #9FCFBE;
+    --cor-contraste: #FFFFFF;
+    --cor-explicito: #126B52;
+    --cor-explicito-linha: #9FCFBE;
+    --cor-tacito-cognitivo: #8A5312;
+    --cor-tacito-cognitivo-linha: #DEC19A;
+    --cor-tacito-tecnico: #1F4C7A;
+    --cor-tacito-tecnico-linha: #A9C4DF;
+  }
+}
+
+:root[data-tema="claro"] {
+  --cor-fundo: #FBFBFA;
+  --cor-superficie: #FFFFFF;
+  --cor-superficie-alta: #F4F5F6;
+  --cor-linha: #D9DDE2;
+  --cor-linha-suave: #E7EAEE;
+  --cor-texto: #14181D;
+  --cor-texto-suave: #4F5964;
+  --cor-texto-fraco: #6E7885;
+  --cor-acento: #126B52;
+  --cor-acento-forte: #0C4E3B;
+  --cor-acento-fundo: #E6F4EF;
+  --cor-acento-linha: #9FCFBE;
+  --cor-contraste: #FFFFFF;
+  --cor-explicito: #126B52;
+  --cor-explicito-linha: #9FCFBE;
+  --cor-tacito-cognitivo: #8A5312;
+  --cor-tacito-cognitivo-linha: #DEC19A;
+  --cor-tacito-tecnico: #1F4C7A;
+  --cor-tacito-tecnico-linha: #A9C4DF;
+}

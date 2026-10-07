@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referências · Conhecimento em ECOS</title>
+<meta name="description" content="Estudos primários da revisão rápida e referências bibliográficas do Catálogo de Conhecimento em ECOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html">catalogo-conhecimento<span>/ecos</span></a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="referencias.html" aria-current="page">Referências</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container secao">
+  <h1 class="secao__titulo">Estudos primários</h1>
+  <p class="secao__intro">
+    Os 18 estudos incluídos na revisão rápida, que formam a base de evidências do catálogo.
+  </p>
+  <div class="tabela--rolavel">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Título</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Ano</th>
+          <th scope="col">País</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-estudos"></tbody>
+    </table>
+  </div>
+
+  <h2 class="secao__titulo" style="margin-top: var(--esp-7)">Referências bibliográficas</h2>
+  <ul class="lista-referencias" id="lista-referencias"></ul>
+</main>
+
+<footer class="rodape">
+  <div class="container rodape__interno">
+    <span>Catálogo de Conhecimento em Ecossistemas de Software</span>
+    <span>[AUTORAS] · [INSTITUIÇÃO] · [ANO]</span>
+  </div>
+</footer>
+
+<script type="module" src="js/referencias.js"></script>
+</body>
+</html>

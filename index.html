@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo de Conhecimento em ECOS</title>
+<meta name="description" content="Catálogo dos conhecimentos que precisam ser gerenciados em ecossistemas de software, com as soluções relacionadas e os estudos primários que os sustentam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html">catalogo-conhecimento<span>/ecos</span></a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <section class="topo">
+    <div class="container">
+      <p class="topo__etiqueta">Revisão rápida · 18 estudos primários</p>
+      <h1 class="topo__titulo">Conhecimento que precisa circular no ecossistema</h1>
+      <p class="topo__resumo">
+        Este catálogo reúne os conhecimentos cuja gerência se torna necessária em razão das
+        características dos ecossistemas de software. Cada conhecimento é descrito por um conjunto
+        fixo de atributos, ligado às soluções relatadas na literatura e aos estudos primários que o
+        sustentam.
+      </p>
+      <div class="topo__acoes">
+        <a class="botao botao--principal" href="catalogo.html">Abrir o catálogo</a>
+        <a class="botao" href="sobre.html">Como foi construído</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="numeros container" id="numeros" aria-label="Números do catálogo"></section>
+
+  <section class="secao container">
+    <h2 class="secao__titulo">Comece pela natureza do conhecimento</h2>
+    <p class="secao__intro">
+      A natureza epistemológica é a entrada principal do catálogo. Ela separa o que pode ser
+      formalizado em artefatos do que permanece na experiência de quem participa do ecossistema.
+    </p>
+    <div class="naturezas" id="naturezas"></div>
+  </section>
+
+  <section class="secao container">
+    <h2 class="secao__titulo">As quatro camadas</h2>
+    <p class="secao__intro">
+      A estrutura segue a lógica de camadas do Catálogo de Riscos em ECOS, com o conhecimento no
+      lugar do risco como ponto de partida.
+    </p>
+    <div class="camadas" id="camadas"></div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="container rodape__interno">
+    <span>Catálogo de Conhecimento em Ecossistemas de Software</span>
+    <span>[AUTORAS] · [INSTITUIÇÃO] · [ANO]</span>
+  </div>
+</footer>
+
+<script type="module" src="js/inicio.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo · Conhecimento em ECOS</title>
+<meta name="description" content="Listagem dos conhecimentos catalogados, com busca e filtros por natureza, nível no ECOS, dimensão do ECOS, tipo de ECOS e ação de gerência requerida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html">catalogo-conhecimento<span>/ecos</span></a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html">Início</a>
+      <a href="catalogo.html" aria-current="page">Catálogo</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container catalogo">
+  <aside class="catalogo__lateral" aria-label="Busca e filtros">
+    <h1 class="secao__titulo">Conhecimentos</h1>
+    <div class="filtros">
+      <div>
+        <label class="filtros__titulo" for="busca">Buscar</label>
+        <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
+      </div>
+      <div class="filtros" id="painel-filtros"></div>
+      <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
+    </div>
+  </aside>
+
+  <div>
+    <div class="catalogo__barra">
+      <p class="catalogo__contagem" id="contagem">Carregando</p>
+      <p class="catalogo__contagem">Abra um item para ver a ficha</p>
+    </div>
+    <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
+  </div>
+</main>
+
+<dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">
+  <div class="dialogo-ficha__topo">
+    <p class="codigo-id" id="dialogo-ficha-id"></p>
+    <button class="botao" id="fechar-ficha" type="button">Fechar</button>
+  </div>
+  <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
+</dialog>
+
+<footer class="rodape">
+  <div class="container rodape__interno">
+    <span>Catálogo de Conhecimento em Ecossistemas de Software</span>
+    <span>[AUTORAS] · [INSTITUIÇÃO] · [ANO]</span>
+  </div>
+</footer>
+
+<script type="module" src="js/catalogo.js"></script>
+</body>
+</html>
