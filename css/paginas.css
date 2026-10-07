@@ -45,11 +45,9 @@
 .natureza-card__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 
 /* ---------- Página do catálogo ---------- */
-.catalogo { padding-block: var(--esp-6); display: grid; gap: var(--esp-6); }
-@media (min-width: 64rem) {
-  .catalogo { grid-template-columns: 16rem minmax(0, 1fr); gap: var(--esp-7); align-items: start; }
-  .catalogo__lateral { position: sticky; top: 76px; }
-}
+/* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
+.catalogo { padding-block: var(--esp-6); }
+.catalogo__cabecalho { margin-bottom: var(--esp-5); }
 .catalogo__barra {
   display: flex;
   align-items: baseline;

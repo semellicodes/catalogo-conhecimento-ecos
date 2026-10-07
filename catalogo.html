@@ -37,25 +37,33 @@
 </header>
 
 <main id="conteudo" class="container catalogo">
-  <aside class="catalogo__lateral" aria-label="Busca e filtros">
+  <header class="catalogo__cabecalho">
     <h1 class="secao__titulo">Conhecimentos</h1>
-    <div class="filtros">
-      <div>
+    <p class="secao__intro">
+      Busque por nome, descrição ou ID, e combine as facetas para estreitar a lista. Dentro de uma
+      faceta os valores somam, entre facetas eles se cruzam.
+    </p>
+  </header>
+
+  <section class="filtros" aria-label="Busca e filtros">
+    <div class="filtros__linha">
+      <div class="filtros__busca">
         <label class="filtros__titulo" for="busca">Buscar</label>
         <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
       </div>
-      <div class="filtros" id="painel-filtros"></div>
+      <div class="filtros__principal" id="filtro-principal"></div>
+    </div>
+    <div class="filtros__secundarios">
+      <div class="filtros__grupos" id="painel-filtros"></div>
       <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
     </div>
-  </aside>
+  </section>
 
-  <div>
-    <div class="catalogo__barra">
-      <p class="catalogo__contagem" id="contagem">Carregando</p>
-      <p class="catalogo__contagem">Abra um item para ver a ficha</p>
-    </div>
-    <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
+  <div class="catalogo__barra">
+    <p class="catalogo__contagem" id="contagem">Carregando</p>
+    <p class="catalogo__contagem">Abra um item para ver a ficha</p>
   </div>
+  <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
 </main>
 
 <dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">

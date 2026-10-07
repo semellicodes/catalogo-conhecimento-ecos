@@ -12,6 +12,75 @@ const el = (seletor) => document.querySelector(seletor);
 let dados = null;
 let estado = filtros.estadoVazio();
 
+/** Uma opção de faceta. Botão de verdade, com o estado em aria-pressed. */
+function montarOpcao(chave, opcao, contagem, modificador) {
+  const botao = document.createElement('button');
+  botao.type = 'button';
+  botao.className = modificador ? `chip chip--${modificador}` : 'chip';
+  botao.dataset.filtro = chave;
+  botao.dataset.valor = opcao.valor;
+  botao.setAttribute('aria-pressed', 'false');
+
+  const texto = document.createElement('span');
+  texto.textContent = opcao.valor;
+  botao.append(texto);
+
+  if (contagem !== undefined) {
+    const numero = document.createElement('span');
+    numero.className = 'chip__contagem';
+    numero.textContent = contagem;
+    botao.append(numero);
+  }
+
+  botao.addEventListener('click', () => {
+    estado[chave] = estado[chave].includes(opcao.valor)
+      ? estado[chave].filter((v) => v !== opcao.valor)
+      : [...estado[chave], opcao.valor];
+    atualizar();
+  });
+  return botao;
+}
+
+/** Botão que zera uma faceta inteira. Fica marcado quando nada está escolhido nela. */
+function montarOpcaoTodas(chave, rotulo) {
+  const botao = document.createElement('button');
+  botao.type = 'button';
+  botao.className = 'chip chip--todas';
+  botao.dataset.filtro = chave;
+  botao.textContent = rotulo;
+  botao.setAttribute('aria-pressed', 'true');
+  botao.addEventListener('click', () => {
+    estado[chave] = [];
+    atualizar();
+  });
+  return botao;
+}
+
+/** A natureza é a entrada principal do catálogo, então fica sozinha na primeira linha. */
+function montarFiltroPrincipal() {
+  const chave = 'natureza';
+  const definicao = dados.classificacoes[chave];
+  const contagens = filtros.contar(dados.conhecimentos, chave);
+  const alvo = el('#filtro-principal');
+
+  const titulo = document.createElement('p');
+  titulo.className = 'filtros__titulo';
+  titulo.id = 'rotulo-natureza';
+  titulo.textContent = definicao.rotulo;
+
+  const opcoes = document.createElement('div');
+  opcoes.className = 'filtros__opcoes';
+  opcoes.append(montarOpcaoTodas(chave, 'Todas'));
+  definicao.valores.forEach((opcao) =>
+    opcoes.append(
+      montarOpcao(chave, opcao, contagens.get(opcao.valor) || 0, lista.classeNatureza(opcao.valor))
+    )
+  );
+
+  alvo.append(titulo, opcoes);
+}
+
+/** Cada faceta secundária vira um grupo com rótulo próprio. */
 function montarGrupoDeFiltros(chave) {
   const definicao = dados.classificacoes[chave];
   const contagens = filtros.contar(dados.conhecimentos, chave);
@@ -33,34 +102,22 @@ function montarGrupoDeFiltros(chave) {
     return grupo;
   }
 
-  definicao.valores.forEach((opcao) => {
-    const rotulo = document.createElement('label');
-    rotulo.className = 'filtros__opcao';
-
-    const caixa = document.createElement('input');
-    caixa.type = 'checkbox';
-    caixa.value = opcao.valor;
-    caixa.checked = estado[chave].includes(opcao.valor);
-    caixa.addEventListener('change', () => {
-      estado[chave] = caixa.checked
-        ? [...estado[chave], opcao.valor]
-        : estado[chave].filter((v) => v !== opcao.valor);
-      atualizar();
-    });
-
-    const texto = document.createElement('span');
-    texto.className = 'filtros__rotulo';
-    texto.append(caixa, document.createTextNode(opcao.valor));
-
-    const contagem = document.createElement('span');
-    contagem.className = 'filtros__contagem';
-    contagem.textContent = contagens.get(opcao.valor) || 0;
-
-    rotulo.append(texto, contagem);
-    grupo.append(rotulo);
-  });
-
+  const opcoes = document.createElement('div');
+  opcoes.className = 'filtros__opcoes';
+  definicao.valores.forEach((opcao) =>
+    opcoes.append(montarOpcao(chave, opcao, contagens.get(opcao.valor) || 0))
+  );
+  grupo.append(opcoes);
   return grupo;
+}
+
+/** Espelha o estado nos botões. Sem valor, o botão representa a faceta inteira vazia. */
+function marcarOpcoes() {
+  document.querySelectorAll('[data-filtro]').forEach((botao) => {
+    const { filtro, valor } = botao.dataset;
+    const ativo = valor ? estado[filtro].includes(valor) : estado[filtro].length === 0;
+    botao.setAttribute('aria-pressed', String(ativo));
+  });
 }
 
 function abrirFicha(id) {
@@ -87,6 +144,7 @@ function atualizar() {
   lista.renderizar(el('#lista-conhecimentos'), visiveis, abrirFicha);
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
+  marcarOpcoes();
   sincronizarUrl(null);
 }
 
@@ -107,12 +165,8 @@ function ligarLimpar() {
   el('#limpar').addEventListener('click', () => {
     estado = filtros.estadoVazio();
     el('#busca').value = '';
-    el('#painel-filtros')
-      .querySelectorAll('input[type="checkbox"]')
-      .forEach((c) => {
-        c.checked = false;
-      });
     atualizar();
+    el('#busca').focus();
   });
 }
 
@@ -143,8 +197,11 @@ async function iniciar() {
   const parametros = new URLSearchParams(location.search);
   estado = filtros.lerDaUrl(parametros);
 
+  montarFiltroPrincipal();
   const painel = el('#painel-filtros');
-  filtros.ATRIBUTOS_FILTRAVEIS.forEach((chave) => painel.append(montarGrupoDeFiltros(chave)));
+  filtros.ATRIBUTOS_FILTRAVEIS.filter((chave) => chave !== 'natureza').forEach((chave) =>
+    painel.append(montarGrupoDeFiltros(chave))
+  );
 
   ligarBusca();
   ligarLimpar();

@@ -108,9 +108,49 @@
 }
 
 /* ---------- Busca e filtros ---------- */
-.filtros { display: flex; flex-direction: column; gap: var(--esp-5); }
-.filtros__grupo { border: 0; padding: 0; margin: 0; }
+/* Bloco horizontal acima da lista. A natureza fica sozinha na primeira linha
+   por ser a entrada principal, as demais facetas dividem a segunda. */
+.filtros {
+  border: var(--borda);
+  margin-bottom: var(--esp-5);
+}
+.filtros__linha {
+  display: grid;
+  gap: var(--esp-4);
+  padding: var(--esp-4);
+  border-bottom: var(--borda);
+}
+@media (min-width: 60rem) {
+  .filtros__linha { grid-template-columns: 20rem minmax(0, 1fr); align-items: start; }
+}
+.filtros__busca { display: flex; flex-direction: column; }
+.filtros__secundarios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-4);
+}
+.filtros__grupos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--esp-4);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+/* Quando cai para a linha de baixo, encosta na direita em vez de ficar solto */
+.filtros__secundarios > .botao { margin-left: auto; }
+.filtros__grupo { border: 0; padding: 0; margin: 0; min-width: 0; }
+@media (min-width: 60rem) {
+  .filtros__grupo + .filtros__grupo {
+    border-left: var(--borda);
+    padding-left: var(--esp-4);
+  }
+}
 .filtros__titulo {
+  display: block;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: 0.08em;
@@ -119,23 +159,64 @@
   padding: 0;
   margin-bottom: var(--esp-2);
 }
-.filtros__opcao {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-3);
-  min-height: var(--alvo-toque);
-  font-size: var(--tam-sm);
-  cursor: pointer;
-}
-.filtros__opcao input { width: 1rem; height: 1rem; accent-color: var(--cor-acento); margin: 0; }
-.filtros__rotulo { display: flex; align-items: center; gap: var(--esp-3); }
-.filtros__contagem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.filtros__opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 .filtros__pendente {
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
   font-style: italic;
+  max-width: 24ch;
 }
+
+/* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-3);
+  background: transparent;
+  border: var(--borda);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva);
+}
+.chip:hover { color: var(--cor-texto); border-color: var(--cor-acento-linha); }
+.chip[aria-pressed="true"] {
+  background: var(--cor-acento-fundo);
+  border-color: var(--cor-acento-linha);
+  color: var(--cor-acento);
+  font-weight: 500;
+}
+.chip__contagem {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+.chip[aria-pressed="true"] .chip__contagem { color: var(--cor-acento); }
+
+/* A natureza carrega a cor da própria classificação quando escolhida. */
+.chip--explicito[aria-pressed="true"] {
+  color: var(--cor-explicito);
+  border-color: var(--cor-explicito-linha);
+}
+.chip--explicito[aria-pressed="true"] .chip__contagem { color: var(--cor-explicito); }
+.chip--tacito-cognitivo[aria-pressed="true"] {
+  color: var(--cor-tacito-cognitivo);
+  border-color: var(--cor-tacito-cognitivo-linha);
+  background: transparent;
+}
+.chip--tacito-cognitivo[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-cognitivo); }
+.chip--tacito-tecnico[aria-pressed="true"] {
+  color: var(--cor-tacito-tecnico);
+  border-color: var(--cor-tacito-tecnico-linha);
+  background: transparent;
+}
+.chip--tacito-tecnico[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-tecnico); }
 
 .campo-busca {
   width: 100%;
