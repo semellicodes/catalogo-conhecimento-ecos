@@ -1,14 +1,17 @@
 /* Tokens do catálogo. Trocar a identidade visual começa e termina neste arquivo. */
 :root {
-  /* Cor */
+  /* Diz ao navegador como pintar campo, caixa de seleção e barra de rolagem */
+  color-scheme: dark;
+
+  /* Cor, tema escuro. A superfície é mais clara que o fundo */
   --cor-fundo: #0D1117;
-  --cor-superficie: #11161D;
-  --cor-superficie-alta: #161C24;
-  --cor-linha: #232A33;
-  --cor-linha-suave: #1B2129;
+  --cor-superficie: #161C25;
+  --cor-superficie-alta: #1C242F;
+  --cor-linha: #283140;
+  --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
-  --cor-texto-suave: #97A1AE;
-  --cor-texto-fraco: #6E7885;
+  --cor-texto-suave: #A3ADBA;
+  --cor-texto-fraco: #828D9B;
   --cor-acento: #5BD2AE;
   --cor-acento-forte: #8EE6CC;
   --cor-acento-fundo: #12241E;
@@ -23,17 +26,31 @@
   --cor-tacito-tecnico: #7FB2F0;
   --cor-tacito-tecnico-linha: #2F4A6B;
 
+  /* Etiqueta preenchida. Fundo e texto de cada natureza, mais o neutro */
+  --cor-explicito-pilula: #10231D;
+  --cor-explicito-pilula-texto: #8EE6CC;
+  --cor-tacito-cognitivo-pilula: #2A1F0E;
+  --cor-tacito-cognitivo-pilula-texto: #E8BD74;
+  --cor-tacito-tecnico-pilula: #122334;
+  --cor-tacito-tecnico-pilula-texto: #A3C9F2;
+  --cor-neutro-pilula: #1B222B;
+  --cor-neutro-pilula-texto: #B4BEC9;
+
+  /* Profundidade. No escuro quem separa é a borda, então a sombra quase não entra */
+  --sombra-1: none;
+  --sombra-2: 0 16px 40px rgb(0 0 0 / 0.55);
+
   /* Tipografia */
   --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
   --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --tam-xs: 0.75rem;
-  --tam-sm: 0.875rem;
+  --tam-sm: 0.9375rem;
   --tam-base: 1rem;
-  --tam-md: 1.0625rem;
-  --tam-lg: 1.3rem;
-  --tam-xl: 1.75rem;
-  --tam-2xl: 2.25rem;
-  --tam-3xl: 2.75rem;
+  --tam-md: 1.125rem;
+  --tam-lg: 1.25rem;
+  --tam-xl: 1.875rem;
+  --tam-2xl: 2.5rem;
+  --tam-3xl: 3rem;
 
   /* Espaço */
   --esp-1: 0.25rem;
@@ -44,12 +61,14 @@
   --esp-6: 2rem;
   --esp-7: 3rem;
   --esp-8: 4rem;
+  --esp-9: 5.5rem;
 
   /* Medida */
   --largura-max: 1240px;
   --largura-texto: 68ch;
   --borda: 1px solid var(--cor-linha);
-  --raio: 0;
+  --raio: 10px;
+  --raio-pilula: 999px;
   --alvo-toque: 44px;
 
   /* Movimento */
@@ -63,48 +82,79 @@
   --desfoque-veu: 8px;
 }
 
+/* O tema claro aparece em dois blocos, um para o sistema e outro para a escolha
+   gravada. Os valores são os mesmos nos dois, porque um está dentro de media
+   query e o outro não, e CSS não deixa juntar os dois seletores numa regra só. */
 @media (prefers-color-scheme: light) {
   :root:not([data-tema="escuro"]) {
-    --cor-fundo: #FBFBFA;
+    color-scheme: light;
+    --cor-fundo: #EEF1F4;
     --cor-superficie: #FFFFFF;
-    --cor-superficie-alta: #F4F5F6;
-    --cor-linha: #D9DDE2;
-    --cor-linha-suave: #E7EAEE;
+    --cor-superficie-alta: #F7F9FB;
+    --cor-linha: #D7DDE4;
+    --cor-linha-suave: #E6EAEF;
     --cor-texto: #14181D;
-    --cor-texto-suave: #4F5964;
-    --cor-texto-fraco: #6E7885;
-    --cor-acento: #126B52;
-    --cor-acento-forte: #0C4E3B;
-    --cor-acento-fundo: #E6F4EF;
+    --cor-texto-suave: #4A545F;
+    --cor-texto-fraco: #5A6472;
+    --cor-acento: #0F6B51;
+    --cor-acento-forte: #0B5440;
+    --cor-acento-fundo: #DCEFE8;
     --cor-acento-linha: #9FCFBE;
     --cor-contraste: #FFFFFF;
-    --cor-explicito: #126B52;
+
+    --cor-explicito: #0F6B51;
     --cor-explicito-linha: #9FCFBE;
     --cor-tacito-cognitivo: #8A5312;
     --cor-tacito-cognitivo-linha: #DEC19A;
     --cor-tacito-tecnico: #1F4C7A;
     --cor-tacito-tecnico-linha: #A9C4DF;
+
+    --cor-explicito-pilula: #DCEFE8;
+    --cor-explicito-pilula-texto: #0B5440;
+    --cor-tacito-cognitivo-pilula: #F7EBD8;
+    --cor-tacito-cognitivo-pilula-texto: #6B4410;
+    --cor-tacito-tecnico-pilula: #E2EDF9;
+    --cor-tacito-tecnico-pilula-texto: #17406B;
+    --cor-neutro-pilula: #E9EDF1;
+    --cor-neutro-pilula-texto: #3F4854;
+
+    --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
+    --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
   }
 }
 
 :root[data-tema="claro"] {
-  --cor-fundo: #FBFBFA;
+  color-scheme: light;
+  --cor-fundo: #EEF1F4;
   --cor-superficie: #FFFFFF;
-  --cor-superficie-alta: #F4F5F6;
-  --cor-linha: #D9DDE2;
-  --cor-linha-suave: #E7EAEE;
+  --cor-superficie-alta: #F7F9FB;
+  --cor-linha: #D7DDE4;
+  --cor-linha-suave: #E6EAEF;
   --cor-texto: #14181D;
-  --cor-texto-suave: #4F5964;
-  --cor-texto-fraco: #6E7885;
-  --cor-acento: #126B52;
-  --cor-acento-forte: #0C4E3B;
-  --cor-acento-fundo: #E6F4EF;
+  --cor-texto-suave: #4A545F;
+  --cor-texto-fraco: #5A6472;
+  --cor-acento: #0F6B51;
+  --cor-acento-forte: #0B5440;
+  --cor-acento-fundo: #DCEFE8;
   --cor-acento-linha: #9FCFBE;
   --cor-contraste: #FFFFFF;
-  --cor-explicito: #126B52;
+
+  --cor-explicito: #0F6B51;
   --cor-explicito-linha: #9FCFBE;
   --cor-tacito-cognitivo: #8A5312;
   --cor-tacito-cognitivo-linha: #DEC19A;
   --cor-tacito-tecnico: #1F4C7A;
   --cor-tacito-tecnico-linha: #A9C4DF;
+
+  --cor-explicito-pilula: #DCEFE8;
+  --cor-explicito-pilula-texto: #0B5440;
+  --cor-tacito-cognitivo-pilula: #F7EBD8;
+  --cor-tacito-cognitivo-pilula-texto: #6B4410;
+  --cor-tacito-tecnico-pilula: #E2EDF9;
+  --cor-tacito-tecnico-pilula-texto: #17406B;
+  --cor-neutro-pilula: #E9EDF1;
+  --cor-neutro-pilula-texto: #3F4854;
+
+  --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
+  --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
 }

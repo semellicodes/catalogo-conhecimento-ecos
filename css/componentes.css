@@ -29,14 +29,39 @@
   .navegacao { justify-self: end; }
 }
 .marca {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-sm);
-  font-weight: 600;
-  color: var(--cor-acento);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-3);
+  color: var(--cor-texto);
   text-decoration: none;
   padding-block: var(--esp-2);
+  min-width: 0;
 }
-.marca span { color: var(--cor-texto-fraco); }
+.marca__icone {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  color: var(--cor-acento);
+}
+.marca__texto { display: flex; flex-direction: column; min-width: 0; }
+.marca__nome {
+  font-size: var(--tam-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.marca__nome strong { font-weight: 600; color: var(--cor-acento); }
+.marca__slug {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+  line-height: 1.3;
+}
+/* No celular o nome por extenso vale mais que o slug, então o slug é que sai */
+@media (max-width: 29.99rem) {
+  .marca__slug { display: none; }
+  .marca__nome { font-size: var(--tam-xs); }
+}
 
 /* ---------- Botão de tema ---------- */
 .botao-tema {
@@ -48,11 +73,15 @@
   padding: 0;
   background: transparent;
   border: 1px solid transparent;
+  border-radius: var(--raio-pilula);
   color: var(--cor-texto-suave);
   cursor: pointer;
-  transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
+  transition:
+    color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    background-color var(--dur-rapida) var(--curva);
 }
-.botao-tema:hover { color: var(--cor-acento); border-color: var(--cor-linha); }
+.botao-tema:hover { color: var(--cor-acento); border-color: var(--cor-linha); background: var(--cor-superficie-alta); }
 .botao-tema svg { display: block; width: 20px; height: 20px; }
 .navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
 .navegacao a {
@@ -85,20 +114,36 @@
 .rodape__interno { display: flex; justify-content: space-between; gap: var(--esp-4); flex-wrap: wrap; }
 
 /* ---------- Etiquetas ---------- */
+/* Pílula preenchida. Fundo sutil da categoria e texto na versão escura dela. */
 .etiqueta {
   display: inline-block;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   line-height: 1.4;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid var(--cor-linha);
-  color: var(--cor-texto-suave);
+  padding: 0.3rem 0.65rem;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  background: var(--cor-neutro-pilula);
+  color: var(--cor-neutro-pilula-texto);
   white-space: nowrap;
 }
-.etiqueta--explicito { color: var(--cor-explicito); border-color: var(--cor-explicito-linha); }
-.etiqueta--tacito-cognitivo { color: var(--cor-tacito-cognitivo); border-color: var(--cor-tacito-cognitivo-linha); }
-.etiqueta--tacito-tecnico { color: var(--cor-tacito-tecnico); border-color: var(--cor-tacito-tecnico-linha); }
-.etiqueta--vazia { color: var(--cor-texto-fraco); border-style: dashed; }
+.etiqueta--explicito {
+  background: var(--cor-explicito-pilula);
+  color: var(--cor-explicito-pilula-texto);
+}
+.etiqueta--tacito-cognitivo {
+  background: var(--cor-tacito-cognitivo-pilula);
+  color: var(--cor-tacito-cognitivo-pilula-texto);
+}
+.etiqueta--tacito-tecnico {
+  background: var(--cor-tacito-tecnico-pilula);
+  color: var(--cor-tacito-tecnico-pilula-texto);
+}
+.etiqueta--vazia {
+  background: transparent;
+  color: var(--cor-texto-fraco);
+  border: 1px dashed var(--cor-linha);
+}
 .etiquetas { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 
 .codigo-id {
@@ -111,8 +156,11 @@
 /* Bloco horizontal acima da lista. A natureza fica sozinha na primeira linha
    por ser a entrada principal, as demais facetas dividem a segunda. */
 .filtros {
+  background: var(--cor-superficie);
   border: var(--borda);
-  margin-bottom: var(--esp-5);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+  margin-bottom: var(--esp-6);
 }
 .filtros__linha {
   display: grid;
@@ -174,8 +222,9 @@
   gap: var(--esp-2);
   min-height: var(--alvo-toque);
   padding-inline: var(--esp-3);
-  background: transparent;
+  background: var(--cor-superficie);
   border: var(--borda);
+  border-radius: var(--raio-pilula);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
   text-align: left;
@@ -227,6 +276,7 @@
   color: var(--cor-texto);
   font-family: var(--fonte-mono);
   font-size: var(--tam-sm);
+  border-radius: var(--raio);
   transition: border-color var(--dur-rapida) var(--curva);
 }
 .campo-busca:hover { border-color: var(--cor-acento-linha); }
@@ -239,16 +289,22 @@
   gap: var(--esp-2);
   min-height: var(--alvo-toque);
   padding-inline: var(--esp-4);
-  background: transparent;
+  background: var(--cor-superficie);
   border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
   color: var(--cor-texto);
   font-size: var(--tam-sm);
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva),
+    box-shadow var(--dur-rapida) var(--curva);
 }
-.botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
+.botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); box-shadow: var(--sombra-2); }
 .botao--principal {
   background: var(--cor-acento);
   border-color: var(--cor-acento);
@@ -258,30 +314,42 @@
 .botao--principal:hover { background: var(--cor-acento-forte); border-color: var(--cor-acento-forte); color: var(--cor-contraste); }
 
 /* ---------- Card do conhecimento ---------- */
-.lista-conhecimentos { display: grid; gap: 1px; background: var(--cor-linha); border: var(--borda); }
+.lista-conhecimentos { display: grid; gap: var(--esp-3); }
 .card {
   display: block;
   background: var(--cor-superficie);
-  padding: var(--esp-4);
+  padding: var(--esp-5);
   text-decoration: none;
   color: inherit;
-  border-left: 3px solid transparent;
-  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
+  border: var(--borda);
+  border-left: 3px solid var(--cor-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    box-shadow var(--dur-rapida) var(--curva);
 }
-.card:hover { background: var(--cor-superficie-alta); color: inherit; }
+.card:hover {
+  background: var(--cor-superficie-alta);
+  color: inherit;
+  box-shadow: var(--sombra-2);
+}
 .card--explicito { border-left-color: var(--cor-explicito); }
 .card--tacito-cognitivo { border-left-color: var(--cor-tacito-cognitivo); }
 .card--tacito-tecnico { border-left-color: var(--cor-tacito-tecnico); }
 .card__nome {
   display: block;
-  font-size: var(--tam-md);
-  font-weight: 500;
+  font-size: var(--tam-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-block: var(--esp-2);
-  line-height: 1.3;
+  line-height: 1.25;
 }
 .card__descricao {
   display: block;
   font-size: var(--tam-sm);
+  font-weight: 400;
   color: var(--cor-texto-suave);
   margin-bottom: var(--esp-3);
 }
@@ -316,7 +384,13 @@
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
-.painel { background: var(--cor-superficie); border: var(--borda); padding: var(--esp-4); }
+.painel {
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+  padding: var(--esp-5);
+}
 .painel + .painel { margin-top: var(--esp-4); }
 .atributo + .atributo { margin-top: var(--esp-4); padding-top: var(--esp-4); border-top: 1px solid var(--cor-linha-suave); }
 .atributo__nome { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
@@ -331,9 +405,10 @@
   padding: var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
+  border-radius: var(--raio);
   align-items: start;
 }
-.item-relacionado + .item-relacionado { border-top: 0; }
+.item-relacionado + .item-relacionado { margin-top: var(--esp-2); }
 .item-relacionado__nome { font-size: var(--tam-sm); font-weight: 500; }
 .item-relacionado__meta { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-suave); margin-top: var(--esp-1); }
 
@@ -342,7 +417,8 @@
   padding: var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
-  border-left: 2px solid var(--cor-acento);
+  border-left: 3px solid var(--cor-acento);
+  border-radius: var(--raio);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
@@ -350,6 +426,7 @@
 
 .aviso {
   border: 1px dashed var(--cor-linha);
+  border-radius: var(--raio);
   padding: var(--esp-3) var(--esp-4);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);

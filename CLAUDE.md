@@ -60,6 +60,7 @@ aviso de relação candidata. Virar `true` conhecimento por conhecimento, confor
 | `js/ficha.js` | Monta a ficha de um conhecimento |
 | `js/catalogo.js` | Liga os módulos na página do catálogo |
 | `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
+| `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
 Alterar o visual de um card nunca encosta na lógica dos filtros. Os módulos são carregados
 nativamente pelo navegador com `type="module"`.
@@ -68,7 +69,7 @@ nativamente pelo navegador com `type="module"`.
 
 | Arquivo | Conteúdo |
 |---|---|
-| `css/tokens.css` | Cor, tipografia, espaçamento e medidas como variáveis. Tema claro e escuro |
+| `css/tokens.css` | Cor, tipografia, espaçamento, medida, raio, sombra e movimento como variáveis. Tema claro e escuro |
 | `css/base.css` | Reset e elementos básicos |
 | `css/componentes.css` | Cabeçalho, etiqueta, filtro, card, ficha, painel e tabela |
 | `css/paginas.css` | Ajustes específicos de cada página |
@@ -80,7 +81,13 @@ nativamente pelo navegador com `type="module"`.
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1
 - `button`, `a` e `input` de verdade. Nunca `role` ou clique em `div`
-- Sem sombra e sem canto arredondado. Separação por linha de 1px
+- Canto arredondado com `--raio` em card, painel, diálogo e campo, e `--raio-pilula` em
+  etiqueta e chip. Nunca valor solto, sempre a variável
+- Profundidade por superfície. No tema claro o card é branco sobre fundo mais frio, com
+  `--sombra-1` em repouso e `--sombra-2` no hover. No tema escuro a superfície é mais clara
+  que o fundo e quem separa é a borda, então `--sombra-1` é `none`
+- Etiqueta é pílula preenchida, com o par `--cor-<natureza>-pilula` e
+  `--cor-<natureza>-pilula-texto`. Nível e dimensão usam o par neutro
 
 ## Escrita
 
