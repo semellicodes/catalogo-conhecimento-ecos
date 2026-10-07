@@ -70,10 +70,6 @@
     <div class="container">
       <header class="catalogo__cabecalho">
         <h2 class="secao__titulo" id="titulo-catalogo">Conhecimentos</h2>
-        <p class="secao__intro">
-          Busque por nome, descrição ou ID, e combine as facetas para estreitar a lista. Dentro de
-          uma faceta os valores somam, entre facetas eles se cruzam.
-        </p>
       </header>
 
       <section class="filtros" aria-label="Busca e filtros">
@@ -82,12 +78,10 @@
             <label class="filtros__titulo" for="busca">Buscar</label>
             <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
           </div>
-          <div class="filtros__principal" id="filtro-principal"></div>
-        </div>
-        <div class="filtros__secundarios">
-          <div class="filtros__grupos" id="painel-filtros"></div>
           <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
         </div>
+        <div class="filtros__grade" id="painel-filtros"></div>
+        <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
       </section>
 
       <div class="catalogo__barra">

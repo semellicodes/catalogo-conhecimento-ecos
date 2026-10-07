@@ -153,50 +153,47 @@
 }
 
 /* ---------- Busca e filtros ---------- */
-/* Bloco horizontal acima da lista. A natureza fica sozinha na primeira linha
-   por ser a entrada principal, as demais facetas dividem a segunda. */
+/* Painel acima da lista. Busca e limpar na primeira linha, as facetas
+   preenchidas numa grade de colunas iguais, e o que ainda não foi classificado
+   numa linha discreta no rodapé, fora da grade. */
 .filtros {
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
-  margin-bottom: var(--esp-6);
+  margin-bottom: var(--esp-5);
 }
 .filtros__linha {
-  display: grid;
-  gap: var(--esp-4);
-  padding: var(--esp-4);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
   border-bottom: var(--borda);
 }
-@media (min-width: 60rem) {
-  .filtros__linha { grid-template-columns: 20rem minmax(0, 1fr); align-items: start; }
-}
-.filtros__busca { display: flex; flex-direction: column; }
-.filtros__secundarios {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--esp-4);
-  padding: var(--esp-4);
-}
-.filtros__grupos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--esp-4);
+.filtros__busca {
   flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
 }
-/* Quando cai para a linha de baixo, encosta na direita em vez de ficar solto */
-.filtros__secundarios > .botao { margin-left: auto; }
+.filtros__busca .filtros__titulo { margin-bottom: 0; flex: none; }
+.filtros__busca .campo-busca { flex: 1 1 auto; min-width: 0; }
+.filtros__linha > .botao { flex: none; }
+
+.filtros__grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-4);
+  padding: var(--esp-4) var(--esp-4) var(--esp-3);
+}
+@media (min-width: 48rem) {
+  .filtros__grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .filtros__grupo + .filtros__grupo { border-left: var(--borda); padding-left: var(--esp-4); }
+  .filtros__grupo { padding-right: var(--esp-4); }
+}
 .filtros__grupo { border: 0; padding: 0; margin: 0; min-width: 0; }
-@media (min-width: 60rem) {
-  .filtros__grupo + .filtros__grupo {
-    border-left: var(--borda);
-    padding-left: var(--esp-4);
-  }
-}
 .filtros__titulo {
   display: block;
   font-family: var(--fonte-mono);
@@ -208,11 +205,11 @@
   margin-bottom: var(--esp-2);
 }
 .filtros__opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
-.filtros__pendente {
+.filtros__pendentes {
+  padding: var(--esp-2) var(--esp-4);
+  border-top: var(--borda);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
-  font-style: italic;
-  max-width: 24ch;
 }
 
 /* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
@@ -225,6 +222,7 @@
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio-pilula);
+  white-space: nowrap;
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
   text-align: left;

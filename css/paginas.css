@@ -1,9 +1,9 @@
 /* ---------- Página inicial ---------- */
 /* Abertura curta de propósito. O catálogo precisa aparecer sem rolar. */
-.abertura { padding-block: var(--esp-6); border-bottom: var(--borda); }
-.abertura__interno { display: grid; gap: var(--esp-5); }
+.abertura { padding-block: var(--esp-7) var(--esp-6); border-bottom: var(--borda); }
+.abertura__interno { display: grid; gap: var(--esp-6); }
 @media (min-width: 64rem) {
-  .abertura__interno { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--esp-7); }
+  .abertura__interno { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--esp-8); }
 }
 .abertura__etiqueta {
   font-family: var(--fonte-mono);
@@ -19,7 +19,7 @@
   margin-top: var(--esp-3);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
-  max-width: 60ch;
+  max-width: var(--largura-texto);
 }
 
 .numeros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
@@ -37,7 +37,7 @@
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 #inicio, #catalogo, #estrutura { scroll-margin-top: 72px; }
-.secao-catalogo { padding-block: var(--esp-7); background: var(--cor-fundo); }
+.secao-catalogo { padding-block: var(--esp-5) var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 
@@ -82,15 +82,15 @@
 
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
-.catalogo__cabecalho { margin-bottom: var(--esp-6); }
+.catalogo__cabecalho { margin-bottom: var(--esp-4); }
 .catalogo__barra {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--esp-4);
-  padding-bottom: var(--esp-3);
+  padding-bottom: var(--esp-2);
   border-bottom: var(--borda);
-  margin-bottom: var(--esp-4);
+  margin-bottom: var(--esp-3);
   flex-wrap: wrap;
 }
 .catalogo__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-suave); }

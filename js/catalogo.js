@@ -59,35 +59,14 @@ function montarOpcaoTodas(chave, rotulo) {
   return botao;
 }
 
-/** A natureza é a entrada principal do catálogo, então fica sozinha na primeira linha. */
-function montarFiltroPrincipal() {
-  const chave = 'natureza';
-  const definicao = dados.classificacoes[chave];
-  const contagens = filtros.contar(dados.conhecimentos, chave);
-  const alvo = el('#filtro-principal');
-
-  const titulo = document.createElement('p');
-  titulo.className = 'filtros__titulo';
-  titulo.id = 'rotulo-natureza';
-  titulo.textContent = definicao.rotulo;
-
-  const opcoes = document.createElement('div');
-  opcoes.className = 'filtros__opcoes';
-  opcoes.append(montarOpcaoTodas(chave, 'Todas'));
-  definicao.valores.forEach((opcao) =>
-    opcoes.append(
-      montarOpcao(chave, opcao, contagens.get(opcao.valor) || 0, lista.classeNatureza(opcao.valor))
-    )
-  );
-
-  alvo.append(titulo, opcoes);
-}
-
-/** Cada faceta secundária vira um grupo com rótulo próprio. */
+/**
+ * Uma faceta preenchida vira um grupo da grade. Uma faceta ainda sem nenhum
+ * valor registrado não vira grupo, devolve null e é anunciada no rodapé.
+ */
 function montarGrupoDeFiltros(chave) {
   const definicao = dados.classificacoes[chave];
   const contagens = filtros.contar(dados.conhecimentos, chave);
-  const preenchido = definicao.valores.some((v) => contagens.get(v.valor));
+  if (!definicao.valores.some((v) => contagens.get(v.valor))) return null;
 
   const grupo = document.createElement('fieldset');
   grupo.className = 'filtros__grupo';
@@ -97,21 +76,40 @@ function montarGrupoDeFiltros(chave) {
   titulo.textContent = definicao.rotulo;
   grupo.append(titulo);
 
-  if (!preenchido) {
-    const aviso = document.createElement('p');
-    aviso.className = 'filtros__pendente';
-    aviso.textContent = 'Atributo ainda não preenchido na extração.';
-    grupo.append(aviso);
-    return grupo;
-  }
-
   const opcoes = document.createElement('div');
   opcoes.className = 'filtros__opcoes';
+  /* A natureza é a entrada principal, então ganha o atalho de zerar e a cor da classificação. */
+  const principal = chave === 'natureza';
+  if (principal) opcoes.append(montarOpcaoTodas(chave, 'Todas'));
   definicao.valores.forEach((opcao) =>
-    opcoes.append(montarOpcao(chave, opcao, contagens.get(opcao.valor) || 0))
+    opcoes.append(
+      montarOpcao(
+        chave,
+        opcao,
+        contagens.get(opcao.valor) || 0,
+        principal ? lista.classeNatureza(opcao.valor) : null
+      )
+    )
   );
   grupo.append(opcoes);
   return grupo;
+}
+
+/** Uma linha só para as facetas que ainda não têm classificação registrada. */
+function anunciarPendentes(rotulos) {
+  const aviso = el('#filtros-pendentes');
+  aviso.hidden = rotulos.length === 0;
+  if (!rotulos.length) return;
+  /* Só o primeiro abre a frase em maiúscula. Um rótulo que começa por sigla fica
+     como está, para não virar "eCOS". */
+  const comecaPorSigla = (t) => t.slice(0, 2) === t.slice(0, 2).toUpperCase();
+  const seguinte = (t) => (comecaPorSigla(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
+  const demais = rotulos.slice(1).map(seguinte);
+  const nomes = demais.length
+    ? `${[rotulos[0], ...demais.slice(0, -1)].join(', ')} e ${demais[demais.length - 1]}`
+    : rotulos[0];
+  const verbo = rotulos.length > 1 ? 'serão habilitados' : 'será habilitado';
+  aviso.textContent = `${nomes} ${verbo} quando a classificação for concluída.`;
 }
 
 /** Espelha o estado nos botões. Sem valor, o botão representa a faceta inteira vazia. */
@@ -235,11 +233,14 @@ async function iniciar() {
   const parametros = new URLSearchParams(location.search);
   estado = filtros.lerDaUrl(parametros);
 
-  montarFiltroPrincipal();
   const painel = el('#painel-filtros');
-  filtros.ATRIBUTOS_FILTRAVEIS.filter((chave) => chave !== 'natureza').forEach((chave) =>
-    painel.append(montarGrupoDeFiltros(chave))
-  );
+  const pendentes = [];
+  filtros.ATRIBUTOS_FILTRAVEIS.forEach((chave) => {
+    const grupo = montarGrupoDeFiltros(chave);
+    if (grupo) painel.append(grupo);
+    else pendentes.push(dados.classificacoes[chave].rotulo);
+  });
+  anunciarPendentes(pendentes);
 
   ligarBusca();
   ligarLimpar();
