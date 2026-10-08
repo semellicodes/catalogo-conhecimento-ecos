@@ -160,17 +160,18 @@
   border-radius: var(--raio);
   box-shadow: var(--sombra-2);
   opacity: 0;
-  scale: 0.98;
-  /* overlay e display entram com allow-discrete para o fechamento também animar */
+  scale: 0.97;
+  /* overlay e display entram com allow-discrete para o fechamento também animar.
+     A duração aqui é a do fechamento, que é mais curto que a abertura. */
   transition:
-    opacity var(--dur-media) var(--curva),
-    scale var(--dur-media) var(--curva),
-    overlay var(--dur-media) var(--curva) allow-discrete,
-    display var(--dur-media) var(--curva) allow-discrete;
+    opacity var(--dur-rapida) var(--curva-saida),
+    scale var(--dur-rapida) var(--curva-saida),
+    overlay var(--dur-rapida) var(--curva-saida) allow-discrete,
+    display var(--dur-rapida) var(--curva-saida) allow-discrete;
 }
-.dialogo-ficha[open] { opacity: 1; scale: 1; }
+.dialogo-ficha[open] { opacity: 1; scale: 1; transition-duration: var(--dur-media); }
 @starting-style {
-  .dialogo-ficha[open] { opacity: 0; scale: 0.98; }
+  .dialogo-ficha[open] { opacity: 0; scale: 0.97; }
 }
 
 .dialogo-ficha::backdrop {

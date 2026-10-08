@@ -121,13 +121,29 @@ function marcarOpcoes() {
   });
 }
 
-function abrirFicha(id) {
+const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
+const movimentoReduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/**
+ * Troca de conhecimento sem recarregar o diálogo. O conteúdo entra pelo lado
+ * para onde a navegação foi, então anterior e próximo ficam distinguíveis.
+ */
+function animarTroca(corpo, direcao) {
+  if (!direcao || movimentoReduzido()) return;
+  corpo.animate(
+    [{ opacity: 0, transform: `translateX(${direcao * 10}px)` }, { opacity: 1, transform: 'none' }],
+    { duration: 200, easing: CURVA_SAIDA }
+  );
+}
+
+function abrirFicha(id, direcao = 0) {
   const completo = conhecimentoCompleto(dados, id);
   if (!completo) return;
 
   const dialogo = el('#dialogo-ficha');
   const corpo = el('#dialogo-ficha-corpo');
   corpo.replaceChildren(ficha.renderizar(dados, completo));
+  animarTroca(corpo, direcao);
   el('#dialogo-ficha-id').textContent = `${completo.id} · ${completo.nome}`;
   idAberto = id;
   posicionarNavegacao();
@@ -159,7 +175,7 @@ function irPara(passo) {
   const indice = posicaoAtual();
   if (indice === -1) return;
   const alvo = visiveis[indice + passo];
-  if (alvo) abrirFicha(alvo.id);
+  if (alvo) abrirFicha(alvo.id, passo);
 }
 
 function sincronizarUrl(id) {
