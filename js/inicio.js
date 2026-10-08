@@ -36,7 +36,7 @@ async function iniciar() {
     numero(dados.meta.totalEstudos, 'estudos primários')
   );
 
-  const camadas = el('#grade-camadas');
+  const camadas = el('#camadas');
   dados.meta.camadas.forEach((c) => {
     const bloco = document.createElement('article');
     bloco.className = 'camada';

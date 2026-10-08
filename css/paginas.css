@@ -160,8 +160,13 @@ main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 
-.camadas { display: grid; gap: var(--esp-3); }
-@media (min-width: 60rem) { .camadas { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
+   coluna para quatro, cabem quantas couberem a partir de 14rem cada. */
+.camadas {
+  display: grid;
+  gap: var(--esp-3);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
 .camada {
   background: var(--cor-superficie);
   padding: var(--esp-5);
