@@ -111,6 +111,9 @@
 .rodape__interno { display: flex; justify-content: space-between; gap: var(--esp-4); flex-wrap: wrap; }
 
 /* ---------- Etiquetas ---------- */
+/* Sem uso desde que o cartão da trilha deixou de mostrar nível e dimensão. Fica
+   de pé porque a ficha ainda vai receber a dimensão em pílula. Se a ficha nova
+   não usar, isto e os tokens de pílula saem juntos. */
 /* Pílula preenchida. Fundo sutil da categoria e texto na versão escura dela. */
 .etiqueta {
   display: inline-block;
@@ -181,7 +184,7 @@
   padding: var(--esp-4) var(--esp-4) var(--esp-3);
 }
 @media (min-width: 48rem) {
-  .filtros__grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .filtros__grade { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0; }
   .filtros__grupo + .filtros__grupo { border-left: var(--borda); padding-left: var(--esp-4); }
   .filtros__grupo { padding-right: var(--esp-4); }
 }
@@ -296,87 +299,131 @@
 }
 .botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); box-shadow: var(--sombra-2); }
 
-/* ---------- Card do conhecimento ---------- */
-.lista-conhecimentos {
+/* ---------- Trilha por nível ---------- */
+/* Cada nível é uma estação. O ponto marca a estação e a linha liga uma à
+   seguinte, por isso a última não desenha linha. */
+.trilha { list-style: none; display: grid; gap: var(--esp-7); }
+.estacao {
   display: grid;
-  gap: var(--esp-4);
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: var(--coluna-trilha) minmax(0, 1fr);
+  column-gap: var(--esp-4);
 }
-@media (min-width: 48rem) {
-  .lista-conhecimentos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.estacao__marca { position: relative; display: flex; justify-content: center; }
+.estacao__ponto {
+  width: var(--ponto-estacao);
+  height: var(--ponto-estacao);
+  margin-top: var(--esp-2);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-acento);
+  flex: none;
 }
-@media (min-width: 64rem) {
-  .lista-conhecimentos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* A linha desce do ponto e atravessa o espaço até a estação seguinte. */
+.estacao__marca::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--esp-2) + var(--ponto-estacao) + var(--esp-2));
+  bottom: calc(var(--esp-7) * -1);
+  width: 1px;
+  background: var(--cor-linha);
+}
+.estacao:last-child .estacao__marca::after { display: none; }
+
+.estacao__titulo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--esp-3);
+  font-size: var(--tam-lg);
+  letter-spacing: var(--entre-letras-nome);
+}
+.estacao__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-fraco); }
+.estacao__descricao {
+  margin-block: var(--esp-2) var(--esp-4);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  max-width: var(--largura-texto);
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
+/* ---------- Cartão do conhecimento ---------- */
+/* Cartão baixo. O nível já é a estação e a dimensão está na ficha, então aqui
+   fica só a natureza, pelo ponto, o identificador e o nome. */
+.cartoes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: var(--esp-3);
+}
+.cartao {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--esp-3);
+  height: 100%;
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
-  padding: var(--esp-5);
-  text-decoration: none;
-  color: inherit;
   border: var(--borda);
-  border-top: 3px solid var(--cor-linha);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
+  text-decoration: none;
+  color: inherit;
   transition:
     background-color var(--dur-rapida) var(--curva),
     border-color var(--dur-rapida) var(--curva),
     box-shadow var(--dur-media) var(--curva),
     transform var(--dur-media) var(--curva-saida);
 }
-.card:hover {
-  background: var(--cor-superficie-alta);
-  color: inherit;
-  box-shadow: var(--sombra-2);
-}
-/* Sobe dois pixels no ponteiro fino. No toque o hover dispara sem intenção,
-   então o deslocamento fica de fora. */
+.cartao:hover { background: var(--cor-superficie-alta); color: inherit; box-shadow: var(--sombra-2); }
+/* Sobe dois pixels no ponteiro fino. No toque o hover dispara sem intenção. */
 @media (hover: hover) and (pointer: fine) {
-  .card:hover { transform: translateY(-2px); }
+  .cartao:hover { transform: translateY(-2px); }
 }
-/* Cede ao ser pressionado, para o card responder antes de a ficha abrir. */
-.card:active { transform: translateY(0) scale(0.99); transition-duration: var(--dur-rapida); }
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .card:hover,
-  .card:active { transform: none; }
-}
-.card--explicito { border-top-color: var(--cor-explicito); }
-.card--tacito-cognitivo { border-top-color: var(--cor-tacito-cognitivo); }
-.card--tacito-tecnico { border-top-color: var(--cor-tacito-tecnico); }
+.cartao:active { transform: translateY(0) scale(0.99); transition-duration: var(--dur-rapida); }
 
-.card__topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-3);
+.cartao__ponto {
+  grid-row: 1 / 3;
+  width: var(--ponto-natureza);
+  height: var(--ponto-natureza);
+  border-radius: var(--raio-pilula);
 }
-.card__nome {
-  display: block;
-  font-size: var(--tam-lg);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-nome);
-  line-height: 1.25;
-}
-/* Três linhas e corta com reticências, para os cards ficarem comparáveis. */
-.card__descricao {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  overflow: hidden;
+.cartao__ponto--explicito { background: var(--cor-explicito); }
+.cartao__ponto--tacito-cognitivo { background: var(--cor-tacito-cognitivo); }
+.cartao__ponto--tacito-tecnico { background: var(--cor-tacito-tecnico); }
+.cartao__id { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.cartao__nome {
+  grid-column: 2;
   font-size: var(--tam-sm);
-  font-weight: 400;
-  color: var(--cor-texto-suave);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: var(--entre-letras-nome);
 }
-/* Empurrado para a base, então o rodapé alinha entre cards de alturas diferentes. */
-.card__rodape {
-  margin-top: auto;
+
+/* ---------- Legenda das naturezas ---------- */
+.legenda {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-3) var(--esp-5);
+  margin-top: var(--esp-7);
   padding-top: var(--esp-3);
   border-top: 1px solid var(--cor-linha-suave);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+.legenda__item { display: inline-flex; align-items: center; gap: var(--esp-2); }
+.legenda__ponto {
+  width: var(--ponto-natureza);
+  height: var(--ponto-natureza);
+  border-radius: var(--raio-pilula);
+  flex: none;
+}
+.legenda__ponto--explicito { background: var(--cor-explicito); }
+.legenda__ponto--tacito-cognitivo { background: var(--cor-tacito-cognitivo); }
+.legenda__ponto--tacito-tecnico { background: var(--cor-tacito-tecnico); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cartao,
+  .cartao:hover,
+  .cartao:active { transform: none; }
 }
 
 /* ---------- Ficha ---------- */

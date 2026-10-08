@@ -28,6 +28,10 @@ button, input, select {
   color: inherit;
 }
 
+/* Qualquer classe de componente com display próprio vence o display none que o
+   navegador dá ao atributo hidden, então aqui ele volta a mandar. */
+[hidden] { display: none !important; }
+
 .pular-para-conteudo {
   position: absolute;
   left: var(--esp-4);
@@ -87,6 +91,17 @@ button, input, select {
   :root.trocando-tema *,
   :root.trocando-tema *::before,
   :root.trocando-tema *::after { transition: none !important; }
+}
+
+/* Texto que só interessa a quem usa leitor de tela, como a natureza do
+   conhecimento, que no cartão é dada apenas pela cor do ponto. */
+.apenas-leitor {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* A catalogo.html só redireciona e carrega apenas tokens e base, então o

@@ -131,13 +131,18 @@
 .catalogo__cabecalho { margin-bottom: var(--esp-4); }
 .catalogo__barra {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--esp-4);
   padding-bottom: var(--esp-2);
   border-bottom: var(--borda);
-  margin-bottom: var(--esp-3);
+  margin-bottom: var(--esp-4);
   flex-wrap: wrap;
+}
+/* O botão só existe onde os filtros viram folha. Acima disso eles ficam no fluxo. */
+.catalogo__abrir-filtros { display: none; }
+@media (max-width: 47.99rem) {
+  .catalogo__abrir-filtros { display: inline-flex; }
 }
 .catalogo__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .vazio {
@@ -147,6 +152,81 @@
   border: 1px dashed var(--cor-linha);
   border-radius: var(--raio);
 }
+
+/* ---------- Folha de filtros, só no celular ---------- */
+/* O painel de filtros é movido para cá pelo catalogo.js, não duplicado. A folha
+   sobe da base e desce pelo mesmo caminho, que é por onde o polegar a empurra. */
+.folha {
+  margin: auto auto 0;
+  width: 100%;
+  max-width: none;
+  max-height: 85vh;
+  padding: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: var(--borda);
+  border-bottom: 0;
+  border-radius: var(--raio) var(--raio) 0 0;
+  box-shadow: var(--sombra-2);
+  translate: 0 100%;
+  transition:
+    translate var(--dur-rapida) var(--curva-saida),
+    overlay var(--dur-rapida) var(--curva-saida) allow-discrete,
+    display var(--dur-rapida) var(--curva-saida) allow-discrete;
+}
+.folha[open] {
+  display: flex;
+  flex-direction: column;
+  translate: 0 0;
+  transition-duration: var(--dur-media);
+}
+@starting-style {
+  .folha[open] { translate: 0 100%; }
+}
+.folha::backdrop {
+  background: var(--cor-veu-opaco);
+  opacity: 0;
+  transition:
+    opacity var(--dur-rapida) var(--curva-saida),
+    overlay var(--dur-rapida) var(--curva-saida) allow-discrete,
+    display var(--dur-rapida) var(--curva-saida) allow-discrete;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .folha::backdrop {
+    background: var(--cor-veu);
+    -webkit-backdrop-filter: blur(var(--desfoque-veu));
+    backdrop-filter: blur(var(--desfoque-veu));
+  }
+}
+.folha[open]::backdrop { opacity: 1; }
+@starting-style {
+  .folha[open]::backdrop { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .folha { translate: 0 0; transition: opacity var(--dur-rapida) linear; opacity: 0; }
+  .folha[open] { opacity: 1; }
+}
+.folha__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4);
+  border-bottom: var(--borda);
+}
+.folha__titulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.folha__corpo { overflow-y: auto; padding: var(--esp-4); }
+/* Dentro da folha o painel perde a própria moldura, porque a folha já é uma. */
+.folha .filtros { border: 0; box-shadow: none; background: transparent; margin: 0; }
+.folha .filtros__linha { padding-inline: 0; }
+.folha .filtros__grade { padding-inline: 0; }
+.folha .filtros__pendentes { padding-inline: 0; }
 
 /* ---------- Diálogo da ficha ---------- */
 .dialogo-ficha {

@@ -72,7 +72,14 @@
         <h2 class="secao__titulo" id="titulo-catalogo">Conhecimentos</h2>
       </header>
 
-      <section class="filtros" aria-label="Busca e filtros">
+      <div class="catalogo__barra">
+        <button class="botao catalogo__abrir-filtros" id="abrir-filtros" type="button" aria-controls="filtros" aria-expanded="false">
+          Filtros
+        </button>
+        <p class="catalogo__contagem" id="contagem">Carregando</p>
+      </div>
+
+      <section class="filtros" id="filtros" aria-label="Busca e filtros">
         <div class="filtros__linha">
           <div class="filtros__busca">
             <label class="filtros__titulo" for="busca">Buscar</label>
@@ -84,11 +91,9 @@
         <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
       </section>
 
-      <div class="catalogo__barra">
-        <p class="catalogo__contagem" id="contagem">Carregando</p>
-        <p class="catalogo__contagem">Abra um item para ver a ficha</p>
-      </div>
-      <div class="lista-conhecimentos" id="lista-conhecimentos"></div>
+      <ol class="trilha" id="trilha"></ol>
+      <p class="vazio" id="trilha-vazia" hidden>Nenhum conhecimento corresponde aos filtros aplicados.</p>
+      <ul class="legenda" id="legenda" aria-label="Cores da natureza epistemológica"></ul>
     </div>
   </section>
 
@@ -101,6 +106,14 @@
     <div class="camadas" id="camadas"></div>
   </section>
 </main>
+
+<dialog class="folha" id="folha-filtros" aria-label="Busca e filtros">
+  <div class="folha__topo">
+    <p class="folha__titulo">Filtros</p>
+    <button class="botao" id="fechar-filtros" type="button">Fechar</button>
+  </div>
+  <div class="folha__corpo" id="folha-corpo"></div>
+</dialog>
 
 <dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">
   <div class="dialogo-ficha__topo">

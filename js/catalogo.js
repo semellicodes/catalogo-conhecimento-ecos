@@ -9,6 +9,14 @@ import * as ficha from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
+/* O nível não entra, porque agora é a própria trilha. Os dois últimos ainda não
+   têm valor registrado e caem no aviso do rodapé. */
+const FACETAS = ['natureza', 'dimensao', 'tipoEcos', 'acaoGerencia'];
+
+/* Abaixo desta largura os filtros moram numa folha por cima, em vez de empurrar
+   a trilha para fora da tela. */
+const ESTREITO = matchMedia('(max-width: 47.99rem)');
+
 let dados = null;
 let estado = filtros.estadoVazio();
 /* A ordem de navegação da ficha é a ordem filtrada no momento, não a ordem total. */
@@ -187,7 +195,8 @@ function sincronizarUrl(id) {
 
 function atualizar() {
   visiveis = filtros.aplicar(dados.conhecimentos, estado);
-  lista.renderizar(el('#lista-conhecimentos'), visiveis, abrirFicha);
+  lista.renderizar(el('#trilha'), visiveis, dados.classificacoes.nivel.valores, abrirFicha);
+  el('#trilha-vazia').hidden = visiveis.length > 0;
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
   marcarOpcoes();
@@ -217,6 +226,45 @@ function ligarLimpar() {
   });
 }
 
+/**
+ * Em tela estreita o painel de filtros muda de lugar, não de forma. O mesmo
+ * elemento é movido para dentro da folha e devolvido ao fluxo quando a tela
+ * cresce, então não existe uma segunda cópia dos filtros para manter em dia.
+ */
+function ligarFolhaDeFiltros() {
+  const folha = el('#folha-filtros');
+  const corpo = el('#folha-corpo');
+  const painel = el('#filtros');
+  const lugarOriginal = painel.parentElement;
+  const abrir = el('#abrir-filtros');
+
+  const fechar = () => {
+    if (folha.open) folha.close();
+  };
+
+  function acomodar() {
+    if (ESTREITO.matches) {
+      corpo.append(painel);
+    } else {
+      fechar();
+      lugarOriginal.insertBefore(painel, el('#trilha'));
+    }
+  }
+
+  abrir.addEventListener('click', () => {
+    folha.showModal();
+    abrir.setAttribute('aria-expanded', 'true');
+    el('#busca').focus();
+  });
+  el('#fechar-filtros').addEventListener('click', fechar);
+  folha.addEventListener('click', (evento) => {
+    if (evento.target === folha) fechar();
+  });
+  folha.addEventListener('close', () => abrir.setAttribute('aria-expanded', 'false'));
+  ESTREITO.addEventListener('change', acomodar);
+  acomodar();
+}
+
 function ligarDialogo() {
   const dialogo = el('#dialogo-ficha');
   el('#fechar-ficha').addEventListener('click', () => dialogo.close());
@@ -235,7 +283,7 @@ async function iniciar() {
   try {
     dados = await carregar();
   } catch (erro) {
-    el('#lista-conhecimentos').replaceWith(
+    el('#trilha').replaceWith(
       Object.assign(document.createElement('p'), {
         className: 'vazio',
         textContent:
@@ -251,16 +299,19 @@ async function iniciar() {
 
   const painel = el('#painel-filtros');
   const pendentes = [];
-  filtros.ATRIBUTOS_FILTRAVEIS.forEach((chave) => {
+  FACETAS.forEach((chave) => {
     const grupo = montarGrupoDeFiltros(chave);
     if (grupo) painel.append(grupo);
     else pendentes.push(dados.classificacoes[chave].rotulo);
   });
   anunciarPendentes(pendentes);
 
+  lista.renderizarLegenda(el('#legenda'), dados.classificacoes.natureza.valores);
+
   ligarBusca();
   ligarLimpar();
   ligarDialogo();
+  ligarFolhaDeFiltros();
   atualizar();
 
   const idInicial = parametros.get('id');

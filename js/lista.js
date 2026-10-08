@@ -1,8 +1,7 @@
 /**
- * Transforma conhecimentos em elementos da listagem. Não sabe filtrar.
+ * Transforma conhecimentos na trilha por nível. Não sabe filtrar nem carregar,
+ * recebe a lista já filtrada e os níveis já resolvidos.
  */
-
-import { vazio } from './dados.js';
 
 export const classeNatureza = (natureza) =>
   ({
@@ -11,62 +10,85 @@ export const classeNatureza = (natureza) =>
     'Tácito-técnico': 'tacito-tecnico'
   }[natureza] || 'explicito');
 
-function etiqueta(texto, modificador) {
-  const span = document.createElement('span');
-  span.className = modificador ? `etiqueta etiqueta--${modificador}` : 'etiqueta';
-  span.textContent = texto;
-  return span;
+function criar(tag, className, texto) {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (texto !== undefined) el.textContent = texto;
+  return el;
 }
 
-function montarCard(conhecimento, aoAbrir) {
-  const natureza = classeNatureza(conhecimento.natureza);
-  const card = document.createElement('a');
-  card.className = `card card--${natureza}`;
-  card.href = `?id=${conhecimento.id}`;
-  card.dataset.id = conhecimento.id;
+/** Cartão baixo. O ponto dá a natureza, o identificador e o nome dão o resto. */
+function montarCartao(conhecimento, aoAbrir) {
+  const item = criar('li');
+  const cartao = criar('a', 'cartao');
+  cartao.href = `?id=${conhecimento.id}`;
 
-  /* Topo. O identificador de um lado, a natureza do outro. */
-  const topo = document.createElement('span');
-  topo.className = 'card__topo';
-  const id = document.createElement('span');
-  id.className = 'codigo-id';
-  id.textContent = conhecimento.id;
-  topo.append(id, etiqueta(conhecimento.natureza.toLowerCase(), natureza));
+  const ponto = criar('span', `cartao__ponto cartao__ponto--${classeNatureza(conhecimento.natureza)}`);
+  ponto.setAttribute('aria-hidden', 'true');
 
-  const nome = document.createElement('span');
-  nome.className = 'card__nome';
-  nome.textContent = conhecimento.nome;
+  /* A natureza não aparece escrita no cartão, então vai para quem usa leitor de tela. */
+  const natureza = criar('span', 'apenas-leitor', `${conhecimento.natureza}. `);
 
-  const descricao = document.createElement('span');
-  descricao.className = 'card__descricao';
-  descricao.textContent = conhecimento.descricao;
-
-  /* Rodapé. As demais facetas e os estudos que sustentam o conhecimento. */
-  const rodape = document.createElement('span');
-  rodape.className = 'etiquetas card__rodape';
-  rodape.append(etiqueta(conhecimento.nivel.toLowerCase()), etiqueta(conhecimento.dimensao.toLowerCase()));
-  if (!vazio(conhecimento.tipoEcos)) {
-    conhecimento.tipoEcos.forEach((t) => rodape.append(etiqueta(t.toLowerCase())));
-  }
-  rodape.append(etiqueta(conhecimento.estudos.join(', ')));
-
-  card.append(topo, nome, descricao, rodape);
-  card.addEventListener('click', (evento) => {
+  cartao.append(
+    ponto,
+    criar('span', 'codigo-id cartao__id', conhecimento.id),
+    natureza,
+    criar('span', 'cartao__nome', conhecimento.nome)
+  );
+  cartao.addEventListener('click', (evento) => {
     evento.preventDefault();
     aoAbrir(conhecimento.id);
   });
-  return card;
+
+  item.append(cartao);
+  return item;
 }
 
-/** Redesenha a listagem inteira dentro do elemento informado. */
-export function renderizar(elemento, conhecimentos, aoAbrir) {
+/** Uma estação da trilha. Só é montada quando sobrou conhecimento no nível. */
+function montarEstacao(nivel, conhecimentos, aoAbrir) {
+  const estacao = criar('li', 'estacao');
+
+  const marca = criar('div', 'estacao__marca');
+  marca.setAttribute('aria-hidden', 'true');
+  marca.append(criar('span', 'estacao__ponto'));
+
+  const corpo = criar('div', 'estacao__corpo');
+  const titulo = criar('h3', 'estacao__titulo');
+  titulo.append(
+    criar('span', null, nivel.valor),
+    criar('span', 'estacao__contagem', String(conhecimentos.length))
+  );
+  corpo.append(titulo, criar('p', 'estacao__descricao', nivel.descricao));
+
+  const grade = criar('ul', 'cartoes');
+  conhecimentos.forEach((c) => grade.append(montarCartao(c, aoAbrir)));
+  corpo.append(grade);
+
+  estacao.append(marca, corpo);
+  return estacao;
+}
+
+/**
+ * Redesenha a trilha inteira. A ordem das estações é a ordem dos valores em
+ * classificacoes.json, e nível sem conhecimento não vira estação.
+ */
+export function renderizar(elemento, conhecimentos, niveis, aoAbrir) {
   elemento.replaceChildren();
-  if (conhecimentos.length === 0) {
-    const aviso = document.createElement('p');
-    aviso.className = 'vazio';
-    aviso.textContent = 'Nenhum conhecimento corresponde aos filtros aplicados.';
-    elemento.append(aviso);
-    return;
-  }
-  conhecimentos.forEach((c) => elemento.append(montarCard(c, aoAbrir)));
+  niveis.forEach((nivel) => {
+    const doNivel = conhecimentos.filter((c) => c.nivel === nivel.valor);
+    if (doNivel.length) elemento.append(montarEstacao(nivel, doNivel, aoAbrir));
+  });
+}
+
+/** Legenda das cores da natureza, montada a partir da própria classificação. */
+export function renderizarLegenda(elemento, naturezas) {
+  elemento.replaceChildren(
+    ...naturezas.map((n) => {
+      const item = criar('li', 'legenda__item');
+      const ponto = criar('span', `legenda__ponto legenda__ponto--${classeNatureza(n.valor)}`);
+      ponto.setAttribute('aria-hidden', 'true');
+      item.append(ponto, criar('span', null, n.valor));
+      return item;
+    })
+  );
 }

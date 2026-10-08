@@ -78,6 +78,10 @@
   --esp-9: 5.5rem;
 
   /* Medida */
+  /* Trilha. A coluna do ponto e da linha, e o diâmetro dos dois pontos */
+  --coluna-trilha: 1.75rem;
+  --ponto-estacao: 0.75rem;
+  --ponto-natureza: 0.5rem;
   --largura-max: 1240px;
   --largura-texto: 68ch;
   --largura-dialogo: 72rem;
@@ -104,53 +108,8 @@
   --desfoque-veu: 8px;
 }
 
-/* O tema claro aparece em dois blocos, um para o sistema e outro para a escolha
-   gravada. Os valores são os mesmos nos dois, porque um está dentro de media
-   query e o outro não, e CSS não deixa juntar os dois seletores numa regra só. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-tema="escuro"]) {
-    color-scheme: light;
-    --cor-fundo: #EEF1F4;
-    --cor-superficie: #FFFFFF;
-    --cor-superficie-alta: #F7F9FB;
-    --cor-linha: #D7DDE4;
-    --cor-linha-suave: #E6EAEF;
-    --cor-texto: #14181D;
-    --cor-texto-suave: #4A545F;
-    --cor-texto-fraco: #5A6472;
-    --cor-acento: #0F6B51;
-    --cor-acento-forte: #0B5440;
-    --cor-acento-fundo: #DCEFE8;
-    --cor-acento-linha: #9FCFBE;
-    --cor-contraste: #FFFFFF;
-
-    --cor-explicito: #0F6B51;
-    --cor-explicito-linha: #9FCFBE;
-    --cor-tacito-cognitivo: #8A5312;
-    --cor-tacito-cognitivo-linha: #DEC19A;
-    --cor-tacito-tecnico: #1F4C7A;
-    --cor-tacito-tecnico-linha: #A9C4DF;
-
-    --cor-explicito-pilula: #DCEFE8;
-    --cor-explicito-pilula-texto: #0B5440;
-    --cor-tacito-cognitivo-pilula: #F7EBD8;
-    --cor-tacito-cognitivo-pilula-texto: #6B4410;
-    --cor-tacito-tecnico-pilula: #E2EDF9;
-    --cor-tacito-tecnico-pilula-texto: #17406B;
-    --cor-neutro-pilula: #E9EDF1;
-    --cor-neutro-pilula-texto: #3F4854;
-
-    --cor-faixa: #0A3B2D;
-    --cor-faixa-texto: #F2F7F4;
-    --cor-faixa-suave: #BFD9CE;
-    --cor-faixa-acento: #6FDCB6;
-    --cor-faixa-linha: #1F5C49;
-
-    --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
-    --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
-  }
-}
-
+/* O escuro é o padrão da página inteira, para acompanhar a faixa de abertura.
+   O claro só entra pela escolha do botão, nunca pela preferência do sistema. */
 :root[data-tema="claro"] {
   color-scheme: light;
   --cor-fundo: #EEF1F4;

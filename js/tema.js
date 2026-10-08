@@ -1,5 +1,7 @@
 /**
- * Alterna o tema claro e escuro. A escolha gravada vence o tema do sistema.
+ * Alterna o tema claro e escuro. O escuro é o padrão da página e o claro só
+ * existe por escolha, que fica gravada. A preferência do sistema não entra,
+ * porque a faixa de abertura é escura e a página acompanha.
  * O tema em si vive em css/tokens.css. Aqui só entra a decisão de qual vale.
  */
 
@@ -10,16 +12,6 @@ const SVG = 'http://www.w3.org/2000/svg';
 
 const raiz = document.documentElement;
 
-/** Escolha gravada, ou null quando não há escolha ou o armazenamento está bloqueado. */
-function lerEscolha() {
-  try {
-    const valor = localStorage.getItem(CHAVE);
-    return valor === CLARO || valor === ESCURO ? valor : null;
-  } catch (erro) {
-    return null;
-  }
-}
-
 function gravarEscolha(tema) {
   try {
     localStorage.setItem(CHAVE, tema);
@@ -28,13 +20,9 @@ function gravarEscolha(tema) {
   }
 }
 
-const sistemaClaro = () => matchMedia('(prefers-color-scheme: light)').matches;
-
-/** O tema que está valendo agora, pela escolha gravada ou pelo sistema. */
+/** O tema que está valendo agora. Sem escolha gravada, é o escuro. */
 function temaAtual() {
-  const marcado = raiz.dataset.tema;
-  if (marcado === CLARO || marcado === ESCURO) return marcado;
-  return sistemaClaro() ? CLARO : ESCURO;
+  return raiz.dataset.tema === CLARO ? CLARO : ESCURO;
 }
 
 function forma(tag, atributos) {
@@ -108,11 +96,6 @@ function iniciar() {
   if (!botao) return;
   montarBotao(botao);
   botao.addEventListener('click', () => alternar(botao));
-
-  /* Sem escolha gravada, o sistema continua mandando, inclusive se mudar com a página aberta. */
-  matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-    if (!lerEscolha()) montarBotao(botao);
-  });
 }
 
 iniciar();
