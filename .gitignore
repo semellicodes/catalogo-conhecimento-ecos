@@ -24,3 +24,6 @@ Thumbs.db
 # Saída de servidor local e ferramenta externa
 .sass-cache/
 node_modules/
+
+# Skills de sessão. Valem pelo ~/.claude/skills/ e não fazem parte do site
+.claude/skills/
