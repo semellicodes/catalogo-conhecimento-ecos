@@ -159,7 +159,7 @@
 
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
-main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
+section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }

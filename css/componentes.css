@@ -131,12 +131,78 @@
   .navegacao { gap: 0; }
   .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
 }
+/* Com seis itens o celular não comporta todos numa linha nem apertando. Em vez
+   de quebrar em duas e dobrar a altura do cabeçalho, a navegação rola de lado. */
+@media (max-width: 47.99rem) {
+  .navegacao {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-padding-inline: var(--esp-2);
+  }
+  .navegacao::-webkit-scrollbar { display: none; }
+  .navegacao a { flex: none; }
+}
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
   color: var(--cor-texto);
   font-weight: 500;
   border-bottom-color: var(--cor-acento);
 }
+
+/* ---------- Contato ---------- */
+/* Duas colunas no celular e no tablet, quatro no desktop. */
+.contato { border-top: var(--borda); padding-block: var(--esp-7); }
+.contato__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-5) var(--esp-4);
+}
+@media (min-width: 64rem) {
+  .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.pessoa { display: grid; justify-items: start; gap: var(--esp-1); }
+
+/* As iniciais ficam atrás da foto. Se o arquivo não existir, a imagem com alt
+   vazio não desenha nada e elas aparecem, sem buraco e sem salto de layout. */
+.pessoa__retrato {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--retrato);
+  height: var(--retrato);
+  margin-bottom: var(--esp-2);
+  background: var(--cor-superficie-alta);
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  overflow: hidden;
+}
+.pessoa__iniciais {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
+  letter-spacing: var(--entre-letras-rotulo);
+  color: var(--cor-texto-suave);
+}
+.pessoa__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pessoa__nome { font-size: var(--tam-sm); font-weight: 500; }
+.pessoa__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-acento);
+  overflow-wrap: anywhere;
+  transition: color var(--dur-rapida) var(--curva);
+}
+.pessoa__email:hover { color: var(--cor-acento-forte); }
 
 /* ---------- Rodapé ---------- */
 .rodape {
@@ -466,58 +532,198 @@
 }
 
 /* ---------- Ficha ---------- */
-.ficha { display: grid; gap: var(--esp-6); }
-@media (min-width: 64rem) {
-  .ficha { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--esp-7); align-items: start; }
-}
-.ficha__secao + .ficha__secao { margin-top: var(--esp-6); }
-.ficha__titulo-secao {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-  margin-bottom: var(--esp-3);
-}
+/* Cabeçalho e tira de atributos sem rolar, o resto em abas, uma lista por vez.
+   É o que mantém a altura previsível, inclusive no celular. */
+.ficha { display: grid; }
+.ficha__topo { display: grid; gap: var(--esp-2); }
+.ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
 .ficha__descricao {
-  font-size: var(--tam-base);
+  font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
-.painel {
+
+/* A tira. Valor à vista, explicação guardada no botão de informação. */
+.tira {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2) var(--esp-5);
+  margin-block: var(--esp-5);
+  padding-block: var(--esp-3);
+  border-block: 1px solid var(--cor-linha-suave);
+}
+.atr { position: relative; display: inline-flex; align-items: baseline; gap: var(--esp-2); }
+.atr__nome {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+  text-transform: lowercase;
+}
+.atr__valor { font-size: var(--tam-sm); font-weight: 600; }
+.atr__valor--explicito { color: var(--cor-explicito); }
+.atr__valor--tacito-cognitivo { color: var(--cor-tacito-cognitivo); }
+.atr__valor--tacito-tecnico { color: var(--cor-tacito-tecnico); }
+
+.atr__info {
+  flex: none;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-texto-fraco);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva);
+}
+.atr__info:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
+.atr__info:active { transform: scale(0.92); }
+
+/* A nota sai do próprio botão, por isso a origem fica no canto de cima. */
+.atr__nota {
+  position: absolute;
+  top: calc(100% + var(--esp-2));
+  left: 0;
+  z-index: 2;
+  display: grid;
+  gap: var(--esp-2);
+  width: max-content;
+  max-width: min(24rem, 70vw);
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-  padding: var(--esp-5);
+  box-shadow: var(--sombra-2);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.97) translateY(-2px);
+  transform-origin: top left;
+  transition:
+    opacity var(--dur-rapida) var(--curva-saida),
+    transform var(--dur-rapida) var(--curva-saida),
+    visibility var(--dur-rapida);
 }
-.painel + .painel { margin-top: var(--esp-4); }
-.atributo + .atributo { margin-top: var(--esp-4); padding-top: var(--esp-4); border-top: 1px solid var(--cor-linha-suave); }
-.atributo__nome { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.atributo__valor { font-size: var(--tam-base); font-weight: 600; margin-block: var(--esp-1); }
-.atributo__valor--explicito { color: var(--cor-explicito); }
-.atributo__valor--tacito-cognitivo { color: var(--cor-tacito-cognitivo); }
-.atributo__valor--tacito-tecnico { color: var(--cor-tacito-tecnico); }
-.atributo__ajuda { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
-.atributo__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-2); }
+.atr[data-aberto] .atr__nota { opacity: 1; visibility: visible; transform: none; }
+@media (hover: hover) and (pointer: fine) {
+  .atr:hover .atr__nota { opacity: 1; visibility: visible; transform: none; }
+}
+.atr__pergunta { color: var(--cor-texto); font-style: italic; }
+.atr__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
-.item-relacionado {
+/* ---------- Abas da ficha ---------- */
+.abas__barra {
+  position: relative;
+  display: flex;
+  gap: var(--esp-1);
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: var(--borda);
+}
+.abas__barra::-webkit-scrollbar { display: none; }
+.aba {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio) var(--raio) 0 0;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  cursor: pointer;
+  transition: color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
+}
+.aba:hover { color: var(--cor-texto); background: var(--cor-superficie); }
+.aba[aria-selected="true"] { color: var(--cor-texto); font-weight: 600; }
+.aba__contagem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.abas__indicador {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--cor-acento);
+  border-radius: var(--raio-pilula);
+  transition: transform var(--dur-media) var(--curva-saida), width var(--dur-media) var(--curva-saida);
+}
+.abas__painel { padding-top: var(--esp-5); }
+@media (prefers-reduced-motion: reduce) {
+  .abas__indicador { transition: none; }
+}
+
+/* ---------- Soluções, agrupadas por tipo ---------- */
+.grupos { display: grid; gap: var(--esp-5); }
+.grupo__titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-2);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-tabela);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.grupo__contagem {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-linha-suave);
+  border-radius: var(--raio-pilula);
+  padding-inline: var(--esp-2);
+}
+.solucoes { list-style: none; display: grid; }
+.solucao {
+  display: grid;
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
+  gap: var(--esp-3);
+  align-items: baseline;
+  padding-block: var(--esp-2);
+  border-bottom: 1px solid var(--cor-linha-suave);
+  font-size: var(--tam-sm);
+  transition: background-color var(--dur-rapida) var(--curva);
+}
+.solucao:last-child { border-bottom: 0; }
+.solucao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.solucao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
+.solucao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.marca-avaliada {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-acento);
+  background: var(--cor-acento-fundo);
+  border: 1px solid var(--cor-acento-linha);
+  border-radius: var(--raio-pilula);
+  padding-inline: var(--esp-2);
+}
+
+/* ---------- Estudos e trechos ---------- */
+.estudos { list-style: none; display: grid; gap: var(--esp-4); }
+.estudo {
   display: grid;
   grid-template-columns: var(--coluna-id) minmax(0, 1fr);
   gap: var(--esp-3);
-  padding: var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  align-items: start;
+  font-size: var(--tam-sm);
 }
-.item-relacionado + .item-relacionado { margin-top: var(--esp-2); }
-.item-relacionado__nome { font-size: var(--tam-sm); font-weight: 500; }
-.item-relacionado__meta { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-suave); margin-top: var(--esp-1); }
-
+.estudo__corpo { display: grid; gap: var(--esp-1); }
+.estudo__meta { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.trechos { display: grid; gap: var(--esp-3); }
 .trecho {
   margin: 0;
-  padding: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
   border-left: 3px solid var(--cor-acento);
@@ -525,15 +731,24 @@
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
-.trecho + .trecho { margin-top: var(--esp-3); }
 
-.aviso {
-  border: 1px dashed var(--cor-linha);
-  border-radius: var(--raio);
-  padding: var(--esp-3) var(--esp-4);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  margin-bottom: var(--esp-4);
+/* ---------- Rodapé de pendências ---------- */
+.pendencias {
+  margin-top: var(--esp-5);
+  padding-top: var(--esp-3);
+  border-top: 1px solid var(--cor-linha-suave);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+
+/* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
+   crie barra de rolagem lateral enquanto está escondida. */
+.dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
+@container (max-width: 34rem) {
+  .solucao { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
+  .solucao__nome { white-space: normal; }
+  .solucao__meta { grid-column: 2; }
 }
 
 /* ---------- Tabela simples ---------- */
