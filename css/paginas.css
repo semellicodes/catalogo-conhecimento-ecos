@@ -11,7 +11,7 @@
 @media (min-width: 64rem) {
   .abertura {
     padding-block: var(--esp-7);
-    min-height: 460px;
+    min-height: var(--altura-faixa);
     display: flex;
     align-items: center;
   }
@@ -31,12 +31,12 @@
 .abertura__sigla {
   color: var(--cor-faixa-acento);
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--entre-letras-sigla);
 }
 .abertura__titulo {
   font-size: var(--tam-xl);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: var(--entre-letras-faixa);
   max-width: 20ch;
 }
 @media (min-width: 48rem) { .abertura__titulo { font-size: var(--tam-2xl); } }
@@ -58,7 +58,7 @@
 .desenho-ecos {
   display: block;
   width: 100%;
-  max-width: 250px;
+  max-width: var(--largura-desenho);
   color: var(--cor-faixa-acento);
 }
 .desenho-ecos__giro {
@@ -107,9 +107,9 @@
 
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
-#inicio, #catalogo, #estrutura { scroll-margin-top: 72px; }
+#inicio, #catalogo, #estrutura { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
-.secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--esp-3); }
+.secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 
 .camadas { display: grid; gap: var(--esp-3); }
@@ -125,31 +125,6 @@
 .camada__nome { font-size: var(--tam-md); margin-block: var(--esp-2); }
 .camada__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-3); }
-
-.naturezas { display: grid; gap: var(--esp-4); }
-@media (min-width: 60rem) { .naturezas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.natureza-card {
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-top: 3px solid var(--cor-linha);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-  padding: var(--esp-5);
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition:
-    background-color var(--dur-rapida) var(--curva),
-    border-color var(--dur-rapida) var(--curva),
-    box-shadow var(--dur-rapida) var(--curva);
-}
-.natureza-card:hover { background: var(--cor-superficie-alta); color: inherit; box-shadow: var(--sombra-2); }
-.natureza-card--explicito { border-top-color: var(--cor-explicito); }
-.natureza-card--tacito-cognitivo { border-top-color: var(--cor-tacito-cognitivo); }
-.natureza-card--tacito-tecnico { border-top-color: var(--cor-tacito-tecnico); }
-.natureza-card__contagem { font-family: var(--fonte-mono); font-size: var(--tam-xl); }
-.natureza-card__nome { font-size: var(--tam-md); font-weight: 600; margin-block: var(--esp-1); }
-.natureza-card__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
@@ -179,7 +154,7 @@
   background: var(--cor-fundo);
   color: var(--cor-texto);
   padding: 0;
-  width: min(100%, 72rem);
+  width: min(100%, var(--largura-dialogo));
   max-width: calc(100vw - var(--esp-4) * 2);
   max-height: calc(100vh - var(--esp-6));
   border-radius: var(--raio);
@@ -272,3 +247,7 @@
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
+
+/* Título que abre um assunto novo dentro da mesma página de texto, antes
+   escrito como style inline em sobre.html e referencias.html. */
+.secao__titulo--afastado { margin-top: var(--esp-7); }

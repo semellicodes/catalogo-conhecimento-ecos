@@ -33,7 +33,7 @@ function blocoAtributo(dados, conhecimento, chave) {
     bloco.append(criar('p', 'atributo__ajuda', 'Classificação ainda não registrada na extração.'));
   } else {
     const linha = criar('p', 'atributo__valor', valor);
-    if (chave === 'natureza') linha.style.color = `var(--cor-${classeNatureza(valor)})`;
+    if (chave === 'natureza') linha.classList.add(`atributo__valor--${classeNatureza(valor)}`);
     bloco.append(linha);
     const opcao = definicao.valores.find((v) => v.valor === valor);
     if (opcao && opcao.descricao) bloco.append(criar('p', 'atributo__ajuda', opcao.descricao));

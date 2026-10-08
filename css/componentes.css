@@ -16,7 +16,7 @@
     "nav   nav";
   align-items: center;
   gap: var(--esp-1) var(--esp-4);
-  min-height: 60px;
+  min-height: var(--altura-cabecalho);
 }
 .marca { grid-area: marca; }
 .navegacao { grid-area: nav; }
@@ -47,7 +47,7 @@
   font-size: var(--tam-sm);
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--entre-letras-nome);
   min-width: 0;
 }
 .marca__nome strong { font-weight: 600; color: var(--cor-acento); }
@@ -136,11 +136,6 @@
   background: var(--cor-tacito-tecnico-pilula);
   color: var(--cor-tacito-tecnico-pilula-texto);
 }
-.etiqueta--vazia {
-  background: transparent;
-  color: var(--cor-texto-fraco);
-  border: 1px dashed var(--cor-linha);
-}
 .etiquetas { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 
 .codigo-id {
@@ -195,7 +190,7 @@
   display: block;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
   padding: 0;
@@ -300,13 +295,6 @@
     box-shadow var(--dur-rapida) var(--curva);
 }
 .botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); box-shadow: var(--sombra-2); }
-.botao--principal {
-  background: var(--cor-acento);
-  border-color: var(--cor-acento);
-  color: var(--cor-contraste);
-  font-weight: 600;
-}
-.botao--principal:hover { background: var(--cor-acento-forte); border-color: var(--cor-acento-forte); color: var(--cor-contraste); }
 
 /* ---------- Card do conhecimento ---------- */
 .lista-conhecimentos {
@@ -357,7 +345,7 @@
   display: block;
   font-size: var(--tam-lg);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--entre-letras-nome);
   line-height: 1.25;
 }
 /* Três linhas e corta com reticências, para os cards ficarem comparáveis. */
@@ -387,7 +375,7 @@
 .ficha__titulo-secao {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
   margin-bottom: var(--esp-3);
@@ -408,12 +396,15 @@
 .atributo + .atributo { margin-top: var(--esp-4); padding-top: var(--esp-4); border-top: 1px solid var(--cor-linha-suave); }
 .atributo__nome { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 .atributo__valor { font-size: var(--tam-md); font-weight: 600; margin-block: var(--esp-1); }
+.atributo__valor--explicito { color: var(--cor-explicito); }
+.atributo__valor--tacito-cognitivo { color: var(--cor-tacito-cognitivo); }
+.atributo__valor--tacito-tecnico { color: var(--cor-tacito-tecnico); }
 .atributo__ajuda { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .atributo__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-2); }
 
 .item-relacionado {
   display: grid;
-  grid-template-columns: 3.5rem minmax(0, 1fr);
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
   gap: var(--esp-3);
   padding: var(--esp-4);
   background: var(--cor-superficie);
@@ -452,7 +443,7 @@
 .tabela th {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--entre-letras-tabela);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
   font-weight: 500;

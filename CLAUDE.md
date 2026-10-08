@@ -121,6 +121,9 @@ nativamente pelo navegador com `type="module"`.
   quebra em funções menores com nome claro
 - Não repetir marcação entre as páginas sem necessidade. Se o mesmo bloco aparece em quatro
   arquivos, avaliar se vale montar por JS a partir de um lugar só
+- O cabeçalho e o rodapé são a exceção, ficam repetidos em HTML de propósito. A navegação
+  precisa funcionar mesmo se o JS falhar, e isso pesa mais num artefato que vai ser aberto
+  na defesa. Decidido, não reabrir
 - Comentário só quando explica o porquê de uma decisão, não o que a linha faz
 
 ## Escrita

@@ -11,7 +11,7 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: var(--entre-letras-titulo); }
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
@@ -26,15 +26,6 @@ a:hover { color: var(--cor-acento-forte); }
 button, input, select {
   font: inherit;
   color: inherit;
-}
-
-.visualmente-oculto {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .pular-para-conteudo {
@@ -97,3 +88,7 @@ button, input, select {
   :root.trocando-tema *::before,
   :root.trocando-tema *::after { transition: none !important; }
 }
+
+/* A catalogo.html só redireciona e carrega apenas tokens e base, então o
+   espaçamento do seu único parágrafo mora aqui. */
+.redirecionamento { padding: var(--esp-6); }

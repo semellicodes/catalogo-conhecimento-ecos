@@ -50,6 +50,13 @@
   /* Tipografia */
   --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
   --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  /* Entre letras. Texto grande pede aperto, rótulo em caixa alta pede folga */
+  --entre-letras-faixa: -0.03em;
+  --entre-letras-titulo: -0.02em;
+  --entre-letras-nome: -0.01em;
+  --entre-letras-sigla: 0.01em;
+  --entre-letras-rotulo: 0.08em;
+  --entre-letras-tabela: 0.06em;
   --tam-xs: 0.75rem;
   --tam-sm: 0.9375rem;
   --tam-base: 1rem;
@@ -73,6 +80,12 @@
   /* Medida */
   --largura-max: 1240px;
   --largura-texto: 68ch;
+  --largura-dialogo: 72rem;
+  --largura-desenho: 250px;
+  /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
+  --altura-cabecalho: 60px;
+  --altura-faixa: 460px;
+  --coluna-id: 3.5rem;
   --borda: 1px solid var(--cor-linha);
   --raio: 10px;
   --raio-pilula: 999px;
