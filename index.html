@@ -38,8 +38,8 @@
     </a>
     <nav class="navegacao" aria-label="Principal">
       <a href="#inicio" data-secao="inicio">Início</a>
-      <a href="#catalogo" data-secao="catalogo">Catálogo</a>
       <a href="#estrutura" data-secao="estrutura">Estrutura</a>
+      <a href="#catalogo" data-secao="catalogo">Catálogo</a>
       <a href="sobre.html">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
@@ -66,6 +66,27 @@
     </div>
   </section>
 
+  <section class="secao container" id="estrutura" aria-labelledby="titulo-estruturado">
+    <h2 class="secao__titulo" id="titulo-estruturado">Como o catálogo está estruturado</h2>
+    <p class="secao__intro">
+      O catálogo se organiza em camadas encadeadas. O conhecimento é o ponto de partida, recebe um
+      conjunto fixo de atributos, liga-se às soluções que a literatura reporta, e essas soluções se
+      apoiam nos estudos primários que as identificaram. Ler o catálogo é percorrer essas camadas,
+      de um conhecimento até a evidência que o sustenta.
+    </p>
+    <figure class="reservado">
+      <figcaption class="reservado__texto">Imagem do mapa conceitual</figcaption>
+    </figure>
+  </section>
+
+  <section class="secao container" id="camadas" aria-labelledby="titulo-camadas">
+    <h2 class="secao__titulo" id="titulo-camadas">As quatro camadas</h2>
+    <p class="secao__intro">
+      A estrutura segue a lógica de camadas do Catálogo de Riscos em ECOS, com o conhecimento no
+      lugar do risco como ponto de partida.
+    </p>
+    <div class="camadas" id="grade-camadas"></div>
+  </section>
   <section class="secao-catalogo" id="catalogo" aria-labelledby="titulo-catalogo">
     <div class="container">
       <header class="catalogo__cabecalho">
@@ -97,14 +118,6 @@
     </div>
   </section>
 
-  <section class="secao container" id="estrutura" aria-labelledby="titulo-estrutura">
-    <h2 class="secao__titulo" id="titulo-estrutura">As quatro camadas</h2>
-    <p class="secao__intro">
-      A estrutura segue a lógica de camadas do Catálogo de Riscos em ECOS, com o conhecimento no
-      lugar do risco como ponto de partida.
-    </p>
-    <div class="camadas" id="camadas"></div>
-  </section>
 </main>
 
 <dialog class="folha" id="folha-filtros" aria-label="Busca e filtros">

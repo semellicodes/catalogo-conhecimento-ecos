@@ -50,25 +50,73 @@
 }
 @media (min-width: 64rem) { .abertura__resumo { font-size: var(--tam-md); } }
 
-/* O desenho é decorativo. No celular ele sai de cena para não roubar altura. */
+/* O desenho é decorativo. No celular ele sai de cena para não roubar altura,
+   e é por isso que o arrasto não precisa existir lá. */
 .abertura__desenho { display: none; }
 @media (min-width: 64rem) {
   .abertura__desenho { display: block; justify-self: center; }
 }
-.desenho-ecos {
-  display: block;
-  width: 100%;
-  max-width: var(--largura-desenho);
+
+/* A cena é o espaço 3D. O disco de nós gira dentro dela, inclinado, e o cérebro
+   fica no plano do meio, parado, com os nós da frente passando por cima dele e
+   os de trás sumindo atrás do seu preenchimento. */
+.cena {
+  --giro: 0deg;
+  position: relative;
+  width: var(--largura-desenho);
+  height: var(--largura-desenho);
+  perspective: 620px;
+  transform-style: preserve-3d;
   color: var(--cor-faixa-acento);
 }
-.desenho-ecos__giro {
-  transform-box: view-box;
-  transform-origin: 50% 50%;
-  animation: girar-ecos 140s linear infinite;
+.cena[tabindex] { cursor: grab; touch-action: pan-y; }
+.cena--arrastando { cursor: grabbing; }
+.cena:focus-visible {
+  outline: 2px solid var(--cor-faixa-acento);
+  outline-offset: var(--esp-2);
+  border-radius: var(--raio);
 }
-@keyframes girar-ecos { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) {
-  .desenho-ecos__giro { animation: none; }
+
+.orbe {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--orbe-inclinacao)) rotateZ(var(--giro));
+}
+/* Os anéis e os arcos são um plano só, deitado junto com o disco. */
+.orbe__plano { display: block; width: 100%; height: 100%; }
+
+/* O nó é um ponto sem tamanho na borda do disco. O que se vê é o filho. */
+.no {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotate(var(--angulo)) translateX(var(--orbe-raio));
+}
+/* Desfaz o giro e a inclinação, então o ponto é sempre um círculo de frente.
+   A perspectiva continua valendo, e é ela que engorda quem passa na frente. */
+.no__ponto {
+  position: absolute;
+  width: var(--orbe-ponto);
+  height: var(--orbe-ponto);
+  margin: calc(var(--orbe-ponto) / -2);
+  border-radius: var(--raio-pilula);
+  background: currentColor;
+  transform: rotate(calc(-1 * var(--angulo) - var(--giro))) rotateX(calc(-1 * var(--orbe-inclinacao)));
+}
+.no--vazado .no__ponto {
+  background: var(--cor-faixa);
+  border: 1.6px solid currentColor;
+}
+
+.cerebro {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Números no rodapé da faixa, numa linha só, separados por divisor fino. */
@@ -107,7 +155,7 @@
 
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
-#inicio, #catalogo, #estrutura { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
+main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
@@ -125,6 +173,27 @@
 .camada__nome { font-size: var(--tam-md); margin-block: var(--esp-2); }
 .camada__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-3); }
+
+/* Espaço reservado para a imagem do mapa conceitual. Fica tracejado e vazio de
+   propósito, o conteúdo entra quando a imagem existir. */
+.reservado {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  margin: var(--esp-5) 0 0;
+  border: 1px dashed var(--cor-linha);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+.reservado__texto {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+  text-align: center;
+  padding: var(--esp-4);
+}
 
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */

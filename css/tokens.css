@@ -78,6 +78,11 @@
   --esp-9: 5.5rem;
 
   /* Medida */
+  /* Desenho da abertura. Inclinação do disco, raio do anel e tamanho do nó */
+  --orbe-inclinacao: 54deg;
+  --orbe-raio: 95px;
+  --orbe-ponto: 0.8rem;
+
   /* Trilha. A coluna do ponto e da linha, e o diâmetro dos dois pontos */
   --coluna-trilha: 1.75rem;
   --ponto-estacao: 0.75rem;
