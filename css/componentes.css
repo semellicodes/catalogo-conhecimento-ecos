@@ -151,23 +151,36 @@
 }
 
 /* ---------- Contato ---------- */
-/* Duas colunas no celular e no tablet, quatro no desktop. */
-.contato { border-top: var(--borda); padding-block: var(--esp-7); }
+/* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
+   então ocupa o mínimo entre o fim da página e o crédito. */
+.contato {
+  border-top: var(--borda);
+  padding-block: var(--esp-6);
+  text-align: center;
+}
+.contato .secao__titulo { font-size: var(--tam-lg); margin-bottom: var(--esp-2); }
+.contato .secao__intro {
+  max-width: 48ch;
+  margin-inline: auto;
+  margin-bottom: var(--esp-6);
+  font-size: var(--tam-sm);
+}
 .contato__lista {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--esp-5) var(--esp-4);
+  max-width: 56rem;
+  margin-inline: auto;
 }
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
   .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-.pessoa { display: grid; justify-items: start; gap: var(--esp-1); }
+.pessoa { display: grid; justify-items: center; gap: var(--esp-1); }
 
-/* As iniciais ficam atrás da foto. Se o arquivo não existir, a imagem com alt
-   vazio não desenha nada e elas aparecem, sem buraco e sem salto de layout. */
+/* Sem foto por ora. O círculo com as iniciais é o que ocupa o lugar dela, e
+   entra pelos tokens do tema, sem arquivo e sem imagem externa. */
 .pessoa__retrato {
-  position: relative;
   display: grid;
   place-items: center;
   width: var(--retrato);
@@ -176,7 +189,6 @@
   background: var(--cor-superficie-alta);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pilula);
-  overflow: hidden;
 }
 .pessoa__iniciais {
   font-family: var(--fonte-mono);
@@ -184,17 +196,11 @@
   letter-spacing: var(--entre-letras-rotulo);
   color: var(--cor-texto-suave);
 }
-.pessoa__foto {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.pessoa__nome { font-size: var(--tam-sm); font-weight: 500; }
+.pessoa__nome { font-size: var(--tam-sm); font-weight: 600; }
 .pessoa__email {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: var(--alvo-toque);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -213,7 +219,7 @@
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
-.rodape__interno { display: flex; justify-content: space-between; gap: var(--esp-4); flex-wrap: wrap; }
+.rodape__interno { display: flex; justify-content: center; gap: var(--esp-4); flex-wrap: wrap; text-align: center; }
 
 /* ---------- Etiquetas ---------- */
 /* Sem uso desde que o cartão da trilha deixou de mostrar nível e dimensão. Fica
