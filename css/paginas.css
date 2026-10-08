@@ -171,17 +171,23 @@ main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp
   gap: var(--esp-3);
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 }
+/* Mesmo peso do cartão da trilha. O número e o nome dividem a primeira linha,
+   e o resto desce em dois degraus de tamanho, sem folga de cartão grande. */
 .camada {
+  display: grid;
+  align-content: start;
+  gap: var(--esp-2);
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
-  padding: var(--esp-5);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
 }
+.camada__topo { display: flex; align-items: baseline; gap: var(--esp-3); }
 .camada__n { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-acento); }
-.camada__nome { font-size: var(--tam-lg); margin-block: var(--esp-2); }
+.camada__nome { font-size: var(--tam-base); font-weight: 600; line-height: 1.3; }
 .camada__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
-.camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-3); }
+.camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* Espaço reservado para a imagem do mapa conceitual. Fica tracejado e vazio de
    propósito, o conteúdo entra quando a imagem existir. */

@@ -19,6 +19,36 @@ function numero(valor, rotulo) {
   return bloco;
 }
 
+/**
+ * Uma camada. O número fica na mesma linha do nome, em vez de ocupar uma linha
+ * só para si, que é o que inchava o cartão.
+ */
+function camada(dados) {
+  const bloco = document.createElement('article');
+  bloco.className = 'camada';
+
+  const topo = document.createElement('p');
+  topo.className = 'camada__topo';
+  const n = document.createElement('span');
+  n.className = 'camada__n';
+  n.textContent = String(dados.n).padStart(2, '0');
+  const nome = document.createElement('span');
+  nome.className = 'camada__nome';
+  nome.textContent = dados.nome;
+  topo.append(n, nome);
+
+  const texto = document.createElement('p');
+  texto.className = 'camada__texto';
+  texto.textContent = dados.conteudo;
+
+  const origem = document.createElement('p');
+  origem.className = 'camada__origem';
+  origem.textContent = dados.origem;
+
+  bloco.append(topo, texto, origem);
+  return bloco;
+}
+
 async function iniciar() {
   let dados;
   try {
@@ -43,26 +73,7 @@ async function iniciar() {
   );
 
   const camadas = el('#camadas');
-  dados.meta.camadas.forEach((c) => {
-    const bloco = document.createElement('article');
-    bloco.className = 'camada';
-    bloco.innerHTML = '';
-    const n = document.createElement('p');
-    n.className = 'camada__n';
-    n.textContent = `0${c.n} · CAMADA`;
-    const nome = document.createElement('h3');
-    nome.className = 'camada__nome';
-    nome.textContent = c.nome;
-    const texto = document.createElement('p');
-    texto.className = 'camada__texto';
-    texto.textContent = c.conteudo;
-    const origem = document.createElement('p');
-    origem.className = 'camada__origem';
-    origem.textContent = c.origem;
-    bloco.append(n, nome, texto, origem);
-    camadas.append(bloco);
-  });
-
+  dados.meta.camadas.forEach((c) => camadas.append(camada(c)));
 }
 
 iniciar();
