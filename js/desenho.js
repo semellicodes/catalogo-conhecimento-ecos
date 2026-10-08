@@ -46,6 +46,66 @@ function arco(de, para, salto) {
   });
 }
 
+/* Contorno do cérebro, simétrico em relação ao eixo vertical. Os giros são
+   sugeridos por ondulações do próprio contorno, sem detalhe demais. O
+   preenchimento é a cor da faixa, então os arcos que passam atrás não
+   atravessam o desenho. */
+const CONTORNO =
+  'M100 78 C108 72 120 75 122 85 C132 88 133 100 125 106 ' +
+  'C126 116 116 122 108 118 C105 122 95 122 92 118 ' +
+  'C84 122 74 116 75 106 C67 100 68 88 78 85 C80 75 92 72 100 78 Z';
+
+/* Fissura longitudinal e dois pares de sulcos, espelhados entre os hemisférios. */
+const SULCOS = [
+  'M100 79 C98 91 102 103 100 118',
+  'M110 88 C117 91 118 98 112 102',
+  'M90 88 C83 91 82 98 88 102',
+  'M112 108 C118 107 120 111 118 114',
+  'M88 108 C82 107 80 111 82 114'
+];
+
+const TRONCO = 'M100 119 L100 129';
+
+/**
+ * O cérebro fica fora do grupo que gira, porque é o ponto de referência.
+ * Ele permanece parado enquanto os nós giram em volta.
+ */
+function cerebro() {
+  const grupo = forma('g', { class: 'desenho-ecos__cerebro' });
+
+  grupo.append(
+    forma('path', {
+      d: CONTORNO,
+      fill: 'var(--cor-faixa)',
+      stroke: 'currentColor',
+      'stroke-width': 1.7,
+      'stroke-linejoin': 'round'
+    }),
+    forma('path', {
+      d: TRONCO,
+      fill: 'none',
+      stroke: 'currentColor',
+      'stroke-width': 1.7,
+      'stroke-linecap': 'round'
+    })
+  );
+
+  SULCOS.forEach((d) =>
+    grupo.append(
+      forma('path', {
+        d,
+        fill: 'none',
+        stroke: 'currentColor',
+        'stroke-width': 1.15,
+        'stroke-linecap': 'round',
+        opacity: 0.75
+      })
+    )
+  );
+
+  return grupo;
+}
+
 export function montar(alvo) {
   if (!alvo) return;
 
@@ -99,18 +159,7 @@ export function montar(alvo) {
 
   svg.append(giro);
 
-  /* O centro fica fora do grupo que gira, porque é o ponto de referência. */
-  svg.append(
-    forma('circle', {
-      cx: CENTRO,
-      cy: CENTRO,
-      r: 11,
-      fill: 'var(--cor-faixa)',
-      stroke: 'currentColor',
-      'stroke-width': 1.8
-    }),
-    forma('circle', { cx: CENTRO, cy: CENTRO, r: 3.4, fill: 'currentColor' })
-  );
+  svg.append(cerebro());
 
   alvo.replaceChildren(svg);
 }
