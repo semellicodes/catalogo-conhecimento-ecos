@@ -28,27 +28,25 @@
   .abertura__desenho { grid-area: desenho; }
   .numeros { grid-area: numeros; }
 }
-.abertura__etiqueta {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.abertura__sigla {
   color: var(--cor-faixa-acento);
-  margin-bottom: var(--esp-3);
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 .abertura__titulo {
   font-size: var(--tam-xl);
   line-height: 1.05;
   letter-spacing: -0.03em;
-  max-width: 18ch;
+  max-width: 20ch;
 }
 @media (min-width: 48rem) { .abertura__titulo { font-size: var(--tam-2xl); } }
-@media (min-width: 64rem) { .abertura__titulo { font-size: var(--tam-3xl); max-width: 24ch; } }
+@media (min-width: 64rem) { .abertura__titulo { font-size: var(--tam-3xl); max-width: 20ch; } }
 .abertura__resumo {
   margin-top: var(--esp-4);
   font-size: var(--tam-base);
+  line-height: 1.6;
   color: var(--cor-faixa-suave);
-  max-width: 60ch;
+  max-width: 62ch;
 }
 @media (min-width: 64rem) { .abertura__resumo { font-size: var(--tam-md); } }
 
