@@ -336,12 +336,25 @@
   transition:
     background-color var(--dur-rapida) var(--curva),
     border-color var(--dur-rapida) var(--curva),
-    box-shadow var(--dur-rapida) var(--curva);
+    box-shadow var(--dur-media) var(--curva),
+    transform var(--dur-media) var(--curva-saida);
 }
 .card:hover {
   background: var(--cor-superficie-alta);
   color: inherit;
   box-shadow: var(--sombra-2);
+}
+/* Sobe dois pixels no ponteiro fino. No toque o hover dispara sem intenção,
+   então o deslocamento fica de fora. */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { transform: translateY(-2px); }
+}
+/* Cede ao ser pressionado, para o card responder antes de a ficha abrir. */
+.card:active { transform: translateY(0) scale(0.99); transition-duration: var(--dur-rapida); }
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card:active { transform: none; }
 }
 .card--explicito { border-top-color: var(--cor-explicito); }
 .card--tacito-cognitivo { border-top-color: var(--cor-tacito-cognitivo); }
