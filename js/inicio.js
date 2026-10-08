@@ -25,6 +25,12 @@ async function iniciar() {
     dados = await carregar();
   } catch (erro) {
     console.error(erro);
+    /* Sem isto a faixa fica com os divisores e nenhum número, e as camadas com
+       um buraco, sem nada na tela explicando por quê. */
+    const aviso = document.createElement('p');
+    aviso.className = 'numero__rotulo';
+    aviso.textContent = 'Os números não carregaram.';
+    el('#numeros').replaceChildren(aviso);
     return;
   }
 

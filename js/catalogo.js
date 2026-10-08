@@ -300,7 +300,7 @@ async function iniciar() {
     dados = await carregar();
   } catch (erro) {
     avisarFalha(
-      'Não foi possível carregar os dados do catálogo. Ao abrir as páginas localmente, rode um servidor, por exemplo python3 -m http.server.',
+      'Não foi possível carregar os dados do catálogo. Confira se o servidor está no ar e se a página foi aberta pelo endereço dele, por exemplo o IP da máquina quando o acesso vem do celular.',
       erro
     );
     return;

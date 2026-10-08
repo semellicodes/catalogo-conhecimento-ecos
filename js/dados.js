@@ -14,8 +14,14 @@ const ARQUIVOS = {
 
 let promessa = null;
 
+/* Um pedido que nunca responde é pior que um que falha, porque a página fica
+   presa em Carregando sem dizer nada. É o que acontece ao abrir o site por um
+   endereço onde o servidor não está, como localhost no celular. Com prazo, a
+   espera vira erro, e erro já tem aviso na tela. */
+const PRAZO = 10000;
+
 async function lerJson(caminho) {
-  const resposta = await fetch(caminho);
+  const resposta = await fetch(caminho, { signal: AbortSignal.timeout(PRAZO) });
   if (!resposta.ok) {
     throw new Error(`Não foi possível carregar ${caminho} (${resposta.status})`);
   }
