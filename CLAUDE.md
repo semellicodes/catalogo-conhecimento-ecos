@@ -99,6 +99,30 @@ nativamente pelo navegador com `type="module"`.
   `--cor-faixa`, `--cor-faixa-texto`, `--cor-faixa-suave`, `--cor-faixa-acento` e
   `--cor-faixa-linha`. O conteúdo interno respeita a `.container`
 
+## Fluxo de trabalho
+
+- Nunca commitar direto na `main`. Toda mudança começa com uma branch nova, nomeada por
+  assunto, por exemplo `ficha-compacta` ou `hero-abertura`
+- Antes de começar qualquer mudança, conferir em que branch está e avisar
+- Ao terminar, abrir um Pull Request pela `gh` CLI, com o que mudou e o que precisa ser
+  conferido, e esperar a revisão antes de juntar
+- A `main` precisa estar sempre em estado apresentável, porque é dela que o GitHub Pages
+  publica o site
+- Arquivo de experimento e de protótipo nunca vai para a `main`. Fica na branch e é apagado
+  antes do merge
+
+## Qualidade de código
+
+- Nada de CSS morto. Ao trocar um layout, as regras do layout antigo saem no mesmo commit
+- Nada de valor literal de cor, espaçamento ou tamanho fora de `css/tokens.css`. No restante
+  do CSS só variável
+- Nada de estilo inline no HTML
+- Cada módulo JS mantém uma responsabilidade só. Função que passa de umas 50 linhas se
+  quebra em funções menores com nome claro
+- Não repetir marcação entre as páginas sem necessidade. Se o mesmo bloco aparece em quatro
+  arquivos, avaliar se vale montar por JS a partir de um lugar só
+- Comentário só quando explica o porquê de uma decisão, não o que a linha faz
+
 ## Escrita
 
 - Português do Brasil
