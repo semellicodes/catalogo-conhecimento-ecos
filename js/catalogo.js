@@ -247,7 +247,8 @@ function ligarFolhaDeFiltros() {
       corpo.append(painel);
     } else {
       fechar();
-      lugarOriginal.insertBefore(painel, el('#trilha'));
+      /* Volta para antes da legenda, que é a primeira coisa da trilha. */
+      lugarOriginal.insertBefore(painel, el('#legenda'));
     }
   }
 
