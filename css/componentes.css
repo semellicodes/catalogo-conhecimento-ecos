@@ -55,26 +55,64 @@
   .marca__nome { font-size: var(--tam-xs); }
 }
 
-/* ---------- Botão de tema ---------- */
-.botao-tema {
-  display: inline-flex;
+/* ---------- Interruptor de tema ---------- */
+/* Pílula com trilho, dois ícones fixos e um deslizante que anda entre eles.
+   O estado mora no aria-pressed, que é o mesmo que o leitor de tela anuncia,
+   então não existe segunda fonte de verdade para o visual. */
+.interruptor {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: center;
-  width: var(--alvo-toque);
+  width: calc(var(--alvo-toque) * 1.7);
   height: var(--alvo-toque);
-  padding: 0;
-  background: transparent;
-  border: 1px solid transparent;
+  padding: var(--esp-1);
+  background: var(--cor-superficie);
+  border: var(--borda);
   border-radius: var(--raio-pilula);
-  color: var(--cor-texto-suave);
   cursor: pointer;
-  transition:
-    color var(--dur-rapida) var(--curva),
-    border-color var(--dur-rapida) var(--curva),
-    background-color var(--dur-rapida) var(--curva);
+  transition: border-color var(--dur-rapida) var(--curva);
 }
-.botao-tema:hover { color: var(--cor-acento); border-color: var(--cor-linha); background: var(--cor-superficie-alta); }
-.botao-tema svg { display: block; width: 20px; height: 20px; }
+.interruptor:hover { border-color: var(--cor-acento-linha); }
+.interruptor:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+/* O deslizante tem metade da largura útil e anda essa mesma metade. */
+.interruptor__deslizante {
+  position: absolute;
+  top: var(--esp-1);
+  left: var(--esp-1);
+  width: calc(50% - var(--esp-1));
+  height: calc(100% - var(--esp-1) * 2);
+  background: var(--cor-superficie-alta);
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  transition: transform var(--dur-media) var(--curva-saida);
+}
+/* Pressionado é o tema claro, que é o sol, à esquerda. Solto é a lua. */
+.interruptor[aria-pressed="false"] .interruptor__deslizante { transform: translateX(100%); }
+
+.interruptor__icone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: var(--cor-texto-fraco);
+  transition: color var(--dur-rapida) var(--curva);
+}
+/* Cada ícone pelo nome, não pela posição, senão o deslizante, que também é um
+   span e vem antes, rouba o primeiro lugar. */
+.interruptor[aria-pressed="true"] .interruptor__icone--sol,
+.interruptor[aria-pressed="false"] .interruptor__icone--lua {
+  color: var(--cor-acento);
+}
+.interruptor__icone svg { display: block; width: 1.125rem; height: 1.125rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .interruptor__deslizante { transition: none; }
+}
+
 .navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
 .navegacao a {
   display: flex;
@@ -87,8 +125,9 @@
   border-bottom: 2px solid transparent;
   transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
-/* Com cinco itens, o celular precisa de menos folga lateral para caber numa linha */
-@media (max-width: 29.99rem) {
+/* Cinco itens mais o interruptor de tema só cabem numa linha até certa largura.
+   Abaixo dela a navegação se aperta, em vez de quebrar e dobrar o cabeçalho. */
+@media (max-width: 63.99rem) {
   .navegacao { gap: 0; }
   .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
 }
@@ -441,7 +480,7 @@
   margin-bottom: var(--esp-3);
 }
 .ficha__descricao {
-  font-size: var(--tam-md);
+  font-size: var(--tam-base);
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
@@ -455,7 +494,7 @@
 .painel + .painel { margin-top: var(--esp-4); }
 .atributo + .atributo { margin-top: var(--esp-4); padding-top: var(--esp-4); border-top: 1px solid var(--cor-linha-suave); }
 .atributo__nome { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.atributo__valor { font-size: var(--tam-md); font-weight: 600; margin-block: var(--esp-1); }
+.atributo__valor { font-size: var(--tam-base); font-weight: 600; margin-block: var(--esp-1); }
 .atributo__valor--explicito { color: var(--cor-explicito); }
 .atributo__valor--tacito-cognitivo { color: var(--cor-tacito-cognitivo); }
 .atributo__valor--tacito-tecnico { color: var(--cor-tacito-tecnico); }

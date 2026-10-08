@@ -34,13 +34,12 @@
   letter-spacing: var(--entre-letras-sigla);
 }
 .abertura__titulo {
-  font-size: var(--tam-xl);
+  font-size: var(--tam-titulo);
   line-height: 1.05;
   letter-spacing: var(--entre-letras-faixa);
   max-width: 20ch;
 }
-@media (min-width: 48rem) { .abertura__titulo { font-size: var(--tam-2xl); } }
-@media (min-width: 64rem) { .abertura__titulo { font-size: var(--tam-3xl); max-width: 20ch; } }
+@media (min-width: 64rem) { .abertura__titulo { max-width: 20ch; } }
 .abertura__resumo {
   margin-top: var(--esp-4);
   font-size: var(--tam-base);
@@ -48,7 +47,6 @@
   color: var(--cor-faixa-suave);
   max-width: 62ch;
 }
-@media (min-width: 64rem) { .abertura__resumo { font-size: var(--tam-md); } }
 
 /* O desenho é decorativo. No celular ele sai de cena para não roubar altura,
    e é por isso que o arrasto não precisa existir lá. */
@@ -123,6 +121,7 @@
 .numeros {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: auto;
   row-gap: var(--esp-4);
   border-top: 1px solid var(--cor-faixa-linha);
 }
@@ -130,7 +129,13 @@
 @media (min-width: 48rem) {
   .numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+/* Subgrid para o rótulo de um número começar na mesma linha do rótulo do
+   vizinho, mesmo quando um quebra em duas linhas e o outro não. */
 .numero {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  align-content: start;
   padding: var(--esp-2) var(--esp-4) 0;
   border-left: 1px solid var(--cor-faixa-linha);
 }
@@ -146,7 +151,6 @@
   line-height: 1.1;
   color: var(--cor-faixa-texto);
 }
-@media (min-width: 64rem) { .numero__valor { font-size: var(--tam-2xl); } }
 .numero__rotulo {
   margin-top: var(--esp-1);
   font-size: var(--tam-xs);
@@ -175,7 +179,7 @@ main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp
   box-shadow: var(--sombra-1);
 }
 .camada__n { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-acento); }
-.camada__nome { font-size: var(--tam-md); margin-block: var(--esp-2); }
+.camada__nome { font-size: var(--tam-lg); margin-block: var(--esp-2); }
 .camada__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); margin-top: var(--esp-3); }
 
@@ -393,8 +397,8 @@ main > section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp
 
 /* ---------- Páginas de texto ---------- */
 .prosa { max-width: var(--largura-texto); }
-.prosa h2 { font-size: var(--tam-lg); margin-top: var(--esp-6); margin-bottom: var(--esp-3); }
-.prosa h3 { font-size: var(--tam-md); margin-top: var(--esp-5); margin-bottom: var(--esp-2); }
+.prosa h2 { font-size: var(--tam-xl); margin-top: var(--esp-6); margin-bottom: var(--esp-3); }
+.prosa h3 { font-size: var(--tam-lg); margin-top: var(--esp-5); margin-bottom: var(--esp-2); }
 .prosa p { color: var(--cor-texto-suave); margin-bottom: var(--esp-3); }
 .lista-referencias li {
   padding-block: var(--esp-3);

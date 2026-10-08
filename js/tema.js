@@ -72,10 +72,33 @@ function iconeLua() {
   );
 }
 
-function montarBotao(botao) {
+/**
+ * O interruptor tem os dois ícones sempre à vista, o do tema que está valendo
+ * aceso e o outro apagado, e um deslizante que anda de um lado ao outro. Quem
+ * manda no visual é o aria-pressed, então não há um segundo estado para o CSS
+ * e o leitor de tela discordarem.
+ */
+function montarInterruptor(botao) {
+  const sol = document.createElement('span');
+  sol.className = 'interruptor__icone interruptor__icone--sol';
+  sol.append(iconeSol());
+
+  const lua = document.createElement('span');
+  lua.className = 'interruptor__icone interruptor__icone--lua';
+  lua.append(iconeLua());
+
+  const deslizante = document.createElement('span');
+  deslizante.className = 'interruptor__deslizante';
+  deslizante.setAttribute('aria-hidden', 'true');
+
+  botao.className = 'interruptor';
+  botao.replaceChildren(deslizante, sol, lua);
+}
+
+/** Atualiza só o que muda com o tema. Os ícones ficam onde estão. */
+function marcarEstado(botao) {
   const atual = temaAtual();
   const proximo = atual === ESCURO ? CLARO : ESCURO;
-  botao.replaceChildren(proximo === CLARO ? iconeSol() : iconeLua());
   botao.setAttribute('aria-label', `Mudar para o tema ${proximo}`);
   botao.setAttribute('title', `Mudar para o tema ${proximo}`);
   botao.setAttribute('aria-pressed', String(atual === CLARO));
@@ -87,14 +110,15 @@ function alternar(botao) {
   raiz.classList.add('trocando-tema');
   raiz.dataset.tema = proximo;
   gravarEscolha(proximo);
-  montarBotao(botao);
+  marcarEstado(botao);
   setTimeout(() => raiz.classList.remove('trocando-tema'), 300);
 }
 
 function iniciar() {
   const botao = document.querySelector('#botao-tema');
   if (!botao) return;
-  montarBotao(botao);
+  montarInterruptor(botao);
+  marcarEstado(botao);
   botao.addEventListener('click', () => alternar(botao));
 }
 

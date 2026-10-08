@@ -57,14 +57,16 @@
   --entre-letras-sigla: 0.01em;
   --entre-letras-rotulo: 0.08em;
   --entre-letras-tabela: 0.06em;
-  --tam-xs: 0.75rem;
-  --tam-sm: 0.9375rem;
-  --tam-base: 1rem;
-  --tam-md: 1.125rem;
-  --tam-lg: 1.25rem;
-  --tam-xl: 2rem;
-  --tam-2xl: 2.5rem;
-  --tam-3xl: 3.25rem;
+  /* Escala fluida. Cada tamanho vai do valor de celular ao de desktop entre
+     390px e 1440px de largura, sem breakpoint escrito à mão. O termo em rem no
+     meio do clamp é o que mantém o texto crescendo junto com o tamanho de fonte
+     escolhido no navegador, que um vw sozinho ignoraria. */
+  --tam-xs: clamp(0.8125rem, 0.789rem + 0.095vw, 0.875rem);
+  --tam-sm: clamp(0.9375rem, 0.914rem + 0.095vw, 1rem);
+  --tam-base: clamp(1rem, 0.977rem + 0.095vw, 1.0625rem);
+  --tam-lg: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
+  --tam-xl: clamp(1.375rem, 1.143rem + 0.952vw, 2rem);
+  --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
 
   /* Espaço */
   --esp-1: 0.25rem;
