@@ -279,21 +279,44 @@ function ligarDialogo() {
   });
 }
 
+/**
+ * Qualquer falha na partida vira aviso na tela. Sem isto a página fica parada
+ * em Carregando, sem trilha e sem dizer o que houve, que foi o que aconteceu
+ * quando o navegador serviu uma versão antiga de um módulo junto com o HTML novo.
+ */
+function avisarFalha(mensagem, erro) {
+  console.error(erro);
+  const aviso = el('#trilha-vazia');
+  if (aviso) {
+    aviso.textContent = mensagem;
+    aviso.hidden = false;
+  }
+  const contagem = el('#contagem');
+  if (contagem) contagem.textContent = 'não foi possível montar o catálogo';
+}
+
 async function iniciar() {
   try {
     dados = await carregar();
   } catch (erro) {
-    el('#trilha').replaceWith(
-      Object.assign(document.createElement('p'), {
-        className: 'vazio',
-        textContent:
-          'Não foi possível carregar os dados do catálogo. Ao abrir as páginas localmente, rode um servidor, por exemplo python3 -m http.server.'
-      })
+    avisarFalha(
+      'Não foi possível carregar os dados do catálogo. Ao abrir as páginas localmente, rode um servidor, por exemplo python3 -m http.server.',
+      erro
     );
-    console.error(erro);
     return;
   }
 
+  try {
+    montarCatalogo();
+  } catch (erro) {
+    avisarFalha(
+      'O catálogo não pôde ser montado. Se a página acabou de ser atualizada, esvazie o cache do navegador e recarregue. O console tem o erro.',
+      erro
+    );
+  }
+}
+
+function montarCatalogo() {
   const parametros = new URLSearchParams(location.search);
   estado = filtros.lerDaUrl(parametros);
 
