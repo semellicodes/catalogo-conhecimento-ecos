@@ -131,12 +131,78 @@
   .navegacao { gap: 0; }
   .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
 }
+/* Com seis itens o celular não comporta todos numa linha nem apertando. Em vez
+   de quebrar em duas e dobrar a altura do cabeçalho, a navegação rola de lado. */
+@media (max-width: 47.99rem) {
+  .navegacao {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-padding-inline: var(--esp-2);
+  }
+  .navegacao::-webkit-scrollbar { display: none; }
+  .navegacao a { flex: none; }
+}
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
   color: var(--cor-texto);
   font-weight: 500;
   border-bottom-color: var(--cor-acento);
 }
+
+/* ---------- Contato ---------- */
+/* Duas colunas no celular e no tablet, quatro no desktop. */
+.contato { border-top: var(--borda); padding-block: var(--esp-7); }
+.contato__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-5) var(--esp-4);
+}
+@media (min-width: 64rem) {
+  .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.pessoa { display: grid; justify-items: start; gap: var(--esp-1); }
+
+/* As iniciais ficam atrás da foto. Se o arquivo não existir, a imagem com alt
+   vazio não desenha nada e elas aparecem, sem buraco e sem salto de layout. */
+.pessoa__retrato {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--retrato);
+  height: var(--retrato);
+  margin-bottom: var(--esp-2);
+  background: var(--cor-superficie-alta);
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  overflow: hidden;
+}
+.pessoa__iniciais {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
+  letter-spacing: var(--entre-letras-rotulo);
+  color: var(--cor-texto-suave);
+}
+.pessoa__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pessoa__nome { font-size: var(--tam-sm); font-weight: 500; }
+.pessoa__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-acento);
+  overflow-wrap: anywhere;
+  transition: color var(--dur-rapida) var(--curva);
+}
+.pessoa__email:hover { color: var(--cor-acento-forte); }
 
 /* ---------- Rodapé ---------- */
 .rodape {
