@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo da ficha · KM4SECO</title>
+<meta name="robots" content="noindex">
+<script>
+  try {
+    var tema = localStorage.getItem('tema');
+    if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
+  } catch (erro) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+<link rel="stylesheet" href="css/prototipo.css">
+</head>
+<body>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html">
+      <span class="marca__nome">Protótipo da <strong>ficha</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html#catalogo">Voltar ao catálogo</a>
+    </nav>
+    <button class="botao-tema" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+  </div>
+</header>
+
+<main class="container prototipo">
+  <h1 class="prototipo__titulo">Três versões da ficha</h1>
+  <p class="prototipo__texto">
+    As três lêem os mesmos dados e mostram o mesmo conhecimento. Troque de conhecimento pelos
+    botões para ver a transição, e compare a altura de rolagem de cada uma.
+  </p>
+
+  <div class="prototipo__controles">
+    <div class="prototipo__grupo">
+      <label class="prototipo__rotulo" for="escolha-conhecimento">Conhecimento</label>
+      <select class="campo-busca prototipo__selecao" id="escolha-conhecimento"></select>
+    </div>
+    <div class="prototipo__grupo">
+      <span class="prototipo__rotulo">Comparação</span>
+      <div class="prototipo__alternador" role="group" aria-label="Modo de comparação">
+        <button class="chip" type="button" data-modo="sequencia" aria-pressed="true">Em sequência</button>
+        <button class="chip" type="button" data-modo="lado" aria-pressed="false">Lado a lado</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="prototipo__bloco" aria-labelledby="titulo-cards">
+    <h2 class="prototipo__subtitulo" id="titulo-cards">Card da listagem</h2>
+    <p class="prototipo__texto">Passe o mouse e pressione. A mesma transição vale para as três versões.</p>
+    <div class="lista-conhecimentos" id="amostra-cards"></div>
+  </section>
+
+  <div class="prototipo__versoes" id="versoes"></div>
+</main>
+
+<script type="module" src="js/tema.js"></script>
+<script type="module" src="js/prototipo.js"></script>
+</body>
+</html>
