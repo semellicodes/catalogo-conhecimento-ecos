@@ -44,8 +44,8 @@ function montarCartao(conhecimento, aoAbrir) {
   return item;
 }
 
-/** Uma estação da trilha. Só é montada quando sobrou conhecimento no nível. */
-function montarEstacao(nivel, conhecimentos, aoAbrir) {
+/** Uma estação da trilha. Só é montada quando sobrou conhecimento no grupo. */
+function montarEstacao(grupo, conhecimentos, aoAbrir) {
   const estacao = criar('li', 'estacao');
 
   const marca = criar('div', 'estacao__marca');
@@ -55,10 +55,10 @@ function montarEstacao(nivel, conhecimentos, aoAbrir) {
   const corpo = criar('div', 'estacao__corpo');
   const titulo = criar('h3', 'estacao__titulo');
   titulo.append(
-    criar('span', null, nivel.valor),
+    criar('span', null, grupo.valor),
     criar('span', 'estacao__contagem', String(conhecimentos.length))
   );
-  corpo.append(titulo, criar('p', 'estacao__descricao', nivel.descricao));
+  corpo.append(titulo, criar('p', 'estacao__descricao', grupo.descricao));
 
   const grade = criar('ul', 'cartoes');
   conhecimentos.forEach((c) => grade.append(montarCartao(c, aoAbrir)));

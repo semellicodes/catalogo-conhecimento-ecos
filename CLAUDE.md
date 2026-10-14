@@ -144,7 +144,9 @@ nativamente pelo navegador com `type="module"`.
   informação. No tipo de ECOS pode acender mais de uma, nos outros três acende exatamente uma
 - A caixa leva ícone e nome do valor, nada mais. O ícone é visto quando vale e círculo vazio quando
   não, para o estado não depender só da cor
-- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda do rótulo,
+- Cada bloco da ficha é um cartão com título em acento e um botão de ajuda no canto. A ajuda é uma
+  por cartão, não uma por atributo, e reúne a pergunta e a referência de cada atributo do bloco
+- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda do cartão,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
   o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
