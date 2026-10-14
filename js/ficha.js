@@ -82,12 +82,20 @@ document.addEventListener('click', (evento) => {
  * sempre à vista, as que valem acesas e as outras apagadas, porque saber que um
  * tipo não foi observado é informação, e esconder a opção apagaria isso.
  *
- * Lê conhecimentos[].tipoEcos, que está vazio nos vinte. Enquanto estiver, as
- * três aparecem apagadas e o bloco diz que a classificação está pendente.
+ * O valor é somado dos estudos que identificaram o conhecimento, sem repetir,
+ * porque é o estudo que diz qual ecossistema observou. Um estudo sozinho pode
+ * cobrir mais de um, como o E09, que compara um aberto, um fechando e um
+ * fechado. Enquanto os estudos não tiverem o campo, as três ficam apagadas.
  */
+function tiposObservados(conhecimento) {
+  const soma = new Set();
+  conhecimento.estudosResolvidos.forEach((e) => (e.tipoEcos || []).forEach((t) => soma.add(t)));
+  return soma;
+}
+
 function tiposDeEcos(dados, conhecimento) {
   const definicao = dados.classificacoes.tipoEcos;
-  const observados = conhecimento.tipoEcos || [];
+  const observados = tiposObservados(conhecimento);
 
   const bloco = criar('section', 'bloco-ficha');
   bloco.append(criar('h3', 'bloco-ficha__titulo', 'Exemplos de ecossistemas em que esse conhecimento foi observado'));
@@ -95,15 +103,15 @@ function tiposDeEcos(dados, conhecimento) {
   const opcoes = criar('ul', 'tipos-ecos');
   definicao.valores.forEach((v) => {
     const item = criar('li', 'tipo-ecos');
-    if (observados.includes(v.valor)) item.setAttribute('data-aceso', '');
+    if (observados.has(v.valor)) item.setAttribute('data-aceso', '');
     item.append(criar('span', 'tipo-ecos__nome', v.valor));
     if (v.descricao) item.append(criar('span', 'tipo-ecos__texto', v.descricao));
     opcoes.append(item);
   });
   bloco.append(opcoes);
 
-  if (!observados.length) {
-    bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
+  if (!observados.size) {
+    bloco.append(criar('p', 'bloco-ficha__pendente', 'Nenhum dos estudos deste conhecimento teve o tipo de ecossistema registrado.'));
   }
   return bloco;
 }
@@ -143,25 +151,24 @@ function classificacao(dados, conhecimento) {
  * quiser saber. Trecho literal existe em poucos pares, então só entra quando
  * existe, sem deixar lugar vazio nos demais.
  */
-function linhaRelacao({ id, texto, estudos, selo }, evidencia) {
+function linhaRelacao({ id, texto, estudos }, evidencia) {
   const item = criar('li');
-  const caixa = criar('details', 'solucao');
+  const caixa = criar('details', 'relacao');
 
-  const linha = criar('summary', 'solucao__linha');
-  linha.append(criar('span', 'codigo-id', id), criar('span', 'solucao__nome', texto));
-  const meta = criar('span', 'solucao__meta');
-  meta.append(criar('span', 'solucao__estudos', estudos.join(', ')));
-  if (selo) meta.append(criar('span', 'marca-avaliada', selo));
+  const linha = criar('summary', 'relacao__linha');
+  linha.append(criar('span', 'codigo-id', id), criar('span', 'relacao__nome', texto));
+  const meta = criar('span', 'relacao__meta');
+  meta.append(criar('span', 'relacao__estudos', estudos.join(', ')));
   linha.append(meta);
   caixa.append(linha);
 
   if (evidencia) {
-    const porque = criar('div', 'solucao__porque');
+    const porque = criar('div', 'relacao__porque');
     if (evidencia.estudo) {
-      porque.append(criar('p', 'solucao__confirmacao', `Confirmado em ${evidencia.estudo}`));
+      porque.append(criar('p', 'relacao__confirmacao', `Confirmado em ${evidencia.estudo}`));
     }
-    if (evidencia.motivo) porque.append(criar('p', 'solucao__motivo', evidencia.motivo));
-    if (evidencia.trecho) porque.append(criar('blockquote', 'solucao__trecho', evidencia.trecho));
+    if (evidencia.motivo) porque.append(criar('p', 'relacao__motivo', evidencia.motivo));
+    if (evidencia.trecho) porque.append(criar('blockquote', 'relacao__trecho', evidencia.trecho));
     caixa.append(porque);
   }
 
@@ -169,54 +176,20 @@ function linhaRelacao({ id, texto, estudos, selo }, evidencia) {
   return item;
 }
 
-const linhaSolucao = (s, evidencia) =>
-  linhaRelacao({ id: s.id, texto: s.nome, estudos: s.estudos, selo: s.avaliada ? 'avaliada' : '' }, evidencia);
-
 const linhaDesafio = (d, evidencia) =>
   linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos }, evidencia);
 
 /** Os desafios confirmados deste conhecimento, na mesma forma das soluções. */
 function desafios(conhecimento) {
   const evidencia = conhecimento.evidencia || {};
-  const bloco = criar('div', 'grupos');
+  const bloco = criar('div', 'relacoes-bloco');
   if (!conhecimento.desafiosResolvidos.length) {
     bloco.append(criar('p', 'vazio', 'Nenhum desafio foi confirmado para este conhecimento.'));
     return bloco;
   }
-  const lista = criar('ul', 'solucoes');
+  const lista = criar('ul', 'relacoes');
   conhecimento.desafiosResolvidos.forEach((d) => lista.append(linhaDesafio(d, evidencia[d.id])));
   bloco.append(lista);
-  return bloco;
-}
-
-/** As soluções agrupadas por tipo, na ordem em que os tipos estão em meta. */
-function solucoes(dados, conhecimento) {
-  const bloco = criar('div', 'grupos');
-  const evidencia = conhecimento.evidencia || {};
-  const porTipo = new Map();
-  conhecimento.solucoesResolvidas.forEach((s) => {
-    if (!porTipo.has(s.tipo)) porTipo.set(s.tipo, []);
-    porTipo.get(s.tipo).push(s);
-  });
-
-  if (!porTipo.size) {
-    bloco.append(
-      criar('p', 'vazio', 'Nenhuma solução foi extraída dos estudos que identificaram este conhecimento.')
-    );
-    return bloco;
-  }
-
-  Object.keys(dados.meta.tiposSolucao)
-    .filter((tipo) => porTipo.has(tipo))
-    .forEach((tipo) => {
-      const grupo = criar('section', 'grupo');
-      const titulo = criar('h4', 'grupo__titulo');
-      titulo.append(criar('span', null, tipo), criar('span', 'grupo__contagem', String(porTipo.get(tipo).length)));
-      const lista = criar('ul', 'solucoes');
-      porTipo.get(tipo).forEach((s) => lista.append(linhaSolucao(s, evidencia[s.id])));
-      grupo.append(titulo, lista);
-      bloco.append(grupo);
-    });
   return bloco;
 }
 
@@ -325,7 +298,6 @@ export function renderizar(dados, conhecimento) {
   );
 
   const quantos = {
-    solucoes: conhecimento.solucoesResolvidas.length,
     desafios: conhecimento.desafiosResolvidos.length,
     estudos: conhecimento.estudosResolvidos.length,
     trechos: conhecimento.trechos.filter(Boolean).length
@@ -336,7 +308,6 @@ export function renderizar(dados, conhecimento) {
     tiposDeEcos(dados, conhecimento),
     classificacao(dados, conhecimento),
     montarAbas([
-      { rotulo: 'Soluções', contagem: quantos.solucoes, conteudo: () => solucoes(dados, conhecimento) },
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
       { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },
       { rotulo: 'Trechos', contagem: quantos.trechos, conteudo: () => trechos(conhecimento) }

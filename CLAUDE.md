@@ -24,7 +24,7 @@ identidade visual muda sem tocar no conteúdo.
 | `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, os identificadores de soluções, desafios e estudos, e a evidência de cada relação |
 | `dados/solucoes.json` | 36 soluções (S01 a S36), com tipo segundo Shaw (2003), avaliação quando reportada e os conhecimentos que apoiam |
 | `dados/desafios.json` | 17 desafios (D01 a D17), com o texto, os estudos e os conhecimentos que os citam |
-| `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e tipo de ECOS |
+| `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e a lista de tipos de ECOS que o estudo observou |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
 | `dados/referencias.json` | Citação completa de cada referência, identificada por chave |
 | `dados/meta.json` | Título, fonte, camadas da estrutura e tipos de solução |
@@ -32,10 +32,14 @@ identidade visual muda sem tocar no conteúdo.
 A relação entre conhecimento e solução é de muitos para muitos e está registrada nos dois sentidos,
 em `conhecimentos[].solucoes` e em `solucoes[].conhecimentos`. Ao mudar uma ponta, mudar a outra.
 
-`conhecimentos[].evidencia` guarda, por identificador de solução ou de desafio, o estudo que sustenta
-aquela relação, o motivo e o trecho literal do artigo. O trecho existe em poucos pares, então o campo
-pode vir vazio e a ficha só mostra o que existe. Esses textos são literais do artigo e da planilha de
+`conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
+relação, o motivo e o trecho literal do artigo. O trecho existe em poucos pares, então o campo pode
+vir vazio e a ficha só mostra o que existe. Esses textos são literais do artigo e da planilha de
 conferência, nunca reescritos.
+
+A evidência das 56 relações de solução foi retirada daqui e guardada em
+`origem/evidencia-solucoes.json`, quando a solução saiu da ficha. `conhecimentos[].solucoes`
+continua, porque é a outra ponta da relação que o Explorar usa.
 
 `origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
 
@@ -45,9 +49,14 @@ conferência, nunca reescritos.
 os estudos. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
 correspondente aparece com o aviso de atributo não preenchido.
 
-`tipoEcos` manda em dois lugares. Na ficha, as três opções aparecem sempre, as observadas acesas e as
-demais apagadas, porque saber que um tipo não foi observado também é informação. Na trilha, ele é o
-que agrupa as estações, e enquanto estiver vazio os vinte caem numa estação única de pendentes.
+O tipo de ECOS aparece em dois lugares, com duas origens diferentes, e isso é proposital por ora.
+
+Na ficha, o bloco soma os tipos dos estudos que identificaram o conhecimento, sem repetir, porque é
+o estudo que diz qual ecossistema foi observado, e um estudo sozinho pode cobrir mais de um, como o
+E09. As três opções aparecem sempre, as observadas acesas e as demais apagadas.
+
+Na trilha, quem agrupa é `conhecimentos[].tipoEcos`, preenchido à mão. Enquanto estiver vazio, os
+vinte caem numa estação única de pendentes.
 
 `justificativaClassificacao` está vazio nos vinte. Quando tiver texto, a ficha mostra o item
 "Por que essa classificação?" dentro do bloco de classificação. Vazio, o item não aparece.
@@ -124,6 +133,9 @@ nativamente pelo navegador com `type="module"`.
 - A trilha do catálogo agrupa por tipo de ECOS, e dentro de cada estação a ordem é por natureza,
   tácitos primeiro e explícitos depois, e por identificador dentro de cada natureza. A mesma ordem
   vale para o anterior e o próximo da ficha
+- A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
+  o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
+  `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1

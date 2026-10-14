@@ -68,6 +68,12 @@ function montarSolucoes(dados) {
   );
   el('#resumo-solucoes').textContent =
     `As ${dados.solucoes.length} soluções identificadas na revisão rápida, das quais ${ligadas} apoiam pelo menos um conhecimento.`;
+
+  /* O aviso de que o catálogo não prescreve solução. Enquanto o texto não
+     existir em meta.json, a linha não aparece, em vez de um espaço vazio. */
+  const aviso = el('#aviso-solucoes');
+  aviso.textContent = dados.meta.avisoSolucoes || '';
+  aviso.hidden = !dados.meta.avisoSolucoes;
 }
 
 function montarDesafios(dados) {

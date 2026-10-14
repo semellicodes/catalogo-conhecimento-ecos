@@ -210,6 +210,17 @@
   .ligado { min-height: var(--alvo-toque); padding-inline: var(--esp-3); }
 }
 
+/* Aviso acima de uma lista, para o que a lista é e o que ela não é. */
+.aviso-linha {
+  margin-top: calc(var(--esp-5) * -1 + var(--esp-2));
+  margin-bottom: var(--esp-5);
+  padding-left: var(--esp-3);
+  border-left: 2px solid var(--cor-linha);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  max-width: var(--largura-texto);
+}
+
 /* ---------- Contato ---------- */
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
    então ocupa o mínimo entre o fim da página e o crédito. */
@@ -797,34 +808,16 @@
   .abas__indicador { transition: none; }
 }
 
-/* ---------- Soluções, agrupadas por tipo ---------- */
-.grupos { display: grid; gap: var(--esp-5); }
-.grupo__titulo {
-  display: flex;
-  align-items: center;
-  gap: var(--esp-2);
-  margin-bottom: var(--esp-2);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  letter-spacing: var(--entre-letras-tabela);
-  text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-}
-.grupo__contagem {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-linha-suave);
-  border-radius: var(--raio-pilula);
-  padding-inline: var(--esp-2);
-}
-.solucoes { list-style: none; display: grid; }
-.solucao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }
-.solucoes li:last-child .solucao { border-bottom: 0; }
+/* ---------- Relações do conhecimento ---------- */
+/* Hoje só os desafios usam este bloco. A solução saiu da ficha, porque responde
+   a outra questão de pesquisa e dentro da ficha parecia recomendação. */
+.relacoes-bloco { display: grid; gap: var(--esp-5); }
+.relacoes { list-style: none; display: grid; }
+.relacao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }
+.relacoes li:last-child .relacao { border-bottom: 0; }
 
-/* A linha é a mesma de antes, agora servindo de resumo do que abre abaixo. */
-.solucao__linha {
+/* A linha é o resumo do que abre abaixo. */
+.relacao__linha {
   display: grid;
   grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
   gap: var(--esp-3);
@@ -833,43 +826,34 @@
   list-style: none;
   cursor: pointer;
 }
-.solucao__linha::-webkit-details-marker { display: none; }
+.relacao__linha::-webkit-details-marker { display: none; }
 @media (hover: hover) and (pointer: fine) {
-  .solucao__linha:hover .solucao__nome { color: var(--cor-acento); }
+  .relacao__linha:hover .relacao__nome { color: var(--cor-acento); }
 }
-.solucao__nome { transition: color var(--dur-rapida) var(--curva); }
+.relacao__nome { transition: color var(--dur-rapida) var(--curva); }
+.relacao__linha .relacao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.relacao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
+.relacao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* O porquê da relação. Cada parte só entra quando existe, então nada de lugar
    vazio nos pares que não têm trecho literal, que são a maioria. */
-.solucao__porque {
+.relacao__porque {
   display: grid;
   gap: var(--esp-2);
   padding: 0 0 var(--esp-3) var(--coluna-id);
 }
-.solucao__confirmacao {
+.relacao__confirmacao {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   color: var(--cor-acento);
 }
-.solucao__motivo { color: var(--cor-texto-suave); }
-.solucao__trecho {
+.relacao__motivo { color: var(--cor-texto-suave); }
+.relacao__trecho {
   margin: 0;
   padding-left: var(--esp-3);
   border-left: 2px solid var(--cor-linha);
   color: var(--cor-texto-suave);
   font-style: italic;
-}
-.solucao__linha .solucao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.solucao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
-.solucao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.marca-avaliada {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-acento);
-  background: var(--cor-acento-fundo);
-  border: 1px solid var(--cor-acento-linha);
-  border-radius: var(--raio-pilula);
-  padding-inline: var(--esp-2);
 }
 
 /* ---------- Estudos e trechos ---------- */
@@ -908,9 +892,9 @@
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
 @container (max-width: 34rem) {
-  .solucao__linha { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
-  .solucao__linha .solucao__nome { white-space: normal; }
-  .solucao__meta { grid-column: 2; }
+  .relacao__linha { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
+  .relacao__linha .relacao__nome { white-space: normal; }
+  .relacao__meta { grid-column: 2; }
 }
 
 /* ---------- Tabela simples ---------- */

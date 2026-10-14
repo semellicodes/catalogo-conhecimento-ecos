@@ -1,0 +1,320 @@
+{
+  "C01": {
+    "S08": {
+      "estudo": "E08",
+      "motivo": "O Collab-RS recomenda especialistas a partir de repositórios semânticos, e o trecho do conhecimento no E08 diz que reconhecer candidatos nas mesmas tecnologias depende de conhecer as dependências",
+      "trecho": ""
+    },
+    "S21": {
+      "estudo": "E03",
+      "motivo": "A referência cruzada liga issues e pull requests de projetos diferentes, que é a própria dependência entre projetos do trecho",
+      "trecho": ""
+    },
+    "S31": {
+      "estudo": "E08",
+      "motivo": "A ontologia modela elementos e relações do ECOS e sustenta o Collab-RS no mesmo estudo",
+      "trecho": ""
+    }
+  },
+  "C02": {
+    "S01": {
+      "estudo": "E06",
+      "motivo": "O fórum é onde o desenvolvedor externo busca conhecimento sobre a plataforma",
+      "trecho": ""
+    },
+    "S05": {
+      "estudo": "E06",
+      "motivo": "O portal reúne a documentação técnica dos produtos e é consultado pelo desenvolvedor externo",
+      "trecho": ""
+    },
+    "S16": {
+      "estudo": "E07, E09",
+      "motivo": "No E07 são seminários de capacitação técnica e no E09 materiais que apresentam a infraestrutura da plataforma",
+      "trecho": ""
+    },
+    "S19": {
+      "estudo": "E06, E09",
+      "motivo": "O artigo diz que os complementadores compartilham boas práticas sobre funcionalidades da plataforma e desenvolvimento técnico nesses eventos",
+      "trecho": "While some complementors share best practices or insights regarding platform features or technical development, thus contributing to active knowledge exchange, others benefit from these shared knowledge pools afterward"
+    },
+    "S22": {
+      "estudo": "E06",
+      "motivo": "Trata de como o recurso de conhecimento da plataforma chega ao desenvolvedor externo",
+      "trecho": ""
+    },
+    "S25": {
+      "estudo": "E09",
+      "motivo": "O acesso antecipado dá a conhecer o desenvolvimento funcional e estratégico da plataforma",
+      "trecho": ""
+    },
+    "S30": {
+      "estudo": "E06",
+      "motivo": "O modelo descreve como o desenvolvedor externo busca e avalia o conhecimento da plataforma",
+      "trecho": ""
+    }
+  },
+  "C03": {
+    "S01": {
+      "estudo": "E06, E12",
+      "motivo": "O fórum responde dúvidas de implementação dos desenvolvedores externos",
+      "trecho": ""
+    },
+    "S05": {
+      "estudo": "E06",
+      "motivo": "O trecho diz literalmente que o portal é usado para consultar especificações técnicas",
+      "trecho": ""
+    },
+    "S17": {
+      "estudo": "E12",
+      "motivo": "O feedback da comunidade é usado para ajustar a documentação técnica",
+      "trecho": ""
+    },
+    "S22": {
+      "estudo": "E06",
+      "motivo": "Trata da adequação do recurso de conhecimento à finalidade de uso do desenvolvedor",
+      "trecho": ""
+    },
+    "S30": {
+      "estudo": "E06",
+      "motivo": "O modelo cobre a busca e a avaliação da especificação pelo desenvolvedor",
+      "trecho": ""
+    },
+    "S34": {
+      "estudo": "E12",
+      "motivo": "A modelagem de tópicos identifica os assuntos técnicos discutidos na comunidade",
+      "trecho": ""
+    }
+  },
+  "C04": {
+    "S06": {
+      "estudo": "E14",
+      "motivo": "O repositório armazena casos de decisão encerrados e deriva conhecimento genérico deles",
+      "trecho": ""
+    },
+    "S07": {
+      "estudo": "E16",
+      "motivo": "O repositório guarda padrões, táticas e atributos de qualidade usados nas decisões",
+      "trecho": ""
+    },
+    "S09": {
+      "estudo": "E14",
+      "motivo": "O COACH é o sistema de apoio à decisão que consome esses casos",
+      "trecho": ""
+    },
+    "S10": {
+      "estudo": "E16",
+      "motivo": "O Popup é o que insere a decisão no repositório",
+      "trecho": ""
+    },
+    "S11": {
+      "estudo": "E16",
+      "motivo": "O Facets é o que recupera a decisão registrada",
+      "trecho": ""
+    },
+    "S12": {
+      "estudo": "E16",
+      "motivo": "O Spider desenha a partir do NFR Repo e mostra as tuplas de decisão armazenadas, que é o conhecimento de decisão anterior",
+      "trecho": "The Spider tool draws upon the NFR Repo to visualize all possible decision tuples"
+    },
+    "S13": {
+      "estudo": "E16",
+      "motivo": "O Miner extrai decisões de projeto reutilizáveis e as devolve ao repositório",
+      "trecho": ""
+    },
+    "S17": {
+      "estudo": "E16",
+      "motivo": "O voto dos arquitetos experientes é o que refina os modelos de decisão guardados para reúso",
+      "trecho": "Users of the tool set are encouraged to vote existing decision tuples up or down, thus creating the premise for more elaborate decision models based on the input of experienced software architects"
+    },
+    "S32": {
+      "estudo": "E14",
+      "motivo": "A taxonomia GRADE etiqueta os itens do repositório de casos de decisão",
+      "trecho": ""
+    },
+    "S33": {
+      "estudo": "E16",
+      "motivo": "É o próprio modelo reutilizável de decisão arquitetural",
+      "trecho": ""
+    },
+    "S35": {
+      "estudo": "E14",
+      "motivo": "O raciocínio por analogia recomenda a partir de casos anteriores, inclusive de outras organizações",
+      "trecho": ""
+    }
+  },
+  "C05": {
+    "S18": {
+      "estudo": "E05",
+      "motivo": "O catalisador independente e as reuniões informativas atuam sobre a dinâmica entre as organizações",
+      "trecho": ""
+    },
+    "S29": {
+      "estudo": "E05",
+      "motivo": "É o próprio mecanismo de governança híbrida do ecossistema",
+      "trecho": ""
+    }
+  },
+  "C06": {
+    "S20": {
+      "estudo": "E07",
+      "motivo": "O trecho diz que as diretrizes deixam claro o que é exigido para a contribuição ser aceita",
+      "trecho": ""
+    }
+  },
+  "C07": {
+    "S16": {
+      "estudo": "E09",
+      "motivo": "Os materiais instrucionais do dono da plataforma comunicam o que é exigido do complementador",
+      "trecho": ""
+    },
+    "S25": {
+      "estudo": "E09",
+      "motivo": "O acesso antecipado permite ao complementador se preparar para as exigências que vêm",
+      "trecho": ""
+    }
+  },
+  "C08": {
+    "S26": {
+      "estudo": "E11",
+      "motivo": "O trecho do conhecimento é parte do próprio material de treinamento do programa de onboarding",
+      "trecho": ""
+    }
+  },
+  "C09": {
+    "S09": {
+      "estudo": "E14",
+      "motivo": "O COACH operacionaliza os métodos de decisão em módulos de software",
+      "trecho": ""
+    },
+    "S35": {
+      "estudo": "E14",
+      "motivo": "O raciocínio por analogia é o próprio procedimento de decisão descrito",
+      "trecho": ""
+    }
+  },
+  "C11": {
+    "S24": {
+      "estudo": "E09",
+      "motivo": "O trecho diz literalmente que o dono compartilha dados de uso, necessidades de mercado e lacunas",
+      "trecho": ""
+    }
+  },
+  "C12": {
+    "S08": {
+      "estudo": "E08",
+      "motivo": "O Collab-RS recomenda colaboradores justamente por conhecimento e expertise",
+      "trecho": ""
+    },
+    "S14": {
+      "estudo": "E17",
+      "motivo": "O ShareXP existe para compartilhar a expertise dos membros, e a composição é o jeito de mostrar quem sabe o quê",
+      "trecho": "We then offer ShareXP, an Eclipse feature that allows members of a group to share their expertise, this expertise being embodied in the “compositions” each of them has built."
+    },
+    "S18": {
+      "estudo": "E03",
+      "motivo": "No E03 o conhecimento é quem transita entre comunidades, que é o próprio agente de ligação",
+      "trecho": ""
+    },
+    "S31": {
+      "estudo": "E08",
+      "motivo": "A ontologia modela os atores do ecossistema e sustenta a inferência do Collab-RS",
+      "trecho": ""
+    }
+  },
+  "C13": {
+    "S10": {
+      "estudo": "E16",
+      "motivo": "O artigo diz que o Popup permite introduzir ideias novas no repositório em tempo real e que isso aumenta a aceitabilidade, que é o processo que concilia as visões dos atores",
+      "trecho": "the Popup tool allows on the fly introduction of new ideas into the repository as they occur. This enables an iterative and dynamic approach that enhances acceptability"
+    },
+    "S11": {
+      "estudo": "E16",
+      "motivo": "O artigo diz que o Facets permite atacar o problema por ângulos diferentes e revisar o espaço de decisão por visões distintas, o que aumenta a aceitabilidade",
+      "trecho": "the Facets tool provides a flexible way of attacking a given problem from different angles (QAs, patterns, tactics, etc.) and reviewing the architecture design space from different views"
+    },
+    "S18": {
+      "estudo": "E07",
+      "motivo": "O gestor de comunidade existe para apoiar o entendimento entre atores heterogêneos",
+      "trecho": ""
+    }
+  },
+  "C14": {
+    "S18": {
+      "estudo": "E05",
+      "motivo": "O trecho diz que o catalisador independente fomenta a confiança interorganizacional",
+      "trecho": ""
+    },
+    "S29": {
+      "estudo": "E05",
+      "motivo": "O artigo liga de forma direta a institucionalização da confiança à formação da governança híbrida",
+      "trecho": "Our investigation charts the trajectory of trust and power institutionalization and reveals how it synergistically contributes to the emergence of comprehensive hybrid governance strategies."
+    }
+  },
+  "C15": {
+    "S01": {
+      "estudo": "E12",
+      "motivo": "É na comunidade que o erro recorrente do desenvolvedor aparece",
+      "trecho": ""
+    },
+    "S17": {
+      "estudo": "E12",
+      "motivo": "O feedback é o que leva a dificuldade até o dono da plataforma",
+      "trecho": ""
+    },
+    "S34": {
+      "estudo": "E12",
+      "motivo": "A modelagem de tópicos é o que transforma a discussão em metaconhecimento sobre onde o ator trava",
+      "trecho": ""
+    }
+  },
+  "C16": {
+    "S07": {
+      "estudo": "E16",
+      "motivo": "O artigo diz que os itens de contexto do NFR Repo dão exemplos, problemas e casos de uso que aumentam o entendimento, e é no entendimento que mora o efeito da mudança de terceiro",
+      "trecho": "the inclusion of context items in the NFR Repo provides stakeholders with practical and intuitive examples, exemplary problems, explanatory diagrams and variant use cases, enhancing understandability"
+    }
+  },
+  "C17": {
+    "S14": {
+      "estudo": "E17",
+      "motivo": "O ShareXP existe para compartilhar experiência sobre composições, é literal",
+      "trecho": ""
+    }
+  },
+  "C18": {
+    "S21": {
+      "estudo": "E03",
+      "motivo": "A referência cruzada entre projetos é o que torna visível o que existe em outro projeto",
+      "trecho": ""
+    }
+  },
+  "C19": {
+    "S01": {
+      "estudo": "E06",
+      "motivo": "O fórum de perguntas e respostas é onde o desenvolvedor busca problema comparável",
+      "trecho": ""
+    },
+    "S05": {
+      "estudo": "E06",
+      "motivo": "O artigo diz literalmente que para resolver problema o desenvolvedor prefere a SAP Community e a documentação do Help Portal",
+      "trecho": "for problem-solving purposes, third-party developers favor knowledge boundary resources that are problem-specific and concise such as answers in the SAP Community or the documentation on the SAP Help Portal"
+    },
+    "S22": {
+      "estudo": "E06",
+      "motivo": "A adequação do recurso à finalidade trata de encontrar o que serve ao contexto",
+      "trecho": ""
+    },
+    "S30": {
+      "estudo": "E06",
+      "motivo": "O modelo descreve as etapas de finalidade, busca e avaliação, que é o próprio uso desse conhecimento",
+      "trecho": ""
+    }
+  },
+  "C20": {
+    "S15": {
+      "estudo": "E04",
+      "motivo": "A recompensa por contribuição é a solução proposta no mesmo estudo para o conhecimento experiencial circular",
+      "trecho": ""
+    }
+  }
+}
