@@ -626,22 +626,94 @@
   max-width: var(--largura-texto);
 }
 
-/* Os dois blocos do topo da ficha. */
-.bloco-ficha { margin-top: var(--esp-5); }
+/* Cada bloco da ficha é um cartão, com o título e a ajuda no canto. */
+.bloco-ficha {
+  margin-top: var(--esp-5);
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.bloco-ficha__topo {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-4);
+}
 .bloco-ficha__titulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-  margin-bottom: var(--esp-3);
+  color: var(--cor-acento);
 }
 .bloco-ficha__pendente {
-  margin-top: var(--esp-2);
+  margin-top: var(--esp-3);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
+
+/* A ajuda do cartão. Um botão por bloco, e a nota sai dele. */
+.ajuda { position: relative; flex: none; }
+.ajuda__abrir {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-texto-fraco);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva);
+}
+.ajuda__abrir:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
+.ajuda__abrir:active { transform: scale(0.92); }
+.ajuda__nota {
+  position: absolute;
+  top: calc(100% + var(--esp-2));
+  right: 0;
+  z-index: 2;
+  display: grid;
+  gap: var(--esp-3);
+  width: max-content;
+  max-width: min(26rem, 70vw);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-2);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.97) translateY(-2px);
+  transform-origin: top right;
+  transition:
+    opacity var(--dur-rapida) var(--curva-saida),
+    transform var(--dur-rapida) var(--curva-saida),
+    visibility var(--dur-rapida);
+}
+.ajuda[data-aberto] .ajuda__nota { opacity: 1; visibility: visible; transform: none; }
+.ajuda__item { display: grid; gap: var(--esp-1); }
+.ajuda__nome {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.ajuda__pergunta { font-size: var(--tam-sm); color: var(--cor-texto); font-style: italic; }
+.ajuda__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
    porque saber que um valor não se aplica também é informação. */
@@ -652,14 +724,14 @@
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
 }
 /* Ícone e nome, numa linha só. A descrição do valor mora no glossário do
-   Explorar e no botão de ajuda do rótulo, não aqui. */
+   Explorar e no botão de ajuda do cartão, não aqui. */
 .opcao {
   display: flex;
   align-items: center;
   gap: var(--esp-2);
   min-height: var(--alvo-toque);
   padding: var(--esp-2) var(--esp-3);
-  background: var(--cor-superficie);
+  background: var(--cor-fundo);
   border: var(--borda);
   border-radius: var(--raio);
   color: var(--cor-texto-fraco);
@@ -675,99 +747,67 @@
 .opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
 .opcao[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
 
-/* Um atributo é o rótulo mais a fileira. Três deles empilham no bloco. */
+/* Um atributo é o rótulo mais a fileira. Três deles empilham no cartão. */
 .atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }
-.atributo-caixas .atr { margin-bottom: var(--esp-2); }
+.atributo-caixas__nome {
+  margin-bottom: var(--esp-2);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
 
 /* No celular, natureza, nível e dimensão vão a duas colunas, porque os nomes são
    curtos e assim as abas entram na primeira tela. O tipo de ECOS fica numa
    coluna, que ele pode acender mais de uma e a leitura é de conjunto. */
 @media (max-width: 47.99rem) {
   .atributo-caixas .opcoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* O cartão aperta, porque a moldura dele custa altura e no celular a conta
+     é com as abas, que precisam aparecer cedo. */
+  .bloco-ficha { padding: var(--esp-3); margin-top: var(--esp-4); }
+  .bloco-ficha__topo { margin-bottom: var(--esp-3); }
+  .atributo-caixas + .atributo-caixas { margin-top: var(--esp-3); }
 }
 
-/* A justificativa, que só aparece quando existe. */
-.porque { margin-top: var(--esp-3); }
+/* A justificativa, numa barra de largura inteira no pé do cartão. */
+.porque {
+  margin-top: var(--esp-4);
+  background: var(--cor-superficie-alta);
+  border: 1px solid var(--cor-linha-suave);
+  border-radius: var(--raio);
+}
 .porque__abrir {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  gap: var(--esp-3);
   min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
   font-size: var(--tam-sm);
-  color: var(--cor-acento);
+  font-weight: 500;
   cursor: pointer;
   list-style: none;
 }
 .porque__abrir::-webkit-details-marker { display: none; }
+.porque__seta {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: none;
+  border-right: 1.5px solid var(--cor-texto-fraco);
+  border-bottom: 1.5px solid var(--cor-texto-fraco);
+  transform: rotate(45deg);
+  transition: transform var(--dur-media) var(--curva);
+}
+.porque[open] .porque__seta { transform: rotate(-135deg); }
 .porque__texto {
+  padding: 0 var(--esp-4) var(--esp-4);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
-
-.atr { position: relative; display: inline-flex; align-items: center; gap: var(--esp-2); }
-.atr__nome {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-  text-transform: lowercase;
+@media (prefers-reduced-motion: reduce) {
+  .porque__seta { transition: none; }
 }
-
-.atr__info {
-  flex: none;
-  align-self: center;
-  display: grid;
-  place-items: center;
-  width: 1.125rem;
-  height: 1.125rem;
-  padding: 0;
-  background: transparent;
-  border: 1px solid var(--cor-linha);
-  border-radius: var(--raio-pilula);
-  color: var(--cor-texto-fraco);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    color var(--dur-rapida) var(--curva),
-    border-color var(--dur-rapida) var(--curva),
-    transform var(--dur-rapida) var(--curva);
-}
-.atr__info:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
-.atr__info:active { transform: scale(0.92); }
-
-/* A nota sai do próprio botão, por isso a origem fica no canto de cima. */
-.atr__nota {
-  position: absolute;
-  top: calc(100% + var(--esp-2));
-  left: 0;
-  z-index: 2;
-  display: grid;
-  gap: var(--esp-2);
-  width: max-content;
-  max-width: min(24rem, 70vw);
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-2);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.97) translateY(-2px);
-  transform-origin: top left;
-  transition:
-    opacity var(--dur-rapida) var(--curva-saida),
-    transform var(--dur-rapida) var(--curva-saida),
-    visibility var(--dur-rapida);
-}
-.atr[data-aberto] .atr__nota { opacity: 1; visibility: visible; transform: none; }
-@media (hover: hover) and (pointer: fine) {
-  .atr:hover .atr__nota { opacity: 1; visibility: visible; transform: none; }
-}
-.atr__pergunta { color: var(--cor-texto); font-style: italic; }
-.atr__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* ---------- Abas da ficha ---------- */
 .abas__barra {

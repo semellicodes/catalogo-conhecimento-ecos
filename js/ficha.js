@@ -23,15 +23,15 @@ function criar(tag, className, texto) {
 
 /** Fecha qualquer nota de atributo aberta, venha o pedido de onde vier. */
 function fecharNotas() {
-  document.querySelectorAll('.atr[data-aberto]').forEach((atr) => {
-    atr.removeAttribute('data-aberto');
-    atr.querySelector('.atr__info').setAttribute('aria-expanded', 'false');
+  document.querySelectorAll('.ajuda[data-aberto]').forEach((item) => {
+    item.removeAttribute('data-aberto');
+    item.querySelector('.ajuda__abrir').setAttribute('aria-expanded', 'false');
   });
 }
 
 /* Clicar fora fecha a nota aberta. Um ouvinte só, para a ficha inteira. */
 document.addEventListener('click', (evento) => {
-  if (!evento.target.closest('.atr')) fecharNotas();
+  if (!evento.target.closest('.ajuda')) fecharNotas();
 });
 
 /**
@@ -90,21 +90,30 @@ function fileira(definicao, acesos) {
   return lista;
 }
 
-/** O rótulo do atributo, com o botão que explica a pergunta e a referência. */
-function rotuloDoAtributo(dados, chave) {
-  const definicao = dados.classificacoes[chave];
-  const raiz = criar('div', 'atr');
-  raiz.append(criar('span', 'atr__nome', definicao.rotulo));
+/**
+ * O botão de ajuda do cartão. Um por bloco, no canto, em vez de um por atributo,
+ * e a nota reúne a pergunta e a referência de cada atributo que o bloco mostra.
+ */
+function ajuda(dados, chaves) {
+  const raiz = criar('div', 'ajuda');
 
-  const botao = criar('button', 'atr__info', 'i');
+  const botao = criar('button', 'ajuda__abrir', '?');
   botao.type = 'button';
   botao.setAttribute('aria-expanded', 'false');
-  botao.setAttribute('aria-label', `Sobre ${definicao.rotulo.toLowerCase()}`);
+  botao.setAttribute('aria-label', 'Sobre esta classificação');
 
-  const nota = criar('span', 'atr__nota');
-  nota.append(criar('span', 'atr__pergunta', definicao.pergunta));
-  const ref = referenciaCurta(dados, definicao.referencia);
-  if (ref) nota.append(criar('span', 'atr__referencia', ref));
+  const nota = criar('div', 'ajuda__nota');
+  chaves.forEach((chave) => {
+    const definicao = dados.classificacoes[chave];
+    const item = criar('div', 'ajuda__item');
+    item.append(
+      criar('p', 'ajuda__nome', definicao.rotulo),
+      criar('p', 'ajuda__pergunta', definicao.pergunta)
+    );
+    const ref = referenciaCurta(dados, definicao.referencia);
+    if (ref) item.append(criar('p', 'ajuda__referencia', ref));
+    nota.append(item);
+  });
 
   botao.addEventListener('click', () => {
     const aberto = raiz.hasAttribute('data-aberto');
@@ -119,12 +128,44 @@ function rotuloDoAtributo(dados, chave) {
   return raiz;
 }
 
+/** O cartão de um bloco da ficha, com o título e a ajuda no canto. */
+function cartao(dados, titulo, chavesDeAjuda) {
+  const bloco = criar('section', 'bloco-ficha');
+  const topo = criar('header', 'bloco-ficha__topo');
+  topo.append(criar('h3', 'bloco-ficha__titulo', titulo), ajuda(dados, chavesDeAjuda));
+  bloco.append(topo);
+  return bloco;
+}
+
 /** Um atributo inteiro, rótulo mais fileira de caixas. */
 function atributoEmCaixas(dados, conhecimento, chave) {
   const bloco = criar('div', 'atributo-caixas');
   const bruto = conhecimento[chave];
   const acesos = Array.isArray(bruto) ? bruto : [bruto].filter(Boolean);
-  bloco.append(rotuloDoAtributo(dados, chave), fileira(dados.classificacoes[chave], acesos));
+  bloco.append(
+    criar('p', 'atributo-caixas__nome', dados.classificacoes[chave].rotulo),
+    fileira(dados.classificacoes[chave], acesos)
+  );
+  return bloco;
+}
+
+/* Os três atributos de classificação, uma fileira cada, um valor aceso por
+   fileira porque cada conhecimento tem um valor só de cada um. */
+const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
+
+function classificacao(dados, conhecimento) {
+  const bloco = cartao(dados, 'Classificação do conhecimento', CLASSIFICACAO);
+  CLASSIFICACAO.forEach((chave) => bloco.append(atributoEmCaixas(dados, conhecimento, chave)));
+
+  /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
+     quando houver, em vez de abrir para uma barra vazia. */
+  if (conhecimento.justificativaClassificacao) {
+    const porque = criar('details', 'porque');
+    const abrir = criar('summary', 'porque__abrir');
+    abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
+    porque.append(abrir, criar('p', 'porque__texto', conhecimento.justificativaClassificacao));
+    bloco.append(porque);
+  }
   return bloco;
 }
 
@@ -136,34 +177,10 @@ function atributoEmCaixas(dados, conhecimento, chave) {
  */
 function tiposDeEcos(dados, conhecimento) {
   const observados = conhecimento.tipoEcos || [];
-  const bloco = criar('section', 'bloco-ficha');
-  bloco.append(criar('h3', 'bloco-ficha__titulo', 'Exemplos de ecossistemas em que esse conhecimento foi observado'));
+  const bloco = cartao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
   bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
   if (!observados.length) {
     bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
-  }
-  return bloco;
-}
-
-/* Os três atributos de classificação, uma fileira cada, um valor aceso por
-   fileira porque cada conhecimento tem um valor só de cada um. */
-const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
-
-function classificacao(dados, conhecimento) {
-  const bloco = criar('section', 'bloco-ficha');
-  bloco.append(criar('h3', 'bloco-ficha__titulo', 'Classificação do conhecimento'));
-
-  CLASSIFICACAO.forEach((chave) => bloco.append(atributoEmCaixas(dados, conhecimento, chave)));
-
-  /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
-     quando houver, em vez de abrir para um espaço vazio. */
-  if (conhecimento.justificativaClassificacao) {
-    const porque = criar('details', 'porque');
-    porque.append(
-      criar('summary', 'porque__abrir', 'Por que essa classificação?'),
-      criar('p', 'porque__texto', conhecimento.justificativaClassificacao)
-    );
-    bloco.append(porque);
   }
   return bloco;
 }
@@ -330,8 +347,8 @@ export function renderizar(dados, conhecimento) {
 
   raiz.append(
     topo,
-    tiposDeEcos(dados, conhecimento),
     classificacao(dados, conhecimento),
+    tiposDeEcos(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
       { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },
