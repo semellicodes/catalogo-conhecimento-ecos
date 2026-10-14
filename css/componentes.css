@@ -609,16 +609,84 @@
   max-width: var(--largura-texto);
 }
 
-/* A tira. Valor à vista, explicação guardada no botão de informação. */
-.tira {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--esp-2) var(--esp-5);
-  margin-block: var(--esp-5);
+/* Os dois blocos do topo da ficha. */
+.bloco-ficha { margin-top: var(--esp-5); }
+.bloco-ficha__titulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+  margin-bottom: var(--esp-3);
+}
+.bloco-ficha__pendente {
+  margin-top: var(--esp-2);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+
+/* As três opções ficam todas à vista. A apagada continua legível, porque saber
+   que um tipo não foi observado também é informação. */
+.tipos-ecos {
+  list-style: none;
+  display: grid;
+  gap: var(--esp-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+}
+.tipo-ecos {
+  display: grid;
+  gap: var(--esp-1);
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  opacity: 0.55;
+}
+.tipo-ecos[data-aceso] {
+  opacity: 1;
+  border-color: var(--cor-acento-linha);
+  background: var(--cor-acento-fundo);
+}
+.tipo-ecos__nome { font-size: var(--tam-sm); font-weight: 600; }
+.tipo-ecos[data-aceso] .tipo-ecos__nome { color: var(--cor-acento); }
+.tipo-ecos__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
+
+/* Os três atributos lado a lado, e um embaixo do outro no celular. */
+.classificacao {
+  display: grid;
+  gap: var(--esp-3) var(--esp-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
   padding-block: var(--esp-3);
   border-block: 1px solid var(--cor-linha-suave);
 }
-.atr { position: relative; display: inline-flex; align-items: baseline; gap: var(--esp-2); }
+
+/* A justificativa, que só aparece quando existe. */
+.porque { margin-top: var(--esp-3); }
+.porque__abrir {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-size: var(--tam-sm);
+  color: var(--cor-acento);
+  cursor: pointer;
+  list-style: none;
+}
+.porque__abrir::-webkit-details-marker { display: none; }
+.porque__texto {
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  max-width: var(--largura-texto);
+}
+
+.atr {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0 var(--esp-2);
+}
+.atr__nome { grid-column: 1 / -1; }
 .atr__nome {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);

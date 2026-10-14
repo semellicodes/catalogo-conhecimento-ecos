@@ -194,8 +194,11 @@ function sincronizarUrl(id) {
 }
 
 function atualizar() {
-  visiveis = filtros.aplicar(dados.conhecimentos, estado);
-  lista.renderizar(el('#trilha'), visiveis, dados.classificacoes.nivel.valores, abrirFicha);
+  visiveis = filtros.ordenar(
+    filtros.aplicar(dados.conhecimentos, estado),
+    dados.classificacoes.natureza.valores.map((v) => v.valor)
+  );
+  lista.renderizar(el('#trilha'), visiveis, dados.classificacoes.tipoEcos.valores, abrirFicha);
   el('#trilha-vazia').hidden = visiveis.length > 0;
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);

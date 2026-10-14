@@ -77,13 +77,62 @@ document.addEventListener('click', (evento) => {
   if (!evento.target.closest('.atr')) fecharNotas();
 });
 
-/** Só os atributos já preenchidos, numa linha só. */
-function tira(dados, conhecimento) {
-  const faixa = criar('div', 'tira');
-  ATRIBUTOS.filter((chave) => !vazio(conhecimento[chave])).forEach((chave) =>
-    faixa.append(atributo(dados, conhecimento, chave))
+/**
+ * Os ecossistemas em que o conhecimento foi observado. As três opções ficam
+ * sempre à vista, as que valem acesas e as outras apagadas, porque saber que um
+ * tipo não foi observado é informação, e esconder a opção apagaria isso.
+ *
+ * Lê conhecimentos[].tipoEcos, que está vazio nos vinte. Enquanto estiver, as
+ * três aparecem apagadas e o bloco diz que a classificação está pendente.
+ */
+function tiposDeEcos(dados, conhecimento) {
+  const definicao = dados.classificacoes.tipoEcos;
+  const observados = conhecimento.tipoEcos || [];
+
+  const bloco = criar('section', 'bloco-ficha');
+  bloco.append(criar('h3', 'bloco-ficha__titulo', 'Exemplos de ecossistemas em que esse conhecimento foi observado'));
+
+  const opcoes = criar('ul', 'tipos-ecos');
+  definicao.valores.forEach((v) => {
+    const item = criar('li', 'tipo-ecos');
+    if (observados.includes(v.valor)) item.setAttribute('data-aceso', '');
+    item.append(criar('span', 'tipo-ecos__nome', v.valor));
+    if (v.descricao) item.append(criar('span', 'tipo-ecos__texto', v.descricao));
+    opcoes.append(item);
+  });
+  bloco.append(opcoes);
+
+  if (!observados.length) {
+    bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
+  }
+  return bloco;
+}
+
+/* A classificação do conhecimento. Os três atributos lado a lado no desktop e
+   um embaixo do outro no celular. */
+const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
+
+function classificacao(dados, conhecimento) {
+  const bloco = criar('section', 'bloco-ficha');
+  bloco.append(criar('h3', 'bloco-ficha__titulo', 'Classificação do conhecimento'));
+
+  const grade = criar('div', 'classificacao');
+  CLASSIFICACAO.filter((chave) => !vazio(conhecimento[chave])).forEach((chave) =>
+    grade.append(atributo(dados, conhecimento, chave))
   );
-  return faixa;
+  bloco.append(grade);
+
+  /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
+     quando houver, em vez de abrir para um espaço vazio. */
+  if (conhecimento.justificativaClassificacao) {
+    const porque = criar('details', 'porque');
+    porque.append(
+      criar('summary', 'porque__abrir', 'Por que essa classificação?'),
+      criar('p', 'porque__texto', conhecimento.justificativaClassificacao)
+    );
+    bloco.append(porque);
+  }
+  return bloco;
 }
 
 /* ---------- Conteúdo das abas ---------- */
@@ -284,7 +333,8 @@ export function renderizar(dados, conhecimento) {
 
   raiz.append(
     topo,
-    tira(dados, conhecimento),
+    tiposDeEcos(dados, conhecimento),
+    classificacao(dados, conhecimento),
     montarAbas([
       { rotulo: 'Soluções', contagem: quantos.solucoes, conteudo: () => solucoes(dados, conhecimento) },
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },

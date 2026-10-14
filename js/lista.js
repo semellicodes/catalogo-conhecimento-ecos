@@ -70,14 +70,31 @@ function montarEstacao(nivel, conhecimentos, aoAbrir) {
 
 /**
  * Redesenha a trilha inteira. A ordem das estações é a ordem dos valores em
- * classificacoes.json, e nível sem conhecimento não vira estação.
+ * classificacoes.json, e tipo sem conhecimento não vira estação.
+ *
+ * Enquanto tipoEcos estiver vazio nos conhecimentos, todos caem na estação do
+ * que ainda não foi classificado, que é como a interface mostra que o campo
+ * está pendente em vez de esconder o catálogo inteiro.
  */
-export function renderizar(elemento, conhecimentos, niveis, aoAbrir) {
+export function renderizar(elemento, conhecimentos, tipos, aoAbrir) {
   elemento.replaceChildren();
-  niveis.forEach((nivel) => {
-    const doNivel = conhecimentos.filter((c) => c.nivel === nivel.valor);
-    if (doNivel.length) elemento.append(montarEstacao(nivel, doNivel, aoAbrir));
+  const classificado = (c) => (c.tipoEcos || []).length > 0;
+
+  tipos.forEach((tipo) => {
+    const doTipo = conhecimentos.filter((c) => (c.tipoEcos || []).includes(tipo.valor));
+    if (doTipo.length) elemento.append(montarEstacao(tipo, doTipo, aoAbrir));
   });
+
+  const pendentes = conhecimentos.filter((c) => !classificado(c));
+  if (pendentes.length) {
+    elemento.append(
+      montarEstacao(
+        { valor: 'A definir', descricao: 'Conhecimentos cujo tipo de ECOS ainda não foi registrado na extração.' },
+        pendentes,
+        aoAbrir
+      )
+    );
+  }
 }
 
 /** Legenda das cores da natureza, montada a partir da própria classificação. */

@@ -43,7 +43,14 @@ conferência, nunca reescritos.
 
 `tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
 os estudos. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
-correspondente aparece com o aviso de atributo não preenchido e a ficha mostra "A definir".
+correspondente aparece com o aviso de atributo não preenchido.
+
+`tipoEcos` manda em dois lugares. Na ficha, as três opções aparecem sempre, as observadas acesas e as
+demais apagadas, porque saber que um tipo não foi observado também é informação. Na trilha, ele é o
+que agrupa as estações, e enquanto estiver vazio os vinte caem numa estação única de pendentes.
+
+`justificativaClassificacao` está vazio nos vinte. Quando tiver texto, a ficha mostra o item
+"Por que essa classificação?" dentro do bloco de classificação. Vazio, o item não aparece.
 
 `conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
 contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
@@ -73,7 +80,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 | Arquivo | Responsabilidade |
 |---|---|
 | `js/dados.js` | Único módulo que lê arquivos. Carrega, guarda em cache e resolve identificadores |
-| `js/filtros.js` | Opera sobre listas. Não conhece o DOM |
+| `js/filtros.js` | Filtra e ordena listas. Não conhece o DOM |
 | `js/lista.js` | Monta os cards da listagem |
 | `js/ficha.js` | Monta a ficha de um conhecimento |
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
@@ -114,6 +121,9 @@ nativamente pelo navegador com `type="module"`.
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
   vez de repetir o bloco, porque é conteúdo e não navegação
+- A trilha do catálogo agrupa por tipo de ECOS, e dentro de cada estação a ordem é por natureza,
+  tácitos primeiro e explícitos depois, e por identificador dentro de cada natureza. A mesma ordem
+  vale para o anterior e o próximo da ficha
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1

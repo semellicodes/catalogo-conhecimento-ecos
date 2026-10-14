@@ -44,7 +44,8 @@
         "motivo": "A ontologia modela elementos e relações do ECOS e sustenta o Collab-RS no mesmo estudo",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C02",
@@ -134,7 +135,8 @@
         "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C03",
@@ -216,7 +218,8 @@
         "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C04",
@@ -316,7 +319,8 @@
         "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C05",
@@ -366,7 +370,8 @@
         "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C06",
@@ -397,7 +402,8 @@
         "motivo": "O trecho diz que as diretrizes deixam claro o que é exigido para a contribuição ser aceita",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C07",
@@ -441,7 +447,8 @@
         "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C08",
@@ -479,7 +486,8 @@
         "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C09",
@@ -516,7 +524,8 @@
         "motivo": "O raciocínio por analogia é o próprio procedimento de decisão descrito",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C10",
@@ -547,7 +556,8 @@
         "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10",
         "trecho": "We noticed that, as a consequence of tacit knowledge concentrated on a few people, it results in low-quality software products and many defects."
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C11",
@@ -578,7 +588,8 @@
         "motivo": "O trecho diz literalmente que o dono compartilha dados de uso, necessidades de mercado e lacunas",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C12",
@@ -650,7 +661,8 @@
         "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12",
         "trecho": "Given the significant time intervals between discussions on different issues, there is a potential for loss of knowledge and inefficient communication within the ecosystem due to the volume of conversations. It is impractical to rely solely on individuals who have been in the community for an extended period to manually create links and aggregate relevant information."
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C13",
@@ -702,7 +714,8 @@
         "motivo": "A relutância dos membros em contribuir é sobre a disposição dos atores, o mesmo objeto",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C14",
@@ -746,7 +759,8 @@
         "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C15",
@@ -796,7 +810,8 @@
         "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C16",
@@ -827,7 +842,8 @@
         "motivo": "O artigo diz que os itens de contexto do NFR Repo dão exemplos, problemas e casos de uso que aumentam o entendimento, e é no entendimento que mora o efeito da mudança de terceiro",
         "trecho": "the inclusion of context items in the NFR Repo provides stakeholders with practical and intuitive examples, exemplary problems, explanatory diagrams and variant use cases, enhancing understandability"
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C17",
@@ -865,7 +881,8 @@
         "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C18",
@@ -896,7 +913,8 @@
         "motivo": "A referência cruzada entre projetos é o que torna visível o que existe em outro projeto",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C19",
@@ -958,7 +976,8 @@
         "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   },
   {
     "id": "C20",
@@ -996,6 +1015,7 @@
         "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto",
         "trecho": ""
       }
-    }
+    },
+    "justificativaClassificacao": ""
   }
 ]

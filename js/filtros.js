@@ -47,6 +47,23 @@ export function aplicar(conhecimentos, estado) {
   );
 }
 
+/**
+ * Ordena por natureza, tácitos primeiro e explícitos depois, e por identificador
+ * dentro de cada grupo. A ordem das naturezas vem da classificação, não de uma
+ * lista escrita aqui, então mudar o vocabulário não exige mexer no código.
+ */
+export function ordenar(conhecimentos, naturezas) {
+  const tacito = (valor) => valor.toLowerCase().startsWith('tácito');
+  const ordem = [...naturezas.filter(tacito), ...naturezas.filter((v) => !tacito(v))];
+  const posicao = (c) => {
+    const i = ordem.indexOf(c.natureza);
+    return i === -1 ? ordem.length : i;
+  };
+  return [...conhecimentos].sort(
+    (a, b) => posicao(a) - posicao(b) || a.id.localeCompare(b.id)
+  );
+}
+
 /** Quantos conhecimentos da lista têm cada valor do atributo. */
 export function contar(conhecimentos, atributo) {
   const contagem = new Map();
