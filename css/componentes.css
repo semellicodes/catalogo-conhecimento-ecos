@@ -679,6 +679,13 @@
 .atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }
 .atributo-caixas .atr { margin-bottom: var(--esp-2); }
 
+/* No celular, natureza, nível e dimensão vão a duas colunas, porque os nomes são
+   curtos e assim as abas entram na primeira tela. O tipo de ECOS fica numa
+   coluna, que ele pode acender mais de uma e a leitura é de conjunto. */
+@media (max-width: 47.99rem) {
+  .atributo-caixas .opcoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 /* A justificativa, que só aparece quando existe. */
 .porque { margin-top: var(--esp-3); }
 .porque__abrir {
