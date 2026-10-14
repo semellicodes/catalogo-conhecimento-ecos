@@ -88,19 +88,42 @@ function tira(dados, conhecimento) {
 
 /* ---------- Conteúdo das abas ---------- */
 
-function linhaSolucao(solucao) {
-  const item = criar('li', 'solucao');
-  item.append(criar('span', 'codigo-id', solucao.id), criar('span', 'solucao__nome', solucao.nome));
+/**
+ * Uma solução. A linha continua de uma linha só, e o que sustenta a relação com
+ * este conhecimento fica guardado atrás dela, aberto por quem quiser saber.
+ * O trecho literal existe em poucos pares, então só entra quando existe, sem
+ * deixar lugar vazio nos demais.
+ */
+function linhaSolucao(solucao, evidencia) {
+  const item = criar('li');
+  const caixa = criar('details', 'solucao');
+
+  const linha = criar('summary', 'solucao__linha');
+  linha.append(criar('span', 'codigo-id', solucao.id), criar('span', 'solucao__nome', solucao.nome));
   const meta = criar('span', 'solucao__meta');
   meta.append(criar('span', 'solucao__estudos', solucao.estudos.join(', ')));
   if (solucao.avaliada) meta.append(criar('span', 'marca-avaliada', 'avaliada'));
-  item.append(meta);
+  linha.append(meta);
+  caixa.append(linha);
+
+  if (evidencia) {
+    const porque = criar('div', 'solucao__porque');
+    if (evidencia.estudo) {
+      porque.append(criar('p', 'solucao__confirmacao', `Confirmado em ${evidencia.estudo}`));
+    }
+    if (evidencia.motivo) porque.append(criar('p', 'solucao__motivo', evidencia.motivo));
+    if (evidencia.trecho) porque.append(criar('blockquote', 'solucao__trecho', evidencia.trecho));
+    caixa.append(porque);
+  }
+
+  item.append(caixa);
   return item;
 }
 
 /** As soluções agrupadas por tipo, na ordem em que os tipos estão em meta. */
 function solucoes(dados, conhecimento) {
   const bloco = criar('div', 'grupos');
+  const evidencia = conhecimento.evidencia || {};
   const porTipo = new Map();
   conhecimento.solucoesResolvidas.forEach((s) => {
     if (!porTipo.has(s.tipo)) porTipo.set(s.tipo, []);
@@ -121,7 +144,7 @@ function solucoes(dados, conhecimento) {
       const titulo = criar('h4', 'grupo__titulo');
       titulo.append(criar('span', null, tipo), criar('span', 'grupo__contagem', String(porTipo.get(tipo).length)));
       const lista = criar('ul', 'solucoes');
-      porTipo.get(tipo).forEach((s) => lista.append(linhaSolucao(s)));
+      porTipo.get(tipo).forEach((s) => lista.append(linhaSolucao(s, evidencia[s.id])));
       grupo.append(titulo, lista);
       bloco.append(grupo);
     });

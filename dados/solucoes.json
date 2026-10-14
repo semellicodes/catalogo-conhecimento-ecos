@@ -74,8 +74,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C04",
-      "C09"
+      "C04"
     ]
   },
   {
@@ -89,7 +88,6 @@
     "avaliacao": "",
     "conhecimentos": [
       "C04",
-      "C13",
       "C16"
     ]
   },
@@ -132,8 +130,7 @@
     "avaliacao": "",
     "conhecimentos": [
       "C04",
-      "C13",
-      "C16"
+      "C13"
     ]
   },
   {
@@ -147,8 +144,7 @@
     "avaliacao": "",
     "conhecimentos": [
       "C04",
-      "C13",
-      "C16"
+      "C13"
     ]
   },
   {
@@ -161,9 +157,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C04",
-      "C13",
-      "C16"
+      "C04"
     ]
   },
   {
@@ -176,9 +170,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C04",
-      "C13",
-      "C16"
+      "C04"
     ]
   },
   {
@@ -208,9 +200,6 @@
     "avaliada": true,
     "avaliacao": "Simulação (E01)",
     "conhecimentos": [
-      "C02",
-      "C06",
-      "C13",
       "C20"
     ]
   },
@@ -227,12 +216,8 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C01",
       "C02",
-      "C06",
-      "C07",
-      "C11",
-      "C13"
+      "C07"
     ]
   },
   {
@@ -249,9 +234,7 @@
     "conhecimentos": [
       "C03",
       "C04",
-      "C13",
-      "C15",
-      "C16"
+      "C15"
     ]
   },
   {
@@ -266,14 +249,10 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C01",
-      "C02",
       "C05",
-      "C06",
       "C12",
       "C13",
-      "C14",
-      "C18"
+      "C14"
     ]
   },
   {
@@ -288,14 +267,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C01",
-      "C02",
-      "C03",
-      "C07",
-      "C11",
-      "C12",
-      "C18",
-      "C19"
+      "C02"
     ]
   },
   {
@@ -310,9 +282,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C02",
-      "C06",
-      "C13"
+      "C06"
     ]
   },
   {
@@ -326,7 +296,6 @@
     "avaliacao": "",
     "conhecimentos": [
       "C01",
-      "C12",
       "C18"
     ]
   },
@@ -354,11 +323,7 @@
     ],
     "avaliada": false,
     "avaliacao": "",
-    "conhecimentos": [
-      "C02",
-      "C06",
-      "C13"
-    ]
+    "conhecimentos": []
   },
   {
     "id": "S24",
@@ -370,9 +335,6 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C01",
-      "C02",
-      "C07",
       "C11"
     ]
   },
@@ -386,10 +348,8 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C01",
       "C02",
-      "C07",
-      "C11"
+      "C07"
     ]
   },
   {
@@ -480,8 +440,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C04",
-      "C09"
+      "C04"
     ]
   },
   {
@@ -494,9 +453,7 @@
     "avaliada": false,
     "avaliacao": "",
     "conhecimentos": [
-      "C04",
-      "C13",
-      "C16"
+      "C04"
     ]
   },
   {

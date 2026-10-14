@@ -21,7 +21,7 @@ identidade visual muda sem tocar no conteúdo.
 
 | Arquivo | Conteúdo |
 |---|---|
-| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos e os identificadores de soluções e estudos |
+| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, os identificadores de soluções, desafios e estudos, e a evidência de cada relação |
 | `dados/solucoes.json` | 36 soluções (S01 a S36), com tipo segundo Shaw (2003), avaliação quando reportada e os conhecimentos que apoiam |
 | `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e tipo de ECOS |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
@@ -31,15 +31,26 @@ identidade visual muda sem tocar no conteúdo.
 A relação entre conhecimento e solução é de muitos para muitos e está registrada nos dois sentidos,
 em `conhecimentos[].solucoes` e em `solucoes[].conhecimentos`. Ao mudar uma ponta, mudar a outra.
 
+`conhecimentos[].evidencia` guarda, por identificador de solução ou de desafio, o estudo que sustenta
+aquela relação, o motivo e o trecho literal do artigo. O trecho existe em poucos pares, então o campo
+pode vir vazio e a ficha só mostra o que existe. Esses textos são literais do artigo e da planilha de
+conferência, nunca reescritos.
+
+`origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
+
 ### Campos ainda pendentes
 
 `tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
 os estudos. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
 correspondente aparece com o aviso de atributo não preenchido e a ficha mostra "A definir".
 
-`conhecimentos[].relacoesConfirmadas` está `false` porque as soluções foram reunidas por estudo em
-comum e ainda não foram confirmadas nos estudos primários. Enquanto for `false`, a ficha mostra o
-aviso de relação candidata. Virar `true` conhecimento por conhecimento, conforme a confirmação.
+`conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
+contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
+no artigo saiu dos dois sentidos da relação.
+
+Os 22 pares de desafio estão guardados em `conhecimentos[].desafios`, mas não aparecem na interface,
+porque não existe `dados/desafios.json` dizendo o nome e a descrição de D01 a D17. Enquanto não
+existir, a ficha mostra apenas as soluções.
 
 ## Páginas
 
@@ -75,6 +86,14 @@ nativamente pelo navegador com `type="module"`.
 | `css/base.css` | Reset e elementos básicos |
 | `css/componentes.css` | Cabeçalho, etiqueta, filtro, card, ficha, painel e tabela |
 | `css/paginas.css` | Ajustes específicos de cada página |
+
+## Pastas
+
+| Pasta | Conteúdo |
+|---|---|
+| `dados/` | Os seis arquivos que o site carrega |
+| `origem/` | Insumo da pesquisa, não carregado por nenhum módulo |
+| `imagens/` | Retratos da seção de contato |
 
 ## Convenções de interface
 

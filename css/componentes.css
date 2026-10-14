@@ -692,18 +692,46 @@
   padding-inline: var(--esp-2);
 }
 .solucoes { list-style: none; display: grid; }
-.solucao {
+.solucao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }
+.solucoes li:last-child .solucao { border-bottom: 0; }
+
+/* A linha é a mesma de antes, agora servindo de resumo do que abre abaixo. */
+.solucao__linha {
   display: grid;
   grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
   gap: var(--esp-3);
   align-items: baseline;
   padding-block: var(--esp-2);
-  border-bottom: 1px solid var(--cor-linha-suave);
-  font-size: var(--tam-sm);
-  transition: background-color var(--dur-rapida) var(--curva);
+  list-style: none;
+  cursor: pointer;
 }
-.solucao:last-child { border-bottom: 0; }
-.solucao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.solucao__linha::-webkit-details-marker { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .solucao__linha:hover .solucao__nome { color: var(--cor-acento); }
+}
+.solucao__nome { transition: color var(--dur-rapida) var(--curva); }
+
+/* O porquê da relação. Cada parte só entra quando existe, então nada de lugar
+   vazio nos pares que não têm trecho literal, que são a maioria. */
+.solucao__porque {
+  display: grid;
+  gap: var(--esp-2);
+  padding: 0 0 var(--esp-3) var(--coluna-id);
+}
+.solucao__confirmacao {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-acento);
+}
+.solucao__motivo { color: var(--cor-texto-suave); }
+.solucao__trecho {
+  margin: 0;
+  padding-left: var(--esp-3);
+  border-left: 2px solid var(--cor-linha);
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}
+.solucao__linha .solucao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .solucao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
 .solucao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 .marca-avaliada {
@@ -752,8 +780,8 @@
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
 @container (max-width: 34rem) {
-  .solucao { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
-  .solucao__nome { white-space: normal; }
+  .solucao__linha { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
+  .solucao__linha .solucao__nome { white-space: normal; }
   .solucao__meta { grid-column: 2; }
 }
 

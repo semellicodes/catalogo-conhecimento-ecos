@@ -12,12 +12,7 @@
     "tipoSaber": "",
     "solucoes": [
       "S08",
-      "S16",
-      "S18",
-      "S19",
       "S21",
-      "S24",
-      "S25",
       "S31"
     ],
     "estudos": [
@@ -31,7 +26,25 @@
       "E09 familiarizar-se com a plataforma envolve compreender as dependências dos módulos complementares"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S08": {
+        "estudo": "E08",
+        "motivo": "O Collab-RS recomenda especialistas a partir de repositórios semânticos, e o trecho do conhecimento no E08 diz que reconhecer candidatos nas mesmas tecnologias depende de conhecer as dependências",
+        "trecho": ""
+      },
+      "S21": {
+        "estudo": "E03",
+        "motivo": "A referência cruzada liga issues e pull requests de projetos diferentes, que é a própria dependência entre projetos do trecho",
+        "trecho": ""
+      },
+      "S31": {
+        "estudo": "E08",
+        "motivo": "A ontologia modela elementos e relações do ECOS e sustenta o Collab-RS no mesmo estudo",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C02",
@@ -47,14 +60,9 @@
     "solucoes": [
       "S01",
       "S05",
-      "S15",
       "S16",
-      "S18",
       "S19",
-      "S20",
       "S22",
-      "S23",
-      "S24",
       "S25",
       "S30"
     ],
@@ -69,7 +77,64 @@
       "E09 complementadores interagem com a plataforma para compreender sua infraestrutura e configuração arquitetural"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D01",
+      "D09",
+      "D13"
+    ],
+    "evidencia": {
+      "S01": {
+        "estudo": "E06",
+        "motivo": "O fórum é onde o desenvolvedor externo busca conhecimento sobre a plataforma",
+        "trecho": ""
+      },
+      "S05": {
+        "estudo": "E06",
+        "motivo": "O portal reúne a documentação técnica dos produtos e é consultado pelo desenvolvedor externo",
+        "trecho": ""
+      },
+      "S16": {
+        "estudo": "E07, E09",
+        "motivo": "No E07 são seminários de capacitação técnica e no E09 materiais que apresentam a infraestrutura da plataforma",
+        "trecho": ""
+      },
+      "S19": {
+        "estudo": "E06, E09",
+        "motivo": "O artigo diz que os complementadores compartilham boas práticas sobre funcionalidades da plataforma e desenvolvimento técnico nesses eventos",
+        "trecho": "While some complementors share best practices or insights regarding platform features or technical development, thus contributing to active knowledge exchange, others benefit from these shared knowledge pools afterward"
+      },
+      "S22": {
+        "estudo": "E06",
+        "motivo": "Trata de como o recurso de conhecimento da plataforma chega ao desenvolvedor externo",
+        "trecho": ""
+      },
+      "S25": {
+        "estudo": "E09",
+        "motivo": "O acesso antecipado dá a conhecer o desenvolvimento funcional e estratégico da plataforma",
+        "trecho": ""
+      },
+      "S30": {
+        "estudo": "E06",
+        "motivo": "O modelo descreve como o desenvolvedor externo busca e avalia o conhecimento da plataforma",
+        "trecho": ""
+      },
+      "D01": {
+        "estudo": "E06, E09",
+        "motivo": "Localizar o conhecimento já registrado sobre a plataforma é o obstáculo descrito",
+        "trecho": ""
+      },
+      "D09": {
+        "estudo": "E06",
+        "motivo": "O paywall impede o acesso ao recurso que carrega esse conhecimento",
+        "trecho": ""
+      },
+      "D13": {
+        "estudo": "E09",
+        "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C03",
@@ -86,7 +151,6 @@
       "S01",
       "S05",
       "S17",
-      "S19",
       "S22",
       "S30",
       "S34"
@@ -100,7 +164,59 @@
       "E12 conhecimento complementar e especializado em autenticação, conectividade, banco de dados em nuvem e instalação"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D01",
+      "D09",
+      "D15"
+    ],
+    "evidencia": {
+      "S01": {
+        "estudo": "E06, E12",
+        "motivo": "O fórum responde dúvidas de implementação dos desenvolvedores externos",
+        "trecho": ""
+      },
+      "S05": {
+        "estudo": "E06",
+        "motivo": "O trecho diz literalmente que o portal é usado para consultar especificações técnicas",
+        "trecho": ""
+      },
+      "S17": {
+        "estudo": "E12",
+        "motivo": "O feedback da comunidade é usado para ajustar a documentação técnica",
+        "trecho": ""
+      },
+      "S22": {
+        "estudo": "E06",
+        "motivo": "Trata da adequação do recurso de conhecimento à finalidade de uso do desenvolvedor",
+        "trecho": ""
+      },
+      "S30": {
+        "estudo": "E06",
+        "motivo": "O modelo cobre a busca e a avaliação da especificação pelo desenvolvedor",
+        "trecho": ""
+      },
+      "S34": {
+        "estudo": "E12",
+        "motivo": "A modelagem de tópicos identifica os assuntos técnicos discutidos na comunidade",
+        "trecho": ""
+      },
+      "D01": {
+        "estudo": "E06",
+        "motivo": "A busca interna não localizar o artigo atinge exatamente a especificação procurada",
+        "trecho": ""
+      },
+      "D09": {
+        "estudo": "E06",
+        "motivo": "O paywall bloqueia o recurso que carrega a especificação",
+        "trecho": ""
+      },
+      "D15": {
+        "estudo": "E12",
+        "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C04",
@@ -135,7 +251,72 @@
       "E16 documentar as decisões para que possam ser consultadas no futuro"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D17"
+    ],
+    "evidencia": {
+      "S06": {
+        "estudo": "E14",
+        "motivo": "O repositório armazena casos de decisão encerrados e deriva conhecimento genérico deles",
+        "trecho": ""
+      },
+      "S07": {
+        "estudo": "E16",
+        "motivo": "O repositório guarda padrões, táticas e atributos de qualidade usados nas decisões",
+        "trecho": ""
+      },
+      "S09": {
+        "estudo": "E14",
+        "motivo": "O COACH é o sistema de apoio à decisão que consome esses casos",
+        "trecho": ""
+      },
+      "S10": {
+        "estudo": "E16",
+        "motivo": "O Popup é o que insere a decisão no repositório",
+        "trecho": ""
+      },
+      "S11": {
+        "estudo": "E16",
+        "motivo": "O Facets é o que recupera a decisão registrada",
+        "trecho": ""
+      },
+      "S12": {
+        "estudo": "E16",
+        "motivo": "O Spider desenha a partir do NFR Repo e mostra as tuplas de decisão armazenadas, que é o conhecimento de decisão anterior",
+        "trecho": "The Spider tool draws upon the NFR Repo to visualize all possible decision tuples"
+      },
+      "S13": {
+        "estudo": "E16",
+        "motivo": "O Miner extrai decisões de projeto reutilizáveis e as devolve ao repositório",
+        "trecho": ""
+      },
+      "S17": {
+        "estudo": "E16",
+        "motivo": "O voto dos arquitetos experientes é o que refina os modelos de decisão guardados para reúso",
+        "trecho": "Users of the tool set are encouraged to vote existing decision tuples up or down, thus creating the premise for more elaborate decision models based on the input of experienced software architects"
+      },
+      "S32": {
+        "estudo": "E14",
+        "motivo": "A taxonomia GRADE etiqueta os itens do repositório de casos de decisão",
+        "trecho": ""
+      },
+      "S33": {
+        "estudo": "E16",
+        "motivo": "É o próprio modelo reutilizável de decisão arquitetural",
+        "trecho": ""
+      },
+      "S35": {
+        "estudo": "E14",
+        "motivo": "O raciocínio por analogia recomenda a partir de casos anteriores, inclusive de outras organizações",
+        "trecho": ""
+      },
+      "D17": {
+        "estudo": "E14",
+        "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C05",
@@ -159,7 +340,33 @@
       "E05 o participante não entende por que a decisão precisa passar por todos os níveis de aprovação e a falta de diretrizes claras gera conflitos"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D04",
+      "D08"
+    ],
+    "evidencia": {
+      "S18": {
+        "estudo": "E05",
+        "motivo": "O catalisador independente e as reuniões informativas atuam sobre a dinâmica entre as organizações",
+        "trecho": ""
+      },
+      "S29": {
+        "estudo": "E05",
+        "motivo": "É o próprio mecanismo de governança híbrida do ecossistema",
+        "trecho": ""
+      },
+      "D04": {
+        "estudo": "E05",
+        "motivo": "A mentalidade proprietária e a dominância percebida são sobre a dinâmica de poder do trecho",
+        "trecho": ""
+      },
+      "D08": {
+        "estudo": "E05",
+        "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C06",
@@ -173,11 +380,7 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S15",
-      "S16",
-      "S18",
-      "S20",
-      "S23"
+      "S20"
     ],
     "estudos": [
       "E07"
@@ -186,7 +389,15 @@
       "E07 as diretrizes devem estar disponíveis com critérios claros, porque a rejeição no fim do processo desperdiça recursos"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S20": {
+        "estudo": "E07",
+        "motivo": "O trecho diz que as diretrizes deixam claro o que é exigido para a contribuição ser aceita",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C07",
@@ -201,8 +412,6 @@
     "tipoSaber": "",
     "solucoes": [
       "S16",
-      "S19",
-      "S24",
       "S25"
     ],
     "estudos": [
@@ -212,7 +421,27 @@
       "E09 os complementadores investem muitos recursos para seguir os requisitos técnicos do dono da plataforma"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D13"
+    ],
+    "evidencia": {
+      "S16": {
+        "estudo": "E09",
+        "motivo": "Os materiais instrucionais do dono da plataforma comunicam o que é exigido do complementador",
+        "trecho": ""
+      },
+      "S25": {
+        "estudo": "E09",
+        "motivo": "O acesso antecipado permite ao complementador se preparar para as exigências que vêm",
+        "trecho": ""
+      },
+      "D13": {
+        "estudo": "E09",
+        "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C08",
@@ -235,7 +464,22 @@
       "E11 parte essencial do material de treinamento trata das diferenças entre processos e ferramentas dos dois níveis e precisa ser atualizado conforme os projetos evoluem"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D14"
+    ],
+    "evidencia": {
+      "S26": {
+        "estudo": "E11",
+        "motivo": "O trecho do conhecimento é parte do próprio material de treinamento do programa de onboarding",
+        "trecho": ""
+      },
+      "D14": {
+        "estudo": "E11",
+        "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C09",
@@ -249,9 +493,7 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S06",
       "S09",
-      "S32",
       "S35"
     ],
     "estudos": [
@@ -261,7 +503,20 @@
       "E14 os métodos de boas práticas de decisão são conhecimento procedimental consolidado, melhor operacionalizado por módulos de software"
     ],
     "pendencia": "Verificar se este conhecimento é específico de ECOS ou se é genérico de tomada de decisão",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S09": {
+        "estudo": "E14",
+        "motivo": "O COACH operacionaliza os métodos de decisão em módulos de software",
+        "trecho": ""
+      },
+      "S35": {
+        "estudo": "E14",
+        "motivo": "O raciocínio por analogia é o próprio procedimento de decisão descrito",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C10",
@@ -282,7 +537,17 @@
       "E10 o processo de diagnóstico fornece à equipe de gestão de TI informação sobre quais projetos geraram incidentes no ambiente produtivo"
     ],
     "pendencia": "Único conhecimento sem nenhuma solução extraída no mesmo estudo",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D02"
+    ],
+    "evidencia": {
+      "D02": {
+        "estudo": "E10",
+        "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10",
+        "trecho": "We noticed that, as a consequence of tacit knowledge concentrated on a few people, it results in low-quality software products and many defects."
+      }
+    }
   },
   {
     "id": "C11",
@@ -296,10 +561,7 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S16",
-      "S19",
-      "S24",
-      "S25"
+      "S24"
     ],
     "estudos": [
       "E09"
@@ -308,7 +570,15 @@
       "E09 para se diferenciar, o complementador acompanha como o mercado evolui e o quanto as necessidades já são atendidas"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S24": {
+        "estudo": "E09",
+        "motivo": "O trecho diz literalmente que o dono compartilha dados de uso, necessidades de mercado e lacunas",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C12",
@@ -325,8 +595,6 @@
       "S08",
       "S14",
       "S18",
-      "S19",
-      "S21",
       "S31"
     ],
     "estudos": [
@@ -340,7 +608,49 @@
       "E17 o desenvolvedor preferiu pedir orientação a um colega que ele sabia que já tinha feito esse tipo de tarefa"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D02",
+      "D03",
+      "D06"
+    ],
+    "evidencia": {
+      "S08": {
+        "estudo": "E08",
+        "motivo": "O Collab-RS recomenda colaboradores justamente por conhecimento e expertise",
+        "trecho": ""
+      },
+      "S14": {
+        "estudo": "E17",
+        "motivo": "O ShareXP existe para compartilhar a expertise dos membros, e a composição é o jeito de mostrar quem sabe o quê",
+        "trecho": "We then offer ShareXP, an Eclipse feature that allows members of a group to share their expertise, this expertise being embodied in the “compositions” each of them has built."
+      },
+      "S18": {
+        "estudo": "E03",
+        "motivo": "No E03 o conhecimento é quem transita entre comunidades, que é o próprio agente de ligação",
+        "trecho": ""
+      },
+      "S31": {
+        "estudo": "E08",
+        "motivo": "A ontologia modela os atores do ecossistema e sustenta a inferência do Collab-RS",
+        "trecho": ""
+      },
+      "D02": {
+        "estudo": "E08",
+        "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento",
+        "trecho": ""
+      },
+      "D03": {
+        "estudo": "E17",
+        "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca",
+        "trecho": "Finally, a particular composition is often shared among users who are involved in the same kind of task. The studies conclude by pointing “a clear lack of tools for supporting the various practices of collaboration with regard to appropriating/tailoring”."
+      },
+      "D06": {
+        "estudo": "E03",
+        "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12",
+        "trecho": "Given the significant time intervals between discussions on different issues, there is a potential for loss of knowledge and inefficient communication within the ecosystem due to the volume of conversations. It is impractical to rely solely on individuals who have been in the community for an extended period to manually create links and aggregate relevant information."
+      }
+    }
   },
   {
     "id": "C13",
@@ -354,18 +664,9 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S07",
       "S10",
       "S11",
-      "S12",
-      "S13",
-      "S15",
-      "S16",
-      "S17",
-      "S18",
-      "S20",
-      "S23",
-      "S33"
+      "S18"
     ],
     "estudos": [
       "E07",
@@ -376,7 +677,32 @@
       "E16 os desenvolvedores de aplicações priorizam escalabilidade e usabilidade, enquanto o governo se preocupa com segurança e conformidade"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D11"
+    ],
+    "evidencia": {
+      "S10": {
+        "estudo": "E16",
+        "motivo": "O artigo diz que o Popup permite introduzir ideias novas no repositório em tempo real e que isso aumenta a aceitabilidade, que é o processo que concilia as visões dos atores",
+        "trecho": "the Popup tool allows on the fly introduction of new ideas into the repository as they occur. This enables an iterative and dynamic approach that enhances acceptability"
+      },
+      "S11": {
+        "estudo": "E16",
+        "motivo": "O artigo diz que o Facets permite atacar o problema por ângulos diferentes e revisar o espaço de decisão por visões distintas, o que aumenta a aceitabilidade",
+        "trecho": "the Facets tool provides a flexible way of attacking a given problem from different angles (QAs, patterns, tactics, etc.) and reviewing the architecture design space from different views"
+      },
+      "S18": {
+        "estudo": "E07",
+        "motivo": "O gestor de comunidade existe para apoiar o entendimento entre atores heterogêneos",
+        "trecho": ""
+      },
+      "D11": {
+        "estudo": "E07",
+        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos atores, o mesmo objeto",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C14",
@@ -400,7 +726,27 @@
       "E05 é difícil confiar em empresas pequenas por falta de competência, e a confiança se formou a partir das competências reconhecidas no desenvolvimento de código"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D04"
+    ],
+    "evidencia": {
+      "S18": {
+        "estudo": "E05",
+        "motivo": "O trecho diz que o catalisador independente fomenta a confiança interorganizacional",
+        "trecho": ""
+      },
+      "S29": {
+        "estudo": "E05",
+        "motivo": "O artigo liga de forma direta a institucionalização da confiança à formação da governança híbrida",
+        "trecho": "Our investigation charts the trajectory of trust and power institutionalization and reveals how it synergistically contributes to the emergence of comprehensive hybrid governance strategies."
+      },
+      "D04": {
+        "estudo": "E05",
+        "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C15",
@@ -425,7 +771,32 @@
       "E12 os erros recorrentes indicam informação faltante, confusa ou desatualizada na documentação e mostram ao dono da plataforma onde esses atores travam"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D15"
+    ],
+    "evidencia": {
+      "S01": {
+        "estudo": "E12",
+        "motivo": "É na comunidade que o erro recorrente do desenvolvedor aparece",
+        "trecho": ""
+      },
+      "S17": {
+        "estudo": "E12",
+        "motivo": "O feedback é o que leva a dificuldade até o dono da plataforma",
+        "trecho": ""
+      },
+      "S34": {
+        "estudo": "E12",
+        "motivo": "A modelagem de tópicos é o que transforma a discussão em metaconhecimento sobre onde o ator trava",
+        "trecho": ""
+      },
+      "D15": {
+        "estudo": "E12",
+        "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C16",
@@ -439,13 +810,7 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S07",
-      "S10",
-      "S11",
-      "S12",
-      "S13",
-      "S17",
-      "S33"
+      "S07"
     ],
     "estudos": [
       "E16"
@@ -454,7 +819,15 @@
       "E16 os stakeholders precisam entender como as mudanças em um serviço de terceiro afetam o negócio em andamento"
     ],
     "pendencia": "Único conhecimento sem nenhum desafio extraído no mesmo estudo",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S07": {
+        "estudo": "E16",
+        "motivo": "O artigo diz que os itens de contexto do NFR Repo dão exemplos, problemas e casos de uso que aumentam o entendimento, e é no entendimento que mora o efeito da mudança de terceiro",
+        "trecho": "the inclusion of context items in the NFR Repo provides stakeholders with practical and intuitive examples, exemplary problems, explanatory diagrams and variant use cases, enhancing understandability"
+      }
+    }
   },
   {
     "id": "C17",
@@ -477,7 +850,22 @@
       "E17 em sistemas personalizáveis o conhecimento fica incorporado nas composições, e cada composição representa um ponto de vista que melhor atende a uma tarefa específica"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D03"
+    ],
+    "evidencia": {
+      "S14": {
+        "estudo": "E17",
+        "motivo": "O ShareXP existe para compartilhar experiência sobre composições, é literal",
+        "trecho": ""
+      },
+      "D03": {
+        "estudo": "E17",
+        "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C18",
@@ -491,8 +879,6 @@
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
-      "S18",
-      "S19",
       "S21"
     ],
     "estudos": [
@@ -502,7 +888,15 @@
       "E03 uma contribuição foi recusada por ser apenas um subconjunto de funcionalidades que já existiam em outro projeto, sem trazer funcionalidade complementar"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [],
+    "evidencia": {
+      "S21": {
+        "estudo": "E03",
+        "motivo": "A referência cruzada entre projetos é o que torna visível o que existe em outro projeto",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C19",
@@ -518,7 +912,6 @@
     "solucoes": [
       "S01",
       "S05",
-      "S19",
       "S22",
       "S30"
     ],
@@ -529,7 +922,43 @@
       "E06 o desenvolvedor busca problemas comparáveis e suas soluções, descartando respostas que não se encaixam no seu contexto ou ambiente"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D01",
+      "D10"
+    ],
+    "evidencia": {
+      "S01": {
+        "estudo": "E06",
+        "motivo": "O fórum de perguntas e respostas é onde o desenvolvedor busca problema comparável",
+        "trecho": ""
+      },
+      "S05": {
+        "estudo": "E06",
+        "motivo": "O artigo diz literalmente que para resolver problema o desenvolvedor prefere a SAP Community e a documentação do Help Portal",
+        "trecho": "for problem-solving purposes, third-party developers favor knowledge boundary resources that are problem-specific and concise such as answers in the SAP Community or the documentation on the SAP Help Portal"
+      },
+      "S22": {
+        "estudo": "E06",
+        "motivo": "A adequação do recurso à finalidade trata de encontrar o que serve ao contexto",
+        "trecho": ""
+      },
+      "S30": {
+        "estudo": "E06",
+        "motivo": "O modelo descreve as etapas de finalidade, busca e avaliação, que é o próprio uso desse conhecimento",
+        "trecho": ""
+      },
+      "D01": {
+        "estudo": "E06",
+        "motivo": "O artigo diz que para resolver problema o desenvolvedor exige alta capacidade de busca, que é justamente o que falha no portal",
+        "trecho": "The third-party developer thus prefers knowledge boundary resources with high credibility and high searchability"
+      },
+      "D10": {
+        "estudo": "E06",
+        "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la",
+        "trecho": ""
+      }
+    }
   },
   {
     "id": "C20",
@@ -552,6 +981,21 @@
       "E04 o conhecimento experiencial é acumulado pela execução repetida de tarefas, e quem não o tem tem dificuldade de inovar por não entender bem as tecnologias existentes"
     ],
     "pendencia": "",
-    "relacoesConfirmadas": false
+    "relacoesConfirmadas": true,
+    "desafios": [
+      "D07"
+    ],
+    "evidencia": {
+      "S15": {
+        "estudo": "E04",
+        "motivo": "A recompensa por contribuição é a solução proposta no mesmo estudo para o conhecimento experiencial circular",
+        "trecho": ""
+      },
+      "D07": {
+        "estudo": "E04",
+        "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto",
+        "trecho": ""
+      }
+    }
   }
 ]
