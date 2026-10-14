@@ -43,13 +43,48 @@ document.addEventListener('click', (evento) => {
  * natureza, nível e dimensão, em que acende exatamente uma. A diferença está só
  * em quantos valores chegam acesos, então é a mesma peça.
  */
+const SVG = 'http://www.w3.org/2000/svg';
+
+/**
+ * O ícone diz o estado da caixa sem depender da cor, que sozinha não serve a
+ * quem não a distingue. Visto quando o valor vale, círculo vazio quando não.
+ */
+function iconeDeEstado(aceso) {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'opcao__icone');
+
+  const forma = document.createElementNS(SVG, aceso ? 'path' : 'circle');
+  if (aceso) {
+    forma.setAttribute('d', 'M4.5 10.5 8.2 14.2 15.5 6.4');
+  } else {
+    forma.setAttribute('cx', '10');
+    forma.setAttribute('cy', '10');
+    forma.setAttribute('r', '6');
+  }
+  forma.setAttribute('fill', 'none');
+  forma.setAttribute('stroke', 'currentColor');
+  forma.setAttribute('stroke-width', '1.8');
+  forma.setAttribute('stroke-linecap', 'round');
+  forma.setAttribute('stroke-linejoin', 'round');
+  svg.append(forma);
+  return svg;
+}
+
+/**
+ * A caixa fica com o ícone e o nome. A descrição do valor não entra, porque já
+ * vive no glossário do Explorar e no botão de ajuda do rótulo, e dentro da caixa
+ * virava a terceira cópia, que empurrava as abas para fora da tela.
+ */
 function fileira(definicao, acesos) {
   const lista = criar('ul', 'opcoes');
   definicao.valores.forEach((v) => {
+    const aceso = acesos.includes(v.valor);
     const item = criar('li', 'opcao');
-    if (acesos.includes(v.valor)) item.setAttribute('data-aceso', '');
-    item.append(criar('span', 'opcao__nome', v.valor));
-    if (v.descricao) item.append(criar('span', 'opcao__texto', v.descricao));
+    if (aceso) item.setAttribute('data-aceso', '');
+    item.append(iconeDeEstado(aceso), criar('span', 'opcao__nome', v.valor));
     lista.append(item);
   });
   return lista;

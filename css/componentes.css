@@ -651,23 +651,29 @@
   gap: var(--esp-2);
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
 }
+/* Ícone e nome, numa linha só. A descrição do valor mora no glossário do
+   Explorar e no botão de ajuda do rótulo, não aqui. */
 .opcao {
-  display: grid;
-  gap: var(--esp-1);
-  padding: var(--esp-3) var(--esp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  padding: var(--esp-2) var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
-  opacity: 0.55;
+  color: var(--cor-texto-fraco);
+  opacity: 0.6;
 }
 .opcao[data-aceso] {
   opacity: 1;
   border-color: var(--cor-acento-linha);
   background: var(--cor-acento-fundo);
+  color: var(--cor-acento);
 }
-.opcao__nome { font-size: var(--tam-sm); font-weight: 600; }
-.opcao[data-aceso] .opcao__nome { color: var(--cor-acento); }
-.opcao__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
+.opcao__icone { flex: none; width: 1.125rem; height: 1.125rem; }
+.opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
+.opcao[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
 
 /* Um atributo é o rótulo mais a fileira. Três deles empilham no bloco. */
 .atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }

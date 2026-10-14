@@ -142,7 +142,10 @@ nativamente pelo navegador com `type="module"`.
 - Os quatro atributos da ficha usam a mesma fileira de caixas, uma por valor possível, acesa quando
   vale e apagada quando não vale. Nenhum valor some, porque saber que um valor não se aplica também é
   informação. No tipo de ECOS pode acender mais de uma, nos outros três acende exatamente uma
-- A descrição de cada valor possível fica no glossário do Explorar, que é o lugar único desse texto
+- A caixa leva ícone e nome do valor, nada mais. O ícone é visto quando vale e círculo vazio quando
+  não, para o estado não depender só da cor
+- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda do rótulo,
+  nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
   o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
   `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é
