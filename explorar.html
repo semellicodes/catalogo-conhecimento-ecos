@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soluções · KM4SECO</title>
-<meta name="description" content="As 36 soluções identificadas na revisão rápida, com tipo, estudos de origem e os conhecimentos que cada uma apoia no KM4SECO.">
+<title>Explorar · KM4SECO</title>
+<meta name="description" content="Glossário dos atributos do KM4SECO, as 36 soluções e os 17 desafios identificados na revisão rápida, com os conhecimentos ligados a cada um.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -40,9 +40,8 @@
       <a href="index.html#inicio">Início</a>
       <a href="index.html#estrutura">Estrutura</a>
       <a href="index.html#catalogo">Catálogo</a>
-      <a href="#contato">Contato</a>
-      <a href="solucoes.html" aria-current="page">Soluções</a>
-      <a href="desafios.html">Desafios</a>
+      <a href="explorar.html" aria-current="page">Explorar</a>
+      <a href="index.html#contato">Contato</a>
       <a href="sobre.html">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
@@ -51,50 +50,50 @@
 </header>
 
 <main id="conteudo" class="container secao">
-  <h1 class="secao__titulo">Soluções</h1>
+  <h1 class="secao__titulo">Explorar o catálogo</h1>
+  <p class="secao__intro">
+    O vocabulário que descreve cada conhecimento, e as soluções e os desafios que a revisão
+    identificou, com os conhecimentos ligados a cada um.
+  </p>
+
+  <h2 class="secao__titulo secao__titulo--afastado" id="glossario">Glossário dos atributos</h2>
+  <div class="tabela--rolavel">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Atributo</th>
+          <th scope="col">Valores possíveis</th>
+          <th scope="col">Pergunta que responde</th>
+          <th scope="col">Referência</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-atributos"></tbody>
+    </table>
+  </div>
+
+  <h3 class="secao__subtitulo">Tipos de solução</h3>
+  <p class="secao__intro">Classificação segundo Shaw (2003), aplicada às soluções identificadas na revisão.</p>
+  <div class="tabela--rolavel">
+    <table class="tabela">
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-tipos"></tbody>
+    </table>
+  </div>
+
+  <h2 class="secao__titulo secao__titulo--afastado" id="solucoes">Soluções</h2>
   <p class="secao__intro" id="resumo-solucoes">Carregando</p>
   <ul class="listagem" id="lista-solucoes"></ul>
-</main>
 
-<section class="contato" id="contato" aria-labelledby="titulo-contato">
-  <div class="container">
-    <h2 class="secao__titulo" id="titulo-contato">Contato</h2>
-    <p class="secao__intro">
-      Para dúvidas, sugestões ou colaborações sobre o catálogo, entre em contato com as autoras e
-      os orientadores.
-    </p>
-    <ul class="contato__lista">
-      <li class="pessoa">
-        <span class="pessoa__retrato">
-          <span class="pessoa__iniciais" aria-hidden="true">PA</span>
-        </span>
-        <span class="pessoa__nome">Paula Amaral</span>
-        <a class="pessoa__email" href="mailto:paulaufra2023@gmail.com">paulaufra2023@gmail.com</a>
-      </li>
-      <li class="pessoa">
-        <span class="pessoa__retrato">
-          <span class="pessoa__iniciais" aria-hidden="true">MJ</span>
-        </span>
-        <span class="pessoa__nome">Mellynda de Jesus</span>
-        <a class="pessoa__email" href="mailto:naaralima7813@gmail.com">naaralima7813@gmail.com</a>
-      </li>
-      <li class="pessoa">
-        <span class="pessoa__retrato">
-          <span class="pessoa__iniciais" aria-hidden="true">PM</span>
-        </span>
-        <span class="pessoa__nome">Paulo Malcher</span>
-        <a class="pessoa__email" href="mailto:paulo.malcher@ufra.edu.br">paulo.malcher@ufra.edu.br</a>
-      </li>
-      <li class="pessoa">
-        <span class="pessoa__retrato">
-          <span class="pessoa__iniciais" aria-hidden="true">LL</span>
-        </span>
-        <span class="pessoa__nome">Larissa Luz</span>
-        <a class="pessoa__email" href="mailto:luz.larissa@ufra.edu.br">luz.larissa@ufra.edu.br</a>
-      </li>
-    </ul>
-  </div>
-</section>
+  <h2 class="secao__titulo secao__titulo--afastado" id="desafios">Desafios</h2>
+  <p class="secao__intro" id="resumo-desafios">Carregando</p>
+  <ul class="listagem" id="lista-desafios"></ul>
+</main>
 
 <footer class="rodape">
   <div class="container rodape__interno">
@@ -103,6 +102,6 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
-<script type="module" src="js/solucoes.js"></script>
+<script type="module" src="js/explorar.js"></script>
 </body>
 </html>

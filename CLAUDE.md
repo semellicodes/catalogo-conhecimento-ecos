@@ -51,12 +51,12 @@ no artigo saiu dos dois sentidos da relação.
 
 Os 22 pares de desafio estão em `conhecimentos[].desafios` e, no outro sentido, em
 `desafios[].conhecimentos`. D05, D12 e D16 não se ligam a nenhum conhecimento, porque vêm de estudos
-sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que `desafios.html`
+sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que o Explorar
 lista os dezessete, não só os ligados.
 
 Sete soluções também não se ligam a nenhum conhecimento, `S02, S03, S04, S23, S27, S28` e `S36`.
-Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão, e aparecem em
-`solucoes.html` como as demais, só sem a lista de conhecimentos.
+Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão, e aparecem no
+Explorar como as demais, só sem a lista de conhecimentos.
 
 ## Páginas
 
@@ -64,9 +64,8 @@ Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão
 |---|---|
 | `index.html` | Página única com seções ancoradas, `#inicio` com a abertura e os números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha por nível e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
-| `solucoes.html` | As 36 soluções, com tipo, estudos e os conhecimentos que cada uma apoia |
-| `desafios.html` | Os 17 desafios, com estudos e os conhecimentos ligados |
-| `sobre.html` | Método de pesquisa e esquemas de classificação |
+| `explorar.html` | Glossário dos atributos com a referência de cada esquema, as 36 soluções e os 17 desafios, cada um com os conhecimentos ligados |
+| `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
 ## Módulos
@@ -80,9 +79,9 @@ Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/desenho.js` | Monta o SVG decorativo da faixa de abertura. Não lê dados e não é referenciado por nenhum conteúdo |
-| `js/listagem.js` | Peça comum das páginas de soluções e de desafios. Não lê arquivo |
-| `js/solucoes.js`, `js/desafios.js` | Preenchem as duas listagens. Item sem conhecimento ligado aparece igual, só sem a lista |
-| `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
+| `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
+| `js/explorar.js` | Preenche o Explorar, glossário, soluções e desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
+| `js/inicio.js`, `js/referencias.js` | Preenchem as demais páginas |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
 Alterar o visual de um card nunca encosta na lógica dos filtros. Os módulos são carregados
@@ -113,6 +112,8 @@ nativamente pelo navegador com `type="module"`.
   linhas e as demais etiquetas no rodapé
 - A navegação do cabeçalho mistura âncora da própria página e link de página. As seções usam
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
+- A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
+  vez de repetir o bloco, porque é conteúdo e não navegação
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1

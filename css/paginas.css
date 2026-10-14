@@ -163,6 +163,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
+/* Um degrau abaixo do título de seção, para a parte que pertence à anterior,
+   como os tipos de solução dentro do glossário. */
+.secao__subtitulo {
+  font-size: var(--tam-lg);
+  letter-spacing: var(--entre-letras-nome);
+  margin-top: var(--esp-6);
+  margin-bottom: var(--esp-2);
+}
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
    coluna para quatro, cabem quantas couberem a partir de 14rem cada. */
