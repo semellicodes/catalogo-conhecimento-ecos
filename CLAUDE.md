@@ -51,18 +51,21 @@ no artigo saiu dos dois sentidos da relação.
 
 Os 22 pares de desafio estão em `conhecimentos[].desafios` e, no outro sentido, em
 `desafios[].conhecimentos`. D05, D12 e D16 não se ligam a nenhum conhecimento, porque vêm de estudos
-sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que a seção `#desafios`
+sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que `desafios.html`
 lista os dezessete, não só os ligados.
 
 Sete soluções também não se ligam a nenhum conhecimento, `S02, S03, S04, S23, S27, S28` e `S36`.
-Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão.
+Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão, e aparecem em
+`solucoes.html` como as demais, só sem a lista de conhecimentos.
 
 ## Páginas
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com seções ancoradas, `#inicio` com a abertura e os números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha por nível e a ficha em diálogo, `#desafios` com os dezessete desafios e `#contato` |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a abertura e os números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha por nível e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
+| `solucoes.html` | As 36 soluções, com tipo, estudos e os conhecimentos que cada uma apoia |
+| `desafios.html` | Os 17 desafios, com estudos e os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa e esquemas de classificação |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
@@ -77,7 +80,8 @@ Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/desenho.js` | Monta o SVG decorativo da faixa de abertura. Não lê dados e não é referenciado por nenhum conteúdo |
-| `js/desafios.js` | Monta a listagem de desafios na seção `#desafios`. Não filtra, desafio não tem ficha |
+| `js/listagem.js` | Peça comum das páginas de soluções e de desafios. Não lê arquivo |
+| `js/solucoes.js`, `js/desafios.js` | Preenchem as duas listagens. Item sem conhecimento ligado aparece igual, só sem a lista |
 | `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 

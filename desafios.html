@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desafios · KM4SECO</title>
+<meta name="description" content="Os 17 desafios de gerência de conhecimento identificados na revisão rápida, com os estudos de origem e os conhecimentos ligados a cada um.">
+<script>
+  /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
+  try {
+    var tema = localStorage.getItem('tema');
+    if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
+  } catch (erro) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/componentes.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+<a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="container cabecalho__interno">
+    <a class="marca" href="index.html" aria-label="Catálogo de Conhecimento em ECOS, ir para o início">
+      <svg class="marca__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.45"/>
+        <path d="M12 12 12 4.5M12 12 18.5 15.8M12 12 5.5 15.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.45"/>
+        <circle cx="12" cy="4.5" r="2.1" fill="currentColor"/>
+        <circle cx="18.5" cy="15.8" r="2.1" fill="currentColor"/>
+        <circle cx="5.5" cy="15.8" r="2.1" fill="currentColor"/>
+        <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+      </svg>
+      <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Principal">
+      <a href="index.html#inicio">Início</a>
+      <a href="index.html#estrutura">Estrutura</a>
+      <a href="index.html#catalogo">Catálogo</a>
+      <a href="#contato">Contato</a>
+      <a href="solucoes.html">Soluções</a>
+      <a href="desafios.html" aria-current="page">Desafios</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="referencias.html">Referências</a>
+    </nav>
+    <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+  </div>
+</header>
+
+<main id="conteudo" class="container secao">
+  <h1 class="secao__titulo">Desafios</h1>
+  <p class="secao__intro" id="resumo-desafios">Carregando</p>
+  <ul class="listagem" id="lista-desafios"></ul>
+</main>
+
+<section class="contato" id="contato" aria-labelledby="titulo-contato">
+  <div class="container">
+    <h2 class="secao__titulo" id="titulo-contato">Contato</h2>
+    <p class="secao__intro">
+      Para dúvidas, sugestões ou colaborações sobre o catálogo, entre em contato com as autoras e
+      os orientadores.
+    </p>
+    <ul class="contato__lista">
+      <li class="pessoa">
+        <span class="pessoa__retrato">
+          <span class="pessoa__iniciais" aria-hidden="true">PA</span>
+        </span>
+        <span class="pessoa__nome">Paula Amaral</span>
+        <a class="pessoa__email" href="mailto:paulaufra2023@gmail.com">paulaufra2023@gmail.com</a>
+      </li>
+      <li class="pessoa">
+        <span class="pessoa__retrato">
+          <span class="pessoa__iniciais" aria-hidden="true">MJ</span>
+        </span>
+        <span class="pessoa__nome">Mellynda de Jesus</span>
+        <a class="pessoa__email" href="mailto:naaralima7813@gmail.com">naaralima7813@gmail.com</a>
+      </li>
+      <li class="pessoa">
+        <span class="pessoa__retrato">
+          <span class="pessoa__iniciais" aria-hidden="true">PM</span>
+        </span>
+        <span class="pessoa__nome">Paulo Malcher</span>
+        <a class="pessoa__email" href="mailto:paulo.malcher@ufra.edu.br">paulo.malcher@ufra.edu.br</a>
+      </li>
+      <li class="pessoa">
+        <span class="pessoa__retrato">
+          <span class="pessoa__iniciais" aria-hidden="true">LL</span>
+        </span>
+        <span class="pessoa__nome">Larissa Luz</span>
+        <a class="pessoa__email" href="mailto:luz.larissa@ufra.edu.br">luz.larissa@ufra.edu.br</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="container rodape__interno">
+    <span>© 2026 KM4SECO, Catálogo de Conhecimento em Ecossistemas de Software · Universidade Federal Rural da Amazônia, Campus Capitão Poço</span>
+  </div>
+</footer>
+
+<script type="module" src="js/tema.js"></script>
+<script type="module" src="js/desafios.js"></script>
+</body>
+</html>

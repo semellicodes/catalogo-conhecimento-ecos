@@ -150,30 +150,65 @@
   border-bottom-color: var(--cor-acento);
 }
 
-/* ---------- Listagem de desafios ---------- */
-/* Mesma forma da lista de estudos da ficha, identificador à esquerda e corpo à
-   direita. Não é cartão porque desafio não abre ficha, é só leitura. */
-.desafios { list-style: none; display: grid; gap: var(--esp-4); margin-top: var(--esp-4); }
-.desafio {
+/* ---------- Listagem de soluções e de desafios ---------- */
+/* As duas páginas usam a mesma forma, identificador à esquerda e corpo à
+   direita. Não é cartão porque o item não abre ficha, quem abre é o link do
+   conhecimento ligado. */
+.listagem { list-style: none; display: grid; gap: var(--esp-4); margin-top: var(--esp-5); }
+.item-listagem {
   display: grid;
   grid-template-columns: var(--coluna-id) minmax(0, 1fr);
   gap: var(--esp-3);
   padding-bottom: var(--esp-4);
   border-bottom: 1px solid var(--cor-linha-suave);
 }
-.desafios .desafio:last-child { border-bottom: 0; padding-bottom: 0; }
-.desafio__corpo { display: grid; gap: var(--esp-2); }
-.desafio__texto { font-size: var(--tam-sm); max-width: var(--largura-texto); }
-.desafio__meta {
+.listagem .item-listagem:last-child { border-bottom: 0; padding-bottom: 0; }
+.item-listagem__corpo { display: grid; gap: var(--esp-2); }
+.item-listagem__texto { font-size: var(--tam-sm); max-width: var(--largura-texto); }
+.item-listagem__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--esp-2) var(--esp-4);
+  align-items: center;
+  gap: var(--esp-2) var(--esp-3);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
-/* Os conhecimentos que citam o desafio, quando existem. */
-.desafio__ligados { color: var(--cor-acento); }
+.item-listagem__etiqueta {
+  padding-inline: var(--esp-2);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-linha-suave);
+  border-radius: var(--raio-pilula);
+}
+
+/* Os conhecimentos ligados. Só aparecem quando existem. */
+.item-listagem__ligados {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-2);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+}
+.item-listagem__rotulo { color: var(--cor-texto-fraco); }
+.ligado {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--esp-1) var(--esp-2);
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-acento);
+  text-decoration: none;
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    background-color var(--dur-rapida) var(--curva);
+}
+.ligado:hover { border-color: var(--cor-acento); background: var(--cor-acento-fundo); }
+/* No toque o alvo cresce para os 44px da regra. No ponteiro fino a pílula fica
+   compacta, senão uma linha com onze delas vira um paredão. */
+@media (pointer: coarse) {
+  .ligado { min-height: var(--alvo-toque); padding-inline: var(--esp-3); }
+}
 
 /* ---------- Contato ---------- */
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
