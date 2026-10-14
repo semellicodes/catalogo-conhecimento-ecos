@@ -19,6 +19,10 @@ const ESTREITO = matchMedia('(max-width: 47.99rem)');
 
 let dados = null;
 let estado = filtros.estadoVazio();
+/* A ordem das naturezas e as estações saem da contagem sobre o catálogo inteiro,
+   uma vez só, senão filtrar reordenaria as estações a cada clique. */
+let ordemDasNaturezas = [];
+let estacoes = [];
 /* A ordem de navegação da ficha é a ordem filtrada no momento, não a ordem total. */
 let visiveis = [];
 let idAberto = null;
@@ -194,11 +198,8 @@ function sincronizarUrl(id) {
 }
 
 function atualizar() {
-  visiveis = filtros.ordenar(
-    filtros.aplicar(dados.conhecimentos, estado),
-    dados.classificacoes.natureza.valores.map((v) => v.valor)
-  );
-  lista.renderizar(el('#trilha'), visiveis, dados.classificacoes.tipoEcos.valores, abrirFicha);
+  visiveis = filtros.ordenar(filtros.aplicar(dados.conhecimentos, estado), ordemDasNaturezas);
+  lista.renderizar(el('#trilha'), visiveis, estacoes, abrirFicha);
   el('#trilha-vazia').hidden = visiveis.length > 0;
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
@@ -332,6 +333,11 @@ function montarCatalogo() {
     else pendentes.push(dados.classificacoes[chave].rotulo);
   });
   anunciarPendentes(pendentes);
+
+  ordemDasNaturezas = filtros.ordemPorQuantidade(dados.conhecimentos, 'natureza');
+  estacoes = ordemDasNaturezas.map((valor) =>
+    dados.classificacoes.natureza.valores.find((v) => v.valor === valor)
+  );
 
   lista.renderizarLegenda(el('#legenda'), dados.classificacoes.natureza.valores);
 

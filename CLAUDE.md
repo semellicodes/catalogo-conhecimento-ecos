@@ -49,14 +49,19 @@ continua, porque é a outra ponta da relação que o Explorar usa.
 os estudos. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
 correspondente aparece com o aviso de atributo não preenchido.
 
-O tipo de ECOS aparece em dois lugares, com duas origens diferentes, e isso é proposital por ora.
+Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
 
-Na ficha, o bloco soma os tipos dos estudos que identificaram o conhecimento, sem repetir, porque é
-o estudo que diz qual ecossistema foi observado, e um estudo sozinho pode cobrir mais de um, como o
-E09. As três opções aparecem sempre, as observadas acesas e as demais apagadas.
+`conhecimentos[].tipoEcos` diz em que ecossistemas **aquele conhecimento** foi observado. É o que a
+ficha lê. Enquanto estiver vazio, as três caixas aparecem apagadas e o bloco diz que a classificação
+está pendente.
 
-Na trilha, quem agrupa é `conhecimentos[].tipoEcos`, preenchido à mão. Enquanto estiver vazio, os
-vinte caem numa estação única de pendentes.
+`estudos[].tipoEcos` diz que tipos de ecossistema **aquele estudo** examinou, e é lista porque um
+estudo sozinho pode comparar mais de um, como o E09, que olha um aberto, um fechando e um fechado.
+Aparece só na tabela de estudos, como dado do estudo.
+
+Um nunca é somado para dentro do outro. Um estudo que compara três ecossistemas não autoriza afirmar
+que o conhecimento tirado dele apareceu nos três, e cada classificação ainda vai precisar de
+justificativa escrita.
 
 `justificativaClassificacao` está vazio nos vinte. Quando tiver texto, a ficha mostra o item
 "Por que essa classificação?" dentro do bloco de classificação. Vazio, o item não aparece.
@@ -130,9 +135,14 @@ nativamente pelo navegador com `type="module"`.
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
   vez de repetir o bloco, porque é conteúdo e não navegação
-- A trilha do catálogo agrupa por tipo de ECOS, e dentro de cada estação a ordem é por natureza,
-  tácitos primeiro e explícitos depois, e por identificador dentro de cada natureza. A mesma ordem
-  vale para o anterior e o próximo da ficha
+- A trilha do catálogo agrupa por natureza epistemológica. A ordem das estações é a da quantidade de
+  conhecimentos de cada natureza, da maior para a menor, calculada a partir de `conhecimentos.json`,
+  nunca escrita no código, para se ajustar sozinha se uma natureza mudar. Dentro da estação a ordem é
+  por identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+- Os quatro atributos da ficha usam a mesma fileira de caixas, uma por valor possível, acesa quando
+  vale e apagada quando não vale. Nenhum valor some, porque saber que um valor não se aplica também é
+  informação. No tipo de ECOS pode acender mais de uma, nos outros três acende exatamente uma
+- A descrição de cada valor possível fica no glossário do Explorar, que é o lugar único desse texto
 - A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
   o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
   `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é

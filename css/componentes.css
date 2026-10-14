@@ -210,6 +210,12 @@
   .ligado { min-height: var(--alvo-toque); padding-inline: var(--esp-3); }
 }
 
+/* Os valores possíveis de um atributo, cada um com a própria descrição. */
+.valores { list-style: none; display: grid; gap: var(--esp-2); }
+.valores__item { display: grid; gap: var(--esp-1); }
+.valores__nome { font-weight: 600; }
+.valores__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
+
 /* Aviso acima de uma lista, para o que a lista é e o que ela não é. */
 .aviso-linha {
   margin-top: calc(var(--esp-5) * -1 + var(--esp-2));
@@ -637,15 +643,15 @@
   color: var(--cor-texto-fraco);
 }
 
-/* As três opções ficam todas à vista. A apagada continua legível, porque saber
-   que um tipo não foi observado também é informação. */
-.tipos-ecos {
+/* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
+   porque saber que um valor não se aplica também é informação. */
+.opcoes {
   list-style: none;
   display: grid;
-  gap: var(--esp-3);
+  gap: var(--esp-2);
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
 }
-.tipo-ecos {
+.opcao {
   display: grid;
   gap: var(--esp-1);
   padding: var(--esp-3) var(--esp-4);
@@ -654,23 +660,18 @@
   border-radius: var(--raio);
   opacity: 0.55;
 }
-.tipo-ecos[data-aceso] {
+.opcao[data-aceso] {
   opacity: 1;
   border-color: var(--cor-acento-linha);
   background: var(--cor-acento-fundo);
 }
-.tipo-ecos__nome { font-size: var(--tam-sm); font-weight: 600; }
-.tipo-ecos[data-aceso] .tipo-ecos__nome { color: var(--cor-acento); }
-.tipo-ecos__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
+.opcao__nome { font-size: var(--tam-sm); font-weight: 600; }
+.opcao[data-aceso] .opcao__nome { color: var(--cor-acento); }
+.opcao__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
 
-/* Os três atributos lado a lado, e um embaixo do outro no celular. */
-.classificacao {
-  display: grid;
-  gap: var(--esp-3) var(--esp-5);
-  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
-  padding-block: var(--esp-3);
-  border-block: 1px solid var(--cor-linha-suave);
-}
+/* Um atributo é o rótulo mais a fileira. Três deles empilham no bloco. */
+.atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }
+.atributo-caixas .atr { margin-bottom: var(--esp-2); }
 
 /* A justificativa, que só aparece quando existe. */
 .porque { margin-top: var(--esp-3); }
@@ -690,24 +691,13 @@
   max-width: var(--largura-texto);
 }
 
-.atr {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 0 var(--esp-2);
-}
-.atr__nome { grid-column: 1 / -1; }
+.atr { position: relative; display: inline-flex; align-items: center; gap: var(--esp-2); }
 .atr__nome {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
   text-transform: lowercase;
 }
-.atr__valor { font-size: var(--tam-sm); font-weight: 600; }
-.atr__valor--explicito { color: var(--cor-explicito); }
-.atr__valor--tacito-cognitivo { color: var(--cor-tacito-cognitivo); }
-.atr__valor--tacito-tecnico { color: var(--cor-tacito-tecnico); }
 
 .atr__info {
   flex: none;

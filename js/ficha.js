@@ -7,7 +7,6 @@
  */
 
 import { referenciaCurta, vazio } from './dados.js';
-import { classeNatureza } from './lista.js';
 
 const ATRIBUTOS = ['natureza', 'nivel', 'dimensao', 'tipoEcos', 'acaoGerencia'];
 const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
@@ -20,49 +19,7 @@ function criar(tag, className, texto) {
   return el;
 }
 
-const textoDe = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto);
-
-/* ---------- Tira de atributos ---------- */
-
-/**
- * Um atributo preenchido. O valor fica à vista e o que explica o valor, a
- * descrição e a referência, sai do botão de informação, por hover ou clique.
- */
-function atributo(dados, conhecimento, chave) {
-  const definicao = dados.classificacoes[chave];
-  const valor = textoDe(conhecimento[chave]);
-  const opcao = definicao.valores.find((v) => v.valor === valor);
-  const ref = referenciaCurta(dados, definicao.referencia);
-
-  /* Só a natureza carrega a cor da própria classificação, como no cartão. */
-  const classeValor =
-    chave === 'natureza' ? `atr__valor atr__valor--${classeNatureza(valor)}` : 'atr__valor';
-
-  const raiz = criar('span', 'atr');
-  raiz.append(criar('span', 'atr__nome', definicao.rotulo), criar('span', classeValor, valor));
-
-  const botao = criar('button', 'atr__info', 'i');
-  botao.type = 'button';
-  botao.setAttribute('aria-expanded', 'false');
-  botao.setAttribute('aria-label', `Sobre ${definicao.rotulo.toLowerCase()}`);
-
-  const nota = criar('span', 'atr__nota');
-  if (opcao && opcao.descricao) nota.append(criar('span', null, opcao.descricao));
-  nota.append(criar('span', 'atr__pergunta', definicao.pergunta));
-  if (ref) nota.append(criar('span', 'atr__referencia', ref));
-
-  botao.addEventListener('click', () => {
-    const aberto = raiz.hasAttribute('data-aberto');
-    fecharNotas();
-    if (!aberto) {
-      raiz.setAttribute('data-aberto', '');
-      botao.setAttribute('aria-expanded', 'true');
-    }
-  });
-
-  raiz.append(botao, nota);
-  return raiz;
-}
+/* ---------- Classificação, em caixas ---------- */
 
 /** Fecha qualquer nota de atributo aberta, venha o pedido de onde vier. */
 function fecharNotas() {
@@ -78,57 +35,90 @@ document.addEventListener('click', (evento) => {
 });
 
 /**
- * Os ecossistemas em que o conhecimento foi observado. As três opções ficam
- * sempre à vista, as que valem acesas e as outras apagadas, porque saber que um
- * tipo não foi observado é informação, e esconder a opção apagaria isso.
+ * Uma fileira de caixas, uma por valor possível do atributo. A que vale fica
+ * acesa e as outras apagadas, porque saber que um valor não se aplica também é
+ * informação, e esconder a caixa apagaria isso.
  *
- * O valor é somado dos estudos que identificaram o conhecimento, sem repetir,
- * porque é o estudo que diz qual ecossistema observou. Um estudo sozinho pode
- * cobrir mais de um, como o E09, que compara um aberto, um fechando e um
- * fechado. Enquanto os estudos não tiverem o campo, as três ficam apagadas.
+ * Serve tanto para o tipo de ECOS, em que pode acender mais de uma, quanto para
+ * natureza, nível e dimensão, em que acende exatamente uma. A diferença está só
+ * em quantos valores chegam acesos, então é a mesma peça.
  */
-function tiposObservados(conhecimento) {
-  const soma = new Set();
-  conhecimento.estudosResolvidos.forEach((e) => (e.tipoEcos || []).forEach((t) => soma.add(t)));
-  return soma;
+function fileira(definicao, acesos) {
+  const lista = criar('ul', 'opcoes');
+  definicao.valores.forEach((v) => {
+    const item = criar('li', 'opcao');
+    if (acesos.includes(v.valor)) item.setAttribute('data-aceso', '');
+    item.append(criar('span', 'opcao__nome', v.valor));
+    if (v.descricao) item.append(criar('span', 'opcao__texto', v.descricao));
+    lista.append(item);
+  });
+  return lista;
 }
 
-function tiposDeEcos(dados, conhecimento) {
-  const definicao = dados.classificacoes.tipoEcos;
-  const observados = tiposObservados(conhecimento);
+/** O rótulo do atributo, com o botão que explica a pergunta e a referência. */
+function rotuloDoAtributo(dados, chave) {
+  const definicao = dados.classificacoes[chave];
+  const raiz = criar('div', 'atr');
+  raiz.append(criar('span', 'atr__nome', definicao.rotulo));
 
+  const botao = criar('button', 'atr__info', 'i');
+  botao.type = 'button';
+  botao.setAttribute('aria-expanded', 'false');
+  botao.setAttribute('aria-label', `Sobre ${definicao.rotulo.toLowerCase()}`);
+
+  const nota = criar('span', 'atr__nota');
+  nota.append(criar('span', 'atr__pergunta', definicao.pergunta));
+  const ref = referenciaCurta(dados, definicao.referencia);
+  if (ref) nota.append(criar('span', 'atr__referencia', ref));
+
+  botao.addEventListener('click', () => {
+    const aberto = raiz.hasAttribute('data-aberto');
+    fecharNotas();
+    if (!aberto) {
+      raiz.setAttribute('data-aberto', '');
+      botao.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  raiz.append(botao, nota);
+  return raiz;
+}
+
+/** Um atributo inteiro, rótulo mais fileira de caixas. */
+function atributoEmCaixas(dados, conhecimento, chave) {
+  const bloco = criar('div', 'atributo-caixas');
+  const bruto = conhecimento[chave];
+  const acesos = Array.isArray(bruto) ? bruto : [bruto].filter(Boolean);
+  bloco.append(rotuloDoAtributo(dados, chave), fileira(dados.classificacoes[chave], acesos));
+  return bloco;
+}
+
+/**
+ * Os ecossistemas em que o conhecimento foi observado. Lê
+ * conhecimentos[].tipoEcos, que diz onde aquele conhecimento foi visto, e não a
+ * soma dos estudos, porque um estudo que compara três ecossistemas não autoriza
+ * afirmar que o conhecimento apareceu nos três.
+ */
+function tiposDeEcos(dados, conhecimento) {
+  const observados = conhecimento.tipoEcos || [];
   const bloco = criar('section', 'bloco-ficha');
   bloco.append(criar('h3', 'bloco-ficha__titulo', 'Exemplos de ecossistemas em que esse conhecimento foi observado'));
-
-  const opcoes = criar('ul', 'tipos-ecos');
-  definicao.valores.forEach((v) => {
-    const item = criar('li', 'tipo-ecos');
-    if (observados.has(v.valor)) item.setAttribute('data-aceso', '');
-    item.append(criar('span', 'tipo-ecos__nome', v.valor));
-    if (v.descricao) item.append(criar('span', 'tipo-ecos__texto', v.descricao));
-    opcoes.append(item);
-  });
-  bloco.append(opcoes);
-
-  if (!observados.size) {
-    bloco.append(criar('p', 'bloco-ficha__pendente', 'Nenhum dos estudos deste conhecimento teve o tipo de ecossistema registrado.'));
+  bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
+  if (!observados.length) {
+    bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
   }
   return bloco;
 }
 
-/* A classificação do conhecimento. Os três atributos lado a lado no desktop e
-   um embaixo do outro no celular. */
+/* Os três atributos de classificação, uma fileira cada, um valor aceso por
+   fileira porque cada conhecimento tem um valor só de cada um. */
 const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
 
 function classificacao(dados, conhecimento) {
   const bloco = criar('section', 'bloco-ficha');
   bloco.append(criar('h3', 'bloco-ficha__titulo', 'Classificação do conhecimento'));
 
-  const grade = criar('div', 'classificacao');
-  CLASSIFICACAO.filter((chave) => !vazio(conhecimento[chave])).forEach((chave) =>
-    grade.append(atributo(dados, conhecimento, chave))
-  );
-  bloco.append(grade);
+  CLASSIFICACAO.forEach((chave) => bloco.append(atributoEmCaixas(dados, conhecimento, chave)));
 
   /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
      quando houver, em vez de abrir para um espaço vazio. */

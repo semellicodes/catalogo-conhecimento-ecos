@@ -27,14 +27,33 @@ function linha(cabecalho, ...celulas) {
   return tr;
 }
 
-/** Um atributo por linha, com os valores, a pergunta e a referência do esquema. */
+/**
+ * Um atributo por linha. Cada valor possível aparece com a própria descrição,
+ * que é onde esse texto passou a viver depois que a trilha deixou de agrupar
+ * por tipo de ECOS e as estações pararam de mostrá-lo.
+ */
+function valores(definicao) {
+  const td = document.createElement('td');
+  const lista = document.createElement('ul');
+  lista.className = 'valores';
+  definicao.valores.forEach((v) => {
+    const item = document.createElement('li');
+    item.className = 'valores__item';
+    item.append(celula('span', v.valor, 'valores__nome'));
+    if (v.descricao) item.append(celula('span', v.descricao, 'valores__texto'));
+    lista.append(item);
+  });
+  td.append(lista);
+  return td;
+}
+
 function montarAtributos(dados) {
   const corpo = el('#tabela-atributos');
   corpo.replaceChildren(
     ...Object.values(dados.classificacoes).map((d) =>
       linha(
         d.rotulo,
-        celula('td', d.valores.map((v) => v.valor).join(', ')),
+        valores(d),
         celula('td', d.pergunta),
         celula('td', referenciaCurta(dados, d.referencia) || 'Definido na QP1 da revisão rápida')
       )

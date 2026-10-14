@@ -18,7 +18,10 @@ async function iniciar() {
   const corpo = el('#tabela-estudos');
   dados.estudos.forEach((e) => {
     const linha = document.createElement('tr');
-    const celulas = [e.id, e.titulo, e.autores, e.ano, e.pais];
+    /* O tipo de ECOS é lista, porque um estudo pode examinar mais de um. Vazio,
+       a célula mostra que está a definir, como nos demais campos pendentes. */
+    const tipos = e.tipoEcos.length ? e.tipoEcos.join(', ') : 'A definir';
+    const celulas = [e.id, e.titulo, e.autores, e.ano, e.pais, tipos];
     celulas.forEach((valor, indice) => {
       const celula = document.createElement(indice === 0 ? 'th' : 'td');
       if (indice === 0) {
