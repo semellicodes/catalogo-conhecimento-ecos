@@ -67,7 +67,7 @@ async function iniciar() {
   const avaliadas = dados.solucoes.filter((s) => s.avaliada).length;
   el('#numeros').replaceChildren(
     numero(dados.conhecimentos.length, 'conhecimentos catalogados'),
-    numero(dados.solucoes.length, 'soluções relacionadas'),
+    numero(dados.solucoes.length, 'soluções identificadas na revisão'),
     numero(avaliadas, 'soluções com avaliação reportada'),
     numero(dados.meta.totalEstudos, 'estudos primários')
   );

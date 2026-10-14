@@ -150,6 +150,31 @@
   border-bottom-color: var(--cor-acento);
 }
 
+/* ---------- Listagem de desafios ---------- */
+/* Mesma forma da lista de estudos da ficha, identificador à esquerda e corpo à
+   direita. Não é cartão porque desafio não abre ficha, é só leitura. */
+.desafios { list-style: none; display: grid; gap: var(--esp-4); margin-top: var(--esp-4); }
+.desafio {
+  display: grid;
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  gap: var(--esp-3);
+  padding-bottom: var(--esp-4);
+  border-bottom: 1px solid var(--cor-linha-suave);
+}
+.desafios .desafio:last-child { border-bottom: 0; padding-bottom: 0; }
+.desafio__corpo { display: grid; gap: var(--esp-2); }
+.desafio__texto { font-size: var(--tam-sm); max-width: var(--largura-texto); }
+.desafio__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2) var(--esp-4);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+/* Os conhecimentos que citam o desafio, quando existem. */
+.desafio__ligados { color: var(--cor-acento); }
+
 /* ---------- Contato ---------- */
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
    então ocupa o mínimo entre o fim da página e o crédito. */

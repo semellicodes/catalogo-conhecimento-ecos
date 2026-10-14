@@ -89,20 +89,20 @@ function tira(dados, conhecimento) {
 /* ---------- Conteúdo das abas ---------- */
 
 /**
- * Uma solução. A linha continua de uma linha só, e o que sustenta a relação com
- * este conhecimento fica guardado atrás dela, aberto por quem quiser saber.
- * O trecho literal existe em poucos pares, então só entra quando existe, sem
- * deixar lugar vazio nos demais.
+ * Uma relação, de solução ou de desafio. A linha continua de uma linha só, e o
+ * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
+ * quiser saber. Trecho literal existe em poucos pares, então só entra quando
+ * existe, sem deixar lugar vazio nos demais.
  */
-function linhaSolucao(solucao, evidencia) {
+function linhaRelacao({ id, texto, estudos, selo }, evidencia) {
   const item = criar('li');
   const caixa = criar('details', 'solucao');
 
   const linha = criar('summary', 'solucao__linha');
-  linha.append(criar('span', 'codigo-id', solucao.id), criar('span', 'solucao__nome', solucao.nome));
+  linha.append(criar('span', 'codigo-id', id), criar('span', 'solucao__nome', texto));
   const meta = criar('span', 'solucao__meta');
-  meta.append(criar('span', 'solucao__estudos', solucao.estudos.join(', ')));
-  if (solucao.avaliada) meta.append(criar('span', 'marca-avaliada', 'avaliada'));
+  meta.append(criar('span', 'solucao__estudos', estudos.join(', ')));
+  if (selo) meta.append(criar('span', 'marca-avaliada', selo));
   linha.append(meta);
   caixa.append(linha);
 
@@ -118,6 +118,26 @@ function linhaSolucao(solucao, evidencia) {
 
   item.append(caixa);
   return item;
+}
+
+const linhaSolucao = (s, evidencia) =>
+  linhaRelacao({ id: s.id, texto: s.nome, estudos: s.estudos, selo: s.avaliada ? 'avaliada' : '' }, evidencia);
+
+const linhaDesafio = (d, evidencia) =>
+  linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos }, evidencia);
+
+/** Os desafios confirmados deste conhecimento, na mesma forma das soluções. */
+function desafios(conhecimento) {
+  const evidencia = conhecimento.evidencia || {};
+  const bloco = criar('div', 'grupos');
+  if (!conhecimento.desafiosResolvidos.length) {
+    bloco.append(criar('p', 'vazio', 'Nenhum desafio foi confirmado para este conhecimento.'));
+    return bloco;
+  }
+  const lista = criar('ul', 'solucoes');
+  conhecimento.desafiosResolvidos.forEach((d) => lista.append(linhaDesafio(d, evidencia[d.id])));
+  bloco.append(lista);
+  return bloco;
 }
 
 /** As soluções agrupadas por tipo, na ordem em que os tipos estão em meta. */
@@ -257,6 +277,7 @@ export function renderizar(dados, conhecimento) {
 
   const quantos = {
     solucoes: conhecimento.solucoesResolvidas.length,
+    desafios: conhecimento.desafiosResolvidos.length,
     estudos: conhecimento.estudosResolvidos.length,
     trechos: conhecimento.trechos.filter(Boolean).length
   };
@@ -266,6 +287,7 @@ export function renderizar(dados, conhecimento) {
     tira(dados, conhecimento),
     montarAbas([
       { rotulo: 'Soluções', contagem: quantos.solucoes, conteudo: () => solucoes(dados, conhecimento) },
+      { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
       { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },
       { rotulo: 'Trechos', contagem: quantos.trechos, conteudo: () => trechos(conhecimento) }
     ]),

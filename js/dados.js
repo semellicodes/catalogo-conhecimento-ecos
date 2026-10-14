@@ -7,6 +7,7 @@ const ARQUIVOS = {
   meta: 'dados/meta.json',
   conhecimentos: 'dados/conhecimentos.json',
   solucoes: 'dados/solucoes.json',
+  desafios: 'dados/desafios.json',
   estudos: 'dados/estudos.json',
   classificacoes: 'dados/classificacoes.json',
   referencias: 'dados/referencias.json'
@@ -56,6 +57,7 @@ export function conhecimentoCompleto(dados, id) {
   return {
     ...conhecimento,
     solucoesResolvidas: conhecimento.solucoes.map((s) => porId(dados.solucoes, s)).filter(Boolean),
+    desafiosResolvidos: (conhecimento.desafios || []).map((d) => porId(dados.desafios, d)).filter(Boolean),
     estudosResolvidos: conhecimento.estudos.map((e) => porId(dados.estudos, e)).filter(Boolean)
   };
 }

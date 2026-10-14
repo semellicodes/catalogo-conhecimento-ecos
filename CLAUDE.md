@@ -23,6 +23,7 @@ identidade visual muda sem tocar no conteúdo.
 |---|---|
 | `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, os identificadores de soluções, desafios e estudos, e a evidência de cada relação |
 | `dados/solucoes.json` | 36 soluções (S01 a S36), com tipo segundo Shaw (2003), avaliação quando reportada e os conhecimentos que apoiam |
+| `dados/desafios.json` | 17 desafios (D01 a D17), com o texto, os estudos e os conhecimentos que os citam |
 | `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e tipo de ECOS |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
 | `dados/referencias.json` | Citação completa de cada referência, identificada por chave |
@@ -48,15 +49,19 @@ correspondente aparece com o aviso de atributo não preenchido e a ficha mostra 
 contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
 no artigo saiu dos dois sentidos da relação.
 
-Os 22 pares de desafio estão guardados em `conhecimentos[].desafios`, mas não aparecem na interface,
-porque não existe `dados/desafios.json` dizendo o nome e a descrição de D01 a D17. Enquanto não
-existir, a ficha mostra apenas as soluções.
+Os 22 pares de desafio estão em `conhecimentos[].desafios` e, no outro sentido, em
+`desafios[].conhecimentos`. D05, D12 e D16 não se ligam a nenhum conhecimento, porque vêm de estudos
+sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que a seção `#desafios`
+lista os dezessete, não só os ligados.
+
+Sete soluções também não se ligam a nenhum conhecimento, `S02, S03, S04, S23, S27, S28` e `S36`.
+Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão.
 
 ## Páginas
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com três seções ancoradas, `#inicio` com a abertura e os números, `#catalogo` com busca, filtros, grade de cards e a ficha em diálogo, e `#estrutura` com as camadas |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a abertura e os números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha por nível e a ficha em diálogo, `#desafios` com os dezessete desafios e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `sobre.html` | Método de pesquisa e esquemas de classificação |
 | `referencias.html` | Estudos primários e referências bibliográficas |
@@ -72,6 +77,7 @@ existir, a ficha mostra apenas as soluções.
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/desenho.js` | Monta o SVG decorativo da faixa de abertura. Não lê dados e não é referenciado por nenhum conteúdo |
+| `js/desafios.js` | Monta a listagem de desafios na seção `#desafios`. Não filtra, desafio não tem ficha |
 | `js/inicio.js`, `js/sobre.js`, `js/referencias.js` | Preenchem as demais páginas |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
