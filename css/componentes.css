@@ -506,53 +506,12 @@
 .fechar svg { width: 1.25rem; height: 1.25rem; }
 .fechar:hover { background: var(--cor-superficie-alta); color: var(--cor-texto); }
 
-/* ---------- Trilha por nível ---------- */
-/* Cada nível é uma estação. O ponto marca a estação e a linha liga uma à
-   seguinte, por isso a última não desenha linha. */
-.trilha { list-style: none; display: grid; gap: var(--esp-7); }
-.estacao {
-  display: grid;
-  grid-template-columns: var(--coluna-trilha) minmax(0, 1fr);
-  column-gap: var(--esp-4);
-}
-.estacao__marca { position: relative; display: flex; justify-content: center; }
-.estacao__ponto {
-  width: var(--ponto-estacao);
-  height: var(--ponto-estacao);
-  margin-top: var(--esp-2);
-  border-radius: var(--raio-pilula);
-  background: var(--cor-acento);
-  flex: none;
-}
-/* A linha desce do ponto e atravessa o espaço até a estação seguinte. */
-.estacao__marca::after {
-  content: '';
-  position: absolute;
-  top: calc(var(--esp-2) + var(--ponto-estacao) + var(--esp-2));
-  bottom: calc(var(--esp-7) * -1);
-  width: 1px;
-  background: var(--cor-linha);
-}
-.estacao:last-child .estacao__marca::after { display: none; }
-
-.estacao__titulo {
-  display: flex;
-  align-items: baseline;
-  gap: var(--esp-3);
-  font-size: var(--tam-lg);
-  letter-spacing: var(--entre-letras-nome);
-}
-.estacao__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-fraco); }
-.estacao__descricao {
-  margin-block: var(--esp-2) var(--esp-4);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
-}
-
 /* ---------- Cartão do conhecimento ---------- */
 /* Duas colunas no desktop e uma no celular. O cartão mostra o conhecimento
-   inteiro, descrição incluída, então a grade é larga e não aperta o texto. */
+   inteiro, descrição incluída, então a grade é larga e não aperta o texto.
+   Os cartões vêm ordenados por natureza, sem cabeçalho separando um grupo do
+   outro, porque a contagem já está nos filtros e a descrição de cada natureza
+   está no glossário do Explorar. */
 .cartoes {
   list-style: none;
   display: grid;
@@ -586,16 +545,7 @@
 }
 
 .cartao__topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); }
-/* Identificador e dimensão na mesma linha, com o ponto entre eles vindo do CSS
-   para não virar texto solto que o leitor de tela anuncia. */
-.cartao__ref { display: flex; align-items: baseline; gap: var(--esp-2); }
 .cartao__id { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.cartao__dimensao {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-}
-.cartao__dimensao::before { content: '·'; margin-right: var(--esp-2); }
 .cartao__nome {
   font-size: var(--tam-lg);
   font-weight: 600;

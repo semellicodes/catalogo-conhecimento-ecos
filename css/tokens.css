@@ -83,9 +83,6 @@
   --esp-9: 5.5rem;
 
   /* Medida */
-  /* Trilha. A coluna do ponto e da linha, e o diâmetro do ponto da estação */
-  --coluna-trilha: 1.75rem;
-  --ponto-estacao: 0.75rem;
   --largura-max: 1240px;
   --largura-texto: 68ch;
   --largura-dialogo: 47.5rem;

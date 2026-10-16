@@ -9,12 +9,12 @@ import * as ficha from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
-/* O nível não entra, porque agora é a própria trilha. Os dois últimos ainda não
+/* O nível não entra, porque não aparece na listagem. Os dois últimos ainda não
    têm valor registrado e caem no aviso do rodapé. */
 const FACETAS = ['natureza', 'dimensao', 'tipoEcos', 'acaoGerencia'];
 
 /* Abaixo desta largura os filtros moram numa folha por cima, em vez de empurrar
-   a trilha para fora da tela. */
+   os cartões para fora da tela. */
 const ESTREITO = matchMedia('(max-width: 47.99rem)');
 
 let dados = null;
@@ -22,7 +22,6 @@ let estado = filtros.estadoVazio();
 /* A ordem das naturezas e as estações saem da contagem sobre o catálogo inteiro,
    uma vez só, senão filtrar reordenaria as estações a cada clique. */
 let ordemDasNaturezas = [];
-let estacoes = [];
 /* A ordem de navegação da ficha é a ordem filtrada no momento, não a ordem total. */
 let visiveis = [];
 let idAberto = null;
@@ -209,8 +208,8 @@ function sincronizarUrl(id) {
 
 function atualizar() {
   visiveis = filtros.ordenar(filtros.aplicar(dados.conhecimentos, estado), ordemDasNaturezas);
-  lista.renderizar(el('#trilha'), visiveis, estacoes, abrirFicha);
-  el('#trilha-vazia').hidden = visiveis.length > 0;
+  lista.renderizar(el('#lista'), visiveis, abrirFicha);
+  el('#lista-vazia').hidden = visiveis.length > 0;
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
   marcarOpcoes();
@@ -261,8 +260,8 @@ function ligarFolhaDeFiltros() {
       corpo.append(painel);
     } else {
       fechar();
-      /* Volta para antes da trilha, que é o que vem logo depois dos filtros. */
-      lugarOriginal.insertBefore(painel, el('#trilha'));
+      /* Volta para antes dos cartões, que é o que vem logo depois dos filtros. */
+      lugarOriginal.insertBefore(painel, el('#lista'));
     }
   }
 
@@ -296,12 +295,12 @@ function ligarDialogo() {
 
 /**
  * Qualquer falha na partida vira aviso na tela. Sem isto a página fica parada
- * em Carregando, sem trilha e sem dizer o que houve, que foi o que aconteceu
+ * em Carregando, sem cartão e sem dizer o que houve, que foi o que aconteceu
  * quando o navegador serviu uma versão antiga de um módulo junto com o HTML novo.
  */
 function avisarFalha(mensagem, erro) {
   console.error(erro);
-  const aviso = el('#trilha-vazia');
+  const aviso = el('#lista-vazia');
   if (aviso) {
     aviso.textContent = mensagem;
     aviso.hidden = false;
@@ -345,10 +344,6 @@ function montarCatalogo() {
   anunciarPendentes(pendentes);
 
   ordemDasNaturezas = filtros.ordemPorQuantidade(dados.conhecimentos, 'natureza');
-  estacoes = ordemDasNaturezas.map((valor) =>
-    dados.classificacoes.natureza.valores.find((v) => v.valor === valor)
-  );
-
 
   ligarBusca();
   ligarLimpar();

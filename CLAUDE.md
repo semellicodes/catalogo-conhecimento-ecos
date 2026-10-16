@@ -92,7 +92,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#entrar` com as portas por natureza, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha e a ficha em diálogo, e `#contato` |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#entrar` com as portas por natureza, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `explorar.html` | Glossário dos atributos com a referência de cada esquema, as 36 soluções e os 17 desafios, cada um com os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
@@ -104,7 +104,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 |---|---|
 | `js/dados.js` | Único módulo que lê arquivos. Carrega, guarda em cache e resolve identificadores |
 | `js/filtros.js` | Filtra e ordena listas. Não conhece o DOM |
-| `js/lista.js` | Monta os cards da listagem |
+| `js/lista.js` | Monta os cards do catálogo |
 | `js/ficha.js` | Monta a ficha de um conhecimento |
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
@@ -137,10 +137,9 @@ nativamente pelo navegador com `type="module"`.
 ## Convenções de interface
 
 - Mobile primeiro. A grade de cards é uma coluna no celular e duas a partir de 64rem
-- O card mostra no topo `C01 · Técnica`, identificador e dimensão em mono apagado, e o selo da
-  natureza epistemológica à direita. Abaixo, o nome em título, a descrição inteira e um link
-  "Ver ficha completa" na largura do cartão, no pé. A dimensão não vira etiqueta para não ficarem
-  duas pílulas disputando o mesmo canto
+- O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
+  nome em título, a descrição inteira e um link "Ver ficha completa" na largura do cartão, no pé.
+  A dimensão não aparece no card, só na ficha
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
 - A faixa de abertura leva, nesta ordem, o olho KM4SECO, o título, o resumo de `meta.subtitulo`, o
@@ -153,10 +152,13 @@ nativamente pelo navegador com `type="module"`.
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
   vez de repetir o bloco, porque é conteúdo e não navegação
-- A trilha do catálogo agrupa por natureza epistemológica. A ordem das estações é a da quantidade de
-  conhecimentos de cada natureza, da maior para a menor, calculada a partir de `conhecimentos.json`,
-  nunca escrita no código, para se ajustar sozinha se uma natureza mudar. Dentro da estação a ordem é
-  por identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+- Os cartões do catálogo vêm agrupados por natureza epistemológica, pela ordenação, sem cabeçalho
+  separando um grupo do outro. A ordem dos grupos é a da quantidade de conhecimentos de cada
+  natureza, da maior para a menor, calculada a partir de `conhecimentos.json`, nunca escrita no
+  código, para se ajustar sozinha se uma natureza mudar. Dentro do grupo a ordem é por
+  identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+- A contagem de cada natureza fica nos filtros e nas portas da abertura, e a descrição fica no
+  glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo as duas
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
   só o miolo rola. O topo leva o identificador, o selo da natureza, o fechar em ✕ redondo, o nome e
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
