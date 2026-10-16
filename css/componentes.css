@@ -586,7 +586,16 @@
 }
 
 .cartao__topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); }
+/* Identificador e dimensão na mesma linha, com o ponto entre eles vindo do CSS
+   para não virar texto solto que o leitor de tela anuncia. */
+.cartao__ref { display: flex; align-items: baseline; gap: var(--esp-2); }
 .cartao__id { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.cartao__dimensao {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+.cartao__dimensao::before { content: '·'; margin-right: var(--esp-2); }
 .cartao__nome {
   font-size: var(--tam-lg);
   font-weight: 600;

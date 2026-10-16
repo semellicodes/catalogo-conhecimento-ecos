@@ -18,8 +18,9 @@ function criar(tag, className, texto) {
 }
 
 /**
- * Cartão do conhecimento. O selo é a dimensão, não a natureza, porque a natureza
- * já é o título do grupo logo acima e repeti-la em cada cartão não informa nada.
+ * Cartão do conhecimento. O selo é a natureza epistemológica, e a dimensão fica
+ * ao lado do identificador, em mono apagado, para as duas aparecerem sem virar
+ * duas etiquetas disputando o mesmo canto.
  *
  * Quem abre a ficha é o link do pé, e não o cartão inteiro, para o cartão não
  * ser um alvo clicável com outro alvo clicável dentro.
@@ -28,10 +29,16 @@ function montarCartao(conhecimento, aoAbrir) {
   const item = criar('li');
   const cartao = criar('article', 'cartao');
 
+  const referencia = criar('p', 'cartao__ref');
+  referencia.append(
+    criar('span', 'codigo-id cartao__id', conhecimento.id),
+    criar('span', 'cartao__dimensao', conhecimento.dimensao)
+  );
+
   const topo = criar('div', 'cartao__topo');
   topo.append(
-    criar('span', 'codigo-id cartao__id', conhecimento.id),
-    criar('span', 'etiqueta', conhecimento.dimensao)
+    referencia,
+    criar('span', `etiqueta etiqueta--${classeNatureza(conhecimento.natureza)}`, conhecimento.natureza)
   );
 
   const abrir = criar('a', 'botao cartao__abrir', 'Ver ficha completa');

@@ -137,16 +137,18 @@ nativamente pelo navegador com `type="module"`.
 ## Convenções de interface
 
 - Mobile primeiro. A grade de cards é uma coluna no celular e duas a partir de 64rem
-- O card mostra o identificador e o selo da dimensão no topo, o nome em título, a descrição
-  inteira e um link "Ver ficha completa" na largura do cartão, no pé. O selo é a dimensão e não a
-  natureza, porque a natureza já é o título do grupo logo acima
+- O card mostra no topo `C01 · Técnica`, identificador e dimensão em mono apagado, e o selo da
+  natureza epistemológica à direita. Abaixo, o nome em título, a descrição inteira e um link
+  "Ver ficha completa" na largura do cartão, no pé. A dimensão não vira etiqueta para não ficarem
+  duas pílulas disputando o mesmo canto
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
 - A faixa de abertura leva, nesta ordem, o olho KM4SECO, o título, o resumo de `meta.subtitulo`, o
   botão Entrar no catálogo e a tarja com três números. Abaixo dela, as portas de entrada por
   natureza, com a contagem, a descrição do vocabulário e o link para o catálogo já filtrado
-- Não existe mais legenda de cores da natureza, porque não existe mais ponto colorido de natureza
-  em tela. Se a cor voltar ao cartão, a legenda volta junto
+- Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
+  escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
+  a ser só um ponto colorido
 - A navegação do cabeçalho mistura âncora da própria página e link de página. As seções usam
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
