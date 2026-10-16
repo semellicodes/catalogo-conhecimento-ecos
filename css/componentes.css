@@ -299,10 +299,8 @@
 .rodape__interno { display: flex; justify-content: center; gap: var(--esp-4); flex-wrap: wrap; text-align: center; }
 
 /* ---------- Etiquetas ---------- */
-/* Sem uso desde que o cartão da trilha deixou de mostrar nível e dimensão. Fica
-   de pé porque a ficha ainda vai receber a dimensão em pílula. Se a ficha nova
-   não usar, isto e os tokens de pílula saem juntos. */
-/* Pílula preenchida. Fundo sutil da categoria e texto na versão escura dela. */
+/* O selo da natureza no topo do diálogo da ficha. Pílula preenchida, com fundo
+   sutil da categoria e texto na versão escura dela. */
 .etiqueta {
   display: inline-block;
   font-family: var(--fonte-mono);
@@ -327,7 +325,6 @@
   background: var(--cor-tacito-tecnico-pilula);
   color: var(--cor-tacito-tecnico-pilula-texto);
 }
-.etiquetas { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 
 .codigo-id {
   font-family: var(--fonte-mono);
@@ -615,8 +612,8 @@
 }
 
 /* ---------- Ficha ---------- */
-/* Cabeçalho e tira de atributos sem rolar, o resto em abas, uma lista por vez.
-   É o que mantém a altura previsível, inclusive no celular. */
+/* O nome e a descrição abrem, os cartões vêm em seguida e o resto desce para as
+   abas, uma lista por vez. É o que mantém a altura previsível no celular. */
 .ficha { display: grid; }
 .ficha__topo { display: grid; gap: var(--esp-2); }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
@@ -642,6 +639,8 @@
   gap: var(--esp-3);
   margin-bottom: var(--esp-4);
 }
+.bloco-ficha__textos { display: grid; gap: var(--esp-1); }
+.bloco-ficha__esquema { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 .bloco-ficha__titulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -747,27 +746,54 @@
 .opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
 .opcao[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
 
-/* Um atributo é o rótulo mais a fileira. Três deles empilham no cartão. */
-.atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }
-.atributo-caixas__nome {
-  margin-bottom: var(--esp-2);
+/* A classificação é par de rótulo e valor, três colunas no desktop. Com um
+   valor possível por atributo, a caixa não dizia mais do que o texto diz. */
+.classificacao {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--esp-2) var(--esp-4);
+}
+.classificacao__rotulo {
+  grid-row: 1;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
 }
+.classificacao__valor {
+  grid-row: 2;
+  margin: 0;
+  font-size: var(--tam-base);
+  font-weight: 600;
+}
 
-/* No celular, natureza, nível e dimensão vão a duas colunas, porque os nomes são
-   curtos e assim as abas entram na primeira tela. O tipo de ECOS fica numa
-   coluna, que ele pode acender mais de uma e a leitura é de conjunto. */
+/* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
+.gerencia { display: grid; gap: var(--esp-1); }
+.gerencia__rotulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.gerencia__valor {
+  margin: 0 0 var(--esp-3);
+  font-size: var(--tam-sm);
+  max-width: var(--largura-texto);
+}
+.gerencia__valor:last-child { margin-bottom: 0; }
+.gerencia__valor--pendente { color: var(--cor-texto-fraco); font-style: italic; }
+
 @media (max-width: 47.99rem) {
-  .atributo-caixas .opcoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Empilha, que três colunas de rótulo em mono não cabem em 390. */
+  .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+  .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
+  .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
   /* O cartão aperta, porque a moldura dele custa altura e no celular a conta
      é com as abas, que precisam aparecer cedo. */
   .bloco-ficha { padding: var(--esp-3); margin-top: var(--esp-4); }
   .bloco-ficha__topo { margin-bottom: var(--esp-3); }
-  .atributo-caixas + .atributo-caixas { margin-top: var(--esp-3); }
 }
 
 /* A justificativa, numa barra de largura inteira no pé do cartão. */

@@ -328,7 +328,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   padding: 0;
   width: min(100%, var(--largura-dialogo));
   max-width: calc(100vw - var(--esp-4) * 2);
-  max-height: calc(100vh - var(--esp-6));
+  max-height: 86dvh;
+  /* Topo e rodapé parados, só o miolo rola. Com sticky a folha inteira rolava,
+     e no celular isso tirava o botão de fechar da vista. */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border-radius: var(--raio);
   box-shadow: var(--sombra-2);
   opacity: 0;
@@ -374,8 +379,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .dialogo-ficha__topo {
   border-radius: var(--raio) var(--raio) 0 0;
-  position: sticky;
-  top: 0;
+  flex: none;
   background: var(--cor-fundo);
   border-bottom: var(--borda);
   padding: var(--esp-3) var(--esp-4);
@@ -384,10 +388,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: center;
   gap: var(--esp-4);
 }
-.dialogo-ficha__corpo { padding: var(--esp-5) var(--esp-4) var(--esp-6); }
+.dialogo-ficha__corpo { padding: var(--esp-5) var(--esp-4) var(--esp-6); overflow-y: auto; }
+/* O selo da natureza fica junto do identificador, e o fechar vai para a ponta. */
+.dialogo-ficha__topo .etiqueta { margin-inline-end: auto; }
 .dialogo-ficha__rodape {
-  position: sticky;
-  bottom: 0;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
