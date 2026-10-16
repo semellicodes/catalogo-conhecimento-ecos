@@ -333,9 +333,10 @@
 }
 
 /* ---------- Busca e filtros ---------- */
-/* Painel acima da lista. Busca e limpar na primeira linha, as facetas
-   preenchidas numa grade de colunas iguais, e o que ainda não foi classificado
-   numa linha discreta no rodapé, fora da grade. */
+/* Painel acima da lista, em duas linhas. Busca e natureza na primeira, com o
+   contador no canto, e as demais facetas na segunda. O rótulo de cada faceta
+   fica ao lado das pastilhas, não acima, que é o que tirava uma linha por
+   faceta e espalhava o bloco por cinco. */
 .filtros {
   background: var(--cor-superficie);
   border: var(--borda);
@@ -348,48 +349,65 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--esp-3);
-  padding: var(--esp-3) var(--esp-4);
+  padding: var(--esp-2) var(--esp-4);
   border-bottom: var(--borda);
 }
+/* A busca toma a folga da linha até um teto perto da metade, as pastilhas de
+   natureza ficam do tamanho que precisam e o contador vai para o canto. */
 .filtros__busca {
   flex: 1 1 auto;
-  min-width: 0;
+  min-width: 12rem;
+  max-width: 44%;
   display: flex;
   align-items: center;
   gap: var(--esp-3);
 }
-.filtros__busca .filtros__titulo { margin-bottom: 0; flex: none; }
+.filtros__busca .filtros__titulo { flex: none; }
 .filtros__busca .campo-busca { flex: 1 1 auto; min-width: 0; }
-.filtros__linha > .botao { flex: none; }
+.filtros__principal { flex: 0 1 auto; display: flex; min-width: 0; }
+.filtros__contagem {
+  flex: none;
+  margin-left: auto;
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+  white-space: nowrap;
+}
 
-.filtros__grade {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
-  padding: var(--esp-4) var(--esp-4) var(--esp-3);
+.filtros__grade { display: grid; gap: var(--esp-2); padding: var(--esp-2) var(--esp-4); }
+/* Rótulo e pastilhas na mesma linha. No celular empilha. */
+.filtros__grupo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-2) var(--esp-3);
+  min-width: 0;
 }
-@media (min-width: 48rem) {
-  .filtros__grade { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0; }
-  .filtros__grupo + .filtros__grupo { border-left: var(--borda); padding-left: var(--esp-4); }
-  .filtros__grupo { padding-right: var(--esp-4); }
-}
-.filtros__grupo { border: 0; padding: 0; margin: 0; min-width: 0; }
 .filtros__titulo {
-  display: block;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
-  padding: 0;
-  margin-bottom: var(--esp-2);
+  white-space: nowrap;
 }
 .filtros__opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
-.filtros__pendentes {
+
+.filtros__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
   padding: var(--esp-2) var(--esp-4);
   border-top: var(--borda);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
+}
+.filtros__rodape:not(:has(> :not([hidden]))) { display: none; }
+.filtros__pendentes { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+
+@media (max-width: 47.99rem) {
+  .filtros__busca { flex: 1 1 100%; max-width: none; }
+  .filtros__grupo { align-items: start; }
+  .filtros__titulo { flex-basis: 100%; }
 }
 
 /* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
@@ -483,6 +501,9 @@
     box-shadow var(--dur-rapida) var(--curva);
 }
 .botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); box-shadow: var(--sombra-2); }
+/* Versão baixa, para o botão caber numa barra apertada sem virar o item mais
+   alto dela. O alvo de toque continua nos 44px pelo recorte em volta. */
+.botao--curto { min-height: 2rem; font-size: var(--tam-xs); }
 
 /* Fechar redondo e pequeno, no fim da linha do identificador. O alvo de toque
    vem do recorte invisível em volta, não do tamanho do desenho. */
@@ -529,7 +550,7 @@
   gap: var(--esp-3);
   height: 100%;
   padding: var(--esp-5);
-  background: var(--cor-superficie);
+  background: var(--cor-cartao);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);

@@ -71,21 +71,38 @@ function montarOpcaoTodas(chave, rotulo) {
 }
 
 /**
- * Uma faceta preenchida vira um grupo da grade. Uma faceta ainda sem nenhum
- * valor registrado não vira grupo, devolve null e é anunciada no rodapé.
+ * Uma faceta preenchida vira um grupo, com o rótulo ao lado das pastilhas e não
+ * acima delas. Uma faceta ainda sem nenhum valor registrado não vira grupo,
+ * devolve null e é anunciada no rodapé.
+ *
+ * O grupo é div com role de grupo, e não fieldset, porque legend dentro de
+ * contêiner flex ainda não se comporta igual em todo navegador, e aqui o rótulo
+ * precisa ficar na mesma linha das pastilhas.
+ *
+ * A natureza divide a primeira linha com a busca, e ali o rótulo escrito não
+ * caberia sem empurrar as pastilhas para a linha de baixo. Nesse caso ele vira
+ * rótulo acessível do grupo, então quem usa leitor de tela continua ouvindo de
+ * que faceta são as pastilhas.
  */
-function montarGrupoDeFiltros(chave) {
+function montarGrupoDeFiltros(chave, rotuloVisivel = true) {
   const definicao = dados.classificacoes[chave];
   const contagens = filtros.contar(dados.conhecimentos, chave);
   if (!definicao.valores.some((v) => contagens.get(v.valor))) return null;
 
-  const grupo = document.createElement('fieldset');
+  const grupo = document.createElement('div');
   grupo.className = 'filtros__grupo';
+  grupo.setAttribute('role', 'group');
 
-  const titulo = document.createElement('legend');
-  titulo.className = 'filtros__titulo';
-  titulo.textContent = definicao.rotulo;
-  grupo.append(titulo);
+  if (rotuloVisivel) {
+    const titulo = document.createElement('p');
+    titulo.className = 'filtros__titulo';
+    titulo.id = `filtro-rotulo-${chave}`;
+    titulo.textContent = definicao.rotulo;
+    grupo.setAttribute('aria-labelledby', titulo.id);
+    grupo.append(titulo);
+  } else {
+    grupo.setAttribute('aria-label', definicao.rotulo);
+  }
 
   const opcoes = document.createElement('div');
   opcoes.className = 'filtros__opcoes';
@@ -337,9 +354,14 @@ function montarCatalogo() {
   const painel = el('#painel-filtros');
   const pendentes = [];
   FACETAS.forEach((chave) => {
-    const grupo = montarGrupoDeFiltros(chave);
-    if (grupo) painel.append(grupo);
-    else pendentes.push(dados.classificacoes[chave].rotulo);
+    /* A natureza sobe para a linha da busca, porque é a entrada principal. */
+    const principal = chave === 'natureza';
+    const grupo = montarGrupoDeFiltros(chave, !principal);
+    if (!grupo) {
+      pendentes.push(dados.classificacoes[chave].rotulo);
+      return;
+    }
+    (principal ? el('#filtro-natureza') : painel).append(grupo);
   });
   anunciarPendentes(pendentes);
 

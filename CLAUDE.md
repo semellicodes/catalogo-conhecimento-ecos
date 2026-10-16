@@ -190,6 +190,16 @@ nativamente pelo navegador com `type="module"`.
   `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
+- O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as
+  pastilhas de natureza e o contador no canto. Na segunda, o rótulo da faceta ao lado das pastilhas
+  dela, nunca acima. No rodapé do bloco, o aviso das facetas ainda não classificadas, em texto
+  menor e apagado. No celular tudo empilha e o bloco inteiro vira folha
+- O rótulo da natureza é só acessível, não escrito, porque ali ele não cabe sem empurrar as
+  pastilhas para a linha de baixo, e as três pastilhas já dizem de que faceta são
+- O grupo de faceta é `div` com `role="group"` e `aria-labelledby`, não `fieldset`, porque `legend`
+  dentro de contêiner flex ainda não se comporta igual em todo navegador
+- O cartão usa `--cor-cartao` e a seção do catálogo usa `--cor-miolo`. São dois tons diferentes de
+  propósito. No tema claro, cartão branco sobre fundo de página quase branco sumia
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1
 - `button`, `a` e `input` de verdade. Nunca `role` ou clique em `div`
 - Canto arredondado com `--raio` em card, painel, diálogo e campo, e `--raio-pilula` em

@@ -10,6 +10,9 @@
   /* Fundo do miolo que rola na ficha, um tom abaixo do fundo da página, para o
      cartão se destacar dele em vez de se confundir */
   --cor-miolo: #090D12;
+  /* Fundo do cartão do catálogo. Precisa de tom próprio, distinto do fundo da
+     seção, senão o cartão deixa de se ler como objeto */
+  --cor-cartao: #1A2230;
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
@@ -117,6 +120,7 @@
   --cor-superficie: #FFFFFF;
   --cor-superficie-alta: #F7F9FB;
   --cor-miolo: #E4E9EE;
+  --cor-cartao: #FFFFFF;
   --cor-linha: #D7DDE4;
   --cor-linha-suave: #E6EAEF;
   --cor-texto: #14181D;

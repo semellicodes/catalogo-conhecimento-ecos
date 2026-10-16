@@ -93,7 +93,9 @@
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
-.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
+/* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
+   de que se destacar no tema claro. */
+.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 /* Um degrau abaixo do título de seção, para a parte que pertence à anterior,
@@ -189,22 +191,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
 .catalogo__cabecalho { margin-bottom: var(--esp-4); }
-.catalogo__barra {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-4);
-  padding-bottom: var(--esp-2);
-  border-bottom: var(--borda);
-  margin-bottom: var(--esp-4);
-  flex-wrap: wrap;
-}
-/* O botão só existe onde os filtros viram folha. Acima disso eles ficam no fluxo. */
-.catalogo__abrir-filtros { display: none; }
+/* A barra existe só onde os filtros viram folha. Acima disso eles ficam no
+   fluxo e ela não tem mais nada para carregar, depois que o contador entrou
+   para dentro do bloco de filtro. */
+.catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
-  .catalogo__abrir-filtros { display: inline-flex; }
+  .catalogo__barra { display: flex; align-items: center; margin-bottom: var(--esp-3); }
 }
-.catalogo__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .vazio {
   padding: var(--esp-8) var(--esp-4);
   text-align: center;

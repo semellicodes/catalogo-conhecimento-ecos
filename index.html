@@ -97,7 +97,6 @@
         <button class="botao catalogo__abrir-filtros" id="abrir-filtros" type="button" aria-controls="filtros" aria-expanded="false">
           Filtros
         </button>
-        <p class="catalogo__contagem" id="contagem">Carregando</p>
       </div>
 
       <section class="filtros" id="filtros" aria-label="Busca e filtros">
@@ -106,10 +105,14 @@
             <label class="filtros__titulo" for="busca">Buscar</label>
             <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
           </div>
-          <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
+          <div class="filtros__principal" id="filtro-natureza"></div>
+          <p class="filtros__contagem" id="contagem">Carregando</p>
         </div>
         <div class="filtros__grade" id="painel-filtros"></div>
-        <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
+        <div class="filtros__rodape">
+          <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
+          <button class="botao botao--curto" id="limpar" type="button" hidden>Limpar filtros</button>
+        </div>
       </section>
 
       <ul class="cartoes" id="lista"></ul>
