@@ -219,30 +219,18 @@ function tiposDeEcos(dados, conhecimento) {
    definição em classificacoes.json, então o rótulo vive aqui, junto do desenho,
    e o conteúdo continua vindo só de dados/. */
 const GERENCIA = [
-  ['portador', 'Quem possui'],
-  ['tipoSaber', 'Quem precisa'],
-  ['acaoGerencia', 'Como gerenciar']
+  ['quemPossui', 'Quem possui'],
+  ['quemPrecisa', 'Quem precisa'],
+  ['comoGerenciar', 'Como gerenciar']
 ];
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
 
-/**
- * Um campo de gerência por linha. Vazio vira pendência, nunca texto inventado.
- *
- * Com os três vazios, que é o estado de todos os vinte hoje, o cartão diz isso
- * numa linha só, como o de tipo de ECOS já faz. Repetir a mesma frase três
- * vezes custava altura para não dizer nada a mais.
- */
+/** Um campo de gerência por linha. Vazio vira pendência, nunca texto inventado. */
 function gerencia(dados, conhecimento) {
   const bloco = cartao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
-  const preenchidos = GERENCIA.filter(([chave]) => texto(conhecimento[chave]));
-
-  if (!preenchidos.length) {
-    bloco.append(criar('p', 'bloco-ficha__pendente', 'Ainda não registrado na extração.'));
-    return bloco;
-  }
-
   const lista = criar('dl', 'gerencia');
+
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
     const valor = criar('dd', 'gerencia__valor', conteudo || 'Ainda não registrado na extração.');
@@ -401,14 +389,6 @@ function pendencias(dados, conhecimento) {
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
 
-  /* O identificador e o selo da natureza ficam no topo fixo do diálogo, então
-     aqui entram só o nome e a descrição, em vez da mesma linha duas vezes. */
-  const topo = criar('header', 'ficha__topo');
-  topo.append(
-    criar('h2', 'ficha__nome', conhecimento.nome),
-    criar('p', 'ficha__descricao', conhecimento.descricao)
-  );
-
   const quantos = {
     desafios: conhecimento.desafiosResolvidos.length,
     estudos: conhecimento.estudosResolvidos.length,
@@ -416,7 +396,6 @@ export function renderizar(dados, conhecimento) {
   };
 
   raiz.append(
-    topo,
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
     gerencia(dados, conhecimento),

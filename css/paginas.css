@@ -4,34 +4,26 @@
 .abertura {
   background: var(--cor-faixa);
   color: var(--cor-faixa-texto);
-  padding-block: var(--esp-5);
+  padding-block: var(--esp-7);
   border-bottom: 1px solid var(--cor-faixa-linha);
 }
-.abertura__interno { display: grid; gap: var(--esp-6); }
-@media (min-width: 64rem) {
-  .abertura {
-    padding-block: var(--esp-7);
-    min-height: var(--altura-faixa);
-    display: flex;
-    align-items: center;
-  }
-  .abertura__interno {
-    grid-template-columns: 55% minmax(0, 1fr);
-    grid-template-areas:
-      "texto  desenho"
-      "numeros numeros";
-    align-items: center;
-    column-gap: var(--esp-7);
-    row-gap: var(--esp-6);
-  }
-  .abertura__texto { grid-area: texto; }
-  .abertura__desenho { grid-area: desenho; }
-  .numeros { grid-area: numeros; }
+/* Uma coluna só, de cima a baixo. O olho, o título, o parágrafo, o botão e a
+   tarja de números, nessa ordem. */
+.abertura__interno {
+  display: grid;
+  justify-items: start;
+  gap: var(--esp-4);
 }
-.abertura__sigla {
-  color: var(--cor-faixa-acento);
+@media (min-width: 64rem) {
+  .abertura { padding-block: var(--esp-8); min-height: var(--altura-faixa); display: flex; align-items: center; }
+}
+.abertura__olho {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
   font-weight: 600;
-  letter-spacing: var(--entre-letras-sigla);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-faixa-acento);
 }
 .abertura__titulo {
   font-size: var(--tam-titulo);
@@ -39,95 +31,40 @@
   letter-spacing: var(--entre-letras-faixa);
   max-width: 20ch;
 }
-@media (min-width: 64rem) { .abertura__titulo { max-width: 20ch; } }
 .abertura__resumo {
-  margin-top: var(--esp-4);
   font-size: var(--tam-base);
   line-height: 1.6;
   color: var(--cor-faixa-suave);
   max-width: 62ch;
 }
-
-/* O desenho é decorativo. No celular ele sai de cena para não roubar altura,
-   e é por isso que o arrasto não precisa existir lá. */
-.abertura__desenho { display: none; }
-@media (min-width: 64rem) {
-  .abertura__desenho { display: block; justify-self: center; }
-}
-
-/* A cena é o espaço 3D. O disco de nós gira dentro dela, inclinado, e o cérebro
-   fica no plano do meio, parado, com os nós da frente passando por cima dele e
-   os de trás sumindo atrás do seu preenchimento. */
-.cena {
-  --giro: 0deg;
-  position: relative;
-  width: var(--largura-desenho);
-  height: var(--largura-desenho);
-  perspective: 620px;
-  transform-style: preserve-3d;
-  color: var(--cor-faixa-acento);
-}
-.cena[tabindex] { cursor: grab; touch-action: pan-y; }
-.cena--arrastando { cursor: grabbing; }
-.cena:focus-visible {
-  outline: 2px solid var(--cor-faixa-acento);
-  outline-offset: var(--esp-2);
+/* Botão claro sobre a faixa escura. Não usa .botao porque aquele é da
+   superfície da página e aqui o fundo é a faixa. */
+.abertura__entrar {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-2);
+  padding-inline: var(--esp-5);
+  background: var(--cor-faixa-texto);
+  color: var(--cor-faixa);
   border-radius: var(--raio);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--dur-rapida) var(--curva);
 }
+.abertura__entrar:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
+.abertura__entrar:focus-visible { outline-offset: var(--esp-1); }
 
-.orbe {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform: rotateX(var(--orbe-inclinacao)) rotateZ(var(--giro));
-}
-/* Os anéis e os arcos são um plano só, deitado junto com o disco. */
-.orbe__plano { display: block; width: 100%; height: 100%; }
-
-/* O nó é um ponto sem tamanho na borda do disco. O que se vê é o filho. */
-.no {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
-  transform: rotate(var(--angulo)) translateX(var(--orbe-raio));
-}
-/* Desfaz o giro e a inclinação, então o ponto é sempre um círculo de frente.
-   A perspectiva continua valendo, e é ela que engorda quem passa na frente. */
-.no__ponto {
-  position: absolute;
-  width: var(--orbe-ponto);
-  height: var(--orbe-ponto);
-  margin: calc(var(--orbe-ponto) / -2);
-  border-radius: var(--raio-pilula);
-  background: currentColor;
-  transform: rotate(calc(-1 * var(--angulo) - var(--giro))) rotateX(calc(-1 * var(--orbe-inclinacao)));
-}
-.no--vazado .no__ponto {
-  background: var(--cor-faixa);
-  border: 1.6px solid currentColor;
-}
-
-.cerebro {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Números no rodapé da faixa, numa linha só, separados por divisor fino. */
+/* Tarja de números no pé da faixa, três lado a lado, separados por linha fina. */
 .numeros {
+  width: 100%;
+  margin-top: var(--esp-5);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: auto;
-  row-gap: var(--esp-4);
+  row-gap: 0;
   border-top: 1px solid var(--cor-faixa-linha);
-}
-@media (min-width: 48rem) { .numeros { row-gap: 0; } }
-@media (min-width: 48rem) {
-  .numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 /* Subgrid para o rótulo de um número começar na mesma linha do rótulo do
    vizinho, mesmo quando um quebra em duas linhas e o outro não. */
@@ -140,14 +77,10 @@
   border-left: 1px solid var(--cor-faixa-linha);
 }
 @media (min-width: 64rem) { .numero { padding-top: var(--esp-3); } }
-.numero:nth-child(2n + 1) { border-left: 0; padding-left: 0; }
-@media (min-width: 48rem) {
-  .numero:nth-child(2n + 1) { border-left: 1px solid var(--cor-faixa-linha); padding-left: var(--esp-4); }
-  .numero:first-child { border-left: 0; padding-left: 0; }
-}
+.numero:first-child { border-left: 0; padding-left: 0; }
 .numero__valor {
   font-family: var(--fonte-mono);
-  font-size: var(--tam-xl);
+  font-size: var(--tam-titulo);
   line-height: 1.1;
   color: var(--cor-faixa-texto);
 }
@@ -160,7 +93,9 @@
 .secao { padding-block: var(--esp-8); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
-.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
+/* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
+   de que se destacar no tema claro. */
+.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 /* Um degrau abaixo do título de seção, para a parte que pertence à anterior,
@@ -170,6 +105,41 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   letter-spacing: var(--entre-letras-nome);
   margin-top: var(--esp-6);
   margin-bottom: var(--esp-2);
+}
+
+/* ---------- Portas de entrada ---------- */
+/* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
+.portas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: var(--esp-4);
+}
+.porta {
+  display: grid;
+  align-content: start;
+  gap: var(--esp-2);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.porta__contagem {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-titulo);
+  line-height: 1;
+  color: var(--cor-acento);
+}
+.porta__nome { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
+.porta__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
+.porta__link {
+  justify-self: start;
+  margin-top: var(--esp-2);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-size: var(--tam-sm);
+  font-weight: 500;
 }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
@@ -221,22 +191,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* ---------- Página do catálogo ---------- */
 /* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
 .catalogo__cabecalho { margin-bottom: var(--esp-4); }
-.catalogo__barra {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-4);
-  padding-bottom: var(--esp-2);
-  border-bottom: var(--borda);
-  margin-bottom: var(--esp-4);
-  flex-wrap: wrap;
-}
-/* O botão só existe onde os filtros viram folha. Acima disso eles ficam no fluxo. */
-.catalogo__abrir-filtros { display: none; }
+/* A barra existe só onde os filtros viram folha. Acima disso eles ficam no
+   fluxo e ela não tem mais nada para carregar, depois que o contador entrou
+   para dentro do bloco de filtro. */
+.catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
-  .catalogo__abrir-filtros { display: inline-flex; }
+  .catalogo__barra { display: flex; align-items: center; margin-bottom: var(--esp-3); }
 }
-.catalogo__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .vazio {
   padding: var(--esp-8) var(--esp-4);
   text-align: center;
@@ -377,20 +338,26 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .dialogo-ficha::backdrop { transition: none; }
   .dialogo-ficha { scale: 1; }
 }
+/* O topo parado leva tudo que identifica o conhecimento, inclusive o nome e a
+   descrição, que antes rolavam junto com o resto e sumiam da vista. */
 .dialogo-ficha__topo {
   border-radius: var(--raio) var(--raio) 0 0;
   flex: none;
   background: var(--cor-fundo);
   border-bottom: var(--borda);
-  padding: var(--esp-3) var(--esp-4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4) var(--esp-4);
+  display: grid;
+  gap: var(--esp-2);
 }
-.dialogo-ficha__corpo { padding: var(--esp-5) var(--esp-4) var(--esp-6); overflow-y: auto; }
+.dialogo-ficha__linha { display: flex; align-items: center; gap: var(--esp-3); }
 /* O selo da natureza fica junto do identificador, e o fechar vai para a ponta. */
-.dialogo-ficha__topo .etiqueta { margin-inline-end: auto; }
+.dialogo-ficha__linha .etiqueta { margin-inline-end: auto; }
+/* O miolo é mais escuro que os cartões, senão eles não se separam do fundo. */
+.dialogo-ficha__corpo {
+  padding: var(--esp-5) var(--esp-4) var(--esp-6);
+  overflow-y: auto;
+  background: var(--cor-miolo);
+}
 .dialogo-ficha__rodape {
   flex: none;
   display: flex;

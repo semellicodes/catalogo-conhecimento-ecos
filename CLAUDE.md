@@ -42,11 +42,20 @@ A evidência das 56 relações de solução foi retirada daqui e guardada em
 continua, porque é a outra ponta da relação que o Explorar usa.
 
 `origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
+Está lá `relacoes-confirmadas.json`, `evidencia-solucoes.json` e `gerencia-conhecimento.json`, este
+último já fundido em `conhecimentos.json`.
 
 ### Campos ainda pendentes
 
-`tipoEcos`, `acaoGerencia`, `portador` e `tipoSaber` estão vazios em todos os conhecimentos, e
-`tipoEcos` está vazio em todos os estudos. Os três últimos são o que o bloco de gerência mostra. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
+`tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
+os estudos.
+
+`quemPossui`, `quemPrecisa` e `comoGerenciar` estão preenchidos nos vinte, texto literal da planilha
+de extração, e são o que o bloco de gerência da ficha mostra. A origem está em
+`origem/gerencia-conhecimento.json`.
+
+`portador` e `tipoSaber` continuam vazios nos vinte e não aparecem em tela nenhuma. São anteriores
+aos três campos acima e podem estar sobrando. Não apagar sem confirmar. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
 correspondente aparece com o aviso de atributo não preenchido.
 
 Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
@@ -83,7 +92,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com seções ancoradas, `#inicio` com a abertura e os números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a trilha por nível e a ficha em diálogo, e `#contato` |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#entrar` com as portas por natureza, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `explorar.html` | Glossário dos atributos com a referência de cada esquema, as 36 soluções e os 17 desafios, cada um com os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
@@ -95,14 +104,14 @@ Explorar como as demais, só sem a lista de conhecimentos.
 |---|---|
 | `js/dados.js` | Único módulo que lê arquivos. Carrega, guarda em cache e resolve identificadores |
 | `js/filtros.js` | Filtra e ordena listas. Não conhece o DOM |
-| `js/lista.js` | Monta os cards da listagem |
+| `js/lista.js` | Monta os cards do catálogo |
 | `js/ficha.js` | Monta a ficha de um conhecimento |
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
-| `js/desenho.js` | Monta o SVG decorativo da faixa de abertura. Não lê dados e não é referenciado por nenhum conteúdo |
 | `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
 | `js/explorar.js` | Preenche o Explorar, glossário, soluções e desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
-| `js/inicio.js`, `js/referencias.js` | Preenchem as demais páginas |
+| `js/inicio.js` | Preenche o resumo da abertura, a tarja de números, as portas por natureza e as camadas |
+| `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
 Alterar o visual de um card nunca encosta na lógica dos filtros. Os módulos são carregados
@@ -127,21 +136,34 @@ nativamente pelo navegador com `type="module"`.
 
 ## Convenções de interface
 
-- Mobile primeiro. A grade de cards é uma coluna no celular, duas a partir de 48rem e três a
-  partir de 64rem
-- O card mostra identificador e natureza no topo, nome em destaque, descrição cortada em três
-  linhas e as demais etiquetas no rodapé
+- Mobile primeiro. A grade de cards é uma coluna no celular e duas a partir de 64rem
+- O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
+  nome em título, a descrição inteira e um link "Ver ficha completa" na largura do cartão, no pé.
+  A dimensão não aparece no card, só na ficha
+- Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
+  dentro de alvo
+- A faixa de abertura leva, nesta ordem, o olho KM4SECO, o título, o resumo de `meta.subtitulo`, o
+  botão Entrar no catálogo e a tarja com três números. Abaixo dela, as portas de entrada por
+  natureza, com a contagem, a descrição do vocabulário e o link para o catálogo já filtrado
+- Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
+  escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
+  a ser só um ponto colorido
 - A navegação do cabeçalho mistura âncora da própria página e link de página. As seções usam
   `scroll-margin-top` por causa do cabeçalho fixo, e a rolagem suave respeita `prefers-reduced-motion`
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
   vez de repetir o bloco, porque é conteúdo e não navegação
-- A trilha do catálogo agrupa por natureza epistemológica. A ordem das estações é a da quantidade de
-  conhecimentos de cada natureza, da maior para a menor, calculada a partir de `conhecimentos.json`,
-  nunca escrita no código, para se ajustar sozinha se uma natureza mudar. Dentro da estação a ordem é
-  por identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+- Os cartões do catálogo vêm agrupados por natureza epistemológica, pela ordenação, sem cabeçalho
+  separando um grupo do outro. A ordem dos grupos é a da quantidade de conhecimentos de cada
+  natureza, da maior para a menor, calculada a partir de `conhecimentos.json`, nunca escrita no
+  código, para se ajustar sozinha se uma natureza mudar. Dentro do grupo a ordem é por
+  identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+- A contagem de cada natureza fica nos filtros e nas portas da abertura, e a descrição fica no
+  glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo as duas
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
-  só o miolo rola. O topo leva o identificador, o selo da natureza e o fechar, e por isso o corpo
-  começa direto no nome, sem repetir a mesma linha duas vezes
+  só o miolo rola. O topo leva o identificador, o selo da natureza, o fechar em ✕ redondo, o nome e
+  a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
+- O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, senão os cartões da ficha não
+  se separam do fundo
 - A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
 - Natureza, nível e dimensão aparecem como rótulo em cima e valor embaixo, em três colunas no
   desktop e empilhados no celular. Já foram caixas e deixaram de ser, porque com um valor possível
@@ -168,6 +190,16 @@ nativamente pelo navegador com `type="module"`.
   `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
+- O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as
+  pastilhas de natureza e o contador no canto. Na segunda, o rótulo da faceta ao lado das pastilhas
+  dela, nunca acima. No rodapé do bloco, o aviso das facetas ainda não classificadas, em texto
+  menor e apagado. No celular tudo empilha e o bloco inteiro vira folha
+- O rótulo da natureza é só acessível, não escrito, porque ali ele não cabe sem empurrar as
+  pastilhas para a linha de baixo, e as três pastilhas já dizem de que faceta são
+- O grupo de faceta é `div` com `role="group"` e `aria-labelledby`, não `fieldset`, porque `legend`
+  dentro de contêiner flex ainda não se comporta igual em todo navegador
+- O cartão usa `--cor-cartao` e a seção do catálogo usa `--cor-miolo`. São dois tons diferentes de
+  propósito. No tema claro, cartão branco sobre fundo de página quase branco sumia
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1
 - `button`, `a` e `input` de verdade. Nunca `role` ou clique em `div`
 - Canto arredondado com `--raio` em card, painel, diálogo e campo, e `--raio-pilula` em

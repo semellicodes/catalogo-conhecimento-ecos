@@ -1,6 +1,6 @@
 /**
- * Transforma conhecimentos na trilha por nível. Não sabe filtrar nem carregar,
- * recebe a lista já filtrada e os níveis já resolvidos.
+ * Transforma conhecimentos na grade de cartões. Não sabe filtrar nem carregar,
+ * recebe a lista já filtrada e já ordenada.
  */
 
 export const classeNatureza = (natureza) =>
@@ -17,79 +17,47 @@ function criar(tag, className, texto) {
   return el;
 }
 
-/** Cartão baixo. O ponto dá a natureza, o identificador e o nome dão o resto. */
+/**
+ * Cartão do conhecimento. O selo é a natureza epistemológica.
+ *
+ * Quem abre a ficha é o link do pé, e não o cartão inteiro, para o cartão não
+ * ser um alvo clicável com outro alvo clicável dentro.
+ */
 function montarCartao(conhecimento, aoAbrir) {
   const item = criar('li');
-  const cartao = criar('a', 'cartao');
-  cartao.href = `?id=${conhecimento.id}`;
+  const cartao = criar('article', 'cartao');
 
-  const ponto = criar('span', `cartao__ponto cartao__ponto--${classeNatureza(conhecimento.natureza)}`);
-  ponto.setAttribute('aria-hidden', 'true');
-
-  /* A natureza não aparece escrita no cartão, então vai para quem usa leitor de tela. */
-  const natureza = criar('span', 'apenas-leitor', `${conhecimento.natureza}. `);
-
-  cartao.append(
-    ponto,
+  const topo = criar('div', 'cartao__topo');
+  topo.append(
     criar('span', 'codigo-id cartao__id', conhecimento.id),
-    natureza,
-    criar('span', 'cartao__nome', conhecimento.nome)
+    criar('span', `etiqueta etiqueta--${classeNatureza(conhecimento.natureza)}`, conhecimento.natureza)
   );
-  cartao.addEventListener('click', (evento) => {
+
+  const abrir = criar('a', 'botao cartao__abrir', 'Ver ficha completa');
+  abrir.href = `?id=${conhecimento.id}`;
+  /* O nome vai junto para quem usa leitor de tela, senão todos os links da
+     página se chamam igual e nenhum diz para onde vai. */
+  abrir.append(criar('span', 'apenas-leitor', `, ${conhecimento.nome}`));
+  abrir.addEventListener('click', (evento) => {
     evento.preventDefault();
     aoAbrir(conhecimento.id);
   });
 
+  cartao.append(
+    topo,
+    criar('h4', 'cartao__nome', conhecimento.nome),
+    criar('p', 'cartao__descricao', conhecimento.descricao),
+    abrir
+  );
   item.append(cartao);
   return item;
 }
 
-/** Uma estação da trilha. Só é montada quando sobrou conhecimento no grupo. */
-function montarEstacao(grupo, conhecimentos, aoAbrir) {
-  const estacao = criar('li', 'estacao');
-
-  const marca = criar('div', 'estacao__marca');
-  marca.setAttribute('aria-hidden', 'true');
-  marca.append(criar('span', 'estacao__ponto'));
-
-  const corpo = criar('div', 'estacao__corpo');
-  const titulo = criar('h3', 'estacao__titulo');
-  titulo.append(
-    criar('span', null, grupo.valor),
-    criar('span', 'estacao__contagem', String(conhecimentos.length))
-  );
-  corpo.append(titulo, criar('p', 'estacao__descricao', grupo.descricao));
-
-  const grade = criar('ul', 'cartoes');
-  conhecimentos.forEach((c) => grade.append(montarCartao(c, aoAbrir)));
-  corpo.append(grade);
-
-  estacao.append(marca, corpo);
-  return estacao;
-}
-
 /**
- * Redesenha a trilha inteira. Uma estação por natureza, na ordem recebida, que
- * é a da quantidade. Natureza sem nenhum conhecimento visível não vira estação,
- * então filtrar não deixa estação vazia na tela.
+ * Desenha a grade inteira. Os conhecimentos chegam já agrupados por natureza
+ * pela ordenação, então o agrupamento continua valendo na sequência dos cartões
+ * sem precisar de cabeçalho separando um grupo do outro.
  */
-export function renderizar(elemento, conhecimentos, naturezas, aoAbrir) {
-  elemento.replaceChildren();
-  naturezas.forEach((natureza) => {
-    const daNatureza = conhecimentos.filter((c) => c.natureza === natureza.valor);
-    if (daNatureza.length) elemento.append(montarEstacao(natureza, daNatureza, aoAbrir));
-  });
-}
-
-/** Legenda das cores da natureza, montada a partir da própria classificação. */
-export function renderizarLegenda(elemento, naturezas) {
-  elemento.replaceChildren(
-    ...naturezas.map((n) => {
-      const item = criar('li', 'legenda__item');
-      const ponto = criar('span', `legenda__ponto legenda__ponto--${classeNatureza(n.valor)}`);
-      ponto.setAttribute('aria-hidden', 'true');
-      item.append(ponto, criar('span', null, n.valor));
-      return item;
-    })
-  );
+export function renderizar(elemento, conhecimentos, aoAbrir) {
+  elemento.replaceChildren(...conhecimentos.map((c) => montarCartao(c, aoAbrir)));
 }

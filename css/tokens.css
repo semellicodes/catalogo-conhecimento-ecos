@@ -7,6 +7,12 @@
   --cor-fundo: #0D1117;
   --cor-superficie: #161C25;
   --cor-superficie-alta: #1C242F;
+  /* Fundo do miolo que rola na ficha, um tom abaixo do fundo da página, para o
+     cartão se destacar dele em vez de se confundir */
+  --cor-miolo: #090D12;
+  /* Fundo do cartão do catálogo. Precisa de tom próprio, distinto do fundo da
+     seção, senão o cartão deixa de se ler como objeto */
+  --cor-cartao: #1A2230;
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
@@ -80,19 +86,9 @@
   --esp-9: 5.5rem;
 
   /* Medida */
-  /* Desenho da abertura. Inclinação do disco, raio do anel e tamanho do nó */
-  --orbe-inclinacao: 54deg;
-  --orbe-raio: 95px;
-  --orbe-ponto: 0.8rem;
-
-  /* Trilha. A coluna do ponto e da linha, e o diâmetro dos dois pontos */
-  --coluna-trilha: 1.75rem;
-  --ponto-estacao: 0.75rem;
-  --ponto-natureza: 0.5rem;
   --largura-max: 1240px;
   --largura-texto: 68ch;
   --largura-dialogo: 47.5rem;
-  --largura-desenho: 250px;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
   --altura-faixa: 460px;
@@ -123,6 +119,8 @@
   --cor-fundo: #EEF1F4;
   --cor-superficie: #FFFFFF;
   --cor-superficie-alta: #F7F9FB;
+  --cor-miolo: #E4E9EE;
+  --cor-cartao: #FFFFFF;
   --cor-linha: #D7DDE4;
   --cor-linha-suave: #E6EAEF;
   --cor-texto: #14181D;
