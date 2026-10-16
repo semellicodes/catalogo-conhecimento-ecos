@@ -45,8 +45,8 @@ continua, porque é a outra ponta da relação que o Explorar usa.
 
 ### Campos ainda pendentes
 
-`tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
-os estudos. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
+`tipoEcos`, `acaoGerencia`, `portador` e `tipoSaber` estão vazios em todos os conhecimentos, e
+`tipoEcos` está vazio em todos os estudos. Os três últimos são o que o bloco de gerência mostra. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
 correspondente aparece com o aviso de atributo não preenchido.
 
 Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
@@ -139,15 +139,30 @@ nativamente pelo navegador com `type="module"`.
   conhecimentos de cada natureza, da maior para a menor, calculada a partir de `conhecimentos.json`,
   nunca escrita no código, para se ajustar sozinha se uma natureza mudar. Dentro da estação a ordem é
   por identificador, e a mesma sequência vale para o anterior e o próximo da ficha
-- Os quatro atributos da ficha usam a mesma fileira de caixas, uma por valor possível, acesa quando
-  vale e apagada quando não vale. Nenhum valor some, porque saber que um valor não se aplica também é
-  informação. No tipo de ECOS pode acender mais de uma, nos outros três acende exatamente uma
-- A caixa leva ícone e nome do valor, nada mais. O ícone é visto quando vale e círculo vazio quando
-  não, para o estado não depender só da cor
+- O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
+  só o miolo rola. O topo leva o identificador, o selo da natureza e o fechar, e por isso o corpo
+  começa direto no nome, sem repetir a mesma linha duas vezes
+- A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
+- Natureza, nível e dimensão aparecem como rótulo em cima e valor embaixo, em três colunas no
+  desktop e empilhados no celular. Já foram caixas e deixaram de ser, porque com um valor possível
+  por atributo a caixa não dizia mais do que o texto diz e empurrava as abas para fora da primeira
+  tela no celular. Decidido, não reabrir
+- Só o tipo de ECOS continua em caixas, uma por valor possível, acesa quando vale e apagada quando
+  não. Nenhum valor some, porque saber que um valor não se aplica também é informação, e ali pode
+  acender mais de uma
+- A caixa leva o símbolo do valor e o nome, nada mais. Cadeado aberto para código aberto, cadeado
+  fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
+  o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
 - Cada bloco da ficha é um cartão com título em acento e um botão de ajuda no canto. A ajuda é uma
   por cartão, não uma por atributo, e reúne a pergunta e a referência de cada atributo do bloco
 - A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda do cartão,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
+- O bloco de gerência mostra quem possui, quem precisa e como gerenciar, um por linha. Esses três
+  rótulos não existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O
+  conteúdo continua vindo só de `dados/`. Com os três vazios, que é o estado dos vinte hoje, o
+  cartão diz isso numa linha só, em vez de repetir a mesma frase três vezes
+- Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
+  esquemas adotados na revisão", à espera do nome definitivo
 - A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
   o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
   `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é

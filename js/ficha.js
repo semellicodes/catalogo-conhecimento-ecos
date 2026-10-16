@@ -1,9 +1,9 @@
 /**
  * Transforma um conhecimento em ficha. Não sabe carregar nem filtrar.
  *
- * O essencial fica visível sem rolar, no cabeçalho e na tira de atributos, e o
- * que é lista desce para abas, uma de cada vez. O que ainda não foi preenchido
- * vira uma linha de rodapé, não uma caixa no meio do caminho.
+ * O identificador e o selo da natureza ficam no topo do diálogo, que é fixo, e
+ * não se repetem aqui. O que é lista desce para abas, uma de cada vez, e o que
+ * ainda não foi preenchido vira uma linha de rodapé, não uma caixa no caminho.
  */
 
 import { referenciaCurta, vazio } from './dados.js';
@@ -45,38 +45,57 @@ document.addEventListener('click', (evento) => {
  */
 const SVG = 'http://www.w3.org/2000/svg';
 
+/* Cada tipo de ECOS tem símbolo próprio, de traço fino, porque o desenho diz
+   qual é o modelo de governança antes de a pessoa ler o nome. Cadeado aberto,
+   cadeado fechado e camadas empilhadas. O corpo do cadeado é comum aos dois e
+   só a alça muda, aberta para um lado ou fechada em arco. */
+const SIMBOLOS = {
+  'Código aberto': ['M6 9V6.5a4 4 0 0 1 7.6-1.7', 'M4.5 9h11v7.5h-11z'],
+  'Proprietário': ['M6.5 9V6.5a3.5 3.5 0 0 1 7 0V9', 'M4.5 9h11v7.5h-11z'],
+  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8']
+};
+
 /**
- * O ícone diz o estado da caixa sem depender da cor, que sozinha não serve a
- * quem não a distingue. Visto quando o valor vale, círculo vazio quando não.
+ * O símbolo do valor. Quando não existe símbolo definido, cai no visto para o
+ * valor que vale e no círculo vazio para o que não vale, que é o que serve aos
+ * atributos sem desenho próprio.
  */
-function iconeDeEstado(aceso) {
+function iconeDoValor(valor, aceso) {
   const svg = document.createElementNS(SVG, 'svg');
   svg.setAttribute('viewBox', '0 0 20 20');
   svg.setAttribute('aria-hidden', 'true');
   svg.setAttribute('focusable', 'false');
   svg.setAttribute('class', 'opcao__icone');
 
-  const forma = document.createElementNS(SVG, aceso ? 'path' : 'circle');
-  if (aceso) {
-    forma.setAttribute('d', 'M4.5 10.5 8.2 14.2 15.5 6.4');
+  const desenhos = SIMBOLOS[valor];
+  if (desenhos) {
+    desenhos.forEach((d) => svg.append(traco('path', { d })));
+  } else if (aceso) {
+    svg.append(traco('path', { d: 'M4.5 10.5 8.2 14.2 15.5 6.4' }));
   } else {
-    forma.setAttribute('cx', '10');
-    forma.setAttribute('cy', '10');
-    forma.setAttribute('r', '6');
+    svg.append(traco('circle', { cx: 10, cy: 10, r: 6 }));
   }
-  forma.setAttribute('fill', 'none');
-  forma.setAttribute('stroke', 'currentColor');
-  forma.setAttribute('stroke-width', '1.8');
-  forma.setAttribute('stroke-linecap', 'round');
-  forma.setAttribute('stroke-linejoin', 'round');
-  svg.append(forma);
   return svg;
 }
 
+function traco(tag, atributos) {
+  const forma = document.createElementNS(SVG, tag);
+  Object.entries(atributos).forEach(([nome, valor]) => forma.setAttribute(nome, String(valor)));
+  forma.setAttribute('fill', 'none');
+  forma.setAttribute('stroke', 'currentColor');
+  forma.setAttribute('stroke-width', '1.5');
+  forma.setAttribute('stroke-linecap', 'round');
+  forma.setAttribute('stroke-linejoin', 'round');
+  return forma;
+}
+
 /**
- * A caixa fica com o ícone e o nome. A descrição do valor não entra, porque já
- * vive no glossário do Explorar e no botão de ajuda do rótulo, e dentro da caixa
+ * A caixa fica com o símbolo e o nome. A descrição do valor não entra, porque já
+ * vive no glossário do Explorar e no botão de ajuda do cartão, e dentro da caixa
  * virava a terceira cópia, que empurrava as abas para fora da tela.
+ *
+ * Como o símbolo passou a ser do valor, e não do estado, o estado deixou de ter
+ * desenho próprio e vai escrito para quem usa leitor de tela.
  */
 function fileira(definicao, acesos) {
   const lista = criar('ul', 'opcoes');
@@ -84,7 +103,11 @@ function fileira(definicao, acesos) {
     const aceso = acesos.includes(v.valor);
     const item = criar('li', 'opcao');
     if (aceso) item.setAttribute('data-aceso', '');
-    item.append(iconeDeEstado(aceso), criar('span', 'opcao__nome', v.valor));
+    item.append(
+      iconeDoValor(v.valor, aceso),
+      criar('span', 'opcao__nome', v.valor),
+      criar('span', 'apenas-leitor', aceso ? ', observado' : ', não observado')
+    );
     lista.append(item);
   });
   return lista;
@@ -128,34 +151,41 @@ function ajuda(dados, chaves) {
   return raiz;
 }
 
-/** O cartão de um bloco da ficha, com o título e a ajuda no canto. */
-function cartao(dados, titulo, chavesDeAjuda) {
+/** O cartão de um bloco da ficha, com o título, uma linha opcional e a ajuda. */
+function cartao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
   const bloco = criar('section', 'bloco-ficha');
   const topo = criar('header', 'bloco-ficha__topo');
-  topo.append(criar('h3', 'bloco-ficha__titulo', titulo), ajuda(dados, chavesDeAjuda));
+  const textos = criar('div', 'bloco-ficha__textos');
+  textos.append(criar('h3', 'bloco-ficha__titulo', titulo));
+  if (linhaDeApoio) textos.append(criar('p', 'bloco-ficha__esquema', linhaDeApoio));
+  topo.append(textos, ajuda(dados, chavesDeAjuda));
   bloco.append(topo);
   return bloco;
 }
 
-/** Um atributo inteiro, rótulo mais fileira de caixas. */
-function atributoEmCaixas(dados, conhecimento, chave) {
-  const bloco = criar('div', 'atributo-caixas');
-  const bruto = conhecimento[chave];
-  const acesos = Array.isArray(bruto) ? bruto : [bruto].filter(Boolean);
-  bloco.append(
-    criar('p', 'atributo-caixas__nome', dados.classificacoes[chave].rotulo),
-    fileira(dados.classificacoes[chave], acesos)
-  );
-  return bloco;
-}
-
-/* Os três atributos de classificação, uma fileira cada, um valor aceso por
-   fileira porque cada conhecimento tem um valor só de cada um. */
+/* Os três atributos de classificação. Cada conhecimento tem um valor só de cada
+   um, então o par rótulo e valor basta e cabe nas três colunas. */
 const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
 
+/* Nome do esquema, provisório até o orientador confirmar o definitivo. */
+const ESQUEMA = 'Segundo os esquemas adotados na revisão';
+
+/**
+ * A classificação é texto, não caixa. Com um valor possível por atributo, a
+ * fileira de caixas gastava altura para dizer o que o par rótulo e valor diz em
+ * duas linhas, e empurrava as abas para fora da primeira tela no celular.
+ */
 function classificacao(dados, conhecimento) {
-  const bloco = cartao(dados, 'Classificação do conhecimento', CLASSIFICACAO);
-  CLASSIFICACAO.forEach((chave) => bloco.append(atributoEmCaixas(dados, conhecimento, chave)));
+  const bloco = cartao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
+
+  const grade = criar('dl', 'classificacao');
+  CLASSIFICACAO.forEach((chave) => {
+    grade.append(
+      criar('dt', 'classificacao__rotulo', dados.classificacoes[chave].rotulo),
+      criar('dd', 'classificacao__valor', conhecimento[chave] || 'A definir')
+    );
+  });
+  bloco.append(grade);
 
   /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
      quando houver, em vez de abrir para uma barra vazia. */
@@ -182,6 +212,45 @@ function tiposDeEcos(dados, conhecimento) {
   if (!observados.length) {
     bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
   }
+  return bloco;
+}
+
+/* Os três campos de gerência, com os rótulos que a ficha usa. Nenhum deles tem
+   definição em classificacoes.json, então o rótulo vive aqui, junto do desenho,
+   e o conteúdo continua vindo só de dados/. */
+const GERENCIA = [
+  ['portador', 'Quem possui'],
+  ['tipoSaber', 'Quem precisa'],
+  ['acaoGerencia', 'Como gerenciar']
+];
+
+const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
+
+/**
+ * Um campo de gerência por linha. Vazio vira pendência, nunca texto inventado.
+ *
+ * Com os três vazios, que é o estado de todos os vinte hoje, o cartão diz isso
+ * numa linha só, como o de tipo de ECOS já faz. Repetir a mesma frase três
+ * vezes custava altura para não dizer nada a mais.
+ */
+function gerencia(dados, conhecimento) {
+  const bloco = cartao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
+  const preenchidos = GERENCIA.filter(([chave]) => texto(conhecimento[chave]));
+
+  if (!preenchidos.length) {
+    bloco.append(criar('p', 'bloco-ficha__pendente', 'Ainda não registrado na extração.'));
+    return bloco;
+  }
+
+  const lista = criar('dl', 'gerencia');
+  GERENCIA.forEach(([chave, rotulo]) => {
+    const conteudo = texto(conhecimento[chave]);
+    const valor = criar('dd', 'gerencia__valor', conteudo || 'Ainda não registrado na extração.');
+    if (!conteudo) valor.classList.add('gerencia__valor--pendente');
+    lista.append(criar('dt', 'gerencia__rotulo', rotulo), valor);
+  });
+
+  bloco.append(lista);
   return bloco;
 }
 
@@ -332,9 +401,10 @@ function pendencias(dados, conhecimento) {
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
 
+  /* O identificador e o selo da natureza ficam no topo fixo do diálogo, então
+     aqui entram só o nome e a descrição, em vez da mesma linha duas vezes. */
   const topo = criar('header', 'ficha__topo');
   topo.append(
-    criar('p', 'codigo-id', conhecimento.id),
     criar('h2', 'ficha__nome', conhecimento.nome),
     criar('p', 'ficha__descricao', conhecimento.descricao)
   );
@@ -349,6 +419,7 @@ export function renderizar(dados, conhecimento) {
     topo,
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
+    gerencia(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
       { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },

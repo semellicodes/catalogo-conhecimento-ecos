@@ -156,12 +156,20 @@ function abrirFicha(id, direcao = 0) {
   const corpo = el('#dialogo-ficha-corpo');
   corpo.replaceChildren(ficha.renderizar(dados, completo));
   animarTroca(corpo, direcao);
-  el('#dialogo-ficha-id').textContent = `${completo.id} · ${completo.nome}`;
+  el('#dialogo-ficha-id').textContent = completo.id;
+
+  /* O selo da natureza fica no topo fixo, que é o único lugar visível em
+     qualquer rolagem, e o nome vai para o rótulo do diálogo, porque o topo
+     agora mostra só o identificador. */
+  const selo = el('#dialogo-ficha-natureza');
+  selo.className = `etiqueta etiqueta--${lista.classeNatureza(completo.natureza)}`;
+  selo.textContent = completo.natureza;
+  dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
   idAberto = id;
   posicionarNavegacao();
   if (!dialogo.open) dialogo.showModal();
-  /* Quem rola é o próprio diálogo, não o corpo, então é nele que o topo é reposto. */
-  dialogo.scrollTop = 0;
+  /* Quem rola é o corpo, já que o topo e o rodapé do diálogo ficam parados. */
+  corpo.scrollTop = 0;
   sincronizarUrl(id);
 }
 
