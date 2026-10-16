@@ -1,21 +1,45 @@
 /**
- * Preenche os números da abertura e as camadas da seção de estrutura.
+ * Preenche a abertura, as portas de entrada por natureza e as camadas da seção
+ * de estrutura.
  */
 
 import { carregar } from './dados.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
+function criar(tag, className, texto) {
+  const elemento = document.createElement(tag);
+  if (className) elemento.className = className;
+  if (texto !== undefined) elemento.textContent = texto;
+  return elemento;
+}
+
 function numero(valor, rotulo) {
-  const bloco = document.createElement('div');
-  bloco.className = 'numero';
-  const v = document.createElement('p');
-  v.className = 'numero__valor mono';
-  v.textContent = valor;
-  const r = document.createElement('p');
-  r.className = 'numero__rotulo';
-  r.textContent = rotulo;
-  bloco.append(v, r);
+  const bloco = criar('div', 'numero');
+  bloco.append(criar('p', 'numero__valor mono', String(valor)), criar('p', 'numero__rotulo', rotulo));
+  return bloco;
+}
+
+/**
+ * Uma porta de entrada por natureza epistemológica, que é a entrada principal
+ * do catálogo. A contagem sai dos próprios conhecimentos e a descrição sai do
+ * vocabulário, então nenhuma das duas está escrita aqui.
+ *
+ * O link leva ao catálogo já filtrado por aquela natureza, pela mesma query
+ * string que os filtros usam.
+ */
+function porta(valor, quantos) {
+  const bloco = criar('article', 'porta');
+  bloco.append(
+    criar('p', 'porta__contagem mono', String(quantos)),
+    criar('h3', 'porta__nome', valor.valor)
+  );
+  if (valor.descricao) bloco.append(criar('p', 'porta__texto', valor.descricao));
+
+  const link = criar('a', 'porta__link', `Ver os ${quantos}`);
+  link.href = `?natureza=${encodeURIComponent(valor.valor)}#catalogo`;
+  link.append(criar('span', 'apenas-leitor', ` conhecimentos de natureza ${valor.valor}`));
+  bloco.append(link);
   return bloco;
 }
 
@@ -64,12 +88,20 @@ async function iniciar() {
     return;
   }
 
-  const avaliadas = dados.solucoes.filter((s) => s.avaliada).length;
+  el('#abertura-resumo').textContent = dados.meta.subtitulo;
+
+  /* Os atributos de classificação são os três que a ficha mostra como
+     classificação do conhecimento, contados a partir do vocabulário. */
+  const classificacao = ['natureza', 'nivel', 'dimensao'];
   el('#numeros').replaceChildren(
-    numero(dados.conhecimentos.length, 'conhecimentos catalogados'),
-    numero(dados.solucoes.length, 'soluções identificadas na revisão'),
-    numero(avaliadas, 'soluções com avaliação reportada'),
-    numero(dados.meta.totalEstudos, 'estudos primários')
+    numero(dados.conhecimentos.length, 'conhecimentos'),
+    numero(dados.meta.totalEstudos, 'estudos primários'),
+    numero(classificacao.length, 'atributos de classificação')
+  );
+
+  const contar = (valor) => dados.conhecimentos.filter((c) => c.natureza === valor).length;
+  el('#portas').replaceChildren(
+    ...dados.classificacoes.natureza.valores.map((v) => porta(v, contar(v.valor)))
   );
 
   const camadas = el('#camadas');

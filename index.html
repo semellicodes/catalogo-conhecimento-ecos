@@ -52,18 +52,17 @@
 <main id="conteudo">
   <section class="abertura" id="inicio" aria-labelledby="titulo-abertura">
     <div class="container abertura__interno">
-      <div class="abertura__texto">
-        <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
-        <p class="abertura__resumo">
-          Um catálogo de conhecimento em Ecossistemas de Software (ECOS), denominado
-          <strong class="abertura__sigla">KM4SECO</strong>, construído a partir de uma revisão rápida
-          da literatura. Os conhecimentos estão relacionados às soluções reportadas nos estudos e
-          descritos por um conjunto fixo de atributos.
-        </p>
-      </div>
-      <div class="abertura__desenho" id="desenho-abertura" aria-hidden="true"></div>
+      <p class="abertura__olho">KM4SECO</p>
+      <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
+      <p class="abertura__resumo" id="abertura-resumo"></p>
+      <a class="abertura__entrar" href="#catalogo">Entrar no catálogo</a>
       <div class="numeros" id="numeros" aria-label="Números do catálogo"></div>
     </div>
+  </section>
+
+  <section class="secao container" id="entrar" aria-labelledby="titulo-entrar">
+    <h2 class="secao__titulo" id="titulo-entrar">Por onde entrar</h2>
+    <div class="portas" id="portas"></div>
   </section>
 
   <section class="secao container" id="estrutura" aria-labelledby="titulo-estruturado">
@@ -113,7 +112,6 @@
         <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
       </section>
 
-      <ul class="legenda" id="legenda" aria-label="Cores da natureza epistemológica"></ul>
       <ol class="trilha" id="trilha"></ol>
       <p class="vazio" id="trilha-vazia" hidden>Nenhum conhecimento corresponde aos filtros aplicados.</p>
     </div>
@@ -132,9 +130,17 @@
 
 <dialog class="dialogo-ficha" id="dialogo-ficha">
   <div class="dialogo-ficha__topo">
-    <p class="codigo-id" id="dialogo-ficha-id"></p>
-    <span class="etiqueta" id="dialogo-ficha-natureza"></span>
-    <button class="botao" id="fechar-ficha" type="button">Fechar</button>
+    <div class="dialogo-ficha__linha">
+      <p class="codigo-id" id="dialogo-ficha-id"></p>
+      <span class="etiqueta" id="dialogo-ficha-natureza"></span>
+      <button class="fechar" id="fechar-ficha" type="button" aria-label="Fechar a ficha">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M6 6 14 14M14 6 6 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <h2 class="ficha__nome" id="dialogo-ficha-nome"></h2>
+    <p class="ficha__descricao" id="dialogo-ficha-descricao"></p>
   </div>
   <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
   <div class="dialogo-ficha__rodape" id="ficha-navegacao">
@@ -191,7 +197,6 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
-<script type="module" src="js/desenho.js"></script>
 <script type="module" src="js/navegacao.js"></script>
 <script type="module" src="js/inicio.js"></script>
 <script type="module" src="js/catalogo.js"></script>

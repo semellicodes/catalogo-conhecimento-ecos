@@ -17,29 +17,39 @@ function criar(tag, className, texto) {
   return el;
 }
 
-/** Cartão baixo. O ponto dá a natureza, o identificador e o nome dão o resto. */
+/**
+ * Cartão do conhecimento. O selo é a dimensão, não a natureza, porque a natureza
+ * já é o título do grupo logo acima e repeti-la em cada cartão não informa nada.
+ *
+ * Quem abre a ficha é o link do pé, e não o cartão inteiro, para o cartão não
+ * ser um alvo clicável com outro alvo clicável dentro.
+ */
 function montarCartao(conhecimento, aoAbrir) {
   const item = criar('li');
-  const cartao = criar('a', 'cartao');
-  cartao.href = `?id=${conhecimento.id}`;
+  const cartao = criar('article', 'cartao');
 
-  const ponto = criar('span', `cartao__ponto cartao__ponto--${classeNatureza(conhecimento.natureza)}`);
-  ponto.setAttribute('aria-hidden', 'true');
-
-  /* A natureza não aparece escrita no cartão, então vai para quem usa leitor de tela. */
-  const natureza = criar('span', 'apenas-leitor', `${conhecimento.natureza}. `);
-
-  cartao.append(
-    ponto,
+  const topo = criar('div', 'cartao__topo');
+  topo.append(
     criar('span', 'codigo-id cartao__id', conhecimento.id),
-    natureza,
-    criar('span', 'cartao__nome', conhecimento.nome)
+    criar('span', 'etiqueta', conhecimento.dimensao)
   );
-  cartao.addEventListener('click', (evento) => {
+
+  const abrir = criar('a', 'botao cartao__abrir', 'Ver ficha completa');
+  abrir.href = `?id=${conhecimento.id}`;
+  /* O nome vai junto para quem usa leitor de tela, senão todos os links da
+     página se chamam igual e nenhum diz para onde vai. */
+  abrir.append(criar('span', 'apenas-leitor', `, ${conhecimento.nome}`));
+  abrir.addEventListener('click', (evento) => {
     evento.preventDefault();
     aoAbrir(conhecimento.id);
   });
 
+  cartao.append(
+    topo,
+    criar('h4', 'cartao__nome', conhecimento.nome),
+    criar('p', 'cartao__descricao', conhecimento.descricao),
+    abrir
+  );
   item.append(cartao);
   return item;
 }
@@ -79,17 +89,4 @@ export function renderizar(elemento, conhecimentos, naturezas, aoAbrir) {
     const daNatureza = conhecimentos.filter((c) => c.natureza === natureza.valor);
     if (daNatureza.length) elemento.append(montarEstacao(natureza, daNatureza, aoAbrir));
   });
-}
-
-/** Legenda das cores da natureza, montada a partir da própria classificação. */
-export function renderizarLegenda(elemento, naturezas) {
-  elemento.replaceChildren(
-    ...naturezas.map((n) => {
-      const item = criar('li', 'legenda__item');
-      const ponto = criar('span', `legenda__ponto legenda__ponto--${classeNatureza(n.valor)}`);
-      ponto.setAttribute('aria-hidden', 'true');
-      item.append(ponto, criar('span', null, n.valor));
-      return item;
-    })
-  );
 }

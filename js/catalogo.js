@@ -158,12 +158,14 @@ function abrirFicha(id, direcao = 0) {
   animarTroca(corpo, direcao);
   el('#dialogo-ficha-id').textContent = completo.id;
 
-  /* O selo da natureza fica no topo fixo, que é o único lugar visível em
-     qualquer rolagem, e o nome vai para o rótulo do diálogo, porque o topo
-     agora mostra só o identificador. */
+  /* Tudo que identifica o conhecimento fica no topo parado, que é o único lugar
+     visível em qualquer rolagem. Quem desce até os estudos continua vendo de
+     qual conhecimento é a ficha. */
   const selo = el('#dialogo-ficha-natureza');
   selo.className = `etiqueta etiqueta--${lista.classeNatureza(completo.natureza)}`;
   selo.textContent = completo.natureza;
+  el('#dialogo-ficha-nome').textContent = completo.nome;
+  el('#dialogo-ficha-descricao').textContent = completo.descricao;
   dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
   idAberto = id;
   posicionarNavegacao();
@@ -259,8 +261,8 @@ function ligarFolhaDeFiltros() {
       corpo.append(painel);
     } else {
       fechar();
-      /* Volta para antes da legenda, que é a primeira coisa da trilha. */
-      lugarOriginal.insertBefore(painel, el('#legenda'));
+      /* Volta para antes da trilha, que é o que vem logo depois dos filtros. */
+      lugarOriginal.insertBefore(painel, el('#trilha'));
     }
   }
 
@@ -347,7 +349,6 @@ function montarCatalogo() {
     dados.classificacoes.natureza.valores.find((v) => v.valor === valor)
   );
 
-  lista.renderizarLegenda(el('#legenda'), dados.classificacoes.natureza.valores);
 
   ligarBusca();
   ligarLimpar();
