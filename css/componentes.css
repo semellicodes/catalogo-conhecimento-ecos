@@ -570,9 +570,7 @@
     transform: translateY(var(--deslocamento-hover));
   }
   .cartao:hover .cartao__abrir {
-    background: var(--cor-cartao-natureza);
-    border-color: var(--cor-cartao-natureza);
-    color: var(--cor-contraste);
+    border-color: currentColor;
     transform: translateX(var(--deslocamento-acao));
   }
 }
@@ -612,20 +610,19 @@
 .cartao__abrir {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: var(--esp-2);
-  width: 100%;
+  width: fit-content;
   min-height: var(--alvo-toque);
   margin-top: var(--esp-1);
-  background: var(--cor-cartao-natureza-fundo);
-  border: 1px solid var(--cor-cartao-natureza-linha);
-  border-radius: var(--raio);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
   color: var(--cor-cartao-natureza);
   font-size: var(--tam-sm);
   font-weight: 600;
   text-decoration: none;
   transition:
-    background-color var(--dur-hover) var(--curva),
     border-color var(--dur-rapida) var(--curva),
     color var(--dur-rapida) var(--curva),
     transform var(--dur-rapida) var(--curva-saida);
