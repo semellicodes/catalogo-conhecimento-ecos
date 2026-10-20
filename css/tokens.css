@@ -13,6 +13,8 @@
   /* Fundo do cartão do catálogo. Precisa de tom próprio, distinto do fundo da
      seção, senão o cartão deixa de se ler como objeto */
   --cor-cartao: #1A2230;
+  --cor-cartao-catalogo: #163A30;
+  --cor-cartao-catalogo-hover: #1B483A;
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
@@ -25,16 +27,16 @@
   --cor-contraste: #0D1117;
 
   /* Natureza, a classificação principal */
-  --cor-explicito: #5BD2AE;
-  --cor-explicito-linha: #2E5A4C;
+  --cor-explicito: #C69BF2;
+  --cor-explicito-linha: #593D75;
   --cor-tacito-cognitivo: #E0A34A;
   --cor-tacito-cognitivo-linha: #6B5326;
   --cor-tacito-tecnico: #7FB2F0;
   --cor-tacito-tecnico-linha: #2F4A6B;
 
   /* Etiqueta preenchida. Fundo e texto de cada natureza, mais o neutro */
-  --cor-explicito-pilula: #10231D;
-  --cor-explicito-pilula-texto: #8EE6CC;
+  --cor-explicito-pilula: #2A1C39;
+  --cor-explicito-pilula-texto: #DFC6FA;
   --cor-tacito-cognitivo-pilula: #2A1F0E;
   --cor-tacito-cognitivo-pilula-texto: #E8BD74;
   --cor-tacito-tecnico-pilula: #122334;
@@ -136,6 +138,8 @@
   --cor-superficie-alta: #F7F9FB;
   --cor-miolo: #E4E9EE;
   --cor-cartao: #FFFFFF;
+  --cor-cartao-catalogo: #E3F1EB;
+  --cor-cartao-catalogo-hover: #EDF7F2;
   --cor-linha: #D7DDE4;
   --cor-linha-suave: #E6EAEF;
   --cor-texto: #14181D;
@@ -147,15 +151,15 @@
   --cor-acento-linha: #9FCFBE;
   --cor-contraste: #FFFFFF;
 
-  --cor-explicito: #0F6B51;
-  --cor-explicito-linha: #9FCFBE;
+  --cor-explicito: #6E3E91;
+  --cor-explicito-linha: #C9AEDF;
   --cor-tacito-cognitivo: #8A5312;
   --cor-tacito-cognitivo-linha: #DEC19A;
   --cor-tacito-tecnico: #1F4C7A;
   --cor-tacito-tecnico-linha: #A9C4DF;
 
-  --cor-explicito-pilula: #DCEFE8;
-  --cor-explicito-pilula-texto: #0B5440;
+  --cor-explicito-pilula: #F0E6F7;
+  --cor-explicito-pilula-texto: #5D317B;
   --cor-tacito-cognitivo-pilula: #F7EBD8;
   --cor-tacito-cognitivo-pilula-texto: #6B4410;
   --cor-tacito-tecnico-pilula: #E2EDF9;

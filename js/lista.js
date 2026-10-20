@@ -25,12 +25,13 @@ function criar(tag, className, texto) {
  */
 function montarCartao(conhecimento, aoAbrir) {
   const item = criar('li');
-  const cartao = criar('article', 'cartao');
+  const natureza = classeNatureza(conhecimento.natureza);
+  const cartao = criar('article', `cartao cartao--${natureza}`);
 
   const topo = criar('div', 'cartao__topo');
   topo.append(
     criar('span', 'codigo-id cartao__id', conhecimento.id),
-    criar('span', `etiqueta etiqueta--${classeNatureza(conhecimento.natureza)}`, conhecimento.natureza)
+    criar('span', `etiqueta etiqueta--${natureza}`, conhecimento.natureza)
   );
 
   const abrir = criar('a', 'cartao__abrir', 'Ver ficha completa');
