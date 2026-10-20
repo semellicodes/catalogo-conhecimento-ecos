@@ -669,12 +669,6 @@
   text-transform: uppercase;
   color: var(--cor-acento);
 }
-.bloco-ficha__pendente {
-  margin-top: var(--esp-2);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-}
 
 /* A ajuda da seção. Um botão por bloco, e a nota sai dele. */
 .ajuda { position: relative; flex: none; }
@@ -818,7 +812,6 @@
   max-width: var(--largura-texto);
 }
 .gerencia__valor:last-child { margin-bottom: 0; }
-.gerencia__valor--pendente { color: var(--cor-texto-fraco); font-style: italic; }
 
 @media (max-width: 47.99rem) {
   /* Empilha, que três colunas de rótulo em mono não cabem em 390. */
@@ -983,16 +976,6 @@
   border-radius: var(--raio);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
-}
-
-/* ---------- Rodapé de pendências ---------- */
-.pendencias {
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-2);
-  border-top: 1px solid var(--cor-linha-suave);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
 }
 
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
