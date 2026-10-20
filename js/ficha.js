@@ -2,13 +2,11 @@
  * Transforma um conhecimento em ficha. Não sabe carregar nem filtrar.
  *
  * O identificador e o selo da natureza ficam no topo do diálogo, que é fixo, e
- * não se repetem aqui. O que é lista desce para abas, uma de cada vez, e o que
- * ainda não foi preenchido vira uma linha de rodapé, não uma caixa no caminho.
+ * não se repetem aqui. O que é lista desce para abas, uma de cada vez.
  */
 
-import { referenciaCurta, vazio } from './dados.js';
+import { referenciaCurta } from './dados.js';
 
-const ATRIBUTOS = ['natureza', 'nivel', 'dimensao', 'tipoEcos', 'acaoGerencia'];
 const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const reduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -188,7 +186,7 @@ function classificacao(dados, conhecimento) {
 
   const porque = criar('details', 'porque');
   const abrir = criar('summary', 'porque__abrir');
-  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Evidências que sustentam a classificação'));
+  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
   const evidencias = criar('ul', 'classificacao__evidencias');
   if (conhecimento.justificativaClassificacao) {
     evidencias.append(criar('li', 'porque__texto', conhecimento.justificativaClassificacao));
@@ -210,9 +208,6 @@ function tiposDeEcos(dados, conhecimento) {
   const observados = conhecimento.tipoEcos || [];
   const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
   bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
-  if (!observados.length) {
-    bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
-  }
   return bloco;
 }
 
@@ -227,16 +222,14 @@ const GERENCIA = [
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
 
-/** Um campo de gerência por linha. Vazio vira pendência, nunca texto inventado. */
+/** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
   const bloco = secao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
   const lista = criar('dl', 'gerencia');
 
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
-    const valor = criar('dd', 'gerencia__valor', conteudo || 'Ainda não registrado na extração.');
-    if (!conteudo) valor.classList.add('gerencia__valor--pendente');
-    lista.append(criar('dt', 'gerencia__rotulo', rotulo), valor);
+    if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
   });
 
   bloco.append(lista);
@@ -361,31 +354,6 @@ function montarAbas(itens) {
   return raiz;
 }
 
-/* ---------- Rodapé ---------- */
-
-/** O que falta classificar e o estado das relações, numa linha discreta. */
-function pendencias(dados, conhecimento) {
-  const partes = [];
-  const faltando = ATRIBUTOS.filter((chave) => vazio(conhecimento[chave])).map((chave) =>
-    dados.classificacoes[chave].rotulo.toLowerCase()
-  );
-  if (faltando.length) {
-    const nomes =
-      faltando.length > 1
-        ? `${faltando.slice(0, -1).join(', ')} e ${faltando[faltando.length - 1]}`
-        : faltando[0];
-    partes.push(`${nomes} a definir`);
-  }
-  if (!conhecimento.relacoesConfirmadas) {
-    partes.push('soluções reunidas por estudo em comum, ainda não confirmadas nos estudos primários');
-  }
-  if (conhecimento.pendencia) partes.push(conhecimento.pendencia);
-
-  const linha = criar('p', 'pendencias', partes.join(' · '));
-  linha.hidden = partes.length === 0;
-  return linha;
-}
-
 /** Monta a ficha completa e devolve o elemento pronto para inserir. */
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
@@ -404,8 +372,7 @@ export function renderizar(dados, conhecimento) {
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
       { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },
       { rotulo: 'Trechos', contagem: quantos.trechos, conteudo: () => trechos(conhecimento) }
-    ]),
-    pendencias(dados, conhecimento)
+    ])
   ];
   raiz.append(...secoes);
   return raiz;
