@@ -33,7 +33,7 @@ function montarCartao(conhecimento, aoAbrir) {
     criar('span', `etiqueta etiqueta--${classeNatureza(conhecimento.natureza)}`, conhecimento.natureza)
   );
 
-  const abrir = criar('a', 'botao cartao__abrir', 'Ver ficha completa');
+  const abrir = criar('a', 'cartao__abrir', 'Ver ficha completa');
   abrir.href = `?id=${conhecimento.id}`;
   /* O nome vai junto para quem usa leitor de tela, senão todos os links da
      página se chamam igual e nenhum diz para onde vai. */

@@ -7,15 +7,19 @@
   padding-block: var(--esp-7);
   border-bottom: 1px solid var(--cor-faixa-linha);
 }
-/* Uma coluna só, de cima a baixo. O olho, o título, o parágrafo, o botão e a
-   tarja de números, nessa ordem. */
 .abertura__interno {
   display: grid;
-  justify-items: start;
-  gap: var(--esp-4);
+  gap: var(--esp-7);
+  align-items: center;
 }
 @media (min-width: 64rem) {
   .abertura { padding-block: var(--esp-8); min-height: var(--altura-faixa); display: flex; align-items: center; }
+  .abertura__interno { grid-template-columns: minmax(0, 1fr) minmax(18rem, var(--largura-painel-abertura)); }
+}
+.abertura__conteudo {
+  display: grid;
+  justify-items: start;
+  gap: var(--esp-4);
 }
 .abertura__olho {
   font-family: var(--fonte-mono);
@@ -37,6 +41,22 @@
   color: var(--cor-faixa-suave);
   max-width: 62ch;
 }
+.abertura__painel {
+  width: 100%;
+  overflow: hidden;
+  background: var(--cor-faixa-texto);
+  border: 1px solid var(--cor-faixa-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-2);
+  color: var(--cor-faixa-acento);
+}
+.abertura__diagrama {
+  display: block;
+  width: 100%;
+  height: var(--altura-diagrama-abertura);
+  padding: var(--esp-5);
+  color: var(--cor-faixa);
+}
 /* Botão claro sobre a faixa escura. Não usa .botao porque aquele é da
    superfície da página e aqui o fundo é a faixa. */
 .abertura__entrar {
@@ -56,28 +76,23 @@
 .abertura__entrar:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
 .abertura__entrar:focus-visible { outline-offset: var(--esp-1); }
 
-/* Tarja de números no pé da faixa, três lado a lado, separados por linha fina. */
 .numeros {
   width: 100%;
-  margin-top: var(--esp-5);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: auto;
   row-gap: 0;
-  border-top: 1px solid var(--cor-faixa-linha);
+  background: var(--cor-faixa);
 }
-/* Subgrid para o rótulo de um número começar na mesma linha do rótulo do
-   vizinho, mesmo quando um quebra em duas linhas e o outro não. */
 .numero {
   display: grid;
   grid-template-rows: subgrid;
   grid-row: span 2;
   align-content: start;
-  padding: var(--esp-2) var(--esp-4) 0;
+  padding: var(--esp-3) var(--esp-4);
   border-left: 1px solid var(--cor-faixa-linha);
 }
-@media (min-width: 64rem) { .numero { padding-top: var(--esp-3); } }
-.numero:first-child { border-left: 0; padding-left: 0; }
+.numero:first-child { border-left: 0; }
 .numero__valor {
   font-family: var(--fonte-mono);
   font-size: var(--tam-titulo);
@@ -112,17 +127,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .portas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
-  gap: var(--esp-4);
+  gap: var(--esp-5);
 }
 .porta {
   display: grid;
   align-content: start;
-  gap: var(--esp-2);
-  padding: var(--esp-5);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
+  gap: var(--esp-1);
+  padding: var(--esp-4) 0 0 var(--esp-4);
+  border-left: var(--borda-acento);
 }
 .porta__contagem {
   font-family: var(--fonte-mono);
@@ -140,6 +152,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   min-height: var(--alvo-toque);
   font-size: var(--tam-sm);
   font-weight: 500;
+  color: var(--cor-acento);
 }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
@@ -265,7 +278,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   justify-content: space-between;
   gap: var(--esp-4);
   padding: var(--esp-3) var(--esp-4);
-  border-bottom: var(--borda);
+  border-bottom: var(--borda-suave);
 }
 .folha__titulo {
   font-family: var(--fonte-mono);
@@ -366,7 +379,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-3);
   padding: var(--esp-3) var(--esp-4);
   background: var(--cor-fundo);
-  border-top: var(--borda);
+  border-top: var(--borda-suave);
   border-radius: 0 0 var(--raio) var(--raio);
 }
 .dialogo-ficha__posicao {

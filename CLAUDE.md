@@ -136,15 +136,17 @@ nativamente pelo navegador com `type="module"`.
 
 ## Convenções de interface
 
-- Mobile primeiro. A grade de cards é uma coluna no celular e duas a partir de 64rem
+- Mobile primeiro. A grade de cards é uma coluna no celular, duas a partir de 48rem e três a partir de 76rem
 - O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
-  nome em título, a descrição inteira e um link "Ver ficha completa" na largura do cartão, no pé.
-  A dimensão não aparece no card, só na ficha
+  nome em título, uma prévia visual de até quatro linhas da descrição e um link "Ver ficha completa"
+  no pé. A ficha preserva a descrição completa. A dimensão não aparece no card, só na ficha
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
-- A faixa de abertura leva, nesta ordem, o olho KM4SECO, o título, o resumo de `meta.subtitulo`, o
-  botão Entrar no catálogo e a tarja com três números. Abaixo dela, as portas de entrada por
-  natureza, com a contagem, a descrição do vocabulário e o link para o catálogo já filtrado
+- A faixa de abertura compõe em duas colunas no desktop. À esquerda ficam o olho KM4SECO, título,
+  resumo de `meta.subtitulo` e o botão Entrar no catálogo. À direita, um diagrama abstrato original
+  com a tarja dos três números. No celular, a peça visual desce abaixo do texto. Abaixo da faixa,
+  as portas de entrada por natureza trazem a contagem, a descrição do vocabulário e o link para o
+  catálogo já filtrado
 - Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
   escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
   a ser só um ponto colorido
@@ -162,8 +164,8 @@ nativamente pelo navegador com `type="module"`.
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
   só o miolo rola. O topo leva o identificador, o selo da natureza, o fechar em ✕ redondo, o nome e
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
-- O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, senão os cartões da ficha não
-  se separam do fundo
+- O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, para manter a ficha como uma
+  superfície distinta do conteúdo que ficou atrás dela
 - A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
 - Natureza, nível e dimensão aparecem como rótulo em cima e valor embaixo, em três colunas no
   desktop e empilhados no celular. Já foram caixas e deixaram de ser, porque com um valor possível
@@ -175,14 +177,14 @@ nativamente pelo navegador com `type="module"`.
 - A caixa leva o símbolo do valor e o nome, nada mais. Cadeado aberto para código aberto, cadeado
   fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
   o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
-- Cada bloco da ficha é um cartão com título em acento e um botão de ajuda no canto. A ajuda é uma
-  por cartão, não uma por atributo, e reúne a pergunta e a referência de cada atributo do bloco
-- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda do cartão,
+- Os blocos da ficha são seções de uma mesma superfície, separados por linhas finas, com título em
+  acento e um botão de ajuda no canto. A ajuda é uma por seção, não uma por atributo, e reúne a
+  pergunta e a referência de cada atributo do bloco
+- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - O bloco de gerência mostra quem possui, quem precisa e como gerenciar, um por linha. Esses três
   rótulos não existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O
-  conteúdo continua vindo só de `dados/`. Com os três vazios, que é o estado dos vinte hoje, o
-  cartão diz isso numa linha só, em vez de repetir a mesma frase três vezes
+  conteúdo continua vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
 - A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
