@@ -315,18 +315,19 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-radius: var(--raio);
   box-shadow: var(--sombra-2);
   opacity: 0;
-  scale: 0.97;
+  transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha));
   /* overlay e display entram com allow-discrete para o fechamento também animar.
      A duração aqui é a do fechamento, que é mais curto que a abertura. */
   transition:
     opacity var(--dur-rapida) var(--curva-saida),
-    scale var(--dur-rapida) var(--curva-saida),
+    transform var(--dur-rapida) var(--curva-saida),
     overlay var(--dur-rapida) var(--curva-saida) allow-discrete,
     display var(--dur-rapida) var(--curva-saida) allow-discrete;
 }
-.dialogo-ficha[open] { opacity: 1; scale: 1; transition-duration: var(--dur-media); }
+.dialogo-ficha[open] { opacity: 1; transform: none; transition-duration: var(--dur-entrada-ficha); }
+.dialogo-ficha.dialogo-ficha--entrando { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 @starting-style {
-  .dialogo-ficha[open] { opacity: 0; scale: 0.97; }
+  .dialogo-ficha[open] { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 }
 
 .dialogo-ficha::backdrop {
@@ -353,7 +354,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (prefers-reduced-motion: reduce) {
   .dialogo-ficha,
   .dialogo-ficha::backdrop { transition: none; }
-  .dialogo-ficha { scale: 1; }
+  .dialogo-ficha { transform: none; }
 }
 /* O topo parado leva tudo que identifica o conhecimento, inclusive o nome e a
    descrição, que antes rolavam junto com o resto e sumiam da vista. */

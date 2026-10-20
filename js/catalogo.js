@@ -149,8 +149,11 @@ function marcarOpcoes() {
   });
 }
 
-const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const movimentoReduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function tokenDeMovimento(nome) {
+  return getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
+}
 
 /**
  * Troca de conhecimento sem recarregar o diálogo. O conteúdo entra pelo lado
@@ -158,10 +161,19 @@ const movimentoReduzido = () => window.matchMedia('(prefers-reduced-motion: redu
  */
 function animarTroca(corpo, direcao) {
   if (!direcao || movimentoReduzido()) return;
+  const deslocamento = tokenDeMovimento('--deslocamento-troca-ficha');
+  const duracao = Number.parseFloat(tokenDeMovimento('--dur-troca-ficha'));
+  const sinal = direcao > 0 ? '' : '-';
   corpo.animate(
-    [{ opacity: 0, transform: `translateX(${direcao * 10}px)` }, { opacity: 1, transform: 'none' }],
-    { duration: 200, easing: CURVA_SAIDA }
+    [{ opacity: 0, transform: `translateX(${sinal}${deslocamento})` }, { opacity: 1, transform: 'none' }],
+    { duration: duracao, easing: tokenDeMovimento('--curva-saida'), fill: 'both' }
   );
+}
+
+function mostrarFicha(dialogo) {
+  dialogo.classList.add('dialogo-ficha--entrando');
+  dialogo.showModal();
+  requestAnimationFrame(() => dialogo.classList.remove('dialogo-ficha--entrando'));
 }
 
 function abrirFicha(id, direcao = 0) {
@@ -185,7 +197,7 @@ function abrirFicha(id, direcao = 0) {
   dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
   idAberto = id;
   posicionarNavegacao();
-  if (!dialogo.open) dialogo.showModal();
+  if (!dialogo.open) mostrarFicha(dialogo);
   /* Quem rola é o corpo, já que o topo e o rodapé do diálogo ficam parados. */
   corpo.scrollTop = 0;
   sincronizarUrl(id);
