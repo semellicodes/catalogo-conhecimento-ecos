@@ -365,7 +365,7 @@ function montarCatalogo() {
   });
   anunciarPendentes(pendentes);
 
-  ordemDasNaturezas = filtros.ordemPorQuantidade(dados.conhecimentos, 'natureza');
+  ordemDasNaturezas = dados.classificacoes.natureza.valores.map(({ valor }) => valor);
 
   ligarBusca();
   ligarLimpar();

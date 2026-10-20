@@ -47,16 +47,6 @@ export function aplicar(conhecimentos, estado) {
   );
 }
 
-/**
- * A ordem das naturezas, da mais numerosa para a menos. Sai da contagem sobre
- * todos os conhecimentos, não da lista filtrada e não de uma lista escrita no
- * código, então se uma natureza crescer a ordem se ajusta sozinha.
- */
-export function ordemPorQuantidade(conhecimentos, atributo) {
-  const contagem = contar(conhecimentos, atributo);
-  return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([v]) => v);
-}
-
 /** Ordena pela sequência de naturezas informada e, dentro de cada uma, por ID. */
 export function ordenar(conhecimentos, ordem) {
   const posicao = (c) => {

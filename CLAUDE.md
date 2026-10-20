@@ -155,10 +155,9 @@ nativamente pelo navegador com `type="module"`.
 - A seção de contato existe só na inicial. As outras páginas apontam para `index.html#contato`, em
   vez de repetir o bloco, porque é conteúdo e não navegação
 - Os cartões do catálogo vêm agrupados por natureza epistemológica, pela ordenação, sem cabeçalho
-  separando um grupo do outro. A ordem dos grupos é a da quantidade de conhecimentos de cada
-  natureza, da maior para a menor, calculada a partir de `conhecimentos.json`, nunca escrita no
-  código, para se ajustar sozinha se uma natureza mudar. Dentro do grupo a ordem é por
-  identificador, e a mesma sequência vale para o anterior e o próximo da ficha
+  separando um grupo do outro. A sequência dos grupos vem da ordem em
+  `classificacoes.json`, com os conhecimentos tácitos antes dos explícitos. Dentro do grupo a ordem
+  é por identificador, e a mesma sequência vale para o anterior e o próximo da ficha
 - A contagem de cada natureza fica nos filtros e nas portas da abertura, e a descrição fica no
   glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo as duas
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
