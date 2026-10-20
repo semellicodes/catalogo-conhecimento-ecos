@@ -86,28 +86,72 @@ function traco(tag, atributos) {
   return forma;
 }
 
+/** Preenche o detalhe que abre para um tipo de ECOS observado. */
+function preencherObservacaoTipoEcos(painel, observacao) {
+  painel.replaceChildren();
+  painel.hidden = !observacao;
+  if (!observacao) return;
+
+  painel.append(criar('p', 'tipo-ecos__texto', observacao.descricao));
+  if (observacao.exemplos?.length) {
+    const exemplos = criar('ul', 'tipo-ecos__exemplos');
+    observacao.exemplos.forEach((exemplo) => exemplos.append(criar('li', null, exemplo)));
+    painel.append(exemplos);
+  }
+}
+
 /**
- * A caixa fica com o símbolo e o nome. A descrição do valor não entra, porque já
- * vive no glossário do Explorar e no botão de ajuda da seção, e dentro da caixa
- * virava a terceira cópia, que empurrava as abas para fora da tela.
- *
- * Como o símbolo passou a ser do valor, e não do estado, o estado deixou de ter
- * desenho próprio e vai escrito para quem usa leitor de tela.
+ * Tipos observados podem abrir seu próprio contexto, desde que esse contexto
+ * esteja registrado no dado. Tipo sem observação continua uma caixa informativa,
+ * não um botão que abriria um painel vazio.
  */
-function fileira(definicao, acesos) {
+function tiposDeEcosInterativos(definicao, conhecimento) {
+  const observados = conhecimento.tipoEcos || [];
+  const observacoes = conhecimento.observacoesTipoEcos || {};
   const lista = criar('ul', 'opcoes');
+  const painel = criar('div', 'tipo-ecos__painel');
+  const controles = [];
+  const idPainel = `tipo-ecos-${conhecimento.id}`;
+  painel.id = idPainel;
+  painel.hidden = true;
+
+  function selecionar(botao, observacao) {
+    controles.forEach(({ botao: outro }) => {
+      outro.removeAttribute('data-selecionado');
+      outro.setAttribute('aria-pressed', 'false');
+    });
+    botao.setAttribute('data-selecionado', '');
+    botao.setAttribute('aria-pressed', 'true');
+    preencherObservacaoTipoEcos(painel, observacao);
+  }
+
   definicao.valores.forEach((v) => {
-    const aceso = acesos.includes(v.valor);
-    const item = criar('li', 'opcao');
+    const aceso = observados.includes(v.valor);
+    const observacao = observacoes[v.valor];
+    const interativo = aceso && observacao?.descricao;
+    const item = criar('li');
     if (aceso) item.setAttribute('data-aceso', '');
-    item.append(
+
+    const caixa = criar(interativo ? 'button' : 'span', 'opcao');
+    if (interativo) {
+      caixa.type = 'button';
+      caixa.classList.add('opcao--interativa');
+      caixa.setAttribute('aria-controls', idPainel);
+      caixa.setAttribute('aria-pressed', 'false');
+      caixa.addEventListener('click', () => selecionar(caixa, observacao));
+      controles.push({ botao: caixa, observacao });
+    }
+    caixa.append(
       iconeDoValor(v.valor, aceso),
       criar('span', 'opcao__nome', v.valor),
       criar('span', 'apenas-leitor', aceso ? ', observado' : ', não observado')
     );
+    item.append(caixa);
     lista.append(item);
   });
-  return lista;
+
+  if (controles.length) selecionar(controles[0].botao, controles[0].observacao);
+  return [lista, painel];
 }
 
 /**
@@ -196,9 +240,8 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const observados = conhecimento.tipoEcos || [];
   const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
-  bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
+  bloco.append(...tiposDeEcosInterativos(dados.classificacoes.tipoEcos, conhecimento));
   return bloco;
 }
 

@@ -61,8 +61,12 @@ correspondente aparece com o aviso de atributo não preenchido.
 Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
 
 `conhecimentos[].tipoEcos` diz em que ecossistemas **aquele conhecimento** foi observado. É o que a
-ficha lê. Enquanto estiver vazio, as três caixas aparecem apagadas e o bloco diz que a classificação
-está pendente.
+ficha lê. Enquanto estiver vazio, as três caixas aparecem apagadas.
+
+`conhecimentos[].observacoesTipoEcos` é opcional e usa o nome do tipo de ECOS como chave. Cada valor
+tem `descricao` e a lista opcional `exemplos`. Quando existir para um tipo observado, a caixa vira um
+botão e abre esse contexto abaixo da fileira. Sem esse dado, a caixa permanece apenas informativa para
+não apresentar exemplo inventado.
 
 `estudos[].tipoEcos` diz que tipos de ecossistema **aquele estudo** examinou, e é lista porque um
 estudo sozinho pode comparar mais de um, como o E09, que olha um aberto, um fechando e um fechado.
