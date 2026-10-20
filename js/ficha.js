@@ -396,9 +396,9 @@ export function renderizar(dados, conhecimento) {
     trechos: conhecimento.trechos.filter(Boolean).length
   };
 
-  const secoes = [classificacao(dados, conhecimento)];
-  if (conhecimento.tipoEcos?.length) secoes.push(tiposDeEcos(dados, conhecimento));
-  secoes.push(
+  const secoes = [
+    classificacao(dados, conhecimento),
+    tiposDeEcos(dados, conhecimento),
     gerencia(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
@@ -406,7 +406,7 @@ export function renderizar(dados, conhecimento) {
       { rotulo: 'Trechos', contagem: quantos.trechos, conteudo: () => trechos(conhecimento) }
     ]),
     pendencias(dados, conhecimento)
-  );
+  ];
   raiz.append(...secoes);
   return raiz;
 }
