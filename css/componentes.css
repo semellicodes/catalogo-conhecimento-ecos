@@ -71,9 +71,12 @@
   border: var(--borda);
   border-radius: var(--raio-pilula);
   cursor: pointer;
-  transition: border-color var(--dur-rapida) var(--curva);
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva-saida);
 }
 .interruptor:hover { border-color: var(--cor-acento-linha); }
+.interruptor:active { transform: scale(0.96); }
 .interruptor:focus-visible {
   outline: 2px solid var(--cor-acento);
   outline-offset: 2px;
@@ -553,11 +556,12 @@
   transition:
     background-color var(--dur-media) var(--curva),
     border-color var(--dur-rapida) var(--curva),
-    box-shadow var(--dur-media) var(--curva),
-    transform var(--dur-media) var(--curva-saida);
+    box-shadow var(--dur-hover) var(--curva),
+    transform var(--dur-hover) var(--curva-saida);
 }
 @media (hover: hover) and (pointer: fine) {
   .cartao:hover {
+    background: var(--cor-superficie-alta);
     border-color: var(--cor-acento-linha);
     box-shadow: var(--sombra-2);
     transform: translateY(var(--deslocamento-hover));
@@ -605,7 +609,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cartao,
-  .cartao:hover { transform: none; }
+  .cartao:hover,
+  .cartao__abrir { transform: none; }
 }
 
 /* ---------- Ficha ---------- */

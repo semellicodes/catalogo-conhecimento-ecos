@@ -208,6 +208,9 @@ nativamente pelo navegador com `type="module"`.
 - Profundidade por superfície. No tema claro o card é branco sobre fundo mais frio, com
   `--sombra-1` em repouso e `--sombra-2` no hover. No tema escuro a superfície é mais clara
   que o fundo e quem separa é a borda, então `--sombra-1` é `none`
+- O movimento confirma uma ação sem disputar atenção com o conteúdo. Em ponteiro fino, o card
+  sobe pouco, sua ação acompanha e a ficha entra por opacidade, escala leve e deslocamento curto.
+  No toque não há hover, e `prefers-reduced-motion` remove essas transições
 - Etiqueta é pílula preenchida, com o par `--cor-<natureza>-pilula` e
   `--cor-<natureza>-pilula-texto`. Nível e dimensão usam o par neutro
 - A faixa de abertura sangra de ponta a ponta e tem superfície própria, com os tokens
