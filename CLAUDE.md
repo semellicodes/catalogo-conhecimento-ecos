@@ -199,9 +199,10 @@ nativamente pelo navegador com `type="module"`.
   pastilhas para a linha de baixo, e as três pastilhas já dizem de que faceta são
 - O grupo de faceta é `div` com `role="group"` e `aria-labelledby`, não `fieldset`, porque `legend`
   dentro de contêiner flex ainda não se comporta igual em todo navegador
-- Todos os cartões do catálogo usam `--cor-cartao-catalogo`, uma superfície verde própria. O ID,
-  o selo e a ação usam a cor da natureza. O explícito usa violeta para não se perder sobre o verde,
-  o tácito-cognitivo usa amarelo e o tácito-técnico usa azul
+- Todos os cartões do catálogo usam `--cor-cartao-catalogo`, quase neutro com verde apenas sugerido.
+  O ID, o selo e o link de abertura usam a cor da natureza. O explícito usa violeta para não se
+  perder sobre o verde, o tácito-cognitivo usa amarelo e o tácito-técnico usa azul. A cor não
+  preenche a superfície inteira nem transforma o link em botão pesado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1
 - `button`, `a` e `input` de verdade. Nunca `role` ou clique em `div`
 - Canto arredondado com `--raio` em card, painel, diálogo e campo, e `--raio-pilula` em
