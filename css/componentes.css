@@ -338,19 +338,16 @@
    fica ao lado das pastilhas, não acima, que é o que tirava uma linha por
    faceta e espalhava o bloco por cinco. */
 .filtros {
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-  margin-bottom: var(--esp-5);
+  margin-bottom: var(--esp-6);
+  padding-bottom: var(--esp-3);
+  border-bottom: var(--borda);
 }
 .filtros__linha {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--esp-3);
-  padding: var(--esp-2) var(--esp-4);
-  border-bottom: var(--borda);
+  padding-block: var(--esp-2);
 }
 /* A busca toma a folga da linha até um teto perto da metade, as pastilhas de
    natureza ficam do tamanho que precisam e o contador vai para o canto. */
@@ -374,7 +371,7 @@
   white-space: nowrap;
 }
 
-.filtros__grade { display: grid; gap: var(--esp-2); padding: var(--esp-2) var(--esp-4); }
+.filtros__grade { display: grid; gap: var(--esp-2); padding-block: var(--esp-2); }
 /* Rótulo e pastilhas na mesma linha. No celular empilha. */
 .filtros__grupo {
   display: flex;
@@ -398,8 +395,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--esp-3);
-  padding: var(--esp-2) var(--esp-4);
-  border-top: var(--borda);
+  padding-top: var(--esp-1);
 }
 .filtros__rodape:not(:has(> :not([hidden]))) { display: none; }
 .filtros__pendentes { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
@@ -539,16 +535,19 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-4);
 }
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
   .cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (min-width: 76rem) {
+  .cartoes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.cartoes > li { display: flex; min-width: 0; }
 .cartao {
   display: grid;
-  /* A descrição empurra o botão para o pé, então cartões vizinhos de alturas
-     diferentes terminam com o botão na mesma linha de base. */
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
   gap: var(--esp-3);
-  height: 100%;
+  width: 100%;
+  min-height: var(--altura-cartao-catalogo);
   padding: var(--esp-5);
   background: var(--cor-cartao);
   border: var(--borda);
@@ -559,10 +558,12 @@
     box-shadow var(--dur-media) var(--curva),
     transform var(--dur-media) var(--curva-saida);
 }
-.cartao:hover { box-shadow: var(--sombra-2); }
-/* Sobe dois pixels no ponteiro fino. No toque o hover dispara sem intenção. */
 @media (hover: hover) and (pointer: fine) {
-  .cartao:hover { transform: translateY(-2px); }
+  .cartao:hover {
+    border-color: var(--cor-acento-linha);
+    box-shadow: var(--sombra-2);
+    transform: translateY(-2px);
+  }
 }
 
 .cartao__topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); }
@@ -573,8 +574,28 @@
   line-height: 1.25;
   letter-spacing: var(--entre-letras-nome);
 }
-.cartao__descricao { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
-.cartao__abrir { width: 100%; }
+.cartao__descricao {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--linhas-resumo-cartao);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+}
+.cartao__abrir {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  width: fit-content;
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-1);
+  color: var(--cor-acento);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.cartao__abrir::after { content: '→'; }
+.cartao__abrir:active { transform: scale(0.97); }
 
 @media (prefers-reduced-motion: reduce) {
   .cartao,
@@ -592,15 +613,11 @@
   max-width: var(--largura-texto);
 }
 
-/* Cada bloco da ficha é um cartão, com o título e a ajuda no canto. */
 .bloco-ficha {
-  margin-top: var(--esp-5);
-  padding: var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
+  padding-block: var(--esp-5);
+  border-bottom: var(--borda-suave);
 }
+.bloco-ficha:first-child { padding-top: 0; }
 .bloco-ficha__topo {
   display: flex;
   align-items: start;
@@ -759,18 +776,14 @@
   .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
   .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
-  /* O cartão aperta, porque a moldura dele custa altura e no celular a conta
-     é com as abas, que precisam aparecer cedo. */
-  .bloco-ficha { padding: var(--esp-3); margin-top: var(--esp-4); }
+  .bloco-ficha { padding-block: var(--esp-4); }
   .bloco-ficha__topo { margin-bottom: var(--esp-3); }
 }
 
-/* A justificativa, numa barra de largura inteira no pé do cartão. */
 .porque {
   margin-top: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: 1px solid var(--cor-linha-suave);
-  border-radius: var(--raio);
+  border-top: var(--borda-suave);
+  border-bottom: var(--borda-suave);
 }
 .porque__abrir {
   display: flex;

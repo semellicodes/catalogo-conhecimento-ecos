@@ -91,7 +91,7 @@ function traco(tag, atributos) {
 
 /**
  * A caixa fica com o símbolo e o nome. A descrição do valor não entra, porque já
- * vive no glossário do Explorar e no botão de ajuda do cartão, e dentro da caixa
+ * vive no glossário do Explorar e no botão de ajuda da seção, e dentro da caixa
  * virava a terceira cópia, que empurrava as abas para fora da tela.
  *
  * Como o símbolo passou a ser do valor, e não do estado, o estado deixou de ter
@@ -114,7 +114,7 @@ function fileira(definicao, acesos) {
 }
 
 /**
- * O botão de ajuda do cartão. Um por bloco, no canto, em vez de um por atributo,
+ * O botão de ajuda da seção. Um por bloco, no canto, em vez de um por atributo,
  * e a nota reúne a pergunta e a referência de cada atributo que o bloco mostra.
  */
 function ajuda(dados, chaves) {
@@ -151,8 +151,8 @@ function ajuda(dados, chaves) {
   return raiz;
 }
 
-/** O cartão de um bloco da ficha, com o título, uma linha opcional e a ajuda. */
-function cartao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
+/** Uma seção da ficha, com título, linha opcional de apoio e ajuda. */
+function secao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
   const bloco = criar('section', 'bloco-ficha');
   const topo = criar('header', 'bloco-ficha__topo');
   const textos = criar('div', 'bloco-ficha__textos');
@@ -176,7 +176,7 @@ const ESQUEMA = 'Segundo os esquemas adotados na revisão';
  * duas linhas, e empurrava as abas para fora da primeira tela no celular.
  */
 function classificacao(dados, conhecimento) {
-  const bloco = cartao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
+  const bloco = secao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
 
   const grade = criar('dl', 'classificacao');
   CLASSIFICACAO.forEach((chave) => {
@@ -207,7 +207,7 @@ function classificacao(dados, conhecimento) {
  */
 function tiposDeEcos(dados, conhecimento) {
   const observados = conhecimento.tipoEcos || [];
-  const bloco = cartao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
+  const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
   bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
   if (!observados.length) {
     bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
@@ -228,7 +228,7 @@ const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || ''
 
 /** Um campo de gerência por linha. Vazio vira pendência, nunca texto inventado. */
 function gerencia(dados, conhecimento) {
-  const bloco = cartao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
+  const bloco = secao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
   const lista = criar('dl', 'gerencia');
 
   GERENCIA.forEach(([chave, rotulo]) => {

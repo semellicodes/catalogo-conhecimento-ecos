@@ -89,12 +89,18 @@
   --largura-max: 1240px;
   --largura-texto: 68ch;
   --largura-dialogo: 47.5rem;
+  --largura-painel-abertura: 32rem;
+  --altura-diagrama-abertura: 15.625rem;
+  --altura-cartao-catalogo: 21rem;
+  --linhas-resumo-cartao: 4;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
   --altura-faixa: 460px;
   --coluna-id: 3.5rem;
   --retrato: 3.25rem;
   --borda: 1px solid var(--cor-linha);
+  --borda-suave: 1px solid var(--cor-linha-suave);
+  --borda-acento: 2px solid var(--cor-acento-linha);
   --raio: 10px;
   --raio-pilula: 999px;
   --alvo-toque: 44px;

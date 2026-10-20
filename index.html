@@ -52,11 +52,26 @@
 <main id="conteudo">
   <section class="abertura" id="inicio" aria-labelledby="titulo-abertura">
     <div class="container abertura__interno">
-      <p class="abertura__olho">KM4SECO</p>
-      <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
-      <p class="abertura__resumo" id="abertura-resumo"></p>
-      <a class="abertura__entrar" href="#catalogo">Entrar no catálogo</a>
-      <div class="numeros" id="numeros" aria-label="Números do catálogo"></div>
+      <div class="abertura__conteudo">
+        <p class="abertura__olho">KM4SECO</p>
+        <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
+        <p class="abertura__resumo" id="abertura-resumo"></p>
+        <a class="abertura__entrar" href="#catalogo">Entrar no catálogo</a>
+      </div>
+      <aside class="abertura__painel" aria-label="Síntese visual do catálogo">
+        <svg class="abertura__diagrama" viewBox="0 0 360 250" aria-hidden="true" focusable="false">
+          <path d="M72 172 180 62 288 172" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M72 172h216" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="72" cy="172" r="25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="180" cy="62" r="25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="288" cy="172" r="25" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="72" cy="172" r="7" fill="currentColor"/>
+          <circle cx="180" cy="62" r="7" fill="currentColor"/>
+          <circle cx="288" cy="172" r="7" fill="currentColor"/>
+          <path d="M116 128h128M134 190h92" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6"/>
+        </svg>
+        <div class="numeros" id="numeros" aria-label="Números do catálogo"></div>
+      </aside>
     </div>
   </section>
 
