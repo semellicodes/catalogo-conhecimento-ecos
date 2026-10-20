@@ -6,16 +6,16 @@
     "referencia": "nonaka1997, alavi2001",
     "valores": [
       {
-        "valor": "Explícito",
-        "descricao": "Pode ser formalizado, registrado e transmitido por meio de artefatos."
-      },
-      {
         "valor": "Tácito-cognitivo",
         "descricao": "Está em modelos mentais, percepções e interpretações dos atores."
       },
       {
         "valor": "Tácito-técnico",
         "descricao": "Está no saber fazer e nas habilidades práticas adquiridas pela experiência."
+      },
+      {
+        "valor": "Explícito",
+        "descricao": "Pode ser formalizado, registrado e transmitido por meio de artefatos."
       }
     ]
   },

@@ -91,8 +91,8 @@
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
   --altura-diagrama-abertura: 15.625rem;
-  --altura-cartao-catalogo: 21rem;
-  --linhas-resumo-cartao: 4;
+  --altura-cartao-catalogo: 20rem;
+  --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
   --altura-faixa: 460px;
@@ -108,9 +108,12 @@
   /* Movimento */
   --dur-rapida: 120ms;
   --dur-media: 200ms;
+  --dur-tema: 320ms;
   --curva: cubic-bezier(0.2, 0, 0, 1);
   /* Começa rápido e desacelera. É a curva de quem entra em cena */
   --curva-saida: cubic-bezier(0.23, 1, 0.32, 1);
+  --deslocamento-hover: -0.1875rem;
+  --deslocamento-acao: 0.125rem;
 
   /* Véu do diálogo. O opaco atende quem não tem desfoque */
   --cor-veu: rgb(0 0 0 / 0.45);

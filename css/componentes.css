@@ -524,11 +524,8 @@
 .fechar:hover { background: var(--cor-superficie-alta); color: var(--cor-texto); }
 
 /* ---------- Cartão do conhecimento ---------- */
-/* Duas colunas no desktop e uma no celular. O cartão mostra o conhecimento
-   inteiro, descrição incluída, então a grade é larga e não aperta o texto.
-   Os cartões vêm ordenados por natureza, sem cabeçalho separando um grupo do
-   outro, porque a contagem já está nos filtros e a descrição de cada natureza
-   está no glossário do Explorar. */
+/* A prévia mostra só parte da descrição. O texto integral fica na ficha, onde
+   há espaço para a leitura, e a grade não vira uma parede de parágrafos. */
 .cartoes {
   list-style: none;
   display: grid;
@@ -554,6 +551,7 @@
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
   transition:
+    background-color var(--dur-media) var(--curva),
     border-color var(--dur-rapida) var(--curva),
     box-shadow var(--dur-media) var(--curva),
     transform var(--dur-media) var(--curva-saida);
@@ -562,7 +560,11 @@
   .cartao:hover {
     border-color: var(--cor-acento-linha);
     box-shadow: var(--sombra-2);
-    transform: translateY(-2px);
+    transform: translateY(var(--deslocamento-hover));
+  }
+  .cartao:hover .cartao__abrir {
+    border-color: currentColor;
+    transform: translateX(var(--deslocamento-acao));
   }
 }
 
@@ -593,6 +595,10 @@
   font-size: var(--tam-sm);
   font-weight: 600;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva-saida);
 }
 .cartao__abrir::after { content: '→'; }
 .cartao__abrir:active { transform: scale(0.97); }
@@ -603,7 +609,7 @@
 }
 
 /* ---------- Ficha ---------- */
-/* O nome e a descrição abrem, os cartões vêm em seguida e o resto desce para as
+/* O nome e a descrição abrem, as seções vêm em seguida e o resto desce para as
    abas, uma lista por vez. É o que mantém a altura previsível no celular. */
 .ficha { display: grid; }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
@@ -641,7 +647,7 @@
   color: var(--cor-texto-fraco);
 }
 
-/* A ajuda do cartão. Um botão por bloco, e a nota sai dele. */
+/* A ajuda da seção. Um botão por bloco, e a nota sai dele. */
 .ajuda { position: relative; flex: none; }
 .ajuda__abrir {
   display: grid;
