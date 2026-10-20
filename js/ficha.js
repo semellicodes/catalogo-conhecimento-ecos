@@ -45,20 +45,13 @@ document.addEventListener('click', (evento) => {
  */
 const SVG = 'http://www.w3.org/2000/svg';
 
-/* Os valores que aparecem em fileiras têm símbolos próprios, todos em traço
-   fino. Os tipos de ECOS usam cadeados e camadas. Nível e dimensão usam formas
-   relacionadas ao escopo e à natureza do conhecimento, em vez do círculo de
-   estado genérico. */
+/* Os tipos de ECOS usam símbolos próprios em traço fino. O corpo do cadeado é
+   comum aos dois primeiros e só a alça muda, aberta para um lado ou fechada em
+   arco. */
 const SIMBOLOS = {
   'Código aberto': ['M6 9V6.5a4 4 0 0 1 7.6-1.7', 'M4.5 9h11v7.5h-11z'],
   'Proprietário': ['M6.5 9V6.5a3.5 3.5 0 0 1 7 0V9', 'M4.5 9h11v7.5h-11z'],
-  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8'],
-  Produto: ['M10 2.8 16 6.1 10 9.5 4 6.1z', 'M4 6.1v7l6 3.4 6-3.4v-7', 'M10 9.5v7'],
-  Plataforma: ['M4 5.2 10 2l6 3.2-6 3.2z', 'M4 9.2 10 12.4l6-3.2', 'M4 13.2 10 16.4l6-3.2'],
-  Ecossistema: ['M10 3.4v5.2M5.5 11.2 10 8.6l4.5 2.6M5.5 11.2v4.1M14.5 11.2v4.1', 'M10 2a1.4 1.4 0 1 0 0 2.8A1.4 1.4 0 0 0 10 2ZM5.5 14a1.4 1.4 0 1 0 0 2.8A1.4 1.4 0 0 0 5.5 14Zm9 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'],
-  Técnica: ['M7 7h6v6H7z', 'M10 3v2M10 15v2M3 10h2M15 10h2M5 5l1.4 1.4M14.6 14.6 16 16M15 5l-1.4 1.4M5 15l1.4-1.4'],
-  Negócio: ['M4 16V10M10 16V5M16 16V8', 'M3 17h14'],
-  Social: ['M7 9a2.2 2.2 0 1 0 0-4.4A2.2 2.2 0 0 0 7 9Zm6 0a2.2 2.2 0 1 0 0-4.4A2.2 2.2 0 0 0 13 9ZM2.8 16c.5-2.5 2-3.7 4.2-3.7s3.7 1.2 4.2 3.7M8.8 16c.5-2.5 2-3.7 4.2-3.7s3.7 1.2 4.2 3.7']
+  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8']
 };
 
 /**
@@ -169,10 +162,9 @@ function secao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
   return bloco;
 }
 
-/* A natureza apresenta a classificação principal. Nível e dimensão ficam nas
-   fileiras próprias abaixo dos exemplos de ecossistema, para não repetir os
-   mesmos valores e para deixar as escolhas do ECOS visíveis de uma vez. */
-const CLASSIFICACAO = ['natureza'];
+/* Os três atributos são a classificação completa que a revisão apresenta para
+   cada conhecimento. */
+const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
 
 /* Nome do esquema, provisório até o orientador confirmar o definitivo. */
 const ESQUEMA = 'Segundo os esquemas adotados na revisão';
@@ -185,7 +177,7 @@ const ESQUEMA = 'Segundo os esquemas adotados na revisão';
 function classificacao(dados, conhecimento) {
   const bloco = secao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
 
-  const grade = criar('dl', 'classificacao classificacao--unica');
+  const grade = criar('dl', 'classificacao');
   CLASSIFICACAO.forEach((chave) => {
     grade.append(
       criar('dt', 'classificacao__rotulo', dados.classificacoes[chave].rotulo),
@@ -196,65 +188,31 @@ function classificacao(dados, conhecimento) {
 
   const porque = criar('details', 'porque');
   const abrir = criar('summary', 'porque__abrir');
-  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
-  porque.append(
-    abrir,
-    criar(
-      'p',
-      conhecimento.justificativaClassificacao ? 'porque__texto' : 'porque__texto porque__texto--pendente',
-      conhecimento.justificativaClassificacao || 'A justificativa específica ainda não foi registrada na extração.'
-    )
-  );
+  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Evidências que sustentam a classificação'));
+  const evidencias = criar('ul', 'classificacao__evidencias');
+  if (conhecimento.justificativaClassificacao) {
+    evidencias.append(criar('li', 'porque__texto', conhecimento.justificativaClassificacao));
+  }
+  conhecimento.trechos.filter(Boolean).forEach((trecho, indice) => {
+    const item = criar('li', 'classificacao__evidencia');
+    const estudo = conhecimento.estudos[indice];
+    if (estudo) item.append(criar('span', 'codigo-id', estudo));
+    item.append(criar('span', 'classificacao__trecho', trecho));
+    evidencias.append(item);
+  });
+  porque.append(abrir, evidencias);
   bloco.append(porque);
   return bloco;
 }
 
-/**
- * Os ecossistemas em que o conhecimento foi observado. Lê
- * conhecimentos[].tipoEcos, que diz onde aquele conhecimento foi visto, e não a
- * soma dos estudos, porque um estudo que compara três ecossistemas não autoriza
- * afirmar que o conhecimento apareceu nos três.
- */
-/** Uma subdivisão do contexto do ECOS. As três ficam na mesma superfície para
-   o leitor comparar os recortes sem atravessar uma pilha de cartões. */
-function recorteDoEcos(dados, titulo, chavesDeAjuda, definicao, valores) {
-  const bloco = criar('section', 'contexto-ecos__secao');
-  const topo = criar('header', 'bloco-ficha__topo');
-  topo.append(criar('h3', 'bloco-ficha__titulo', titulo), ajuda(dados, chavesDeAjuda));
-  bloco.append(topo, fileira(definicao, valores));
-  if (!valores.length) {
+/** Tipo de ECOS é evidencial e independente da classificação principal. */
+function tiposDeEcos(dados, conhecimento) {
+  const observados = conhecimento.tipoEcos || [];
+  const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
+  bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
+  if (!observados.length) {
     bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
   }
-  return bloco;
-}
-
-/** Tipo, nível e dimensão formam um único contexto visual do conhecimento no ECOS. */
-function contextoDoEcos(dados, conhecimento) {
-  const bloco = criar('section', 'bloco-ficha bloco-ficha--contexto');
-  const observados = conhecimento.tipoEcos || [];
-  bloco.append(
-    recorteDoEcos(
-      dados,
-      'Exemplos de ecossistemas em que esse conhecimento foi observado',
-      ['tipoEcos'],
-      dados.classificacoes.tipoEcos,
-      observados
-    ),
-    recorteDoEcos(
-      dados,
-      dados.classificacoes.nivel.rotulo,
-      ['nivel'],
-      dados.classificacoes.nivel,
-      conhecimento.nivel ? [conhecimento.nivel] : []
-    ),
-    recorteDoEcos(
-      dados,
-      dados.classificacoes.dimensao.rotulo,
-      ['dimensao'],
-      dados.classificacoes.dimensao,
-      conhecimento.dimensao ? [conhecimento.dimensao] : []
-    )
-  );
   return bloco;
 }
 
@@ -438,9 +396,9 @@ export function renderizar(dados, conhecimento) {
     trechos: conhecimento.trechos.filter(Boolean).length
   };
 
-  raiz.append(
-    classificacao(dados, conhecimento),
-    contextoDoEcos(dados, conhecimento),
+  const secoes = [classificacao(dados, conhecimento)];
+  if (conhecimento.tipoEcos?.length) secoes.push(tiposDeEcos(dados, conhecimento));
+  secoes.push(
     gerencia(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
@@ -449,5 +407,6 @@ export function renderizar(dados, conhecimento) {
     ]),
     pendencias(dados, conhecimento)
   );
+  raiz.append(...secoes);
   return raiz;
 }

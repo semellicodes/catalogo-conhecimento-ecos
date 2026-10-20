@@ -676,13 +676,6 @@
   color: var(--cor-texto-fraco);
 }
 
-/* Tipo, nível e dimensão pertencem ao mesmo recorte. As linhas separam os
-   assuntos sem transformá-los em três cartões independentes. */
-.bloco-ficha--contexto { padding-block: 0; }
-.contexto-ecos__secao { padding-block: var(--esp-5); }
-.contexto-ecos__secao + .contexto-ecos__secao { border-top: var(--borda-suave); }
-.contexto-ecos__secao .bloco-ficha__topo { margin-bottom: var(--esp-3); }
-
 /* A ajuda da seção. Um botão por bloco, e a nota sai dele. */
 .ajuda { position: relative; flex: none; }
 .ajuda__abrir {
@@ -795,12 +788,20 @@
   font-size: var(--tam-base);
   font-weight: 600;
 }
-.classificacao--unica {
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-1);
+.classificacao__evidencias {
+  display: grid;
+  gap: var(--esp-3);
+  padding: 0 var(--esp-4) var(--esp-4);
+  list-style: none;
 }
-.classificacao--unica .classificacao__rotulo,
-.classificacao--unica .classificacao__valor { grid-row: auto; }
+.classificacao__evidencia {
+  display: grid;
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  gap: var(--esp-3);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+}
+.classificacao__trecho { font-style: italic; }
 
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
 .gerencia { display: grid; gap: var(--esp-1); }
@@ -825,8 +826,6 @@
   .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
   .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
   .bloco-ficha { padding: var(--esp-4); }
-  .bloco-ficha--contexto { padding-block: 0; }
-  .contexto-ecos__secao { padding-block: var(--esp-4); }
   .bloco-ficha__topo { margin-bottom: var(--esp-3); }
 }
 

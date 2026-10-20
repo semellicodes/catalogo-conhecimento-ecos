@@ -72,9 +72,9 @@ Um nunca é somado para dentro do outro. Um estudo que compara três ecossistema
 que o conhecimento tirado dele apareceu nos três, e cada classificação ainda vai precisar de
 justificativa escrita.
 
-`justificativaClassificacao` está vazio nos vinte. A ficha mostra o item expansível "Por que essa
-classificação?" e informa que a justificativa específica ainda não foi registrada. Quando houver
-texto, ele aparece nesse mesmo item.
+`justificativaClassificacao` está vazio nos vinte. A ficha mostra o item expansível "Evidências que
+sustentam a classificação" com os trechos e estudos já extraídos para aquele conhecimento. Quando
+houver uma justificativa específica, ela aparece nesse mesmo item antes das evidências.
 
 `conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
 contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
@@ -167,24 +167,19 @@ nativamente pelo navegador com `type="module"`.
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
 - O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, para manter a ficha como uma
   superfície distinta do conteúdo que ficou atrás dela
-- A ficha usa superfícies para classificação, contexto no ECOS, gerência e abas. No contexto no
-  ECOS, exemplos, nível e dimensão ficam em sequência na mesma superfície, separados por linhas
-  finas, para serem comparados sem criar uma pilha de cartões
-- A ordem dos blocos é classificação, exemplos de ecossistema, nível no ECOS, dimensão do ECOS,
-  gerência do conhecimento e as abas
-- A natureza aparece como rótulo em cima e valor embaixo. Nível e dimensão usam fileiras com todos
-  os valores possíveis, acendendo só o valor aplicável, logo abaixo dos exemplos de ecossistema
-- Só o tipo de ECOS continua em caixas, uma por valor possível, acesa quando vale e apagada quando
-  não. Nenhum valor some, porque saber que um valor não se aplica também é informação, e ali pode
-  acender mais de uma
+- A ficha usa superfícies para classificação, exemplos de ecossistema, gerência e abas, sem cartões
+  internos repetidos
+- A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
+- Natureza, nível e dimensão aparecem juntos na classificação, como rótulo em cima e valor embaixo,
+  em três colunas no desktop e empilhados no celular
+- Tipo de ECOS só aparece na ficha quando o conhecimento tiver classificação fundamentada. Quando
+  aparecer, usa caixas, uma por valor possível, acesa quando vale e apagada quando não. Nenhum valor
+  some, porque saber que um valor não se aplica também é informação, e ali pode acender mais de uma
 - A caixa leva o símbolo do valor e o nome, nada mais. Cadeado aberto para código aberto, cadeado
-  fechado para proprietário e camadas empilhadas para híbrido. Produto usa cubo, Plataforma usa
-  camadas, Ecossistema usa nós ligados, Técnica usa chip, Negócio usa barras e Social usa pessoas.
-  Como o símbolo passou a ser do valor, o estado vai escrito para quem usa leitor de tela, não só no
-  fundo da caixa
-- Os blocos da ficha são seções de uma mesma superfície, separados por linhas finas, com título em
-  acento e um botão de ajuda no canto. A ajuda é uma por seção, não uma por atributo, e reúne a
-  pergunta e a referência de cada atributo do bloco
+  fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
+  o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
+- Cada bloco da ficha tem título em acento e um botão de ajuda no canto. A ajuda é uma por seção,
+  não uma por atributo, e reúne a pergunta e a referência de cada atributo do bloco
 - A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - O bloco de gerência mostra quem possui, quem precisa e como gerenciar, um por linha. Esses três
