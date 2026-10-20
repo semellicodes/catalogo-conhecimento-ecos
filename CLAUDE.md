@@ -72,8 +72,9 @@ Um nunca é somado para dentro do outro. Um estudo que compara três ecossistema
 que o conhecimento tirado dele apareceu nos três, e cada classificação ainda vai precisar de
 justificativa escrita.
 
-`justificativaClassificacao` está vazio nos vinte. Quando tiver texto, a ficha mostra o item
-"Por que essa classificação?" dentro do bloco de classificação. Vazio, o item não aparece.
+`justificativaClassificacao` está vazio nos vinte. A ficha mostra o item expansível "Por que essa
+classificação?" e informa que a justificativa específica ainda não foi registrada. Quando houver
+texto, ele aparece nesse mesmo item.
 
 `conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
 contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
@@ -166,11 +167,10 @@ nativamente pelo navegador com `type="module"`.
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
 - O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, para manter a ficha como uma
   superfície distinta do conteúdo que ficou atrás dela
-- A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
-- Natureza, nível e dimensão aparecem como rótulo em cima e valor embaixo, em três colunas no
-  desktop e empilhados no celular. Já foram caixas e deixaram de ser, porque com um valor possível
-  por atributo a caixa não dizia mais do que o texto diz e empurrava as abas para fora da primeira
-  tela no celular. Decidido, não reabrir
+- A ordem dos blocos é classificação, exemplos de ecossistema, nível no ECOS, dimensão do ECOS,
+  gerência do conhecimento e as abas
+- A natureza aparece como rótulo em cima e valor embaixo. Nível e dimensão usam fileiras com todos
+  os valores possíveis, acendendo só o valor aplicável, logo abaixo dos exemplos de ecossistema
 - Só o tipo de ECOS continua em caixas, uma por valor possível, acesa quando vale e apagada quando
   não. Nenhum valor some, porque saber que um valor não se aplica também é informação, e ali pode
   acender mais de uma
