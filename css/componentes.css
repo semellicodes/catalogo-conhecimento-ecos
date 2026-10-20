@@ -787,6 +787,12 @@
   font-size: var(--tam-base);
   font-weight: 600;
 }
+.classificacao--unica {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-1);
+}
+.classificacao--unica .classificacao__rotulo,
+.classificacao--unica .classificacao__valor { grid-row: auto; }
 
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
 .gerencia { display: grid; gap: var(--esp-1); }
@@ -847,6 +853,7 @@
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
+.porque__texto--pendente { font-style: italic; }
 @media (prefers-reduced-motion: reduce) {
   .porque__seta { transition: none; }
 }

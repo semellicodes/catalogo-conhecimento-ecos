@@ -163,9 +163,10 @@ function secao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
   return bloco;
 }
 
-/* Os três atributos de classificação. Cada conhecimento tem um valor só de cada
-   um, então o par rótulo e valor basta e cabe nas três colunas. */
-const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
+/* A natureza apresenta a classificação principal. Nível e dimensão ficam nas
+   fileiras próprias abaixo dos exemplos de ecossistema, para não repetir os
+   mesmos valores e para deixar as escolhas do ECOS visíveis de uma vez. */
+const CLASSIFICACAO = ['natureza'];
 
 /* Nome do esquema, provisório até o orientador confirmar o definitivo. */
 const ESQUEMA = 'Segundo os esquemas adotados na revisão';
@@ -178,7 +179,7 @@ const ESQUEMA = 'Segundo os esquemas adotados na revisão';
 function classificacao(dados, conhecimento) {
   const bloco = secao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
 
-  const grade = criar('dl', 'classificacao');
+  const grade = criar('dl', 'classificacao classificacao--unica');
   CLASSIFICACAO.forEach((chave) => {
     grade.append(
       criar('dt', 'classificacao__rotulo', dados.classificacoes[chave].rotulo),
@@ -187,15 +188,18 @@ function classificacao(dados, conhecimento) {
   });
   bloco.append(grade);
 
-  /* O texto ainda não existe em nenhum conhecimento, então o item só aparece
-     quando houver, em vez de abrir para uma barra vazia. */
-  if (conhecimento.justificativaClassificacao) {
-    const porque = criar('details', 'porque');
-    const abrir = criar('summary', 'porque__abrir');
-    abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
-    porque.append(abrir, criar('p', 'porque__texto', conhecimento.justificativaClassificacao));
-    bloco.append(porque);
-  }
+  const porque = criar('details', 'porque');
+  const abrir = criar('summary', 'porque__abrir');
+  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
+  porque.append(
+    abrir,
+    criar(
+      'p',
+      conhecimento.justificativaClassificacao ? 'porque__texto' : 'porque__texto porque__texto--pendente',
+      conhecimento.justificativaClassificacao || 'A justificativa específica ainda não foi registrada na extração.'
+    )
+  );
+  bloco.append(porque);
   return bloco;
 }
 
@@ -210,6 +214,18 @@ function tiposDeEcos(dados, conhecimento) {
   const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
   bloco.append(fileira(dados.classificacoes.tipoEcos, observados));
   if (!observados.length) {
+    bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
+  }
+  return bloco;
+}
+
+/** Nível e dimensão usam a mesma fileira dos exemplos, com um único valor aceso. */
+function atributoDoEcos(dados, conhecimento, chave) {
+  const definicao = dados.classificacoes[chave];
+  const bloco = secao(dados, definicao.rotulo, [chave]);
+  const valor = conhecimento[chave] ? [conhecimento[chave]] : [];
+  bloco.append(fileira(definicao, valor));
+  if (!valor.length) {
     bloco.append(criar('p', 'bloco-ficha__pendente', 'Classificação ainda não registrada na extração.'));
   }
   return bloco;
@@ -398,6 +414,8 @@ export function renderizar(dados, conhecimento) {
   raiz.append(
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
+    atributoDoEcos(dados, conhecimento, 'nivel'),
+    atributoDoEcos(dados, conhecimento, 'dimensao'),
     gerencia(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
