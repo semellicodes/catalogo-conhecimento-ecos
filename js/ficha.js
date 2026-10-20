@@ -45,14 +45,20 @@ document.addEventListener('click', (evento) => {
  */
 const SVG = 'http://www.w3.org/2000/svg';
 
-/* Cada tipo de ECOS tem símbolo próprio, de traço fino, porque o desenho diz
-   qual é o modelo de governança antes de a pessoa ler o nome. Cadeado aberto,
-   cadeado fechado e camadas empilhadas. O corpo do cadeado é comum aos dois e
-   só a alça muda, aberta para um lado ou fechada em arco. */
+/* Os valores que aparecem em fileiras têm símbolos próprios, todos em traço
+   fino. Os tipos de ECOS usam cadeados e camadas. Nível e dimensão usam formas
+   relacionadas ao escopo e à natureza do conhecimento, em vez do círculo de
+   estado genérico. */
 const SIMBOLOS = {
   'Código aberto': ['M6 9V6.5a4 4 0 0 1 7.6-1.7', 'M4.5 9h11v7.5h-11z'],
   'Proprietário': ['M6.5 9V6.5a3.5 3.5 0 0 1 7 0V9', 'M4.5 9h11v7.5h-11z'],
-  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8']
+  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8'],
+  Produto: ['M10 2.8 16 6.1 10 9.5 4 6.1z', 'M4 6.1v7l6 3.4 6-3.4v-7', 'M10 9.5v7'],
+  Plataforma: ['M4 5.2 10 2l6 3.2-6 3.2z', 'M4 9.2 10 12.4l6-3.2', 'M4 13.2 10 16.4l6-3.2'],
+  Ecossistema: ['M10 3.4v5.2M5.5 11.2 10 8.6l4.5 2.6M5.5 11.2v4.1M14.5 11.2v4.1', 'M10 2a1.4 1.4 0 1 0 0 2.8A1.4 1.4 0 0 0 10 2ZM5.5 14a1.4 1.4 0 1 0 0 2.8A1.4 1.4 0 0 0 5.5 14Zm9 0a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8Z'],
+  Técnica: ['M7 7h6v6H7z', 'M10 3v2M10 15v2M3 10h2M15 10h2M5 5l1.4 1.4M14.6 14.6 16 16M15 5l-1.4 1.4M5 15l1.4-1.4'],
+  Negócio: ['M4 16V10M10 16V5M16 16V8', 'M3 17h14'],
+  Social: ['M7 9a2.2 2.2 0 1 0 0-4.4A2.2 2.2 0 0 0 7 9Zm6 0a2.2 2.2 0 1 0 0-4.4A2.2 2.2 0 0 0 13 9ZM2.8 16c.5-2.5 2-3.7 4.2-3.7s3.7 1.2 4.2 3.7M8.8 16c.5-2.5 2-3.7 4.2-3.7s3.7 1.2 4.2 3.7']
 };
 
 /**

@@ -175,8 +175,10 @@ nativamente pelo navegador com `type="module"`.
   não. Nenhum valor some, porque saber que um valor não se aplica também é informação, e ali pode
   acender mais de uma
 - A caixa leva o símbolo do valor e o nome, nada mais. Cadeado aberto para código aberto, cadeado
-  fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
-  o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
+  fechado para proprietário e camadas empilhadas para híbrido. Produto usa cubo, Plataforma usa
+  camadas, Ecossistema usa nós ligados, Técnica usa chip, Negócio usa barras e Social usa pessoas.
+  Como o símbolo passou a ser do valor, o estado vai escrito para quem usa leitor de tela, não só no
+  fundo da caixa
 - Os blocos da ficha são seções de uma mesma superfície, separados por linhas finas, com título em
   acento e um botão de ajuda no canto. A ajuda é uma por seção, não uma por atributo, e reúne a
   pergunta e a referência de cada atributo do bloco
