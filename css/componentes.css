@@ -639,7 +639,7 @@
 /* ---------- Ficha ---------- */
 /* O nome e a descrição abrem, as seções vêm em seguida e o resto desce para as
    abas, uma lista por vez. É o que mantém a altura previsível no celular. */
-.ficha { display: grid; gap: var(--esp-4); }
+.ficha { display: grid; gap: var(--esp-3); }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
 .ficha__descricao {
   font-size: var(--tam-sm);
@@ -648,7 +648,7 @@
 }
 
 .bloco-ficha {
-  padding: var(--esp-5);
+  padding: var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
@@ -658,7 +658,7 @@
   align-items: start;
   justify-content: space-between;
   gap: var(--esp-3);
-  margin-bottom: var(--esp-4);
+  margin-bottom: var(--esp-3);
 }
 .bloco-ficha__textos { display: grid; gap: var(--esp-1); }
 .bloco-ficha__esquema { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
@@ -670,7 +670,7 @@
   color: var(--cor-acento);
 }
 .bloco-ficha__pendente {
-  margin-top: var(--esp-3);
+  margin-top: var(--esp-2);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
@@ -791,7 +791,7 @@
 .classificacao__evidencias {
   display: grid;
   gap: var(--esp-3);
-  padding: 0 var(--esp-4) var(--esp-4);
+  padding: 0 var(--esp-3) var(--esp-3);
   list-style: none;
 }
 .classificacao__evidencia {
@@ -804,7 +804,7 @@
 .classificacao__trecho { font-style: italic; }
 
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
-.gerencia { display: grid; gap: var(--esp-1); }
+.gerencia { display: grid; gap: normal; }
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -813,7 +813,7 @@
   color: var(--cor-texto-fraco);
 }
 .gerencia__valor {
-  margin: 0 0 var(--esp-3);
+  margin: 0 0 var(--esp-2);
   font-size: var(--tam-sm);
   max-width: var(--largura-texto);
 }
@@ -825,12 +825,12 @@
   .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
   .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
-  .bloco-ficha { padding: var(--esp-4); }
-  .bloco-ficha__topo { margin-bottom: var(--esp-3); }
+  .bloco-ficha { padding: var(--esp-3); }
+  .bloco-ficha__topo { margin-bottom: var(--esp-2); }
 }
 
 .porque {
-  margin-top: var(--esp-4);
+  margin-top: var(--esp-3);
   border-top: var(--borda-suave);
   border-bottom: var(--borda-suave);
 }
@@ -857,7 +857,7 @@
 }
 .porque[open] .porque__seta { transform: rotate(-135deg); }
 .porque__texto {
-  padding: 0 var(--esp-4) var(--esp-4);
+  padding: 0 var(--esp-3) var(--esp-3);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
@@ -869,7 +869,7 @@
 
 /* ---------- Abas da ficha ---------- */
 .abas {
-  padding: var(--esp-4);
+  padding: var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
@@ -910,7 +910,7 @@
   border-radius: var(--raio-pilula);
   transition: transform var(--dur-media) var(--curva-saida), width var(--dur-media) var(--curva-saida);
 }
-.abas__painel { padding-top: var(--esp-5); }
+.abas__painel { padding-top: var(--esp-3); }
 @media (prefers-reduced-motion: reduce) {
   .abas__indicador { transition: none; }
 }
@@ -987,8 +987,8 @@
 
 /* ---------- Rodapé de pendências ---------- */
 .pendencias {
-  margin-top: var(--esp-5);
-  padding-top: var(--esp-3);
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-2);
   border-top: 1px solid var(--cor-linha-suave);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
