@@ -172,9 +172,10 @@ nativamente pelo navegador com `type="module"`.
 - A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
 - Natureza, nível e dimensão aparecem juntos na classificação, como rótulo em cima e valor embaixo,
   em três colunas no desktop e empilhados no celular
-- Tipo de ECOS só aparece na ficha quando o conhecimento tiver classificação fundamentada. Quando
-  aparecer, usa caixas, uma por valor possível, acesa quando vale e apagada quando não. Nenhum valor
-  some, porque saber que um valor não se aplica também é informação, e ali pode acender mais de uma
+- Tipo de ECOS aparece na ficha mesmo antes do preenchimento, porque é atributo complementar do TCC II,
+  vindo do TCC I e pedido pelo orientador. Enquanto estiver vazio, as três caixas ficam apagadas e a
+  ficha mostra a pendência. Quando houver valores, a caixa fica acesa quando vale e apagada quando não.
+  Nenhum valor some, porque saber que um valor não se aplica também é informação, e ali pode acender mais de uma
 - A caixa leva o símbolo do valor e o nome, nada mais. Cadeado aberto para código aberto, cadeado
   fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
   o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
