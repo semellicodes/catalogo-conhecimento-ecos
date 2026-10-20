@@ -143,10 +143,10 @@ nativamente pelo navegador com `type="module"`.
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
 - A faixa de abertura compõe em duas colunas no desktop. À esquerda ficam o olho KM4SECO, título,
-  resumo de `meta.subtitulo` e o botão Entrar no catálogo. À direita, um diagrama abstrato original
-  com a tarja dos três números. No celular, a peça visual desce abaixo do texto. Abaixo da faixa,
-  as portas de entrada por natureza trazem a contagem, a descrição do vocabulário e o link para o
-  catálogo já filtrado
+  resumo de `meta.subtitulo` e o botão Entrar no catálogo. À direita, uma peça visual abstrata
+  original em tom verde, com os três números integrados em colunas de mesma largura. No celular, a
+  peça visual desce abaixo do texto. Abaixo da faixa, as portas de entrada por natureza são cartões
+  com a contagem, a descrição do vocabulário e o link para o catálogo já filtrado
 - Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
   escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
   a ser só um ponto colorido
