@@ -104,14 +104,23 @@ function marcarEstado(botao) {
   botao.setAttribute('aria-pressed', String(atual === CLARO));
 }
 
+function duracaoTema() {
+  const valor = getComputedStyle(raiz).getPropertyValue('--dur-tema').trim();
+  const numero = Number.parseFloat(valor);
+  if (!Number.isFinite(numero)) return 0;
+  return valor.endsWith('ms') ? numero : numero * 1000;
+}
+
 function alternar(botao) {
   const proximo = temaAtual() === ESCURO ? CLARO : ESCURO;
-  /* A classe liga a transição de cor só durante a troca, nunca na navegação normal. */
+  /* Forçar a leitura entre a classe e o novo tema impede o navegador de juntar
+     os dois passos num único quadro e transformar a transição em salto. */
   raiz.classList.add('trocando-tema');
+  void raiz.offsetWidth;
   raiz.dataset.tema = proximo;
   gravarEscolha(proximo);
   marcarEstado(botao);
-  setTimeout(() => raiz.classList.remove('trocando-tema'), 300);
+  setTimeout(() => raiz.classList.remove('trocando-tema'), duracaoTema());
 }
 
 function iniciar() {

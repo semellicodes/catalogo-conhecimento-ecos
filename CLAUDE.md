@@ -138,7 +138,7 @@ nativamente pelo navegador com `type="module"`.
 
 - Mobile primeiro. A grade de cards é uma coluna no celular, duas a partir de 48rem e três a partir de 76rem
 - O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
-  nome em título, uma prévia visual de até quatro linhas da descrição e um link "Ver ficha completa"
+  nome em título, uma prévia visual de até três linhas da descrição e um link "Ver ficha completa"
   no pé. A ficha preserva a descrição completa. A dimensão não aparece no card, só na ficha
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo

@@ -75,11 +75,11 @@ button, input, select {
 :root.trocando-tema *::before,
 :root.trocando-tema *::after {
   transition:
-    background-color var(--dur-media) var(--curva),
-    border-color var(--dur-media) var(--curva),
-    color var(--dur-media) var(--curva),
-    fill var(--dur-media) var(--curva),
-    stroke var(--dur-media) var(--curva) !important;
+    background-color var(--dur-tema) var(--curva),
+    border-color var(--dur-tema) var(--curva),
+    color var(--dur-tema) var(--curva),
+    fill var(--dur-tema) var(--curva),
+    stroke var(--dur-tema) var(--curva) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
