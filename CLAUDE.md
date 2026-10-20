@@ -167,6 +167,9 @@ nativamente pelo navegador com `type="module"`.
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
 - O miolo que rola usa `--cor-miolo`, um tom além do fundo da página, para manter a ficha como uma
   superfície distinta do conteúdo que ficou atrás dela
+- A ficha usa superfícies para classificação, contexto no ECOS, gerência e abas. No contexto no
+  ECOS, exemplos, nível e dimensão ficam em sequência na mesma superfície, separados por linhas
+  finas, para serem comparados sem criar uma pilha de cartões
 - A ordem dos blocos é classificação, exemplos de ecossistema, nível no ECOS, dimensão do ECOS,
   gerência do conhecimento e as abas
 - A natureza aparece como rótulo em cima e valor embaixo. Nível e dimensão usam fileiras com todos

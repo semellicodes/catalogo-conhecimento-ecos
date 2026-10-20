@@ -639,7 +639,7 @@
 /* ---------- Ficha ---------- */
 /* O nome e a descrição abrem, as seções vêm em seguida e o resto desce para as
    abas, uma lista por vez. É o que mantém a altura previsível no celular. */
-.ficha { display: grid; }
+.ficha { display: grid; gap: var(--esp-4); }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
 .ficha__descricao {
   font-size: var(--tam-sm);
@@ -648,10 +648,11 @@
 }
 
 .bloco-ficha {
-  padding-block: var(--esp-5);
-  border-bottom: var(--borda-suave);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
 }
-.bloco-ficha:first-child { padding-top: 0; }
 .bloco-ficha__topo {
   display: flex;
   align-items: start;
@@ -674,6 +675,13 @@
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
+
+/* Tipo, nível e dimensão pertencem ao mesmo recorte. As linhas separam os
+   assuntos sem transformá-los em três cartões independentes. */
+.bloco-ficha--contexto { padding-block: 0; }
+.contexto-ecos__secao { padding-block: var(--esp-5); }
+.contexto-ecos__secao + .contexto-ecos__secao { border-top: var(--borda-suave); }
+.contexto-ecos__secao .bloco-ficha__topo { margin-bottom: var(--esp-3); }
 
 /* A ajuda da seção. Um botão por bloco, e a nota sai dele. */
 .ajuda { position: relative; flex: none; }
@@ -816,7 +824,9 @@
   .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
   .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
-  .bloco-ficha { padding-block: var(--esp-4); }
+  .bloco-ficha { padding: var(--esp-4); }
+  .bloco-ficha--contexto { padding-block: 0; }
+  .contexto-ecos__secao { padding-block: var(--esp-4); }
   .bloco-ficha__topo { margin-bottom: var(--esp-3); }
 }
 
@@ -859,6 +869,12 @@
 }
 
 /* ---------- Abas da ficha ---------- */
+.abas {
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+}
 .abas__barra {
   position: relative;
   display: flex;
