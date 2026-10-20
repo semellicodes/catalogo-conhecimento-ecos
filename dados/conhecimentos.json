@@ -29,7 +29,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque as relações de dependência podem ser registradas e consultadas. Está no nível do ecossistema porque atravessa componentes, pacotes e projetos, e é técnico por tratar da integração e das tecnologias entre eles.",
     "quemPossui": "Mantenedores do projeto que origina a dependência e os registros de dependência do próprio repositório.",
     "quemPrecisa": "Mantenedores dos pacotes dependentes, colaboradores que entram em um projeto e complementadores que integram produtos à plataforma.",
     "comoGerenciar": "Registrar e manter atualizado o mapa de dependências e torná-lo consultável por quem entra no projeto."
@@ -88,7 +88,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque a arquitetura e as tecnologias de base podem ser documentadas e transferidas. Está no nível da plataforma por compor sua infraestrutura e configuração arquitetural, e é técnico por orientar a integração de produtos externos.",
     "quemPossui": "Organização central, nos materiais e canais que mantém sobre a plataforma.",
     "quemPrecisa": "Desenvolvedores externos, complementadores e empresas recém contratadas que precisam atuar sobre a plataforma.",
     "comoGerenciar": "Registrar em documentação e materiais instrucionais e disponibilizar em canal de acesso aberto aos atores externos."
@@ -144,7 +144,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque especificações de implementação podem ser registradas e disponibilizadas. Está no nível da plataforma porque orienta o desenvolvimento de suas funcionalidades, e é técnico por abranger autenticação, conectividade, dados e tecnologias de implementação.",
     "quemPossui": "Organização central, na documentação técnica e nos tutoriais.",
     "quemPrecisa": "Desenvolvedores externos durante o desenvolvimento.",
     "comoGerenciar": "Registrar em documentação técnica, manter atualizada e corrigir as lacunas sinalizadas pela comunidade."
@@ -193,7 +193,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque decisões arquiteturais e seus contextos podem ser documentados, localizados e reutilizados. Está no nível do ecossistema porque pode apoiar decisões em diferentes organizações e contextos, e é técnico por orientar escolhas arquiteturais.",
     "quemPossui": "Organizações que tomaram as decisões e os repositórios que as documentam.",
     "quemPrecisa": "Atores que enfrentam uma nova decisão arquitetural em contexto semelhante.",
     "comoGerenciar": "Documentar a decisão junto com o contexto e oferecer busca por semelhança entre contextos."
@@ -237,7 +237,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque regras, papéis e critérios de engajamento podem ser formalizados e compartilhados. Está no nível do ecossistema porque estrutura a colaboração entre organizações, e é técnico conforme a categorização adotada para os conhecimentos que orientam sua operação.",
     "quemPossui": "Estrutura de governança do consórcio.",
     "quemPrecisa": "Organizações participantes, em especial as que discordam das decisões conjuntas.",
     "comoGerenciar": "Formalizar as diretrizes de governança e torná-las visíveis aos participantes."
@@ -266,7 +266,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque os critérios de aceitação podem ser definidos e comunicados previamente. Está no nível do ecossistema porque orienta a participação de contribuidores externos, e é técnico por estabelecer requisitos para a contribuição de software.",
     "quemPossui": "Organização central, nas diretrizes de contribuição.",
     "quemPrecisa": "Contribuidores externos antes de investir esforço na contribuição.",
     "comoGerenciar": "Publicar as diretrizes de forma acessível antes do início da contribuição."
@@ -304,7 +304,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque requisitos de design, qualidade, teste e certificação podem ser registrados e comunicados. Está no nível da plataforma porque define como produtos externos devem se adequar a ela, e é técnico por tratar de requisitos de implementação.",
     "quemPossui": "Organização central.",
     "quemPrecisa": "Complementadores durante o desenvolvimento do produto.",
     "comoGerenciar": "Registrar os requisitos e comunicá-los antes da fase de desenvolvimento."
@@ -341,7 +341,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque processos, ferramentas e fluxos de trabalho podem ser ensinados e atualizados. Está no nível do ecossistema porque articula práticas comuns e específicas de projetos, e é técnico por tratar da operação e evolução dos projetos.",
     "quemPossui": "Organização central, no material de treinamento do ecossistema.",
     "quemPrecisa": "Novos contribuidores em processo de integração.",
     "comoGerenciar": "Manter o material de treinamento atualizado conforme os projetos evoluem e aplicá-lo na integração."
@@ -371,7 +371,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque boas práticas de decisão podem ser descritas, operacionalizadas e reutilizadas. Está no nível do ecossistema porque apoia decisões de diferentes usuários e organizações, e é técnico por orientar a seleção e combinação de componentes.",
     "quemPossui": "Literatura e métodos já consolidados, operacionalizados em módulos de software.",
     "quemPrecisa": "Atores do ecossistema que precisam decidir sobre seleção de componentes.",
     "comoGerenciar": "Operacionalizar os métodos em módulos de software disponíveis na arquitetura de apoio à decisão."
@@ -406,7 +406,7 @@
         "trecho": "We noticed that, as a consequence of tacit knowledge concentrated on a few people, it results in low-quality software products and many defects."
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque os incidentes e seus projetos de origem podem ser registrados e estruturados. Está no nível do ecossistema porque relaciona projetos que afetam a estabilidade compartilhada, e é técnico por apoiar o monitoramento da plataforma.",
     "quemPossui": "Processo de diagnóstico de incidentes do backlog.",
     "quemPrecisa": "Equipe de gestão de TI responsável pela plataforma.",
     "comoGerenciar": "Registrar o diagnóstico de incidentes e associá-lo aos projetos de origem."
@@ -435,7 +435,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É explícito porque informações sobre mercado, clientes e produtos podem ser coletadas e compartilhadas. Está no nível do ecossistema porque orienta oportunidades entre seus participantes, e é de negócio por tratar de necessidades de mercado e diferenciação.",
     "quemPossui": "Organização central, que coleta dados de uso e de mercado, e o próprio mercado.",
     "quemPrecisa": "Complementadores que buscam se diferenciar e identificar oportunidades.",
     "comoGerenciar": "Coletar e compartilhar periodicamente dados de uso, necessidades e lacunas com os atores externos."
@@ -491,7 +491,7 @@
         "trecho": "Given the significant time intervals between discussions on different issues, there is a potential for loss of knowledge and inefficient communication within the ecosystem due to the volume of conversations. It is impractical to rely solely on individuals who have been in the community for an extended period to manually create links and aggregate relevant information."
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque a expertise está nas experiências e no reconhecimento da competência dos atores. Está no nível do ecossistema porque ajuda a localizar pessoas entre comunidades, e é social por depender das relações e da colaboração entre participantes.",
     "quemPossui": "Os próprios colaboradores, nas suas habilidades, e os agentes de ligação entre comunidades.",
     "quemPrecisa": "Quem monta equipes, novatos que procuram orientação e comunidades que dependem da resolução de problemas entre fronteiras.",
     "comoGerenciar": "Identificar e tornar localizável a expertise dos atores, já que a busca nos repositórios não oferece esse recurso."
@@ -532,7 +532,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque necessidades e prioridades dependem das percepções de cada ator. Está no nível do ecossistema porque a decisão coletiva exige entendimento entre participantes, e é de negócio por orientar prioridades e atributos de qualidade da plataforma.",
     "quemPossui": "Cada ator, sobre a própria necessidade.",
     "quemPrecisa": "Os demais atores envolvidos na decisão conjunta e quem projeta a plataforma comum.",
     "comoGerenciar": "Construir entendimento mútuo entre os atores por meio de espaços de troca e de intermediação."
@@ -570,7 +570,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque competência e confiabilidade são percebidas a partir das interações e da experiência dos atores. Está no nível do ecossistema porque influencia relações entre organizações, e é social por sustentar confiança e legitimidade nas decisões.",
     "quemPossui": "Os próprios atores, pelas competências que demonstram.",
     "quemPrecisa": "Organizações que decidem com quem cooperar e em quem confiar.",
     "comoGerenciar": "Tornar visíveis as competências demonstradas para apoiar a formação de confiança entre organizações."
@@ -609,7 +609,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque as dificuldades se revelam nas interpretações e nos erros recorrentes dos desenvolvedores. Está no nível da plataforma porque esse conhecimento orienta seus recursos de apoio, e é de negócio por afetar o esforço e a atuação dos contribuidores externos.",
     "quemPossui": "Os próprios desenvolvedores externos, nos erros e dúvidas que registram na comunidade.",
     "quemPrecisa": "Organização central, para corrigir documentação e recursos.",
     "comoGerenciar": "Analisar as interações da comunidade para identificar onde os atores travam e corrigir os recursos."
@@ -638,7 +638,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque compreender impactos de mudanças exige interpretar relações entre serviços e atividades em andamento. Está no nível do ecossistema porque envolve ofertas de terceiros conectadas a diferentes participantes, e é de negócio por afetar serviços e decisões em curso.",
     "quemPossui": "Provedores terceiros de serviço.",
     "quemPrecisa": "Stakeholders que dependem desses serviços no negócio em andamento.",
     "comoGerenciar": "Tornar rastreável a relação entre serviços de terceiros e o negócio apoiado por eles."
@@ -675,7 +675,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque as composições incorporam a experiência de quem avaliou o contexto de trabalho. Está no nível do produto porque orienta a execução de tarefas específicas, e é técnico por tratar da combinação de componentes e configurações.",
     "quemPossui": "Quem montou a composição, e a própria composição como artefato.",
     "quemPrecisa": "Outros atores que executam tarefa semelhante.",
     "comoGerenciar": "Tornar as composições compartilháveis entre quem executa tarefas semelhantes."
@@ -704,7 +704,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-cognitivo porque identificar complementaridade exige interpretar as funcionalidades já existentes. Está no nível do ecossistema porque considera a relação entre contribuições e projetos, e é técnico por tratar das funcionalidades e de sua integração.",
     "quemPossui": "Mantenedores que avaliam as contribuições, a partir dos projetos já existentes.",
     "quemPrecisa": "Contribuidores que propõem novas funcionalidades.",
     "comoGerenciar": "Tornar visível o que já existe no ecossistema antes da proposta de contribuição."
@@ -750,7 +750,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-técnico porque aplicar problemas e soluções comparáveis exige julgamento prático sobre sua adequação ao contexto. Está no nível do ecossistema porque recupera experiências de diferentes participantes, e é técnico por apoiar a resolução de problemas de software.",
     "quemPossui": "Comunidade de desenvolvedores que já enfrentou problemas comparáveis.",
     "quemPrecisa": "Desenvolvedor diante de um erro desconhecido ou em busca de ideias.",
     "comoGerenciar": "Manter canais de troca entre pares e apoiar a avaliação do encaixe da solução no contexto de quem consulta."
@@ -787,7 +787,7 @@
         "trecho": ""
       }
     },
-    "justificativaClassificacao": "",
+    "justificativaClassificacao": "É tácito-técnico porque resulta da execução repetida de tarefas e se incorpora às habilidades e ao julgamento do ator. Está no nível do produto porque se aplica ao uso das tecnologias em tarefas concretas, e é técnico por tratar desse saber fazer.",
     "quemPossui": "Complementadores experientes.",
     "quemPrecisa": "Complementadores que ainda não acumularam essa experiência e têm dificuldade de inovar.",
     "comoGerenciar": "Estimular a participação continuada para que a experiência seja acumulada e transferida."

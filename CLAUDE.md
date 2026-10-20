@@ -72,9 +72,10 @@ Um nunca é somado para dentro do outro. Um estudo que compara três ecossistema
 que o conhecimento tirado dele apareceu nos três, e cada classificação ainda vai precisar de
 justificativa escrita.
 
-`justificativaClassificacao` está vazio nos vinte. Quando houver uma justificativa específica, a ficha
-mostra o item expansível "Por que essa classificação?". Estudos e trechos não fazem parte dessa
-justificativa e permanecem nas respectivas abas.
+`justificativaClassificacao` está preenchido nos vinte com a explicação da natureza epistemológica,
+do nível e da dimensão adotados para cada conhecimento. A ficha mostra esse texto no item expansível
+"Por que essa classificação?". Estudos e trechos não fazem parte dessa justificativa e permanecem nas
+respectivas abas.
 
 `conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
 contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
