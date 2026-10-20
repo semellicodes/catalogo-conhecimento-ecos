@@ -751,7 +751,7 @@
   color: var(--cor-texto-fraco);
   opacity: 0.6;
 }
-.opcao[data-aceso] {
+.opcoes li[data-aceso] .opcao {
   opacity: 1;
   border-color: var(--cor-acento-linha);
   background: var(--cor-acento-fundo);
@@ -759,7 +759,31 @@
 }
 .opcao__icone { flex: none; width: 1.125rem; height: 1.125rem; }
 .opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
-.opcao[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
+.opcoes li[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
+.opcao--interativa {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
+}
+.opcao--interativa:hover, .opcao--interativa[data-selecionado] {
+  border-color: var(--cor-acento);
+}
+.tipo-ecos__painel {
+  display: grid;
+  gap: var(--esp-2);
+  margin-top: var(--esp-3);
+  padding: var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+.tipo-ecos__texto { margin: 0; }
+.tipo-ecos__exemplos { display: grid; gap: var(--esp-1); padding-left: var(--esp-4); }
 
 /* A classificação é par de rótulo e valor, três colunas no desktop. Com um
    valor possível por atributo, a caixa não dizia mais do que o texto diz. */
