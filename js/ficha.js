@@ -184,22 +184,13 @@ function classificacao(dados, conhecimento) {
   });
   bloco.append(grade);
 
-  const porque = criar('details', 'porque');
-  const abrir = criar('summary', 'porque__abrir');
-  abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
-  const evidencias = criar('ul', 'classificacao__evidencias');
   if (conhecimento.justificativaClassificacao) {
-    evidencias.append(criar('li', 'porque__texto', conhecimento.justificativaClassificacao));
+    const porque = criar('details', 'porque');
+    const abrir = criar('summary', 'porque__abrir');
+    abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
+    porque.append(abrir, criar('p', 'porque__texto', conhecimento.justificativaClassificacao));
+    bloco.append(porque);
   }
-  conhecimento.trechos.filter(Boolean).forEach((trecho, indice) => {
-    const item = criar('li', 'classificacao__evidencia');
-    const estudo = conhecimento.estudos[indice];
-    if (estudo) item.append(criar('span', 'codigo-id', estudo));
-    item.append(criar('span', 'classificacao__trecho', trecho));
-    evidencias.append(item);
-  });
-  porque.append(abrir, evidencias);
-  bloco.append(porque);
   return bloco;
 }
 

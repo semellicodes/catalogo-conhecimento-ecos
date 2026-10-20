@@ -782,21 +782,6 @@
   font-size: var(--tam-base);
   font-weight: 600;
 }
-.classificacao__evidencias {
-  display: grid;
-  gap: var(--esp-3);
-  padding: 0 var(--esp-3) var(--esp-3);
-  list-style: none;
-}
-.classificacao__evidencia {
-  display: grid;
-  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
-  gap: var(--esp-3);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-}
-.classificacao__trecho { font-style: italic; }
-
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
 .gerencia { display: grid; gap: normal; }
 .gerencia__rotulo {
@@ -850,12 +835,12 @@
 }
 .porque[open] .porque__seta { transform: rotate(-135deg); }
 .porque__texto {
+  margin: 0;
   padding: 0 var(--esp-3) var(--esp-3);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
   max-width: var(--largura-texto);
 }
-.porque__texto--pendente { font-style: italic; }
 @media (prefers-reduced-motion: reduce) {
   .porque__seta { transition: none; }
 }
