@@ -12,6 +12,56 @@ import { renderizar } from './listagem.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
+function abaPeloHash() {
+  return window.location.hash.replace('#', '') || 'glossario';
+}
+
+function ativarAba(nome, atualizarEndereco = false) {
+  const abas = document.querySelectorAll('.explorar__aba');
+  const paineis = document.querySelectorAll('.explorar__painel');
+  const existe = [...abas].some((aba) => aba.dataset.aba === nome);
+  const abaAtiva = existe ? nome : 'glossario';
+
+  abas.forEach((aba) => {
+    const ativa = aba.dataset.aba === abaAtiva;
+    aba.setAttribute('aria-selected', String(ativa));
+    aba.tabIndex = ativa ? 0 : -1;
+  });
+  paineis.forEach((painel) => {
+    painel.hidden = painel.dataset.painel !== abaAtiva;
+  });
+
+  if (atualizarEndereco) history.replaceState(null, '', `#${abaAtiva}`);
+}
+
+function proximaAba(abas, atual, direcao) {
+  const indice = abas.indexOf(atual);
+  return abas[(indice + direcao + abas.length) % abas.length];
+}
+
+function ligarAbas() {
+  const abas = [...document.querySelectorAll('.explorar__aba')];
+  if (!abas.length) return;
+
+  ativarAba(abaPeloHash());
+  abas.forEach((aba) => {
+    aba.addEventListener('click', () => ativarAba(aba.dataset.aba, true));
+    aba.addEventListener('keydown', (evento) => {
+      const atalhos = { ArrowRight: 1, ArrowLeft: -1, Home: -Infinity, End: Infinity };
+      if (!(evento.key in atalhos)) return;
+      evento.preventDefault();
+      const destino = evento.key === 'Home'
+        ? abas[0]
+        : evento.key === 'End'
+          ? abas.at(-1)
+          : proximaAba(abas, aba, atalhos[evento.key]);
+      ativarAba(destino.dataset.aba, true);
+      destino.focus();
+    });
+  });
+  window.addEventListener('hashchange', () => ativarAba(abaPeloHash()));
+}
+
 function celula(tag, texto, className) {
   const el = document.createElement(tag);
   if (className) el.className = className;
@@ -111,6 +161,8 @@ function montarDesafios(dados) {
 
 async function iniciar() {
   if (!el('#lista-solucoes')) return;
+
+  ligarAbas();
 
   let dados;
   try {

@@ -126,6 +126,119 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-bottom: var(--esp-2);
 }
 
+/* ---------- Explorar ---------- */
+/* A página deixa de ser uma sequência única de tabelas. As abas não escondem
+   conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
+.explorar {
+  max-width: var(--largura-explorar);
+}
+.explorar__cabecalho {
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-6);
+}
+.explorar__olho,
+.explorar__indice {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+.explorar__titulo {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
+.explorar__intro {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-suave);
+}
+.explorar__navegacao {
+  display: flex;
+  gap: var(--esp-1);
+  width: fit-content;
+  max-width: var(--largura-cheia);
+  margin-bottom: var(--esp-5);
+  padding: var(--esp-1);
+  overflow-x: auto;
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio-pilula);
+  box-shadow: var(--sombra-1);
+}
+.explorar__aba {
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
+  color: var(--cor-texto-suave);
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  font: inherit;
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva), transform var(--dur-rapida) var(--curva-saida);
+}
+.explorar__aba[aria-selected="true"] {
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+}
+.explorar__aba:active { transform: scale(var(--escala-acao)); }
+.explorar__painel {
+  padding: var(--esp-5);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.explorar__painel-cabecalho {
+  display: grid;
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  gap: var(--esp-3);
+  align-items: baseline;
+  margin-bottom: var(--esp-4);
+}
+.explorar__painel-cabecalho h2,
+.explorar__painel-cabecalho h3 {
+  font-size: var(--tam-lg);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-nome);
+}
+.explorar__painel-cabecalho p:not(.explorar__indice) {
+  margin-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+}
+.explorar__superficie,
+.explorar__lista {
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+}
+.explorar__superficie { padding-inline: var(--esp-3); }
+.explorar__secao-interna {
+  margin-top: var(--esp-6);
+  padding-top: var(--esp-6);
+  border-top: var(--borda-suave);
+}
+.explorar__lista {
+  padding: var(--esp-4) var(--esp-5);
+}
+.explorar__lista .listagem { margin-top: 0; }
+.explorar__aviso {
+  margin-bottom: var(--esp-4);
+}
+@media (max-width: 47.99rem) {
+  .explorar__painel { padding: var(--esp-4); }
+  .explorar__lista { padding: var(--esp-4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explorar__aba { transition: color var(--dur-rapida) linear, background-color var(--dur-rapida) linear; }
+  .explorar__aba:active { transform: none; }
+}
+
 /* ---------- Portas de entrada ---------- */
 /* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
 .portas {
