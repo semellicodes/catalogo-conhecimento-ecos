@@ -115,6 +115,7 @@
   /* Movimento */
   --dur-rapida: 120ms;
   --dur-media: 200ms;
+  --dur-interruptor: 280ms;
   --dur-hover: 240ms;
   --dur-entrada-ficha: 260ms;
   --dur-troca-ficha: 220ms;

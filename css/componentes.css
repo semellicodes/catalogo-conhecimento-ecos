@@ -92,7 +92,8 @@
   background: var(--cor-superficie-alta);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pilula);
-  transition: transform var(--dur-media) var(--curva-saida);
+  will-change: transform;
+  transition: transform var(--dur-interruptor) var(--curva-saida);
 }
 /* Pressionado é o tema claro, que é o sol, à esquerda. Solto é a lua. */
 .interruptor[aria-pressed="false"] .interruptor__deslizante { transform: translateX(100%); }
@@ -101,7 +102,7 @@
    ela substitui a transição de transform e faz o deslizante saltar de lado. */
 :root.trocando-tema .interruptor__deslizante {
   transition:
-    transform var(--dur-media) var(--curva-saida),
+    transform var(--dur-interruptor) var(--curva-saida),
     background-color var(--dur-tema) var(--curva),
     border-color var(--dur-tema) var(--curva);
 }

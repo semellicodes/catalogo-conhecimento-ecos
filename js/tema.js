@@ -112,15 +112,18 @@ function duracaoTema() {
 }
 
 function alternar(botao) {
+  if (raiz.classList.contains('trocando-tema')) return;
   const proximo = temaAtual() === ESCURO ? CLARO : ESCURO;
-  /* Forçar a leitura entre a classe e o novo tema impede o navegador de juntar
-     os dois passos num único quadro e transformar a transição em salto. */
+  /* O primeiro quadro registra a posição atual e o seguinte aplica a nova.
+     Assim o navegador tem um ponto de partida para animar o deslizante. */
   raiz.classList.add('trocando-tema');
   void raiz.offsetWidth;
-  raiz.dataset.tema = proximo;
-  gravarEscolha(proximo);
-  marcarEstado(botao);
-  setTimeout(() => raiz.classList.remove('trocando-tema'), duracaoTema());
+  requestAnimationFrame(() => {
+    raiz.dataset.tema = proximo;
+    gravarEscolha(proximo);
+    marcarEstado(botao);
+    setTimeout(() => raiz.classList.remove('trocando-tema'), duracaoTema());
+  });
 }
 
 function iniciar() {
