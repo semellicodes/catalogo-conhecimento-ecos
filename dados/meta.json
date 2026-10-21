@@ -4,13 +4,6 @@
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "totalEstudos": 18,
   "atualizadoEm": "2026-10-07",
-  "tiposSolucao": {
-    "Ferramenta": "Ferramenta implementada que materializa uma técnica, ou linguagem formal que apoia uma técnica ou modelo.",
-    "Prática": "Ações e recomendações aplicadas no dia a dia pelos atores do ecossistema.",
-    "Modelo": "Estrutura ou taxonomia de uma área de problema, modelo descritivo, empírico ou analítico.",
-    "Método": "Procedimento operacional que orienta a realização de uma tarefa, como análise ou avaliação.",
-    "Framework": "Estrutura que organiza princípios e orienta a organização de informações."
-  },
   "camadas": [
     {
       "n": 1,
@@ -30,6 +23,5 @@
       "conteudo": "18 estudos primários (E01 a E18)",
       "origem": "Processo de seleção da revisão rápida"
     }
-  ],
-  "avisoSolucoes": ""
+  ]
 }

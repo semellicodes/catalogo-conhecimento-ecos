@@ -164,9 +164,9 @@
   border-bottom-color: var(--cor-acento);
 }
 
-/* ---------- Listagem de soluções e de desafios ---------- */
-/* As duas páginas usam a mesma forma, identificador à esquerda e corpo à
-   direita. Não é cartão porque o item não abre ficha, quem abre é o link do
+/* ---------- Listagem de desafios ---------- */
+/* A listagem usa identificador à esquerda e corpo à direita. Não é cartão
+   porque o item não abre ficha, quem abre é o link do
    conhecimento ligado. */
 .listagem { list-style: none; display: grid; gap: var(--esp-4); margin-top: var(--esp-5); }
 .item-listagem {
@@ -953,8 +953,7 @@
 }
 
 /* ---------- Relações do conhecimento ---------- */
-/* Hoje só os desafios usam este bloco. A solução saiu da ficha, porque responde
-   a outra questão de pesquisa e dentro da ficha parecia recomendação. */
+/* Os desafios ficam na ficha quando há relação confirmada com o conhecimento. */
 .relacoes-bloco { display: grid; gap: var(--esp-5); }
 .relacoes { list-style: none; display: grid; }
 .relacao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }

@@ -21,29 +21,21 @@ identidade visual muda sem tocar no conteúdo.
 
 | Arquivo | Conteúdo |
 |---|---|
-| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, os identificadores de soluções, desafios e estudos, e a evidência de cada relação |
-| `dados/solucoes.json` | 36 soluções (S01 a S36), com tipo segundo Shaw (2003), avaliação quando reportada e os conhecimentos que apoiam |
+| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, desafios e estudos relacionados, e a evidência de cada relação |
 | `dados/desafios.json` | 17 desafios (D01 a D17), com o texto, os estudos e os conhecimentos que os citam |
 | `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e a lista de tipos de ECOS que o estudo observou |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
 | `dados/referencias.json` | Citação completa de cada referência, identificada por chave |
-| `dados/meta.json` | Título, fonte, camadas da estrutura e tipos de solução |
-
-A relação entre conhecimento e solução é de muitos para muitos e está registrada nos dois sentidos,
-em `conhecimentos[].solucoes` e em `solucoes[].conhecimentos`. Ao mudar uma ponta, mudar a outra.
+| `dados/meta.json` | Título, fonte e camadas da estrutura |
 
 `conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
 relação, o motivo e o trecho literal do artigo. O trecho existe em poucos pares, então o campo pode
 vir vazio e a ficha só mostra o que existe. Esses textos são literais do artigo e da planilha de
 conferência, nunca reescritos.
 
-A evidência das 56 relações de solução foi retirada daqui e guardada em
-`origem/evidencia-solucoes.json`, quando a solução saiu da ficha. `conhecimentos[].solucoes`
-continua, porque é a outra ponta da relação que o Explorar usa.
-
 `origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
-Está lá `relacoes-confirmadas.json`, `evidencia-solucoes.json` e `gerencia-conhecimento.json`, este
-último já fundido em `conhecimentos.json`.
+Está lá `relacoes-confirmadas.json` e `gerencia-conhecimento.json`, este último já fundido em
+`conhecimentos.json`.
 
 ### Campos ainda pendentes
 
@@ -81,18 +73,13 @@ do nível e da dimensão adotados para cada conhecimento. A ficha mostra esse te
 "Por que essa classificação?". Estudos e trechos não fazem parte dessa justificativa e permanecem nas
 respectivas abas.
 
-`conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os 138 pares candidatos foram conferidos
-contra os artigos primários e sobraram 78, sendo 56 de solução e 22 de desafio. O que não se sustentou
-no artigo saiu dos dois sentidos da relação.
+`conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os pares de desafio foram conferidos
+contra os artigos primários e os que não se sustentaram foram retirados da relação.
 
 Os 22 pares de desafio estão em `conhecimentos[].desafios` e, no outro sentido, em
 `desafios[].conhecimentos`. D05, D12 e D16 não se ligam a nenhum conhecimento, porque vêm de estudos
 sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que o Explorar
 lista os dezessete, não só os ligados.
-
-Sete soluções também não se ligam a nenhum conhecimento, `S02, S03, S04, S23, S27, S28` e `S36`.
-Elas continuam em `solucoes.json` porque o 36 é resultado publicado da revisão, e aparecem no
-Explorar como as demais, só sem a lista de conhecimentos.
 
 ## Páginas
 
@@ -100,7 +87,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 |---|---|
 | `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#entrar` com as portas por natureza, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
-| `explorar.html` | Glossário dos atributos com a referência de cada esquema, as 36 soluções e os 17 desafios, cada um com os conhecimentos ligados |
+| `explorar.html` | Glossário dos atributos com a referência de cada esquema e os 17 desafios, cada um com os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
@@ -115,7 +102,7 @@ Explorar como as demais, só sem a lista de conhecimentos.
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
-| `js/explorar.js` | Preenche o Explorar, glossário, soluções e desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
+| `js/explorar.js` | Preenche o Explorar, o glossário e os desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
 | `js/inicio.js` | Preenche o resumo da abertura, a tarja de números, as portas por natureza e as camadas |
 | `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
@@ -193,9 +180,6 @@ nativamente pelo navegador com `type="module"`.
   conteúdo continua vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
-- A solução não aparece na ficha. Ela responde a outra questão de pesquisa, e dentro da ficha fazia
-  o catálogo parecer que recomenda ferramenta. A lista das 36 fica no Explorar, com a linha de
-  `meta.avisoSolucoes` dizendo o que a lista é e o que ela não é
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as

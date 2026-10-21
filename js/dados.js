@@ -6,7 +6,6 @@
 const ARQUIVOS = {
   meta: 'dados/meta.json',
   conhecimentos: 'dados/conhecimentos.json',
-  solucoes: 'dados/solucoes.json',
   desafios: 'dados/desafios.json',
   estudos: 'dados/estudos.json',
   classificacoes: 'dados/classificacoes.json',
@@ -50,26 +49,14 @@ export function carregar() {
 
 export const porId = (lista, id) => lista.find((item) => item.id === id) || null;
 
-/** Devolve o conhecimento com soluções e estudos já resolvidos em objetos. */
+/** Devolve o conhecimento com desafios e estudos já resolvidos em objetos. */
 export function conhecimentoCompleto(dados, id) {
   const conhecimento = porId(dados.conhecimentos, id);
   if (!conhecimento) return null;
   return {
     ...conhecimento,
-    solucoesResolvidas: conhecimento.solucoes.map((s) => porId(dados.solucoes, s)).filter(Boolean),
     desafiosResolvidos: (conhecimento.desafios || []).map((d) => porId(dados.desafios, d)).filter(Boolean),
     estudosResolvidos: conhecimento.estudos.map((e) => porId(dados.estudos, e)).filter(Boolean)
-  };
-}
-
-/** Devolve a solução com os conhecimentos que ela apoia já resolvidos. */
-export function solucaoCompleta(dados, id) {
-  const solucao = porId(dados.solucoes, id);
-  if (!solucao) return null;
-  return {
-    ...solucao,
-    conhecimentosResolvidos: solucao.conhecimentos.map((c) => porId(dados.conhecimentos, c)).filter(Boolean),
-    estudosResolvidos: solucao.estudos.map((e) => porId(dados.estudos, e)).filter(Boolean)
   };
 }
 

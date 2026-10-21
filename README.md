@@ -3,7 +3,8 @@
 Catálogo dos conhecimentos que precisam ser gerenciados em ECOS, construído a partir dos
 resultados de uma revisão rápida da literatura com 18 estudos primários.
 
-Reúne 20 conhecimentos (C01 a C20), 36 soluções (S01 a S36) e os estudos que sustentam cada item.
+Reúne 20 conhecimentos (C01 a C20), os desafios relacionados de forma específica e os estudos que
+sustentam cada item.
 
 ## Rodar localmente
 
@@ -27,8 +28,6 @@ cada arquivo e as regras de preenchimento estão em `CLAUDE.md`.
 
 ## Pendências
 
-- Confirmar nos estudos primários a relação entre cada conhecimento e as soluções, hoje reunidas por
-  estudo em comum, e marcar `relacoesConfirmadas` como `true` conhecimento por conhecimento
 - Classificar o tipo de ECOS de cada um dos 18 estudos, segundo Manikas (2016)
 - Definir a ação de gerência requerida de cada conhecimento a partir dos verbos das unidades de
   análise da QP1

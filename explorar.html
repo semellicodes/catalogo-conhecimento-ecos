@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Explorar · KM4SECO</title>
-<meta name="description" content="Glossário dos atributos do KM4SECO, as 36 soluções e os 17 desafios identificados na revisão rápida, com os conhecimentos ligados a cada um.">
+<meta name="description" content="Glossário dos atributos do KM4SECO e os desafios identificados na revisão rápida, com os conhecimentos relacionados.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -54,14 +54,13 @@
     <p class="explorar__olho">KM4SECO</p>
     <h1 class="explorar__titulo">Explorar o catálogo</h1>
     <p class="explorar__intro">
-      Consulte o vocabulário usado na classificação e navegue pelas soluções e desafios
-      identificados na revisão, com os conhecimentos relacionados.
+      Consulte o vocabulário usado na classificação e os desafios identificados na revisão,
+      com os conhecimentos relacionados.
     </p>
   </header>
 
   <nav class="explorar__navegacao" aria-label="Seções de exploração" role="tablist">
     <button class="explorar__aba" type="button" id="aba-glossario" role="tab" aria-selected="true" aria-controls="painel-glossario" data-aba="glossario">Glossário</button>
-    <button class="explorar__aba" type="button" id="aba-solucoes" role="tab" aria-selected="false" aria-controls="painel-solucoes" data-aba="solucoes" tabindex="-1">Soluções</button>
     <button class="explorar__aba" type="button" id="aba-desafios" role="tab" aria-selected="false" aria-controls="painel-desafios" data-aba="desafios" tabindex="-1">Desafios</button>
   </nav>
 
@@ -86,47 +85,11 @@
         <tbody id="tabela-atributos"></tbody>
       </table>
     </div>
-
-    <div class="explorar__secao-interna">
-      <div class="explorar__painel-cabecalho">
-        <p class="explorar__indice">02</p>
-        <div>
-          <h3>Tipos de solução</h3>
-          <p>Classificação segundo Shaw (2003), aplicada às soluções identificadas na revisão.</p>
-        </div>
-      </div>
-      <div class="explorar__superficie tabela--rolavel">
-        <table class="tabela">
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Quantidade</th>
-            </tr>
-          </thead>
-          <tbody id="tabela-tipos"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="explorar__painel" id="painel-solucoes" role="tabpanel" aria-labelledby="aba-solucoes" data-painel="solucoes" hidden>
-    <div class="explorar__painel-cabecalho" id="solucoes">
-      <p class="explorar__indice">03</p>
-      <div>
-        <h2>Soluções</h2>
-        <p id="resumo-solucoes">Carregando</p>
-      </div>
-    </div>
-    <p class="aviso-linha explorar__aviso" id="aviso-solucoes" hidden></p>
-    <div class="explorar__lista">
-      <ul class="listagem" id="lista-solucoes"></ul>
-    </div>
   </section>
 
   <section class="explorar__painel" id="painel-desafios" role="tabpanel" aria-labelledby="aba-desafios" data-painel="desafios" hidden>
     <div class="explorar__painel-cabecalho" id="desafios">
-      <p class="explorar__indice">04</p>
+      <p class="explorar__indice">02</p>
       <div>
         <h2>Desafios</h2>
         <p id="resumo-desafios">Carregando</p>
