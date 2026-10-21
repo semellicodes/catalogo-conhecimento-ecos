@@ -7,8 +7,9 @@
 
 import { referenciaCurta } from './dados.js';
 
-const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const reduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tokenDeMovimento = (nome) =>
+  getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -350,15 +351,32 @@ function montarAbas(itens) {
   barra.setAttribute('role', 'tablist');
   const indicador = criar('span', 'abas__indicador');
   const painel = criar('div', 'abas__painel');
+  const idPainel = 'ficha-abas-painel';
+  painel.id = idPainel;
   painel.setAttribute('role', 'tabpanel');
 
   const botoes = itens.map((item, indice) => {
     const botao = criar('button', 'aba');
     botao.type = 'button';
+    botao.id = `ficha-aba-${indice}`;
     botao.setAttribute('role', 'tab');
     botao.setAttribute('aria-selected', String(indice === 0));
+    botao.setAttribute('aria-controls', idPainel);
+    botao.tabIndex = indice === 0 ? 0 : -1;
     botao.append(criar('span', null, item.rotulo), criar('span', 'aba__contagem', String(item.contagem)));
     botao.addEventListener('click', () => trocar(indice));
+    botao.addEventListener('keydown', (evento) => {
+      const atalhos = { ArrowRight: 1, ArrowLeft: -1, Home: -Infinity, End: Infinity };
+      if (!(evento.key in atalhos)) return;
+      evento.preventDefault();
+      const destino = evento.key === 'Home'
+        ? 0
+        : evento.key === 'End'
+          ? botoes.length - 1
+          : (indice + atalhos[evento.key] + botoes.length) % botoes.length;
+      trocar(destino);
+      botoes[destino].focus();
+    });
     return botao;
   });
 
@@ -369,18 +387,24 @@ function montarAbas(itens) {
   }
 
   function trocar(indice) {
-    botoes.forEach((b, i) => b.setAttribute('aria-selected', String(i === indice)));
+    botoes.forEach((b, i) => {
+      const ativa = i === indice;
+      b.setAttribute('aria-selected', String(ativa));
+      b.tabIndex = ativa ? 0 : -1;
+    });
+    painel.setAttribute('aria-labelledby', botoes[indice].id);
     painel.replaceChildren(itens[indice].conteudo());
     posicionar(indice);
     if (!reduzido()) {
-      painel.animate([{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }], {
-        duration: 180,
-        easing: CURVA_SAIDA
+      painel.animate([{ opacity: 0, transform: `translateY(${tokenDeMovimento('--esp-1')})` }, { opacity: 1, transform: 'none' }], {
+        duration: Number.parseFloat(tokenDeMovimento('--dur-media')),
+        easing: tokenDeMovimento('--curva-saida')
       });
     }
   }
 
   barra.append(...botoes, indicador);
+  painel.setAttribute('aria-labelledby', botoes[0].id);
   painel.replaceChildren(itens[0].conteudo());
   raiz.append(barra, painel);
   /* O indicador só tem medida depois que a barra está no documento. */

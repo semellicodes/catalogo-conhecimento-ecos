@@ -2,15 +2,13 @@
  * Trabalha apenas sobre listas. Não conhece a tela nem o DOM.
  */
 
-export const ATRIBUTOS_FILTRAVEIS = ['natureza', 'nivel', 'dimensao', 'tipoEcos', 'acaoGerencia'];
+export const ATRIBUTOS_FILTRAVEIS = ['natureza', 'nivel', 'dimensao'];
 
 export const estadoVazio = () => ({
   busca: '',
   natureza: [],
   nivel: [],
-  dimensao: [],
-  tipoEcos: [],
-  acaoGerencia: []
+  dimensao: []
 });
 
 const normalizar = (texto) =>

@@ -2,7 +2,7 @@
  * Liga os módulos anteriores na página do catálogo.
  */
 
-import { carregar, conhecimentoCompleto, vazio } from './dados.js';
+import { carregar, conhecimentoCompleto } from './dados.js';
 import * as filtros from './filtros.js';
 import * as lista from './lista.js';
 import * as ficha from './ficha.js';

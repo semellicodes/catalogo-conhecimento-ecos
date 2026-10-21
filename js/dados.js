@@ -60,16 +60,6 @@ export function conhecimentoCompleto(dados, id) {
   };
 }
 
-/** Texto da referência a partir da chave, ou das chaves separadas por vírgula. */
-export function referencia(dados, chaves) {
-  if (!chaves) return '';
-  return chaves
-    .split(',')
-    .map((c) => dados.referencias[c.trim()])
-    .filter(Boolean)
-    .join(' ');
-}
-
 /** Rótulo curto da referência, como aparece ao lado de um atributo. */
 export function referenciaCurta(dados, chaves) {
   if (!chaves) return '';
@@ -86,8 +76,3 @@ export function referenciaCurta(dados, chaves) {
     .filter(Boolean)
     .join('; ');
 }
-
-/** Um valor de atributo que ainda não foi preenchido na extração. */
-export const vazio = (valor) =>
-  valor === undefined || valor === null || valor === '' ||
-  (Array.isArray(valor) && valor.length === 0);
