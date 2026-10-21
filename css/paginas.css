@@ -214,16 +214,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 
 /* ---------- Página do catálogo ---------- */
-/* O cabeçalho separa o catálogo do restante da página e prepara a leitura antes
-   da busca. O painel abaixo fica numa largura menor para não virar uma faixa. */
-.catalogo__cabecalho {
-  max-width: var(--largura-texto);
-  margin: 0 auto var(--esp-6);
-  text-align: center;
-}
-.catalogo__cabecalho .secao__titulo { font-size: var(--tam-titulo); }
-.catalogo__intro { margin: 0 auto; }
-.secao-catalogo .filtros { max-width: var(--largura-texto); margin-inline: auto; }
+/* O catálogo começa direto pela lista. A busca continua acima dos cartões. */
+.catalogo__cabecalho { margin-bottom: var(--esp-4); }
 /* A barra existe só onde os filtros viram folha. Acima disso eles ficam no
    fluxo e ela não tem mais nada para carregar, depois que o contador entrou
    para dentro do bloco de filtro. */

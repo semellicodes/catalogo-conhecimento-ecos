@@ -9,9 +9,8 @@ import * as ficha from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
-/* O nível não entra, porque não aparece na listagem. Os dois últimos ainda não
-   têm valor registrado e caem no aviso do rodapé. */
-const FACETAS = ['natureza', 'dimensao', 'tipoEcos', 'acaoGerencia'];
+/* A natureza é a entrada principal. Nível e dimensão refinam a lista. */
+const FACETAS = ['natureza', 'nivel', 'dimensao'];
 
 /* Abaixo desta largura os filtros moram numa folha por cima, em vez de empurrar
    os cartões para fora da tela. */
@@ -72,8 +71,7 @@ function montarOpcaoTodas(chave, rotulo) {
 
 /**
  * Uma faceta preenchida vira um grupo, com o rótulo ao lado das pastilhas e não
- * acima delas. Uma faceta ainda sem nenhum valor registrado não vira grupo,
- * devolve null e é anunciada no rodapé.
+ * acima delas. Uma faceta sem nenhum valor registrado não vira grupo.
  *
  * O grupo é div com role de grupo, e não fieldset, porque legend dentro de
  * contêiner flex ainda não se comporta igual em todo navegador, e aqui o rótulo
@@ -121,23 +119,6 @@ function montarGrupoDeFiltros(chave, rotuloVisivel = true) {
   );
   grupo.append(opcoes);
   return grupo;
-}
-
-/** Uma linha só para as facetas que ainda não têm classificação registrada. */
-function anunciarPendentes(rotulos) {
-  const aviso = el('#filtros-pendentes');
-  aviso.hidden = rotulos.length === 0;
-  if (!rotulos.length) return;
-  /* Só o primeiro abre a frase em maiúscula. Um rótulo que começa por sigla fica
-     como está, para não virar "eCOS". */
-  const comecaPorSigla = (t) => t.slice(0, 2) === t.slice(0, 2).toUpperCase();
-  const seguinte = (t) => (comecaPorSigla(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
-  const demais = rotulos.slice(1).map(seguinte);
-  const nomes = demais.length
-    ? `${[rotulos[0], ...demais.slice(0, -1)].join(', ')} e ${demais[demais.length - 1]}`
-    : rotulos[0];
-  const verbo = rotulos.length > 1 ? 'serão habilitados' : 'será habilitado';
-  aviso.textContent = `${nomes} ${verbo} quando a classificação for concluída.`;
 }
 
 /** Espelha o estado nos botões. Sem valor, o botão representa a faceta inteira vazia. */
@@ -364,22 +345,15 @@ async function iniciar() {
 function montarCatalogo() {
   const parametros = new URLSearchParams(location.search);
   estado = filtros.lerDaUrl(parametros);
-  el('#titulo-catalogo').textContent = dados.meta.titulo;
-  el('#catalogo-intro').textContent = dados.meta.subtitulo;
 
   const painel = el('#painel-filtros');
-  const pendentes = [];
   FACETAS.forEach((chave) => {
     /* A natureza sobe para a linha da busca, porque é a entrada principal. */
     const principal = chave === 'natureza';
     const grupo = montarGrupoDeFiltros(chave, !principal);
-    if (!grupo) {
-      pendentes.push(dados.classificacoes[chave].rotulo);
-      return;
-    }
+    if (!grupo) return;
     (principal ? el('#filtro-natureza') : painel).append(grupo);
   });
-  anunciarPendentes(pendentes);
 
   ordemDasNaturezas = dados.classificacoes.natureza.valores.map(({ valor }) => valor);
 
