@@ -155,6 +155,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-top: var(--esp-3);
   color: var(--cor-texto-suave);
 }
+.explorar__acao {
+  margin-top: var(--esp-4);
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+  border-color: var(--cor-acento);
+}
+.explorar__acao:hover {
+  color: var(--cor-contraste);
+  background: var(--cor-acento-forte);
+  border-color: var(--cor-acento-forte);
+}
+.explorar__acao:active { transform: scale(var(--escala-acao)); }
 .explorar__navegacao {
   display: flex;
   gap: var(--esp-1);
@@ -229,6 +241,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (prefers-reduced-motion: reduce) {
   .explorar__aba { transition: color var(--dur-rapida) linear, background-color var(--dur-rapida) linear; }
   .explorar__aba:active { transform: none; }
+  .explorar__acao:active { transform: none; }
 }
 
 /* ---------- Sobre ---------- */
