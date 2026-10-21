@@ -97,6 +97,15 @@
 /* Pressionado é o tema claro, que é o sol, à esquerda. Solto é a lua. */
 .interruptor[aria-pressed="false"] .interruptor__deslizante { transform: translateX(100%); }
 
+/* A troca de tema aplica transições de cor na página inteira. Sem esta regra,
+   ela substitui a transição de transform e faz o deslizante saltar de lado. */
+:root.trocando-tema .interruptor__deslizante {
+  transition:
+    transform var(--dur-media) var(--curva-saida),
+    background-color var(--dur-tema) var(--curva),
+    border-color var(--dur-tema) var(--curva);
+}
+
 .interruptor__icone {
   position: relative;
   display: grid;
@@ -113,7 +122,8 @@
 .interruptor__icone svg { display: block; width: 1.125rem; height: 1.125rem; }
 
 @media (prefers-reduced-motion: reduce) {
-  .interruptor__deslizante { transition: none; }
+  .interruptor__deslizante,
+  :root.trocando-tema .interruptor__deslizante { transition: none; }
 }
 
 .navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
