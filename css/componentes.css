@@ -341,8 +341,8 @@
 .filtros {
   margin-bottom: var(--esp-6);
   padding: var(--esp-3);
-  background: var(--cor-superficie-alta);
-  border: var(--borda);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
 .filtros__linha {
