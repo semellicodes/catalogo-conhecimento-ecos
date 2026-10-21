@@ -273,7 +273,7 @@ function gerencia(dados, conhecimento) {
 /* ---------- Conteúdo das abas ---------- */
 
 /**
- * Uma relação, de solução ou de desafio. A linha continua de uma linha só, e o
+ * Uma relação de desafio. A linha continua de uma linha só, e o
  * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
  * quiser saber. Trecho literal existe em poucos pares, então só entra quando
  * existe, sem deixar lugar vazio nos demais.
@@ -306,7 +306,7 @@ function linhaRelacao({ id, texto, estudos }, evidencia) {
 const linhaDesafio = (d, evidencia) =>
   linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos }, evidencia);
 
-/** Os desafios confirmados deste conhecimento, na mesma forma das soluções. */
+/** Os desafios confirmados deste conhecimento. */
 function desafios(conhecimento) {
   const evidencia = conhecimento.evidencia || {};
   const bloco = criar('div', 'relacoes-bloco');

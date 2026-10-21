@@ -117,8 +117,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
-/* Um degrau abaixo do título de seção, para a parte que pertence à anterior,
-   como os tipos de solução dentro do glossário. */
+/* Um degrau abaixo do título de seção, para uma parte subordinada ao bloco
+   anterior, quando ela existir. */
 .secao__subtitulo {
   font-size: var(--tam-lg);
   letter-spacing: var(--entre-letras-nome);
@@ -218,18 +218,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-radius: var(--raio);
 }
 .explorar__superficie { padding-inline: var(--esp-3); }
-.explorar__secao-interna {
-  margin-top: var(--esp-6);
-  padding-top: var(--esp-6);
-  border-top: var(--borda-suave);
-}
 .explorar__lista {
   padding: var(--esp-4) var(--esp-5);
 }
 .explorar__lista .listagem { margin-top: 0; }
-.explorar__aviso {
-  margin-bottom: var(--esp-4);
-}
 @media (max-width: 47.99rem) {
   .explorar__painel { padding: var(--esp-4); }
   .explorar__lista { padding: var(--esp-4); }
