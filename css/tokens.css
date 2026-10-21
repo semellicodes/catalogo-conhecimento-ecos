@@ -58,7 +58,8 @@
   --sombra-2: 0 16px 40px rgb(0 0 0 / 0.55);
 
   /* Tipografia */
-  --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
+  --fonte-texto: 'Source Sans 3', system-ui, sans-serif;
+  --fonte-titulo: 'Bitter', Georgia, serif;
   --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
   /* Entre letras. Texto grande pede aperto, rótulo em caixa alta pede folga */
   --entre-letras-faixa: -0.03em;
