@@ -526,6 +526,10 @@
 .fechar svg { width: 1.25rem; height: 1.25rem; }
 .fechar:hover { background: var(--cor-superficie-alta); color: var(--cor-texto); }
 
+/* A ficha recebe foco ao abrir para manter o contexto do diálogo, mas o contorno
+   não deve competir visualmente com o conteúdo que acabou de ser aberto. */
+.dialogo-ficha:focus-visible { outline: 0; }
+
 /* ---------- Cartão do conhecimento ---------- */
 /* A prévia mostra só parte da descrição. O texto integral fica na ficha, onde
    há espaço para a leitura, e a grade não vira uma parede de parágrafos. */
