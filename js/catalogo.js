@@ -173,6 +173,8 @@ function animarTroca(corpo, direcao) {
 function mostrarFicha(dialogo) {
   dialogo.classList.add('dialogo-ficha--entrando');
   dialogo.showModal();
+  /* O título recebe o foco inicial para o diálogo não abrir com destaque no X. */
+  el('#dialogo-ficha-nome').focus({ preventScroll: true });
   requestAnimationFrame(() => dialogo.classList.remove('dialogo-ficha--entrando'));
 }
 
