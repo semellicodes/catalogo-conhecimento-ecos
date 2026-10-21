@@ -117,15 +117,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
-/* Um degrau abaixo do título de seção, para uma parte subordinada ao bloco
-   anterior, quando ela existir. */
-.secao__subtitulo {
-  font-size: var(--tam-lg);
-  letter-spacing: var(--entre-letras-nome);
-  margin-top: var(--esp-6);
-  margin-bottom: var(--esp-2);
-}
-
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem
    conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
@@ -524,7 +515,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .folha .filtros { border: 0; box-shadow: none; background: transparent; margin: 0; }
 .folha .filtros__linha { padding-inline: 0; }
 .folha .filtros__grade { padding-inline: 0; }
-.folha .filtros__pendentes { padding-inline: 0; }
 
 /* ---------- Diálogo da ficha ---------- */
 .dialogo-ficha {

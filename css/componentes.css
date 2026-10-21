@@ -230,17 +230,6 @@
 .valores__nome { font-weight: 600; }
 .valores__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
 
-/* Aviso acima de uma lista, para o que a lista é e o que ela não é. */
-.aviso-linha {
-  margin-top: calc(var(--esp-5) * -1 + var(--esp-2));
-  margin-bottom: var(--esp-5);
-  padding-left: var(--esp-3);
-  border-left: 2px solid var(--cor-linha);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
-}
-
 /* ---------- Contato ---------- */
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
    então ocupa o mínimo entre o fim da página e o crédito. */
