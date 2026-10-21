@@ -92,7 +92,9 @@
 
   /* Medida */
   --largura-max: 1240px;
+  --largura-cheia: 100%;
   --largura-texto: 68ch;
+  --largura-explorar: 70rem;
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
   --largura-min-busca: 16rem;
@@ -128,6 +130,7 @@
   --deslocamento-entrada-ficha: 0.5rem;
   --deslocamento-troca-ficha: 0.75rem;
   --escala-entrada-ficha: 0.985;
+  --escala-acao: 0.97;
 
   /* Véu do diálogo. O opaco atende quem não tem desfoque */
   --cor-veu: rgb(0 0 0 / 0.45);
