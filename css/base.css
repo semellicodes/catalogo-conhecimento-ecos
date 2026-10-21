@@ -11,7 +11,13 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: var(--entre-letras-titulo); }
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
