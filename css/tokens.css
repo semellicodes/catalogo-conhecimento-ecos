@@ -106,7 +106,6 @@
   --retrato: 3.25rem;
   --borda: 1px solid var(--cor-linha);
   --borda-suave: 1px solid var(--cor-linha-suave);
-  --borda-acento-suave: 1px solid var(--cor-acento-linha);
   --borda-acento: 2px solid var(--cor-acento-linha);
   --raio: 10px;
   --raio-pilula: 999px;

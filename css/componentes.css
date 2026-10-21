@@ -341,8 +341,8 @@
 .filtros {
   margin-bottom: var(--esp-6);
   padding: var(--esp-3);
-  background: var(--cor-acento-fundo);
-  border: var(--borda-acento-suave);
+  background: var(--cor-superficie);
+  border: var(--borda);
   border-radius: var(--raio);
 }
 .filtros__linha {
@@ -419,8 +419,6 @@
   padding-top: var(--esp-1);
 }
 .filtros__rodape:not(:has(> :not([hidden]))) { display: none; }
-.filtros__pendentes { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-
 @media (max-width: 47.99rem) {
   .filtros__busca { flex: 1 1 100%; }
   .filtros__principal { flex: 1 1 100%; }
