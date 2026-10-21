@@ -231,6 +231,108 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .explorar__aba:active { transform: none; }
 }
 
+/* ---------- Sobre ---------- */
+.sobre { max-width: var(--largura-explorar); }
+.sobre__cabecalho {
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-7);
+}
+.sobre__olho {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+.sobre__cabecalho h1 {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-xl);
+}
+.sobre__cabecalho > p:last-child {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-suave);
+}
+.sobre__grade {
+  display: grid;
+  gap: var(--esp-6);
+  align-items: start;
+}
+.sobre__conteudo { max-width: var(--largura-texto); }
+.sobre__conteudo h2:first-child { margin-top: 0; }
+.sobre__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+  margin-top: var(--esp-6);
+}
+.sobre__acao { min-width: var(--alvo-toque); }
+.sobre__acao--primaria {
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+  border-color: var(--cor-acento);
+}
+.sobre__acao--primaria:hover {
+  color: var(--cor-contraste);
+  background: var(--cor-acento-forte);
+  border-color: var(--cor-acento-forte);
+}
+.sobre__acao:active { transform: scale(var(--escala-acao)); }
+.sobre__base {
+  padding: var(--esp-5);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.sobre__base h2 {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-lg);
+}
+.sobre__numeros {
+  display: grid;
+  gap: var(--esp-3);
+  margin-top: var(--esp-5);
+}
+.sobre__numeros > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding-bottom: var(--esp-3);
+  border-bottom: var(--borda-suave);
+}
+.sobre__numeros dt { color: var(--cor-texto-suave); }
+.sobre__numeros dd {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--cor-acento);
+}
+.sobre__fonte {
+  margin-top: var(--esp-5);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+}
+.sobre__referencias {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-3);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sobre__referencias span { margin-left: var(--esp-2); }
+@media (min-width: 64rem) {
+  .sobre__grade { grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr); }
+  .sobre__base { position: sticky; top: calc(var(--altura-cabecalho) + var(--esp-5)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sobre__acao:active { transform: none; }
+}
+
 /* ---------- Portas de entrada ---------- */
 /* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
 .portas {
