@@ -364,6 +364,8 @@ async function iniciar() {
 function montarCatalogo() {
   const parametros = new URLSearchParams(location.search);
   estado = filtros.lerDaUrl(parametros);
+  el('#titulo-catalogo').textContent = dados.meta.titulo;
+  el('#catalogo-intro').textContent = dados.meta.subtitulo;
 
   const painel = el('#painel-filtros');
   const pendentes = [];
