@@ -59,7 +59,7 @@
 
   /* Tipografia */
   --fonte-texto: 'Source Sans 3', system-ui, sans-serif;
-  --fonte-titulo: 'Bitter', Georgia, serif;
+  --fonte-titulo: 'Creato Display', Georgia, serif;
   --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
   /* Entre letras. Texto grande pede aperto, rótulo em caixa alta pede folga */
   --entre-letras-faixa: -0.03em;
