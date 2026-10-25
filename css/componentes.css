@@ -558,14 +558,25 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-4);
+  justify-items: center;
 }
-@media (min-width: 48rem) {
-  .cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* Antes da grade dupla o cartão mantém uma medida de leitura. Assim não vira
+   um painel largo demais nos tamanhos intermediários, como um tablet em pé. */
+.cartoes > li {
+  display: flex;
+  width: min(100%, var(--largura-cartao-unico));
+  min-width: 0;
+}
+@media (min-width: 40rem) {
+  .cartoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+  }
+  .cartoes > li { width: 100%; }
 }
 @media (min-width: 76rem) {
   .cartoes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
-.cartoes > li { display: flex; min-width: 0; }
 .cartao {
   --cor-cartao-natureza: var(--cor-acento);
   --cor-cartao-natureza-fundo: var(--cor-acento-fundo);
@@ -585,6 +596,12 @@
     border-color var(--dur-rapida) var(--curva),
     box-shadow var(--dur-hover) var(--curva),
     transform var(--dur-hover) var(--curva-saida);
+}
+@media (max-width: 39.99rem) {
+  .cartao {
+    min-height: var(--altura-cartao-catalogo-compacto);
+    padding: var(--esp-4);
+  }
 }
 @media (hover: hover) and (pointer: fine) {
   .cartao:hover {

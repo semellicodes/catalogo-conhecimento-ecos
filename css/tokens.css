@@ -95,12 +95,14 @@
   --largura-cheia: 100%;
   --largura-texto: 68ch;
   --largura-explorar: 70rem;
+  --largura-cartao-unico: 32rem;
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
   --largura-min-busca: 16rem;
   --altura-diagrama-abertura: 12rem;
   --tam-rotulo-metrica: 0.6875rem;
   --altura-cartao-catalogo: 20rem;
+  --altura-cartao-catalogo-compacto: 18rem;
   --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
