@@ -567,7 +567,7 @@
   width: min(100%, var(--largura-cartao-unico));
   min-width: 0;
 }
-@media (min-width: 40rem) {
+@media (min-width: 34rem) {
   .cartoes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-items: stretch;
@@ -597,7 +597,7 @@
     box-shadow var(--dur-hover) var(--curva),
     transform var(--dur-hover) var(--curva-saida);
 }
-@media (max-width: 39.99rem) {
+@media (max-width: 33.99rem) {
   .cartao {
     min-height: var(--altura-cartao-catalogo-compacto);
     padding: var(--esp-4);
