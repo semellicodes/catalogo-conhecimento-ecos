@@ -4,17 +4,16 @@
 .abertura {
   background: var(--cor-faixa);
   color: var(--cor-faixa-texto);
-  padding-block: var(--esp-7);
+  padding-block: var(--esp-abertura);
   border-bottom: 1px solid var(--cor-faixa-linha);
 }
 .abertura__interno {
   display: grid;
-  gap: var(--esp-7);
+  gap: var(--esp-abertura-interno);
   align-items: center;
 }
 @media (min-width: 64rem) {
-  .abertura { padding-block: var(--esp-8); min-height: var(--altura-faixa); display: flex; align-items: center; }
-  .abertura__interno { grid-template-columns: minmax(0, 1fr) minmax(18rem, var(--largura-painel-abertura)); }
+  .abertura__interno { grid-template-columns: minmax(0, 1fr) minmax(20rem, var(--largura-painel-abertura)); }
 }
 .abertura__conteudo {
   display: grid;
@@ -109,12 +108,12 @@
   color: var(--cor-faixa-suave);
 }
 
-.secao { padding-block: var(--esp-8); }
+.secao { padding-block: var(--esp-secao); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
    de que se destacar no tema claro. */
-.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-miolo); }
+.secao-catalogo { padding-block: var(--esp-secao); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 /* ---------- Explorar ---------- */

@@ -80,10 +80,7 @@ button, input, select {
   width: 100%;
   max-width: var(--largura-max);
   margin-inline: auto;
-  padding-inline: var(--esp-4);
-}
-@media (min-width: 48rem) {
-  .container { padding-inline: var(--esp-6); }
+  padding-inline: clamp(var(--esp-4), 3vw, var(--esp-6));
 }
 
 .mono { font-family: var(--fonte-mono); }

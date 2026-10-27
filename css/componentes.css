@@ -21,7 +21,9 @@
 .marca { grid-area: marca; }
 .navegacao { grid-area: nav; }
 .botao-tema { grid-area: tema; }
-@media (min-width: 48rem) {
+/* A linha única só entra quando marca, links e tema cabem juntos. Antes disso,
+   a navegação conserva a própria linha e pode rolar, sem dobrar o cabeçalho. */
+@media (min-width: 72rem) {
   .cabecalho__interno {
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "marca nav tema";
@@ -52,7 +54,12 @@
 }
 .marca__nome strong { font-weight: 600; color: var(--cor-acento); }
 @media (max-width: 29.99rem) {
-  .marca__nome { font-size: var(--tam-xs); }
+  .marca__nome {
+    font-size: var(--tam-xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 /* ---------- Interruptor de tema ---------- */
@@ -127,7 +134,7 @@
   :root.trocando-tema .interruptor__deslizante { transition: none; }
 }
 
-.navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
+.navegacao { display: flex; gap: var(--esp-1); }
 .navegacao a {
   display: flex;
   align-items: center;
@@ -139,16 +146,9 @@
   border-bottom: 2px solid transparent;
   transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
-/* Cinco itens mais o interruptor de tema só cabem numa linha até certa largura.
-   Abaixo dela a navegação se aperta, em vez de quebrar e dobrar o cabeçalho. */
-@media (max-width: 63.99rem) {
-  .navegacao { gap: 0; }
-  .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
-}
-/* Com seis itens o celular não comporta todos numa linha nem apertando. Em vez
-   de quebrar em duas e dobrar a altura do cabeçalho, a navegação rola de lado. */
-@media (max-width: 47.99rem) {
+@media (max-width: 71.99rem) {
   .navegacao {
+    justify-self: stretch;
     flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
@@ -156,6 +156,12 @@
   }
   .navegacao::-webkit-scrollbar { display: none; }
   .navegacao a { flex: none; }
+}
+/* Em larguras médias, a navegação reduz a densidade, sem tentar comprimir o
+   conteúdo da marca ou deixar os itens quebrarem em uma segunda linha. */
+@media (max-width: 71.99rem) {
+  .navegacao { gap: 0; }
+  .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
 }
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
@@ -253,7 +259,7 @@
   max-width: 56rem;
   margin-inline: auto;
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 .pessoa { display: grid; justify-items: center; gap: var(--esp-1); }
@@ -585,7 +591,6 @@
   grid-template-rows: auto auto minmax(0, 1fr) auto;
   gap: var(--esp-3);
   width: 100%;
-  min-height: var(--altura-cartao-catalogo);
   padding: var(--esp-5);
   background: var(--cor-cartao-catalogo);
   border: var(--borda);
@@ -597,12 +602,7 @@
     box-shadow var(--dur-hover) var(--curva),
     transform var(--dur-hover) var(--curva-saida);
 }
-@media (max-width: 33.99rem) {
-  .cartao {
-    min-height: var(--altura-cartao-catalogo-compacto);
-    padding: var(--esp-4);
-  }
-}
+@media (max-width: 33.99rem) { .cartao { padding: var(--esp-4); } }
 @media (hover: hover) and (pointer: fine) {
   .cartao:hover {
     background: var(--cor-cartao-catalogo-hover);
