@@ -20,7 +20,7 @@
 @media (min-width: 64rem) {
   .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
 }
-@media (max-width: 63.99rem) {
+@media (max-width: 47.99rem) {
   .abertura__interno,
   .abertura__principal { gap: var(--esp-5); }
   .abertura__painel {
@@ -30,8 +30,19 @@
   .abertura__diagrama { height: var(--altura-diagrama-abertura-compacto); }
 }
 @media (min-width: 48rem) and (max-width: 63.99rem) {
-  .abertura__titulo { max-width: 23ch; }
-  .abertura__resumo { max-width: 56ch; }
+  .abertura { padding-block: var(--esp-6); }
+  .abertura__interno { gap: var(--esp-4); }
+  .abertura__principal {
+    grid-template-columns: minmax(0, 1.3fr) minmax(var(--largura-min-coluna-abertura-intermediaria), 0.7fr);
+    gap: var(--esp-6);
+  }
+  .abertura__titulo { max-width: 20ch; }
+  .abertura__resumo { max-width: 42ch; }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-intermediario);
+    justify-self: end;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-intermediario); }
 }
 .abertura__conteudo {
   display: grid;
