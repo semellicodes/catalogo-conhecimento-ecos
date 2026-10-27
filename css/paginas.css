@@ -57,26 +57,6 @@
   padding: var(--esp-5);
   color: var(--cor-faixa-suave);
 }
-/* Em larguras intermediárias, a síntese visual abre a faixa. Assim o diagrama
-   e os números não parecem um apêndice depois de um bloco alto de texto. */
-@media (max-width: 63.99rem) {
-  .abertura {
-    padding-block: var(--esp-6);
-  }
-  .abertura__interno {
-    gap: var(--esp-6);
-  }
-  .abertura__painel {
-    order: -1;
-  }
-  .abertura__diagrama {
-    height: var(--altura-diagrama-abertura-compacto);
-    padding: var(--esp-4);
-  }
-  .abertura__conteudo {
-    gap: var(--esp-3);
-  }
-}
 /* Botão claro sobre a faixa escura. Não usa .botao porque aquele é da
    superfície da página e aqui o fundo é a faixa. */
 .abertura__entrar {
