@@ -56,6 +56,7 @@
   /* Profundidade. No escuro quem separa é a borda, então a sombra quase não entra */
   --sombra-1: none;
   --sombra-2: 0 16px 40px rgb(0 0 0 / 0.55);
+  --sombra-menu: 0 8px 20px rgb(0 0 0 / 0.22);
 
   /* Tipografia */
   --fonte-texto: 'Source Sans 3', system-ui, sans-serif;
@@ -93,6 +94,7 @@
   --esp-secao: clamp(2.5rem, 6vw, 4rem);
   --esp-abertura: clamp(2.5rem, 5vw, 4rem);
   --esp-abertura-interno: clamp(2rem, 5vw, 3rem);
+  --esp-cabecalho-lateral: clamp(1.25rem, 4vw, var(--esp-5));
 
   /* Medida */
   --largura-max: 1240px;
@@ -103,11 +105,13 @@
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
   --largura-painel-abertura-compacto: 24rem;
-  --largura-menu: 15rem;
+  --largura-menu: 14rem;
+  --largura-interruptor: 4.25rem;
   --largura-min-busca: 16rem;
   --altura-diagrama-abertura: clamp(9rem, 18vw, 12rem);
   --altura-diagrama-abertura-compacto: 11rem;
   --tam-rotulo-metrica: 0.6875rem;
+  --tam-icone-controle: 1.125rem;
   --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
@@ -193,4 +197,5 @@
 
   --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
   --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
+  --sombra-menu: 0 3px 10px rgb(16 24 40 / 0.08);
 }
