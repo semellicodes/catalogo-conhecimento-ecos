@@ -101,6 +101,7 @@
   --largura-cartao-unico: 28rem;
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
+  --largura-menu: 17rem;
   --largura-min-busca: 16rem;
   --altura-diagrama-abertura: clamp(9rem, 18vw, 12rem);
   --tam-rotulo-metrica: 0.6875rem;

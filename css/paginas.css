@@ -12,10 +12,18 @@
   gap: var(--esp-abertura-interno);
   align-items: center;
 }
-@media (min-width: 48rem) {
-  .abertura__interno {
-    grid-template-columns: minmax(0, 1.1fr) minmax(17rem, 0.9fr);
-  }
+.abertura__principal {
+  display: grid;
+  gap: var(--esp-abertura-interno);
+  align-items: center;
+}
+@media (min-width: 64rem) {
+  .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
+}
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .abertura__titulo { max-width: 23ch; }
+  .abertura__resumo { max-width: 56ch; }
+  .abertura__painel { max-width: var(--largura-painel-abertura); justify-self: center; }
 }
 .abertura__conteudo {
   display: grid;
@@ -82,23 +90,16 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: auto;
-  row-gap: 0;
-  background: var(--cor-faixa-painel-profundo);
-}
-@media (min-width: 48rem) {
-  .numeros { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .numero__rotulo { white-space: nowrap; }
+  gap: var(--esp-2);
 }
 .numero {
   display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 2;
-  align-content: start;
+  align-content: center;
   padding: var(--esp-3) var(--esp-4);
-  border-left: 1px solid var(--cor-faixa-linha);
+  background: var(--cor-faixa-painel);
+  border: 1px solid var(--cor-faixa-linha);
+  border-radius: var(--raio);
 }
-.numero:first-child { border-left: 0; }
 .numero__valor {
   font-family: var(--fonte-mono);
   font-size: var(--tam-titulo);
@@ -109,6 +110,7 @@
   margin-top: var(--esp-1);
   font-size: var(--tam-rotulo-metrica);
   color: var(--cor-faixa-suave);
+  line-height: 1.35;
 }
 
 .secao { padding-block: var(--esp-secao); }
@@ -343,7 +345,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
 .portas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
   gap: var(--esp-5);
 }
 .porta {
