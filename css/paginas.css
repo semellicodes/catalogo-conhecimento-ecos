@@ -20,7 +20,7 @@
 @media (min-width: 64rem) {
   .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
 }
-@media (max-width: 47.99rem) {
+@media (max-width: 43.99rem) {
   .abertura__interno,
   .abertura__principal { gap: var(--esp-5); }
   .abertura__painel {
@@ -29,15 +29,33 @@
   }
   .abertura__diagrama { height: var(--altura-diagrama-abertura-compacto); }
 }
-@media (min-width: 48rem) and (max-width: 63.99rem) {
+/* Entre celular e notebook a abertura recebe duas composições próprias. A
+   ilustração entra ao lado do texto só depois de haver uma coluna textual
+   legível, em vez de herdar a grade ampla do desktop. */
+@media (min-width: 44rem) and (max-width: 56.99rem) {
   .abertura { padding-block: var(--esp-6); }
   .abertura__interno { gap: var(--esp-4); }
   .abertura__principal {
-    grid-template-columns: minmax(0, 1.3fr) minmax(var(--largura-min-coluna-abertura-intermediaria), 0.7fr);
-    gap: var(--esp-6);
+    grid-template-columns: minmax(0, 1.55fr) minmax(var(--largura-min-coluna-abertura-tablet), 0.45fr);
+    gap: var(--esp-5);
   }
-  .abertura__titulo { max-width: 20ch; }
-  .abertura__resumo { max-width: 42ch; }
+  .abertura__titulo { max-width: 21ch; }
+  .abertura__resumo { max-width: 40ch; }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-tablet);
+    justify-self: end;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-tablet); }
+}
+@media (min-width: 57rem) and (max-width: 63.99rem) {
+  .abertura { padding-block: var(--esp-7); }
+  .abertura__interno { gap: var(--esp-5); }
+  .abertura__principal {
+    grid-template-columns: minmax(0, 1.1fr) minmax(var(--largura-min-coluna-abertura-intermediaria), 0.9fr);
+    gap: var(--esp-7);
+  }
+  .abertura__titulo { max-width: 22ch; }
+  .abertura__resumo { max-width: 44ch; }
   .abertura__painel {
     max-width: var(--largura-painel-abertura-intermediario);
     justify-self: end;
@@ -372,8 +390,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
 .portas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-5);
+}
+@media (min-width: 42rem) {
+  .portas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 70rem) {
+  .portas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .porta {
   display: grid;

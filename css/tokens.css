@@ -105,13 +105,16 @@
   --largura-dialogo: 47.5rem;
   --largura-painel-abertura: 32rem;
   --largura-painel-abertura-compacto: 24rem;
+  --largura-painel-abertura-tablet: 14rem;
   --largura-painel-abertura-intermediario: 18rem;
+  --largura-min-coluna-abertura-tablet: 12rem;
   --largura-min-coluna-abertura-intermediaria: 14rem;
   --largura-menu: 14rem;
   --largura-interruptor: 4.25rem;
   --largura-min-busca: 16rem;
   --altura-diagrama-abertura: clamp(9rem, 18vw, 12rem);
   --altura-diagrama-abertura-compacto: 11rem;
+  --altura-diagrama-abertura-tablet: 9rem;
   --altura-diagrama-abertura-intermediario: 10rem;
   --tam-rotulo-metrica: 0.6875rem;
   --tam-icone-controle: 1.125rem;
