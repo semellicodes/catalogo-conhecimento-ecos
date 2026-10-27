@@ -12,8 +12,10 @@
   gap: var(--esp-abertura-interno);
   align-items: center;
 }
-@media (min-width: 64rem) {
-  .abertura__interno { grid-template-columns: minmax(0, 1fr) minmax(20rem, var(--largura-painel-abertura)); }
+@media (min-width: 48rem) {
+  .abertura__interno {
+    grid-template-columns: minmax(0, 1.1fr) minmax(17rem, 0.9fr);
+  }
 }
 .abertura__conteudo {
   display: grid;
@@ -32,15 +34,16 @@
   font-size: var(--tam-titulo);
   line-height: 1.05;
   letter-spacing: var(--entre-letras-faixa);
-  max-width: 20ch;
+  max-width: 19ch;
 }
 .abertura__resumo {
   font-size: var(--tam-base);
   line-height: 1.6;
   color: var(--cor-faixa-suave);
-  max-width: 62ch;
+  max-width: 48ch;
 }
 .abertura__painel {
+  align-self: center;
   width: 100%;
   overflow: hidden;
   background: var(--cor-faixa-painel);

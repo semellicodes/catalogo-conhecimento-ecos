@@ -15,10 +15,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/tokens.css?v=20261027-3">
-<link rel="stylesheet" href="css/base.css?v=20261027-3">
-<link rel="stylesheet" href="css/componentes.css?v=20261027-3">
-<link rel="stylesheet" href="css/paginas.css?v=20261027-3">
+<link rel="stylesheet" href="css/tokens.css?v=20261027-4">
+<link rel="stylesheet" href="css/base.css?v=20261027-4">
+<link rel="stylesheet" href="css/componentes.css?v=20261027-4">
+<link rel="stylesheet" href="css/paginas.css?v=20261027-4">
 </head>
 <body>
 <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
@@ -36,7 +36,7 @@
       </svg>
       <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
     </a>
-    <nav class="navegacao" aria-label="Principal">
+    <nav class="navegacao" id="navegacao-principal" aria-label="Principal">
       <a href="index.html#inicio">Início</a>
       <a href="index.html#estrutura">Estrutura</a>
       <a href="index.html#catalogo">Catálogo</a>
@@ -45,7 +45,12 @@
       <a href="sobre.html" aria-current="page">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
-    <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    <div class="cabecalho__acoes">
+      <button class="menu" id="botao-menu" type="button" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+      <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    </div>
   </div>
 </header>
 
@@ -123,6 +128,7 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
+<script type="module" src="js/menu.js?v=20261027-4"></script>
 <script type="module" src="js/sobre.js"></script>
 </body>
 </html>
