@@ -184,8 +184,8 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     width: min(100%, var(--largura-menu));
-    gap: var(--esp-1);
-    padding: var(--esp-2);
+    gap: var(--esp-0);
+    padding: var(--esp-1);
     background: var(--cor-superficie);
     border: var(--borda);
     border-radius: var(--raio);

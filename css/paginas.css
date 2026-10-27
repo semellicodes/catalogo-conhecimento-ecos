@@ -20,15 +20,23 @@
 @media (min-width: 64rem) {
   .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
 }
+@media (max-width: 63.99rem) {
+  .abertura__interno,
+  .abertura__principal { gap: var(--esp-5); }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-compacto);
+    justify-self: center;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-compacto); }
+}
 @media (min-width: 48rem) and (max-width: 63.99rem) {
   .abertura__titulo { max-width: 23ch; }
   .abertura__resumo { max-width: 56ch; }
-  .abertura__painel { max-width: var(--largura-painel-abertura); justify-self: center; }
 }
 .abertura__conteudo {
   display: grid;
   justify-items: start;
-  gap: var(--esp-4);
+  gap: var(--esp-3);
 }
 .abertura__olho {
   font-family: var(--fonte-mono);
@@ -72,8 +80,9 @@
 .abertura__entrar {
   display: inline-flex;
   align-items: center;
+  gap: var(--esp-2);
   min-height: var(--alvo-toque);
-  margin-top: var(--esp-2);
+  margin-top: var(--esp-1);
   padding-inline: var(--esp-5);
   background: var(--cor-faixa-texto);
   color: var(--cor-faixa);
@@ -81,10 +90,17 @@
   font-size: var(--tam-sm);
   font-weight: 600;
   text-decoration: none;
-  transition: background-color var(--dur-rapida) var(--curva);
+  transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
 .abertura__entrar:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
 .abertura__entrar:focus-visible { outline-offset: var(--esp-1); }
+.abertura__entrar::after {
+  content: "→";
+  transition: transform var(--dur-rapida) var(--curva-saida);
+}
+@media (hover: hover) and (pointer: fine) {
+  .abertura__entrar:hover::after { transform: translateX(var(--esp-1)); }
+}
 
 .numeros {
   width: 100%;
