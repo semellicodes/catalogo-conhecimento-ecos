@@ -20,19 +20,6 @@ function criar(tag, className, texto) {
 
 /* ---------- Classificação, em caixas ---------- */
 
-/** Fecha qualquer nota de atributo aberta, venha o pedido de onde vier. */
-function fecharNotas() {
-  document.querySelectorAll('.ajuda[data-aberto]').forEach((item) => {
-    item.removeAttribute('data-aberto');
-    item.querySelector('.ajuda__abrir').setAttribute('aria-expanded', 'false');
-  });
-}
-
-/* Clicar fora fecha a nota aberta. Um ouvinte só, para a ficha inteira. */
-document.addEventListener('click', (evento) => {
-  if (!evento.target.closest('.ajuda')) fecharNotas();
-});
-
 /**
  * Uma fileira de caixas, uma por valor possível do atributo. A que vale fica
  * acesa e as outras apagadas, porque saber que um valor não se aplica também é
@@ -156,51 +143,45 @@ function tiposDeEcosInterativos(definicao, conhecimento) {
 }
 
 /**
- * O botão de ajuda da seção. Um por bloco, no canto, em vez de um por atributo,
- * e a nota reúne a pergunta e a referência de cada atributo que o bloco mostra.
+ * O botão de ajuda abre uma explicação completa em vez de apertar detalhes em
+ * uma nota flutuante ao lado do cartão.
  */
-function ajuda(dados, chaves) {
-  const raiz = criar('div', 'ajuda');
+function ajuda(dados, chave) {
+  const conteudo = dados.meta.ajudas?.[chave];
+  if (!conteudo) return document.createDocumentFragment();
 
+  const raiz = criar('div', 'ajuda');
   const botao = criar('button', 'ajuda__abrir', '?');
   botao.type = 'button';
-  botao.setAttribute('aria-expanded', 'false');
-  botao.setAttribute('aria-label', 'Sobre esta classificação');
-
-  const nota = criar('div', 'ajuda__nota');
-  chaves.forEach((chave) => {
-    const definicao = dados.classificacoes[chave];
-    const item = criar('div', 'ajuda__item');
-    item.append(
-      criar('p', 'ajuda__nome', definicao.rotulo),
-      criar('p', 'ajuda__pergunta', definicao.pergunta)
-    );
-    const ref = referenciaCurta(dados, definicao.referencia);
-    if (ref) item.append(criar('p', 'ajuda__referencia', ref));
-    nota.append(item);
-  });
-
-  botao.addEventListener('click', () => {
-    const aberto = raiz.hasAttribute('data-aberto');
-    fecharNotas();
-    if (!aberto) {
-      raiz.setAttribute('data-aberto', '');
-      botao.setAttribute('aria-expanded', 'true');
-    }
-  });
-
-  raiz.append(botao, nota);
+  botao.setAttribute('aria-label', `Saiba mais sobre ${conteudo.titulo}`);
+  botao.addEventListener('click', () => abrirAjuda(dados, conteudo));
+  raiz.append(botao);
   return raiz;
 }
 
+/** Mantém um único diálogo de ajuda e preenche-o com conteúdo vindo de dados/. */
+function abrirAjuda(dados, conteudo) {
+  const dialogo = document.querySelector('#dialogo-ajuda');
+  if (!dialogo) return;
+
+  document.querySelector('#dialogo-ajuda-titulo').textContent = conteudo.titulo;
+  document.querySelector('#dialogo-ajuda-texto').textContent = conteudo.texto;
+  const fonte = document.querySelector('#dialogo-ajuda-fonte');
+  const referencia = referenciaCurta(dados, conteudo.referencia);
+  fonte.hidden = !referencia;
+  fonte.textContent = referencia ? `Fonte: ${referencia}` : '';
+  dialogo.showModal();
+  document.querySelector('#fechar-ajuda').focus({ preventScroll: true });
+}
+
 /** Uma seção da ficha, com título, linha opcional de apoio e ajuda. */
-function secao(dados, titulo, chavesDeAjuda, linhaDeApoio) {
+function secao(dados, titulo, chaveDaAjuda, linhaDeApoio) {
   const bloco = criar('section', 'bloco-ficha');
   const topo = criar('header', 'bloco-ficha__topo');
   const textos = criar('div', 'bloco-ficha__textos');
   textos.append(criar('h3', 'bloco-ficha__titulo', titulo));
   if (linhaDeApoio) textos.append(criar('p', 'bloco-ficha__esquema', linhaDeApoio));
-  topo.append(textos, ajuda(dados, chavesDeAjuda));
+  topo.append(textos, ajuda(dados, chaveDaAjuda));
   bloco.append(topo);
   return bloco;
 }
@@ -218,7 +199,7 @@ const ESQUEMA = 'Segundo os esquemas adotados na revisão';
  * duas linhas, e empurrava as abas para fora da primeira tela no celular.
  */
 function classificacao(dados, conhecimento) {
-  const bloco = secao(dados, 'Classificação do conhecimento', CLASSIFICACAO, ESQUEMA);
+  const bloco = secao(dados, 'Classificação do conhecimento', 'classificacao', ESQUEMA);
 
   const grade = criar('dl', 'classificacao');
   CLASSIFICACAO.forEach((chave) => {
@@ -241,7 +222,7 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', ['tipoEcos']);
+  const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', 'tipoEcos');
   bloco.append(...tiposDeEcosInterativos(dados.classificacoes.tipoEcos, conhecimento));
   return bloco;
 }
@@ -258,7 +239,7 @@ const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || ''
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
-  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', ['acaoGerencia']);
+  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');
 
   if (dados.meta.gerenciaConhecimento) {
@@ -340,8 +321,10 @@ function estudos(conhecimento) {
 
 /* ---------- Abas ---------- */
 
-function montarAbas(itens) {
+function montarAbas(dados, itens) {
   const raiz = criar('div', 'abas');
+  const topo = criar('header', 'abas__topo');
+  const titulo = criar('h3', 'abas__titulo');
   const barra = criar('div', 'abas__barra');
   barra.setAttribute('role', 'tablist');
   const indicador = criar('span', 'abas__indicador');
@@ -382,13 +365,16 @@ function montarAbas(itens) {
   }
 
   function trocar(indice) {
+    const item = itens[indice];
     botoes.forEach((b, i) => {
       const ativa = i === indice;
       b.setAttribute('aria-selected', String(ativa));
       b.tabIndex = ativa ? 0 : -1;
     });
+    titulo.textContent = item.titulo;
+    topo.replaceChildren(titulo, ajuda(dados, item.ajuda));
     painel.setAttribute('aria-labelledby', botoes[indice].id);
-    painel.replaceChildren(itens[indice].conteudo());
+    painel.replaceChildren(item.conteudo());
     posicionar(indice);
     if (!reduzido()) {
       painel.animate([{ opacity: 0, transform: `translateY(${tokenDeMovimento('--esp-1')})` }, { opacity: 1, transform: 'none' }], {
@@ -401,7 +387,9 @@ function montarAbas(itens) {
   barra.append(...botoes, indicador);
   painel.setAttribute('aria-labelledby', botoes[0].id);
   painel.replaceChildren(itens[0].conteudo());
-  raiz.append(barra, painel);
+  titulo.textContent = itens[0].titulo;
+  topo.append(titulo, ajuda(dados, itens[0].ajuda));
+  raiz.append(topo, barra, painel);
   /* O indicador só tem medida depois que a barra está no documento. */
   requestAnimationFrame(() => posicionar(0));
   return raiz;
@@ -420,9 +408,9 @@ export function renderizar(dados, conhecimento) {
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
     gerencia(dados, conhecimento),
-    montarAbas([
-      { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
-      { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) }
+    montarAbas(dados, [
+      { rotulo: 'Desafios', titulo: 'Desafios relacionados', ajuda: 'desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
+      { rotulo: 'Estudos', titulo: 'Estudos primários', ajuda: 'estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) }
     ])
   ];
   raiz.append(...secoes);

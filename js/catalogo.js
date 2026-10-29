@@ -293,7 +293,12 @@ function ligarFolhaDeFiltros() {
 
 function ligarDialogo() {
   const dialogo = el('#dialogo-ficha');
+  const ajuda = el('#dialogo-ajuda');
   el('#fechar-ficha').addEventListener('click', () => dialogo.close());
+  el('#fechar-ajuda').addEventListener('click', () => ajuda.close());
+  ajuda.addEventListener('click', (evento) => {
+    if (evento.target === ajuda) ajuda.close();
+  });
   el('#ficha-anterior').addEventListener('click', () => irPara(-1));
   el('#ficha-proximo').addEventListener('click', () => irPara(1));
   dialogo.addEventListener('close', () => {

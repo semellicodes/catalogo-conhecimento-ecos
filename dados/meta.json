@@ -3,6 +3,33 @@
   "subtitulo": "Conhecimentos que precisam ser gerenciados em ECOS, com as evidências que os sustentam",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "Esta seção indica de onde o conhecimento tende a ser gerado ou registrado, quais atores podem se beneficiar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação no ecossistema.",
+  "ajudas": {
+    "classificacao": {
+      "titulo": "Classificação do conhecimento",
+      "texto": "A classificação reúne três perspectivas complementares adotadas na revisão. A natureza epistemológica indica se o conhecimento pode ser formalizado ou se depende de percepções, experiência e saber fazer. O nível no ECOS mostra se ele se situa no produto, na plataforma ou nas relações do ecossistema. A dimensão do ECOS aponta se seu foco é técnico, de negócio ou social. A combinação desses critérios descreve como o conhecimento se manifesta e onde ele circula.",
+      "referencia": "nonaka1997, alavi2001, johnson2020, kauschinger2021, santos2011"
+    },
+    "tipoEcos": {
+      "titulo": "Exemplos de ecossistemas observados",
+      "texto": "Este bloco mostra em quais tipos de ecossistema o conhecimento foi observado nos estudos primários. Código aberto, proprietário e híbrido são tipos distintos de ECOS. Um tipo só é marcado quando a observação está registrada para aquele conhecimento. Uma caixa apagada não significa que o conhecimento não possa ocorrer nesse tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
+      "referencia": "manikas2016"
+    },
+    "gerencia": {
+      "titulo": "Gerência do conhecimento no ECOS",
+      "texto": "Em ecossistemas de software, o conhecimento atravessa organizações, projetos, plataformas e comunidades. Por isso, o bloco apresenta as principais fontes em que ele tende a ser produzido ou registrado, os principais receptores que podem precisar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação. Esses campos não atribuem posse do conhecimento a um único ator.",
+      "referencia": "kauschinger2021"
+    },
+    "desafios": {
+      "titulo": "Desafios relacionados ao conhecimento",
+      "texto": "Esta aba reúne somente os desafios cuja ligação com este conhecimento foi confirmada durante a conferência dos estudos primários. Quando não há itens, isso significa que a base não preservou uma relação específica e comprovada para este conhecimento. Não significa que ele esteja livre de desafios no ecossistema.",
+      "referencia": "campos2026"
+    },
+    "estudos": {
+      "titulo": "Estudos primários",
+      "texto": "Esta aba apresenta os estudos selecionados na revisão rápida que identificaram este conhecimento. Eles formam a base de evidências do catálogo. A lista informa título, autoria, ano e país para que a origem do achado possa ser consultada nas referências.",
+      "referencia": "cartaxo2018, cartaxo2020"
+    }
+  },
   "totalEstudos": 18,
   "atualizadoEm": "2026-10-07",
   "camadas": [

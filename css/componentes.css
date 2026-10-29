@@ -749,8 +749,8 @@
   color: var(--cor-acento);
 }
 
-/* A ajuda da seção. Um botão por bloco, e a nota sai dele. */
-.ajuda { position: relative; flex: none; }
+/* A ajuda abre uma explicação detalhada em diálogo, sem disputar espaço com a ficha. */
+.ajuda { flex: none; }
 .ajuda__abrir {
   display: grid;
   place-items: center;
@@ -772,41 +772,6 @@
 }
 .ajuda__abrir:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
 .ajuda__abrir:active { transform: scale(0.92); }
-.ajuda__nota {
-  position: absolute;
-  top: calc(100% + var(--esp-2));
-  right: 0;
-  z-index: 2;
-  display: grid;
-  gap: var(--esp-3);
-  width: max-content;
-  max-width: min(26rem, 70vw);
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-2);
-  text-align: left;
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.97) translateY(-2px);
-  transform-origin: top right;
-  transition:
-    opacity var(--dur-rapida) var(--curva-saida),
-    transform var(--dur-rapida) var(--curva-saida),
-    visibility var(--dur-rapida);
-}
-.ajuda[data-aberto] .ajuda__nota { opacity: 1; visibility: visible; transform: none; }
-.ajuda__item { display: grid; gap: var(--esp-1); }
-.ajuda__nome {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-}
-.ajuda__pergunta { font-size: var(--tam-sm); color: var(--cor-texto); font-style: italic; }
-.ajuda__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
    porque saber que um valor não se aplica também é informação. */
@@ -960,6 +925,20 @@
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
+}
+.abas__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-2);
+}
+.abas__titulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
 }
 .abas__barra {
   position: relative;
