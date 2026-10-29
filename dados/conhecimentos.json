@@ -20,11 +20,6 @@
       "E08",
       "E09"
     ],
-    "trechos": [
-      "E03 correção só alcança os pacotes cuja dependência os mantenedores conhecem",
-      "E08 conhecer previamente as dependências facilita a entrada do colaborador",
-      "E09 familiarizar-se com a plataforma envolve compreender as dependências dos módulos complementares"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -59,11 +54,6 @@
       "E07",
       "E09"
     ],
-    "trechos": [
-      "E06 desenvolvedores terceiros precisam adquirir amplo conhecimento específico da tecnologia antes de desenvolver",
-      "E07 a empresa nova precisa de tempo para se familiarizar com o produto e a arquitetura",
-      "E09 complementadores interagem com a plataforma para compreender sua infraestrutura e configuração arquitetural"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -74,18 +64,15 @@
     "evidencia": {
       "D01": {
         "estudo": "E06, E09",
-        "motivo": "Localizar o conhecimento já registrado sobre a plataforma é o obstáculo descrito",
-        "trecho": ""
+        "motivo": "Localizar o conhecimento já registrado sobre a plataforma é o obstáculo descrito"
       },
       "D09": {
         "estudo": "E06",
-        "motivo": "O paywall impede o acesso ao recurso que carrega esse conhecimento",
-        "trecho": ""
+        "motivo": "O paywall impede o acesso ao recurso que carrega esse conhecimento"
       },
       "D13": {
         "estudo": "E09",
-        "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento",
-        "trecho": ""
+        "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento"
       }
     },
     "justificativaClassificacao": "A arquitetura e as tecnologias de base da plataforma são classificadas como conhecimento explícito porque podem ser documentadas, transferidas e consultadas por quem desenvolve sobre ela. O nível Plataforma se aplica porque definem sua infraestrutura e configuração arquitetural. A dimensão Técnica foi selecionada porque esse conhecimento orienta a compatibilidade e a integração de produtos externos à base tecnológica comum.",
@@ -116,10 +103,6 @@
       "E06",
       "E12"
     ],
-    "trechos": [
-      "E06 o desenvolvedor terceiro busca sintaxe, parâmetros de função e estruturas de dados",
-      "E12 conhecimento complementar e especializado em autenticação, conectividade, banco de dados em nuvem e instalação"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -130,18 +113,15 @@
     "evidencia": {
       "D01": {
         "estudo": "E06",
-        "motivo": "A busca interna não localizar o artigo atinge exatamente a especificação procurada",
-        "trecho": ""
+        "motivo": "A busca interna não localizar o artigo atinge exatamente a especificação procurada"
       },
       "D09": {
         "estudo": "E06",
-        "motivo": "O paywall bloqueia o recurso que carrega a especificação",
-        "trecho": ""
+        "motivo": "O paywall bloqueia o recurso que carrega a especificação"
       },
       "D15": {
         "estudo": "E12",
-        "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento",
-        "trecho": ""
+        "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento"
       }
     },
     "justificativaClassificacao": "As especificações técnicas de implementação da plataforma são classificadas como conhecimento explícito porque podem ser registradas em documentação e disponibilizadas aos desenvolvedores. O nível Plataforma se aplica porque orientam a implementação de suas funcionalidades. A dimensão Técnica foi selecionada porque incluem autenticação, conectividade, estruturas de dados e demais tecnologias de implementação.",
@@ -177,10 +157,6 @@
       "E14",
       "E16"
     ],
-    "trechos": [
-      "E14 as informações de contexto são a base para julgar se um caso anterior é parecido o bastante",
-      "E16 documentar as decisões para que possam ser consultadas no futuro"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -189,8 +165,7 @@
     "evidencia": {
       "D17": {
         "estudo": "E14",
-        "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária",
-        "trecho": ""
+        "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária"
       }
     },
     "justificativaClassificacao": "As decisões arquiteturais anteriores e seu contexto são classificadas como conhecimento explícito porque podem ser documentados, localizados e reutilizados em novas situações. O nível Ecossistema se aplica porque decisões tomadas por uma organização podem orientar outras em contextos semelhantes. A dimensão Técnica foi selecionada porque esse conhecimento orienta escolhas arquiteturais e a evolução de soluções integradas.",
@@ -216,9 +191,6 @@
     "estudos": [
       "E05"
     ],
-    "trechos": [
-      "E05 o participante não entende por que a decisão precisa passar por todos os níveis de aprovação e a falta de diretrizes claras gera conflitos"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -228,13 +200,11 @@
     "evidencia": {
       "D04": {
         "estudo": "E05",
-        "motivo": "A mentalidade proprietária e a dominância percebida são sobre a dinâmica de poder do trecho",
-        "trecho": ""
+        "motivo": "A mentalidade proprietária e a dominância percebida são sobre a dinâmica de poder do trecho"
       },
       "D08": {
         "estudo": "E05",
-        "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento",
-        "trecho": ""
+        "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento"
       }
     },
     "justificativaClassificacao": "As regras e a estrutura de governança do ecossistema são classificadas como conhecimento explícito porque papéis, critérios de engajamento e regras de decisão podem ser formalizados e compartilhados. O nível Ecossistema se aplica porque estruturam a colaboração entre organizações participantes. A dimensão Técnica foi selecionada conforme a categorização adotada para os conhecimentos que organizam a operação do ecossistema.",
@@ -258,9 +228,6 @@
     ],
     "estudos": [
       "E07"
-    ],
-    "trechos": [
-      "E07 as diretrizes devem estar disponíveis com critérios claros, porque a rejeição no fim do processo desperdiça recursos"
     ],
     "pendencia": "",
     "relacoesConfirmadas": true,
@@ -289,9 +256,6 @@
     "estudos": [
       "E09"
     ],
-    "trechos": [
-      "E09 os complementadores investem muitos recursos para seguir os requisitos técnicos do dono da plataforma"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -300,8 +264,7 @@
     "evidencia": {
       "D13": {
         "estudo": "E09",
-        "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir",
-        "trecho": ""
+        "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir"
       }
     },
     "justificativaClassificacao": "Os requisitos técnicos impostos pela plataforma são classificados como conhecimento explícito porque requisitos de design, qualidade, teste e certificação podem ser registrados e comunicados. O nível Plataforma se aplica porque definem como produtos externos devem se adequar a ela. A dimensão Técnica foi selecionada porque trata de condições de implementação e de qualidade do software.",
@@ -326,9 +289,6 @@
     "estudos": [
       "E11"
     ],
-    "trechos": [
-      "E11 parte essencial do material de treinamento trata das diferenças entre processos e ferramentas dos dois níveis e precisa ser atualizado conforme os projetos evoluem"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -337,8 +297,7 @@
     "evidencia": {
       "D14": {
         "estudo": "E11",
-        "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento",
-        "trecho": ""
+        "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento"
       }
     },
     "justificativaClassificacao": "Os processos e as ferramentas nos níveis de ecossistema e projeto são classificados como conhecimento explícito porque seus fluxos de trabalho podem ser ensinados, atualizados e transferidos durante a integração de novos atores. O nível Ecossistema se aplica porque articulam práticas comuns e específicas de projetos participantes. A dimensão Técnica foi selecionada porque tratam da operação e da evolução dos projetos de software.",
@@ -364,9 +323,6 @@
     "estudos": [
       "E14"
     ],
-    "trechos": [
-      "E14 os métodos de boas práticas de decisão são conhecimento procedimental consolidado, melhor operacionalizado por módulos de software"
-    ],
     "pendencia": "Verificar se este conhecimento é específico de ECOS ou se é genérico de tomada de decisão",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -391,9 +347,6 @@
     "estudos": [
       "E10"
     ],
-    "trechos": [
-      "E10 o processo de diagnóstico fornece à equipe de gestão de TI informação sobre quais projetos geraram incidentes no ambiente produtivo"
-    ],
     "pendencia": "Único conhecimento sem nenhuma solução extraída no mesmo estudo",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -402,8 +355,7 @@
     "evidencia": {
       "D02": {
         "estudo": "E10",
-        "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10",
-        "trecho": "We noticed that, as a consequence of tacit knowledge concentrated on a few people, it results in low-quality software products and many defects."
+        "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10"
       }
     },
     "justificativaClassificacao": "Os projetos que geram incidentes na plataforma são classificados como conhecimento explícito porque os incidentes e seus projetos de origem podem ser registrados e relacionados. O nível Ecossistema se aplica porque um projeto pode comprometer a estabilidade compartilhada por outros participantes. A dimensão Técnica foi selecionada porque esse conhecimento apoia o monitoramento da plataforma e o diagnóstico de incidentes.",
@@ -427,9 +379,6 @@
     ],
     "estudos": [
       "E09"
-    ],
-    "trechos": [
-      "E09 para se diferenciar, o complementador acompanha como o mercado evolui e o quanto as necessidades já são atendidas"
     ],
     "pendencia": "",
     "relacoesConfirmadas": true,
@@ -462,11 +411,6 @@
       "E08",
       "E17"
     ],
-    "trechos": [
-      "E03 a ausência de agentes de ligação entre fronteiras agrava os atrasos na resolução de problemas",
-      "E08 reconhecer a expertise fica por conta do recrutador, já que nenhum mecanismo de busca oferece busca especializada",
-      "E17 o desenvolvedor preferiu pedir orientação a um colega que ele sabia que já tinha feito esse tipo de tarefa"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -477,18 +421,15 @@
     "evidencia": {
       "D02": {
         "estudo": "E08",
-        "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento",
-        "trecho": ""
+        "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento"
       },
       "D03": {
         "estudo": "E17",
-        "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca",
-        "trecho": "Finally, a particular composition is often shared among users who are involved in the same kind of task. The studies conclude by pointing “a clear lack of tools for supporting the various practices of collaboration with regard to appropriating/tailoring”."
+        "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca"
       },
       "D06": {
         "estudo": "E03",
-        "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12",
-        "trecho": "Given the significant time intervals between discussions on different issues, there is a potential for loss of knowledge and inefficient communication within the ecosystem due to the volume of conversations. It is impractical to rely solely on individuals who have been in the community for an extended period to manually create links and aggregate relevant information."
+        "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
       }
     },
     "justificativaClassificacao": "A expertise dos atores do ecossistema é classificada como conhecimento tácito-cognitivo porque reside nas experiências, percepções e competências reconhecidas entre os participantes. O nível Ecossistema se aplica porque permite localizar pessoas capazes de atuar entre diferentes comunidades. A dimensão Social foi selecionada porque depende das relações e da colaboração entre atores.",
@@ -516,10 +457,6 @@
       "E07",
       "E16"
     ],
-    "trechos": [
-      "E07 a decisão conjunta depende de construir entendimento das necessidades uns dos outros",
-      "E16 os desenvolvedores de aplicações priorizam escalabilidade e usabilidade, enquanto o governo se preocupa com segurança e conformidade"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -528,8 +465,7 @@
     "evidencia": {
       "D11": {
         "estudo": "E07",
-        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos atores, o mesmo objeto",
-        "trecho": ""
+        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos atores, o mesmo objeto"
       }
     },
     "justificativaClassificacao": "As necessidades e prioridades dos atores do ecossistema são classificadas como conhecimento tácito-cognitivo porque dependem das percepções e dos interesses de cada participante. O nível Ecossistema se aplica porque decisões coletivas exigem entendimento entre atores com demandas distintas. A dimensão Negócio foi selecionada porque essas prioridades orientam investimentos e atributos de qualidade da plataforma.",
@@ -555,9 +491,6 @@
     "estudos": [
       "E05"
     ],
-    "trechos": [
-      "E05 é difícil confiar em empresas pequenas por falta de competência, e a confiança se formou a partir das competências reconhecidas no desenvolvimento de código"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -566,8 +499,7 @@
     "evidencia": {
       "D04": {
         "estudo": "E05",
-        "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto",
-        "trecho": ""
+        "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto"
       }
     },
     "justificativaClassificacao": "A competência e confiabilidade dos atores do ecossistema são classificadas como conhecimento tácito-cognitivo porque são percebidas a partir das interações e da experiência acumulada. O nível Ecossistema se aplica porque influenciam relações entre organizações participantes. A dimensão Social foi selecionada porque sustentam confiança e legitimidade nas decisões coletivas.",
@@ -594,9 +526,6 @@
     "estudos": [
       "E12"
     ],
-    "trechos": [
-      "E12 os erros recorrentes indicam informação faltante, confusa ou desatualizada na documentação e mostram ao dono da plataforma onde esses atores travam"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -605,8 +534,7 @@
     "evidencia": {
       "D15": {
         "estudo": "E12",
-        "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada",
-        "trecho": ""
+        "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada"
       }
     },
     "justificativaClassificacao": "As dificuldades dos desenvolvedores externos são classificadas como conhecimento tácito-cognitivo porque se revelam nas interpretações, dúvidas e erros recorrentes desses desenvolvedores. O nível Plataforma se aplica porque esse conhecimento orienta seus recursos de apoio. A dimensão Negócio foi selecionada porque essas dificuldades afetam o esforço e a atuação dos contribuidores externos.",
@@ -630,9 +558,6 @@
     ],
     "estudos": [
       "E16"
-    ],
-    "trechos": [
-      "E16 os stakeholders precisam entender como as mudanças em um serviço de terceiro afetam o negócio em andamento"
     ],
     "pendencia": "Único conhecimento sem nenhum desafio extraído no mesmo estudo",
     "relacoesConfirmadas": true,
@@ -660,9 +585,6 @@
     "estudos": [
       "E17"
     ],
-    "trechos": [
-      "E17 em sistemas personalizáveis o conhecimento fica incorporado nas composições, e cada composição representa um ponto de vista que melhor atende a uma tarefa específica"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -671,8 +593,7 @@
     "evidencia": {
       "D03": {
         "estudo": "E17",
-        "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado",
-        "trecho": ""
+        "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado"
       }
     },
     "justificativaClassificacao": "As composições de componentes para tarefas específicas são classificadas como conhecimento tácito-cognitivo porque incorporam a experiência de quem avaliou o contexto de trabalho. O nível Produto se aplica porque orientam a execução de tarefas específicas. A dimensão Técnica foi selecionada porque tratam da combinação de componentes e configurações adequadas à tarefa.",
@@ -696,9 +617,6 @@
     ],
     "estudos": [
       "E03"
-    ],
-    "trechos": [
-      "E03 uma contribuição foi recusada por ser apenas um subconjunto de funcionalidades que já existiam em outro projeto, sem trazer funcionalidade complementar"
     ],
     "pendencia": "",
     "relacoesConfirmadas": true,
@@ -729,9 +647,6 @@
     "estudos": [
       "E06"
     ],
-    "trechos": [
-      "E06 o desenvolvedor busca problemas comparáveis e suas soluções, descartando respostas que não se encaixam no seu contexto ou ambiente"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -741,13 +656,11 @@
     "evidencia": {
       "D01": {
         "estudo": "E06",
-        "motivo": "O artigo diz que para resolver problema o desenvolvedor exige alta capacidade de busca, que é justamente o que falha no portal",
-        "trecho": "The third-party developer thus prefers knowledge boundary resources with high credibility and high searchability"
+        "motivo": "O artigo diz que para resolver problema o desenvolvedor exige alta capacidade de busca, que é justamente o que falha no portal"
       },
       "D10": {
         "estudo": "E06",
-        "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la",
-        "trecho": ""
+        "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la"
       }
     },
     "justificativaClassificacao": "Os problemas e soluções do ecossistema aplicáveis ao contexto são classificados como conhecimento tácito-técnico porque sua aplicação exige julgamento prático sobre a adequação ao contexto. O nível Ecossistema se aplica porque recuperam experiências de diferentes participantes. A dimensão Técnica foi selecionada porque apoiam a resolução de problemas de software.",
@@ -772,9 +685,6 @@
     "estudos": [
       "E04"
     ],
-    "trechos": [
-      "E04 o conhecimento experiencial é acumulado pela execução repetida de tarefas, e quem não o tem tem dificuldade de inovar por não entender bem as tecnologias existentes"
-    ],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [
@@ -783,8 +693,7 @@
     "evidencia": {
       "D07": {
         "estudo": "E04",
-        "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto",
-        "trecho": ""
+        "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto"
       }
     },
     "justificativaClassificacao": "A experiência externa com tecnologias do ecossistema é classificada como conhecimento tácito-técnico porque resulta da execução repetida de tarefas e se incorpora às habilidades e ao julgamento do ator. O nível Produto se aplica porque se manifesta no uso das tecnologias em tarefas concretas. A dimensão Técnica foi selecionada porque trata desse saber fazer.",

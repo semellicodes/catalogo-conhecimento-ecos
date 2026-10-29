@@ -1022,8 +1022,7 @@
 .relacao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
 .relacao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
-/* O porquê da relação. Cada parte só entra quando existe, então nada de lugar
-   vazio nos pares que não têm trecho literal, que são a maioria. */
+/* O porquê da relação. Cada parte só entra quando existe. */
 .relacao__porque {
   display: grid;
   gap: var(--esp-2);
@@ -1035,15 +1034,7 @@
   color: var(--cor-acento);
 }
 .relacao__motivo { color: var(--cor-texto-suave); }
-.relacao__trecho {
-  margin: 0;
-  padding-left: var(--esp-3);
-  border-left: 2px solid var(--cor-linha);
-  color: var(--cor-texto-suave);
-  font-style: italic;
-}
-
-/* ---------- Estudos e trechos ---------- */
+/* ---------- Estudos ---------- */
 .estudos { list-style: none; display: grid; gap: var(--esp-4); }
 .estudo {
   display: grid;
@@ -1053,18 +1044,6 @@
 }
 .estudo__corpo { display: grid; gap: var(--esp-1); }
 .estudo__meta { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.trechos { display: grid; gap: var(--esp-3); }
-.trecho {
-  margin: 0;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-left: 3px solid var(--cor-acento);
-  border-radius: var(--raio);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-}
-
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }

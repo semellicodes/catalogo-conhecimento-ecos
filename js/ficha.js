@@ -276,8 +276,7 @@ function gerencia(dados, conhecimento) {
 /**
  * Uma relação de desafio. A linha continua de uma linha só, e o
  * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
- * quiser saber. Trecho literal existe em poucos pares, então só entra quando
- * existe, sem deixar lugar vazio nos demais.
+ * quiser saber.
  */
 function linhaRelacao({ id, texto, estudos }, evidencia) {
   const item = criar('li');
@@ -296,7 +295,6 @@ function linhaRelacao({ id, texto, estudos }, evidencia) {
       porque.append(criar('p', 'relacao__confirmacao', `Confirmado em ${evidencia.estudo}`));
     }
     if (evidencia.motivo) porque.append(criar('p', 'relacao__motivo', evidencia.motivo));
-    if (evidencia.trecho) porque.append(criar('blockquote', 'relacao__trecho', evidencia.trecho));
     caixa.append(porque);
   }
 
@@ -335,12 +333,6 @@ function estudos(conhecimento) {
     lista.append(item);
   });
   return lista;
-}
-
-function trechos(conhecimento) {
-  const bloco = criar('div', 'trechos');
-  conhecimento.trechos.filter(Boolean).forEach((t) => bloco.append(criar('blockquote', 'trecho', t)));
-  return bloco;
 }
 
 /* ---------- Abas ---------- */
@@ -418,8 +410,7 @@ export function renderizar(dados, conhecimento) {
 
   const quantos = {
     desafios: conhecimento.desafiosResolvidos.length,
-    estudos: conhecimento.estudosResolvidos.length,
-    trechos: conhecimento.trechos.filter(Boolean).length
+    estudos: conhecimento.estudosResolvidos.length
   };
 
   const secoes = [
@@ -428,8 +419,7 @@ export function renderizar(dados, conhecimento) {
     gerencia(dados, conhecimento),
     montarAbas([
       { rotulo: 'Desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
-      { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) },
-      { rotulo: 'Trechos', contagem: quantos.trechos, conteudo: () => trechos(conhecimento) }
+      { rotulo: 'Estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) }
     ])
   ];
   raiz.append(...secoes);

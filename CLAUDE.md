@@ -29,9 +29,7 @@ identidade visual muda sem tocar no conteúdo.
 | `dados/meta.json` | Título, fonte e camadas da estrutura |
 
 `conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
-relação, o motivo e o trecho literal do artigo. O trecho existe em poucos pares, então o campo pode
-vir vazio e a ficha só mostra o que existe. Esses textos são literais do artigo e da planilha de
-conferência, nunca reescritos.
+relação e o motivo da ligação.
 
 `origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
 Está lá `relacoes-confirmadas.json` e `gerencia-conhecimento.json`, este último já fundido em
@@ -70,8 +68,7 @@ justificativa escrita.
 
 `justificativaClassificacao` está preenchido nos vinte com a explicação da natureza epistemológica,
 do nível e da dimensão adotados para cada conhecimento. A ficha mostra esse texto no item expansível
-"Por que essa classificação?". Estudos e trechos não fazem parte dessa justificativa e permanecem nas
-respectivas abas.
+"Por que essa classificação?". Os estudos permanecem em sua própria aba.
 
 `conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os pares de desafio foram conferidos
 contra os artigos primários e os que não se sustentaram foram retirados da relação.
