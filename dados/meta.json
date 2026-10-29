@@ -2,6 +2,7 @@
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
   "subtitulo": "Conhecimentos que precisam ser gerenciados em ECOS, com as evidências que os sustentam",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
+  "gerenciaConhecimento": "Esta seção indica de onde o conhecimento tende a ser gerado ou registrado, quais atores podem se beneficiar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação no ecossistema.",
   "totalEstudos": 18,
   "atualizadoEm": "2026-10-07",
   "camadas": [

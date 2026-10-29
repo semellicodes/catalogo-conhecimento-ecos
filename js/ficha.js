@@ -246,21 +246,24 @@ function tiposDeEcos(dados, conhecimento) {
   return bloco;
 }
 
-/* Os três campos de gerência, com os rótulos que a ficha usa. Nenhum deles tem
-   definição em classificacoes.json, então o rótulo vive aqui, junto do desenho,
-   e o conteúdo continua vindo só de dados/. */
+/* Os três campos de gerência não afirmam posse do conhecimento. Eles indicam
+   de onde ele tende a vir, quem pode precisar dele e como pode ser cuidado. */
 const GERENCIA = [
-  ['quemPossui', 'Quem possui'],
-  ['quemPrecisa', 'Quem precisa'],
-  ['comoGerenciar', 'Como gerenciar']
+  ['quemPossui', 'Principais fontes'],
+  ['quemPrecisa', 'Principais receptores'],
+  ['comoGerenciar', 'Práticas de gerência']
 ];
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
-  const bloco = secao(dados, 'Gerência do conhecimento', ['acaoGerencia']);
+  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', ['acaoGerencia']);
   const lista = criar('dl', 'gerencia');
+
+  if (dados.meta.gerenciaConhecimento) {
+    bloco.append(criar('p', 'gerencia__introducao', dados.meta.gerenciaConhecimento));
+  }
 
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
