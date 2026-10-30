@@ -14,7 +14,7 @@ function criar(tag, className, texto) {
   return el;
 }
 
-/* ---------- Classificação, em caixas ---------- */
+/* ---------- Classificação ---------- */
 
 /**
  * Uma fileira de caixas, uma por valor possível do atributo. A que vale fica
@@ -198,31 +198,35 @@ function secao(dados, titulo, chaveDaAjuda, linhaDeApoio) {
    cada conhecimento. */
 const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
 
-/* Nome do esquema, provisório até o orientador confirmar o definitivo. */
-const ESQUEMA = 'Segundo os esquemas adotados na revisão';
-
 /**
  * A classificação é texto, não caixa. Com um valor possível por atributo, a
  * fileira de caixas gastava altura para dizer o que o par rótulo e valor diz em
  * duas linhas, e empurrava as seções seguintes para fora da primeira tela no celular.
  */
 function classificacao(dados, conhecimento) {
-  const bloco = secao(dados, 'Classificação do conhecimento', 'classificacao', ESQUEMA);
+  const bloco = secao(dados, 'Classificação do conhecimento', 'classificacao');
 
   const grade = criar('dl', 'classificacao');
   CLASSIFICACAO.forEach((chave) => {
-    grade.append(
+    const item = criar('div', 'classificacao__item');
+    item.append(
       criar('dt', 'classificacao__rotulo', dados.classificacoes[chave].rotulo),
       criar('dd', 'classificacao__valor', conhecimento[chave] || 'A definir')
     );
+    grade.append(item);
   });
   bloco.append(grade);
 
   if (conhecimento.justificativaClassificacao) {
     const porque = criar('details', 'porque');
     const abrir = criar('summary', 'porque__abrir');
+    const texto = criar('p', 'porque__texto', conhecimento.justificativaClassificacao);
+    texto.id = `justificativa-classificacao-${conhecimento.id}`;
+    abrir.setAttribute('aria-controls', texto.id);
+    abrir.setAttribute('aria-expanded', 'false');
     abrir.append(criar('span', 'porque__seta'), criar('span', null, 'Por que essa classificação?'));
-    porque.append(abrir, criar('p', 'porque__texto', conhecimento.justificativaClassificacao));
+    porque.addEventListener('toggle', () => abrir.setAttribute('aria-expanded', String(porque.open)));
+    porque.append(abrir, texto);
     bloco.append(porque);
   }
   return bloco;
