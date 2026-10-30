@@ -446,27 +446,23 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   width: var(--alvo-toque);
   height: var(--alvo-toque);
   padding: 0;
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio-pilula);
-  color: var(--cor-texto-suave);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-sm);
+  background: transparent;
+  border: 0;
+  color: var(--cor-texto-fraco);
   cursor: pointer;
 }
-.portas__ajuda:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
-.portas__popover {
-  width: min(var(--largura-dialogo-ajuda), calc(100vw - var(--esp-6)));
-  padding: var(--esp-5);
-  background: var(--cor-superficie);
+.portas__ajuda::before {
+  display: grid;
+  place-items: center;
+  width: var(--esp-6);
+  height: var(--esp-6);
+  content: "?";
   border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-2);
-  color: var(--cor-texto);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
 }
-.portas__popover::backdrop { background: transparent; }
-.portas__popover-titulo { margin-bottom: var(--esp-2); font-size: var(--tam-base); }
-.portas__popover-texto { color: var(--cor-texto-suave); }
+.portas__ajuda:hover::before { color: var(--cor-acento); border-color: var(--cor-acento); }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
    coluna para quatro, cabem quantas couberem a partir de 14rem cada. */

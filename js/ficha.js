@@ -160,7 +160,7 @@ function ajuda(dados, chave) {
 }
 
 /** Mantém um único diálogo de ajuda e preenche-o com conteúdo vindo de dados/. */
-function abrirAjuda(dados, conteudo) {
+export function abrirAjuda(dados, conteudo) {
   const dialogo = document.querySelector('#dialogo-ajuda');
   if (!dialogo) return;
 

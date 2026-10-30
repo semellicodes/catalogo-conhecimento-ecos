@@ -4,6 +4,7 @@
  */
 
 import { carregar } from './dados.js';
+import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -24,13 +25,9 @@ function numero(valor, rotulo) {
 function ajudaDasPortas(dados) {
   const conteudo = dados.meta.ajudas?.portasEntrada;
   const botao = el('#abrir-ajuda-portas');
-  const popover = el('#ajuda-portas');
-  if (!conteudo || !botao || !popover) return;
+  if (!conteudo || !botao) return;
 
-  popover.replaceChildren(
-    criar('h3', 'portas__popover-titulo', conteudo.titulo),
-    criar('p', 'portas__popover-texto', conteudo.texto)
-  );
+  botao.addEventListener('click', () => abrirAjuda(dados, conteudo));
   botao.hidden = false;
 }
 
