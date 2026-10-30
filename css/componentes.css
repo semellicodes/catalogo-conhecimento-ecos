@@ -858,6 +858,17 @@
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
+.gerencia__nota {
+  margin: 0 0 var(--esp-4);
+  max-width: var(--largura-texto);
+  padding: var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-xs);
+}
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);

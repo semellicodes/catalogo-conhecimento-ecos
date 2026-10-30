@@ -245,6 +245,9 @@ function gerencia(dados, conhecimento) {
   if (dados.meta.gerenciaConhecimento) {
     bloco.append(criar('p', 'gerencia__introducao', dados.meta.gerenciaConhecimento));
   }
+  if (dados.meta.gerenciaNotaMetodologica) {
+    bloco.append(criar('p', 'gerencia__nota', dados.meta.gerenciaNotaMetodologica));
+  }
 
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);

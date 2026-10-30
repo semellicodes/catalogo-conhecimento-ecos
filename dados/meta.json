@@ -3,6 +3,7 @@
   "subtitulo": "Conhecimentos que precisam ser gerenciados em ECOS, com as evidências que os sustentam",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "Esta seção indica de onde o conhecimento tende a ser gerado ou registrado, quais atores podem se beneficiar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação no ecossistema.",
+  "gerenciaNotaMetodologica": "As fontes, os receptores e as práticas de gerência apresentados nesta seção constituem uma síntese aplicada, elaborada a partir dos estudos incluídos na Revisão Rápida. Essas orientações combinam soluções identificadas na literatura e interpretações derivadas dos resultados, com o objetivo de apoiar a gerência do conhecimento em Ecossistemas de Software.",
   "ajudas": {
     "classificacao": {
       "titulo": "Classificação do conhecimento",
