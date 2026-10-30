@@ -2,14 +2,10 @@
  * Transforma um conhecimento em ficha. Não sabe carregar nem filtrar.
  *
  * O identificador e o selo da natureza ficam no topo do diálogo, que é fixo, e
- * não se repetem aqui. O que é lista desce para abas, uma de cada vez.
+ * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
 import { referenciaCurta } from './dados.js';
-
-const reduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const tokenDeMovimento = (nome) =>
-  getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -208,7 +204,7 @@ const ESQUEMA = 'Segundo os esquemas adotados na revisão';
 /**
  * A classificação é texto, não caixa. Com um valor possível por atributo, a
  * fileira de caixas gastava altura para dizer o que o par rótulo e valor diz em
- * duas linhas, e empurrava as abas para fora da primeira tela no celular.
+ * duas linhas, e empurrava as seções seguintes para fora da primeira tela no celular.
  */
 function classificacao(dados, conhecimento) {
   const bloco = secao(dados, 'Classificação do conhecimento', 'classificacao', ESQUEMA);
@@ -270,7 +266,7 @@ function gerencia(dados, conhecimento) {
   return bloco;
 }
 
-/* ---------- Conteúdo das abas ---------- */
+/* ---------- Relações e estudos ---------- */
 
 /**
  * Uma relação de desafio. A linha continua de uma linha só, e o
@@ -319,114 +315,65 @@ function desafios(conhecimento) {
 }
 
 function estudos(conhecimento) {
+  const vistos = new Set();
+  const associados = conhecimento.estudosResolvidos.filter((estudo) => {
+    if (vistos.has(estudo.id)) return false;
+    vistos.add(estudo.id);
+    return true;
+  });
+  const bloco = criar('div', 'estudos-bloco');
+  if (!associados.length) {
+    bloco.append(criar('p', 'vazio', 'Nenhum estudo primário foi associado a este conhecimento.'));
+    return bloco;
+  }
+
   const lista = criar('ul', 'estudos');
-  conhecimento.estudosResolvidos.forEach((e) => {
+  associados.forEach((e) => {
     const item = criar('li', 'estudo');
     item.append(criar('span', 'codigo-id', e.id));
-    const corpo = criar('span', 'estudo__corpo');
+    const corpo = criar('div', 'estudo__corpo');
     corpo.append(
       criar('span', 'estudo__titulo', e.titulo),
-      criar('span', 'estudo__meta', `${e.autores} · ${e.ano} · ${e.pais}`)
+      criar('span', 'estudo__meta', `${e.autores} · ${e.ano}`)
     );
     item.append(corpo);
+    if (e.url) {
+      const acessar = criar('a', 'botao estudo__acessar', 'Acessar estudo');
+      acessar.href = e.url;
+      acessar.target = '_blank';
+      acessar.rel = 'noreferrer';
+      item.append(acessar);
+    } else {
+      item.append(criar('span', 'estudo__sem-link', 'Link do estudo não informado.'));
+    }
     lista.append(item);
   });
-  return lista;
+  bloco.append(lista);
+  return bloco;
 }
 
-/* ---------- Abas ---------- */
+function desafiosRelacionados(dados, conhecimento) {
+  const bloco = secao(dados, 'Desafios relacionados', 'desafios');
+  bloco.append(desafios(conhecimento));
+  return bloco;
+}
 
-function montarAbas(dados, itens) {
-  const raiz = criar('div', 'abas');
-  const topo = criar('header', 'abas__topo');
-  const titulo = criar('h3', 'abas__titulo');
-  const barra = criar('div', 'abas__barra');
-  barra.setAttribute('role', 'tablist');
-  const indicador = criar('span', 'abas__indicador');
-  const painel = criar('div', 'abas__painel');
-  const idPainel = 'ficha-abas-painel';
-  painel.id = idPainel;
-  painel.setAttribute('role', 'tabpanel');
-
-  const botoes = itens.map((item, indice) => {
-    const botao = criar('button', 'aba');
-    botao.type = 'button';
-    botao.id = `ficha-aba-${indice}`;
-    botao.setAttribute('role', 'tab');
-    botao.setAttribute('aria-selected', String(indice === 0));
-    botao.setAttribute('aria-controls', idPainel);
-    botao.tabIndex = indice === 0 ? 0 : -1;
-    botao.append(criar('span', null, item.rotulo), criar('span', 'aba__contagem', String(item.contagem)));
-    botao.addEventListener('click', () => trocar(indice));
-    botao.addEventListener('keydown', (evento) => {
-      const atalhos = { ArrowRight: 1, ArrowLeft: -1, Home: -Infinity, End: Infinity };
-      if (!(evento.key in atalhos)) return;
-      evento.preventDefault();
-      const destino = evento.key === 'Home'
-        ? 0
-        : evento.key === 'End'
-          ? botoes.length - 1
-          : (indice + atalhos[evento.key] + botoes.length) % botoes.length;
-      trocar(destino);
-      botoes[destino].focus();
-    });
-    return botao;
-  });
-
-  function posicionar(indice) {
-    const botao = botoes[indice];
-    indicador.style.width = `${botao.offsetWidth}px`;
-    indicador.style.transform = `translateX(${botao.offsetLeft}px)`;
-  }
-
-  function trocar(indice) {
-    const item = itens[indice];
-    botoes.forEach((b, i) => {
-      const ativa = i === indice;
-      b.setAttribute('aria-selected', String(ativa));
-      b.tabIndex = ativa ? 0 : -1;
-    });
-    titulo.textContent = item.titulo;
-    topo.replaceChildren(titulo, ajuda(dados, item.ajuda));
-    painel.setAttribute('aria-labelledby', botoes[indice].id);
-    painel.replaceChildren(item.conteudo());
-    posicionar(indice);
-    if (!reduzido()) {
-      painel.animate([{ opacity: 0, transform: `translateY(${tokenDeMovimento('--esp-1')})` }, { opacity: 1, transform: 'none' }], {
-        duration: Number.parseFloat(tokenDeMovimento('--dur-media')),
-        easing: tokenDeMovimento('--curva-saida')
-      });
-    }
-  }
-
-  barra.append(...botoes, indicador);
-  painel.setAttribute('aria-labelledby', botoes[0].id);
-  painel.replaceChildren(itens[0].conteudo());
-  titulo.textContent = itens[0].titulo;
-  topo.append(titulo, ajuda(dados, itens[0].ajuda));
-  raiz.append(topo, barra, painel);
-  /* O indicador só tem medida depois que a barra está no documento. */
-  requestAnimationFrame(() => posicionar(0));
-  return raiz;
+function estudosPrimariosAssociados(dados, conhecimento) {
+  const bloco = secao(dados, 'Estudos primários associados', 'estudos');
+  bloco.append(estudos(conhecimento));
+  return bloco;
 }
 
 /** Monta a ficha completa e devolve o elemento pronto para inserir. */
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
 
-  const quantos = {
-    desafios: conhecimento.desafiosResolvidos.length,
-    estudos: conhecimento.estudosResolvidos.length
-  };
-
   const secoes = [
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
     gerencia(dados, conhecimento),
-    montarAbas(dados, [
-      { rotulo: 'Desafios', titulo: 'Desafios relacionados', ajuda: 'desafios', contagem: quantos.desafios, conteudo: () => desafios(conhecimento) },
-      { rotulo: 'Estudos', titulo: 'Estudos primários', ajuda: 'estudos', contagem: quantos.estudos, conteudo: () => estudos(conhecimento) }
-    ])
+    desafiosRelacionados(dados, conhecimento),
+    estudosPrimariosAssociados(dados, conhecimento)
   ];
   raiz.append(...secoes);
   return raiz;
