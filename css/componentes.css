@@ -723,7 +723,9 @@
 .ficha__descricao {
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
+  max-width: 100%;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .bloco-ficha {
