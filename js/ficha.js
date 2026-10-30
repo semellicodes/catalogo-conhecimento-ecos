@@ -344,12 +344,15 @@ function linhaRelacao({ id, texto, estudos, icone }, evidencia) {
   const caixa = criar('details', 'relacao');
 
   const linha = criar('summary', 'relacao__linha');
-  const identificacao = criar('span', 'relacao__identificacao');
-  identificacao.append(criar('span', 'codigo-id', id), iconeDesafio(icone));
-  linha.append(identificacao, criar('span', 'relacao__nome', texto));
+  const conteudo = criar('span', 'relacao__conteudo');
   const meta = criar('span', 'relacao__meta');
   meta.append(criar('span', 'relacao__estudos', estudos.join(', ')));
-  linha.append(meta);
+  conteudo.append(
+    criar('span', 'codigo-id', id),
+    criar('span', 'relacao__nome', texto),
+    meta
+  );
+  linha.append(iconeDesafio(icone), conteudo);
   caixa.append(linha);
 
   if (evidencia) {

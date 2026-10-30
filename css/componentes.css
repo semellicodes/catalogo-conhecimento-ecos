@@ -975,22 +975,28 @@
 /* ---------- Relações do conhecimento ---------- */
 /* Os desafios ficam na ficha quando há relação confirmada com o conhecimento. */
 .relacoes-bloco { display: grid; gap: var(--esp-5); }
-.relacoes { list-style: none; display: grid; }
-.relacao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }
-.relacoes li:last-child .relacao { border-bottom: 0; }
+.relacoes { display: grid; gap: var(--esp-2); list-style: none; }
+.relacao {
+  overflow: clip;
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  font-size: var(--tam-sm);
+}
+.relacao[open] { border-color: var(--cor-acento-linha); }
 
-/* A linha é o resumo do que abre abaixo. */
+/* O resumo é o próprio conteúdo do cartão. A evidência só amplia o cartão
+   quando a pessoa pede o detalhe científico da relação. */
 .relacao__linha {
   display: grid;
-  grid-template-columns: var(--coluna-relacao) minmax(0, 1fr) auto;
+  grid-template-columns: var(--tam-icone-relacao) minmax(0, 1fr);
   gap: var(--esp-3);
   align-items: start;
-  padding-block: var(--esp-2);
+  padding: var(--esp-3);
   list-style: none;
   cursor: pointer;
 }
 .relacao__linha::-webkit-details-marker { display: none; }
-.relacao__identificacao { display: flex; align-items: center; gap: var(--esp-1); min-height: var(--tam-icone-relacao); }
 .relacao__icone {
   display: grid;
   flex: none;
@@ -1008,16 +1014,18 @@
   .relacao__linha:hover .relacao__nome,
   .relacao__linha:hover .relacao__icone { color: var(--cor-acento-forte); }
 }
-.relacao__nome { transition: color var(--dur-rapida) var(--curva); }
-.relacao__linha .relacao__nome { line-height: 1.45; }
-.relacao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
+.relacao__conteudo { display: grid; gap: var(--esp-1); min-width: 0; }
+.relacao__conteudo .codigo-id { color: var(--cor-acento); }
+.relacao__nome { color: var(--cor-acento); font-weight: 600; line-height: 1.45; transition: color var(--dur-rapida) var(--curva); }
+.relacao__meta { display: flex; align-items: center; min-height: var(--tam-desenho-relacao); }
 .relacao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
 /* O porquê da relação. Cada parte só entra quando existe. */
 .relacao__porque {
   display: grid;
   gap: var(--esp-2);
-  padding: 0 0 var(--esp-3) var(--coluna-relacao);
+  margin-left: calc(var(--tam-icone-relacao) + var(--esp-3));
+  padding: 0 var(--esp-3) var(--esp-3) var(--esp-0);
 }
 .relacao__confirmacao {
   font-family: var(--fonte-mono);
@@ -1053,8 +1061,7 @@
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
 @container (max-width: 34rem) {
-  .relacao__linha { grid-template-columns: var(--coluna-relacao) minmax(0, 1fr); row-gap: var(--esp-1); }
-  .relacao__meta { grid-column: 2; }
+  .relacao__linha { row-gap: var(--esp-1); }
 }
 
 /* ---------- Tabela simples ---------- */
