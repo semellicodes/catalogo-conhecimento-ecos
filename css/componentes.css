@@ -716,8 +716,8 @@
 }
 
 /* ---------- Ficha ---------- */
-/* O nome e a descrição abrem, as seções vêm em seguida e o resto desce para as
-   abas, uma lista por vez. É o que mantém a altura previsível no celular. */
+/* O nome e a descrição abrem, seguidos de seções independentes. As listas
+   preservam sua própria altura para que cada relação fique legível no celular. */
 .ficha { display: grid; gap: var(--esp-3); }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
 .ficha__descricao {
@@ -957,68 +957,6 @@
   .porque__seta { transition: none; }
 }
 
-/* ---------- Abas da ficha ---------- */
-.abas {
-  padding: var(--esp-3);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-}
-.abas__topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-3);
-  margin-bottom: var(--esp-2);
-}
-.abas__titulo {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-  color: var(--cor-acento);
-}
-.abas__barra {
-  position: relative;
-  display: flex;
-  gap: var(--esp-1);
-  overflow-x: auto;
-  scrollbar-width: none;
-  border-bottom: var(--borda);
-}
-.abas__barra::-webkit-scrollbar { display: none; }
-.aba {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--esp-2);
-  min-height: var(--alvo-toque);
-  padding-inline: var(--esp-4);
-  white-space: nowrap;
-  background: transparent;
-  border: 0;
-  border-radius: var(--raio) var(--raio) 0 0;
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  cursor: pointer;
-  transition: color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
-}
-.aba:hover { color: var(--cor-texto); background: var(--cor-superficie); }
-.aba[aria-selected="true"] { color: var(--cor-texto); font-weight: 600; }
-.aba__contagem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.abas__indicador {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  height: 2px;
-  background: var(--cor-acento);
-  border-radius: var(--raio-pilula);
-  transition: transform var(--dur-media) var(--curva-saida), width var(--dur-media) var(--curva-saida);
-}
-.abas__painel { padding-top: var(--esp-3); }
-@media (prefers-reduced-motion: reduce) {
-  .abas__indicador { transition: none; }
-}
-
 /* ---------- Relações do conhecimento ---------- */
 /* Os desafios ficam na ficha quando há relação confirmada com o conhecimento. */
 .relacoes-bloco { display: grid; gap: var(--esp-5); }
@@ -1058,15 +996,29 @@
 }
 .relacao__motivo { color: var(--cor-texto-suave); }
 /* ---------- Estudos ---------- */
-.estudos { list-style: none; display: grid; gap: var(--esp-4); }
+.estudos-bloco { display: grid; }
+.estudos { list-style: none; display: grid; gap: var(--esp-2); }
 .estudo {
   display: grid;
-  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
   gap: var(--esp-3);
+  align-items: start;
+  padding: var(--esp-3);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
   font-size: var(--tam-sm);
 }
 .estudo__corpo { display: grid; gap: var(--esp-1); }
+.estudo__titulo { font-weight: 600; }
 .estudo__meta { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.estudo__acessar { align-self: start; white-space: nowrap; }
+.estudo__sem-link { align-self: center; font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+@container (max-width: 34rem) {
+  .estudo { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
+  .estudo__acessar,
+  .estudo__sem-link { grid-column: 2; justify-self: start; }
+}
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
