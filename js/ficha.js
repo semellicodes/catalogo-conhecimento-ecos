@@ -334,6 +334,18 @@ function iconeDesafio(nome) {
   return caixa;
 }
 
+function iconeInformacao() {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.append(
+    traco('circle', { cx: 10, cy: 10, r: 7 }),
+    traco('path', { d: 'M10 9v4M10 6.5h.01' })
+  );
+  return svg;
+}
+
 /**
  * Uma relação de desafio. A linha continua de uma linha só, e o
  * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
@@ -376,7 +388,13 @@ function desafios(conhecimento) {
   const evidencia = conhecimento.evidencia || {};
   const bloco = criar('div', 'relacoes-bloco');
   if (!conhecimento.desafiosResolvidos.length) {
-    bloco.append(criar('p', 'vazio', 'Nenhum desafio foi confirmado para este conhecimento.'));
+    const aviso = criar('div', 'relacoes__vazio');
+    aviso.setAttribute('role', 'status');
+    aviso.append(
+      iconeInformacao(),
+      criar('p', null, 'Nenhum desafio foi confirmado para este conhecimento.')
+    );
+    bloco.append(aviso);
     return bloco;
   }
   const lista = criar('ul', 'relacoes');
@@ -423,7 +441,7 @@ function estudos(conhecimento) {
 }
 
 function desafiosRelacionados(dados, conhecimento) {
-  const bloco = secao(dados, 'Desafios relacionados', 'desafios');
+  const bloco = secao(dados, 'Desafios identificados na literatura para a gerência do conhecimento', 'desafios');
   bloco.append(desafios(conhecimento));
   return bloco;
 }
