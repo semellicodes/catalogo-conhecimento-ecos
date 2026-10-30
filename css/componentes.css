@@ -858,26 +858,33 @@
   }
 }
 
-/* A classificação é par de rótulo e valor, três colunas no desktop. Com um
-   valor possível por atributo, a caixa não dizia mais do que o texto diz. */
+/* Cada rótulo permanece próximo do respectivo valor, mesmo quando ocupa duas linhas. */
 .classificacao {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--esp-2) var(--esp-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+  gap: var(--esp-4);
+}
+.classificacao__item {
+  display: grid;
+  align-content: start;
+  gap: var(--esp-1);
+  min-width: 0;
 }
 .classificacao__rotulo {
-  grid-row: 1;
-  font-family: var(--fonte-mono);
+  margin: 0;
+  font-family: var(--fonte-texto);
   font-size: var(--tam-xs);
-  letter-spacing: var(--entre-letras-rotulo);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-tabela);
+  line-height: 1.35;
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
 }
 .classificacao__valor {
-  grid-row: 2;
   margin: 0;
   font-size: var(--tam-base);
   font-weight: 600;
+  line-height: 1.35;
 }
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
 .gerencia { display: grid; gap: normal; }
@@ -928,47 +935,61 @@
 }
 
 @media (max-width: 47.99rem) {
-  /* Empilha, que três colunas de rótulo em mono não cabem em 390. */
-  .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
-  .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
+  .classificacao { gap: var(--esp-3); }
   .bloco-ficha { padding: var(--esp-3); }
   .bloco-ficha__topo { margin-bottom: var(--esp-2); }
 }
 
 .porque {
   margin-top: var(--esp-3);
-  border-top: var(--borda-suave);
-  border-bottom: var(--borda-suave);
+  overflow: clip;
+  border-radius: var(--raio);
 }
 .porque__abrir {
   display: flex;
   align-items: center;
-  gap: var(--esp-3);
+  gap: var(--esp-2);
   min-height: var(--alvo-toque);
-  padding-inline: var(--esp-4);
+  padding: var(--esp-2) var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  color: var(--cor-acento);
   font-size: var(--tam-sm);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   list-style: none;
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva);
 }
 .porque__abrir::-webkit-details-marker { display: none; }
+.porque__abrir:hover { color: var(--cor-acento-forte); }
+.porque__abrir:active { transform: scale(var(--escala-acao)); }
+.porque__abrir:focus-visible { outline-offset: calc(var(--esp-0) - var(--esp-1)); }
 .porque__seta {
   width: 0.45rem;
   height: 0.45rem;
   flex: none;
-  border-right: 1.5px solid var(--cor-texto-fraco);
-  border-bottom: 1.5px solid var(--cor-texto-fraco);
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
   transform: rotate(45deg);
   transition: transform var(--dur-media) var(--curva);
 }
+.porque[open] .porque__abrir { border-radius: var(--raio) var(--raio) var(--esp-0) var(--esp-0); }
 .porque[open] .porque__seta { transform: rotate(-135deg); }
 .porque__texto {
   margin: 0;
-  padding: 0 var(--esp-3) var(--esp-3);
+  padding: var(--esp-3);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-top: var(--esp-0);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--esp-0) var(--esp-0) var(--raio) var(--raio);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
+  line-height: 1.6;
 }
 @media (prefers-reduced-motion: reduce) {
   .porque__seta { transition: none; }
