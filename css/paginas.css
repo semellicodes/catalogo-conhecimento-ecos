@@ -645,6 +645,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   box-shadow: var(--sombra-2);
   color: var(--cor-texto);
 }
+.dialogo-ajuda:focus-visible { outline: 0; }
 .dialogo-ajuda::backdrop {
   background: var(--cor-veu-opaco);
   -webkit-backdrop-filter: blur(var(--desfoque-veu));

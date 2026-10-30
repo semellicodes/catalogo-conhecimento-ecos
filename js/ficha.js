@@ -181,7 +181,9 @@ export function abrirAjuda(dados, conteudo) {
   fonte.hidden = !referencia;
   fonte.textContent = referencia ? `Fonte: ${referencia}` : '';
   dialogo.showModal();
-  document.querySelector('#fechar-ajuda').focus({ preventScroll: true });
+  /* O diálogo recebe o foco inicial. Assim o contexto é anunciado sem criar
+     um destaque visual indevido no botão de fechar. */
+  dialogo.focus({ preventScroll: true });
 }
 
 /** Uma seção da ficha, com título, linha opcional de apoio e ajuda. */
