@@ -976,6 +976,25 @@
 /* Os desafios ficam na ficha quando há relação confirmada com o conhecimento. */
 .relacoes-bloco { display: grid; gap: var(--esp-5); }
 .relacoes { display: grid; gap: var(--esp-2); list-style: none; }
+.relacoes__vazio {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-3);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  background: var(--cor-acento-fundo);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+.relacoes__vazio svg {
+  flex: none;
+  width: var(--tam-desenho-relacao);
+  height: var(--tam-desenho-relacao);
+  color: var(--cor-acento);
+}
+.relacoes__vazio p { margin: 0; line-height: 1.45; }
 .relacao {
   overflow: clip;
   background: var(--cor-superficie-alta);
