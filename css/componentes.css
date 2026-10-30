@@ -1012,27 +1012,34 @@
 .relacao__motivo { color: var(--cor-texto-suave); }
 /* ---------- Estudos ---------- */
 .estudos-bloco { display: grid; }
-.estudos { list-style: none; display: grid; gap: var(--esp-2); }
+.estudos { list-style: none; display: grid; gap: var(--esp-1); }
 .estudo {
   display: grid;
-  grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
-  gap: var(--esp-3);
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  gap: var(--esp-2);
   align-items: start;
-  padding: var(--esp-3);
+  padding: var(--esp-2) var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
   font-size: var(--tam-sm);
 }
-.estudo__corpo { display: grid; gap: var(--esp-1); }
-.estudo__titulo { font-weight: 600; }
-.estudo__meta { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto; }
+.estudo__corpo { display: grid; gap: var(--esp-0); }
+.estudo__titulo { font-weight: 600; line-height: 1.35; }
+.estudo__meta { font-size: var(--tam-xs); line-height: 1.35; color: var(--cor-texto-fraco); }
 .estudo__acessar { align-self: start; white-space: nowrap; }
-.estudo__sem-link { align-self: center; font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.estudo__sem-link {
+  grid-column: 2;
+  margin-top: var(--esp-1);
+  font-size: var(--tam-xs);
+  line-height: 1.35;
+  color: var(--cor-texto-fraco);
+}
 @container (max-width: 34rem) {
   .estudo { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
-  .estudo__acessar,
-  .estudo__sem-link { grid-column: 2; justify-self: start; }
+  .estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
+  .estudo__acessar { grid-column: 2; justify-self: start; }
 }
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
    crie barra de rolagem lateral enquanto está escondida. */

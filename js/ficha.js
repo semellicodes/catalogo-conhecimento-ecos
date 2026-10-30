@@ -342,6 +342,7 @@ function estudos(conhecimento) {
       acessar.href = e.url;
       acessar.target = '_blank';
       acessar.rel = 'noreferrer';
+      item.dataset.comLink = '';
       item.append(acessar);
     } else {
       item.append(criar('span', 'estudo__sem-link', 'Link do estudo não informado.'));
