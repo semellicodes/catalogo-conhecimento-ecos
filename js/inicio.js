@@ -32,7 +32,7 @@ function porta(valor, quantos) {
   const bloco = criar('article', 'porta');
   bloco.append(
     criar('p', 'porta__contagem mono', String(quantos)),
-    criar('h3', 'porta__nome', valor.valor)
+    criar('h3', 'porta__nome', valor.tituloPorta || valor.valor)
   );
   if (valor.descricao) bloco.append(criar('p', 'porta__texto', valor.descricao));
 

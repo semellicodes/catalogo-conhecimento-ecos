@@ -7,15 +7,18 @@
     "valores": [
       {
         "valor": "Explícito",
-        "descricao": "Pode ser formalizado, registrado e transmitido por meio de artefatos."
+        "tituloPorta": "Conhecimentos explícitos",
+        "descricao": "São conhecimentos que podem ser formalizados, registrados e transmitidos por meio de artefatos."
       },
       {
         "valor": "Tácito-cognitivo",
-        "descricao": "Está em modelos mentais, percepções e interpretações dos atores."
+        "tituloPorta": "Conhecimentos tácito-cognitivos",
+        "descricao": "São conhecimentos que estão presentes em modelos mentais, percepções e interpretações dos atores."
       },
       {
         "valor": "Tácito-técnico",
-        "descricao": "Está no saber fazer e nas habilidades práticas adquiridas pela experiência."
+        "tituloPorta": "Conhecimentos tácito-técnicos",
+        "descricao": "São conhecimentos que se manifestam no saber fazer e nas habilidades práticas adquiridas pela experiência."
       }
     ]
   },
