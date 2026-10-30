@@ -2,7 +2,7 @@
   {
     "id": "C01",
     "nome": "Dependências técnicas entre componentes do ecossistema",
-    "descricao": "Relações de dependência entre os componentes, pacotes e projetos que integram o ecossistema, incluindo quais pacotes dependem de um template comum e quais tecnologias um projeto exige.",
+    "descricao": "Esse conhecimento consiste no mapeamento e entendimento das relações de interdependência técnica entre módulos, pacotes e projetos no ecossistema. Nesse contexto, alterações não coordenadas em um componente podem gerar impactos em cadeia, quebrar compatibilidades ou inviabilizar a integração de soluções de terceiros à plataforma.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -32,7 +32,7 @@
   {
     "id": "C02",
     "nome": "Arquitetura e tecnologias de base da plataforma",
-    "descricao": "Funcionalidades centrais, infraestrutura, configuração arquitetural e linguagem proprietária que formam a base tecnológica da plataforma.",
+    "descricao": "Esse conhecimento abrange a infraestrutura tecnológica central, os padrões arquiteturais e os componentes estruturais fornecidos pela organização orquestradora. Sua falta pode dificultar que desenvolvedores externos construam complementos compatíveis e comprometer a continuidade do ecossistema em momentos de transição de equipes.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -83,7 +83,7 @@
   {
     "id": "C03",
     "nome": "Especificações técnicas de implementação da plataforma",
-    "descricao": "Especificações de implementação da plataforma, como sintaxe, parâmetros de função, estruturas de dados, autenticação, conectividade e banco de dados em nuvem.",
+    "descricao": "Esse conhecimento detalha os procedimentos, protocolos de comunicação, esquemas de banco de dados, modelos de autenticação e barramentos de conectividade do ecossistema. Sem esse detalhamento, desenvolvedores podem enfrentar bloqueios técnicos ao integrar suas aplicações e gerar chamados recorrentes de suporte.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -132,7 +132,7 @@
   {
     "id": "C04",
     "nome": "Decisões arquiteturais anteriores e seu contexto",
-    "descricao": "Decisões arquiteturais já tomadas e o contexto em que foram tomadas, inclusive por outras organizações do ecossistema, para reúso em situações semelhantes.",
+    "descricao": "Esse conhecimento diz respeito ao histórico de escolhas de design, padrões, táticas e trade-offs, e às justificativas técnicas e de negócio que motivaram essas decisões no passado. A ausência desse histórico pode levar equipes a repetir erros anteriores ou tomar decisões incompatíveis com a evolução do ecossistema.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -176,7 +176,7 @@
   {
     "id": "C05",
     "nome": "Regras e estrutura de governança do ecossistema",
-    "descricao": "Regras, níveis de aprovação e dinâmica de poder que estruturam a governança do ecossistema.",
+    "descricao": "Esse conhecimento abrange as diretrizes, papéis organizacionais, responsabilidades, modelos de tomada de decisão e regras de engajamento que orientam a atuação dos participantes. O desconhecimento dessas regras pode gerar conflitos de interesse, comportamentos desalinhados e desorganização no fluxo de colaboração interorganizacional.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -215,7 +215,7 @@
   {
     "id": "C06",
     "nome": "Critérios de aceitação de contribuições externas",
-    "descricao": "Critérios que definem o que é exigido para uma contribuição externa ser aceita.",
+    "descricao": "Esse conhecimento diz respeito às exigências formais para que um código, módulo ou correção enviado por desenvolvedores externos seja aprovado e incorporado à plataforma. A falta de clareza nesses critérios pode resultar em altas taxas de rejeição, desperdício de esforço dos contribuidores e insatisfação da comunidade.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -241,7 +241,7 @@
   {
     "id": "C07",
     "nome": "Requisitos técnicos impostos pela plataforma",
-    "descricao": "Requisitos técnicos que a organização central impõe aos produtos externos, como especificações de design e padrões de qualidade de código.",
+    "descricao": "Esse conhecimento especifica os padrões obrigatórios de desempenho, segurança, interface e conformidade que qualquer produto externo deve cumprir para ser publicado ou homologado. O descumprimento desses requisitos pode impedir a publicação de aplicações e comprometer a confiabilidade geral do ecossistema.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -275,7 +275,7 @@
   {
     "id": "C08",
     "nome": "Processos e ferramentas nos níveis de ecossistema e projeto",
-    "descricao": "Diferenças entre processos, ferramentas e fluxos de trabalho do nível do ecossistema e do nível de projeto, como sincronizar ciclos de release.",
+    "descricao": "Esse conhecimento envolve a compreensão do conjunto de ferramentas de desenvolvimento, pipelines de CI/CD, esteiras de build e fluxos de trabalho utilizados nas equipes. A falta desse conhecimento pode atrasar o onboarding de novos desenvolvedores e gerar ruídos operacionais nas entregas.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -308,7 +308,7 @@
   {
     "id": "C09",
     "nome": "Boas práticas de tomada de decisão",
-    "descricao": "Métodos consolidados de apoio à tomada de decisão, tratados como conhecimento procedimental.",
+    "descricao": "Esse conhecimento reúne abordagens consolidadas, heurísticas e lições aprendidas para apoiar a escolha entre alternativas técnicas ou operacionais em novos cenários. Ignorar essas práticas pode levar a decisões empíricas e propensas a falhas já superadas pelo ecossistema.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -335,7 +335,7 @@
   {
     "id": "C10",
     "nome": "Projetos que geram incidentes na plataforma",
-    "descricao": "Identificação de quais projetos de software geraram incidentes que causaram instabilidade no ambiente de produção da plataforma.",
+    "descricao": "Esse conhecimento identifica quais aplicações ou módulos de terceiros apresentam histórico recorrente de falhas, gargalos ou indisponibilidade na plataforma. Sem esse monitoramento, a estabilidade do núcleo tecnológico pode ficar comprometida sem que as causas-raiz sejam contidas.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -366,7 +366,7 @@
   {
     "id": "C11",
     "nome": "Necessidades de mercado e lacunas do ecossistema",
-    "descricao": "Evolução do mercado, necessidades atuais dos clientes e o quanto elas já são atendidas pelos produtos disponíveis no ecossistema.",
+    "descricao": "Esse conhecimento mapeia oportunidades de negócio, demandas não atendidas dos usuários e tendências de mercado para os parceiros do ecossistema. A ausência dessa visão pode levar desenvolvedores a criar soluções redundantes em vez de inovações complementares.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -392,7 +392,7 @@
   {
     "id": "C12",
     "nome": "Expertise dos atores do ecossistema",
-    "descricao": "Quem domina qual assunto no ecossistema e a quem recorrer, incluindo quem transita entre comunidades diferentes.",
+    "descricao": "Esse conhecimento permite identificar as competências, domínios de especialidade e conhecimentos práticos detidos por indivíduos e equipes no ecossistema. A falta desse conhecimento pode dificultar a localização do especialista adequado para resolver problemas complexos, o que pode prolongar a resolução de problemas técnicos.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Social",
@@ -440,7 +440,7 @@
   {
     "id": "C13",
     "nome": "Necessidades e prioridades dos atores do ecossistema",
-    "descricao": "Necessidades, problemas e prioridades próprios de cada ator do ecossistema, que diferem entre si e precisam ser entendidos para a decisão conjunta.",
+    "descricao": "Esse conhecimento está relacionado às motivações, restrições e objetivos estratégicos dos diferentes tipos de participantes, como governos, empresas e universidades. O desconhecimento dessas particularidades pode resultar em decisões unilaterais do orquestrador que desengajam parceiros.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -476,7 +476,7 @@
   {
     "id": "C14",
     "nome": "Competência e confiabilidade dos atores do ecossistema",
-    "descricao": "Competência e confiabilidade atribuídas aos atores do ecossistema, formadas a partir das competências reconhecidas no desenvolvimento.",
+    "descricao": "Esse conhecimento envolve a avaliação da reputação, capacidade técnica comprovada e grau de compromisso dos parceiros ao longo das interações históricas. A falta dessa percepção pode aumentar o risco na escolha de parceiros para projetos críticos e prejudicar a governança.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Social",
@@ -510,7 +510,7 @@
   {
     "id": "C15",
     "nome": "Dificuldades dos desenvolvedores externos",
-    "descricao": "Pontos em que os desenvolvedores externos travam, revelados pelos erros recorrentes que cometem.",
+    "descricao": "Esse conhecimento abrange os pontos de fricção, dúvidas recorrentes e barreiras enfrentadas por desenvolvedores ao utilizar a plataforma. O não reconhecimento dessas barreiras pode comprometer a melhoria dos guias de apoio e contribuir para a desistência de colaboradores.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Plataforma",
     "dimensao": "Negócio",
@@ -545,7 +545,7 @@
   {
     "id": "C16",
     "nome": "Impactos de mudanças de terceiros no negócio",
-    "descricao": "Como as ofertas de um terceiro chegam aos serviços escolhidos e como mudanças nesses serviços afetam o negócio em andamento.",
+    "descricao": "Esse conhecimento envolve a percepção das consequências econômicas e operacionais que alterações em serviços externos trazem para o seu produto. A incapacidade de antecipar esses impactos pode gerar perdas financeiras e quebras abruptas na entrega de valor.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -571,7 +571,7 @@
   {
     "id": "C17",
     "nome": "Composições de componentes para tarefas específicas",
-    "descricao": "Conhecimento incorporado nas composições de componentes, em que cada composição representa um ponto de vista sobre o ambiente de trabalho adequado a uma tarefa.",
+    "descricao": "Esse conhecimento consiste na experiência prática sobre como combinar, configurar e otimizar múltiplos módulos para resolver uma demanda contextual. Sem esse conhecimento, desenvolvedores podem reconstruir soluções do zero em vez de reutilizar arranjos validados.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Produto",
     "dimensao": "Técnica",
@@ -604,7 +604,7 @@
   {
     "id": "C18",
     "nome": "Funcionalidades e complementaridade no ecossistema",
-    "descricao": "Quais funcionalidades já existem no ecossistema e o que caracteriza uma contribuição complementar em vez de redundante.",
+    "descricao": "Esse conhecimento abrange o panorama geral do que já existe publicado no ecossistema para identificar como novas soluções podem agregar valor sem duplicar esforços. A falta dessa visão pode levar ao desperdício de recursos em projetos redundantes que são rejeitados pelo ecossistema.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -630,7 +630,7 @@
   {
     "id": "C19",
     "nome": "Problemas e soluções do ecossistema aplicáveis ao contexto",
-    "descricao": "Problemas já enfrentados no ecossistema e suas soluções, filtrados pelo encaixe no contexto e no ambiente de quem consulta.",
+    "descricao": "Esse conhecimento envolve a habilidade prática de buscar resoluções de problemas em fóruns e comunidades e julgar se elas se adaptam ao cenário específico do seu projeto. A aplicação cega de soluções sem esse julgamento pode introduzir falhas e incompatibilidades nos sistemas.",
     "natureza": "Tácito-técnico",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -671,7 +671,7 @@
   {
     "id": "C20",
     "nome": "Experiência externa com tecnologias do ecossistema",
-    "descricao": "Experiência acumulada pela execução repetida de tarefas com as tecnologias do ecossistema, internalizada nas habilidades e no julgamento do ator.",
+    "descricao": "Esse conhecimento diz respeito à experiência prática acumulada por desenvolvedores ao utilizar repetidamente as tecnologias da plataforma em projetos reais. A falta dessa vivência pode reduzir a velocidade de inovação e limitar a capacidade do ecossistema de evoluir com base no uso prático.",
     "natureza": "Tácito-técnico",
     "nivel": "Produto",
     "dimensao": "Técnica",
