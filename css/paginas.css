@@ -85,7 +85,7 @@
   font-size: var(--tam-base);
   line-height: 1.6;
   color: var(--cor-faixa-suave);
-  max-width: 48ch;
+  max-width: 58ch;
 }
 .abertura__painel {
   align-self: center;
@@ -104,14 +104,21 @@
   padding: var(--esp-5);
   color: var(--cor-faixa-suave);
 }
-/* Botão claro sobre a faixa escura. Não usa .botao porque aquele é da
+/* Ações claras sobre a faixa escura. Não usam .botao porque aquele é da
    superfície da página e aqui o fundo é a faixa. */
-.abertura__entrar {
+.abertura__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+  width: 100%;
+  margin-top: var(--esp-1);
+}
+.abertura__acao {
   display: inline-flex;
   align-items: center;
-  gap: var(--esp-2);
+  justify-content: center;
+  flex: 1 1 12rem;
   min-height: var(--alvo-toque);
-  margin-top: var(--esp-1);
   padding-inline: var(--esp-5);
   background: var(--cor-faixa-texto);
   color: var(--cor-faixa);
@@ -121,41 +128,11 @@
   text-decoration: none;
   transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
-.abertura__entrar:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
-.abertura__entrar:focus-visible { outline-offset: var(--esp-1); }
-.abertura__entrar::after {
-  content: "→";
-  transition: transform var(--dur-rapida) var(--curva-saida);
-}
-@media (hover: hover) and (pointer: fine) {
-  .abertura__entrar:hover::after { transform: translateX(var(--esp-1)); }
-}
-
-.numeros {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--esp-2);
-}
-.numero {
-  display: grid;
-  align-content: center;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-faixa-painel);
-  border: 1px solid var(--cor-faixa-linha);
-  border-radius: var(--raio);
-}
-.numero__valor {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-titulo);
-  line-height: 1.1;
-  color: var(--cor-faixa-texto);
-}
-.numero__rotulo {
-  margin-top: var(--esp-1);
-  font-size: var(--tam-rotulo-metrica);
-  color: var(--cor-faixa-suave);
-  line-height: 1.35;
+.abertura__acao:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
+.abertura__acao:focus-visible { outline-offset: var(--esp-1); }
+@media (min-width: 42rem) {
+  .abertura__acoes { width: auto; }
+  .abertura__acao { flex: 0 1 auto; min-width: 12rem; }
 }
 
 .secao { padding-block: var(--esp-secao); }
