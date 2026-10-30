@@ -881,13 +881,14 @@
 .gerencia { display: grid; gap: normal; }
 .gerencia__introducao {
   margin: 0 0 var(--esp-4);
-  max-width: var(--largura-texto);
   font-size: var(--tam-sm);
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
   color: var(--cor-texto-suave);
 }
 .gerencia__nota {
   margin: 0 0 var(--esp-4);
-  max-width: var(--largura-texto);
   padding: var(--esp-3);
   background: var(--cor-acento-fundo);
   border: var(--borda);
@@ -895,6 +896,9 @@
   border-radius: var(--raio);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
 }
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
@@ -906,9 +910,20 @@
 .gerencia__valor {
   margin: 0 0 var(--esp-2);
   font-size: var(--tam-sm);
-  max-width: var(--largura-texto);
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
 }
 .gerencia__valor:last-child { margin-bottom: 0; }
+
+@media (max-width: 35.99rem) {
+  .gerencia__introducao,
+  .gerencia__nota,
+  .gerencia__valor {
+    text-align: left;
+    hyphens: manual;
+  }
+}
 
 @media (max-width: 47.99rem) {
   /* Empilha, que três colunas de rótulo em mono não cabem em 390. */
