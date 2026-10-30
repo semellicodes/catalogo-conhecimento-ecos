@@ -3,7 +3,6 @@
   "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ecossistema, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes atores dos ECOS.",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "Esta seção indica de onde o conhecimento tende a ser gerado ou registrado, quais atores podem se beneficiar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação no ecossistema.",
-  "gerenciaNotaMetodologica": "As fontes, os receptores e as práticas de gerência apresentados nesta seção constituem uma síntese aplicada, elaborada a partir dos estudos incluídos na Revisão Rápida. Essas orientações combinam soluções identificadas na literatura e interpretações derivadas dos resultados, com o objetivo de apoiar a gerência do conhecimento em Ecossistemas de Software.",
   "ajudas": {
     "classificacao": {
       "titulo": "Classificação do conhecimento",
@@ -17,8 +16,8 @@
     },
     "gerencia": {
       "titulo": "Gerência do conhecimento no ECOS",
-      "texto": "Em ecossistemas de software, o conhecimento atravessa organizações, projetos, plataformas e comunidades. Por isso, o bloco apresenta as principais fontes em que ele tende a ser produzido ou registrado, os principais receptores que podem precisar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação. Esses campos não atribuem posse do conhecimento a um único ator.",
-      "referencia": "kauschinger2021"
+      "texto": "As fontes, os receptores e as práticas de gerência apresentados nesta seção constituem uma síntese aplicada, elaborada a partir dos resultados da Revisão Rápida da Literatura. Essas orientações articulam soluções identificadas nos estudos e interpretações derivadas das evidências analisadas, não representando necessariamente recomendações explícitas dos autores dos estudos primários.",
+      "referencia": "revisaoRapidaManuscrito, kauschinger2021"
     },
     "portasEntrada": {
       "titulo": "Conhecimentos em Ecossistemas de Software",

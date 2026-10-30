@@ -165,6 +165,66 @@ function ajuda(dados, chave) {
   return raiz;
 }
 
+let fecharAjudaGerenciaAtiva = null;
+
+/** A ajuda da gerência fica junto da seção para não abrir outro diálogo sobre ela. */
+function ajudaGerencia(dados) {
+  const conteudo = dados.meta.ajudas?.gerencia;
+  if (!conteudo) return document.createDocumentFragment();
+
+  const raiz = criar('div', 'ajuda ajuda--contextual');
+  const botao = criar('button', 'ajuda__abrir', '?');
+  const painel = criar('div', 'ajuda__painel');
+  const idPainel = 'ajuda-gerencia-painel';
+
+  botao.type = 'button';
+  botao.setAttribute('aria-label', `Saiba mais sobre ${conteudo.titulo}`);
+  botao.setAttribute('aria-controls', idPainel);
+  botao.setAttribute('aria-expanded', 'false');
+
+  painel.id = idPainel;
+  painel.hidden = true;
+  painel.setAttribute('role', 'dialog');
+  painel.setAttribute('aria-label', conteudo.titulo);
+  painel.append(
+    criar('strong', 'ajuda__painel-titulo', conteudo.titulo),
+    criar('p', 'ajuda__painel-texto', conteudo.texto)
+  );
+
+  const referencia = referenciaCurta(dados, conteudo.referencia);
+  if (referencia) painel.append(criar('p', 'ajuda__painel-fonte', `Fonte: ${referencia}`));
+
+  const fechar = (devolverFoco = false) => {
+    painel.hidden = true;
+    botao.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('pointerdown', fecharAoClicarFora, true);
+    document.removeEventListener('keydown', fecharComTecla, true);
+    if (fecharAjudaGerenciaAtiva === fechar) fecharAjudaGerenciaAtiva = null;
+    if (devolverFoco) botao.focus();
+  };
+  const fecharAoClicarFora = (evento) => {
+    if (!raiz.contains(evento.target)) fechar();
+  };
+  const fecharComTecla = (evento) => {
+    if (evento.key === 'Escape') {
+      evento.preventDefault();
+      fechar(true);
+    }
+  };
+  const abrir = () => {
+    fecharAjudaGerenciaAtiva?.();
+    painel.hidden = false;
+    botao.setAttribute('aria-expanded', 'true');
+    document.addEventListener('pointerdown', fecharAoClicarFora, true);
+    document.addEventListener('keydown', fecharComTecla, true);
+    fecharAjudaGerenciaAtiva = fechar;
+  };
+
+  botao.addEventListener('click', () => (painel.hidden ? abrir() : fechar()));
+  raiz.append(botao, painel);
+  return raiz;
+}
+
 /** Mantém um único diálogo de ajuda e preenche-o com conteúdo vindo de dados/. */
 export function abrirAjuda(dados, conteudo) {
   const dialogo = document.querySelector('#dialogo-ajuda');
@@ -183,13 +243,13 @@ export function abrirAjuda(dados, conteudo) {
 }
 
 /** Uma seção da ficha, com título, linha opcional de apoio e ajuda. */
-function secao(dados, titulo, chaveDaAjuda, linhaDeApoio) {
+function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   const bloco = criar('section', 'bloco-ficha');
   const topo = criar('header', 'bloco-ficha__topo');
   const textos = criar('div', 'bloco-ficha__textos');
   textos.append(criar('h3', 'bloco-ficha__titulo', titulo));
   if (linhaDeApoio) textos.append(criar('p', 'bloco-ficha__esquema', linhaDeApoio));
-  topo.append(textos, ajuda(dados, chaveDaAjuda));
+  topo.append(textos, controleAjuda || ajuda(dados, chaveDaAjuda));
   bloco.append(topo);
   return bloco;
 }
@@ -251,16 +311,12 @@ const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || ''
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
-  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
+  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia', undefined, ajudaGerencia(dados));
   const lista = criar('dl', 'gerencia');
 
   if (dados.meta.gerenciaConhecimento) {
     bloco.append(criar('p', 'gerencia__introducao', dados.meta.gerenciaConhecimento));
   }
-  if (dados.meta.gerenciaNotaMetodologica) {
-    bloco.append(criar('p', 'gerencia__nota', dados.meta.gerenciaNotaMetodologica));
-  }
-
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
     if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
