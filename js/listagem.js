@@ -1,7 +1,6 @@
 /**
- * Peça comum das páginas de soluções e de desafios. As duas listam o mesmo
- * formato, identificador, texto, estudos e os conhecimentos ligados, então a
- * montagem mora aqui e cada página só diz o que preenche cada parte.
+ * Peça de listagem dos desafios, com identificador, texto, estudos e os
+ * conhecimentos ligados.
  *
  * Não conhece arquivo nem filtro. Recebe a lista já resolvida e devolve o DOM.
  */

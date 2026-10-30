@@ -2,15 +2,13 @@
  * Trabalha apenas sobre listas. Não conhece a tela nem o DOM.
  */
 
-export const ATRIBUTOS_FILTRAVEIS = ['natureza', 'nivel', 'dimensao', 'tipoEcos', 'acaoGerencia'];
+export const ATRIBUTOS_FILTRAVEIS = ['natureza', 'nivel', 'dimensao'];
 
 export const estadoVazio = () => ({
   busca: '',
   natureza: [],
   nivel: [],
-  dimensao: [],
-  tipoEcos: [],
-  acaoGerencia: []
+  dimensao: []
 });
 
 const normalizar = (texto) =>
@@ -45,16 +43,6 @@ export function aplicar(conhecimentos, estado) {
       casaBusca(c, estado.busca) &&
       ATRIBUTOS_FILTRAVEIS.every((a) => casaAtributo(c, a, estado[a]))
   );
-}
-
-/**
- * A ordem das naturezas, da mais numerosa para a menos. Sai da contagem sobre
- * todos os conhecimentos, não da lista filtrada e não de uma lista escrita no
- * código, então se uma natureza crescer a ordem se ajusta sozinha.
- */
-export function ordemPorQuantidade(conhecimentos, atributo) {
-  const contagem = contar(conhecimentos, atributo);
-  return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([v]) => v);
 }
 
 /** Ordena pela sequência de naturezas informada e, dentro de cada uma, por ID. */

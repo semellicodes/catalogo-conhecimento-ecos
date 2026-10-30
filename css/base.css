@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Creato Display';
+  src: url('../fontes/CreatoDisplay-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('../fontes/CreatoDisplay-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('../fontes/CreatoDisplay-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -11,7 +35,13 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; font-weight: 600; letter-spacing: var(--entre-letras-titulo); }
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
@@ -50,10 +80,7 @@ button, input, select {
   width: 100%;
   max-width: var(--largura-max);
   margin-inline: auto;
-  padding-inline: var(--esp-4);
-}
-@media (min-width: 48rem) {
-  .container { padding-inline: var(--esp-6); }
+  padding-inline: clamp(var(--esp-4), 3vw, var(--esp-6));
 }
 
 .mono { font-family: var(--fonte-mono); }
@@ -75,11 +102,11 @@ button, input, select {
 :root.trocando-tema *::before,
 :root.trocando-tema *::after {
   transition:
-    background-color var(--dur-media) var(--curva),
-    border-color var(--dur-media) var(--curva),
-    color var(--dur-media) var(--curva),
-    fill var(--dur-media) var(--curva),
-    stroke var(--dur-media) var(--curva) !important;
+    background-color var(--dur-tema) var(--curva),
+    border-color var(--dur-tema) var(--curva),
+    color var(--dur-tema) var(--curva),
+    fill var(--dur-tema) var(--curva),
+    stroke var(--dur-tema) var(--curva) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -2,19 +2,18 @@
  * Liga os módulos anteriores na página do catálogo.
  */
 
-import { carregar, conhecimentoCompleto, vazio } from './dados.js';
+import { carregar, conhecimentoCompleto } from './dados.js';
 import * as filtros from './filtros.js';
 import * as lista from './lista.js';
 import * as ficha from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
-/* O nível não entra, porque agora é a própria trilha. Os dois últimos ainda não
-   têm valor registrado e caem no aviso do rodapé. */
-const FACETAS = ['natureza', 'dimensao', 'tipoEcos', 'acaoGerencia'];
+/* A natureza é a entrada principal. Nível e dimensão refinam a lista. */
+const FACETAS = ['natureza', 'nivel', 'dimensao'];
 
 /* Abaixo desta largura os filtros moram numa folha por cima, em vez de empurrar
-   a trilha para fora da tela. */
+   os cartões para fora da tela. */
 const ESTREITO = matchMedia('(max-width: 47.99rem)');
 
 let dados = null;
@@ -22,7 +21,6 @@ let estado = filtros.estadoVazio();
 /* A ordem das naturezas e as estações saem da contagem sobre o catálogo inteiro,
    uma vez só, senão filtrar reordenaria as estações a cada clique. */
 let ordemDasNaturezas = [];
-let estacoes = [];
 /* A ordem de navegação da ficha é a ordem filtrada no momento, não a ordem total. */
 let visiveis = [];
 let idAberto = null;
@@ -72,21 +70,37 @@ function montarOpcaoTodas(chave, rotulo) {
 }
 
 /**
- * Uma faceta preenchida vira um grupo da grade. Uma faceta ainda sem nenhum
- * valor registrado não vira grupo, devolve null e é anunciada no rodapé.
+ * Uma faceta preenchida vira um grupo, com o rótulo ao lado das pastilhas e não
+ * acima delas. Uma faceta sem nenhum valor registrado não vira grupo.
+ *
+ * O grupo é div com role de grupo, e não fieldset, porque legend dentro de
+ * contêiner flex ainda não se comporta igual em todo navegador, e aqui o rótulo
+ * precisa ficar na mesma linha das pastilhas.
+ *
+ * A natureza divide a primeira linha com a busca, e ali o rótulo escrito não
+ * caberia sem empurrar as pastilhas para a linha de baixo. Nesse caso ele vira
+ * rótulo acessível do grupo, então quem usa leitor de tela continua ouvindo de
+ * que faceta são as pastilhas.
  */
-function montarGrupoDeFiltros(chave) {
+function montarGrupoDeFiltros(chave, rotuloVisivel = true) {
   const definicao = dados.classificacoes[chave];
   const contagens = filtros.contar(dados.conhecimentos, chave);
   if (!definicao.valores.some((v) => contagens.get(v.valor))) return null;
 
-  const grupo = document.createElement('fieldset');
+  const grupo = document.createElement('div');
   grupo.className = 'filtros__grupo';
+  grupo.setAttribute('role', 'group');
 
-  const titulo = document.createElement('legend');
-  titulo.className = 'filtros__titulo';
-  titulo.textContent = definicao.rotulo;
-  grupo.append(titulo);
+  if (rotuloVisivel) {
+    const titulo = document.createElement('p');
+    titulo.className = 'filtros__titulo';
+    titulo.id = `filtro-rotulo-${chave}`;
+    titulo.textContent = definicao.rotulo;
+    grupo.setAttribute('aria-labelledby', titulo.id);
+    grupo.append(titulo);
+  } else {
+    grupo.setAttribute('aria-label', definicao.rotulo);
+  }
 
   const opcoes = document.createElement('div');
   opcoes.className = 'filtros__opcoes';
@@ -107,23 +121,6 @@ function montarGrupoDeFiltros(chave) {
   return grupo;
 }
 
-/** Uma linha só para as facetas que ainda não têm classificação registrada. */
-function anunciarPendentes(rotulos) {
-  const aviso = el('#filtros-pendentes');
-  aviso.hidden = rotulos.length === 0;
-  if (!rotulos.length) return;
-  /* Só o primeiro abre a frase em maiúscula. Um rótulo que começa por sigla fica
-     como está, para não virar "eCOS". */
-  const comecaPorSigla = (t) => t.slice(0, 2) === t.slice(0, 2).toUpperCase();
-  const seguinte = (t) => (comecaPorSigla(t) ? t : t.charAt(0).toLowerCase() + t.slice(1));
-  const demais = rotulos.slice(1).map(seguinte);
-  const nomes = demais.length
-    ? `${[rotulos[0], ...demais.slice(0, -1)].join(', ')} e ${demais[demais.length - 1]}`
-    : rotulos[0];
-  const verbo = rotulos.length > 1 ? 'serão habilitados' : 'será habilitado';
-  aviso.textContent = `${nomes} ${verbo} quando a classificação for concluída.`;
-}
-
 /** Espelha o estado nos botões. Sem valor, o botão representa a faceta inteira vazia. */
 function marcarOpcoes() {
   document.querySelectorAll('[data-filtro]').forEach((botao) => {
@@ -133,8 +130,11 @@ function marcarOpcoes() {
   });
 }
 
-const CURVA_SAIDA = 'cubic-bezier(0.23, 1, 0.32, 1)';
 const movimentoReduzido = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function tokenDeMovimento(nome) {
+  return getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
+}
 
 /**
  * Troca de conhecimento sem recarregar o diálogo. O conteúdo entra pelo lado
@@ -142,10 +142,21 @@ const movimentoReduzido = () => window.matchMedia('(prefers-reduced-motion: redu
  */
 function animarTroca(corpo, direcao) {
   if (!direcao || movimentoReduzido()) return;
+  const deslocamento = tokenDeMovimento('--deslocamento-troca-ficha');
+  const duracao = Number.parseFloat(tokenDeMovimento('--dur-troca-ficha'));
+  const sinal = direcao > 0 ? '' : '-';
   corpo.animate(
-    [{ opacity: 0, transform: `translateX(${direcao * 10}px)` }, { opacity: 1, transform: 'none' }],
-    { duration: 200, easing: CURVA_SAIDA }
+    [{ opacity: 0, transform: `translateX(${sinal}${deslocamento})` }, { opacity: 1, transform: 'none' }],
+    { duration: duracao, easing: tokenDeMovimento('--curva-saida'), fill: 'both' }
   );
+}
+
+function mostrarFicha(dialogo) {
+  dialogo.classList.add('dialogo-ficha--entrando');
+  dialogo.showModal();
+  /* O diálogo preserva o foco inicial sem destacar um elemento do conteúdo. */
+  dialogo.focus({ preventScroll: true });
+  requestAnimationFrame(() => dialogo.classList.remove('dialogo-ficha--entrando'));
 }
 
 function abrirFicha(id, direcao = 0) {
@@ -156,12 +167,22 @@ function abrirFicha(id, direcao = 0) {
   const corpo = el('#dialogo-ficha-corpo');
   corpo.replaceChildren(ficha.renderizar(dados, completo));
   animarTroca(corpo, direcao);
-  el('#dialogo-ficha-id').textContent = `${completo.id} · ${completo.nome}`;
+  el('#dialogo-ficha-id').textContent = completo.id;
+
+  /* Tudo que identifica o conhecimento fica no topo parado, que é o único lugar
+     visível em qualquer rolagem. Quem desce até os estudos continua vendo de
+     qual conhecimento é a ficha. */
+  const selo = el('#dialogo-ficha-natureza');
+  selo.className = `etiqueta etiqueta--${lista.classeNatureza(completo.natureza)}`;
+  selo.textContent = completo.natureza;
+  el('#dialogo-ficha-nome').textContent = completo.nome;
+  el('#dialogo-ficha-descricao').textContent = completo.descricao;
+  dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
   idAberto = id;
   posicionarNavegacao();
-  if (!dialogo.open) dialogo.showModal();
-  /* Quem rola é o próprio diálogo, não o corpo, então é nele que o topo é reposto. */
-  dialogo.scrollTop = 0;
+  if (!dialogo.open) mostrarFicha(dialogo);
+  /* Quem rola é o corpo, já que o topo e o rodapé do diálogo ficam parados. */
+  corpo.scrollTop = 0;
   sincronizarUrl(id);
 }
 
@@ -199,8 +220,8 @@ function sincronizarUrl(id) {
 
 function atualizar() {
   visiveis = filtros.ordenar(filtros.aplicar(dados.conhecimentos, estado), ordemDasNaturezas);
-  lista.renderizar(el('#trilha'), visiveis, estacoes, abrirFicha);
-  el('#trilha-vazia').hidden = visiveis.length > 0;
+  lista.renderizar(el('#lista'), visiveis, abrirFicha);
+  el('#lista-vazia').hidden = visiveis.length > 0;
   el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
   marcarOpcoes();
@@ -251,8 +272,8 @@ function ligarFolhaDeFiltros() {
       corpo.append(painel);
     } else {
       fechar();
-      /* Volta para antes da legenda, que é a primeira coisa da trilha. */
-      lugarOriginal.insertBefore(painel, el('#legenda'));
+      /* Volta para antes dos cartões, que é o que vem logo depois dos filtros. */
+      lugarOriginal.insertBefore(painel, el('#lista'));
     }
   }
 
@@ -272,7 +293,12 @@ function ligarFolhaDeFiltros() {
 
 function ligarDialogo() {
   const dialogo = el('#dialogo-ficha');
+  const ajuda = el('#dialogo-ajuda');
   el('#fechar-ficha').addEventListener('click', () => dialogo.close());
+  el('#fechar-ajuda').addEventListener('click', () => ajuda.close());
+  ajuda.addEventListener('click', (evento) => {
+    if (evento.target === ajuda) ajuda.close();
+  });
   el('#ficha-anterior').addEventListener('click', () => irPara(-1));
   el('#ficha-proximo').addEventListener('click', () => irPara(1));
   dialogo.addEventListener('close', () => {
@@ -286,12 +312,12 @@ function ligarDialogo() {
 
 /**
  * Qualquer falha na partida vira aviso na tela. Sem isto a página fica parada
- * em Carregando, sem trilha e sem dizer o que houve, que foi o que aconteceu
+ * em Carregando, sem cartão e sem dizer o que houve, que foi o que aconteceu
  * quando o navegador serviu uma versão antiga de um módulo junto com o HTML novo.
  */
 function avisarFalha(mensagem, erro) {
   console.error(erro);
-  const aviso = el('#trilha-vazia');
+  const aviso = el('#lista-vazia');
   if (aviso) {
     aviso.textContent = mensagem;
     aviso.hidden = false;
@@ -326,20 +352,15 @@ function montarCatalogo() {
   estado = filtros.lerDaUrl(parametros);
 
   const painel = el('#painel-filtros');
-  const pendentes = [];
   FACETAS.forEach((chave) => {
-    const grupo = montarGrupoDeFiltros(chave);
-    if (grupo) painel.append(grupo);
-    else pendentes.push(dados.classificacoes[chave].rotulo);
+    /* A natureza sobe para a linha da busca, porque é a entrada principal. */
+    const principal = chave === 'natureza';
+    const grupo = montarGrupoDeFiltros(chave, !principal);
+    if (!grupo) return;
+    (principal ? el('#filtro-natureza') : painel).append(grupo);
   });
-  anunciarPendentes(pendentes);
 
-  ordemDasNaturezas = filtros.ordemPorQuantidade(dados.conhecimentos, 'natureza');
-  estacoes = ordemDasNaturezas.map((valor) =>
-    dados.classificacoes.natureza.valores.find((v) => v.valor === valor)
-  );
-
-  lista.renderizarLegenda(el('#legenda'), dados.classificacoes.natureza.valores);
+  ordemDasNaturezas = dados.classificacoes.natureza.valores.map(({ valor }) => valor);
 
   ligarBusca();
   ligarLimpar();

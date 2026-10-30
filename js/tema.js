@@ -104,14 +104,26 @@ function marcarEstado(botao) {
   botao.setAttribute('aria-pressed', String(atual === CLARO));
 }
 
+function duracaoTema() {
+  const valor = getComputedStyle(raiz).getPropertyValue('--dur-tema').trim();
+  const numero = Number.parseFloat(valor);
+  if (!Number.isFinite(numero)) return 0;
+  return valor.endsWith('ms') ? numero : numero * 1000;
+}
+
 function alternar(botao) {
+  if (raiz.classList.contains('trocando-tema')) return;
   const proximo = temaAtual() === ESCURO ? CLARO : ESCURO;
-  /* A classe liga a transição de cor só durante a troca, nunca na navegação normal. */
+  /* O primeiro quadro registra a posição atual e o seguinte aplica a nova.
+     Assim o navegador tem um ponto de partida para animar o deslizante. */
   raiz.classList.add('trocando-tema');
-  raiz.dataset.tema = proximo;
-  gravarEscolha(proximo);
-  marcarEstado(botao);
-  setTimeout(() => raiz.classList.remove('trocando-tema'), 300);
+  void raiz.offsetWidth;
+  requestAnimationFrame(() => {
+    raiz.dataset.tema = proximo;
+    gravarEscolha(proximo);
+    marcarEstado(botao);
+    setTimeout(() => raiz.classList.remove('trocando-tema'), duracaoTema());
+  });
 }
 
 function iniciar() {

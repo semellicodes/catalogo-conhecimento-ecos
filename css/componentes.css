@@ -10,21 +10,30 @@
 }
 .cabecalho__interno {
   display: grid;
-  grid-template-columns: 1fr auto;
+  position: relative;
+  grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "marca tema"
+    "marca acoes"
     "nav   nav";
   align-items: center;
   gap: var(--esp-1) var(--esp-4);
+  padding-inline: var(--esp-cabecalho-lateral);
   min-height: var(--altura-cabecalho);
 }
 .marca { grid-area: marca; }
 .navegacao { grid-area: nav; }
-.botao-tema { grid-area: tema; }
-@media (min-width: 48rem) {
+.cabecalho__acoes {
+  grid-area: acoes;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+}
+/* A linha única só entra quando marca, links e tema cabem juntos. Antes disso,
+   os links passam para o menu compacto, preservando a marca e o tema visíveis. */
+@media (min-width: 72rem) {
   .cabecalho__interno {
     grid-template-columns: auto 1fr auto;
-    grid-template-areas: "marca nav tema";
+    grid-template-areas: "marca nav acoes";
   }
   .navegacao { justify-self: end; }
 }
@@ -51,8 +60,15 @@
   min-width: 0;
 }
 .marca__nome strong { font-weight: 600; color: var(--cor-acento); }
-@media (max-width: 29.99rem) {
-  .marca__nome { font-size: var(--tam-xs); }
+@media (max-width: 23.99rem) {
+  .marca__nome { display: none; }
+}
+@media (min-width: 24rem) and (max-width: 29.99rem) {
+  .marca { gap: var(--esp-2); }
+  .marca__nome {
+    font-size: var(--tam-xs);
+    white-space: nowrap;
+  }
 }
 
 /* ---------- Interruptor de tema ---------- */
@@ -64,16 +80,19 @@
   display: inline-grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  width: calc(var(--alvo-toque) * 1.7);
+  width: var(--largura-interruptor);
   height: var(--alvo-toque);
   padding: var(--esp-1);
   background: var(--cor-superficie);
-  border: var(--borda);
+  border: var(--borda-suave);
   border-radius: var(--raio-pilula);
   cursor: pointer;
-  transition: border-color var(--dur-rapida) var(--curva);
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva-saida);
 }
 .interruptor:hover { border-color: var(--cor-acento-linha); }
+.interruptor:active { transform: scale(0.96); }
 .interruptor:focus-visible {
   outline: 2px solid var(--cor-acento);
   outline-offset: 2px;
@@ -89,10 +108,20 @@
   background: var(--cor-superficie-alta);
   border: 1px solid var(--cor-linha);
   border-radius: var(--raio-pilula);
-  transition: transform var(--dur-media) var(--curva-saida);
+  will-change: transform;
+  transition: transform var(--dur-interruptor) var(--curva-saida);
 }
 /* Pressionado é o tema claro, que é o sol, à esquerda. Solto é a lua. */
 .interruptor[aria-pressed="false"] .interruptor__deslizante { transform: translateX(100%); }
+
+/* A troca de tema aplica transições de cor na página inteira. Sem esta regra,
+   ela substitui a transição de transform e faz o deslizante saltar de lado. */
+:root.trocando-tema .interruptor__deslizante {
+  transition:
+    transform var(--dur-interruptor) var(--curva-saida),
+    background-color var(--dur-tema) var(--curva),
+    border-color var(--dur-tema) var(--curva);
+}
 
 .interruptor__icone {
   position: relative;
@@ -107,13 +136,14 @@
 .interruptor[aria-pressed="false"] .interruptor__icone--lua {
   color: var(--cor-acento);
 }
-.interruptor__icone svg { display: block; width: 1.125rem; height: 1.125rem; }
+.interruptor__icone svg { display: block; width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 
 @media (prefers-reduced-motion: reduce) {
-  .interruptor__deslizante { transition: none; }
+  .interruptor__deslizante,
+  :root.trocando-tema .interruptor__deslizante { transition: none; }
 }
 
-.navegacao { display: flex; gap: var(--esp-1); flex-wrap: wrap; }
+.navegacao { display: flex; gap: var(--esp-1); }
 .navegacao a {
   display: flex;
   align-items: center;
@@ -125,23 +155,51 @@
   border-bottom: 2px solid transparent;
   transition: color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
-/* Cinco itens mais o interruptor de tema só cabem numa linha até certa largura.
-   Abaixo dela a navegação se aperta, em vez de quebrar e dobrar o cabeçalho. */
-@media (max-width: 63.99rem) {
-  .navegacao { gap: 0; }
-  .navegacao a { padding-inline: var(--esp-2); font-size: var(--tam-xs); }
+.menu {
+  display: none;
+  place-items: center;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  padding: 0;
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+  cursor: pointer;
+  transition:
+    color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva-saida);
 }
-/* Com seis itens o celular não comporta todos numa linha nem apertando. Em vez
-   de quebrar em duas e dobrar a altura do cabeçalho, a navegação rola de lado. */
-@media (max-width: 47.99rem) {
+.menu svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
+.menu:hover, .menu[aria-expanded="true"] { color: var(--cor-acento); border-color: var(--cor-acento-linha); }
+.menu:active { transform: scale(var(--escala-acao)); }
+
+@media (max-width: 71.99rem) {
+  .menu { display: grid; }
   .navegacao {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    scroll-padding-inline: var(--esp-2);
+    position: absolute;
+    top: calc(100% + var(--esp-1));
+    right: calc(var(--largura-interruptor) + var(--esp-3));
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, var(--largura-menu));
+    gap: var(--esp-0);
+    padding: var(--esp-1);
+    background: var(--cor-superficie);
+    border: var(--borda-suave);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra-menu);
   }
-  .navegacao::-webkit-scrollbar { display: none; }
-  .navegacao a { flex: none; }
+  .navegacao a {
+    justify-content: start;
+    padding-inline: var(--esp-2);
+    font-size: var(--tam-xs);
+    border-bottom: 0;
+    border-radius: var(--raio);
+  }
+  .navegacao a[aria-current="page"] { background: var(--cor-acento-fundo); }
 }
 .navegacao a:hover { color: var(--cor-texto); }
 .navegacao a[aria-current="page"] {
@@ -150,9 +208,9 @@
   border-bottom-color: var(--cor-acento);
 }
 
-/* ---------- Listagem de soluções e de desafios ---------- */
-/* As duas páginas usam a mesma forma, identificador à esquerda e corpo à
-   direita. Não é cartão porque o item não abre ficha, quem abre é o link do
+/* ---------- Listagem de desafios ---------- */
+/* A listagem usa identificador à esquerda e corpo à direita. Não é cartão
+   porque o item não abre ficha, quem abre é o link do
    conhecimento ligado. */
 .listagem { list-style: none; display: grid; gap: var(--esp-4); margin-top: var(--esp-5); }
 .item-listagem {
@@ -216,17 +274,6 @@
 .valores__nome { font-weight: 600; }
 .valores__texto { font-size: var(--tam-xs); color: var(--cor-texto-suave); }
 
-/* Aviso acima de uma lista, para o que a lista é e o que ela não é. */
-.aviso-linha {
-  margin-top: calc(var(--esp-5) * -1 + var(--esp-2));
-  margin-bottom: var(--esp-5);
-  padding-left: var(--esp-3);
-  border-left: 2px solid var(--cor-linha);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
-}
-
 /* ---------- Contato ---------- */
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
    então ocupa o mínimo entre o fim da página e o crédito. */
@@ -250,7 +297,7 @@
   max-width: 56rem;
   margin-inline: auto;
 }
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 .pessoa { display: grid; justify-items: center; gap: var(--esp-1); }
@@ -299,10 +346,8 @@
 .rodape__interno { display: flex; justify-content: center; gap: var(--esp-4); flex-wrap: wrap; text-align: center; }
 
 /* ---------- Etiquetas ---------- */
-/* Sem uso desde que o cartão da trilha deixou de mostrar nível e dimensão. Fica
-   de pé porque a ficha ainda vai receber a dimensão em pílula. Se a ficha nova
-   não usar, isto e os tokens de pílula saem juntos. */
-/* Pílula preenchida. Fundo sutil da categoria e texto na versão escura dela. */
+/* O selo da natureza no topo do diálogo da ficha. Pílula preenchida, com fundo
+   sutil da categoria e texto na versão escura dela. */
 .etiqueta {
   display: inline-block;
   font-family: var(--fonte-mono);
@@ -327,7 +372,6 @@
   background: var(--cor-tacito-tecnico-pilula);
   color: var(--cor-tacito-tecnico-pilula-texto);
 }
-.etiquetas { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 
 .codigo-id {
   font-family: var(--fonte-mono);
@@ -336,63 +380,96 @@
 }
 
 /* ---------- Busca e filtros ---------- */
-/* Painel acima da lista. Busca e limpar na primeira linha, as facetas
-   preenchidas numa grade de colunas iguais, e o que ainda não foi classificado
-   numa linha discreta no rodapé, fora da grade. */
+/* Painel acima da lista. A busca vem primeiro, a natureza fica ao lado e as
+   demais facetas entram numa segunda linha compacta. */
 .filtros {
+  margin-bottom: var(--esp-6);
+  padding: var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-  margin-bottom: var(--esp-5);
 }
 .filtros__linha {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--esp-3);
-  padding: var(--esp-3) var(--esp-4);
-  border-bottom: var(--borda);
+  gap: var(--esp-2);
 }
 .filtros__busca {
-  flex: 1 1 auto;
+  position: relative;
+  flex: 1 1 var(--largura-min-busca);
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: var(--esp-3);
 }
-.filtros__busca .filtros__titulo { margin-bottom: 0; flex: none; }
 .filtros__busca .campo-busca { flex: 1 1 auto; min-width: 0; }
-.filtros__linha > .botao { flex: none; }
+.filtros__principal { flex: 0 1 auto; display: flex; min-width: 0; }
+.filtros__principal .filtros__opcoes { flex-wrap: nowrap; }
+.filtros__contagem {
+  flex: none;
+  margin-left: auto;
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+  white-space: nowrap;
+}
 
 .filtros__grade {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
-  padding: var(--esp-4) var(--esp-4) var(--esp-3);
+  gap: var(--esp-2);
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-suave);
 }
-@media (min-width: 48rem) {
-  .filtros__grade { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0; }
-  .filtros__grupo + .filtros__grupo { border-left: var(--borda); padding-left: var(--esp-4); }
-  .filtros__grupo { padding-right: var(--esp-4); }
+.filtros__grade:empty { display: none; }
+/* Rótulo e pastilhas na mesma linha. No celular empilha. */
+.filtros__grupo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-2) var(--esp-3);
+  min-width: 0;
 }
-.filtros__grupo { border: 0; padding: 0; margin: 0; min-width: 0; }
 .filtros__titulo {
-  display: block;
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
-  padding: 0;
-  margin-bottom: var(--esp-2);
+  white-space: nowrap;
+}
+.filtros__titulo--oculto {
+  position: absolute;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .filtros__opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
-.filtros__pendentes {
-  padding: var(--esp-2) var(--esp-4);
-  border-top: var(--borda);
-  font-size: var(--tam-xs);
+
+.filtros__icone {
+  position: absolute;
+  left: var(--esp-3);
+  z-index: 1;
+  width: var(--tam-base);
+  height: var(--tam-base);
   color: var(--cor-texto-fraco);
+  pointer-events: none;
+}
+
+.filtros__rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding-top: var(--esp-1);
+}
+.filtros__rodape:not(:has(> :not([hidden]))) { display: none; }
+@media (max-width: 47.99rem) {
+  .filtros__busca { flex: 1 1 100%; }
+  .filtros__principal { flex: 1 1 100%; }
+  .filtros__principal .filtros__opcoes { flex-wrap: wrap; }
+  .filtros__contagem { margin-left: 0; }
+  .filtros__grupo { align-items: start; }
+  .filtros__titulo { flex-basis: 100%; }
 }
 
 /* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
@@ -452,6 +529,7 @@
   width: 100%;
   min-height: var(--alvo-toque);
   padding-inline: var(--esp-3);
+  padding-inline-start: calc(var(--esp-3) + var(--tam-base) + var(--esp-2));
   background: var(--cor-superficie);
   border: var(--borda);
   color: var(--cor-texto);
@@ -486,139 +564,161 @@
     box-shadow var(--dur-rapida) var(--curva);
 }
 .botao:hover { border-color: var(--cor-acento); color: var(--cor-acento); box-shadow: var(--sombra-2); }
+/* Versão baixa, para o botão caber numa barra apertada sem virar o item mais
+   alto dela. O alvo de toque continua nos 44px pelo recorte em volta. */
+.botao--curto { min-height: 2rem; font-size: var(--tam-xs); }
 
-/* ---------- Trilha por nível ---------- */
-/* Cada nível é uma estação. O ponto marca a estação e a linha liga uma à
-   seguinte, por isso a última não desenha linha. */
-.trilha { list-style: none; display: grid; gap: var(--esp-7); }
-.estacao {
+/* Fechar redondo e pequeno, no fim da linha do identificador. O alvo de toque
+   vem do recorte invisível em volta, não do tamanho do desenho. */
+.fechar {
   display: grid;
-  grid-template-columns: var(--coluna-trilha) minmax(0, 1fr);
-  column-gap: var(--esp-4);
-}
-.estacao__marca { position: relative; display: flex; justify-content: center; }
-.estacao__ponto {
-  width: var(--ponto-estacao);
-  height: var(--ponto-estacao);
-  margin-top: var(--esp-2);
-  border-radius: var(--raio-pilula);
-  background: var(--cor-acento);
+  place-items: center;
   flex: none;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  margin-inline-end: calc(var(--esp-2) * -1);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  color: var(--cor-texto-fraco);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva);
 }
-/* A linha desce do ponto e atravessa o espaço até a estação seguinte. */
-.estacao__marca::after {
-  content: '';
-  position: absolute;
-  top: calc(var(--esp-2) + var(--ponto-estacao) + var(--esp-2));
-  bottom: calc(var(--esp-7) * -1);
-  width: 1px;
-  background: var(--cor-linha);
-}
-.estacao:last-child .estacao__marca::after { display: none; }
+.fechar svg { width: 1.25rem; height: 1.25rem; }
+.fechar:hover { background: var(--cor-superficie-alta); color: var(--cor-texto); }
 
-.estacao__titulo {
-  display: flex;
-  align-items: baseline;
-  gap: var(--esp-3);
-  font-size: var(--tam-lg);
-  letter-spacing: var(--entre-letras-nome);
-}
-.estacao__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-fraco); }
-.estacao__descricao {
-  margin-block: var(--esp-2) var(--esp-4);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
-}
+/* A ficha recebe foco ao abrir para manter o contexto do diálogo, mas o contorno
+   não deve competir visualmente com o conteúdo que acabou de ser aberto. */
+.dialogo-ficha:focus-visible { outline: 0; }
 
 /* ---------- Cartão do conhecimento ---------- */
-/* Cartão baixo. O nível já é a estação e a dimensão está na ficha, então aqui
-   fica só a natureza, pelo ponto, o identificador e o nome. */
+/* A prévia mostra só parte da descrição. O texto integral fica na ficha, onde
+   há espaço para a leitura, e a grade não vira uma parede de parágrafos. */
 .cartoes {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: var(--esp-3);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-4);
+  justify-items: center;
+}
+/* Antes da grade dupla o cartão mantém uma medida de leitura. Assim não vira
+   um painel largo demais nos tamanhos intermediários, como um tablet em pé. */
+.cartoes > li {
+  display: flex;
+  width: min(100%, var(--largura-cartao-unico));
+  min-width: 0;
+}
+@media (min-width: 34rem) {
+  .cartoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+  }
+  .cartoes > li { width: 100%; }
+}
+@media (min-width: 76rem) {
+  .cartoes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .cartao {
+  --cor-cartao-natureza: var(--cor-acento);
+  --cor-cartao-natureza-fundo: var(--cor-acento-fundo);
+  --cor-cartao-natureza-linha: var(--cor-acento-linha);
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  column-gap: var(--esp-3);
-  height: 100%;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: var(--esp-3);
+  width: 100%;
+  padding: var(--esp-5);
+  background: var(--cor-cartao-catalogo);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
-  text-decoration: none;
-  color: inherit;
   transition:
-    background-color var(--dur-rapida) var(--curva),
+    background-color var(--dur-media) var(--curva),
     border-color var(--dur-rapida) var(--curva),
-    box-shadow var(--dur-media) var(--curva),
-    transform var(--dur-media) var(--curva-saida);
+    box-shadow var(--dur-hover) var(--curva),
+    transform var(--dur-hover) var(--curva-saida);
 }
-.cartao:hover { background: var(--cor-superficie-alta); color: inherit; box-shadow: var(--sombra-2); }
-/* Sobe dois pixels no ponteiro fino. No toque o hover dispara sem intenção. */
+@media (max-width: 33.99rem) { .cartao { padding: var(--esp-4); } }
 @media (hover: hover) and (pointer: fine) {
-  .cartao:hover { transform: translateY(-2px); }
+  .cartao:hover {
+    background: var(--cor-cartao-catalogo-hover);
+    border-color: var(--cor-cartao-natureza-linha);
+    box-shadow: var(--sombra-2);
+    transform: translateY(var(--deslocamento-hover));
+  }
+  .cartao:hover .cartao__abrir {
+    border-color: currentColor;
+    transform: translateX(var(--deslocamento-acao));
+  }
 }
-.cartao:active { transform: translateY(0) scale(0.99); transition-duration: var(--dur-rapida); }
 
-.cartao__ponto {
-  grid-row: 1 / 3;
-  width: var(--ponto-natureza);
-  height: var(--ponto-natureza);
-  border-radius: var(--raio-pilula);
+.cartao--explicito {
+  --cor-cartao-natureza: var(--cor-explicito);
+  --cor-cartao-natureza-fundo: var(--cor-explicito-pilula);
+  --cor-cartao-natureza-linha: var(--cor-explicito-linha);
 }
-.cartao__ponto--explicito { background: var(--cor-explicito); }
-.cartao__ponto--tacito-cognitivo { background: var(--cor-tacito-cognitivo); }
-.cartao__ponto--tacito-tecnico { background: var(--cor-tacito-tecnico); }
-.cartao__id { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+.cartao--tacito-cognitivo {
+  --cor-cartao-natureza: var(--cor-tacito-cognitivo);
+  --cor-cartao-natureza-fundo: var(--cor-tacito-cognitivo-pilula);
+  --cor-cartao-natureza-linha: var(--cor-tacito-cognitivo-linha);
+}
+.cartao--tacito-tecnico {
+  --cor-cartao-natureza: var(--cor-tacito-tecnico);
+  --cor-cartao-natureza-fundo: var(--cor-tacito-tecnico-pilula);
+  --cor-cartao-natureza-linha: var(--cor-tacito-tecnico-linha);
+}
+
+.cartao__topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); }
+.cartao__id { font-size: var(--tam-xs); color: var(--cor-cartao-natureza); }
 .cartao__nome {
-  grid-column: 2;
-  font-size: var(--tam-sm);
-  font-weight: 500;
-  line-height: 1.3;
+  font-size: var(--tam-lg);
+  font-weight: 600;
+  line-height: 1.25;
   letter-spacing: var(--entre-letras-nome);
 }
-
-/* ---------- Legenda das naturezas ---------- */
-/* Vem antes da trilha, porque é a chave de leitura do ponto colorido do
-   cartão, e chave que aparece depois do conteúdo chega tarde demais. */
-.legenda {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--esp-2) var(--esp-5);
-  margin-bottom: var(--esp-5);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
+.cartao__descricao {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--linhas-resumo-cartao);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
 }
-.legenda__item { display: inline-flex; align-items: center; gap: var(--esp-2); }
-.legenda__ponto {
-  width: var(--ponto-natureza);
-  height: var(--ponto-natureza);
-  border-radius: var(--raio-pilula);
-  flex: none;
+.cartao__abrir {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  width: fit-content;
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-1);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  color: var(--cor-cartao-natureza);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva),
+    transform var(--dur-rapida) var(--curva-saida);
 }
-.legenda__ponto--explicito { background: var(--cor-explicito); }
-.legenda__ponto--tacito-cognitivo { background: var(--cor-tacito-cognitivo); }
-.legenda__ponto--tacito-tecnico { background: var(--cor-tacito-tecnico); }
+.cartao__abrir::after { content: '→'; }
+.cartao__abrir:active { transform: scale(0.97); }
 
 @media (prefers-reduced-motion: reduce) {
   .cartao,
   .cartao:hover,
-  .cartao:active { transform: none; }
+  .cartao__abrir { transform: none; }
 }
 
 /* ---------- Ficha ---------- */
-/* Cabeçalho e tira de atributos sem rolar, o resto em abas, uma lista por vez.
-   É o que mantém a altura previsível, inclusive no celular. */
-.ficha { display: grid; }
-.ficha__topo { display: grid; gap: var(--esp-2); }
+/* O nome e a descrição abrem, as seções vêm em seguida e o resto desce para as
+   abas, uma lista por vez. É o que mantém a altura previsível no celular. */
+.ficha { display: grid; gap: var(--esp-3); }
 .ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
 .ficha__descricao {
   font-size: var(--tam-sm);
@@ -626,99 +726,36 @@
   max-width: var(--largura-texto);
 }
 
-/* Os dois blocos do topo da ficha. */
-.bloco-ficha { margin-top: var(--esp-5); }
+.bloco-ficha {
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+}
+.bloco-ficha__topo {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-3);
+}
+.bloco-ficha__textos { display: grid; gap: var(--esp-1); }
+.bloco-ficha__esquema { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 .bloco-ficha__titulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-  margin-bottom: var(--esp-3);
-}
-.bloco-ficha__pendente {
-  margin-top: var(--esp-2);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-}
-
-/* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
-   porque saber que um valor não se aplica também é informação. */
-.opcoes {
-  list-style: none;
-  display: grid;
-  gap: var(--esp-2);
-  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
-}
-/* Ícone e nome, numa linha só. A descrição do valor mora no glossário do
-   Explorar e no botão de ajuda do rótulo, não aqui. */
-.opcao {
-  display: flex;
-  align-items: center;
-  gap: var(--esp-2);
-  min-height: var(--alvo-toque);
-  padding: var(--esp-2) var(--esp-3);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  color: var(--cor-texto-fraco);
-  opacity: 0.6;
-}
-.opcao[data-aceso] {
-  opacity: 1;
-  border-color: var(--cor-acento-linha);
-  background: var(--cor-acento-fundo);
   color: var(--cor-acento);
 }
-.opcao__icone { flex: none; width: 1.125rem; height: 1.125rem; }
-.opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
-.opcao[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
 
-/* Um atributo é o rótulo mais a fileira. Três deles empilham no bloco. */
-.atributo-caixas + .atributo-caixas { margin-top: var(--esp-4); }
-.atributo-caixas .atr { margin-bottom: var(--esp-2); }
-
-/* No celular, natureza, nível e dimensão vão a duas colunas, porque os nomes são
-   curtos e assim as abas entram na primeira tela. O tipo de ECOS fica numa
-   coluna, que ele pode acender mais de uma e a leitura é de conjunto. */
-@media (max-width: 47.99rem) {
-  .atributo-caixas .opcoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-/* A justificativa, que só aparece quando existe. */
-.porque { margin-top: var(--esp-3); }
-.porque__abrir {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--alvo-toque);
-  font-size: var(--tam-sm);
-  color: var(--cor-acento);
-  cursor: pointer;
-  list-style: none;
-}
-.porque__abrir::-webkit-details-marker { display: none; }
-.porque__texto {
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  max-width: var(--largura-texto);
-}
-
-.atr { position: relative; display: inline-flex; align-items: center; gap: var(--esp-2); }
-.atr__nome {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-  text-transform: lowercase;
-}
-
-.atr__info {
-  flex: none;
-  align-self: center;
+/* A ajuda abre uma explicação detalhada em diálogo, sem disputar espaço com a ficha. */
+.ajuda { flex: none; }
+.ajuda__abrir {
   display: grid;
   place-items: center;
-  width: 1.125rem;
-  height: 1.125rem;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
   background: transparent;
   border: 1px solid var(--cor-linha);
@@ -733,43 +770,176 @@
     border-color var(--dur-rapida) var(--curva),
     transform var(--dur-rapida) var(--curva);
 }
-.atr__info:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
-.atr__info:active { transform: scale(0.92); }
+.ajuda__abrir:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
+.ajuda__abrir:active { transform: scale(0.92); }
 
-/* A nota sai do próprio botão, por isso a origem fica no canto de cima. */
-.atr__nota {
-  position: absolute;
-  top: calc(100% + var(--esp-2));
-  left: 0;
-  z-index: 2;
+/* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
+   porque saber que um valor não se aplica também é informação. */
+.opcoes {
+  list-style: none;
   display: grid;
   gap: var(--esp-2);
-  width: max-content;
-  max-width: min(24rem, 70vw);
-  padding: var(--esp-3) var(--esp-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+}
+/* Ícone e nome, numa linha só. A descrição do valor mora no glossário do
+   Explorar e no botão de ajuda do cartão, não aqui. */
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  padding: var(--esp-2) var(--esp-3);
+  background: var(--cor-fundo);
+  border: var(--borda);
+  border-radius: var(--raio);
+  color: var(--cor-texto-fraco);
+  opacity: 0.6;
+}
+.opcoes li[data-aceso] .opcao {
+  opacity: 1;
+  border-color: var(--cor-acento-linha);
+  background: var(--cor-acento-fundo);
+  color: var(--cor-acento);
+}
+.opcao__icone { flex: none; width: 1.125rem; height: 1.125rem; }
+.opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
+.opcoes li[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
+.opcao--interativa {
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
+}
+.opcao--interativa:hover, .opcao--interativa[data-selecionado] {
+  border-color: var(--cor-acento);
+}
+.tipo-ecos__painel {
+  display: grid;
+  gap: var(--esp-2);
+  margin-top: var(--esp-3);
+  padding: var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+.tipo-ecos__texto { margin: 0; }
+.tipo-ecos__exemplos { display: grid; gap: var(--esp-1); padding-left: var(--esp-4); }
+
+/* A classificação é par de rótulo e valor, três colunas no desktop. Com um
+   valor possível por atributo, a caixa não dizia mais do que o texto diz. */
+.classificacao {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--esp-2) var(--esp-4);
+}
+.classificacao__rotulo {
+  grid-row: 1;
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.classificacao__valor {
+  grid-row: 2;
+  margin: 0;
+  font-size: var(--tam-base);
+  font-weight: 600;
+}
+/* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
+.gerencia { display: grid; gap: normal; }
+.gerencia__introducao {
+  margin: 0 0 var(--esp-4);
+  max-width: var(--largura-texto);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+}
+.gerencia__rotulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-texto-fraco);
+}
+.gerencia__valor {
+  margin: 0 0 var(--esp-2);
+  font-size: var(--tam-sm);
+  max-width: var(--largura-texto);
+}
+.gerencia__valor:last-child { margin-bottom: 0; }
+
+@media (max-width: 47.99rem) {
+  /* Empilha, que três colunas de rótulo em mono não cabem em 390. */
+  .classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+  .classificacao__rotulo, .classificacao__valor { grid-row: auto; }
+  .classificacao__rotulo + .classificacao__valor { margin-top: var(--esp-1); }
+  .bloco-ficha { padding: var(--esp-3); }
+  .bloco-ficha__topo { margin-bottom: var(--esp-2); }
+}
+
+.porque {
+  margin-top: var(--esp-3);
+  border-top: var(--borda-suave);
+  border-bottom: var(--borda-suave);
+}
+.porque__abrir {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
+  font-size: var(--tam-sm);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.porque__abrir::-webkit-details-marker { display: none; }
+.porque__seta {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: none;
+  border-right: 1.5px solid var(--cor-texto-fraco);
+  border-bottom: 1.5px solid var(--cor-texto-fraco);
+  transform: rotate(45deg);
+  transition: transform var(--dur-media) var(--curva);
+}
+.porque[open] .porque__seta { transform: rotate(-135deg); }
+.porque__texto {
+  margin: 0;
+  padding: 0 var(--esp-3) var(--esp-3);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+  max-width: var(--largura-texto);
+}
+@media (prefers-reduced-motion: reduce) {
+  .porque__seta { transition: none; }
+}
+
+/* ---------- Abas da ficha ---------- */
+.abas {
+  padding: var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
-  box-shadow: var(--sombra-2);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.97) translateY(-2px);
-  transform-origin: top left;
-  transition:
-    opacity var(--dur-rapida) var(--curva-saida),
-    transform var(--dur-rapida) var(--curva-saida),
-    visibility var(--dur-rapida);
 }
-.atr[data-aberto] .atr__nota { opacity: 1; visibility: visible; transform: none; }
-@media (hover: hover) and (pointer: fine) {
-  .atr:hover .atr__nota { opacity: 1; visibility: visible; transform: none; }
+.abas__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-2);
 }
-.atr__pergunta { color: var(--cor-texto); font-style: italic; }
-.atr__referencia { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-
-/* ---------- Abas da ficha ---------- */
+.abas__titulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
 .abas__barra {
   position: relative;
   display: flex;
@@ -806,14 +976,13 @@
   border-radius: var(--raio-pilula);
   transition: transform var(--dur-media) var(--curva-saida), width var(--dur-media) var(--curva-saida);
 }
-.abas__painel { padding-top: var(--esp-5); }
+.abas__painel { padding-top: var(--esp-3); }
 @media (prefers-reduced-motion: reduce) {
   .abas__indicador { transition: none; }
 }
 
 /* ---------- Relações do conhecimento ---------- */
-/* Hoje só os desafios usam este bloco. A solução saiu da ficha, porque responde
-   a outra questão de pesquisa e dentro da ficha parecia recomendação. */
+/* Os desafios ficam na ficha quando há relação confirmada com o conhecimento. */
 .relacoes-bloco { display: grid; gap: var(--esp-5); }
 .relacoes { list-style: none; display: grid; }
 .relacao { border-bottom: 1px solid var(--cor-linha-suave); font-size: var(--tam-sm); }
@@ -838,8 +1007,7 @@
 .relacao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
 .relacao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
-/* O porquê da relação. Cada parte só entra quando existe, então nada de lugar
-   vazio nos pares que não têm trecho literal, que são a maioria. */
+/* O porquê da relação. Cada parte só entra quando existe. */
 .relacao__porque {
   display: grid;
   gap: var(--esp-2);
@@ -851,15 +1019,7 @@
   color: var(--cor-acento);
 }
 .relacao__motivo { color: var(--cor-texto-suave); }
-.relacao__trecho {
-  margin: 0;
-  padding-left: var(--esp-3);
-  border-left: 2px solid var(--cor-linha);
-  color: var(--cor-texto-suave);
-  font-style: italic;
-}
-
-/* ---------- Estudos e trechos ---------- */
+/* ---------- Estudos ---------- */
 .estudos { list-style: none; display: grid; gap: var(--esp-4); }
 .estudo {
   display: grid;
@@ -869,28 +1029,6 @@
 }
 .estudo__corpo { display: grid; gap: var(--esp-1); }
 .estudo__meta { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-.trechos { display: grid; gap: var(--esp-3); }
-.trecho {
-  margin: 0;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-left: 3px solid var(--cor-acento);
-  border-radius: var(--raio);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-}
-
-/* ---------- Rodapé de pendências ---------- */
-.pendencias {
-  margin-top: var(--esp-5);
-  padding-top: var(--esp-3);
-  border-top: 1px solid var(--cor-linha-suave);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-}
-
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }

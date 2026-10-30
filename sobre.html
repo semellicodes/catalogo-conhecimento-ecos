@@ -14,11 +14,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/componentes.css">
-<link rel="stylesheet" href="css/paginas.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css?v=20261027-11">
+<link rel="stylesheet" href="css/base.css?v=20261027-9">
+<link rel="stylesheet" href="css/componentes.css?v=20261027-9">
+<link rel="stylesheet" href="css/paginas.css?v=20261027-11">
 </head>
 <body>
 <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
@@ -36,7 +36,7 @@
       </svg>
       <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
     </a>
-    <nav class="navegacao" aria-label="Principal">
+    <nav class="navegacao" id="navegacao-principal" aria-label="Principal">
       <a href="index.html#inicio">Início</a>
       <a href="index.html#estrutura">Estrutura</a>
       <a href="index.html#catalogo">Catálogo</a>
@@ -45,40 +45,78 @@
       <a href="sobre.html" aria-current="page">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
-    <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    <div class="cabecalho__acoes">
+      <button class="menu" id="botao-menu" type="button" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+      <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    </div>
   </div>
 </header>
 
-<main id="conteudo" class="container secao">
-  <h1 class="secao__titulo">Sobre o catálogo</h1>
+<main id="conteudo" class="container secao sobre">
+  <header class="sobre__cabecalho">
+    <p class="sobre__olho">KM4SECO</p>
+    <h1>Sobre o catálogo</h1>
+    <p>Como os conhecimentos foram reunidos, classificados e disponibilizados para consulta.</p>
+  </header>
 
-  <div class="prosa">
-    <p>
-      Catálogos são artefatos usados para organizar, compartilhar, reutilizar e evoluir o
-      conhecimento de um domínio, favorecendo sua recuperação e aplicação em diferentes contextos.
-      Na Engenharia de Software a noção já foi aplicada em outros domínios, como no ReQSI CI, no
-      NFR4ES e no SECO-Risk, o que indica o formato como adequado para sistematizar os achados de
-      uma revisão da literatura.
-    </p>
+  <div class="sobre__grade">
+    <article class="sobre__conteudo prosa">
+      <h2>Um ponto de consulta para o conhecimento em ECOS</h2>
+      <p>
+        Catálogos são artefatos usados para organizar, compartilhar, reutilizar e evoluir o
+        conhecimento de um domínio, favorecendo sua recuperação e aplicação em diferentes contextos.
+        Na Engenharia de Software a noção já foi aplicada em outros domínios, como no ReQSI CI, no
+        NFR4ES e no SECO-Risk, o que indica o formato como adequado para sistematizar os achados de
+        uma revisão da literatura.
+      </p>
 
-    <h2>Classificação por facetas</h2>
-    <p>
-      O catálogo adota uma classificação por facetas, em que cada conhecimento é descrito por um
-      conjunto fixo de atributos, em vez de uma classificação enumerativa que exigiria definir todas
-      as classes previamente. Os valores possíveis de cada faceta vêm de esquemas já estabelecidos
-      na literatura, o que mantém o vocabulário controlado.
-    </p>
+      <h2>Classificação por facetas</h2>
+      <p>
+        O catálogo adota uma classificação por facetas, em que cada conhecimento é descrito por um
+        conjunto fixo de atributos, em vez de uma classificação enumerativa que exigiria definir todas
+        as classes previamente. Os valores possíveis de cada faceta vêm de esquemas já estabelecidos
+        na literatura, o que mantém o vocabulário controlado.
+      </p>
 
-    <h2>Origem dos dados</h2>
-    <p>
-      Todo o conteúdo vem de uma revisão rápida sobre gerência de conhecimento em ecossistemas de
-      software, conduzida sobre 18 estudos primários. Os conhecimentos correspondem à QP1, as
-      soluções à QP2, as avaliações à QP3 e os desafios à QP4.
-    </p>
-    <p>
-      Um catálogo não é estático. Ele representa o conhecimento acumulado até determinado momento e
-      deve ser atualizado conforme novas situações são encontradas por quem o utiliza.
-    </p>
+      <h2>Origem dos dados</h2>
+      <p>
+        Todo o conteúdo vem de uma revisão rápida sobre gerência de conhecimento em ecossistemas de
+        software, conduzida sobre 18 estudos primários. O catálogo reúne os conhecimentos da QP1 e
+        os desafios que podem ser relacionados especificamente a eles.
+      </p>
+      <p>
+        Um catálogo não é estático. Ele representa o conhecimento acumulado até determinado momento e
+        deve ser atualizado conforme novas situações são encontradas por quem o utiliza.
+      </p>
+
+      <div class="sobre__acoes" aria-label="Acessos rápidos">
+        <a class="botao sobre__acao sobre__acao--primaria" href="index.html#catalogo">Catálogo</a>
+        <a class="botao sobre__acao" href="explorar.html">Explorar</a>
+      </div>
+    </article>
+
+    <aside class="sobre__base" aria-labelledby="titulo-base">
+      <p class="sobre__olho">Base da pesquisa</p>
+      <h2 id="titulo-base">O catálogo em números</h2>
+      <dl class="sobre__numeros">
+        <div>
+          <dt>Conhecimentos</dt>
+          <dd id="sobre-conhecimentos">—</dd>
+        </div>
+        <div>
+          <dt>Estudos primários</dt>
+          <dd id="sobre-estudos">—</dd>
+        </div>
+        <div>
+          <dt>Atributos de classificação</dt>
+          <dd id="sobre-atributos">—</dd>
+        </div>
+      </dl>
+      <p class="sobre__fonte" id="sobre-fonte"></p>
+      <a class="sobre__referencias" href="referencias.html">Ver estudos e referências <span aria-hidden="true">→</span></a>
+    </aside>
   </div>
 
 </main>
@@ -90,5 +128,7 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
+<script type="module" src="js/menu.js?v=20261027-5"></script>
+<script type="module" src="js/sobre.js"></script>
 </body>
 </html>

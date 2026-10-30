@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Explorar · KM4SECO</title>
-<meta name="description" content="Glossário dos atributos do KM4SECO, as 36 soluções e os 17 desafios identificados na revisão rápida, com os conhecimentos ligados a cada um.">
+<meta name="description" content="Glossário dos atributos do KM4SECO e os desafios identificados na revisão rápida, com os conhecimentos relacionados.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -14,11 +14,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/componentes.css">
-<link rel="stylesheet" href="css/paginas.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css?v=20261027-11">
+<link rel="stylesheet" href="css/base.css?v=20261027-9">
+<link rel="stylesheet" href="css/componentes.css?v=20261027-9">
+<link rel="stylesheet" href="css/paginas.css?v=20261027-11">
 </head>
 <body>
 <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
@@ -36,7 +36,7 @@
       </svg>
       <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
     </a>
-    <nav class="navegacao" aria-label="Principal">
+    <nav class="navegacao" id="navegacao-principal" aria-label="Principal">
       <a href="index.html#inicio">Início</a>
       <a href="index.html#estrutura">Estrutura</a>
       <a href="index.html#catalogo">Catálogo</a>
@@ -45,55 +45,66 @@
       <a href="sobre.html">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
-    <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    <div class="cabecalho__acoes">
+      <button class="menu" id="botao-menu" type="button" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+      <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    </div>
   </div>
 </header>
 
-<main id="conteudo" class="container secao">
-  <h1 class="secao__titulo">Explorar o catálogo</h1>
-  <p class="secao__intro">
-    O vocabulário que descreve cada conhecimento, e as soluções e os desafios que a revisão
-    identificou, com os conhecimentos ligados a cada um.
-  </p>
+<main id="conteudo" class="container secao explorar">
+  <header class="explorar__cabecalho">
+    <p class="explorar__olho">KM4SECO</p>
+    <h1 class="explorar__titulo">Explorar o catálogo</h1>
+    <p class="explorar__intro">
+      Consulte o vocabulário usado na classificação e os desafios identificados na revisão,
+      com os conhecimentos relacionados.
+    </p>
+    <a class="botao explorar__acao" href="index.html#catalogo">Ir ao catálogo <span aria-hidden="true">→</span></a>
+  </header>
 
-  <h2 class="secao__titulo secao__titulo--afastado" id="glossario">Glossário dos atributos</h2>
-  <div class="tabela--rolavel">
-    <table class="tabela">
-      <thead>
-        <tr>
-          <th scope="col">Atributo</th>
-          <th scope="col">Valores possíveis</th>
-          <th scope="col">Pergunta que responde</th>
-          <th scope="col">Referência</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-atributos"></tbody>
-    </table>
-  </div>
+  <nav class="explorar__navegacao" aria-label="Seções de exploração" role="tablist">
+    <button class="explorar__aba" type="button" id="aba-glossario" role="tab" aria-selected="true" aria-controls="painel-glossario" data-aba="glossario">Glossário</button>
+    <button class="explorar__aba" type="button" id="aba-desafios" role="tab" aria-selected="false" aria-controls="painel-desafios" data-aba="desafios" tabindex="-1">Desafios</button>
+  </nav>
 
-  <h3 class="secao__subtitulo">Tipos de solução</h3>
-  <p class="secao__intro">Classificação segundo Shaw (2003), aplicada às soluções identificadas na revisão.</p>
-  <div class="tabela--rolavel">
-    <table class="tabela">
-      <thead>
-        <tr>
-          <th scope="col">Tipo</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Quantidade</th>
-        </tr>
-      </thead>
-      <tbody id="tabela-tipos"></tbody>
-    </table>
-  </div>
+  <section class="explorar__painel" id="painel-glossario" role="tabpanel" aria-labelledby="aba-glossario" data-painel="glossario">
+    <div class="explorar__painel-cabecalho" id="glossario">
+      <p class="explorar__indice">01</p>
+      <div>
+        <h2>Glossário dos atributos</h2>
+        <p>Os conceitos e as perguntas que orientam a classificação de cada conhecimento.</p>
+      </div>
+    </div>
+    <div class="explorar__superficie tabela--rolavel">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th scope="col">Atributo</th>
+            <th scope="col">Valores possíveis</th>
+            <th scope="col">Pergunta que responde</th>
+            <th scope="col">Referência</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-atributos"></tbody>
+      </table>
+    </div>
+  </section>
 
-  <h2 class="secao__titulo secao__titulo--afastado" id="solucoes">Soluções</h2>
-  <p class="secao__intro" id="resumo-solucoes">Carregando</p>
-  <p class="aviso-linha" id="aviso-solucoes" hidden></p>
-  <ul class="listagem" id="lista-solucoes"></ul>
-
-  <h2 class="secao__titulo secao__titulo--afastado" id="desafios">Desafios</h2>
-  <p class="secao__intro" id="resumo-desafios">Carregando</p>
-  <ul class="listagem" id="lista-desafios"></ul>
+  <section class="explorar__painel" id="painel-desafios" role="tabpanel" aria-labelledby="aba-desafios" data-painel="desafios" hidden>
+    <div class="explorar__painel-cabecalho" id="desafios">
+      <p class="explorar__indice">02</p>
+      <div>
+        <h2>Desafios</h2>
+        <p id="resumo-desafios">Carregando</p>
+      </div>
+    </div>
+    <div class="explorar__lista">
+      <ul class="listagem" id="lista-desafios"></ul>
+    </div>
+  </section>
 </main>
 
 <footer class="rodape">
@@ -103,6 +114,7 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
+<script type="module" src="js/menu.js?v=20261027-5"></script>
 <script type="module" src="js/explorar.js"></script>
 </body>
 </html>

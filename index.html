@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KM4SECO · Catálogo de Conhecimento em Ecossistemas de Software</title>
-<meta name="description" content="KM4SECO, catálogo de conhecimento em Ecossistemas de Software construído a partir de uma revisão rápida da literatura, com busca, filtros, as soluções relacionadas e os estudos primários que os sustentam.">
+<meta name="description" content="KM4SECO, catálogo de conhecimento em Ecossistemas de Software construído a partir de uma revisão rápida da literatura, com busca, filtros e estudos primários que sustentam os conhecimentos.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -14,11 +14,11 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/componentes.css">
-<link rel="stylesheet" href="css/paginas.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css?v=20261027-11">
+<link rel="stylesheet" href="css/base.css?v=20261027-9">
+<link rel="stylesheet" href="css/componentes.css?v=20261027-9">
+<link rel="stylesheet" href="css/paginas.css?v=20261027-11">
 </head>
 <body>
 <a class="pular-para-conteudo" href="#catalogo">Pular para o catálogo</a>
@@ -36,7 +36,7 @@
       </svg>
       <span class="marca__nome">Catálogo de Conhecimento em <strong>ECOS</strong></span>
     </a>
-    <nav class="navegacao" aria-label="Principal">
+    <nav class="navegacao" id="navegacao-principal" aria-label="Principal">
       <a href="#inicio" data-secao="inicio">Início</a>
       <a href="#estrutura" data-secao="estrutura">Estrutura</a>
       <a href="#catalogo" data-secao="catalogo">Catálogo</a>
@@ -45,35 +45,57 @@
       <a href="sobre.html">Sobre</a>
       <a href="referencias.html">Referências</a>
     </nav>
-    <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    <div class="cabecalho__acoes">
+      <button class="menu" id="botao-menu" type="button" aria-controls="navegacao-principal" aria-expanded="false" aria-label="Abrir menu de navegação">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+      <button class="interruptor" id="botao-tema" type="button" aria-label="Alternar tema"></button>
+    </div>
   </div>
 </header>
 
 <main id="conteudo">
   <section class="abertura" id="inicio" aria-labelledby="titulo-abertura">
     <div class="container abertura__interno">
-      <div class="abertura__texto">
-        <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
-        <p class="abertura__resumo">
-          Um catálogo de conhecimento em Ecossistemas de Software (ECOS), denominado
-          <strong class="abertura__sigla">KM4SECO</strong>, construído a partir de uma revisão rápida
-          da literatura. Os conhecimentos estão relacionados às soluções reportadas nos estudos e
-          descritos por um conjunto fixo de atributos.
-        </p>
+      <div class="abertura__principal">
+        <div class="abertura__conteudo">
+          <p class="abertura__olho">KM4SECO</p>
+          <h1 class="abertura__titulo" id="titulo-abertura">Catálogo de Conhecimento em Ecossistemas de Software</h1>
+          <p class="abertura__resumo" id="abertura-resumo"></p>
+          <a class="abertura__entrar" href="#catalogo">Entrar no catálogo</a>
+        </div>
+        <aside class="abertura__painel" aria-label="Síntese visual do catálogo">
+          <svg class="abertura__diagrama" viewBox="0 0 360 250" aria-hidden="true" focusable="false">
+            <circle cx="180" cy="125" r="92" fill="none" stroke="currentColor" stroke-opacity="0.16"/>
+            <circle cx="180" cy="125" r="62" fill="none" stroke="currentColor" stroke-opacity="0.16"/>
+            <path d="M38 184 180 48l142 136M38 184h284" fill="none" stroke="currentColor" stroke-opacity="0.42" stroke-width="1.5"/>
+            <path d="m52 76 110 76m36-104 110 66M56 212l82-58m84-4 82 62" fill="none" stroke="currentColor" stroke-opacity="0.2"/>
+            <path d="M104 126h152M132 158h96" fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-dasharray="4 6"/>
+            <circle cx="38" cy="184" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="180" cy="48" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="322" cy="184" r="24" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="38" cy="184" r="6" fill="currentColor"/>
+            <circle cx="180" cy="48" r="6" fill="currentColor"/>
+            <circle cx="322" cy="184" r="6" fill="currentColor"/>
+          </svg>
+        </aside>
       </div>
-      <div class="abertura__desenho" id="desenho-abertura" aria-hidden="true"></div>
       <div class="numeros" id="numeros" aria-label="Números do catálogo"></div>
     </div>
+  </section>
+
+  <section class="secao container" id="entrar" aria-labelledby="titulo-entrar">
+    <h2 class="secao__titulo" id="titulo-entrar">Por onde entrar</h2>
+    <div class="portas" id="portas"></div>
   </section>
 
   <section class="secao container" id="estrutura" aria-labelledby="titulo-estruturado">
     <h2 class="secao__titulo" id="titulo-estruturado">Como o catálogo está estruturado</h2>
     <p class="secao__intro">
       O catálogo se organiza em camadas encadeadas. O conhecimento é o ponto de partida, recebe um
-      conjunto fixo de atributos, liga-se às soluções que a literatura reporta, e essas soluções se
-      apoiam nos estudos primários que as identificaram. Percorrer essas camadas é o que permite
-      identificar o que precisa ser gerenciado em um ecossistema, em que nível ele circula e com
-      quais soluções a literatura responde.
+      conjunto fixo de atributos e é sustentado por estudos primários. Percorrer essas camadas é o
+      que permite identificar o que precisa ser gerenciado em um ecossistema e em que nível ele
+      circula.
     </p>
     <figure class="reservado">
       <figcaption class="reservado__texto">Imagem do mapa conceitual</figcaption>
@@ -81,10 +103,9 @@
   </section>
 
   <section class="secao container" aria-labelledby="titulo-camadas">
-    <h2 class="secao__titulo" id="titulo-camadas">As quatro camadas</h2>
+    <h2 class="secao__titulo" id="titulo-camadas">As três camadas</h2>
     <p class="secao__intro">
-      A estrutura segue a lógica de camadas do Catálogo de Riscos em ECOS, com o conhecimento no
-      lugar do risco como ponto de partida.
+      A estrutura se organiza em camadas encadeadas, com o conhecimento como ponto de partida.
     </p>
     <div class="camadas" id="camadas"></div>
   </section>
@@ -98,24 +119,29 @@
         <button class="botao catalogo__abrir-filtros" id="abrir-filtros" type="button" aria-controls="filtros" aria-expanded="false">
           Filtros
         </button>
-        <p class="catalogo__contagem" id="contagem">Carregando</p>
       </div>
 
       <section class="filtros" id="filtros" aria-label="Busca e filtros">
         <div class="filtros__linha">
           <div class="filtros__busca">
-            <label class="filtros__titulo" for="busca">Buscar</label>
-            <input class="campo-busca" id="busca" type="search" placeholder="nome, descrição ou ID">
+            <label class="filtros__titulo filtros__titulo--oculto" for="busca">Buscar conhecimentos</label>
+            <svg class="filtros__icone" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+              <circle cx="8.5" cy="8.5" r="4.75" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m12 12 4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input class="campo-busca" id="busca" type="search" placeholder="Pesquisar conhecimentos">
           </div>
-          <button class="botao" id="limpar" type="button" hidden>Limpar filtros</button>
+          <div class="filtros__principal" id="filtro-natureza"></div>
+          <p class="filtros__contagem" id="contagem">Carregando</p>
         </div>
         <div class="filtros__grade" id="painel-filtros"></div>
-        <p class="filtros__pendentes" id="filtros-pendentes" hidden></p>
+        <div class="filtros__rodape">
+          <button class="botao botao--curto" id="limpar" type="button" hidden>Limpar filtros</button>
+        </div>
       </section>
 
-      <ul class="legenda" id="legenda" aria-label="Cores da natureza epistemológica"></ul>
-      <ol class="trilha" id="trilha"></ol>
-      <p class="vazio" id="trilha-vazia" hidden>Nenhum conhecimento corresponde aos filtros aplicados.</p>
+      <ul class="cartoes" id="lista"></ul>
+      <p class="vazio" id="lista-vazia" hidden>Nenhum conhecimento corresponde aos filtros aplicados.</p>
     </div>
   </section>
 
@@ -130,16 +156,40 @@
   <div class="folha__corpo" id="folha-corpo"></div>
 </dialog>
 
-<dialog class="dialogo-ficha" id="dialogo-ficha" aria-labelledby="dialogo-ficha-id">
+<dialog class="dialogo-ficha" id="dialogo-ficha" tabindex="-1">
   <div class="dialogo-ficha__topo">
-    <p class="codigo-id" id="dialogo-ficha-id"></p>
-    <button class="botao" id="fechar-ficha" type="button">Fechar</button>
+    <div class="dialogo-ficha__linha">
+      <p class="codigo-id" id="dialogo-ficha-id"></p>
+      <span class="etiqueta" id="dialogo-ficha-natureza"></span>
+      <button class="fechar" id="fechar-ficha" type="button" aria-label="Fechar a ficha">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M6 6 14 14M14 6 6 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <h2 class="ficha__nome" id="dialogo-ficha-nome"></h2>
+    <p class="ficha__descricao" id="dialogo-ficha-descricao"></p>
   </div>
   <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
   <div class="dialogo-ficha__rodape" id="ficha-navegacao">
     <button class="botao" id="ficha-anterior" type="button">Anterior</button>
     <p class="dialogo-ficha__posicao" id="ficha-posicao" aria-live="polite"></p>
     <button class="botao" id="ficha-proximo" type="button">Próximo</button>
+  </div>
+</dialog>
+
+<dialog class="dialogo-ajuda" id="dialogo-ajuda" aria-labelledby="dialogo-ajuda-titulo" aria-describedby="dialogo-ajuda-texto">
+  <div class="dialogo-ajuda__topo">
+    <h2 class="dialogo-ajuda__titulo" id="dialogo-ajuda-titulo"></h2>
+    <button class="fechar" id="fechar-ajuda" type="button" aria-label="Fechar explicação">
+      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <path d="M6 6 14 14M14 6 6 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="dialogo-ajuda__corpo">
+    <p id="dialogo-ajuda-texto"></p>
+    <p class="dialogo-ajuda__fonte" id="dialogo-ajuda-fonte" hidden></p>
   </div>
 </dialog>
 
@@ -190,7 +240,7 @@
 </footer>
 
 <script type="module" src="js/tema.js"></script>
-<script type="module" src="js/desenho.js"></script>
+<script type="module" src="js/menu.js?v=20261027-5"></script>
 <script type="module" src="js/navegacao.js"></script>
 <script type="module" src="js/inicio.js"></script>
 <script type="module" src="js/catalogo.js"></script>

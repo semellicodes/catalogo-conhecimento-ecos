@@ -7,6 +7,14 @@
   --cor-fundo: #0D1117;
   --cor-superficie: #161C25;
   --cor-superficie-alta: #1C242F;
+  /* Fundo do miolo que rola na ficha, um tom abaixo do fundo da página, para o
+     cartão se destacar dele em vez de se confundir */
+  --cor-miolo: #090D12;
+  /* Fundo do cartão do catálogo. Precisa de tom próprio, distinto do fundo da
+     seção, senão o cartão deixa de se ler como objeto */
+  --cor-cartao: #1A2230;
+  --cor-cartao-catalogo: #142821;
+  --cor-cartao-catalogo-hover: #19342A;
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
@@ -19,16 +27,16 @@
   --cor-contraste: #0D1117;
 
   /* Natureza, a classificação principal */
-  --cor-explicito: #5BD2AE;
-  --cor-explicito-linha: #2E5A4C;
+  --cor-explicito: #C69BF2;
+  --cor-explicito-linha: #593D75;
   --cor-tacito-cognitivo: #E0A34A;
   --cor-tacito-cognitivo-linha: #6B5326;
   --cor-tacito-tecnico: #7FB2F0;
   --cor-tacito-tecnico-linha: #2F4A6B;
 
   /* Etiqueta preenchida. Fundo e texto de cada natureza, mais o neutro */
-  --cor-explicito-pilula: #10231D;
-  --cor-explicito-pilula-texto: #8EE6CC;
+  --cor-explicito-pilula: #2A1C39;
+  --cor-explicito-pilula-texto: #DFC6FA;
   --cor-tacito-cognitivo-pilula: #2A1F0E;
   --cor-tacito-cognitivo-pilula-texto: #E8BD74;
   --cor-tacito-tecnico-pilula: #122334;
@@ -42,13 +50,17 @@
   --cor-faixa-suave: #A9CCBE;
   --cor-faixa-acento: #5BD2AE;
   --cor-faixa-linha: #1D4A3C;
+  --cor-faixa-painel: #104536;
+  --cor-faixa-painel-profundo: #0A3428;
 
   /* Profundidade. No escuro quem separa é a borda, então a sombra quase não entra */
   --sombra-1: none;
   --sombra-2: 0 16px 40px rgb(0 0 0 / 0.55);
+  --sombra-menu: 0 8px 20px rgb(0 0 0 / 0.22);
 
   /* Tipografia */
-  --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
+  --fonte-texto: 'Source Sans 3', system-ui, sans-serif;
+  --fonte-titulo: 'Creato Display', Georgia, serif;
   --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
   /* Entre letras. Texto grande pede aperto, rótulo em caixa alta pede folga */
   --entre-letras-faixa: -0.03em;
@@ -69,6 +81,7 @@
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
 
   /* Espaço */
+  --esp-0: 0;
   --esp-1: 0.25rem;
   --esp-2: 0.5rem;
   --esp-3: 0.75rem;
@@ -78,27 +91,42 @@
   --esp-7: 3rem;
   --esp-8: 4rem;
   --esp-9: 5.5rem;
+  --esp-secao: clamp(2.5rem, 6vw, 4rem);
+  --esp-abertura: clamp(2.5rem, 5vw, 4rem);
+  --esp-abertura-interno: clamp(2rem, 5vw, 3rem);
+  --esp-cabecalho-lateral: clamp(1.25rem, 4vw, var(--esp-5));
 
   /* Medida */
-  /* Desenho da abertura. Inclinação do disco, raio do anel e tamanho do nó */
-  --orbe-inclinacao: 54deg;
-  --orbe-raio: 95px;
-  --orbe-ponto: 0.8rem;
-
-  /* Trilha. A coluna do ponto e da linha, e o diâmetro dos dois pontos */
-  --coluna-trilha: 1.75rem;
-  --ponto-estacao: 0.75rem;
-  --ponto-natureza: 0.5rem;
   --largura-max: 1240px;
+  --largura-cheia: 100%;
   --largura-texto: 68ch;
-  --largura-dialogo: 72rem;
-  --largura-desenho: 250px;
+  --largura-explorar: 70rem;
+  --largura-cartao-unico: 28rem;
+  --largura-dialogo: 47.5rem;
+  --largura-dialogo-ajuda: 32rem;
+  --largura-painel-abertura: 32rem;
+  --largura-painel-abertura-compacto: 24rem;
+  --largura-painel-abertura-tablet: 14rem;
+  --largura-painel-abertura-intermediario: 18rem;
+  --largura-min-coluna-abertura-tablet: 12rem;
+  --largura-min-coluna-abertura-intermediaria: 14rem;
+  --largura-menu: 14rem;
+  --largura-interruptor: 4.25rem;
+  --largura-min-busca: 16rem;
+  --altura-diagrama-abertura: clamp(9rem, 18vw, 12rem);
+  --altura-diagrama-abertura-compacto: 11rem;
+  --altura-diagrama-abertura-tablet: 9rem;
+  --altura-diagrama-abertura-intermediario: 10rem;
+  --tam-rotulo-metrica: 0.6875rem;
+  --tam-icone-controle: 1.125rem;
+  --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
-  --altura-faixa: 460px;
   --coluna-id: 3.5rem;
   --retrato: 3.25rem;
   --borda: 1px solid var(--cor-linha);
+  --borda-suave: 1px solid var(--cor-linha-suave);
+  --borda-acento: 2px solid var(--cor-acento-linha);
   --raio: 10px;
   --raio-pilula: 999px;
   --alvo-toque: 44px;
@@ -106,9 +134,20 @@
   /* Movimento */
   --dur-rapida: 120ms;
   --dur-media: 200ms;
+  --dur-interruptor: 280ms;
+  --dur-hover: 240ms;
+  --dur-entrada-ficha: 260ms;
+  --dur-troca-ficha: 220ms;
+  --dur-tema: 320ms;
   --curva: cubic-bezier(0.2, 0, 0, 1);
   /* Começa rápido e desacelera. É a curva de quem entra em cena */
   --curva-saida: cubic-bezier(0.23, 1, 0.32, 1);
+  --deslocamento-hover: -0.25rem;
+  --deslocamento-acao: 0.1875rem;
+  --deslocamento-entrada-ficha: 0.5rem;
+  --deslocamento-troca-ficha: 0.75rem;
+  --escala-entrada-ficha: 0.985;
+  --escala-acao: 0.97;
 
   /* Véu do diálogo. O opaco atende quem não tem desfoque */
   --cor-veu: rgb(0 0 0 / 0.45);
@@ -123,6 +162,10 @@
   --cor-fundo: #EEF1F4;
   --cor-superficie: #FFFFFF;
   --cor-superficie-alta: #F7F9FB;
+  --cor-miolo: #E4E9EE;
+  --cor-cartao: #FFFFFF;
+  --cor-cartao-catalogo: #F8FBF9;
+  --cor-cartao-catalogo-hover: #F1F8F4;
   --cor-linha: #D7DDE4;
   --cor-linha-suave: #E6EAEF;
   --cor-texto: #14181D;
@@ -134,15 +177,15 @@
   --cor-acento-linha: #9FCFBE;
   --cor-contraste: #FFFFFF;
 
-  --cor-explicito: #0F6B51;
-  --cor-explicito-linha: #9FCFBE;
+  --cor-explicito: #6E3E91;
+  --cor-explicito-linha: #C9AEDF;
   --cor-tacito-cognitivo: #8A5312;
   --cor-tacito-cognitivo-linha: #DEC19A;
   --cor-tacito-tecnico: #1F4C7A;
   --cor-tacito-tecnico-linha: #A9C4DF;
 
-  --cor-explicito-pilula: #DCEFE8;
-  --cor-explicito-pilula-texto: #0B5440;
+  --cor-explicito-pilula: #F0E6F7;
+  --cor-explicito-pilula-texto: #5D317B;
   --cor-tacito-cognitivo-pilula: #F7EBD8;
   --cor-tacito-cognitivo-pilula-texto: #6B4410;
   --cor-tacito-tecnico-pilula: #E2EDF9;
@@ -156,7 +199,10 @@
   --cor-faixa-suave: #BFD9CE;
   --cor-faixa-acento: #6FDCB6;
   --cor-faixa-linha: #1F5C49;
+  --cor-faixa-painel: #104536;
+  --cor-faixa-painel-profundo: #0A3428;
 
   --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
   --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
+  --sombra-menu: 0 3px 10px rgb(16 24 40 / 0.08);
 }

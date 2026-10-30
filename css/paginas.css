@@ -4,172 +4,433 @@
 .abertura {
   background: var(--cor-faixa);
   color: var(--cor-faixa-texto);
-  padding-block: var(--esp-5);
+  padding-block: var(--esp-abertura);
   border-bottom: 1px solid var(--cor-faixa-linha);
 }
-.abertura__interno { display: grid; gap: var(--esp-6); }
-@media (min-width: 64rem) {
-  .abertura {
-    padding-block: var(--esp-7);
-    min-height: var(--altura-faixa);
-    display: flex;
-    align-items: center;
-  }
-  .abertura__interno {
-    grid-template-columns: 55% minmax(0, 1fr);
-    grid-template-areas:
-      "texto  desenho"
-      "numeros numeros";
-    align-items: center;
-    column-gap: var(--esp-7);
-    row-gap: var(--esp-6);
-  }
-  .abertura__texto { grid-area: texto; }
-  .abertura__desenho { grid-area: desenho; }
-  .numeros { grid-area: numeros; }
+.abertura__interno {
+  display: grid;
+  gap: var(--esp-abertura-interno);
+  align-items: center;
 }
-.abertura__sigla {
-  color: var(--cor-faixa-acento);
+.abertura__principal {
+  display: grid;
+  gap: var(--esp-abertura-interno);
+  align-items: center;
+}
+@media (min-width: 64rem) {
+  .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
+}
+@media (max-width: 43.99rem) {
+  .abertura__interno,
+  .abertura__principal { gap: var(--esp-5); }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-compacto);
+    justify-self: center;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-compacto); }
+}
+/* Entre celular e notebook a abertura recebe duas composições próprias. A
+   ilustração entra ao lado do texto só depois de haver uma coluna textual
+   legível, em vez de herdar a grade ampla do desktop. */
+@media (min-width: 44rem) and (max-width: 56.99rem) {
+  .abertura { padding-block: var(--esp-6); }
+  .abertura__interno { gap: var(--esp-4); }
+  .abertura__principal {
+    grid-template-columns: minmax(0, 1.55fr) minmax(var(--largura-min-coluna-abertura-tablet), 0.45fr);
+    gap: var(--esp-5);
+  }
+  .abertura__titulo { max-width: 21ch; }
+  .abertura__resumo { max-width: 40ch; }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-tablet);
+    justify-self: end;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-tablet); }
+}
+@media (min-width: 57rem) and (max-width: 63.99rem) {
+  .abertura { padding-block: var(--esp-7); }
+  .abertura__interno { gap: var(--esp-5); }
+  .abertura__principal {
+    grid-template-columns: minmax(0, 1.1fr) minmax(var(--largura-min-coluna-abertura-intermediaria), 0.9fr);
+    gap: var(--esp-7);
+  }
+  .abertura__titulo { max-width: 22ch; }
+  .abertura__resumo { max-width: 44ch; }
+  .abertura__painel {
+    max-width: var(--largura-painel-abertura-intermediario);
+    justify-self: end;
+  }
+  .abertura__diagrama { height: var(--altura-diagrama-abertura-intermediario); }
+}
+.abertura__conteudo {
+  display: grid;
+  justify-items: start;
+  gap: var(--esp-3);
+}
+.abertura__olho {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
   font-weight: 600;
-  letter-spacing: var(--entre-letras-sigla);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-faixa-acento);
 }
 .abertura__titulo {
   font-size: var(--tam-titulo);
   line-height: 1.05;
   letter-spacing: var(--entre-letras-faixa);
-  max-width: 20ch;
+  max-width: 19ch;
 }
-@media (min-width: 64rem) { .abertura__titulo { max-width: 20ch; } }
 .abertura__resumo {
-  margin-top: var(--esp-4);
   font-size: var(--tam-base);
   line-height: 1.6;
   color: var(--cor-faixa-suave);
-  max-width: 62ch;
+  max-width: 48ch;
 }
-
-/* O desenho é decorativo. No celular ele sai de cena para não roubar altura,
-   e é por isso que o arrasto não precisa existir lá. */
-.abertura__desenho { display: none; }
-@media (min-width: 64rem) {
-  .abertura__desenho { display: block; justify-self: center; }
-}
-
-/* A cena é o espaço 3D. O disco de nós gira dentro dela, inclinado, e o cérebro
-   fica no plano do meio, parado, com os nós da frente passando por cima dele e
-   os de trás sumindo atrás do seu preenchimento. */
-.cena {
-  --giro: 0deg;
-  position: relative;
-  width: var(--largura-desenho);
-  height: var(--largura-desenho);
-  perspective: 620px;
-  transform-style: preserve-3d;
-  color: var(--cor-faixa-acento);
-}
-.cena[tabindex] { cursor: grab; touch-action: pan-y; }
-.cena--arrastando { cursor: grabbing; }
-.cena:focus-visible {
-  outline: 2px solid var(--cor-faixa-acento);
-  outline-offset: var(--esp-2);
-  border-radius: var(--raio);
-}
-
-.orbe {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform: rotateX(var(--orbe-inclinacao)) rotateZ(var(--giro));
-}
-/* Os anéis e os arcos são um plano só, deitado junto com o disco. */
-.orbe__plano { display: block; width: 100%; height: 100%; }
-
-/* O nó é um ponto sem tamanho na borda do disco. O que se vê é o filho. */
-.no {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
-  transform: rotate(var(--angulo)) translateX(var(--orbe-raio));
-}
-/* Desfaz o giro e a inclinação, então o ponto é sempre um círculo de frente.
-   A perspectiva continua valendo, e é ela que engorda quem passa na frente. */
-.no__ponto {
-  position: absolute;
-  width: var(--orbe-ponto);
-  height: var(--orbe-ponto);
-  margin: calc(var(--orbe-ponto) / -2);
-  border-radius: var(--raio-pilula);
-  background: currentColor;
-  transform: rotate(calc(-1 * var(--angulo) - var(--giro))) rotateX(calc(-1 * var(--orbe-inclinacao)));
-}
-.no--vazado .no__ponto {
-  background: var(--cor-faixa);
-  border: 1.6px solid currentColor;
-}
-
-.cerebro {
-  position: absolute;
-  inset: 0;
+.abertura__painel {
+  align-self: center;
   width: 100%;
-  height: 100%;
+  overflow: hidden;
+  background: var(--cor-faixa-painel);
+  border: 1px solid var(--cor-faixa-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-2);
+  color: var(--cor-faixa-suave);
+}
+.abertura__diagrama {
+  display: block;
+  width: 100%;
+  height: var(--altura-diagrama-abertura);
+  padding: var(--esp-5);
+  color: var(--cor-faixa-suave);
+}
+/* Botão claro sobre a faixa escura. Não usa .botao porque aquele é da
+   superfície da página e aqui o fundo é a faixa. */
+.abertura__entrar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-1);
+  padding-inline: var(--esp-5);
+  background: var(--cor-faixa-texto);
+  color: var(--cor-faixa);
+  border-radius: var(--raio);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
+}
+.abertura__entrar:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
+.abertura__entrar:focus-visible { outline-offset: var(--esp-1); }
+.abertura__entrar::after {
+  content: "→";
+  transition: transform var(--dur-rapida) var(--curva-saida);
+}
+@media (hover: hover) and (pointer: fine) {
+  .abertura__entrar:hover::after { transform: translateX(var(--esp-1)); }
 }
 
-/* Números no rodapé da faixa, numa linha só, separados por divisor fino. */
 .numeros {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: auto;
-  row-gap: var(--esp-4);
-  border-top: 1px solid var(--cor-faixa-linha);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--esp-2);
 }
-@media (min-width: 48rem) { .numeros { row-gap: 0; } }
-@media (min-width: 48rem) {
-  .numeros { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-/* Subgrid para o rótulo de um número começar na mesma linha do rótulo do
-   vizinho, mesmo quando um quebra em duas linhas e o outro não. */
 .numero {
   display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 2;
-  align-content: start;
-  padding: var(--esp-2) var(--esp-4) 0;
-  border-left: 1px solid var(--cor-faixa-linha);
-}
-@media (min-width: 64rem) { .numero { padding-top: var(--esp-3); } }
-.numero:nth-child(2n + 1) { border-left: 0; padding-left: 0; }
-@media (min-width: 48rem) {
-  .numero:nth-child(2n + 1) { border-left: 1px solid var(--cor-faixa-linha); padding-left: var(--esp-4); }
-  .numero:first-child { border-left: 0; padding-left: 0; }
+  align-content: center;
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-faixa-painel);
+  border: 1px solid var(--cor-faixa-linha);
+  border-radius: var(--raio);
 }
 .numero__valor {
   font-family: var(--fonte-mono);
-  font-size: var(--tam-xl);
+  font-size: var(--tam-titulo);
   line-height: 1.1;
   color: var(--cor-faixa-texto);
 }
 .numero__rotulo {
   margin-top: var(--esp-1);
-  font-size: var(--tam-xs);
+  font-size: var(--tam-rotulo-metrica);
   color: var(--cor-faixa-suave);
+  line-height: 1.35;
 }
 
-.secao { padding-block: var(--esp-8); }
+.secao { padding-block: var(--esp-secao); }
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
-.secao-catalogo { padding-block: var(--esp-7) var(--esp-7); background: var(--cor-fundo); }
+/* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
+   de que se destacar no tema claro. */
+.secao-catalogo { padding-block: var(--esp-secao); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
-/* Um degrau abaixo do título de seção, para a parte que pertence à anterior,
-   como os tipos de solução dentro do glossário. */
-.secao__subtitulo {
+/* ---------- Explorar ---------- */
+/* A página deixa de ser uma sequência única de tabelas. As abas não escondem
+   conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
+.explorar {
+  max-width: var(--largura-explorar);
+}
+.explorar__cabecalho {
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-6);
+}
+.explorar__olho,
+.explorar__indice {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+.explorar__titulo {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
+.explorar__intro {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-suave);
+}
+.explorar__acao {
+  margin-top: var(--esp-4);
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+  border-color: var(--cor-acento);
+}
+.explorar__acao:hover {
+  color: var(--cor-contraste);
+  background: var(--cor-acento-forte);
+  border-color: var(--cor-acento-forte);
+}
+.explorar__acao:active { transform: scale(var(--escala-acao)); }
+.explorar__navegacao {
+  display: flex;
+  gap: var(--esp-1);
+  width: fit-content;
+  max-width: var(--largura-cheia);
+  margin-bottom: var(--esp-5);
+  padding: var(--esp-1);
+  overflow-x: auto;
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio-pilula);
+  box-shadow: var(--sombra-1);
+}
+.explorar__aba {
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
+  color: var(--cor-texto-suave);
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  font: inherit;
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva), transform var(--dur-rapida) var(--curva-saida);
+}
+.explorar__aba[aria-selected="true"] {
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+}
+.explorar__aba:active { transform: scale(var(--escala-acao)); }
+.explorar__painel {
+  padding: var(--esp-5);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.explorar__painel-cabecalho {
+  display: grid;
+  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
+  gap: var(--esp-3);
+  align-items: baseline;
+  margin-bottom: var(--esp-4);
+}
+.explorar__painel-cabecalho h2,
+.explorar__painel-cabecalho h3 {
   font-size: var(--tam-lg);
+  font-weight: 600;
   letter-spacing: var(--entre-letras-nome);
+}
+.explorar__painel-cabecalho p:not(.explorar__indice) {
+  margin-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+}
+.explorar__superficie,
+.explorar__lista {
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+}
+.explorar__superficie { padding-inline: var(--esp-3); }
+.explorar__lista {
+  padding: var(--esp-4) var(--esp-5);
+}
+.explorar__lista .listagem { margin-top: 0; }
+@media (max-width: 47.99rem) {
+  .explorar__painel { padding: var(--esp-4); }
+  .explorar__lista { padding: var(--esp-4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explorar__aba { transition: color var(--dur-rapida) linear, background-color var(--dur-rapida) linear; }
+  .explorar__aba:active { transform: none; }
+  .explorar__acao:active { transform: none; }
+}
+
+/* ---------- Sobre ---------- */
+.sobre { max-width: var(--largura-explorar); }
+.sobre__cabecalho {
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-7);
+}
+.sobre__olho {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+.sobre__cabecalho h1 {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-xl);
+}
+.sobre__cabecalho > p:last-child {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-suave);
+}
+.sobre__grade {
+  display: grid;
+  gap: var(--esp-6);
+  align-items: start;
+}
+.sobre__conteudo { max-width: var(--largura-texto); }
+.sobre__conteudo h2:first-child { margin-top: 0; }
+.sobre__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
   margin-top: var(--esp-6);
-  margin-bottom: var(--esp-2);
+}
+.sobre__acao { min-width: var(--alvo-toque); }
+.sobre__acao--primaria {
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+  border-color: var(--cor-acento);
+}
+.sobre__acao--primaria:hover {
+  color: var(--cor-contraste);
+  background: var(--cor-acento-forte);
+  border-color: var(--cor-acento-forte);
+}
+.sobre__acao:active { transform: scale(var(--escala-acao)); }
+.sobre__base {
+  padding: var(--esp-5);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.sobre__base h2 {
+  margin-top: var(--esp-2);
+  font-size: var(--tam-lg);
+}
+.sobre__numeros {
+  display: grid;
+  gap: var(--esp-3);
+  margin-top: var(--esp-5);
+}
+.sobre__numeros > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding-bottom: var(--esp-3);
+  border-bottom: var(--borda-suave);
+}
+.sobre__numeros dt { color: var(--cor-texto-suave); }
+.sobre__numeros dd {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--cor-acento);
+}
+.sobre__fonte {
+  margin-top: var(--esp-5);
+  font-size: var(--tam-sm);
+  color: var(--cor-texto-suave);
+}
+.sobre__referencias {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  margin-top: var(--esp-3);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sobre__referencias span { margin-left: var(--esp-2); }
+@media (min-width: 64rem) {
+  .sobre__grade { grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr); }
+  .sobre__base { position: sticky; top: calc(var(--altura-cabecalho) + var(--esp-5)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sobre__acao:active { transform: none; }
+}
+
+/* ---------- Portas de entrada ---------- */
+/* Uma por natureza epistemológica, que é a entrada principal do catálogo. */
+.portas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-5);
+}
+@media (min-width: 42rem) {
+  .portas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 70rem) {
+  .portas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.porta {
+  display: grid;
+  align-content: start;
+  gap: var(--esp-2);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.porta__contagem {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-titulo);
+  line-height: 1;
+  color: var(--cor-acento);
+}
+.porta__nome { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
+.porta__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
+.porta__link {
+  justify-self: start;
+  margin-top: var(--esp-2);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  font-size: var(--tam-sm);
+  font-weight: 500;
+  color: var(--cor-acento);
+  text-decoration: none;
+}
+.porta__link::after {
+  margin-left: var(--esp-2);
+  content: "→";
 }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
@@ -219,24 +480,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 
 /* ---------- Página do catálogo ---------- */
-/* Coluna única. A busca e os filtros vêm acima da lista, não ao lado. */
+/* O catálogo começa direto pela lista. A busca continua acima dos cartões. */
 .catalogo__cabecalho { margin-bottom: var(--esp-4); }
-.catalogo__barra {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--esp-4);
-  padding-bottom: var(--esp-2);
-  border-bottom: var(--borda);
-  margin-bottom: var(--esp-4);
-  flex-wrap: wrap;
-}
-/* O botão só existe onde os filtros viram folha. Acima disso eles ficam no fluxo. */
-.catalogo__abrir-filtros { display: none; }
+/* A barra existe só onde os filtros viram folha. Acima disso eles ficam no
+   fluxo e ela não tem mais nada para carregar, depois que o contador entrou
+   para dentro do bloco de filtro. */
+.catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
-  .catalogo__abrir-filtros { display: inline-flex; }
+  .catalogo__barra { display: flex; align-items: center; margin-bottom: var(--esp-3); }
 }
-.catalogo__contagem { font-family: var(--fonte-mono); font-size: var(--tam-sm); color: var(--cor-texto-suave); }
 .vazio {
   padding: var(--esp-8) var(--esp-4);
   text-align: center;
@@ -304,7 +556,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   justify-content: space-between;
   gap: var(--esp-4);
   padding: var(--esp-3) var(--esp-4);
-  border-bottom: var(--borda);
+  border-bottom: var(--borda-suave);
 }
 .folha__titulo {
   font-family: var(--fonte-mono);
@@ -318,7 +570,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .folha .filtros { border: 0; box-shadow: none; background: transparent; margin: 0; }
 .folha .filtros__linha { padding-inline: 0; }
 .folha .filtros__grade { padding-inline: 0; }
-.folha .filtros__pendentes { padding-inline: 0; }
 
 /* ---------- Diálogo da ficha ---------- */
 .dialogo-ficha {
@@ -328,22 +579,28 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   padding: 0;
   width: min(100%, var(--largura-dialogo));
   max-width: calc(100vw - var(--esp-4) * 2);
-  max-height: calc(100vh - var(--esp-6));
+  max-height: 86dvh;
+  /* Topo e rodapé parados, só o miolo rola. Com sticky a folha inteira rolava,
+     e no celular isso tirava o botão de fechar da vista. */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border-radius: var(--raio);
   box-shadow: var(--sombra-2);
   opacity: 0;
-  scale: 0.97;
+  transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha));
   /* overlay e display entram com allow-discrete para o fechamento também animar.
      A duração aqui é a do fechamento, que é mais curto que a abertura. */
   transition:
     opacity var(--dur-rapida) var(--curva-saida),
-    scale var(--dur-rapida) var(--curva-saida),
+    transform var(--dur-rapida) var(--curva-saida),
     overlay var(--dur-rapida) var(--curva-saida) allow-discrete,
     display var(--dur-rapida) var(--curva-saida) allow-discrete;
 }
-.dialogo-ficha[open] { opacity: 1; scale: 1; transition-duration: var(--dur-media); }
+.dialogo-ficha[open] { opacity: 1; transform: none; transition-duration: var(--dur-entrada-ficha); }
+.dialogo-ficha.dialogo-ficha--entrando { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 @starting-style {
-  .dialogo-ficha[open] { opacity: 0; scale: 0.97; }
+  .dialogo-ficha[open] { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 }
 
 .dialogo-ficha::backdrop {
@@ -367,34 +624,99 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .dialogo-ficha[open]::backdrop { opacity: 0; }
 }
 
+/* Ajuda é um diálogo curto sobre a ficha e usa o mesmo véu para não competir
+   com o conteúdo que ele contextualiza. */
+.dialogo-ajuda {
+  width: min(var(--largura-dialogo-ajuda), calc(100vw - var(--esp-6)));
+  max-height: calc(100dvh - var(--esp-6));
+  padding: 0;
+  overflow: auto;
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-2);
+  color: var(--cor-texto);
+}
+.dialogo-ajuda::backdrop {
+  background: var(--cor-veu-opaco);
+  -webkit-backdrop-filter: blur(var(--desfoque-veu));
+  backdrop-filter: blur(var(--desfoque-veu));
+}
+.dialogo-ajuda__topo {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--esp-3);
+  padding: var(--esp-5) var(--esp-5) var(--esp-3);
+}
+.dialogo-ajuda__titulo {
+  min-width: 0;
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+.dialogo-ajuda__topo .fechar {
+  flex: none;
+  margin: calc(var(--esp-2) * -1);
+}
+.dialogo-ajuda__corpo {
+  display: grid;
+  gap: var(--esp-4);
+  padding: 0 var(--esp-5) var(--esp-5);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+.dialogo-ajuda__fonte {
+  padding-top: var(--esp-3);
+  border-top: var(--borda-suave);
+  color: var(--cor-texto-fraco);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+}
+@media (max-width: 31.24rem) {
+  .dialogo-ajuda__topo { padding: var(--esp-4) var(--esp-4) var(--esp-2); }
+  .dialogo-ajuda__corpo { padding: 0 var(--esp-4) var(--esp-4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dialogo-ajuda::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dialogo-ficha,
   .dialogo-ficha::backdrop { transition: none; }
-  .dialogo-ficha { scale: 1; }
+  .dialogo-ficha { transform: none; }
 }
+/* O topo parado leva tudo que identifica o conhecimento, inclusive o nome e a
+   descrição, que antes rolavam junto com o resto e sumiam da vista. */
 .dialogo-ficha__topo {
   border-radius: var(--raio) var(--raio) 0 0;
-  position: sticky;
-  top: 0;
+  flex: none;
   background: var(--cor-fundo);
   border-bottom: var(--borda);
-  padding: var(--esp-3) var(--esp-4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4) var(--esp-4);
+  display: grid;
+  gap: var(--esp-2);
 }
-.dialogo-ficha__corpo { padding: var(--esp-5) var(--esp-4) var(--esp-6); }
+.dialogo-ficha__linha { display: flex; align-items: center; gap: var(--esp-3); }
+/* O selo da natureza fica junto do identificador, e o fechar vai para a ponta. */
+.dialogo-ficha__linha .etiqueta { margin-inline-end: auto; }
+/* O miolo é mais escuro que os cartões, senão eles não se separam do fundo. */
+.dialogo-ficha__corpo {
+  padding: var(--esp-5) var(--esp-4) var(--esp-6);
+  overflow-y: auto;
+  background: var(--cor-miolo);
+}
 .dialogo-ficha__rodape {
-  position: sticky;
-  bottom: 0;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--esp-3);
   padding: var(--esp-3) var(--esp-4);
   background: var(--cor-fundo);
-  border-top: var(--borda);
+  border-top: var(--borda-suave);
   border-radius: 0 0 var(--raio) var(--raio);
 }
 .dialogo-ficha__posicao {

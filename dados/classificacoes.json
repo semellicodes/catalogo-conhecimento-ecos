@@ -81,10 +81,10 @@
     ]
   },
   "acaoGerencia": {
-    "rotulo": "Ação de gerência requerida",
+    "rotulo": "Gerência do conhecimento no ECOS",
     "principal": false,
     "pendente": true,
-    "pergunta": "O que precisa ser feito com esse conhecimento no ecossistema?",
+    "pergunta": "Como esse conhecimento pode ser identificado, acessado, compartilhado, atualizado ou preservado no ecossistema?",
     "referencia": "",
     "valores": [
       {
