@@ -74,11 +74,15 @@ function traco(tag, atributos) {
   return forma;
 }
 
-/** Preenche o detalhe que abre para um tipo de ECOS observado. */
+/** Preenche o detalhe de um tipo de ECOS sem repetir o nome do botão. */
 function preencherObservacaoTipoEcos(painel, observacao) {
   painel.replaceChildren();
-  painel.hidden = !observacao;
-  if (!observacao) return;
+  painel.hidden = false;
+
+  if (!observacao?.descricao) {
+    painel.append(criar('p', 'tipo-ecos__texto', 'Não há exemplos deste tipo de ecossistema registrados nas evidências disponíveis para este conhecimento.'));
+    return;
+  }
 
   painel.append(criar('p', 'tipo-ecos__texto', observacao.descricao));
   if (observacao.exemplos?.length) {
@@ -86,49 +90,56 @@ function preencherObservacaoTipoEcos(painel, observacao) {
     observacao.exemplos.forEach((exemplo) => exemplos.append(criar('li', null, exemplo)));
     painel.append(exemplos);
   }
+  if (observacao.referencias?.length) {
+    const referencias = criar('ul', 'tipo-ecos__referencias');
+    observacao.referencias.forEach((referencia) => referencias.append(criar('li', null, referencia)));
+    painel.append(referencias);
+  }
 }
 
 /**
- * Tipos observados podem abrir seu próprio contexto, desde que esse contexto
- * esteja registrado no dado. Tipo sem observação continua uma caixa informativa,
- * não um botão que abriria um painel vazio.
+ * Os três tipos ficam disponíveis para consulta. Quando não há evidência para
+ * aquele tipo, o painel explica a ausência sem criar associação artificial.
  */
 function tiposDeEcosInterativos(definicao, conhecimento) {
   const observados = conhecimento.tipoEcos || [];
   const observacoes = conhecimento.observacoesTipoEcos || {};
   const lista = criar('ul', 'opcoes');
   const painel = criar('div', 'tipo-ecos__painel');
-  const controles = [];
   const idPainel = `tipo-ecos-${conhecimento.id}`;
   painel.id = idPainel;
   painel.hidden = true;
 
-  function selecionar(botao, observacao) {
-    controles.forEach(({ botao: outro }) => {
+  function fechar() {
+    lista.querySelectorAll('button').forEach((outro) => {
       outro.removeAttribute('data-selecionado');
-      outro.setAttribute('aria-pressed', 'false');
+      outro.setAttribute('aria-expanded', 'false');
     });
+    painel.replaceChildren();
+    painel.hidden = true;
+  }
+
+  function selecionar(botao, observacao) {
+    const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
+    fechar();
+    if (estavaAberto) return;
+
     botao.setAttribute('data-selecionado', '');
-    botao.setAttribute('aria-pressed', 'true');
+    botao.setAttribute('aria-expanded', 'true');
     preencherObservacaoTipoEcos(painel, observacao);
   }
 
   definicao.valores.forEach((v) => {
     const aceso = observados.includes(v.valor);
     const observacao = observacoes[v.valor];
-    const interativo = aceso && observacao?.descricao;
     const item = criar('li');
     if (aceso) item.setAttribute('data-aceso', '');
 
-    const caixa = criar(interativo ? 'button' : 'span', 'opcao');
-    if (interativo) {
-      caixa.type = 'button';
-      caixa.classList.add('opcao--interativa');
-      caixa.setAttribute('aria-controls', idPainel);
-      caixa.setAttribute('aria-pressed', 'false');
-      caixa.addEventListener('click', () => selecionar(caixa, observacao));
-      controles.push({ botao: caixa, observacao });
-    }
+    const caixa = criar('button', 'opcao opcao--interativa');
+    caixa.type = 'button';
+    caixa.setAttribute('aria-controls', idPainel);
+    caixa.setAttribute('aria-expanded', 'false');
+    caixa.addEventListener('click', () => selecionar(caixa, observacao));
     caixa.append(
       iconeDoValor(v.valor, aceso),
       criar('span', 'opcao__nome', v.valor),
@@ -138,7 +149,6 @@ function tiposDeEcosInterativos(definicao, conhecimento) {
     lista.append(item);
   });
 
-  if (controles.length) selecionar(controles[0].botao, controles[0].observacao);
   return [lista, painel];
 }
 
