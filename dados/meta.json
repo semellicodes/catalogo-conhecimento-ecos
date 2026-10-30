@@ -22,7 +22,7 @@
     "desafios": {
       "titulo": "Desafios relacionados ao conhecimento",
       "texto": "Esta aba reúne somente os desafios cuja ligação com este conhecimento foi confirmada durante a conferência dos estudos primários. Quando não há itens, isso significa que a base não preservou uma relação específica e comprovada para este conhecimento. Não significa que ele esteja livre de desafios no ecossistema.",
-      "referencia": "campos2026"
+      "referencia": "revisaoRapidaManuscrito"
     },
     "estudos": {
       "titulo": "Estudos primários",
