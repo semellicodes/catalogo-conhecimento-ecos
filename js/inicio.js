@@ -15,12 +15,6 @@ function criar(tag, className, texto) {
   return elemento;
 }
 
-function numero(valor, rotulo) {
-  const bloco = criar('div', 'numero');
-  bloco.append(criar('p', 'numero__valor mono', String(valor)), criar('p', 'numero__rotulo', rotulo));
-  return bloco;
-}
-
 /** A contextualização fica acessível no botão de ajuda, sem alongar a abertura. */
 function ajudaDasPortas(dados) {
   const conteudo = dados.meta.ajudas?.portasEntrada;
@@ -90,25 +84,10 @@ async function iniciar() {
     dados = await carregar();
   } catch (erro) {
     console.error(erro);
-    /* Sem isto a faixa fica com os divisores e nenhum número, e as camadas com
-       um buraco, sem nada na tela explicando por quê. */
-    const aviso = document.createElement('p');
-    aviso.className = 'numero__rotulo';
-    aviso.textContent = 'Os números não carregaram.';
-    el('#numeros').replaceChildren(aviso);
     return;
   }
 
   el('#abertura-resumo').textContent = dados.meta.subtitulo;
-
-  /* Os atributos de classificação são os três que a ficha mostra como
-     classificação do conhecimento, contados a partir do vocabulário. */
-  const classificacao = ['natureza', 'nivel', 'dimensao'];
-  el('#numeros').replaceChildren(
-    numero(dados.conhecimentos.length, 'conhecimentos'),
-    numero(dados.meta.totalEstudos, 'estudos primários'),
-    numero(classificacao.length, 'atributos de classificação')
-  );
 
   const contar = (valor) => dados.conhecimentos.filter((c) => c.natureza === valor).length;
   el('#portas').replaceChildren(
