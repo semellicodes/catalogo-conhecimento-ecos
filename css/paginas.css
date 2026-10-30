@@ -166,6 +166,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-secao); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
+.secao__cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+.secao__cabecalho .secao__titulo { margin-bottom: 0; }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem
    conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
@@ -432,6 +439,34 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-left: var(--esp-2);
   content: "→";
 }
+.portas__ajuda {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  padding: 0;
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-sm);
+  cursor: pointer;
+}
+.portas__ajuda:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
+.portas__popover {
+  width: min(var(--largura-dialogo-ajuda), calc(100vw - var(--esp-6)));
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-2);
+  color: var(--cor-texto);
+}
+.portas__popover::backdrop { background: transparent; }
+.portas__popover-titulo { margin-bottom: var(--esp-2); font-size: var(--tam-base); }
+.portas__popover-texto { color: var(--cor-texto-suave); }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
    coluna para quatro, cabem quantas couberem a partir de 14rem cada. */

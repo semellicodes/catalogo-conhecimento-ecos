@@ -20,6 +20,20 @@ function numero(valor, rotulo) {
   return bloco;
 }
 
+/** A contextualização fica acessível no botão de ajuda, sem alongar a abertura. */
+function ajudaDasPortas(dados) {
+  const conteudo = dados.meta.ajudas?.portasEntrada;
+  const botao = el('#abrir-ajuda-portas');
+  const popover = el('#ajuda-portas');
+  if (!conteudo || !botao || !popover) return;
+
+  popover.replaceChildren(
+    criar('h3', 'portas__popover-titulo', conteudo.titulo),
+    criar('p', 'portas__popover-texto', conteudo.texto)
+  );
+  botao.hidden = false;
+}
+
 /**
  * Uma porta de entrada por natureza epistemológica, que é a entrada principal
  * do catálogo. A contagem sai dos próprios conhecimentos e a descrição sai do
@@ -103,6 +117,7 @@ async function iniciar() {
   el('#portas').replaceChildren(
     ...dados.classificacoes.natureza.valores.map((v) => porta(v, contar(v.valor)))
   );
+  ajudaDasPortas(dados);
 
   const camadas = el('#camadas');
   dados.meta.camadas.forEach((c) => camadas.append(camada(c)));
