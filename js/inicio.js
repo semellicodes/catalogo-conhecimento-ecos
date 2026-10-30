@@ -4,6 +4,7 @@
  */
 
 import { carregar } from './dados.js';
+import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -18,6 +19,16 @@ function numero(valor, rotulo) {
   const bloco = criar('div', 'numero');
   bloco.append(criar('p', 'numero__valor mono', String(valor)), criar('p', 'numero__rotulo', rotulo));
   return bloco;
+}
+
+/** A contextualização fica acessível no botão de ajuda, sem alongar a abertura. */
+function ajudaDasPortas(dados) {
+  const conteudo = dados.meta.ajudas?.portasEntrada;
+  const botao = el('#abrir-ajuda-portas');
+  if (!conteudo || !botao) return;
+
+  botao.addEventListener('click', () => abrirAjuda(dados, conteudo));
+  botao.hidden = false;
 }
 
 /**
@@ -103,6 +114,7 @@ async function iniciar() {
   el('#portas').replaceChildren(
     ...dados.classificacoes.natureza.valores.map((v) => porta(v, contar(v.valor)))
   );
+  ajudaDasPortas(dados);
 
   const camadas = el('#camadas');
   dados.meta.camadas.forEach((c) => camadas.append(camada(c)));

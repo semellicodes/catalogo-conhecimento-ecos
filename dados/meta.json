@@ -20,6 +20,11 @@
       "texto": "Em ecossistemas de software, o conhecimento atravessa organizações, projetos, plataformas e comunidades. Por isso, o bloco apresenta as principais fontes em que ele tende a ser produzido ou registrado, os principais receptores que podem precisar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação. Esses campos não atribuem posse do conhecimento a um único ator.",
       "referencia": "kauschinger2021"
     },
+    "portasEntrada": {
+      "titulo": "Conhecimentos em Ecossistemas de Software",
+      "texto": "Em Ecossistemas de Software (ECOS), diferentes organizações, desenvolvedores e outros participantes interagem para desenvolver, integrar e utilizar soluções de software. Nesse contexto, os conhecimentos podem assumir diferentes formas, classificadas neste catálogo como explícitos, tácito-cognitivos e tácito-técnicos.",
+      "referencia": ""
+    },
     "desafios": {
       "titulo": "Desafios relacionados ao conhecimento",
       "texto": "Esta aba reúne somente os desafios cuja ligação com este conhecimento foi confirmada durante a conferência dos estudos primários. Quando não há itens, isso significa que a base não preservou uma relação específica e comprovada para este conhecimento. Não significa que ele esteja livre de desafios no ecossistema.",

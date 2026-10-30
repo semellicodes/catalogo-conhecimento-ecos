@@ -166,6 +166,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .secao-catalogo { padding-block: var(--esp-secao); background: var(--cor-miolo); }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
+.secao__cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-3);
+}
+.secao__cabecalho .secao__titulo { margin-bottom: 0; }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem
    conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
@@ -432,6 +439,30 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-left: var(--esp-2);
   content: "→";
 }
+.portas__ajuda {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--cor-texto-fraco);
+  cursor: pointer;
+}
+.portas__ajuda::before {
+  display: grid;
+  place-items: center;
+  width: var(--esp-6);
+  height: var(--esp-6);
+  content: "?";
+  border: var(--borda);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+}
+.portas__ajuda:hover::before { color: var(--cor-acento); border-color: var(--cor-acento); }
 
 /* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
    coluna para quatro, cabem quantas couberem a partir de 14rem cada. */

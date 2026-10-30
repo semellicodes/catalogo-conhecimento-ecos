@@ -8,17 +8,17 @@
       {
         "valor": "Explícito",
         "tituloPorta": "Conhecimentos explícitos",
-        "descricao": "São conhecimentos que podem ser formalizados, registrados e transmitidos por meio de artefatos."
+        "descricao": "São conhecimentos que podem ser registrados, organizados e compartilhados por meio de documentos e outros artefatos, como especificações técnicas, regras de governança e documentação das plataformas de software."
       },
       {
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
-        "descricao": "São conhecimentos que estão presentes em modelos mentais, percepções e interpretações dos atores."
+        "descricao": "São conhecimentos que envolvem percepções, interpretações e formas de compreender situações, desenvolvidas pelos participantes do ecossistema. Incluem, por exemplo, o entendimento das necessidades dos parceiros e o reconhecimento das competências de outros participantes."
       },
       {
         "valor": "Tácito-técnico",
         "tituloPorta": "Conhecimentos tácito-técnicos",
-        "descricao": "São conhecimentos que se manifestam no saber fazer e nas habilidades práticas adquiridas pela experiência."
+        "descricao": "São conhecimentos que envolvem habilidades práticas adquiridas pela experiência e pela realização de atividades. Incluem, por exemplo, a capacidade de avaliar a adequação de soluções técnicas a diferentes situações e a experiência acumulada no uso de tecnologias do ecossistema."
       }
     ]
   },
