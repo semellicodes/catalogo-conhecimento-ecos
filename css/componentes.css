@@ -1012,30 +1012,23 @@
 .relacao__motivo { color: var(--cor-texto-suave); }
 /* ---------- Estudos ---------- */
 .estudos-bloco { display: grid; }
-.estudos { list-style: none; display: grid; gap: var(--esp-1); }
+.estudos { list-style: none; display: grid; gap: var(--esp-0); }
 .estudo {
   display: grid;
   grid-template-columns: var(--coluna-id) minmax(0, 1fr);
   gap: var(--esp-2);
   align-items: start;
-  padding: var(--esp-2) var(--esp-3);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
+  padding: var(--esp-2) var(--esp-0);
+  border-bottom: var(--borda-suave);
   font-size: var(--tam-sm);
 }
+.estudo:first-child { padding-top: var(--esp-0); }
+.estudo:last-child { padding-bottom: var(--esp-0); border-bottom: 0; }
 .estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto; }
 .estudo__corpo { display: grid; gap: var(--esp-0); }
 .estudo__titulo { font-weight: 600; line-height: 1.35; }
 .estudo__meta { font-size: var(--tam-xs); line-height: 1.35; color: var(--cor-texto-fraco); }
 .estudo__acessar { align-self: start; white-space: nowrap; }
-.estudo__sem-link {
-  grid-column: 2;
-  margin-top: var(--esp-1);
-  font-size: var(--tam-xs);
-  line-height: 1.35;
-  color: var(--cor-texto-fraco);
-}
 @container (max-width: 34rem) {
   .estudo { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
   .estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
