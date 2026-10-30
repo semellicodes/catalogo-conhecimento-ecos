@@ -268,17 +268,85 @@ function gerencia(dados, conhecimento) {
 
 /* ---------- Relações e estudos ---------- */
 
+/* Os ícones descrevem visualmente o tipo de dificuldade. A chave vem do dado
+   do desafio, para que a escolha não se misture à relação científica. */
+const ICONES_DESAFIOS = {
+  search: [['circle', { cx: 8.5, cy: 8.5, r: 4 }], ['path', { d: 'm11.5 11.5 4.5 4.5' }]],
+  'user-search': [
+    ['circle', { cx: 7.5, cy: 6.5, r: 2.5 }], ['path', { d: 'M3.5 16c.4-2.7 1.9-4 4-4 1 0 1.9.3 2.6.9' }],
+    ['circle', { cx: 15, cy: 14, r: 2.5 }], ['path', { d: 'm16.8 15.8 2 2' }]
+  ],
+  'share-2': [
+    ['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15.5, cy: 4.5, r: 2 }], ['circle', { cx: 15.5, cy: 15.5, r: 2 }],
+    ['path', { d: 'm6.8 9 6.8-3.6M6.8 11l6.8 3.6' }]
+  ],
+  scale: [
+    ['path', { d: 'M10 3v13M4 6h12M6 6l-2.2 5h4.4L6 6Zm8 0-2.2 5h4.4L14 6ZM4 17h12' }]
+  ],
+  'circle-alert': [
+    ['circle', { cx: 10, cy: 10, r: 7 }], ['path', { d: 'M10 6.5v4M10 13.5h.01' }]
+  ],
+  history: [
+    ['path', { d: 'M4 9a6 6 0 1 1 1.6 4.1M4 5v4h4M10 6.5V10l2.5 1.5' }]
+  ],
+  'users-round': [
+    ['circle', { cx: 7, cy: 7, r: 2.5 }], ['circle', { cx: 14, cy: 8, r: 2 }],
+    ['path', { d: 'M2.8 16c.5-3 2-4.5 4.2-4.5s3.7 1.5 4.2 4.5M12.2 12.5c2.4-.1 4 1.2 4.5 3.5' }]
+  ],
+  'columns-2': [
+    ['rect', { x: 3, y: 4, width: 14, height: 12, rx: 1 }], ['path', { d: 'M10 4v12' }]
+  ],
+  'lock-keyhole': [
+    ['rect', { x: 4.5, y: 9, width: 11, height: 8, rx: 1 }], ['path', { d: 'M6.5 9V6.7a3.5 3.5 0 0 1 7 0V9M10 12v2.5' }]
+  ],
+  'graduation-cap': [
+    ['path', { d: 'm2.5 8 7.5-4 7.5 4-7.5 4-7.5-4ZM5 9.3v4.2c2.7 1.7 7.3 1.7 10 0V9.3M17.5 8v4' }]
+  ],
+  gauge: [
+    ['path', { d: 'M4 15a6 6 0 0 1 12 0M10 11l3-2M6 16h8' }], ['circle', { cx: 10, cy: 11, r: 1 }]
+  ],
+  handshake: [
+    ['path', { d: 'm3 10 3-3 2.5 2.2L11 7l3 3-2 2 1.2 1.2a1.4 1.4 0 0 1-2 2L10 14l-.8.8a1.4 1.4 0 0 1-2-2L6 11.6l-1.2 1.2a1.4 1.4 0 0 1-2-2L4 9.6' }]
+  ],
+  'file-warning': [
+    ['path', { d: 'M6 3h5l3 3v11H6zM11 3v3h3M10 9v3M10 14h.01' }]
+  ],
+  'message-circle': [
+    ['path', { d: 'M16 9a6 6 0 0 1-6 6 6.7 6.7 0 0 1-2.7-.6L4 16l1.1-3A6 6 0 1 1 16 9Z' }]
+  ],
+  'file-pen': [
+    ['path', { d: 'M6 3h5l3 3v5M11 3v3h3M6 3v14h4M11.5 15.5l4.2-4.2 1.5 1.5-4.2 4.2-2 .5z' }]
+  ],
+  'messages-square': [
+    ['path', { d: 'M3 5h11v8H8l-3 3v-3H3zM9 8h8v8h-2v2l-3-2H9z' }]
+  ]
+};
+
+function iconeDesafio(nome) {
+  const caixa = criar('span', 'relacao__icone');
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  (ICONES_DESAFIOS[nome] || ICONES_DESAFIOS['circle-alert'])
+    .forEach(([tag, atributos]) => svg.append(traco(tag, atributos)));
+  caixa.append(svg);
+  return caixa;
+}
+
 /**
  * Uma relação de desafio. A linha continua de uma linha só, e o
  * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
  * quiser saber.
  */
-function linhaRelacao({ id, texto, estudos }, evidencia) {
+function linhaRelacao({ id, texto, estudos, icone }, evidencia) {
   const item = criar('li');
   const caixa = criar('details', 'relacao');
 
   const linha = criar('summary', 'relacao__linha');
-  linha.append(criar('span', 'codigo-id', id), criar('span', 'relacao__nome', texto));
+  const identificacao = criar('span', 'relacao__identificacao');
+  identificacao.append(criar('span', 'codigo-id', id), iconeDesafio(icone));
+  linha.append(identificacao, criar('span', 'relacao__nome', texto));
   const meta = criar('span', 'relacao__meta');
   meta.append(criar('span', 'relacao__estudos', estudos.join(', ')));
   linha.append(meta);
@@ -298,7 +366,7 @@ function linhaRelacao({ id, texto, estudos }, evidencia) {
 }
 
 const linhaDesafio = (d, evidencia) =>
-  linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos }, evidencia);
+  linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos, icone: d.icone }, evidencia);
 
 /** Os desafios confirmados deste conhecimento. */
 function desafios(conhecimento) {

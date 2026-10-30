@@ -982,19 +982,34 @@
 /* A linha é o resumo do que abre abaixo. */
 .relacao__linha {
   display: grid;
-  grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto;
+  grid-template-columns: var(--coluna-relacao) minmax(0, 1fr) auto;
   gap: var(--esp-3);
-  align-items: baseline;
+  align-items: start;
   padding-block: var(--esp-2);
   list-style: none;
   cursor: pointer;
 }
 .relacao__linha::-webkit-details-marker { display: none; }
+.relacao__identificacao { display: flex; align-items: center; gap: var(--esp-1); min-height: var(--tam-icone-relacao); }
+.relacao__icone {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--tam-icone-relacao);
+  height: var(--tam-icone-relacao);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  background: var(--cor-acento-fundo);
+  color: var(--cor-acento);
+}
+.relacao__icone svg { width: var(--tam-desenho-relacao); height: var(--tam-desenho-relacao); }
 @media (hover: hover) and (pointer: fine) {
-  .relacao__linha:hover .relacao__nome { color: var(--cor-acento); }
+  .relacao__linha:hover .relacao__nome,
+  .relacao__linha:hover .relacao__icone { color: var(--cor-acento-forte); }
 }
 .relacao__nome { transition: color var(--dur-rapida) var(--curva); }
-.relacao__linha .relacao__nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.relacao__linha .relacao__nome { line-height: 1.45; }
 .relacao__meta { display: inline-flex; align-items: center; gap: var(--esp-2); }
 .relacao__estudos { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 
@@ -1002,7 +1017,7 @@
 .relacao__porque {
   display: grid;
   gap: var(--esp-2);
-  padding: 0 0 var(--esp-3) var(--coluna-id);
+  padding: 0 0 var(--esp-3) var(--coluna-relacao);
 }
 .relacao__confirmacao {
   font-family: var(--fonte-mono);
@@ -1038,8 +1053,7 @@
    crie barra de rolagem lateral enquanto está escondida. */
 .dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
 @container (max-width: 34rem) {
-  .relacao__linha { grid-template-columns: var(--coluna-id) minmax(0, 1fr); row-gap: var(--esp-1); }
-  .relacao__linha .relacao__nome { white-space: normal; }
+  .relacao__linha { grid-template-columns: var(--coluna-relacao) minmax(0, 1fr); row-gap: var(--esp-1); }
   .relacao__meta { grid-column: 2; }
 }
 

@@ -1,6 +1,7 @@
 [
   {
     "id": "D01",
+    "icone": "search",
     "desafio": "Localizar o conhecimento registrado, já que o canal não garante que ele chegue a quem precisa",
     "estudos": [
       "E06",
@@ -14,6 +15,7 @@
   },
   {
     "id": "D02",
+    "icone": "user-search",
     "desafio": "Identificar quem detém o conhecimento, concentrado em poucas pessoas do ecossistema",
     "estudos": [
       "E08",
@@ -26,6 +28,7 @@
   },
   {
     "id": "D03",
+    "icone": "share-2",
     "desafio": "Sistematizar o compartilhamento, hoje fragmentado entre os atores do ecossistema",
     "estudos": [
       "E15",
@@ -38,6 +41,7 @@
   },
   {
     "id": "D04",
+    "icone": "scale",
     "desafio": "Superar a mentalidade proprietária e a dominância percebida entre organizações",
     "estudos": [
       "E05"
@@ -49,6 +53,7 @@
   },
   {
     "id": "D05",
+    "icone": "circle-alert",
     "desafio": "Reduzir o receio de desvalorização do conhecimento contribuído entre participantes",
     "estudos": [
       "E02"
@@ -57,6 +62,7 @@
   },
   {
     "id": "D06",
+    "icone": "history",
     "desafio": "Reter conhecimento de discussões distantes no tempo, hoje agregadas manualmente por veteranos",
     "estudos": [
       "E03"
@@ -67,6 +73,7 @@
   },
   {
     "id": "D07",
+    "icone": "users-round",
     "desafio": "Aproveitar o conhecimento experiencial diante do baixo engajamento comunitário",
     "estudos": [
       "E04"
@@ -77,6 +84,7 @@
   },
   {
     "id": "D08",
+    "icone": "columns-2",
     "desafio": "Romper os silos entre equipes, que reduzem a visibilidade das decisões no ecossistema",
     "estudos": [
       "E05"
@@ -87,6 +95,7 @@
   },
   {
     "id": "D09",
+    "icone": "lock-keyhole",
     "desafio": "Superar as barreiras de paywalls no acesso aos recursos de conhecimento",
     "estudos": [
       "E06"
@@ -98,6 +107,7 @@
   },
   {
     "id": "D10",
+    "icone": "graduation-cap",
     "desafio": "Capacitar juniores a avaliar soluções obtidas em fóruns antes de aplicá-las",
     "estudos": [
       "E06"
@@ -108,6 +118,7 @@
   },
   {
     "id": "D11",
+    "icone": "gauge",
     "desafio": "Aliviar a sobrecarga da organização central diante da relutância dos membros em contribuir",
     "estudos": [
       "E07"
@@ -118,6 +129,7 @@
   },
   {
     "id": "D12",
+    "icone": "handshake",
     "desafio": "Manter parceiros engajados apesar das exigências dos processos de licitação",
     "estudos": [
       "E07"
@@ -126,6 +138,7 @@
   },
   {
     "id": "D13",
+    "icone": "file-warning",
     "desafio": "Suprir a insuficiência da documentação diante de problemas específicos dos atores",
     "estudos": [
       "E09"
@@ -137,6 +150,7 @@
   },
   {
     "id": "D14",
+    "icone": "message-circle",
     "desafio": "Sustentar programas de mentoria diante da limitação de recursos disponíveis",
     "estudos": [
       "E11"
@@ -147,6 +161,7 @@
   },
   {
     "id": "D15",
+    "icone": "file-pen",
     "desafio": "Corrigir informações ausentes, enganosas ou desatualizadas na documentação técnica",
     "estudos": [
       "E12"
@@ -158,6 +173,7 @@
   },
   {
     "id": "D16",
+    "icone": "messages-square",
     "desafio": "Integrar o conhecimento disperso entre múltiplos canais de comunicação do ecossistema",
     "estudos": [
       "E13"
@@ -166,6 +182,7 @@
   },
   {
     "id": "D17",
+    "icone": "scale",
     "desafio": "Equilibrar a tensão entre a propriedade da informação e a disposição para compartilhá-la",
     "estudos": [
       "E14"
