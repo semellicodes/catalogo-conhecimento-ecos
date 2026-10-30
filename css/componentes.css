@@ -811,9 +811,19 @@
   cursor: pointer;
   transition: border-color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
 }
-.opcao--interativa:hover, .opcao--interativa[data-selecionado] {
+.opcao--interativa:hover {
   border-color: var(--cor-acento);
 }
+.opcao--interativa[data-selecionado] {
+  opacity: 1;
+  border-color: var(--cor-acento);
+  background: var(--cor-acento-fundo);
+  color: var(--cor-acento);
+}
+.opcao--interativa[data-selecionado] .opcao__nome {
+  color: var(--cor-acento);
+}
+.opcao--interativa:active { transform: scale(var(--escala-acao)); }
 .tipo-ecos__painel {
   display: grid;
   gap: var(--esp-2);
@@ -826,8 +836,25 @@
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
 }
-.tipo-ecos__texto { margin: 0; }
-.tipo-ecos__exemplos { display: grid; gap: var(--esp-1); padding-left: var(--esp-4); }
+.tipo-ecos__texto {
+  margin: 0;
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
+}
+.tipo-ecos__exemplos,
+.tipo-ecos__referencias {
+  display: grid;
+  gap: var(--esp-1);
+  padding-left: var(--esp-4);
+  text-align: left;
+}
+@media (max-width: 35.99rem) {
+  .tipo-ecos__texto {
+    text-align: left;
+    hyphens: manual;
+  }
+}
 
 /* A classificação é par de rótulo e valor, três colunas no desktop. Com um
    valor possível por atributo, a caixa não dizia mais do que o texto diz. */
