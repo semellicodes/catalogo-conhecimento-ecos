@@ -102,6 +102,7 @@
   --largura-texto: 68ch;
   --largura-explorar: 70rem;
   --largura-cartao-unico: 28rem;
+  --largura-cartao-estrutura: 20rem;
   --largura-dialogo: 47.5rem;
   --largura-dialogo-ajuda: 32rem;
   --largura-painel-abertura: 32rem;
@@ -128,6 +129,7 @@
   --borda: 1px solid var(--cor-linha);
   --borda-suave: 1px solid var(--cor-linha-suave);
   --borda-acento: 2px solid var(--cor-acento-linha);
+  --borda-acento-suave: 1px solid var(--cor-acento-linha);
   --borda-faixa: 1px solid var(--cor-faixa-linha);
   --raio: 10px;
   --raio-pilula: 999px;
