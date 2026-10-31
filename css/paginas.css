@@ -186,13 +186,32 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   color: var(--cor-texto-suave);
   font-size: var(--tam-base);
 }
-.estrutura__mapa { display: none; }
+.estrutura__mapa {
+  display: grid;
+  place-items: center;
+  width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
+  aspect-ratio: 16 / 6;
+  margin: var(--esp-6) auto 0;
+  padding: var(--esp-5);
+  color: var(--cor-texto-fraco);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+.estrutura__mapa-texto {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-align: center;
+  text-transform: uppercase;
+}
 .estrutura__navegacao {
   display: flex;
   gap: var(--esp-1);
   width: fit-content;
   max-width: var(--largura-cheia);
-  margin: var(--esp-6) auto 0;
+  margin: var(--esp-4) auto 0;
   padding: var(--esp-1);
   overflow-x: auto;
   scrollbar-width: none;
@@ -229,10 +248,22 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   color: var(--cor-texto-suave);
   text-align: center;
 }
+.estrutura__aviso {
+  max-width: var(--largura-texto);
+  margin: 0 auto var(--esp-4);
+  padding: var(--esp-3) var(--esp-4);
+  color: var(--cor-texto-suave);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
 .estrutura__grade {
   display: grid;
   gap: var(--esp-3);
   grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr));
+  align-items: start;
 }
 .estrutura__cartao {
   display: grid;
@@ -244,6 +275,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
+  align-self: start;
 }
 .estrutura__icone {
   display: grid;
@@ -258,13 +290,50 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 .estrutura__cartao-conteudo { min-width: 0; }
 .estrutura__cartao-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
-.estrutura__cartao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); }
+.estrutura__cartao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); line-height: 1.55; }
+.estrutura__exemplo {
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-3);
+  border-top: var(--borda-suave);
+}
+.estrutura__exemplo-titulo {
+  color: var(--cor-acento);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+}
+.estrutura__exemplo-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__valores { display: grid; gap: var(--esp-2); margin-top: var(--esp-3); color: var(--cor-texto-suave); font-size: var(--tam-sm); }
+.estrutura__cartao-nota { margin-top: var(--esp-3); color: var(--cor-texto-fraco); font-size: var(--tam-sm); }
+.estrutura__grade--conhecimento { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
+.estrutura__grade--classificacao {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.estrutura__cartao--atributo-principal { grid-column: 1 / -1; }
+.estrutura__subblocos {
+  display: grid;
+  gap: var(--esp-2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--esp-3);
+}
+.estrutura__subbloco {
+  padding: var(--esp-3);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+.estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
+.estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__grade--gerencia { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
+.estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 39.99rem) {
+  .estrutura__mapa { aspect-ratio: 16 / 8; margin-top: var(--esp-5); }
   .estrutura__navegacao { width: var(--largura-cheia); }
   .estrutura__aba { padding-inline: var(--esp-3); }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao { padding: var(--esp-4); }
+  .estrutura__subblocos { grid-template-columns: minmax(0, 1fr); }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

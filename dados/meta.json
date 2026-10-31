@@ -22,15 +22,18 @@
         "campos": [
           {
             "titulo": "Principais fontes",
-            "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados."
+            "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
+            "icone": "fontes"
           },
           {
             "titulo": "Principais receptores",
-            "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS."
+            "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
+            "icone": "receptores"
           },
           {
             "titulo": "Práticas de gerência",
-            "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos."
+            "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
+            "icone": "praticas"
           }
         ]
       },
@@ -42,7 +45,13 @@
           "revisao": "Revisão Rápida da Literatura",
           "estudos": "Estudos primários",
           "rastreabilidade": "Rastreabilidade das evidências",
-          "desafios": "Desafios identificados na literatura"
+          "desafios": "Desafios identificados na literatura",
+          "icones": {
+            "revisao": "revisao",
+            "estudos": "estudos",
+            "rastreabilidade": "rastreabilidade",
+            "desafios": "desafios"
+          }
         }
       }
     ]
