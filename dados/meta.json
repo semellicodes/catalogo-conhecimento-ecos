@@ -1,17 +1,17 @@
 {
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
-  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ecossistema, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes atores dos ECOS.",
+  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes atores dos ECOS.",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
-  "gerenciaConhecimento": "Esta seção indica de onde o conhecimento tende a ser gerado ou registrado, quais atores podem se beneficiar dele e práticas que favorecem sua identificação, acesso, compartilhamento, atualização ou preservação no ecossistema.",
+  "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
   "ajudas": {
     "classificacao": {
       "titulo": "Classificação do conhecimento",
-      "texto": "A classificação reúne três perspectivas complementares adotadas na revisão. A natureza epistemológica indica se o conhecimento pode ser formalizado ou se depende de percepções, experiência e saber fazer. O nível no ECOS mostra se ele se situa no produto, na plataforma ou nas relações do ecossistema. A dimensão do ECOS aponta se seu foco é técnico, de negócio ou social. A combinação desses critérios descreve como o conhecimento se manifesta e onde ele circula.",
+      "texto": "A classificação reúne três perspectivas complementares adotadas na revisão. A natureza epistemológica indica se o conhecimento pode ser formalizado ou se depende de percepções, experiência e saber fazer. O nível no ECOS mostra se ele se situa no produto, na plataforma ou nas relações do ECOS. A dimensão do ECOS aponta se seu foco é técnico, de negócio ou social. A combinação desses critérios descreve como o conhecimento se manifesta e onde ele circula no ECOS.",
       "referencia": "nonaka1997, alavi2001, johnson2020, kauschinger2021, santos2011"
     },
     "tipoEcos": {
-      "titulo": "Exemplos de ecossistemas observados",
-      "texto": "Este bloco mostra em quais tipos de ecossistema o conhecimento foi observado nos estudos primários. Código aberto, proprietário e híbrido são tipos distintos de ECOS. Um tipo só é marcado quando a observação está registrada para aquele conhecimento. Uma caixa apagada não significa que o conhecimento não possa ocorrer nesse tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
+      "titulo": "Exemplos de ECOS observados",
+      "texto": "Este bloco mostra em quais tipos de ECOS o conhecimento foi observado nos estudos primários. Código aberto, proprietário e híbrido são tipos distintos de ECOS. Um tipo só é marcado quando a observação está registrada para aquele conhecimento. Uma caixa apagada não significa que o conhecimento não possa ocorrer nesse tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
       "referencia": "manikas2016"
     },
     "gerencia": {
@@ -20,13 +20,13 @@
       "referencia": "revisaoRapidaManuscrito, kauschinger2021"
     },
     "portasEntrada": {
-      "titulo": "Conhecimentos em Ecossistemas de Software",
-      "texto": "Em Ecossistemas de Software (ECOS), diferentes organizações, desenvolvedores e outros participantes interagem para desenvolver, integrar e utilizar soluções de software. Nesse contexto, os conhecimentos podem assumir diferentes formas, classificadas neste catálogo como explícitos, tácito-cognitivos e tácito-técnicos.",
+      "titulo": "Conhecimentos em ECOS",
+      "texto": "No ECOS, diferentes organizações, desenvolvedores e outros participantes interagem para desenvolver, integrar e utilizar soluções de software. Nesse contexto, os conhecimentos podem assumir diferentes formas, classificadas neste catálogo como explícitos, tácito-cognitivos e tácito-técnicos.",
       "referencia": ""
     },
     "desafios": {
       "titulo": "Desafios identificados na literatura",
-      "texto": "Esta seção apresenta os desafios identificados na literatura cuja associação ao conhecimento selecionado foi confirmada durante a conferência dos estudos primários. Quando não há itens, a base não preservou uma relação específica e comprovada para este conhecimento. Isso não significa que ele esteja livre de desafios no ecossistema.",
+      "texto": "Esta seção apresenta os desafios identificados na literatura cuja associação ao conhecimento selecionado foi confirmada durante a conferência dos estudos primários. Quando não há itens, a base não preservou uma relação específica e comprovada para este conhecimento. Isso não significa que ele esteja livre de desafios no ECOS.",
       "referencia": "revisaoRapidaManuscrito"
     },
     "estudos": {

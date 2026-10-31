@@ -76,7 +76,7 @@ function preencherObservacaoTipoEcos(painel, observacao) {
   painel.hidden = false;
 
   if (!observacao?.descricao) {
-    painel.append(criar('p', 'tipo-ecos__texto', 'Não há exemplos deste tipo de ecossistema registrados nas evidências disponíveis para este conhecimento.'));
+    painel.append(criar('p', 'tipo-ecos__texto', 'Não há exemplos desse tipo de ECOS registrados nas evidências disponíveis para este conhecimento.'));
     return;
   }
 
@@ -294,7 +294,7 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de ecossistemas em que esse conhecimento foi observado', 'tipoEcos');
+  const bloco = secao(dados, 'Exemplos de ECOS em que esse conhecimento foi observado', 'tipoEcos');
   bloco.append(...tiposDeEcosInterativos(dados.classificacoes.tipoEcos, conhecimento));
   return bloco;
 }
