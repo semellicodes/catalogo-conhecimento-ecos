@@ -206,7 +206,7 @@ function composicaoEvidencias(dados, definicao) {
 function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
-  raiz.setAttribute('role', 'tabpanel');
+  raiz.setAttribute('role', 'region');
   raiz.setAttribute('aria-labelledby', aba.id);
   raiz.tabIndex = 0;
   if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
@@ -280,49 +280,62 @@ function explicacaoEvidencias(dados, aba, definicao) {
   return painel(definicao, aba, '', [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
 }
 
-function abasDaEstrutura(dados) {
-  const navegacao = el('#estrutura-abas');
+function conectoresDoDiagrama() {
+  const conectores = document.createElementNS(SVG, 'svg');
+  conectores.classList.add('estrutura__conectores');
+  conectores.setAttribute('viewBox', '0 0 100 100');
+  conectores.setAttribute('preserveAspectRatio', 'none');
+  conectores.setAttribute('aria-hidden', 'true');
+  [
+    'M50 23V35',
+    'M50 35H18V43',
+    'M50 35H82V43',
+    'M18 65V73H50V80',
+    'M82 65V73H50'
+  ].forEach((d) => conectores.append(traco('path', { d })));
+  return conectores;
+}
+
+function iconeDoDiagrama(definicao) {
+  return definicao.id === 'evidencias' ? 'revisao' : definicao.icone;
+}
+
+function noDoDiagrama(definicao, indice) {
+  const no = criar('button', `estrutura__no estrutura__no--${definicao.id}`);
+  no.type = 'button';
+  no.id = `no-${definicao.id}`;
+  no.setAttribute('aria-controls', `painel-${definicao.id}`);
+  no.setAttribute('aria-pressed', String(indice === 0));
+  const icone = criar('span', 'estrutura__no-icone');
+  icone.append(iconeEstrutura(iconeDoDiagrama(definicao)));
+  no.append(icone, criar('span', 'estrutura__no-rotulo', definicao.rotulo));
+  return no;
+}
+
+function diagramaDaEstrutura(dados) {
+  const diagrama = el('#estrutura-diagrama');
   const paineis = el('#estrutura-paineis');
   const definicoes = dados.meta.estruturaCatalogo?.abas;
-  if (!navegacao || !paineis || !definicoes?.length) return;
+  if (!diagrama || !paineis || !definicoes?.length) return;
 
-  const abas = definicoes.map((definicao, indice) => {
-    const aba = criar('button', 'estrutura__aba', definicao.rotulo);
-    aba.id = `aba-${definicao.id}`;
-    aba.type = 'button';
-    aba.setAttribute('role', 'tab');
-    aba.setAttribute('aria-selected', String(indice === 0));
-    aba.setAttribute('aria-controls', `painel-${definicao.id}`);
-    aba.tabIndex = indice === 0 ? 0 : -1;
-    return aba;
-  });
-  navegacao.replaceChildren(...abas);
+  const nos = definicoes.map(noDoDiagrama);
+  diagrama.replaceChildren(conectoresDoDiagrama(), ...nos);
 
   const criadores = { conhecimento: explicacaoConhecimento, classificacao: explicacaoClassificacao, gerencia: explicacaoGerencia, evidencias: explicacaoEvidencias };
-  const todosPaineis = abas.map((aba, indice) => criadores[definicoes[indice].id](dados, aba, definicoes[indice]));
+  const todosPaineis = nos.map((no, indice) => criadores[definicoes[indice].id](dados, no, definicoes[indice]));
   paineis.replaceChildren(...todosPaineis);
 
-  const selecionar = (indice, focar = false) => {
-    abas.forEach((aba, atual) => {
-      const ativo = atual === indice;
-      aba.setAttribute('aria-selected', String(ativo));
-      aba.tabIndex = ativo ? 0 : -1;
+  let selecionado = -1;
+  const selecionar = (indice) => {
+    const proximo = selecionado === indice ? -1 : indice;
+    nos.forEach((no, atual) => {
+      const ativo = atual === proximo;
+      no.setAttribute('aria-pressed', String(ativo));
       todosPaineis[atual].hidden = !ativo;
     });
-    if (focar) abas[indice].focus();
+    selecionado = proximo;
   };
-  abas.forEach((aba, indice) => {
-    aba.addEventListener('click', () => selecionar(indice));
-    aba.addEventListener('keydown', (evento) => {
-      const teclas = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
-      if (evento.key in teclas) {
-        evento.preventDefault();
-        selecionar((indice + teclas[evento.key] + abas.length) % abas.length, true);
-      }
-      if (evento.key === 'Home') { evento.preventDefault(); selecionar(0, true); }
-      if (evento.key === 'End') { evento.preventDefault(); selecionar(abas.length - 1, true); }
-    });
-  });
+  nos.forEach((no, indice) => no.addEventListener('click', () => selecionar(indice)));
   selecionar(0);
 }
 
@@ -343,7 +356,7 @@ async function iniciar() {
   );
   ajudaDasPortas(dados);
 
-  abasDaEstrutura(dados);
+  diagramaDaEstrutura(dados);
 }
 
 iniciar();
