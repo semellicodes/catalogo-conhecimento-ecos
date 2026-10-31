@@ -753,6 +753,7 @@
 
 /* A ajuda abre uma explicação detalhada em diálogo, sem disputar espaço com a ficha. */
 .ajuda { flex: none; }
+.ajuda--contextual { position: relative; }
 .ajuda__abrir {
   display: grid;
   place-items: center;
@@ -774,6 +775,41 @@
 }
 .ajuda__abrir:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
 .ajuda__abrir:active { transform: scale(0.92); }
+.ajuda__painel {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: calc(100% + var(--esp-2));
+  inset-inline-end: 0;
+  display: grid;
+  gap: var(--esp-2);
+  width: min(var(--largura-dialogo-ajuda), calc(100vw - var(--esp-6)));
+  padding: var(--esp-3);
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-color: var(--cor-acento-linha);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-menu);
+}
+.ajuda__painel[hidden] { display: none; }
+.ajuda__painel-titulo {
+  font-size: var(--tam-sm);
+  line-height: 1.35;
+}
+.ajuda__painel-texto,
+.ajuda__painel-fonte { margin: 0; }
+.ajuda__painel-texto {
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.55;
+}
+.ajuda__painel-fonte {
+  padding-top: var(--esp-2);
+  border-top: var(--borda-suave);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
+  font-style: italic;
+  line-height: 1.4;
+}
 
 /* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
    porque saber que um valor não se aplica também é informação. */
@@ -896,19 +932,6 @@
   hyphens: auto;
   color: var(--cor-texto-suave);
 }
-.gerencia__nota {
-  margin: 0 0 var(--esp-4);
-  padding: var(--esp-3);
-  background: var(--cor-acento-fundo);
-  border: var(--borda);
-  border-color: var(--cor-acento-linha);
-  border-radius: var(--raio);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  line-height: 1.6;
-  text-align: justify;
-  hyphens: auto;
-}
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -927,7 +950,6 @@
 
 @media (max-width: 35.99rem) {
   .gerencia__introducao,
-  .gerencia__nota,
   .gerencia__valor {
     text-align: left;
     hyphens: manual;
