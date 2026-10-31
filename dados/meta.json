@@ -11,7 +11,7 @@
     },
     "tipoEcos": {
       "titulo": "Exemplos de ECOS observados",
-      "texto": "Este bloco mostra em quais tipos de ECOS o conhecimento foi observado nos estudos primários. Código aberto, proprietário e híbrido são tipos distintos de ECOS. Um tipo só é marcado quando a observação está registrada para aquele conhecimento. Uma caixa apagada não significa que o conhecimento não possa ocorrer nesse tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
+      "texto": "A observação de cada conhecimento em ECOS de código aberto, proprietário ou híbrido é registrada somente quando confirmada nos estudos primários. Uma caixa apagada não significa que o conhecimento não possa ocorrer naquele tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
       "referencia": "manikas2016"
     },
     "gerencia": {
@@ -26,12 +26,12 @@
     },
     "desafios": {
       "titulo": "Desafios identificados na literatura",
-      "texto": "Esta seção apresenta os desafios identificados na literatura cuja associação ao conhecimento selecionado foi confirmada durante a conferência dos estudos primários. Quando não há itens, a base não preservou uma relação específica e comprovada para este conhecimento. Isso não significa que ele esteja livre de desafios no ECOS.",
+      "texto": "Os desafios apresentados foram identificados na literatura e associados aos conhecimentos catalogados com base nas evidências dos estudos primários analisados. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",
       "referencia": "revisaoRapidaManuscrito"
     },
     "estudos": {
       "titulo": "Estudos primários",
-      "texto": "Esta aba apresenta os estudos selecionados na revisão rápida que identificaram este conhecimento. Eles formam a base de evidências do catálogo. A lista informa título, autoria, ano e país para que a origem do achado possa ser consultada nas referências.",
+      "texto": "Os estudos primários associados a cada conhecimento constituem a base científica de sua identificação e caracterização. As informações bibliográficas permitem consultar as pesquisas que sustentam os conhecimentos apresentados no catálogo.",
       "referencia": "cartaxo2018, cartaxo2020"
     }
   },
