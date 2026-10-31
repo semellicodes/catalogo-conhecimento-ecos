@@ -313,16 +313,22 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__natureza {
-  display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
-  gap: var(--esp-5);
-  padding: var(--esp-5);
+.estrutura__composicao-conhecimento,
+.estrutura__composicao-gerencia,
+.estrutura__composicao-evidencias {
+  overflow: hidden;
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
 }
+.estrutura__natureza {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
+  gap: var(--esp-5);
+  padding: var(--esp-5);
+}
+.estrutura__natureza + .estrutura__natureza { border-top: var(--borda-suave); }
 .estrutura__natureza-cabecalho,
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
@@ -361,23 +367,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
 .estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+.estrutura__composicao-gerencia { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .estrutura__gerencia-item {
-  display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
-  gap: var(--esp-5);
-  padding: var(--esp-4) var(--esp-5);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
+  padding: var(--esp-5);
 }
-.estrutura__gerencia-texto { margin-top: 0; align-self: center; }
+.estrutura__gerencia-item + .estrutura__gerencia-item { border-left: var(--borda-suave); }
+.estrutura__gerencia-texto { margin-top: var(--esp-3); }
 .estrutura__nota-metodologica {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: var(--esp-3);
-  max-width: var(--largura-texto);
-  margin: var(--esp-4) auto 0;
+  margin: var(--esp-4) 0 0;
   padding: var(--esp-4);
   background: var(--cor-acento-fundo);
   border: var(--borda-acento-suave);
@@ -386,24 +386,28 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__nota-icone { color: var(--cor-acento); }
 .estrutura__nota-icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 .estrutura__nota-texto { margin-top: var(--esp-1); }
-.estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); }
-.estrutura__evidencia {
+.estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+.estrutura__origem-cientifica {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
+  gap: var(--esp-6);
   padding: var(--esp-5);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
 }
-.estrutura__evidencia-conteudo { min-width: 0; }
-.estrutura__evidencia-destaque { color: var(--cor-acento); font-family: var(--fonte-mono); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
+.estrutura__origem-estudos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
+.estrutura__origem-total { margin-top: var(--esp-1); color: var(--cor-acento); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
+.estrutura__origem-descricao { margin-top: var(--esp-2); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__origem-fonte { margin-top: var(--esp-2); color: var(--cor-texto-fraco); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
+.estrutura__sustentacao-evidencias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: var(--borda-suave); }
+.estrutura__sustentacao-item { padding: var(--esp-5); }
+.estrutura__sustentacao-item + .estrutura__sustentacao-item { border-left: var(--borda-suave); }
 @media (max-width: 63.99rem) {
   .estrutura__natureza,
-  .estrutura__gerencia-item { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+  .estrutura__origem-cientifica { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+  .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+  .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__gerencia-item + .estrutura__gerencia-item { border-top: var(--borda-suave); border-left: 0; }
 }
 @media (max-width: 39.99rem) {
   .estrutura__mapa { aspect-ratio: 16 / 6; margin-top: var(--esp-5); }
@@ -412,12 +416,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao { padding: var(--esp-4); }
   .estrutura__subblocos { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__natureza { padding: var(--esp-4); }
+  .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); padding: var(--esp-4); }
   .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__natureza-exemplos { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
   .estrutura__gerencia-item,
-  .estrutura__evidencia { padding: var(--esp-4); }
-  .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__origem-cientifica,
+  .estrutura__sustentacao-item { padding: var(--esp-4); }
+  .estrutura__sustentacao-evidencias { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__sustentacao-item + .estrutura__sustentacao-item { border-top: var(--borda-suave); border-left: 0; }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

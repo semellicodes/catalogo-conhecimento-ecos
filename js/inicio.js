@@ -131,7 +131,7 @@ function cabecalhoComIcone(icone, titulo, classe) {
 }
 
 function blocoConhecimento(valor) {
-  const bloco = criar('article', 'estrutura__natureza');
+  const bloco = criar('section', 'estrutura__natureza');
   const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
   const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.tituloPorta || valor.valor, 'estrutura__natureza-cabecalho');
   const conteudo = criar('div', 'estrutura__natureza-conteudo');
@@ -153,11 +153,23 @@ function blocoConhecimento(valor) {
   return bloco;
 }
 
+function composicaoConhecimento(valores) {
+  const composicao = criar('article', 'estrutura__composicao-conhecimento');
+  valores.forEach((valor) => composicao.append(blocoConhecimento(valor)));
+  return composicao;
+}
+
 function blocoGerencia({ titulo, descricao, icone }) {
-  const bloco = criar('article', 'estrutura__gerencia-item');
+  const bloco = criar('section', 'estrutura__gerencia-item');
   const cabecalho = cabecalhoComIcone(icone, titulo, 'estrutura__gerencia-cabecalho');
   bloco.append(cabecalho, criar('p', 'estrutura__gerencia-texto', descricao));
   return bloco;
+}
+
+function composicaoGerencia(campos) {
+  const composicao = criar('article', 'estrutura__composicao-gerencia');
+  campos.forEach((campo) => composicao.append(blocoGerencia(campo)));
+  return composicao;
 }
 
 function notaMetodologica(texto) {
@@ -173,16 +185,44 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-function cartaoEvidencia({ icone, titulo, descricao, destaque, fonte, complemento }) {
-  const cartao = criar('article', 'estrutura__evidencia');
-  const cabecalho = cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho');
-  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
-  if (destaque) conteudo.append(criar('p', 'estrutura__evidencia-destaque', destaque));
-  conteudo.append(criar('p', 'estrutura__evidencia-texto', descricao));
-  if (fonte) conteudo.append(criar('p', 'estrutura__evidencia-fonte', fonte));
-  if (complemento) conteudo.append(criar('p', 'estrutura__evidencia-complemento', complemento));
-  cartao.append(cabecalho, conteudo);
-  return cartao;
+function itemEvidencia({ icone, titulo, descricao, complemento }) {
+  const item = criar('section', 'estrutura__sustentacao-item');
+  item.append(
+    cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
+    criar('p', 'estrutura__evidencia-texto', descricao)
+  );
+  if (complemento) item.append(criar('p', 'estrutura__evidencia-complemento', complemento));
+  return item;
+}
+
+function composicaoEvidencias(dados, definicao) {
+  const { cartoes } = definicao;
+  const icones = cartoes.icones;
+  const base = dados.meta.camadas.find((camada) => camada.n === 3);
+  const composicao = criar('article', 'estrutura__composicao-evidencias');
+  const origem = criar('section', 'estrutura__origem-cientifica');
+  const texto = criar('div', 'estrutura__origem-texto');
+  texto.append(
+    cabecalhoComIcone(icones.revisao, cartoes.revisao, 'estrutura__evidencia-cabecalho'),
+    criar('p', 'estrutura__evidencia-texto', cartoes.revisaoDescricao),
+    criar('p', 'estrutura__evidencia-fonte', dados.meta.fonte)
+  );
+  const estudos = criar('div', 'estrutura__origem-estudos');
+  estudos.append(
+    criar('p', 'estrutura__rotulo', cartoes.estudos),
+    criar('p', 'estrutura__origem-total mono', String(dados.meta.totalEstudos)),
+    criar('p', 'estrutura__origem-descricao', cartoes.estudosDescricao),
+    criar('p', 'estrutura__origem-fonte', base?.conteudo)
+  );
+  origem.append(texto, estudos);
+
+  const sustentacao = criar('div', 'estrutura__sustentacao-evidencias');
+  sustentacao.append(
+    itemEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
+    itemEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
+  );
+  composicao.append(origem, sustentacao);
+  return composicao;
 }
 
 function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
@@ -234,7 +274,7 @@ function cartaoAtributo(atributo, classe = '') {
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  return painel(definicao, aba, '', valores.map(blocoConhecimento), 'estrutura__grade--conhecimento');
+  return painel(definicao, aba, '', [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
 }
 
 function explicacaoClassificacao(dados, aba, definicao) {
@@ -249,7 +289,7 @@ function explicacaoGerencia(dados, aba, definicao) {
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
-    definicao.campos.map(blocoGerencia),
+    [composicaoGerencia(definicao.campos)],
     'estrutura__grade--gerencia'
   );
   const nota = dados.meta.ajudas?.gerencia?.texto;
@@ -258,15 +298,7 @@ function explicacaoGerencia(dados, aba, definicao) {
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
-  const base = dados.meta.camadas.find((camada) => camada.n === 3);
-  const { cartoes } = definicao;
-  const icones = cartoes.icones;
-  return painel(definicao, aba, '', [
-    cartaoEvidencia({ icone: icones.revisao, titulo: cartoes.revisao, descricao: cartoes.revisaoDescricao, fonte: dados.meta.fonte }),
-    cartaoEvidencia({ icone: icones.estudos, titulo: cartoes.estudos, descricao: cartoes.estudosDescricao, destaque: String(dados.meta.totalEstudos), fonte: base?.conteudo }),
-    cartaoEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
-    cartaoEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
-  ], 'estrutura__grade--evidencias');
+  return painel(definicao, aba, '', [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
 }
 
 function abasDaEstrutura(dados) {
