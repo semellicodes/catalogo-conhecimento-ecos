@@ -121,17 +121,19 @@ function definicaoComExemplo(descricao = '') {
   };
 }
 
-function painel(definicao, aba, introducao, cartoes, classe = '', aviso) {
+function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
   raiz.setAttribute('role', 'tabpanel');
   raiz.setAttribute('aria-labelledby', aba.id);
   raiz.tabIndex = 0;
   if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
-  if (aviso) raiz.append(criar('p', 'estrutura__aviso', aviso));
+  const nota = aviso ? criar('p', 'estrutura__aviso', aviso) : null;
+  if (nota && !avisoDepois) raiz.append(nota);
   const grade = criar('div', `estrutura__grade ${classe}`.trim());
   grade.append(...cartoes);
   raiz.append(grade);
+  if (nota && avisoDepois) raiz.append(nota);
   return raiz;
 }
 
@@ -192,7 +194,8 @@ function explicacaoGerencia(dados, aba, definicao) {
     dados.meta.gerenciaConhecimento,
     definicao.campos.map(({ titulo, descricao, icone }) => cartaoEstrutura({ icone, titulo, descricao })),
     'estrutura__grade--gerencia',
-    dados.meta.ajudas?.gerencia?.texto
+    dados.meta.ajudas?.gerencia?.texto,
+    true
   );
 }
 

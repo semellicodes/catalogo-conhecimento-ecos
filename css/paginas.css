@@ -190,7 +190,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   place-items: center;
   width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
-  aspect-ratio: 16 / 6;
+  aspect-ratio: 16 / 5;
   margin: var(--esp-6) auto 0;
   padding: var(--esp-5);
   color: var(--cor-texto-fraco);
@@ -250,13 +250,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__aviso {
   max-width: var(--largura-texto);
-  margin: 0 auto var(--esp-4);
-  padding: var(--esp-3) var(--esp-4);
-  color: var(--cor-texto-suave);
-  background: var(--cor-acento-fundo);
-  border: var(--borda-acento-suave);
-  border-radius: var(--raio);
-  font-size: var(--tam-sm);
+  margin: var(--esp-4) auto 0;
+  padding-top: var(--esp-3);
+  color: var(--cor-texto-fraco);
+  border-top: var(--borda-suave);
+  font-size: var(--tam-xs);
   line-height: 1.5;
 }
 .estrutura__grade {
@@ -316,19 +314,21 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-2);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: var(--esp-3);
+  align-items: start;
 }
 .estrutura__subbloco {
   padding: var(--esp-3);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
   border-radius: var(--raio);
+  align-self: start;
 }
 .estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
 .estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__grade--gerencia { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
 .estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 39.99rem) {
-  .estrutura__mapa { aspect-ratio: 16 / 8; margin-top: var(--esp-5); }
+  .estrutura__mapa { aspect-ratio: 16 / 6; margin-top: var(--esp-5); }
   .estrutura__navegacao { width: var(--largura-cheia); }
   .estrutura__aba { padding-inline: var(--esp-3); }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
