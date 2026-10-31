@@ -263,18 +263,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr));
   align-items: start;
 }
-.estrutura__cartao {
-  display: grid;
-  grid-template-columns: var(--alvo-toque) minmax(0, 1fr);
-  gap: var(--esp-3);
-  align-items: start;
-  padding: var(--esp-5);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-  align-self: start;
-}
 .estrutura__icone {
   display: grid;
   place-items: center;
@@ -286,24 +274,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-radius: var(--raio);
 }
 .estrutura__icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
-.estrutura__cartao-conteudo { min-width: 0; }
-.estrutura__cartao-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
-.estrutura__cartao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); line-height: 1.55; }
-.estrutura__exemplo {
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-3);
-  border-top: var(--borda-suave);
-}
-.estrutura__exemplo-titulo {
-  color: var(--cor-acento);
-  font-size: var(--tam-xs);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-}
-.estrutura__exemplo-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
-.estrutura__valores { display: grid; gap: var(--esp-2); margin-top: var(--esp-3); color: var(--cor-texto-suave); font-size: var(--tam-sm); }
-.estrutura__cartao-nota { margin-top: var(--esp-3); color: var(--cor-texto-fraco); font-size: var(--tam-sm); }
 .estrutura__rotulo {
   color: var(--cor-acento);
   font-family: var(--fonte-mono);
@@ -314,6 +284,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
 .estrutura__composicao-conhecimento,
+.estrutura__composicao-classificacao,
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias {
   overflow: hidden;
@@ -346,26 +317,22 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__gerencia-texto,
 .estrutura__evidencia-texto,
 .estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.55; }
-.estrutura__grade--classificacao {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.estrutura__cartao--atributo-principal { grid-column: 1 / -1; }
-.estrutura__subblocos {
+.estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
+.estrutura__atributo-classificacao {
   display: grid;
-  gap: var(--esp-2);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: var(--esp-3);
-  align-items: start;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
+  gap: var(--esp-5);
+  padding: var(--esp-5);
 }
-.estrutura__subbloco {
-  padding: var(--esp-3);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-radius: var(--raio);
-  align-self: start;
-}
-.estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
-.estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__atributo-classificacao + .estrutura__atributo-classificacao { border-top: var(--borda-suave); }
+.estrutura__atributo-classificacao-cabecalho { display: grid; grid-template-columns: var(--alvo-toque) minmax(0, 1fr); gap: var(--esp-3); align-content: start; }
+.estrutura__atributo-classificacao-cabecalho .estrutura__icone { grid-row: span 2; }
+.estrutura__atributo-classificacao-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
+.estrutura__atributo-classificacao-descricao { grid-column: 2; margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
+.estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-left: var(--esp-4); border-left: var(--borda-suave); }
+.estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
+.estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
 .estrutura__composicao-gerencia { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .estrutura__gerencia-item {
@@ -379,6 +346,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-left: 0;
   text-align: left;
 }
+.estrutura__painel-subtitulo { margin-bottom: var(--esp-2); font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
 .estrutura__nota-metodologica {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -393,24 +361,26 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__nota-icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 .estrutura__nota-texto { margin-top: var(--esp-1); }
 .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__origem-cientifica {
+.estrutura__evidencia-linha {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.8fr);
-  gap: var(--esp-6);
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
+  gap: var(--esp-5);
   padding: var(--esp-5);
 }
+.estrutura__evidencia-linha + .estrutura__evidencia-linha { border-top: var(--borda-suave); }
+.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.42fr) minmax(10rem, 0.8fr); }
 .estrutura__origem-estudos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
 .estrutura__origem-total { margin-top: var(--esp-1); color: var(--cor-acento); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
 .estrutura__origem-descricao { margin-top: var(--esp-2); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__origem-fonte { margin-top: var(--esp-2); color: var(--cor-texto-fraco); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
-.estrutura__sustentacao-evidencias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: var(--borda-suave); }
-.estrutura__sustentacao-item { padding: var(--esp-5); }
-.estrutura__sustentacao-item + .estrutura__sustentacao-item { border-left: var(--borda-suave); }
 @media (max-width: 63.99rem) {
   .estrutura__natureza,
-  .estrutura__origem-cientifica { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+  .estrutura__atributo-classificacao,
+  .estrutura__evidencia-linha,
+  .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+  .estrutura__categorias-classificacao { gap: var(--esp-3); }
   .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
   .estrutura__gerencia-item + .estrutura__gerencia-item { border-top: var(--borda-suave); border-left: 0; }
@@ -420,16 +390,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__navegacao { width: var(--largura-cheia); }
   .estrutura__aba { padding-inline: var(--esp-3); }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__cartao { padding: var(--esp-4); }
-  .estrutura__subblocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); padding: var(--esp-4); }
   .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__natureza-exemplos { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
   .estrutura__gerencia-item,
-  .estrutura__origem-cientifica,
-  .estrutura__sustentacao-item { padding: var(--esp-4); }
-  .estrutura__sustentacao-evidencias { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__sustentacao-item + .estrutura__sustentacao-item { border-top: var(--borda-suave); border-left: 0; }
+  .estrutura__atributo-classificacao,
+  .estrutura__evidencia-linha { padding: var(--esp-4); }
+  .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

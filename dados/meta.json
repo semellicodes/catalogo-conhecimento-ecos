@@ -19,19 +19,24 @@
         "id": "gerencia",
         "rotulo": "Gerência do Conhecimento",
         "icone": "gerencia",
+        "subtitulo": "Como o conhecimento pode ser gerenciado",
+        "nota": "Fontes, receptores e práticas constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
         "campos": [
           {
             "titulo": "Principais fontes",
+            "rotulo": "Fontes",
             "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
             "icone": "fontes"
           },
           {
             "titulo": "Principais receptores",
+            "rotulo": "Receptores",
             "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
             "icone": "receptores"
           },
           {
             "titulo": "Práticas de gerência",
+            "rotulo": "Práticas",
             "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
             "icone": "praticas"
           }

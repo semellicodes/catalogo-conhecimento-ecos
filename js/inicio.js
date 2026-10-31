@@ -56,6 +56,9 @@ const ICONES_ESTRUTURA = {
   cognitivo: [['path', { d: 'M7.5 15.5h5M8 18h4' }], ['path', { d: 'M7 12.5c-1.1-.9-1.8-2.3-1.8-3.8A4.8 4.8 0 0 1 10 4a4.8 4.8 0 0 1 4.8 4.7c0 1.5-.7 2.9-1.8 3.8-.7.6-1 1.2-1 2H8c0-.8-.3-1.4-1-2Z' }]],
   tecnico: [['path', { d: 'm12.8 4.2 3 3-7.6 7.6-3-3z' }], ['path', { d: 'm13.4 3.6 1.8-1.8 3 3-1.8 1.8M5.2 13.8 3.7 15.3l1 1 1.5-1.5' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
+  natureza: [['circle', { cx: 10, cy: 10, r: 6 }], ['path', { d: 'M10 4v12M4 10h12' }]],
+  nivel: [['path', { d: 'm4 7 6-3 6 3-6 3zM4 10l6 3 6-3M4 13l6 3 6-3' }]],
+  dimensao: [['path', { d: 'M4 16V5M4 16h12M7 13l3-4 3 2 3-5' }]],
   gerencia: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
   fontes: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   receptores: [['circle', { cx: 10, cy: 6.5, r: 3 }], ['path', { d: 'M4.5 16c.8-2.8 2.7-4.2 5.5-4.2s4.7 1.4 5.5 4.2' }]],
@@ -85,31 +88,6 @@ function iconeEstrutura(nome) {
   icone.setAttribute('focusable', 'false');
   ICONES_ESTRUTURA[nome].forEach(([tag, atributos]) => icone.append(traco(tag, atributos)));
   return icone;
-}
-
-function cartaoEstrutura({ icone, titulo, descricao, valores = [], exemplo, nota, classe = '' }) {
-  const cartao = criar('article', `estrutura__cartao ${classe}`.trim());
-  const simbolo = criar('span', 'estrutura__icone');
-  simbolo.append(iconeEstrutura(icone));
-  const conteudo = criar('div', 'estrutura__cartao-conteudo');
-  conteudo.append(criar('h3', 'estrutura__cartao-titulo', titulo));
-  if (descricao) conteudo.append(criar('p', 'estrutura__cartao-texto', descricao));
-  if (exemplo) {
-    const blocoExemplo = criar('div', 'estrutura__exemplo');
-    blocoExemplo.append(
-      criar('h4', 'estrutura__exemplo-titulo', 'Exemplos'),
-      criar('p', 'estrutura__exemplo-texto', exemplo)
-    );
-    conteudo.append(blocoExemplo);
-  }
-  if (valores.length) {
-    const lista = criar('ul', 'estrutura__valores');
-    valores.forEach((valor) => lista.append(criar('li', null, valor)));
-    conteudo.append(lista);
-  }
-  if (nota) conteudo.append(criar('p', 'estrutura__cartao-nota', nota));
-  cartao.append(simbolo, conteudo);
-  return cartao;
 }
 
 function definicaoComExemplo(descricao = '') {
@@ -159,9 +137,9 @@ function composicaoConhecimento(valores) {
   return composicao;
 }
 
-function blocoGerencia({ titulo, descricao, icone }) {
+function blocoGerencia({ titulo, rotulo, descricao, icone }) {
   const bloco = criar('section', 'estrutura__gerencia-item');
-  const cabecalho = cabecalhoComIcone(icone, titulo, 'estrutura__gerencia-cabecalho');
+  const cabecalho = cabecalhoComIcone(icone, rotulo || titulo, 'estrutura__gerencia-cabecalho');
   bloco.append(cabecalho, criar('p', 'estrutura__gerencia-texto', descricao));
   return bloco;
 }
@@ -186,8 +164,8 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-function itemEvidencia({ icone, titulo, descricao, complemento }) {
-  const item = criar('section', 'estrutura__sustentacao-item');
+function linhaEvidencia({ icone, titulo, descricao, complemento }) {
+  const item = criar('section', 'estrutura__evidencia-linha');
   item.append(
     cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
     criar('p', 'estrutura__evidencia-texto', descricao)
@@ -201,7 +179,7 @@ function composicaoEvidencias(dados, definicao) {
   const icones = cartoes.icones;
   const base = dados.meta.camadas.find((camada) => camada.n === 3);
   const composicao = criar('article', 'estrutura__composicao-evidencias');
-  const origem = criar('section', 'estrutura__origem-cientifica');
+  const origem = criar('section', 'estrutura__evidencia-linha estrutura__evidencia-linha--origem');
   const texto = criar('div', 'estrutura__origem-texto');
   texto.append(
     cabecalhoComIcone(icones.revisao, cartoes.revisao, 'estrutura__evidencia-cabecalho'),
@@ -217,12 +195,11 @@ function composicaoEvidencias(dados, definicao) {
   );
   origem.append(texto, estudos);
 
-  const sustentacao = criar('div', 'estrutura__sustentacao-evidencias');
-  sustentacao.append(
-    itemEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
-    itemEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
+  composicao.append(
+    origem,
+    linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
+    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
   );
-  composicao.append(origem, sustentacao);
   return composicao;
 }
 
@@ -250,27 +227,31 @@ function iconeDaNatureza(valor) {
   }[valor] || 'conhecimento';
 }
 
-function subbloco(valor) {
-  const item = criar('li', 'estrutura__subbloco');
+function categoriaClassificacao(valor) {
+  const item = criar('li', 'estrutura__categoria-classificacao');
   item.append(
-    criar('h4', 'estrutura__subbloco-titulo', valor.valor),
-    criar('p', 'estrutura__subbloco-texto', valor.descricao)
+    criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor),
+    criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao)
   );
   return item;
 }
 
-function cartaoAtributo(atributo, classe = '') {
-  const cartao = cartaoEstrutura({
-    icone: 'classificacao',
-    titulo: atributo.rotulo,
-    descricao: atributo.pergunta,
-    classe: `estrutura__cartao--atributo ${classe}`.trim()
+function atributoClassificacao(chave, atributo) {
+  const bloco = criar('section', 'estrutura__atributo-classificacao');
+  const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
+  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
+  const categorias = criar('ul', 'estrutura__categorias-classificacao');
+  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
+  bloco.append(cabecalho, categorias);
+  return bloco;
+}
+
+function composicaoClassificacao(dados) {
+  const composicao = criar('article', 'estrutura__composicao-classificacao');
+  ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
+    composicao.append(atributoClassificacao(chave, dados.classificacoes[chave]));
   });
-  const conteudo = cartao.querySelector('.estrutura__cartao-conteudo');
-  const blocos = criar('ul', 'estrutura__subblocos');
-  atributo.valores.forEach((valor) => blocos.append(subbloco(valor)));
-  conteudo.append(blocos);
-  return cartao;
+  return composicao;
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
@@ -279,10 +260,7 @@ function explicacaoConhecimento(dados, aba, definicao) {
 }
 
 function explicacaoClassificacao(dados, aba, definicao) {
-  const atributos = ['natureza', 'nivel', 'dimensao'];
-  return painel(definicao, aba, '', atributos.map((chave) => cartaoAtributo(
-    dados.classificacoes[chave], chave === 'natureza' ? 'estrutura__cartao--atributo-principal' : ''
-  )), 'estrutura__grade--classificacao');
+  return painel(definicao, aba, '', [composicaoClassificacao(dados)], 'estrutura__grade--classificacao');
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
@@ -290,10 +268,11 @@ function explicacaoGerencia(dados, aba, definicao) {
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
-    [composicaoGerencia(definicao.campos, dados.meta.ajudas?.gerencia?.texto)],
+    [composicaoGerencia(definicao.campos, definicao.nota)],
     'estrutura__grade--gerencia'
   );
   raiz.classList.add('estrutura__painel--gerencia');
+  if (definicao.subtitulo) raiz.insertBefore(criar('h3', 'estrutura__painel-subtitulo', definicao.subtitulo), raiz.firstChild);
   return raiz;
 }
 
