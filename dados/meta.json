@@ -3,6 +3,59 @@
   "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes atores dos ECOS.",
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
+  "estruturaCatalogo": {
+    "abas": [
+      {
+        "id": "conhecimento",
+        "rotulo": "Conhecimento",
+        "icone": "conhecimento"
+      },
+      {
+        "id": "classificacao",
+        "rotulo": "Classificação",
+        "icone": "classificacao"
+      },
+      {
+        "id": "gerencia",
+        "rotulo": "Gerência do Conhecimento",
+        "icone": "gerencia",
+        "campos": [
+          {
+            "titulo": "Principais fontes",
+            "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
+            "icone": "fontes"
+          },
+          {
+            "titulo": "Principais receptores",
+            "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
+            "icone": "receptores"
+          },
+          {
+            "titulo": "Práticas de gerência",
+            "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
+            "icone": "praticas"
+          }
+        ]
+      },
+      {
+        "id": "evidencias",
+        "rotulo": "Base de Evidências",
+        "icone": "evidencias",
+        "cartoes": {
+          "revisao": "Revisão Rápida da Literatura",
+          "estudos": "Estudos primários",
+          "rastreabilidade": "Rastreabilidade das evidências",
+          "desafios": "Desafios identificados na literatura",
+          "icones": {
+            "revisao": "revisao",
+            "estudos": "estudos",
+            "rastreabilidade": "rastreabilidade",
+            "desafios": "desafios"
+          }
+        }
+      }
+    ]
+  },
   "ajudas": {
     "classificacao": {
       "titulo": "Classificação do conhecimento",

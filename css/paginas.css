@@ -151,8 +151,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .secao__cabecalho .secao__titulo { margin-bottom: 0; }
 
-/* A abertura do mapa conceitual tem identidade própria para separar a visão
-   institucional da explicação detalhada das camadas que vem em seguida. */
+/* A abertura do mapa conceitual separa a visão institucional das explicações
+   consultáveis nas abas logo abaixo. */
 .secao--estrutura { padding-top: var(--esp-8); }
 .estrutura__abertura {
   display: grid;
@@ -186,7 +186,155 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   color: var(--cor-texto-suave);
   font-size: var(--tam-base);
 }
-.secao--estrutura .reservado { margin-top: var(--esp-6); }
+.estrutura__mapa {
+  display: grid;
+  place-items: center;
+  width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
+  aspect-ratio: 16 / 5;
+  margin: var(--esp-6) auto 0;
+  padding: var(--esp-5);
+  color: var(--cor-texto-fraco);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+.estrutura__mapa-texto {
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-align: center;
+  text-transform: uppercase;
+}
+.estrutura__navegacao {
+  display: flex;
+  gap: var(--esp-1);
+  width: fit-content;
+  max-width: var(--largura-cheia);
+  margin: var(--esp-4) auto 0;
+  padding: var(--esp-1);
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--cor-superficie-alta);
+  border: var(--borda);
+  border-radius: var(--raio-pilula);
+  box-shadow: var(--sombra-1);
+}
+.estrutura__navegacao::-webkit-scrollbar { display: none; }
+.estrutura__aba {
+  min-height: var(--alvo-toque);
+  padding-inline: var(--esp-4);
+  color: var(--cor-texto-suave);
+  background: transparent;
+  border: 0;
+  border-radius: var(--raio-pilula);
+  font: inherit;
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva), transform var(--dur-rapida) var(--curva-saida);
+}
+.estrutura__aba[aria-selected="true"] {
+  color: var(--cor-contraste);
+  background: var(--cor-acento);
+}
+.estrutura__aba:active { transform: scale(var(--escala-acao)); }
+.estrutura__paineis { margin-top: var(--esp-5); }
+.estrutura__painel:focus-visible { outline-offset: var(--esp-2); }
+.estrutura__painel-intro {
+  max-width: var(--largura-texto);
+  margin: 0 auto var(--esp-4);
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+.estrutura__aviso {
+  max-width: var(--largura-texto);
+  margin: var(--esp-4) auto 0;
+  padding-top: var(--esp-3);
+  color: var(--cor-texto-fraco);
+  border-top: var(--borda-suave);
+  font-size: var(--tam-xs);
+  line-height: 1.5;
+}
+.estrutura__grade {
+  display: grid;
+  gap: var(--esp-3);
+  grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr));
+  align-items: start;
+}
+.estrutura__cartao {
+  display: grid;
+  grid-template-columns: var(--alvo-toque) minmax(0, 1fr);
+  gap: var(--esp-3);
+  align-items: start;
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+  align-self: start;
+}
+.estrutura__icone {
+  display: grid;
+  place-items: center;
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  color: var(--cor-acento);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio);
+}
+.estrutura__icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
+.estrutura__cartao-conteudo { min-width: 0; }
+.estrutura__cartao-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); }
+.estrutura__cartao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); line-height: 1.55; }
+.estrutura__exemplo {
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-3);
+  border-top: var(--borda-suave);
+}
+.estrutura__exemplo-titulo {
+  color: var(--cor-acento);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+}
+.estrutura__exemplo-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__valores { display: grid; gap: var(--esp-2); margin-top: var(--esp-3); color: var(--cor-texto-suave); font-size: var(--tam-sm); }
+.estrutura__cartao-nota { margin-top: var(--esp-3); color: var(--cor-texto-fraco); font-size: var(--tam-sm); }
+.estrutura__grade--conhecimento { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
+.estrutura__grade--classificacao {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.estrutura__cartao--atributo-principal { grid-column: 1 / -1; }
+.estrutura__subblocos {
+  display: grid;
+  gap: var(--esp-2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--esp-3);
+  align-items: start;
+}
+.estrutura__subbloco {
+  padding: var(--esp-3);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+  align-self: start;
+}
+.estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
+.estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__grade--gerencia { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
+.estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 39.99rem) {
+  .estrutura__mapa { aspect-ratio: 16 / 6; margin-top: var(--esp-5); }
+  .estrutura__navegacao { width: var(--largura-cheia); }
+  .estrutura__aba { padding-inline: var(--esp-3); }
+  .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__cartao { padding: var(--esp-4); }
+  .estrutura__subblocos { grid-template-columns: minmax(0, 1fr); }
+}
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem
    conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
@@ -477,52 +625,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
 }
 .portas__ajuda:hover::before { color: var(--cor-acento); border-color: var(--cor-acento); }
-
-/* As camadas se acomodam sozinhas. Em vez de um breakpoint único que vai de uma
-   coluna para quatro, cabem quantas couberem a partir de 14rem cada. */
-.camadas {
-  display: grid;
-  gap: var(--esp-3);
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-}
-/* Mesmo peso do cartão da trilha. O número e o nome dividem a primeira linha,
-   e o resto desce em dois degraus de tamanho, sem folga de cartão grande. */
-.camada {
-  display: grid;
-  align-content: start;
-  gap: var(--esp-2);
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-1);
-}
-.camada__topo { display: flex; align-items: baseline; gap: var(--esp-3); }
-.camada__n { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-acento); }
-.camada__nome { font-size: var(--tam-base); font-weight: 600; line-height: 1.3; }
-.camada__texto { font-size: var(--tam-sm); color: var(--cor-texto-suave); }
-.camada__origem { font-family: var(--fonte-mono); font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
-
-/* Espaço reservado para a imagem do mapa conceitual. Fica tracejado e vazio de
-   propósito, o conteúdo entra quando a imagem existir. */
-.reservado {
-  display: grid;
-  place-items: center;
-  aspect-ratio: 16 / 9;
-  margin: var(--esp-5) 0 0;
-  border: 1px dashed var(--cor-linha);
-  border-radius: var(--raio);
-  background: var(--cor-superficie);
-}
-.reservado__texto {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-sm);
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-  text-align: center;
-  padding: var(--esp-4);
-}
 
 /* ---------- Página do catálogo ---------- */
 /* O catálogo começa direto pela lista. A busca continua acima dos cartões. */
