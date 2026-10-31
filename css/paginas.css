@@ -304,7 +304,42 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__exemplo-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__valores { display: grid; gap: var(--esp-2); margin-top: var(--esp-3); color: var(--cor-texto-suave); font-size: var(--tam-sm); }
 .estrutura__cartao-nota { margin-top: var(--esp-3); color: var(--cor-texto-fraco); font-size: var(--tam-sm); }
-.estrutura__grade--conhecimento { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
+.estrutura__rotulo {
+  color: var(--cor-acento);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+}
+.estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+.estrutura__natureza {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
+  gap: var(--esp-5);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.estrutura__natureza-cabecalho,
+.estrutura__gerencia-cabecalho,
+.estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
+.estrutura__natureza-cabecalho-titulo,
+.estrutura__gerencia-cabecalho-titulo,
+.estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
+.estrutura__natureza-conteudo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: var(--esp-5);
+  align-items: start;
+}
+.estrutura__natureza-exemplos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
+.estrutura__natureza-texto,
+.estrutura__gerencia-texto,
+.estrutura__evidencia-texto,
+.estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.55; }
 .estrutura__grade--classificacao {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -325,8 +360,51 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__subbloco-titulo { font-size: var(--tam-sm); font-weight: 600; }
 .estrutura__subbloco-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
-.estrutura__grade--gerencia { grid-template-columns: repeat(auto-fit, minmax(var(--largura-cartao-estrutura), 1fr)); }
-.estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+.estrutura__gerencia-item {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
+  gap: var(--esp-5);
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.estrutura__gerencia-texto { margin-top: 0; align-self: center; }
+.estrutura__nota-metodologica {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--esp-3);
+  max-width: var(--largura-texto);
+  margin: var(--esp-4) auto 0;
+  padding: var(--esp-4);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio);
+}
+.estrutura__nota-icone { color: var(--cor-acento); }
+.estrutura__nota-icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
+.estrutura__nota-texto { margin-top: var(--esp-1); }
+.estrutura__grade--evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); }
+.estrutura__evidencia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-4);
+  padding: var(--esp-5);
+  background: var(--cor-superficie);
+  border: var(--borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-1);
+}
+.estrutura__evidencia-conteudo { min-width: 0; }
+.estrutura__evidencia-destaque { color: var(--cor-acento); font-family: var(--fonte-mono); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
+.estrutura__evidencia-fonte,
+.estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
+@media (max-width: 63.99rem) {
+  .estrutura__natureza,
+  .estrutura__gerencia-item { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+}
 @media (max-width: 39.99rem) {
   .estrutura__mapa { aspect-ratio: 16 / 6; margin-top: var(--esp-5); }
   .estrutura__navegacao { width: var(--largura-cheia); }
@@ -334,6 +412,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao { padding: var(--esp-4); }
   .estrutura__subblocos { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__natureza { padding: var(--esp-4); }
+  .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+  .estrutura__natureza-exemplos { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+  .estrutura__gerencia-item,
+  .estrutura__evidencia { padding: var(--esp-4); }
+  .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

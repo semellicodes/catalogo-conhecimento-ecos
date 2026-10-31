@@ -43,9 +43,14 @@
         "icone": "evidencias",
         "cartoes": {
           "revisao": "Revisão Rápida da Literatura",
+          "revisaoDescricao": "A Revisão Rápida da Literatura constitui a base metodológica utilizada para identificar os conhecimentos e as evidências analisadas no KM4SECO.",
           "estudos": "Estudos primários",
+          "estudosDescricao": "Os estudos primários selecionados sustentam a identificação e a caracterização dos conhecimentos catalogados.",
           "rastreabilidade": "Rastreabilidade das evidências",
+          "rastreabilidadeDescricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados.",
           "desafios": "Desafios identificados na literatura",
+          "desafiosDescricao": "Os desafios foram identificados na literatura e relacionados aos conhecimentos quando houve evidência suficiente para estabelecer essa associação.",
+          "desafiosComplemento": "A ausência de desafios associados não significa que determinado conhecimento esteja livre de dificuldades.",
           "icones": {
             "revisao": "revisao",
             "estudos": "estudos",

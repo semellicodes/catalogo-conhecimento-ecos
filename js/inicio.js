@@ -60,6 +60,7 @@ const ICONES_ESTRUTURA = {
   fontes: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   receptores: [['circle', { cx: 10, cy: 6.5, r: 3 }], ['path', { d: 'M4.5 16c.8-2.8 2.7-4.2 5.5-4.2s4.7 1.4 5.5 4.2' }]],
   praticas: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
+  nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]],
   rastreabilidade: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
@@ -121,6 +122,69 @@ function definicaoComExemplo(descricao = '') {
   };
 }
 
+function cabecalhoComIcone(icone, titulo, classe) {
+  const cabecalho = criar('header', classe);
+  const simbolo = criar('span', 'estrutura__icone');
+  simbolo.append(iconeEstrutura(icone));
+  cabecalho.append(simbolo, criar('h3', `${classe}-titulo`, titulo));
+  return cabecalho;
+}
+
+function blocoConhecimento(valor) {
+  const bloco = criar('article', 'estrutura__natureza');
+  const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
+  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.tituloPorta || valor.valor, 'estrutura__natureza-cabecalho');
+  const conteudo = criar('div', 'estrutura__natureza-conteudo');
+  const definicao = criar('div', 'estrutura__natureza-definicao');
+  definicao.append(
+    criar('p', 'estrutura__rotulo', 'Definição'),
+    criar('p', 'estrutura__natureza-texto', descricao)
+  );
+  conteudo.append(definicao);
+  if (exemplo) {
+    const exemplos = criar('div', 'estrutura__natureza-exemplos');
+    exemplos.append(
+      criar('p', 'estrutura__rotulo', 'Exemplos'),
+      criar('p', 'estrutura__natureza-texto', exemplo)
+    );
+    conteudo.append(exemplos);
+  }
+  bloco.append(cabecalho, conteudo);
+  return bloco;
+}
+
+function blocoGerencia({ titulo, descricao, icone }) {
+  const bloco = criar('article', 'estrutura__gerencia-item');
+  const cabecalho = cabecalhoComIcone(icone, titulo, 'estrutura__gerencia-cabecalho');
+  bloco.append(cabecalho, criar('p', 'estrutura__gerencia-texto', descricao));
+  return bloco;
+}
+
+function notaMetodologica(texto) {
+  const nota = criar('aside', 'estrutura__nota-metodologica');
+  const icone = criar('span', 'estrutura__nota-icone');
+  icone.append(iconeEstrutura('nota'));
+  const conteudo = criar('div', 'estrutura__nota-conteudo');
+  conteudo.append(
+    criar('p', 'estrutura__rotulo', 'Nota metodológica'),
+    criar('p', 'estrutura__nota-texto', texto)
+  );
+  nota.append(icone, conteudo);
+  return nota;
+}
+
+function cartaoEvidencia({ icone, titulo, descricao, destaque, fonte, complemento }) {
+  const cartao = criar('article', 'estrutura__evidencia');
+  const cabecalho = cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho');
+  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
+  if (destaque) conteudo.append(criar('p', 'estrutura__evidencia-destaque', destaque));
+  conteudo.append(criar('p', 'estrutura__evidencia-texto', descricao));
+  if (fonte) conteudo.append(criar('p', 'estrutura__evidencia-fonte', fonte));
+  if (complemento) conteudo.append(criar('p', 'estrutura__evidencia-complemento', complemento));
+  cartao.append(cabecalho, conteudo);
+  return cartao;
+}
+
 function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
@@ -170,14 +234,7 @@ function cartaoAtributo(atributo, classe = '') {
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  return painel(definicao, aba, '', valores.map((valor) => {
-    const texto = definicaoComExemplo(valor.descricao);
-    return cartaoEstrutura({
-      icone: iconeDaNatureza(valor.valor),
-      titulo: valor.tituloPorta || valor.valor,
-      ...texto
-    });
-  }), 'estrutura__grade--conhecimento');
+  return painel(definicao, aba, '', valores.map(blocoConhecimento), 'estrutura__grade--conhecimento');
 }
 
 function explicacaoClassificacao(dados, aba, definicao) {
@@ -188,25 +245,27 @@ function explicacaoClassificacao(dados, aba, definicao) {
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
-  return painel(
+  const raiz = painel(
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
-    definicao.campos.map(({ titulo, descricao, icone }) => cartaoEstrutura({ icone, titulo, descricao })),
-    'estrutura__grade--gerencia',
-    dados.meta.ajudas?.gerencia?.texto,
-    true
+    definicao.campos.map(blocoGerencia),
+    'estrutura__grade--gerencia'
   );
+  const nota = dados.meta.ajudas?.gerencia?.texto;
+  if (nota) raiz.append(notaMetodologica(nota));
+  return raiz;
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
   const base = dados.meta.camadas.find((camada) => camada.n === 3);
-  const icones = definicao.cartoes.icones;
+  const { cartoes } = definicao;
+  const icones = cartoes.icones;
   return painel(definicao, aba, '', [
-    cartaoEstrutura({ icone: icones.revisao, titulo: definicao.cartoes.revisao, descricao: dados.meta.fonte }),
-    cartaoEstrutura({ icone: icones.estudos, titulo: definicao.cartoes.estudos, descricao: base?.conteudo }),
-    cartaoEstrutura({ icone: icones.rastreabilidade, titulo: definicao.cartoes.rastreabilidade, descricao: dados.meta.ajudas?.estudos?.texto }),
-    cartaoEstrutura({ icone: icones.desafios, titulo: definicao.cartoes.desafios, descricao: dados.meta.ajudas?.desafios?.texto })
+    cartaoEvidencia({ icone: icones.revisao, titulo: cartoes.revisao, descricao: cartoes.revisaoDescricao, fonte: dados.meta.fonte }),
+    cartaoEvidencia({ icone: icones.estudos, titulo: cartoes.estudos, descricao: cartoes.estudosDescricao, destaque: String(dados.meta.totalEstudos), fonte: base?.conteudo }),
+    cartaoEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
+    cartaoEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
   ], 'estrutura__grade--evidencias');
 }
 
