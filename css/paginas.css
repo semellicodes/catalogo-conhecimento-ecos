@@ -373,15 +373,21 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__gerencia-item + .estrutura__gerencia-item { border-left: var(--borda-suave); }
 .estrutura__gerencia-texto { margin-top: var(--esp-3); }
+.estrutura__painel--gerencia .estrutura__painel-intro {
+  max-width: var(--largura-texto);
+  margin-right: 0;
+  margin-left: 0;
+  text-align: left;
+}
 .estrutura__nota-metodologica {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
+  grid-column: 1 / -1;
   gap: var(--esp-3);
-  margin: var(--esp-4) 0 0;
+  margin: 0;
   padding: var(--esp-4);
   background: var(--cor-acento-fundo);
-  border: var(--borda-acento-suave);
-  border-radius: var(--raio);
+  border-top: var(--borda-acento-suave);
 }
 .estrutura__nota-icone { color: var(--cor-acento); }
 .estrutura__nota-icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }

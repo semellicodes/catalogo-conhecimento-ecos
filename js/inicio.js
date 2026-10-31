@@ -166,9 +166,10 @@ function blocoGerencia({ titulo, descricao, icone }) {
   return bloco;
 }
 
-function composicaoGerencia(campos) {
+function composicaoGerencia(campos, nota) {
   const composicao = criar('article', 'estrutura__composicao-gerencia');
   campos.forEach((campo) => composicao.append(blocoGerencia(campo)));
+  if (nota) composicao.append(notaMetodologica(nota));
   return composicao;
 }
 
@@ -289,11 +290,10 @@ function explicacaoGerencia(dados, aba, definicao) {
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
-    [composicaoGerencia(definicao.campos)],
+    [composicaoGerencia(definicao.campos, dados.meta.ajudas?.gerencia?.texto)],
     'estrutura__grade--gerencia'
   );
-  const nota = dados.meta.ajudas?.gerencia?.texto;
-  if (nota) raiz.append(notaMetodologica(nota));
+  raiz.classList.add('estrutura__painel--gerencia');
   return raiz;
 }
 
