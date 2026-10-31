@@ -150,6 +150,43 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-bottom: var(--esp-3);
 }
 .secao__cabecalho .secao__titulo { margin-bottom: 0; }
+
+/* A abertura do mapa conceitual tem identidade própria para separar a visão
+   institucional da explicação detalhada das camadas que vem em seguida. */
+.secao--estrutura { padding-top: var(--esp-8); }
+.estrutura__abertura {
+  display: grid;
+  justify-items: center;
+  gap: var(--esp-3);
+  max-width: var(--largura-texto);
+  margin-inline: auto;
+  text-align: center;
+}
+.estrutura__olho {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--esp-2) var(--esp-4);
+  color: var(--cor-faixa-acento);
+  background: var(--cor-faixa);
+  border: var(--borda-faixa);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+}
+.estrutura__titulo {
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
+.estrutura__intro {
+  max-width: var(--largura-texto);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-base);
+}
+.secao--estrutura .reservado { margin-top: var(--esp-6); }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem
    conteúdo permanente, só tornam a consulta mais direta sem criar outra rota. */
