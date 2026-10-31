@@ -3,7 +3,7 @@
  * estrutura do catálogo.
  */
 
-import { carregar } from './dados.js';
+import { carregar } from './dados.js?v=20261031-4';
 import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
