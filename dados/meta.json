@@ -4,6 +4,7 @@
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
   "estruturaCatalogo": {
+    "notaDiagrama": "As conexões indicam relações conceituais, não etapas sequenciais.",
     "abas": [
       {
         "id": "conhecimento",
@@ -13,25 +14,34 @@
       {
         "id": "classificacao",
         "rotulo": "Classificação",
-        "icone": "classificacao"
+        "icone": "classificacao",
+        "referenciaNatureza": {
+          "texto": "As definições das naturezas epistemológicas podem ser consultadas no painel Conhecimento.",
+          "acao": "Consultar definições em Conhecimento"
+        }
       },
       {
         "id": "gerencia",
         "rotulo": "Gerência do Conhecimento",
         "icone": "gerencia",
+        "subtitulo": "Como o conhecimento pode ser gerenciado",
+        "nota": "Fontes, receptores e práticas constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
         "campos": [
           {
             "titulo": "Principais fontes",
+            "rotulo": "Fontes",
             "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
             "icone": "fontes"
           },
           {
             "titulo": "Principais receptores",
+            "rotulo": "Receptores",
             "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
             "icone": "receptores"
           },
           {
             "titulo": "Práticas de gerência",
+            "rotulo": "Práticas",
             "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
             "icone": "praticas"
           }
@@ -43,9 +53,14 @@
         "icone": "evidencias",
         "cartoes": {
           "revisao": "Revisão Rápida da Literatura",
+          "revisaoDescricao": "A Revisão Rápida da Literatura constitui a base metodológica utilizada para identificar os conhecimentos e as evidências analisadas no KM4SECO.",
           "estudos": "Estudos primários",
+          "estudosDescricao": "Os estudos primários selecionados sustentam a identificação e a caracterização dos conhecimentos catalogados.",
           "rastreabilidade": "Rastreabilidade das evidências",
+          "rastreabilidadeDescricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados.",
           "desafios": "Desafios identificados na literatura",
+          "desafiosDescricao": "Os desafios foram identificados na literatura e relacionados aos conhecimentos quando houve evidência suficiente para estabelecer essa associação.",
+          "desafiosComplemento": "A ausência de desafios associados não significa que determinado conhecimento esteja livre de dificuldades.",
           "icones": {
             "revisao": "revisao",
             "estudos": "estudos",

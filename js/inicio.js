@@ -3,7 +3,7 @@
  * estrutura do catálogo.
  */
 
-import { carregar } from './dados.js';
+import { carregar } from './dados.js?v=20261101-1';
 import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
@@ -56,10 +56,14 @@ const ICONES_ESTRUTURA = {
   cognitivo: [['path', { d: 'M7.5 15.5h5M8 18h4' }], ['path', { d: 'M7 12.5c-1.1-.9-1.8-2.3-1.8-3.8A4.8 4.8 0 0 1 10 4a4.8 4.8 0 0 1 4.8 4.7c0 1.5-.7 2.9-1.8 3.8-.7.6-1 1.2-1 2H8c0-.8-.3-1.4-1-2Z' }]],
   tecnico: [['path', { d: 'm12.8 4.2 3 3-7.6 7.6-3-3z' }], ['path', { d: 'm13.4 3.6 1.8-1.8 3 3-1.8 1.8M5.2 13.8 3.7 15.3l1 1 1.5-1.5' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
+  natureza: [['circle', { cx: 10, cy: 10, r: 6 }], ['path', { d: 'M10 4v12M4 10h12' }]],
+  nivel: [['path', { d: 'm4 7 6-3 6 3-6 3zM4 10l6 3 6-3M4 13l6 3 6-3' }]],
+  dimensao: [['path', { d: 'M4 16V5M4 16h12M7 13l3-4 3 2 3-5' }]],
   gerencia: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
   fontes: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   receptores: [['circle', { cx: 10, cy: 6.5, r: 3 }], ['path', { d: 'M4.5 16c.8-2.8 2.7-4.2 5.5-4.2s4.7 1.4 5.5 4.2' }]],
   praticas: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
+  nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]],
   rastreabilidade: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
@@ -86,31 +90,6 @@ function iconeEstrutura(nome) {
   return icone;
 }
 
-function cartaoEstrutura({ icone, titulo, descricao, valores = [], exemplo, nota, classe = '' }) {
-  const cartao = criar('article', `estrutura__cartao ${classe}`.trim());
-  const simbolo = criar('span', 'estrutura__icone');
-  simbolo.append(iconeEstrutura(icone));
-  const conteudo = criar('div', 'estrutura__cartao-conteudo');
-  conteudo.append(criar('h3', 'estrutura__cartao-titulo', titulo));
-  if (descricao) conteudo.append(criar('p', 'estrutura__cartao-texto', descricao));
-  if (exemplo) {
-    const blocoExemplo = criar('div', 'estrutura__exemplo');
-    blocoExemplo.append(
-      criar('h4', 'estrutura__exemplo-titulo', 'Exemplos'),
-      criar('p', 'estrutura__exemplo-texto', exemplo)
-    );
-    conteudo.append(blocoExemplo);
-  }
-  if (valores.length) {
-    const lista = criar('ul', 'estrutura__valores');
-    valores.forEach((valor) => lista.append(criar('li', null, valor)));
-    conteudo.append(lista);
-  }
-  if (nota) conteudo.append(criar('p', 'estrutura__cartao-nota', nota));
-  cartao.append(simbolo, conteudo);
-  return cartao;
-}
-
 function definicaoComExemplo(descricao = '') {
   const marcador = 'Incluem, por exemplo,';
   const indice = descricao.indexOf(marcador);
@@ -121,12 +100,122 @@ function definicaoComExemplo(descricao = '') {
   };
 }
 
+function cabecalhoComIcone(icone, titulo, classe) {
+  const cabecalho = criar('header', classe);
+  const simbolo = criar('span', 'estrutura__icone');
+  simbolo.append(iconeEstrutura(icone));
+  cabecalho.append(simbolo, criar('h3', `${classe}-titulo`, titulo));
+  return cabecalho;
+}
+
+function blocoConhecimento(valor) {
+  const bloco = criar('section', 'estrutura__natureza');
+  const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
+  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.tituloPorta || valor.valor, 'estrutura__natureza-cabecalho');
+  const conteudo = criar('div', 'estrutura__natureza-conteudo');
+  const definicao = criar('div', 'estrutura__natureza-definicao');
+  definicao.append(
+    criar('p', 'estrutura__rotulo', 'Definição'),
+    criar('p', 'estrutura__natureza-texto', descricao)
+  );
+  conteudo.append(definicao);
+  if (exemplo) {
+    const exemplos = criar('div', 'estrutura__natureza-exemplos');
+    exemplos.append(
+      criar('p', 'estrutura__rotulo', 'Exemplos'),
+      criar('p', 'estrutura__natureza-texto', exemplo)
+    );
+    conteudo.append(exemplos);
+  } else {
+    conteudo.classList.add('estrutura__natureza-conteudo--completo');
+  }
+  bloco.append(cabecalho, conteudo);
+  return bloco;
+}
+
+function composicaoConhecimento(valores) {
+  const composicao = criar('article', 'estrutura__composicao-conhecimento');
+  valores.forEach((valor) => composicao.append(blocoConhecimento(valor)));
+  return composicao;
+}
+
+function blocoGerencia({ titulo, rotulo, descricao, icone }) {
+  const bloco = criar('section', 'estrutura__gerencia-item');
+  const cabecalho = cabecalhoComIcone(icone, rotulo || titulo, 'estrutura__gerencia-cabecalho');
+  bloco.append(cabecalho, criar('p', 'estrutura__gerencia-texto', descricao));
+  return bloco;
+}
+
+function composicaoGerencia(campos, nota) {
+  const composicao = criar('article', 'estrutura__composicao-gerencia');
+  campos.forEach((campo) => composicao.append(blocoGerencia(campo)));
+  if (nota) composicao.append(notaMetodologica(nota));
+  return composicao;
+}
+
+function notaMetodologica(texto) {
+  const nota = criar('aside', 'estrutura__nota-metodologica');
+  const icone = criar('span', 'estrutura__nota-icone');
+  icone.append(iconeEstrutura('nota'));
+  const conteudo = criar('div', 'estrutura__nota-conteudo');
+  conteudo.append(
+    criar('p', 'estrutura__rotulo', 'Nota metodológica'),
+    criar('p', 'estrutura__nota-texto', texto)
+  );
+  nota.append(icone, conteudo);
+  return nota;
+}
+
+function linhaEvidencia({ icone, titulo, descricao, complemento }) {
+  const item = criar('section', 'estrutura__evidencia-linha');
+  item.append(
+    cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
+    criar('p', 'estrutura__evidencia-texto', descricao)
+  );
+  if (complemento) item.append(criar('p', 'estrutura__evidencia-complemento', complemento));
+  return item;
+}
+
+function composicaoEvidencias(dados, definicao) {
+  const { cartoes } = definicao;
+  const icones = cartoes.icones;
+  const base = dados.meta.camadas.find((camada) => camada.n === 3);
+  const composicao = criar('article', 'estrutura__composicao-evidencias');
+  const origem = criar('section', 'estrutura__evidencia-linha estrutura__evidencia-linha--origem');
+  const texto = criar('div', 'estrutura__origem-texto');
+  texto.append(
+    cabecalhoComIcone(icones.revisao, cartoes.revisao, 'estrutura__evidencia-cabecalho'),
+    criar('p', 'estrutura__evidencia-texto', cartoes.revisaoDescricao),
+    criar('p', 'estrutura__evidencia-fonte', dados.meta.fonte)
+  );
+  const estudos = criar('div', 'estrutura__origem-estudos');
+  estudos.append(
+    criar('p', 'estrutura__rotulo', cartoes.estudos),
+    criar('p', 'estrutura__origem-total mono', String(dados.meta.totalEstudos)),
+    criar('p', 'estrutura__origem-descricao', cartoes.estudosDescricao),
+    criar('p', 'estrutura__origem-fonte', base?.conteudo)
+  );
+  origem.append(texto, estudos);
+
+  composicao.append(
+    origem,
+    linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
+    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
+  );
+  return composicao;
+}
+
 function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
-  raiz.setAttribute('role', 'tabpanel');
+  raiz.setAttribute('role', 'region');
   raiz.setAttribute('aria-labelledby', aba.id);
   raiz.tabIndex = 0;
+  const cabecalho = criar('header', 'estrutura__painel-cabecalho');
+  const simbolo = criar('span', 'estrutura__painel-icone');
+  simbolo.append(iconeEstrutura(iconeDoDiagrama(definicao)));
+  cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.rotulo));
+  raiz.append(cabecalho);
   if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
   const nota = aviso ? criar('p', 'estrutura__aviso', aviso) : null;
   if (nota && !avisoDepois) raiz.append(nota);
@@ -145,114 +234,135 @@ function iconeDaNatureza(valor) {
   }[valor] || 'conhecimento';
 }
 
-function subbloco(valor) {
-  const item = criar('li', 'estrutura__subbloco');
-  item.append(
-    criar('h4', 'estrutura__subbloco-titulo', valor.valor),
-    criar('p', 'estrutura__subbloco-texto', valor.descricao)
-  );
+function categoriaClassificacao(valor, incluirDescricao = true) {
+  const item = criar('li', 'estrutura__categoria-classificacao');
+  item.append(criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor));
+  if (incluirDescricao) item.append(criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao));
   return item;
 }
 
-function cartaoAtributo(atributo, classe = '') {
-  const cartao = cartaoEstrutura({
-    icone: 'classificacao',
-    titulo: atributo.rotulo,
-    descricao: atributo.pergunta,
-    classe: `estrutura__cartao--atributo ${classe}`.trim()
+function atributoClassificacao(chave, atributo, referenciaNatureza, consultarConhecimento) {
+  const bloco = criar('section', `estrutura__atributo-classificacao estrutura__atributo-classificacao--${chave}`);
+  const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
+  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
+  const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
+  const categorias = criar('ul', 'estrutura__categorias-classificacao');
+  const incluirDescricao = chave !== 'natureza';
+  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor, incluirDescricao)));
+  conteudo.append(categorias);
+  if (chave === 'natureza' && referenciaNatureza) {
+    const referencia = criar('div', 'estrutura__referencia-natureza');
+    referencia.append(criar('p', '', referenciaNatureza.texto));
+    const acao = criar('button', 'estrutura__referencia-acao', referenciaNatureza.acao);
+    acao.type = 'button';
+    acao.addEventListener('click', consultarConhecimento);
+    referencia.append(acao);
+    conteudo.append(referencia);
+  }
+  bloco.append(cabecalho, conteudo);
+  return bloco;
+}
+
+function composicaoClassificacao(dados, definicao, consultarConhecimento) {
+  const composicao = criar('article', 'estrutura__composicao-classificacao');
+  ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
+    composicao.append(atributoClassificacao(chave, dados.classificacoes[chave], definicao.referenciaNatureza, consultarConhecimento));
   });
-  const conteudo = cartao.querySelector('.estrutura__cartao-conteudo');
-  const blocos = criar('ul', 'estrutura__subblocos');
-  atributo.valores.forEach((valor) => blocos.append(subbloco(valor)));
-  conteudo.append(blocos);
-  return cartao;
+  return composicao;
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  return painel(definicao, aba, '', valores.map((valor) => {
-    const texto = definicaoComExemplo(valor.descricao);
-    return cartaoEstrutura({
-      icone: iconeDaNatureza(valor.valor),
-      titulo: valor.tituloPorta || valor.valor,
-      ...texto
-    });
-  }), 'estrutura__grade--conhecimento');
+  return painel(definicao, aba, '', [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
 }
 
-function explicacaoClassificacao(dados, aba, definicao) {
-  const atributos = ['natureza', 'nivel', 'dimensao'];
-  return painel(definicao, aba, '', atributos.map((chave) => cartaoAtributo(
-    dados.classificacoes[chave], chave === 'natureza' ? 'estrutura__cartao--atributo-principal' : ''
-  )), 'estrutura__grade--classificacao');
+function explicacaoClassificacao(dados, aba, definicao, selecionar) {
+  return painel(definicao, aba, '', [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
-  return painel(
+  const raiz = painel(
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
-    definicao.campos.map(({ titulo, descricao, icone }) => cartaoEstrutura({ icone, titulo, descricao })),
-    'estrutura__grade--gerencia',
-    dados.meta.ajudas?.gerencia?.texto,
-    true
+    [composicaoGerencia(definicao.campos, definicao.nota)],
+    'estrutura__grade--gerencia'
   );
+  raiz.classList.add('estrutura__painel--gerencia');
+  if (definicao.subtitulo) raiz.insertBefore(criar('h3', 'estrutura__painel-subtitulo', definicao.subtitulo), raiz.firstChild);
+  return raiz;
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
-  const base = dados.meta.camadas.find((camada) => camada.n === 3);
-  const icones = definicao.cartoes.icones;
-  return painel(definicao, aba, '', [
-    cartaoEstrutura({ icone: icones.revisao, titulo: definicao.cartoes.revisao, descricao: dados.meta.fonte }),
-    cartaoEstrutura({ icone: icones.estudos, titulo: definicao.cartoes.estudos, descricao: base?.conteudo }),
-    cartaoEstrutura({ icone: icones.rastreabilidade, titulo: definicao.cartoes.rastreabilidade, descricao: dados.meta.ajudas?.estudos?.texto }),
-    cartaoEstrutura({ icone: icones.desafios, titulo: definicao.cartoes.desafios, descricao: dados.meta.ajudas?.desafios?.texto })
-  ], 'estrutura__grade--evidencias');
+  return painel(definicao, aba, '', [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
 }
 
-function abasDaEstrutura(dados) {
-  const navegacao = el('#estrutura-abas');
+function conectoresDoDiagrama() {
+  const conectores = document.createElementNS(SVG, 'svg');
+  conectores.classList.add('estrutura__conectores');
+  conectores.setAttribute('viewBox', '0 0 100 100');
+  conectores.setAttribute('preserveAspectRatio', 'none');
+  conectores.setAttribute('aria-hidden', 'true');
+  [
+    'M50 25V37H25V45',
+    'M50 37H75V45',
+    'M25 65V75H50V80',
+    'M75 65V75H50'
+  ].forEach((d) => conectores.append(traco('path', { d })));
+  return conectores;
+}
+
+function iconeDoDiagrama(definicao) {
+  return definicao.id === 'evidencias' ? 'revisao' : definicao.icone;
+}
+
+function noDoDiagrama(definicao, indice) {
+  const no = criar('button', `estrutura__no estrutura__no--${definicao.id}`);
+  no.type = 'button';
+  no.id = `no-${definicao.id}`;
+  no.setAttribute('aria-controls', `painel-${definicao.id}`);
+  no.setAttribute('aria-pressed', String(indice === 0));
+  const icone = criar('span', 'estrutura__no-icone');
+  icone.append(iconeEstrutura(iconeDoDiagrama(definicao)));
+  no.append(
+    icone,
+    criar('span', 'estrutura__no-rotulo', definicao.rotulo),
+    criar('span', 'estrutura__no-estado apenas-leitor', indice === 0 ? ' selecionado' : '')
+  );
+  return no;
+}
+
+function diagramaDaEstrutura(dados) {
+  const diagrama = el('#estrutura-diagrama');
+  const notaDiagrama = el('#estrutura-diagrama-nota');
   const paineis = el('#estrutura-paineis');
   const definicoes = dados.meta.estruturaCatalogo?.abas;
-  if (!navegacao || !paineis || !definicoes?.length) return;
+  if (!diagrama || !paineis || !definicoes?.length) return;
 
-  const abas = definicoes.map((definicao, indice) => {
-    const aba = criar('button', 'estrutura__aba', definicao.rotulo);
-    aba.id = `aba-${definicao.id}`;
-    aba.type = 'button';
-    aba.setAttribute('role', 'tab');
-    aba.setAttribute('aria-selected', String(indice === 0));
-    aba.setAttribute('aria-controls', `painel-${definicao.id}`);
-    aba.tabIndex = indice === 0 ? 0 : -1;
-    return aba;
-  });
-  navegacao.replaceChildren(...abas);
+  const nos = definicoes.map(noDoDiagrama);
+  diagrama.replaceChildren(conectoresDoDiagrama(), ...nos);
+  if (notaDiagrama) {
+    notaDiagrama.textContent = dados.meta.estruturaCatalogo?.notaDiagrama || '';
+    notaDiagrama.hidden = !notaDiagrama.textContent;
+  }
 
   const criadores = { conhecimento: explicacaoConhecimento, classificacao: explicacaoClassificacao, gerencia: explicacaoGerencia, evidencias: explicacaoEvidencias };
-  const todosPaineis = abas.map((aba, indice) => criadores[definicoes[indice].id](dados, aba, definicoes[indice]));
-  paineis.replaceChildren(...todosPaineis);
+  let todosPaineis = [];
 
-  const selecionar = (indice, focar = false) => {
-    abas.forEach((aba, atual) => {
+  const selecionar = (indice) => {
+    nos.forEach((no, atual) => {
       const ativo = atual === indice;
-      aba.setAttribute('aria-selected', String(ativo));
-      aba.tabIndex = ativo ? 0 : -1;
+      no.setAttribute('aria-pressed', String(ativo));
+      no.querySelector('.estrutura__no-estado').textContent = ativo ? ' selecionado' : '';
       todosPaineis[atual].hidden = !ativo;
     });
-    if (focar) abas[indice].focus();
+    paineis.classList.remove('estrutura__paineis--trocando');
+    requestAnimationFrame(() => paineis.classList.add('estrutura__paineis--trocando'));
+    requestAnimationFrame(() => requestAnimationFrame(() => paineis.classList.remove('estrutura__paineis--trocando')));
   };
-  abas.forEach((aba, indice) => {
-    aba.addEventListener('click', () => selecionar(indice));
-    aba.addEventListener('keydown', (evento) => {
-      const teclas = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
-      if (evento.key in teclas) {
-        evento.preventDefault();
-        selecionar((indice + teclas[evento.key] + abas.length) % abas.length, true);
-      }
-      if (evento.key === 'Home') { evento.preventDefault(); selecionar(0, true); }
-      if (evento.key === 'End') { evento.preventDefault(); selecionar(abas.length - 1, true); }
-    });
-  });
+  todosPaineis = nos.map((no, indice) => criadores[definicoes[indice].id](dados, no, definicoes[indice], selecionar));
+  paineis.replaceChildren(...todosPaineis);
+  nos.forEach((no, indice) => no.addEventListener('click', () => selecionar(indice)));
   selecionar(0);
 }
 
@@ -273,7 +383,7 @@ async function iniciar() {
   );
   ajudaDasPortas(dados);
 
-  abasDaEstrutura(dados);
+  diagramaDaEstrutura(dados);
 }
 
 iniciar();
