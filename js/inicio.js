@@ -126,6 +126,8 @@ function blocoConhecimento(valor) {
       criar('p', 'estrutura__natureza-texto', exemplo)
     );
     conteudo.append(exemplos);
+  } else {
+    conteudo.classList.add('estrutura__natureza-conteudo--completo');
   }
   bloco.append(cabecalho, conteudo);
   return bloco;
@@ -227,29 +229,33 @@ function iconeDaNatureza(valor) {
   }[valor] || 'conhecimento';
 }
 
-function categoriaClassificacao(valor) {
+function categoriaClassificacao(valor, incluirDescricao = true) {
   const item = criar('li', 'estrutura__categoria-classificacao');
-  item.append(
-    criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor),
-    criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao)
-  );
+  item.append(criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor));
+  if (incluirDescricao) item.append(criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao));
   return item;
 }
 
-function atributoClassificacao(chave, atributo) {
+function atributoClassificacao(chave, atributo, referenciaNatureza) {
   const bloco = criar('section', 'estrutura__atributo-classificacao');
   const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
   cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
+  const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-classificacao');
-  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
-  bloco.append(cabecalho, categorias);
+  const incluirDescricao = chave !== 'natureza';
+  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor, incluirDescricao)));
+  conteudo.append(categorias);
+  if (chave === 'natureza' && referenciaNatureza) {
+    conteudo.append(criar('p', 'estrutura__referencia-natureza', referenciaNatureza));
+  }
+  bloco.append(cabecalho, conteudo);
   return bloco;
 }
 
-function composicaoClassificacao(dados) {
+function composicaoClassificacao(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-classificacao');
   ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
-    composicao.append(atributoClassificacao(chave, dados.classificacoes[chave]));
+    composicao.append(atributoClassificacao(chave, dados.classificacoes[chave], definicao.referenciaNatureza));
   });
   return composicao;
 }
@@ -260,7 +266,7 @@ function explicacaoConhecimento(dados, aba, definicao) {
 }
 
 function explicacaoClassificacao(dados, aba, definicao) {
-  return painel(definicao, aba, '', [composicaoClassificacao(dados)], 'estrutura__grade--classificacao');
+  return painel(definicao, aba, '', [composicaoClassificacao(dados, definicao)], 'estrutura__grade--classificacao');
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
@@ -308,32 +314,39 @@ function noDoDiagrama(definicao, indice) {
   no.setAttribute('aria-pressed', String(indice === 0));
   const icone = criar('span', 'estrutura__no-icone');
   icone.append(iconeEstrutura(iconeDoDiagrama(definicao)));
-  no.append(icone, criar('span', 'estrutura__no-rotulo', definicao.rotulo));
+  no.append(
+    icone,
+    criar('span', 'estrutura__no-rotulo', definicao.rotulo),
+    criar('span', 'estrutura__no-estado apenas-leitor', indice === 0 ? ' selecionado' : '')
+  );
   return no;
 }
 
 function diagramaDaEstrutura(dados) {
   const diagrama = el('#estrutura-diagrama');
+  const notaDiagrama = el('#estrutura-diagrama-nota');
   const paineis = el('#estrutura-paineis');
   const definicoes = dados.meta.estruturaCatalogo?.abas;
   if (!diagrama || !paineis || !definicoes?.length) return;
 
   const nos = definicoes.map(noDoDiagrama);
   diagrama.replaceChildren(conectoresDoDiagrama(), ...nos);
+  if (notaDiagrama) {
+    notaDiagrama.textContent = dados.meta.estruturaCatalogo?.notaDiagrama || '';
+    notaDiagrama.hidden = !notaDiagrama.textContent;
+  }
 
   const criadores = { conhecimento: explicacaoConhecimento, classificacao: explicacaoClassificacao, gerencia: explicacaoGerencia, evidencias: explicacaoEvidencias };
   const todosPaineis = nos.map((no, indice) => criadores[definicoes[indice].id](dados, no, definicoes[indice]));
   paineis.replaceChildren(...todosPaineis);
 
-  let selecionado = -1;
   const selecionar = (indice) => {
-    const proximo = selecionado === indice ? -1 : indice;
     nos.forEach((no, atual) => {
-      const ativo = atual === proximo;
+      const ativo = atual === indice;
       no.setAttribute('aria-pressed', String(ativo));
+      no.querySelector('.estrutura__no-estado').textContent = ativo ? ' selecionado' : '';
       todosPaineis[atual].hidden = !ativo;
     });
-    selecionado = proximo;
   };
   nos.forEach((no, indice) => no.addEventListener('click', () => selecionar(indice)));
   selecionar(0);

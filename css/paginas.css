@@ -245,7 +245,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
-  transition: border-color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva), transform var(--dur-rapida) var(--curva-saida);
+  transition: border-color var(--dur-media) var(--curva), background-color var(--dur-media) var(--curva), color var(--dur-media) var(--curva), box-shadow var(--dur-media) var(--curva), transform var(--dur-rapida) var(--curva-saida);
 }
 .estrutura__no-icone {
   display: grid;
@@ -261,6 +261,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   background: var(--cor-acento);
   border-color: var(--cor-acento);
 }
+.estrutura__no[aria-pressed="true"]::after {
+  width: var(--esp-2);
+  height: var(--esp-2);
+  margin-left: var(--esp-1);
+  background: currentColor;
+  border-radius: var(--raio-pilula);
+  content: '';
+}
 .estrutura__no[aria-pressed="true"] .estrutura__no-icone { color: var(--cor-contraste); }
 .estrutura__no:active { transform: scale(var(--escala-acao)); }
 .estrutura__no--conhecimento { grid-column: 2; grid-row: 1; }
@@ -269,6 +277,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__no--evidencias { grid-column: 2; grid-row: 3; }
 @media (prefers-reduced-motion: reduce) {
   .estrutura__no { transition: none; }
+}
+.estrutura__diagrama-nota {
+  max-width: var(--largura-texto);
+  margin: 0 auto;
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
+  line-height: 1.5;
+  text-align: center;
 }
 .estrutura__paineis { margin-top: var(--esp-5); }
 .estrutura__painel:focus-visible { outline-offset: var(--esp-2); }
@@ -342,6 +358,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-5);
   align-items: start;
 }
+.estrutura__natureza-conteudo--completo { grid-template-columns: minmax(0, 1fr); }
 .estrutura__natureza-exemplos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
 .estrutura__natureza-texto,
 .estrutura__gerencia-texto,
@@ -359,10 +376,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__atributo-classificacao-cabecalho .estrutura__icone { grid-row: span 2; }
 .estrutura__atributo-classificacao-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
 .estrutura__atributo-classificacao-descricao { grid-column: 2; margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__atributo-classificacao-conteudo { display: grid; gap: var(--esp-3); align-content: start; }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
 .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-left: var(--esp-4); border-left: var(--borda-suave); }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__referencia-natureza { padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
 .estrutura__composicao-gerencia { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .estrutura__gerencia-item {
@@ -398,7 +417,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   padding: var(--esp-5);
 }
 .estrutura__evidencia-linha + .estrutura__evidencia-linha { border-top: var(--borda-suave); }
-.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.42fr) minmax(10rem, 0.8fr); }
+.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1.55fr) minmax(12rem, 0.85fr); }
 .estrutura__origem-estudos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
 .estrutura__origem-total { margin-top: var(--esp-1); color: var(--cor-acento); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
 .estrutura__origem-descricao { margin-top: var(--esp-2); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
