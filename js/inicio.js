@@ -3,7 +3,7 @@
  * estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261101-1';
+import { carregar } from './dados.js?v=20261101-2';
 import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
@@ -208,12 +208,12 @@ function composicaoEvidencias(dados, definicao) {
 function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
-  raiz.setAttribute('role', 'region');
+  raiz.setAttribute('role', 'tabpanel');
   raiz.setAttribute('aria-labelledby', aba.id);
   raiz.tabIndex = 0;
   const cabecalho = criar('header', 'estrutura__painel-cabecalho');
   const simbolo = criar('span', 'estrutura__painel-icone');
-  simbolo.append(iconeEstrutura(iconeDoDiagrama(definicao)));
+  simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
   cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.rotulo));
   raiz.append(cabecalho);
   if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
@@ -273,11 +273,11 @@ function composicaoClassificacao(dados, definicao, consultarConhecimento) {
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  return painel(definicao, aba, '', [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
+  return painel(definicao, aba, definicao.introducao, [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
 }
 
 function explicacaoClassificacao(dados, aba, definicao, selecionar) {
-  return painel(definicao, aba, '', [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
+  return painel(definicao, aba, definicao.introducao, [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
@@ -297,72 +297,55 @@ function explicacaoEvidencias(dados, aba, definicao) {
   return painel(definicao, aba, '', [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
 }
 
-function conectoresDoDiagrama() {
-  const conectores = document.createElementNS(SVG, 'svg');
-  conectores.classList.add('estrutura__conectores');
-  conectores.setAttribute('viewBox', '0 0 100 100');
-  conectores.setAttribute('preserveAspectRatio', 'none');
-  conectores.setAttribute('aria-hidden', 'true');
-  [
-    'M50 25V37H25V45',
-    'M50 37H75V45',
-    'M25 65V75H50V80',
-    'M75 65V75H50'
-  ].forEach((d) => conectores.append(traco('path', { d })));
-  return conectores;
-}
-
-function iconeDoDiagrama(definicao) {
+function iconeDoPainel(definicao) {
   return definicao.id === 'evidencias' ? 'revisao' : definicao.icone;
 }
 
-function noDoDiagrama(definicao, indice) {
-  const no = criar('button', `estrutura__no estrutura__no--${definicao.id}`);
-  no.type = 'button';
-  no.id = `no-${definicao.id}`;
-  no.setAttribute('aria-controls', `painel-${definicao.id}`);
-  no.setAttribute('aria-pressed', String(indice === 0));
-  const icone = criar('span', 'estrutura__no-icone');
-  icone.append(iconeEstrutura(iconeDoDiagrama(definicao)));
-  no.append(
-    icone,
-    criar('span', 'estrutura__no-rotulo', definicao.rotulo),
-    criar('span', 'estrutura__no-estado apenas-leitor', indice === 0 ? ' selecionado' : '')
-  );
-  return no;
-}
-
-function diagramaDaEstrutura(dados) {
-  const diagrama = el('#estrutura-diagrama');
-  const notaDiagrama = el('#estrutura-diagrama-nota');
+function abasDaEstrutura(dados) {
+  const navegacao = el('#estrutura-abas');
   const paineis = el('#estrutura-paineis');
   const definicoes = dados.meta.estruturaCatalogo?.abas;
-  if (!diagrama || !paineis || !definicoes?.length) return;
+  if (!navegacao || !paineis || !definicoes?.length) return;
 
-  const nos = definicoes.map(noDoDiagrama);
-  diagrama.replaceChildren(conectoresDoDiagrama(), ...nos);
-  if (notaDiagrama) {
-    notaDiagrama.textContent = dados.meta.estruturaCatalogo?.notaDiagrama || '';
-    notaDiagrama.hidden = !notaDiagrama.textContent;
-  }
+  const abas = definicoes.map((definicao, indice) => {
+    const aba = criar('button', 'estrutura__aba', definicao.rotulo);
+    aba.id = `aba-${definicao.id}`;
+    aba.type = 'button';
+    aba.setAttribute('role', 'tab');
+    aba.setAttribute('aria-selected', String(indice === 0));
+    aba.setAttribute('aria-controls', `painel-${definicao.id}`);
+    aba.tabIndex = indice === 0 ? 0 : -1;
+    return aba;
+  });
+  navegacao.replaceChildren(...abas);
 
   const criadores = { conhecimento: explicacaoConhecimento, classificacao: explicacaoClassificacao, gerencia: explicacaoGerencia, evidencias: explicacaoEvidencias };
   let todosPaineis = [];
 
-  const selecionar = (indice) => {
-    nos.forEach((no, atual) => {
+  const selecionar = (indice, focar = false) => {
+    abas.forEach((aba, atual) => {
       const ativo = atual === indice;
-      no.setAttribute('aria-pressed', String(ativo));
-      no.querySelector('.estrutura__no-estado').textContent = ativo ? ' selecionado' : '';
+      aba.setAttribute('aria-selected', String(ativo));
+      aba.tabIndex = ativo ? 0 : -1;
       todosPaineis[atual].hidden = !ativo;
     });
-    paineis.classList.remove('estrutura__paineis--trocando');
-    requestAnimationFrame(() => paineis.classList.add('estrutura__paineis--trocando'));
-    requestAnimationFrame(() => requestAnimationFrame(() => paineis.classList.remove('estrutura__paineis--trocando')));
+    if (focar) abas[indice].focus();
   };
-  todosPaineis = nos.map((no, indice) => criadores[definicoes[indice].id](dados, no, definicoes[indice], selecionar));
+  todosPaineis = abas.map((aba, indice) => criadores[definicoes[indice].id](dados, aba, definicoes[indice], selecionar));
   paineis.replaceChildren(...todosPaineis);
-  nos.forEach((no, indice) => no.addEventListener('click', () => selecionar(indice)));
+
+  abas.forEach((aba, indice) => {
+    aba.addEventListener('click', () => selecionar(indice));
+    aba.addEventListener('keydown', (evento) => {
+      const deslocamentos = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+      if (evento.key in deslocamentos) {
+        evento.preventDefault();
+        selecionar((indice + deslocamentos[evento.key] + abas.length) % abas.length, true);
+      }
+      if (evento.key === 'Home') { evento.preventDefault(); selecionar(0, true); }
+      if (evento.key === 'End') { evento.preventDefault(); selecionar(abas.length - 1, true); }
+    });
+  });
   selecionar(0);
 }
 
@@ -383,7 +366,7 @@ async function iniciar() {
   );
   ajudaDasPortas(dados);
 
-  diagramaDaEstrutura(dados);
+  abasDaEstrutura(dados);
 }
 
 iniciar();

@@ -4,17 +4,18 @@
   "fonte": "Revisão rápida Who Knows What? Managing Knowledge in Software Ecosystems",
   "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
   "estruturaCatalogo": {
-    "notaDiagrama": "As conexões indicam relações conceituais, não etapas sequenciais.",
     "abas": [
       {
         "id": "conhecimento",
         "rotulo": "Conhecimento",
-        "icone": "conhecimento"
+        "icone": "conhecimento",
+        "introducao": "Os conhecimentos catalogados assumem naturezas epistemológicas distintas, que orientam sua compreensão e gerência no ECOS."
       },
       {
         "id": "classificacao",
         "rotulo": "Classificação",
         "icone": "classificacao",
+        "introducao": "O catálogo caracteriza cada conhecimento por três atributos distintos: natureza epistemológica, nível no ECOS e dimensão do ECOS.",
         "referenciaNatureza": {
           "texto": "As definições das naturezas epistemológicas podem ser consultadas no painel Conhecimento.",
           "acao": "Consultar definições em Conhecimento"
