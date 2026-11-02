@@ -4,7 +4,7 @@
  */
 
 const ARQUIVOS = {
-  meta: 'dados/meta.json?v=20261101-2',
+  meta: 'dados/meta.json?v=20261101-3',
   conhecimentos: 'dados/conhecimentos.json',
   desafios: 'dados/desafios.json',
   estudos: 'dados/estudos.json',

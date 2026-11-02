@@ -3,7 +3,7 @@
  * estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261101-2';
+import { carregar } from './dados.js?v=20261101-3';
 import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
@@ -111,7 +111,7 @@ function cabecalhoComIcone(icone, titulo, classe) {
 function blocoConhecimento(valor) {
   const bloco = criar('section', 'estrutura__natureza');
   const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
-  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.tituloPorta || valor.valor, 'estrutura__natureza-cabecalho');
+  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho');
   const conteudo = criar('div', 'estrutura__natureza-conteudo');
   const definicao = criar('div', 'estrutura__natureza-definicao');
   definicao.append(
@@ -281,16 +281,13 @@ function explicacaoClassificacao(dados, aba, definicao, selecionar) {
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
-  const raiz = painel(
+  return painel(
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
     [composicaoGerencia(definicao.campos, definicao.nota)],
     'estrutura__grade--gerencia'
   );
-  raiz.classList.add('estrutura__painel--gerencia');
-  if (definicao.subtitulo) raiz.insertBefore(criar('h3', 'estrutura__painel-subtitulo', definicao.subtitulo), raiz.firstChild);
-  return raiz;
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {

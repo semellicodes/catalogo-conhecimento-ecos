@@ -25,7 +25,6 @@
         "id": "gerencia",
         "rotulo": "Gerência do Conhecimento",
         "icone": "gerencia",
-        "subtitulo": "Como o conhecimento pode ser gerenciado",
         "nota": "Fontes, receptores e práticas constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
         "campos": [
           {
