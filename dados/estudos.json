@@ -6,7 +6,9 @@
     "ano": 2025,
     "pais": "China",
     "tipoEcos": [],
-    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10660-024-09895-6"
+    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10660-024-09895-6",
+    "categoriaEcos": "Plataformas digitais",
+    "contextoEcos": "em um modelo teórico de ecossistemas de plataformas digitais, no qual proprietários e desenvolvedores terceiros compartilham e utilizam conhecimento; Apple, Android, SAP, Salesforce e Oracle aparecem somente como contextos ilustrativos"
   },
   {
     "id": "E02",
@@ -15,7 +17,9 @@
     "ano": 2025,
     "pais": "China",
     "tipoEcos": [],
-    "url": "https://www-emerald-com.ez4.periodicos.capes.gov.br/ejim/article-abstract/28/9/4517/1251952/A-study-of-the-governance-of-knowledge-sharing-in"
+    "url": "https://www-emerald-com.ez4.periodicos.capes.gov.br/ejim/article-abstract/28/9/4517/1251952/A-study-of-the-governance-of-knowledge-sharing-in",
+    "categoriaEcos": "Código aberto",
+    "contextoEcos": "nas comunidades open source PaddlePaddle, Apollo, openEuler, OpenHarmony, MindSpore, openGauss e EdgeGallery, nas quais os participantes coordenam o compartilhamento de conhecimento"
   },
   {
     "id": "E03",
@@ -24,7 +28,9 @@
     "ano": 2025,
     "pais": "Canadá",
     "tipoEcos": [],
-    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/3757462"
+    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/3757462",
+    "categoriaEcos": "Setor público e científico",
+    "contextoEcos": "no ecossistema científico open source Astropy, formado por pacotes Python interoperáveis voltados à astronomia e mantido por diferentes subcomunidades"
   },
   {
     "id": "E04",
@@ -33,7 +39,9 @@
     "ano": 2025,
     "pais": "Japão",
     "tipoEcos": [],
-    "url": "https://www.mdpi.com/3212408"
+    "url": "https://www.mdpi.com/3212408",
+    "categoriaEcos": "Plataformas digitais",
+    "contextoEcos": "na plataforma de mods de jogos Nexus Mods, em que autores de complementos e membros da comunidade compartilham conhecimento sobre modificações"
   },
   {
     "id": "E05",
@@ -42,7 +50,9 @@
     "ano": 2024,
     "pais": "Noruega",
     "tipoEcos": [],
-    "url": "https://www-sciencedirect-com.ez4.periodicos.capes.gov.br/science/article/pii/S2444569X24000623"
+    "url": "https://www-sciencedirect-com.ez4.periodicos.capes.gov.br/science/article/pii/S2444569X24000623",
+    "categoriaEcos": "Proprietário e industrial",
+    "contextoEcos": "no Open Subsurface Data Universe (OSDU), consórcio open source da indústria de petróleo e gás que reúne organizações e componentes do setor"
   },
   {
     "id": "E06",
@@ -51,7 +61,9 @@
     "ano": 2024,
     "pais": "Alemanha",
     "tipoEcos": [],
-    "url": "https://onlinelibrary-wiley-com.ez4.periodicos.capes.gov.br/share/UPN2KRQVDEKGSJB75YBA?target=10.1111/radm.12644"
+    "url": "https://onlinelibrary-wiley-com.ez4.periodicos.capes.gov.br/share/UPN2KRQVDEKGSJB75YBA?target=10.1111/radm.12644",
+    "categoriaEcos": "Plataformas digitais",
+    "contextoEcos": "na SAP Business Technology Platform, em que desenvolvedores de empresas parceiras utilizam documentação, cursos, comunidade e exemplos de código"
   },
   {
     "id": "E07",
@@ -60,7 +72,9 @@
     "ano": 2024,
     "pais": "Finlândia",
     "tipoEcos": [],
-    "url": "https://aisel.aisnet.org/sjis/vol36/iss2/3/"
+    "url": "https://aisel.aisnet.org/sjis/vol36/iss2/3/",
+    "categoriaEcos": "Setor público e científico",
+    "contextoEcos": "nos ecossistemas open source do setor público Oskari, Decidim e PloneGov, coordenados por atores públicos e suas comunidades de desenvolvimento"
   },
   {
     "id": "E08",
@@ -69,7 +83,9 @@
     "ano": 2024,
     "pais": "Brasil",
     "tipoEcos": [],
-    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10115-023-01954-y"
+    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10115-023-01954-y",
+    "categoriaEcos": "Código aberto",
+    "contextoEcos": "nos ecossistemas Node.js, incluindo firebase-functions, e E-SECO, integrado a myExperiment e BioCatalogue, nos quais projetos e colaboradores se conectam por componentes e serviços"
   },
   {
     "id": "E09",
@@ -78,7 +94,9 @@
     "ano": 2022,
     "pais": "Alemanha",
     "tipoEcos": [],
-    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10796-021-10236-3"
+    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/article/10.1007/s10796-021-10236-3",
+    "categoriaEcos": "Plataformas digitais",
+    "contextoEcos": "nas plataformas WordPress, Magento e Shopify, em que complementadores desenvolvem extensões e aplicações para comércio eletrônico"
   },
   {
     "id": "E10",
@@ -87,7 +105,9 @@
     "ano": 2022,
     "pais": "Brasil",
     "tipoEcos": [],
-    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/3571473.3571486"
+    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/3571473.3571486",
+    "categoriaEcos": "Proprietário e industrial",
+    "contextoEcos": "em um ecossistema proprietário anonimizado de uma organização internacional de seguros, no qual a governança de incidentes conecta participantes e componentes internos"
   },
   {
     "id": "E11",
@@ -96,7 +116,9 @@
     "ano": 2021,
     "pais": "Canadá",
     "tipoEcos": [],
-    "url": "https://ieeexplore-ieee-org.ez4.periodicos.capes.gov.br/document/9402037"
+    "url": "https://ieeexplore-ieee-org.ez4.periodicos.capes.gov.br/document/9402037",
+    "categoriaEcos": "Código aberto",
+    "contextoEcos": "no OpenStack, em que treinamentos, mentoria e contribuições distribuídas apoiam participantes que atuam em múltiplos projetos"
   },
   {
     "id": "E12",
@@ -105,7 +127,9 @@
     "ano": 2021,
     "pais": "Alemanha",
     "tipoEcos": [],
-    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/chapter/10.1007/978-3-030-86797-3_2"
+    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/chapter/10.1007/978-3-030-86797-3_2",
+    "categoriaEcos": "Plataformas digitais",
+    "contextoEcos": "na SAP Cloud Platform e na SAP Developer Community, onde desenvolvedores acessam e compartilham conhecimento sobre a plataforma"
   },
   {
     "id": "E13",
@@ -114,7 +138,9 @@
     "ano": 2019,
     "pais": "Tailândia",
     "tipoEcos": [],
-    "url": "https://www-sciencedirect-com.ez4.periodicos.capes.gov.br/science/article/pii/S0164121219301906"
+    "url": "https://www-sciencedirect-com.ez4.periodicos.capes.gov.br/science/article/pii/S0164121219301906",
+    "categoriaEcos": "Código aberto",
+    "contextoEcos": "nos ecossistemas de bibliotecas Go, npm, Bower, PyPI, RubyGems, Packagist e Maven, hospedados no GitHub e analisados pelas relações de comunicação entre projetos e mantenedores"
   },
   {
     "id": "E14",
@@ -123,7 +149,9 @@
     "ano": 2017,
     "pais": "Suécia",
     "tipoEcos": [],
-    "url": "https://ieeexplore-ieee-org.ez4.periodicos.capes.gov.br/document/7934757"
+    "url": "https://ieeexplore-ieee-org.ez4.periodicos.capes.gov.br/document/7934757",
+    "categoriaEcos": "Propostas arquiteturais",
+    "contextoEcos": "na proposta arquitetural COACH, do projeto ORION, concebida para apoiar decisões na seleção de componentes, sem relatar um caso empírico específico"
   },
   {
     "id": "E15",
@@ -132,7 +160,9 @@
     "ano": 2015,
     "pais": "Brasil",
     "tipoEcos": [],
-    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/2857218.2857264"
+    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/2857218.2857264",
+    "categoriaEcos": "Setor público e científico",
+    "contextoEcos": "no Portal do Software Público Brasileiro e na comunidade 4CMBr, ligados à adoção de software livre por municípios e seus participantes"
   },
   {
     "id": "E16",
@@ -141,7 +171,9 @@
     "ano": 2015,
     "pais": "Áustria",
     "tipoEcos": [],
-    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/2797433.2797480"
+    "url": "https://dl-acm-org.ez4.periodicos.capes.gov.br/doi/10.1145/2797433.2797480",
+    "categoriaEcos": "Proprietário e industrial",
+    "contextoEcos": "em um ecossistema industrial de cidade inteligente, com plataforma de entrega de serviços, fornecedores, dispositivos, órgãos públicos e usuários"
   },
   {
     "id": "E17",
@@ -150,7 +182,9 @@
     "ano": 2013,
     "pais": "França",
     "tipoEcos": [],
-    "url": "https://www.igi-global.com/gateway/article/104715"
+    "url": "https://www.igi-global.com/gateway/article/104715",
+    "categoriaEcos": "Código aberto",
+    "contextoEcos": "no Eclipse e no Eclipse Marketplace, onde participantes compartilham plugins, perspectivas e composições de componentes"
   },
   {
     "id": "E18",
@@ -159,6 +193,8 @@
     "ano": 2005,
     "pais": "Estados Unidos",
     "tipoEcos": [],
-    "url": "https://www.semanticscholar.org/paper/Dual-Networks-of-Knowledge-Flows-%3A-An-Empirical-of-Dreyfus-Iyer/c3d8c855ad327ea9077c54bed9eee6b428e87fd1"
+    "url": "https://www.semanticscholar.org/paper/Dual-Networks-of-Knowledge-Flows-%3A-An-Empirical-of-Dreyfus-Iyer/c3d8c855ad327ea9077c54bed9eee6b428e87fd1",
+    "categoriaEcos": "Proprietário e industrial",
+    "contextoEcos": "na indústria de software empacotado, analisada a partir de 77 empresas, suas redes de alianças e citações de patentes, sem referência a uma plataforma específica"
   }
 ]

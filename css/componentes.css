@@ -826,87 +826,74 @@
 .ajuda__abrir:hover { color: var(--cor-acento); border-color: var(--cor-acento); }
 .ajuda__abrir:active { transform: scale(0.92); }
 
-/* A fileira de opções. Serve aos quatro atributos, e a apagada continua legível
-   porque saber que um valor não se aplica também é informação. */
-.opcoes {
-  list-style: none;
-  display: grid;
-  gap: var(--esp-2);
-  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+/* Contextos observados ficam visualmente destacados, mas seguem sendo
+   derivados apenas dos estudos já associados ao conhecimento da ficha. */
+.bloco-ficha--exemplos {
+  background: var(--cor-acento-fundo);
+  border-color: var(--cor-acento-linha);
 }
-/* Ícone e nome, numa linha só. A descrição do valor mora no glossário do
-   Explorar e no botão de ajuda do cartão, não aqui. */
-.opcao {
-  display: flex;
-  align-items: center;
-  gap: var(--esp-2);
+.bloco-ficha__titulo .exemplos-ecos__icone {
+  width: 1rem;
+  height: 1rem;
+  margin-right: var(--esp-2);
+  vertical-align: -0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.exemplos-ecos { display: grid; gap: var(--esp-3); }
+.exemplos-ecos__categorias { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.exemplos-ecos__categoria {
   min-height: var(--alvo-toque);
   padding: var(--esp-2) var(--esp-3);
   background: var(--cor-fundo);
   border: var(--borda);
-  border-radius: var(--raio);
-  color: var(--cor-texto-fraco);
-  opacity: 0.6;
-}
-.opcoes li[data-aceso] .opcao {
-  opacity: 1;
-  border-color: var(--cor-acento-linha);
-  background: var(--cor-acento-fundo);
-  color: var(--cor-acento);
-}
-.opcao__icone { flex: none; width: 1.125rem; height: 1.125rem; }
-.opcao__nome { font-size: var(--tam-sm); color: var(--cor-texto); }
-.opcoes li[data-aceso] .opcao__nome { font-weight: 600; color: var(--cor-acento); }
-.opcao--interativa {
-  width: 100%;
-  font: inherit;
-  text-align: left;
+  border-radius: var(--raio-pilula);
+  color: var(--cor-texto-suave);
   cursor: pointer;
-  transition: border-color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva);
+  font-size: var(--tam-sm);
+  line-height: 1.2;
+  transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
-.opcao--interativa:hover {
-  border-color: var(--cor-acento);
-}
-.opcao--interativa[data-selecionado] {
-  opacity: 1;
-  border-color: var(--cor-acento);
+.exemplos-ecos__categoria:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
+.exemplos-ecos__categoria[aria-pressed="true"] {
   background: var(--cor-acento-fundo);
+  border-color: var(--cor-acento);
   color: var(--cor-acento);
+  font-weight: 600;
 }
-.opcao--interativa[data-selecionado] .opcao__nome {
-  color: var(--cor-acento);
-}
-.opcao--interativa:active { transform: scale(var(--escala-acao)); }
-.tipo-ecos__painel {
+.exemplos-ecos__painel {
   display: grid;
   gap: var(--esp-2);
-  margin-top: var(--esp-3);
   padding: var(--esp-3);
-  background: var(--cor-acento-fundo);
+  background: var(--cor-superficie);
   border: var(--borda);
-  border-color: var(--cor-acento-linha);
   border-radius: var(--raio);
+}
+.exemplos-ecos__texto {
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
-}
-.tipo-ecos__texto {
-  margin: 0;
   line-height: 1.6;
   text-align: justify;
   hyphens: auto;
 }
-.tipo-ecos__exemplos,
-.tipo-ecos__referencias {
-  display: grid;
+.exemplos-ecos__referencia {
+  display: inline-flex;
+  align-items: center;
   gap: var(--esp-1);
-  padding-left: var(--esp-4);
-  text-align: left;
+  color: var(--cor-acento);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
 }
+.exemplos-ecos__referencia:hover { color: var(--cor-acento-forte); text-decoration: underline; }
+.exemplos-ecos__referencia .estudo__icone-link { width: 0.82rem; height: 0.82rem; }
 @media (max-width: 35.99rem) {
-  .tipo-ecos__texto {
-    text-align: left;
-    hyphens: manual;
-  }
+  .exemplos-ecos__texto { text-align: left; hyphens: manual; }
+  .exemplos-ecos__categorias { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .exemplos-ecos__categoria { width: 100%; }
 }
 
 /* Cada rótulo permanece próximo do respectivo valor, mesmo quando ocupa duas linhas. */

@@ -79,7 +79,7 @@
     },
     "tipoEcos": {
       "titulo": "Exemplos de ECOS observados",
-      "texto": "A observação de cada conhecimento em ECOS de código aberto, proprietário ou híbrido é registrada somente quando confirmada nos estudos primários. Uma caixa apagada não significa que o conhecimento não possa ocorrer naquele tipo de ECOS, apenas que essa observação não foi confirmada na base do catálogo.",
+      "texto": "Os exemplos mostram contextos empíricos ou analíticos presentes nos estudos primários associados a este conhecimento.",
       "referencia": "manikas2016"
     },
     "gerencia": {

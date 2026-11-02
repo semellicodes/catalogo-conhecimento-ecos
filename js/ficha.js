@@ -40,38 +40,6 @@ function iconeLinkExterno() {
  */
 const SVG = 'http://www.w3.org/2000/svg';
 
-/* Os tipos de ECOS usam símbolos próprios em traço fino. O corpo do cadeado é
-   comum aos dois primeiros e só a alça muda, aberta para um lado ou fechada em
-   arco. */
-const SIMBOLOS = {
-  'Código aberto': ['M6 9V6.5a4 4 0 0 1 7.6-1.7', 'M4.5 9h11v7.5h-11z'],
-  'Proprietário': ['M6.5 9V6.5a3.5 3.5 0 0 1 7 0V9', 'M4.5 9h11v7.5h-11z'],
-  'Híbrido': ['M10 3.2 17 7l-7 3.8L3 7z', 'M3 11.5 10 15.3l7-3.8', 'M3 15.2 10 19l7-3.8']
-};
-
-/**
- * O símbolo do valor. Quando não existe símbolo definido, cai no visto para o
- * valor que vale e no círculo vazio para o que não vale, que é o que serve aos
- * atributos sem desenho próprio.
- */
-function iconeDoValor(valor, aceso) {
-  const svg = document.createElementNS(SVG, 'svg');
-  svg.setAttribute('viewBox', '0 0 20 20');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.setAttribute('focusable', 'false');
-  svg.setAttribute('class', 'opcao__icone');
-
-  const desenhos = SIMBOLOS[valor];
-  if (desenhos) {
-    desenhos.forEach((d) => svg.append(traco('path', { d })));
-  } else if (aceso) {
-    svg.append(traco('path', { d: 'M4.5 10.5 8.2 14.2 15.5 6.4' }));
-  } else {
-    svg.append(traco('circle', { cx: 10, cy: 10, r: 6 }));
-  }
-  return svg;
-}
-
 function traco(tag, atributos) {
   const forma = document.createElementNS(SVG, tag);
   Object.entries(atributos).forEach(([nome, valor]) => forma.setAttribute(nome, String(valor)));
@@ -83,82 +51,81 @@ function traco(tag, atributos) {
   return forma;
 }
 
-/** Preenche o detalhe de um tipo de ECOS sem repetir o nome do botão. */
-function preencherObservacaoTipoEcos(painel, observacao) {
-  painel.replaceChildren();
-  painel.hidden = false;
-
-  if (!observacao?.descricao) {
-    painel.append(criar('p', 'tipo-ecos__texto', 'Não há exemplos desse tipo de ECOS registrados nas evidências disponíveis para este conhecimento.'));
-    return;
-  }
-
-  painel.append(criar('p', 'tipo-ecos__texto', observacao.descricao));
-  if (observacao.exemplos?.length) {
-    const exemplos = criar('ul', 'tipo-ecos__exemplos');
-    observacao.exemplos.forEach((exemplo) => exemplos.append(criar('li', null, exemplo)));
-    painel.append(exemplos);
-  }
-  if (observacao.referencias?.length) {
-    const referencias = criar('ul', 'tipo-ecos__referencias');
-    observacao.referencias.forEach((referencia) => referencias.append(criar('li', null, referencia)));
-    painel.append(referencias);
-  }
+function iconeEcossistema() {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'exemplos-ecos__icone');
+  svg.append(
+    traco('circle', { cx: 5, cy: 10, r: 2 }),
+    traco('circle', { cx: 14.5, cy: 5, r: 2 }),
+    traco('circle', { cx: 14.5, cy: 15, r: 2 }),
+    traco('path', { d: 'm6.8 9 5.8-3M6.8 11l5.8 3' })
+  );
+  return svg;
 }
 
-/**
- * Os três tipos ficam disponíveis para consulta. Quando não há evidência para
- * aquele tipo, o painel explica a ausência sem criar associação artificial.
- */
-function tiposDeEcosInterativos(definicao, conhecimento) {
-  const observados = conhecimento.tipoEcos || [];
-  const observacoes = conhecimento.observacoesTipoEcos || {};
-  const lista = criar('ul', 'opcoes');
-  const painel = criar('div', 'tipo-ecos__painel');
-  const idPainel = `tipo-ecos-${conhecimento.id}`;
-  painel.id = idPainel;
-  painel.hidden = true;
+function linkDoEstudo(estudo) {
+  const link = criar('a', 'exemplos-ecos__referencia', estudo.id);
+  link.href = estudo.url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.setAttribute('aria-label', `Acessar publicação ${estudo.id}`);
+  link.append(iconeLinkExterno());
+  return link;
+}
 
-  function fechar() {
-    lista.querySelectorAll('button').forEach((outro) => {
-      outro.removeAttribute('data-selecionado');
-      outro.setAttribute('aria-expanded', 'false');
+/** Os exemplos nascem apenas dos estudos já ligados a cada conhecimento. */
+function exemplosDeEcos(conhecimento) {
+  const grupos = new Map();
+  conhecimento.estudosResolvidos
+    .filter((estudo) => estudo.categoriaEcos && estudo.contextoEcos)
+    .forEach((estudo) => {
+      const grupo = grupos.get(estudo.categoriaEcos) || [];
+      grupo.push(estudo);
+      grupos.set(estudo.categoriaEcos, grupo);
     });
+
+  if (!grupos.size) return criar('p', 'vazio', 'Não há exemplos de ECOS registrados nos estudos associados a este conhecimento.');
+
+  const raiz = criar('div', 'exemplos-ecos');
+  const painel = criar('div', 'exemplos-ecos__painel');
+  const idPainel = `exemplos-ecos-${conhecimento.id}`;
+  painel.id = idPainel;
+
+  function mostrar(categoria) {
     painel.replaceChildren();
-    painel.hidden = true;
+    grupos.get(categoria).forEach((estudo, indice) => {
+      const paragrafo = criar('p', 'exemplos-ecos__texto');
+      paragrafo.append(`${indice ? 'Esse conhecimento também foi observado' : 'Esse conhecimento foi observado'} ${estudo.contextoEcos}. `, linkDoEstudo(estudo));
+      painel.append(paragrafo);
+    });
   }
 
-  function selecionar(botao, observacao) {
-    const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
-    fechar();
-    if (estavaAberto) return;
-
-    botao.setAttribute('data-selecionado', '');
-    botao.setAttribute('aria-expanded', 'true');
-    preencherObservacaoTipoEcos(painel, observacao);
+  const categorias = [...grupos.keys()];
+  if (categorias.length > 1) {
+    const lista = criar('div', 'exemplos-ecos__categorias');
+    lista.setAttribute('role', 'group');
+    lista.setAttribute('aria-label', 'Categorias de ECOS observados');
+    categorias.forEach((categoria, indice) => {
+      const botao = criar('button', 'exemplos-ecos__categoria', categoria);
+      botao.type = 'button';
+      botao.setAttribute('aria-controls', idPainel);
+      botao.setAttribute('aria-pressed', String(indice === 0));
+      botao.addEventListener('click', () => {
+        lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-pressed', 'false'));
+        botao.setAttribute('aria-pressed', 'true');
+        mostrar(categoria);
+      });
+      lista.append(botao);
+    });
+    raiz.append(lista);
   }
 
-  definicao.valores.forEach((v) => {
-    const aceso = observados.includes(v.valor);
-    const observacao = observacoes[v.valor];
-    const item = criar('li');
-    if (aceso) item.setAttribute('data-aceso', '');
-
-    const caixa = criar('button', 'opcao opcao--interativa');
-    caixa.type = 'button';
-    caixa.setAttribute('aria-controls', idPainel);
-    caixa.setAttribute('aria-expanded', 'false');
-    caixa.addEventListener('click', () => selecionar(caixa, observacao));
-    caixa.append(
-      iconeDoValor(v.valor, aceso),
-      criar('span', 'opcao__nome', v.valor),
-      criar('span', 'apenas-leitor', aceso ? ', observado' : ', não observado')
-    );
-    item.append(caixa);
-    lista.append(item);
-  });
-
-  return [lista, painel];
+  mostrar(categorias[0]);
+  raiz.append(painel);
+  return raiz;
 }
 
 /**
@@ -247,8 +214,10 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de ECOS em que esse conhecimento foi observado', 'tipoEcos');
-  bloco.append(...tiposDeEcosInterativos(dados.classificacoes.tipoEcos, conhecimento));
+  const bloco = secao(dados, 'Exemplos de Ecossistemas em que este conhecimento foi observado', 'tipoEcos');
+  bloco.classList.add('bloco-ficha--exemplos');
+  bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
+  bloco.append(exemplosDeEcos(conhecimento));
   return bloco;
 }
 
