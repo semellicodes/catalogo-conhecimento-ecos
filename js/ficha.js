@@ -394,9 +394,13 @@ function iconeInformacao() {
   return svg;
 }
 
+function estudosDoDesafio(desafio, conhecimento) {
+  return conhecimento.estudosResolvidos
+    .filter((estudo) => desafio.estudos.includes(estudo.id));
+}
+
 function acessoAosEstudos(desafio, conhecimento) {
-  const estudos = conhecimento.estudosResolvidos
-    .filter((estudo) => desafio.estudos.includes(estudo.id) && estudo.url);
+  const estudos = estudosDoDesafio(desafio, conhecimento).filter((estudo) => estudo.url);
   if (!estudos.length) return document.createDocumentFragment();
 
   const acessar = criar('a', 'desafio-card__acessar', estudos.length > 1 ? 'Acessar estudos' : 'Acessar estudo');
@@ -414,13 +418,17 @@ function linhaDesafio(desafio, conhecimento) {
   const item = criar('li', 'desafio-card');
   const conteudo = criar('div', 'desafio-card__conteudo');
   const cabecalho = criar('div', 'desafio-card__cabecalho');
+  const estudos = estudosDoDesafio(desafio, conhecimento);
+  const metadado = [desafio.id, ...estudos.map((estudo) => estudo.id)].join(' · ');
+  const explicacao = criar('p', 'desafio-card__descricao', desafio.explicacao || desafio.desafio);
+  explicacao.title = explicacao.textContent;
   cabecalho.append(
-    criar('span', 'codigo-id', desafio.id),
+    criar('span', 'codigo-id', metadado),
     criar('h4', 'desafio-card__titulo', desafio.desafio)
   );
   conteudo.append(
     cabecalho,
-    criar('p', 'desafio-card__descricao', desafio.explicacao || desafio.desafio)
+    explicacao
   );
   item.append(iconeDesafio(desafio.icone), conteudo, acessoAosEstudos(desafio, conhecimento));
   return item;
