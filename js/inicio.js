@@ -3,7 +3,7 @@
  * estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261101-2';
+import { carregar } from './dados.js?v=20261101-3';
 import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
@@ -111,7 +111,7 @@ function cabecalhoComIcone(icone, titulo, classe) {
 function blocoConhecimento(valor) {
   const bloco = criar('section', 'estrutura__natureza');
   const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
-  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.tituloPorta || valor.valor, 'estrutura__natureza-cabecalho');
+  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho');
   const conteudo = criar('div', 'estrutura__natureza-conteudo');
   const definicao = criar('div', 'estrutura__natureza-definicao');
   definicao.append(
@@ -168,11 +168,13 @@ function notaMetodologica(texto) {
 
 function linhaEvidencia({ icone, titulo, descricao, complemento }) {
   const item = criar('section', 'estrutura__evidencia-linha');
+  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
+  conteudo.append(criar('p', 'estrutura__evidencia-texto', descricao));
+  if (complemento) conteudo.append(criar('p', 'estrutura__evidencia-complemento', complemento));
   item.append(
     cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
-    criar('p', 'estrutura__evidencia-texto', descricao)
+    conteudo
   );
-  if (complemento) item.append(criar('p', 'estrutura__evidencia-complemento', complemento));
   return item;
 }
 
@@ -197,11 +199,13 @@ function composicaoEvidencias(dados, definicao) {
   );
   origem.append(texto, estudos);
 
-  composicao.append(
-    origem,
+  const secundarios = criar('div', 'estrutura__evidencias-secundarias');
+  secundarios.append(
     linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
     linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
   );
+
+  composicao.append(origem, secundarios);
   return composicao;
 }
 
@@ -281,16 +285,15 @@ function explicacaoClassificacao(dados, aba, definicao, selecionar) {
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
-  const raiz = painel(
+  const resultado = painel(
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
     [composicaoGerencia(definicao.campos, definicao.nota)],
     'estrutura__grade--gerencia'
   );
-  raiz.classList.add('estrutura__painel--gerencia');
-  if (definicao.subtitulo) raiz.insertBefore(criar('h3', 'estrutura__painel-subtitulo', definicao.subtitulo), raiz.firstChild);
-  return raiz;
+  resultado.classList.add('estrutura__painel--gerencia');
+  return resultado;
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
