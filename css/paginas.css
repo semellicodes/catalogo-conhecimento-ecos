@@ -694,6 +694,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .porta {
   display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
   align-content: start;
   gap: var(--esp-2);
   padding: var(--esp-5);
