@@ -80,11 +80,15 @@ function linkDoEstudo(estudo) {
 function exemplosDeEcos(conhecimento) {
   const grupos = new Map();
   conhecimento.estudosResolvidos
-    .filter((estudo) => estudo.categoriaEcos && estudo.contextoEcos)
     .forEach((estudo) => {
-      const grupo = grupos.get(estudo.categoriaEcos) || [];
-      grupo.push(estudo);
-      grupos.set(estudo.categoriaEcos, grupo);
+      const exemplos = estudo.exemplosEcos || (estudo.categoriaEcos && estudo.contextoEcos
+        ? [{ categoria: estudo.categoriaEcos, contexto: estudo.contextoEcos }]
+        : []);
+      exemplos.forEach((exemplo) => {
+        const grupo = grupos.get(exemplo.categoria) || [];
+        grupo.push({ ...estudo, contextoEcos: exemplo.contexto });
+        grupos.set(exemplo.categoria, grupo);
+      });
     });
 
   if (!grupos.size) return criar('p', 'vazio', 'Não há exemplos de ECOS registrados nos estudos associados a este conhecimento.');
@@ -103,11 +107,13 @@ function exemplosDeEcos(conhecimento) {
     });
   }
 
-  const categorias = [...grupos.keys()];
-  if (categorias.length > 1) {
+  const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Híbrido', 'ECOS Proprietário'];
+  const categorias = ordemCategorias.filter((categoria) => grupos.has(categoria));
+  if (categorias.length) {
     const lista = criar('div', 'exemplos-ecos__categorias');
     lista.setAttribute('role', 'group');
     lista.setAttribute('aria-label', 'Categorias de ECOS observados');
+    lista.style.setProperty('--quantidade-categorias', categorias.length);
     categorias.forEach((categoria, indice) => {
       const botao = criar('button', 'exemplos-ecos__categoria', categoria);
       botao.type = 'button';
