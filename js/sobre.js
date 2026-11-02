@@ -7,10 +7,8 @@ async function iniciar() {
 
   try {
     const dados = await carregar();
-    const atributos = ['natureza', 'nivel', 'dimensao'];
     el('#sobre-conhecimentos').textContent = String(dados.conhecimentos.length);
     el('#sobre-estudos').textContent = String(dados.meta.totalEstudos);
-    el('#sobre-atributos').textContent = String(atributos.length);
     el('#sobre-fonte').textContent = dados.meta.fonte;
   } catch (erro) {
     console.error(erro);

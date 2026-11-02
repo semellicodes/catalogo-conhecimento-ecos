@@ -81,6 +81,8 @@
   --tam-lg: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
   --tam-xl: clamp(1.375rem, 1.143rem + 0.952vw, 2rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
+  --tam-titulo-abertura: clamp(2.75rem, 2.226rem + 2.143vw, 4rem);
+  --tam-resumo-abertura: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);
 
   /* Espaço */
   --esp-0: 0;
@@ -96,10 +98,12 @@
   --esp-secao: clamp(2.5rem, 6vw, 4rem);
   --esp-abertura: clamp(2.5rem, 5vw, 4rem);
   --esp-abertura-interno: clamp(2rem, 5vw, 3rem);
+  --esp-abertura-colunas: clamp(2.5rem, 4vw, 3.5rem);
   --esp-cabecalho-lateral: clamp(1.25rem, 4vw, var(--esp-5));
 
   /* Medida */
   --largura-max: 1240px;
+  --largura-abertura: 87.5rem;
   --largura-cheia: 100%;
   --largura-texto: 68ch;
   --largura-explorar: 70rem;
@@ -108,7 +112,6 @@
   --largura-mapa-estrutura: 64rem;
   --largura-dialogo: 47.5rem;
   --largura-dialogo-ajuda: 32rem;
-  --largura-painel-abertura: 32rem;
   --largura-painel-abertura-compacto: 24rem;
   --largura-painel-abertura-tablet: 14rem;
   --largura-painel-abertura-intermediario: 18rem;
@@ -119,10 +122,7 @@
   --largura-min-busca: 16rem;
   --tam-icone-relacao: 1.5rem;
   --tam-desenho-relacao: 1rem;
-  --altura-diagrama-abertura: clamp(9rem, 18vw, 12rem);
-  --altura-diagrama-abertura-compacto: 11rem;
-  --altura-diagrama-abertura-tablet: 9rem;
-  --altura-diagrama-abertura-intermediario: 10rem;
+  --proporcao-diagrama-abertura: 360 / 250;
   --tam-icone-controle: 1.125rem;
   --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
