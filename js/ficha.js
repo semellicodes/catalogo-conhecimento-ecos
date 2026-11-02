@@ -173,6 +173,7 @@ function exemplosDeEcos(conhecimento) {
     botao.type = 'button';
     botao.setAttribute('aria-controls', idPainel);
     botao.setAttribute('aria-expanded', 'false');
+    botao.dataset.temExemplos = String(grupos.has(categoria));
     botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria));
     botao.addEventListener('click', () => {
       const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
