@@ -82,7 +82,6 @@
 
   /* Espaço */
   --esp-0: 0;
-  --esp-0: 0;
   --esp-1: 0.25rem;
   --esp-2: 0.5rem;
   --esp-3: 0.75rem;
@@ -129,8 +128,8 @@
   --coluna-id: 3.5rem;
   --retrato: clamp(5.5rem, 7vw, 6rem);
   --largura-texto-contato: 60ch;
-  --largura-contato: 66rem;
-  --largura-rodape: 60rem;
+  --largura-contato: 56.25rem;
+  --largura-rodape: 52rem;
   --borda: 1px solid var(--cor-linha);
   --borda-suave: 1px solid var(--cor-linha-suave);
   --borda-acento: 2px solid var(--cor-acento-linha);
