@@ -36,6 +36,9 @@ async function iniciar() {
 
   const lista = el('#lista-referencias');
   Object.keys(dados.referencias)
+    /* O registro do manuscrito é mantido nos dados como rastreabilidade interna,
+       mas não integra a lista pública de referências enquanto não houver publicação. */
+    .filter((chave) => chave !== 'revisaoRapidaManuscrito')
     .sort((a, b) => dados.referencias[a].localeCompare(dados.referencias[b], 'pt-BR'))
     .forEach((chave) => {
       const item = document.createElement('li');

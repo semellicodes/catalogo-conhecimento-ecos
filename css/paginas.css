@@ -659,11 +659,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1;
   color: var(--cor-acento);
 }
-.sobre__fonte {
-  margin-top: var(--esp-5);
-  font-size: var(--tam-sm);
-  color: var(--cor-texto-suave);
-}
 .sobre__referencias {
   display: inline-flex;
   align-items: center;
