@@ -165,66 +165,6 @@ function ajuda(dados, chave) {
   return raiz;
 }
 
-let fecharAjudaGerenciaAtiva = null;
-
-/** A ajuda da gerência fica junto da seção para não abrir outro diálogo sobre ela. */
-function ajudaGerencia(dados) {
-  const conteudo = dados.meta.ajudas?.gerencia;
-  if (!conteudo) return document.createDocumentFragment();
-
-  const raiz = criar('div', 'ajuda ajuda--contextual');
-  const botao = criar('button', 'ajuda__abrir', '?');
-  const painel = criar('div', 'ajuda__painel');
-  const idPainel = 'ajuda-gerencia-painel';
-
-  botao.type = 'button';
-  botao.setAttribute('aria-label', `Saiba mais sobre ${conteudo.titulo}`);
-  botao.setAttribute('aria-controls', idPainel);
-  botao.setAttribute('aria-expanded', 'false');
-
-  painel.id = idPainel;
-  painel.hidden = true;
-  painel.setAttribute('role', 'dialog');
-  painel.setAttribute('aria-label', conteudo.titulo);
-  painel.append(
-    criar('strong', 'ajuda__painel-titulo', conteudo.titulo),
-    criar('p', 'ajuda__painel-texto', conteudo.texto)
-  );
-
-  const referencia = referenciaCurta(dados, conteudo.referencia);
-  if (referencia) painel.append(criar('p', 'ajuda__painel-fonte', `Fonte: ${referencia}`));
-
-  const fechar = (devolverFoco = false) => {
-    painel.hidden = true;
-    botao.setAttribute('aria-expanded', 'false');
-    document.removeEventListener('pointerdown', fecharAoClicarFora, true);
-    document.removeEventListener('keydown', fecharComTecla, true);
-    if (fecharAjudaGerenciaAtiva === fechar) fecharAjudaGerenciaAtiva = null;
-    if (devolverFoco) botao.focus();
-  };
-  const fecharAoClicarFora = (evento) => {
-    if (!raiz.contains(evento.target)) fechar();
-  };
-  const fecharComTecla = (evento) => {
-    if (evento.key === 'Escape') {
-      evento.preventDefault();
-      fechar(true);
-    }
-  };
-  const abrir = () => {
-    fecharAjudaGerenciaAtiva?.();
-    painel.hidden = false;
-    botao.setAttribute('aria-expanded', 'true');
-    document.addEventListener('pointerdown', fecharAoClicarFora, true);
-    document.addEventListener('keydown', fecharComTecla, true);
-    fecharAjudaGerenciaAtiva = fechar;
-  };
-
-  botao.addEventListener('click', () => (painel.hidden ? abrir() : fechar()));
-  raiz.append(botao, painel);
-  return raiz;
-}
-
 /** Mantém um único diálogo de ajuda e preenche-o com conteúdo vindo de dados/. */
 export function abrirAjuda(dados, conteudo) {
   const dialogo = document.querySelector('#dialogo-ajuda');
@@ -311,7 +251,7 @@ const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || ''
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
-  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia', undefined, ajudaGerencia(dados));
+  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');
 
   if (dados.meta.gerenciaConhecimento) {
