@@ -82,7 +82,7 @@ lista os dezessete, não só os ligados.
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#entrar` com as portas por natureza, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `explorar.html` | Glossário dos atributos com a referência de cada esquema e os 17 desafios, cada um com os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
@@ -100,7 +100,7 @@ lista os dezessete, não só os ligados.
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
 | `js/explorar.js` | Preenche o Explorar, o glossário e os desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
-| `js/inicio.js` | Preenche o resumo da abertura, a tarja de números, as portas por natureza e as camadas |
+| `js/inicio.js` | Preenche o resumo da abertura, a tarja de números e as camadas |
 | `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 
@@ -135,8 +135,8 @@ nativamente pelo navegador com `type="module"`.
 - A faixa de abertura compõe em duas colunas no desktop. À esquerda ficam o olho KM4SECO, título,
   resumo de `meta.subtitulo` e o botão Entrar no catálogo. À direita, uma peça visual abstrata
   original em tom verde, com os três números integrados em colunas de mesma largura. No celular, a
-  peça visual desce abaixo do texto. Abaixo da faixa, as portas de entrada por natureza são cartões
-  com a contagem, a descrição do vocabulário e o link para o catálogo já filtrado
+  peça visual desce abaixo do texto. A explicação das naturezas epistemológicas fica concentrada na
+  aba Conhecimento da seção Estrutura
 - Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
   escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
   a ser só um ponto colorido
@@ -149,8 +149,9 @@ nativamente pelo navegador com `type="module"`.
   `classificacoes.json`, da maior quantidade para a menor, hoje Explícito, Tácito-cognitivo e
   Tácito-técnico. Dentro do grupo a ordem é por identificador, e a mesma sequência vale para o
   anterior e o próximo da ficha
-- A contagem de cada natureza fica nos filtros e nas portas da abertura, e a descrição fica no
-  glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo as duas
+- A contagem de cada natureza fica nos filtros, e as definições completas ficam na aba Conhecimento
+  da seção Estrutura e no glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo
+  essas informações
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
   só o miolo rola. O topo leva o identificador, o selo da natureza, o fechar em ✕ redondo, o nome e
   a descrição, para quem desce até os estudos continuar vendo de qual conhecimento é a ficha
