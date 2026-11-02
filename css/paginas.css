@@ -956,6 +956,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
+/* Em telas amplas, a ficha privilegia a leitura contínua: cabeçalho e
+   navegação ocupam menos altura, preservando mais espaço para o conteúdo. */
+@media (min-width: 48rem) {
+  .dialogo-ficha {
+    width: min(47.5rem, calc(100vw - 3rem));
+    max-width: none;
+    max-height: 82dvh;
+  }
+  .dialogo-ficha__topo { padding: var(--esp-3) var(--esp-4); }
+  .dialogo-ficha__corpo { padding: var(--esp-3) var(--esp-4) var(--esp-4); }
+  .dialogo-ficha__rodape { padding: var(--esp-2) var(--esp-4); }
+}
 .botao[disabled] { opacity: 0.45; cursor: default; }
 .botao[disabled]:hover {
   border-color: var(--cor-linha);

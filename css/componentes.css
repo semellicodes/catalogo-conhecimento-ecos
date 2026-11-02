@@ -994,6 +994,53 @@
   .bloco-ficha__topo { margin-bottom: var(--esp-2); }
 }
 
+/* A compactação é exclusiva de desktop/notebook. No celular, os tamanhos e
+   alvos de toque continuam generosos para preservar a leitura e a interação. */
+@media (min-width: 48rem) {
+  .ficha { gap: var(--esp-3); }
+  .ficha__nome { font-size: clamp(1.375rem, 1.24rem + 0.28vw, 1.625rem); line-height: 1.12; }
+  .ficha__descricao { font-size: 0.9375rem; line-height: 1.5; }
+
+  .bloco-ficha { padding: 0.875rem 1rem; }
+  .bloco-ficha__topo { gap: var(--esp-2); margin-bottom: var(--esp-2); }
+  .bloco-ficha__titulo { font-size: 0.6875rem; }
+  .bloco-ficha__esquema { font-size: 0.6875rem; }
+  .ajuda__abrir { width: 1.375rem; height: 1.375rem; font-size: 0.6875rem; }
+
+  .classificacao { gap: var(--esp-3); }
+  .classificacao__rotulo { font-size: 0.6875rem; }
+  .classificacao__valor { font-size: 0.9375rem; }
+
+  .porque { margin-top: var(--esp-2); }
+  .porque__abrir { min-height: 2rem; padding: var(--esp-1) var(--esp-2); font-size: 0.8125rem; }
+  .porque__texto { padding: var(--esp-2); font-size: 0.8125rem; line-height: 1.5; }
+
+  .exemplos-ecos { gap: var(--esp-2); }
+  .exemplos-ecos__categoria { min-height: 2.125rem; padding: var(--esp-1) var(--esp-2); font-size: 0.8125rem; }
+  .exemplos-ecos__icone-categoria { width: 0.95rem; height: 0.95rem; }
+  .exemplos-ecos__painel { gap: var(--esp-2); padding: var(--esp-2); }
+  .exemplos-ecos__texto,
+  .exemplos-ecos__lista { font-size: 0.8125rem; line-height: 1.5; }
+  .exemplos-ecos__lista { gap: var(--esp-1); }
+
+  .gerencia__introducao { margin-bottom: var(--esp-3); font-size: 0.875rem; line-height: 1.5; }
+  .gerencia__rotulo { font-size: 0.6875rem; }
+  .gerencia__valor { margin-bottom: var(--esp-2); font-size: 0.875rem; line-height: 1.5; }
+
+  .relacoes { gap: var(--esp-2); }
+  .desafio-card,
+  .solucao-card { gap: var(--esp-2); padding: var(--esp-3); font-size: 0.8125rem; }
+  .desafio-card__titulo { font-size: 0.875rem; line-height: 1.35; }
+  .desafio-card__descricao { line-height: 1.45; }
+  .desafio-card__acessar,
+  .solucao-card__acessar,
+  .estudo__acessar { min-height: 2rem; padding: 0.25rem 0.5rem; font-size: 0.6875rem; }
+
+  .estudo { gap: var(--esp-2); padding-block: var(--esp-2); font-size: 0.8125rem; }
+  .estudo__titulo { line-height: 1.3; }
+  .estudo__meta { font-size: 0.6875rem; }
+}
+
 .porque {
   margin-top: var(--esp-3);
   overflow: clip;
