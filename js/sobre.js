@@ -9,10 +9,8 @@ async function iniciar() {
     const dados = await carregar();
     el('#sobre-conhecimentos').textContent = String(dados.conhecimentos.length);
     el('#sobre-estudos').textContent = String(dados.meta.totalEstudos);
-    el('#sobre-fonte').textContent = dados.meta.fonte;
   } catch (erro) {
     console.error(erro);
-    el('#sobre-fonte').textContent = 'Não foi possível carregar os dados da pesquisa.';
   }
 }
 
