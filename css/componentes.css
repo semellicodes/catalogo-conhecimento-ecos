@@ -71,6 +71,33 @@
   }
 }
 
+/* No celular, a marca divide a única linha do cabeçalho com os controles.
+   O texto encolhe de forma explícita — jamais empurra menu e tema para fora. */
+@media (max-width: 47.99rem) {
+  .cabecalho__interno {
+    grid-template-areas: "marca acoes";
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 60px;
+    gap: var(--esp-3);
+    padding-inline: clamp(var(--esp-4), 5vw, var(--esp-5));
+  }
+  .marca {
+    width: 100%;
+    min-width: 0;
+    padding-block: 0;
+  }
+  .marca__nome {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cabecalho__acoes { gap: var(--esp-2); }
+  .menu { width: 42px; height: 42px; }
+  .interruptor { height: 42px; }
+}
+
 /* ---------- Interruptor de tema ---------- */
 /* Pílula com trilho, dois ícones fixos e um deslizante que anda entre eles.
    O estado mora no aria-pressed, que é o mesmo que o leitor de tela anuncia,

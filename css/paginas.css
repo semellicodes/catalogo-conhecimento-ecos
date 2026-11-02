@@ -26,8 +26,9 @@
   }
 }
 @media (max-width: 43.99rem) {
+  .abertura { padding-block: var(--esp-6); }
   .abertura__interno,
-  .abertura__principal { gap: var(--esp-5); }
+  .abertura__principal { gap: var(--esp-4); }
   .abertura__painel {
     max-width: var(--largura-painel-abertura-compacto);
     justify-self: center;
@@ -136,6 +137,25 @@
 @media (min-width: 42rem) {
   .abertura__acoes { width: auto; }
   .abertura__acao { flex: 0 1 auto; min-width: 12rem; }
+}
+
+/* Regras após a escala base: no celular o título usa toda a largura útil e
+   as duas ações se tornam alvos largos, sem herdar a composição do desktop. */
+@media (max-width: 43.99rem) {
+  .abertura__titulo {
+    max-width: none;
+    font-size: clamp(1.875rem, 7.5vw, 2.375rem);
+  }
+  .abertura__resumo {
+    max-width: 42ch;
+    font-size: clamp(0.9375rem, 3.9vw, 1rem);
+    line-height: 1.6;
+  }
+  .abertura__acoes { gap: var(--esp-2); }
+  .abertura__acao {
+    flex-basis: 100%;
+    min-height: var(--alvo-toque);
+  }
 }
 
 .secao { padding-block: var(--esp-secao); }
@@ -447,7 +467,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (max-width: 39.99rem) {
   .estrutura__mapa { aspect-ratio: 4 / 3; margin-top: var(--esp-5); padding: var(--esp-3); }
   .estrutura__navegacao { grid-template-columns: repeat(2, minmax(0, 1fr)); width: var(--largura-cheia); }
-  .estrutura__aba { padding-inline: var(--esp-2); white-space: normal; }
+  .estrutura__aba {
+    display: grid;
+    place-items: center;
+    min-height: 48px;
+    padding: var(--esp-1) var(--esp-2);
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+  }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); padding: var(--esp-4); }
   .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
@@ -796,6 +824,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .dialogo-ficha.dialogo-ficha--entrando { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 @starting-style {
   .dialogo-ficha[open] { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
+}
+@media (max-width: 47.99rem) {
+  .dialogo-ficha {
+    width: calc(100dvw - var(--esp-4) * 2);
+    max-width: none;
+    max-height: calc(100dvh - var(--esp-4) * 2);
+    margin-inline: var(--esp-4);
+  }
 }
 
 .dialogo-ficha::backdrop {
