@@ -55,7 +55,9 @@ function iconeEstrutura(nome) {
   return icone;
 }
 
-function definicaoComExemplo(descricao = '') {
+function definicaoComExemplo(valor) {
+  const { descricao = '', exemplos } = valor;
+  if (exemplos) return { descricao, exemplo: exemplos };
   const marcador = 'Incluem, por exemplo,';
   const indice = descricao.indexOf(marcador);
   if (indice < 0) return { descricao };
@@ -75,7 +77,7 @@ function cabecalhoComIcone(icone, titulo, classe) {
 
 function blocoConhecimento(valor) {
   const bloco = criar('section', 'estrutura__natureza');
-  const { descricao, exemplo } = definicaoComExemplo(valor.descricao);
+  const { descricao, exemplo } = definicaoComExemplo(valor);
   const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho');
   const conteudo = criar('div', 'estrutura__natureza-conteudo');
   const definicao = criar('div', 'estrutura__natureza-definicao');
@@ -242,11 +244,15 @@ function composicaoClassificacao(dados, definicao, consultarConhecimento) {
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  return painel(definicao, aba, definicao.introducao, [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
+  const resultado = painel(definicao, aba, definicao.introducao, [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
+  resultado.classList.add('estrutura__painel--conhecimento');
+  return resultado;
 }
 
 function explicacaoClassificacao(dados, aba, definicao, selecionar) {
-  return painel(definicao, aba, definicao.introducao, [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
+  const resultado = painel(definicao, aba, definicao.introducao, [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
+  resultado.classList.add('estrutura__painel--classificacao');
+  return resultado;
 }
 
 function explicacaoGerencia(dados, aba, definicao) {

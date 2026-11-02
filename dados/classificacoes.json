@@ -13,12 +13,14 @@
       {
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
-        "descricao": "São conhecimentos que envolvem percepções, interpretações e formas de compreender situações, desenvolvidas pelos participantes do ecossistema. Incluem, por exemplo, o entendimento das necessidades dos parceiros e o reconhecimento das competências de outros participantes."
+        "descricao": "São conhecimentos que envolvem percepções, interpretações e formas de compreender situações, desenvolvidas pelos participantes do ecossistema.",
+        "exemplos": "Entendimento das necessidades dos parceiros e reconhecimento das competências de outros participantes."
       },
       {
         "valor": "Tácito-técnico",
         "tituloPorta": "Conhecimentos tácito-técnicos",
-        "descricao": "São conhecimentos que envolvem habilidades práticas adquiridas pela experiência e pela realização de atividades. Incluem, por exemplo, a capacidade de avaliar a adequação de soluções técnicas a diferentes situações e a experiência acumulada no uso de tecnologias do ecossistema."
+        "descricao": "São conhecimentos que envolvem habilidades práticas adquiridas pela experiência e pela realização de atividades.",
+        "exemplos": "Capacidade de avaliar a adequação de soluções técnicas a diferentes situações e experiência acumulada no uso de tecnologias do ecossistema."
       }
     ]
   },

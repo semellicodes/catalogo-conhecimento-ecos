@@ -280,6 +280,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-base);
   line-height: 1.6;
 }
+.estrutura__painel--conhecimento .estrutura__painel-intro,
+.estrutura__painel--classificacao .estrutura__painel-intro,
 .estrutura__painel--gerencia .estrutura__painel-intro {
   width: var(--largura-cheia);
   max-width: none;
