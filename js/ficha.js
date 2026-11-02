@@ -76,6 +76,53 @@ function linkDoEstudo(estudo) {
   return link;
 }
 
+function iconeCategoriaEcos(categoria) {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'exemplos-ecos__icone-categoria');
+
+  if (categoria === 'ECOS de Código Aberto') {
+    svg.append(traco('path', { d: 'm7 5-4 5 4 5M13 5l4 5-4 5M11.5 3l-3 14' }));
+  } else if (categoria === 'ECOS Híbrido') {
+    svg.append(
+      traco('path', { d: 'm10 3 6 3.5-6 3.5L4 6.5 10 3Z' }),
+      traco('path', { d: 'm4 10 6 3.5 6-3.5' }),
+      traco('path', { d: 'm4 13.5 6 3.5 6-3.5' })
+    );
+  } else {
+    svg.append(traco('rect', { x: 4.5, y: 8, width: 11, height: 8, rx: 1.5 }), traco('path', { d: 'M7 8V6a3 3 0 0 1 6 0v2' }));
+  }
+  return svg;
+}
+
+function autoresDoEstudo(estudo) {
+  const pessoas = estudo.autores.includes(';')
+    ? estudo.autores.split(';').map((pessoa) => pessoa.trim())
+    : estudo.autores.split(',').map((pessoa) => pessoa.trim());
+  const sobrenome = (pessoa) => pessoa.includes(',') ? pessoa.split(',')[0].trim() : pessoa.split(/\s+/).at(-1);
+  if (pessoas.length === 1) return sobrenome(pessoas[0]);
+  if (pessoas.length === 2) return `${sobrenome(pessoas[0])} e ${sobrenome(pessoas[1])}`;
+  return `${sobrenome(pessoas[0])} et al.`;
+}
+
+const NOMES_ECOSSISTEMAS = {
+  E01: 'Apple, Android, SAP, Salesforce e Oracle',
+  E02: 'PaddlePaddle, Apollo, openEuler, OpenHarmony, MindSpore, openGauss e EdgeGallery',
+  E03: 'Astropy', E04: 'Nexus Mods', E05: 'OSDU', E06: 'SAP Business Technology Platform',
+  E07: 'Oskari, Decidim e PloneGov', E08: 'Node.js e E-SECO', E10: 'Ecossistema proprietário do setor de seguros',
+  E11: 'OpenStack', E12: 'SAP Cloud Platform e SAP Developer Community',
+  E13: 'Go, npm, Bower, PyPI, RubyGems, Packagist e Maven',
+  E15: 'Portal do Software Público Brasileiro e 4CMBr', E16: 'Ecossistema industrial de cidade inteligente',
+  E17: 'Eclipse e Eclipse Marketplace', E18: 'Indústria de software empacotado',
+  'E09:ECOS de Código Aberto': 'WordPress', 'E09:ECOS Híbrido': 'Magento', 'E09:ECOS Proprietário': 'Shopify'
+};
+
+function nomeDoEcossistema(estudo, categoria) {
+  return NOMES_ECOSSISTEMAS[`${estudo.id}:${categoria}`] || NOMES_ECOSSISTEMAS[estudo.id];
+}
+
 /** Os exemplos nascem apenas dos estudos já ligados a cada conhecimento. */
 function exemplosDeEcos(conhecimento) {
   const grupos = new Map();
@@ -91,8 +138,6 @@ function exemplosDeEcos(conhecimento) {
       });
     });
 
-  if (!grupos.size) return criar('p', 'vazio', 'Não há exemplos de ECOS registrados nos estudos associados a este conhecimento.');
-
   const raiz = criar('div', 'exemplos-ecos');
   const painel = criar('div', 'exemplos-ecos__painel');
   const idPainel = `exemplos-ecos-${conhecimento.id}`;
@@ -100,36 +145,44 @@ function exemplosDeEcos(conhecimento) {
 
   function mostrar(categoria) {
     painel.replaceChildren();
-    grupos.get(categoria).forEach((estudo, indice) => {
-      const paragrafo = criar('p', 'exemplos-ecos__texto');
-      paragrafo.append(`${indice ? 'Esse conhecimento também foi observado' : 'Esse conhecimento foi observado'} ${estudo.contextoEcos}. `, linkDoEstudo(estudo));
-      painel.append(paragrafo);
+    const estudos = grupos.get(categoria) || [];
+    if (!estudos.length) {
+      painel.append(criar('p', 'exemplos-ecos__texto', `Nenhum exemplo de ${categoria} foi relatado nos estudos primários associados a este conhecimento. Isso reflete o escopo da literatura analisada, não a inaplicabilidade do conhecimento a esse tipo de ECOS.`));
+      return;
+    }
+
+    painel.append(criar('p', 'exemplos-ecos__texto', `Esse conhecimento foi observado em ${categoria}, especialmente em contextos nos quais o conhecimento associado aparece nas práticas, tecnologias ou interações do ecossistema. Os estudos abaixo identificaram esse conhecimento nos seguintes ${categoria}:`));
+    const listaEstudos = criar('ul', 'exemplos-ecos__lista');
+    estudos.forEach((estudo) => {
+      const item = criar('li', 'exemplos-ecos__item');
+      const autoria = criar('strong', '', `${autoresDoEstudo(estudo)} (${estudo.ano}): `);
+      const ecossistema = criar('strong', '', `${nomeDoEcossistema(estudo, categoria)}.`);
+      item.append(autoria, ecossistema, ' ', linkDoEstudo(estudo));
+      listaEstudos.append(item);
     });
+    painel.append(listaEstudos);
   }
 
   const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Híbrido', 'ECOS Proprietário'];
-  const categorias = ordemCategorias.filter((categoria) => grupos.has(categoria));
-  if (categorias.length) {
-    const lista = criar('div', 'exemplos-ecos__categorias');
-    lista.setAttribute('role', 'group');
-    lista.setAttribute('aria-label', 'Categorias de ECOS observados');
-    lista.style.setProperty('--quantidade-categorias', categorias.length);
-    categorias.forEach((categoria, indice) => {
-      const botao = criar('button', 'exemplos-ecos__categoria', categoria);
-      botao.type = 'button';
-      botao.setAttribute('aria-controls', idPainel);
-      botao.setAttribute('aria-pressed', String(indice === 0));
-      botao.addEventListener('click', () => {
-        lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-pressed', 'false'));
-        botao.setAttribute('aria-pressed', 'true');
-        mostrar(categoria);
-      });
-      lista.append(botao);
+  const lista = criar('div', 'exemplos-ecos__categorias');
+  lista.setAttribute('role', 'group');
+  lista.setAttribute('aria-label', 'Categorias de ECOS observados');
+  ordemCategorias.forEach((categoria, indice) => {
+    const botao = criar('button', 'exemplos-ecos__categoria');
+    botao.type = 'button';
+    botao.setAttribute('aria-controls', idPainel);
+    botao.setAttribute('aria-pressed', String(indice === 0));
+    botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria));
+    botao.addEventListener('click', () => {
+      lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-pressed', 'false'));
+      botao.setAttribute('aria-pressed', 'true');
+      mostrar(categoria);
     });
-    raiz.append(lista);
-  }
+    lista.append(botao);
+  });
+  raiz.append(lista);
 
-  mostrar(categorias[0]);
+  mostrar(ordemCategorias[0]);
   raiz.append(painel);
   return raiz;
 }
