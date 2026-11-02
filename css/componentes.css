@@ -862,7 +862,7 @@
   transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
 .exemplos-ecos__categoria:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
-.exemplos-ecos__categoria[aria-pressed="true"] {
+.exemplos-ecos__categoria[aria-expanded="true"] {
   background: color-mix(in srgb, var(--cor-acento-fundo) 72%, transparent);
   border-color: var(--cor-acento);
   color: var(--cor-acento);

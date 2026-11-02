@@ -142,6 +142,7 @@ function exemplosDeEcos(conhecimento) {
   const painel = criar('div', 'exemplos-ecos__painel');
   const idPainel = `exemplos-ecos-${conhecimento.id}`;
   painel.id = idPainel;
+  painel.hidden = true;
 
   function mostrar(categoria) {
     painel.replaceChildren();
@@ -167,22 +168,27 @@ function exemplosDeEcos(conhecimento) {
   const lista = criar('div', 'exemplos-ecos__categorias');
   lista.setAttribute('role', 'group');
   lista.setAttribute('aria-label', 'Categorias de ECOS observados');
-  ordemCategorias.forEach((categoria, indice) => {
+  ordemCategorias.forEach((categoria) => {
     const botao = criar('button', 'exemplos-ecos__categoria');
     botao.type = 'button';
     botao.setAttribute('aria-controls', idPainel);
-    botao.setAttribute('aria-pressed', String(indice === 0));
+    botao.setAttribute('aria-expanded', 'false');
     botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria));
     botao.addEventListener('click', () => {
-      lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-pressed', 'false'));
-      botao.setAttribute('aria-pressed', 'true');
+      const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
+      lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
+      if (estavaAberto) {
+        painel.hidden = true;
+        return;
+      }
+      botao.setAttribute('aria-expanded', 'true');
       mostrar(categoria);
+      painel.hidden = false;
     });
     lista.append(botao);
   });
   raiz.append(lista);
 
-  mostrar(ordemCategorias[0]);
   raiz.append(painel);
   return raiz;
 }
