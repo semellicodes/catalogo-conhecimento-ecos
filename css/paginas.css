@@ -761,13 +761,59 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 
 /* ---------- Página do catálogo ---------- */
-/* O catálogo começa direto pela lista. A busca continua acima dos cartões. */
-.catalogo__cabecalho { margin-bottom: var(--esp-4); }
+/* A consulta ganha uma abertura própria antes dos filtros, distinguindo o
+   catálogo do mapa conceitual sem competir com os cartões de conhecimento. */
+.catalogo__cabecalho {
+  display: grid;
+  justify-items: center;
+  max-width: 56rem;
+  margin: 0 auto var(--esp-6);
+  text-align: center;
+}
+.catalogo__olho {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding-inline: var(--esp-3);
+  color: var(--cor-acento);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  text-transform: uppercase;
+}
+.catalogo__titulo {
+  margin-top: var(--esp-3);
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-titulo);
+}
+.catalogo__intro {
+  max-width: 48rem;
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-base);
+  line-height: 1.55;
+}
+.secao-catalogo .filtros {
+  max-width: var(--largura-mapa-estrutura);
+  margin-inline: auto;
+}
 /* A barra existe só onde os filtros viram folha. Acima disso eles ficam no
    fluxo e ela não tem mais nada para carregar, depois que o contador entrou
    para dentro do bloco de filtro. */
 .catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
+  .catalogo__cabecalho {
+    justify-items: start;
+    margin-bottom: var(--esp-5);
+    text-align: left;
+  }
+  .catalogo__titulo { font-size: var(--tam-xl); }
+  .catalogo__intro { max-width: none; }
   .catalogo__barra { display: flex; align-items: center; margin-bottom: var(--esp-3); }
 }
 .vazio {
