@@ -1,10 +1,8 @@
 /**
- * Preenche a abertura, as portas de entrada por natureza e a explicação da
- * estrutura do catálogo.
+ * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
 import { carregar } from './dados.js?v=20261101-3';
-import { abrirAjuda } from './ficha.js';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -13,39 +11,6 @@ function criar(tag, className, texto) {
   if (className) elemento.className = className;
   if (texto !== undefined) elemento.textContent = texto;
   return elemento;
-}
-
-/** A contextualização fica acessível no botão de ajuda, sem alongar a abertura. */
-function ajudaDasPortas(dados) {
-  const conteudo = dados.meta.ajudas?.portasEntrada;
-  const botao = el('#abrir-ajuda-portas');
-  if (!conteudo || !botao) return;
-
-  botao.addEventListener('click', () => abrirAjuda(dados, conteudo));
-  botao.hidden = false;
-}
-
-/**
- * Uma porta de entrada por natureza epistemológica, que é a entrada principal
- * do catálogo. A contagem sai dos próprios conhecimentos e a descrição sai do
- * vocabulário, então nenhuma das duas está escrita aqui.
- *
- * O link leva ao catálogo já filtrado por aquela natureza, pela mesma query
- * string que os filtros usam.
- */
-function porta(valor, quantos) {
-  const bloco = criar('article', 'porta');
-  bloco.append(
-    criar('p', 'porta__contagem mono', String(quantos)),
-    criar('h3', 'porta__nome', valor.tituloPorta || valor.valor)
-  );
-  if (valor.descricao) bloco.append(criar('p', 'porta__texto', valor.descricao));
-
-  const link = criar('a', 'porta__link', `Ver os ${quantos}`);
-  link.href = `?natureza=${encodeURIComponent(valor.valor)}#catalogo`;
-  link.append(criar('span', 'apenas-leitor', ` conhecimentos de natureza ${valor.valor}`));
-  bloco.append(link);
-  return bloco;
 }
 
 const SVG = 'http://www.w3.org/2000/svg';
@@ -362,12 +327,6 @@ async function iniciar() {
   }
 
   el('#abertura-resumo').textContent = dados.meta.subtitulo;
-
-  const contar = (valor) => dados.conhecimentos.filter((c) => c.natureza === valor).length;
-  el('#portas').replaceChildren(
-    ...dados.classificacoes.natureza.valores.map((v) => porta(v, contar(v.valor)))
-  );
-  ajudaDasPortas(dados);
 
   abasDaEstrutura(dados);
 }
