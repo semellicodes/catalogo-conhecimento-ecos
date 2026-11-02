@@ -279,54 +279,63 @@
    então ocupa o mínimo entre o fim da página e o crédito. */
 .contato {
   border-top: var(--borda);
-  padding-block: var(--esp-6);
+  padding: var(--esp-7) 0 var(--esp-6);
+  background: var(--cor-superficie-alta);
   text-align: center;
 }
-.contato .secao__titulo { font-size: var(--tam-lg); margin-bottom: var(--esp-2); }
-.contato .secao__intro {
-  max-width: 48ch;
-  margin-inline: auto;
-  margin-bottom: var(--esp-6);
-  font-size: var(--tam-sm);
+.contato__olho {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  margin: 0;
+  padding: var(--esp-2) var(--esp-3);
+  color: var(--cor-acento);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio-pilula);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+  line-height: 1;
+}
+.contato__olho svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
+.contato__intro {
+  max-width: var(--largura-texto-contato);
+  margin: var(--esp-4) auto 0;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-base);
+  line-height: 1.6;
 }
 .contato__lista {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--esp-5) var(--esp-4);
-  max-width: 56rem;
-  margin-inline: auto;
+  max-width: var(--largura-contato);
+  margin: var(--esp-6) auto 0;
 }
 @media (min-width: 64rem) {
   .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-.pessoa { display: grid; justify-items: center; gap: var(--esp-1); }
-
-/* Sem foto por ora. O círculo com as iniciais é o que ocupa o lugar dela, e
-   entra pelos tokens do tema, sem arquivo e sem imagem externa. */
+.pessoa { display: grid; justify-items: center; align-content: start; gap: var(--esp-2); }
 .pessoa__retrato {
-  display: grid;
-  place-items: center;
   width: var(--retrato);
   height: var(--retrato);
-  margin-bottom: var(--esp-2);
-  background: var(--cor-superficie-alta);
-  border: 1px solid var(--cor-linha);
+  object-fit: cover;
+  object-position: center;
+  border: var(--borda-acento-suave);
   border-radius: var(--raio-pilula);
 }
-.pessoa__iniciais {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-sm);
-  letter-spacing: var(--entre-letras-rotulo);
-  color: var(--cor-texto-suave);
-}
+.pessoa__retrato--paula { object-position: center 42%; }
+.pessoa__retrato--mellynda { object-position: 66% 38%; }
+.pessoa__retrato--malcher { object-position: center 34%; }
+.pessoa__retrato--larissa { object-position: center 24%; }
 .pessoa__nome { font-size: var(--tam-sm); font-weight: 600; }
 .pessoa__email {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--alvo-toque);
-  font-family: var(--fonte-mono);
+  min-height: auto;
   font-size: var(--tam-xs);
   color: var(--cor-acento);
   overflow-wrap: anywhere;
@@ -336,14 +345,21 @@
 
 /* ---------- Rodapé ---------- */
 .rodape {
-  border-top: var(--borda);
-  margin-top: var(--esp-8);
-  padding-block: var(--esp-5);
-  font-family: var(--fonte-mono);
+  margin: 0;
+  padding-bottom: var(--esp-6);
+  background: var(--cor-superficie-alta);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);
 }
-.rodape__interno { display: flex; justify-content: center; gap: var(--esp-4); flex-wrap: wrap; text-align: center; }
+.rodape__interno {
+  display: flex;
+  justify-content: center;
+  max-width: var(--largura-rodape);
+  padding-top: var(--esp-5);
+  border-top: var(--borda-suave);
+  flex-wrap: wrap;
+  text-align: center;
+}
 
 /* ---------- Etiquetas ---------- */
 /* O selo da natureza no topo do diálogo da ficha. Pílula preenchida, com fundo
