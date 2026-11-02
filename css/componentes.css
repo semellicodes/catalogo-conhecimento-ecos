@@ -1147,14 +1147,24 @@
   align-items: center;
   align-self: start;
   gap: var(--esp-1);
-  color: var(--cor-acento);
+  min-height: 2rem;
+  padding: 0.35rem 0.62rem;
+  border: var(--borda);
+  border-radius: calc(var(--raio) - 0.12rem);
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
   font-weight: 600;
   line-height: 1.35;
   text-decoration: none;
   white-space: nowrap;
+  transition: color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
 }
-.estudo__acessar:hover { color: var(--cor-acento-forte); text-decoration: underline; }
+.estudo__acessar:hover {
+  background: var(--cor-acento-fundo);
+  border-color: var(--cor-acento-linha);
+  color: var(--cor-acento);
+}
 .estudo__icone-link { width: 0.9rem; height: 0.9rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 @container (max-width: 34rem) {
   .estudo { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
