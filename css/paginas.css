@@ -190,7 +190,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   place-items: center;
   width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
-  aspect-ratio: 16 / 5;
+  aspect-ratio: 16 / 4;
   margin: var(--esp-6) auto 0;
   padding: var(--esp-5);
   color: var(--cor-texto-fraco);
@@ -419,8 +419,25 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__origem-fonte { margin-top: var(--esp-2); color: var(--cor-texto-fraco); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
+.estrutura__evidencia-linha--desafios { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
+.estrutura__evidencia-linha--desafios .estrutura__evidencia-complemento { margin-top: var(--esp-2); }
+.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); }
+.estrutura__evidencia-linha--origem .estrutura__origem-estudos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--esp-2) var(--esp-3);
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-3);
+  padding-left: var(--esp-0);
+  border-top: var(--borda-suave);
+  border-left: none;
+}
+.estrutura__evidencia-linha--origem .estrutura__origem-total { margin-top: var(--esp-0); font-size: var(--tam-lg); }
+.estrutura__evidencia-linha--origem .estrutura__origem-descricao,
+.estrutura__evidencia-linha--origem .estrutura__origem-fonte { margin-top: var(--esp-0); }
 @media (min-width: 76rem) {
-  .estrutura__composicao-conhecimento { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); }
+  .estrutura__composicao-conhecimento { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); align-items: stretch; }
   .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
   .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__natureza-exemplos { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }

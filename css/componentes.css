@@ -279,7 +279,7 @@
    então ocupa o mínimo entre o fim da página e o crédito. */
 .contato {
   border-top: var(--borda);
-  padding: var(--esp-7) 0 var(--esp-6);
+  padding: var(--esp-5) 0 var(--esp-4);
   background: var(--cor-superficie-alta);
   text-align: center;
 }
@@ -301,7 +301,7 @@
 .contato__olho svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 .contato__intro {
   max-width: var(--largura-texto-contato);
-  margin: var(--esp-4) auto 0;
+  margin: var(--esp-3) auto 0;
   color: var(--cor-texto-suave);
   font-size: var(--tam-base);
   line-height: 1.6;
@@ -312,12 +312,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--esp-5) var(--esp-4);
   max-width: var(--largura-contato);
-  margin: var(--esp-6) auto 0;
+  margin: var(--esp-5) auto 0;
 }
 @media (min-width: 64rem) {
   .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-.pessoa { display: grid; justify-items: center; align-content: start; gap: var(--esp-2); }
+.pessoa { display: grid; justify-items: center; align-content: start; row-gap: var(--esp-1); }
 .pessoa__retrato {
   width: var(--retrato);
   height: var(--retrato);
@@ -325,6 +325,7 @@
   object-position: center;
   border: var(--borda-acento-suave);
   border-radius: var(--raio-pilula);
+  margin-bottom: var(--esp-1);
 }
 .pessoa__retrato--paula { object-position: center 42%; }
 .pessoa__retrato--mellynda { object-position: 66% 38%; }
@@ -346,7 +347,7 @@
 /* ---------- Rodapé ---------- */
 .rodape {
   margin: 0;
-  padding-bottom: var(--esp-6);
+  padding-bottom: var(--esp-5);
   background: var(--cor-superficie-alta);
   font-size: var(--tam-xs);
   color: var(--cor-texto-fraco);

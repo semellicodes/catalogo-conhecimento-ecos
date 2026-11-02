@@ -166,13 +166,16 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-function linhaEvidencia({ icone, titulo, descricao, complemento }) {
+function linhaEvidencia({ icone, titulo, descricao, complemento, empilhado = false }) {
   const item = criar('section', 'estrutura__evidencia-linha');
+  if (empilhado) item.classList.add('estrutura__evidencia-linha--desafios');
+  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
+  conteudo.append(criar('p', 'estrutura__evidencia-texto', descricao));
+  if (complemento) conteudo.append(criar('p', 'estrutura__evidencia-complemento', complemento));
   item.append(
     cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
-    criar('p', 'estrutura__evidencia-texto', descricao)
+    conteudo
   );
-  if (complemento) item.append(criar('p', 'estrutura__evidencia-complemento', complemento));
   return item;
 }
 
@@ -195,12 +198,13 @@ function composicaoEvidencias(dados, definicao) {
     criar('p', 'estrutura__origem-descricao', cartoes.estudosDescricao),
     criar('p', 'estrutura__origem-fonte', base?.conteudo)
   );
-  origem.append(texto, estudos);
+  texto.append(estudos);
+  origem.append(texto);
 
   composicao.append(
     origem,
     linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
-    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
+    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento, empilhado: true })
   );
   return composicao;
 }
