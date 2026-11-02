@@ -24,9 +24,15 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  min-block-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
   margin: 0;
   background: var(--cor-fundo);
   color: var(--cor-texto);
@@ -34,6 +40,8 @@ body {
   font-size: var(--tam-base);
   line-height: 1.6;
 }
+
+#conteudo { flex: 1 0 auto; }
 
 h1, h2, h3, h4 {
   margin: 0;

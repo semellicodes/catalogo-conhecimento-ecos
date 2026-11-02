@@ -278,6 +278,7 @@
 /* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
    então ocupa o mínimo entre o fim da página e o crédito. */
 .contato {
+  flex: none;
   border-top: var(--borda);
   padding: var(--esp-5) var(--esp-0) var(--esp-4);
   background: var(--cor-superficie-alta);
@@ -351,6 +352,7 @@
 
 /* ---------- Rodapé ---------- */
 .rodape {
+  flex: none;
   margin: 0;
   padding-bottom: var(--esp-4);
   background: var(--cor-superficie-alta);
