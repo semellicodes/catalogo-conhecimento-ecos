@@ -3,6 +3,7 @@
     "id": "D01",
     "icone": "search",
     "desafio": "Localizar o conhecimento registrado, já que o canal não garante que ele chegue a quem precisa",
+    "explicacao": "Esse desafio ocorre quando o conhecimento já registrado não é localizado pelos participantes que precisam utilizá-lo. A dificuldade de encontrá-lo reduz o acesso oportuno a informações relevantes para a colaboração e a tomada de decisão no ECOS.",
     "estudos": [
       "E06",
       "E09"
@@ -17,6 +18,7 @@
     "id": "D02",
     "icone": "user-search",
     "desafio": "Identificar quem detém o conhecimento, concentrado em poucas pessoas do ecossistema",
+    "explicacao": "Esse desafio ocorre quando conhecimentos relevantes permanecem concentrados em poucas pessoas do ecossistema. Essa dependência dificulta o acesso ao conhecimento e torna a continuidade das atividades mais vulnerável.",
     "estudos": [
       "E08",
       "E10"
@@ -30,6 +32,7 @@
     "id": "D03",
     "icone": "share-2",
     "desafio": "Sistematizar o compartilhamento, hoje fragmentado entre os atores do ecossistema",
+    "explicacao": "Esse desafio ocorre quando o compartilhamento de conhecimento acontece de forma fragmentada entre os atores do ecossistema. A ausência de sistematização dificulta a circulação, o reuso e o aprendizado coletivo.",
     "estudos": [
       "E15",
       "E17"
@@ -43,6 +46,7 @@
     "id": "D04",
     "icone": "scale",
     "desafio": "Superar a mentalidade proprietária e a dominância percebida entre organizações",
+    "explicacao": "Esse desafio ocorre quando organizações preservam práticas e informações de forma proprietária ou percebem relações de poder desiguais. Isso reduz a confiança e dificulta o compartilhamento de conhecimento entre os participantes do ECOS.",
     "estudos": [
       "E05"
     ],
@@ -55,6 +59,7 @@
     "id": "D05",
     "icone": "circle-alert",
     "desafio": "Reduzir o receio de desvalorização do conhecimento contribuído entre participantes",
+    "explicacao": "Esse desafio ocorre quando participantes receiam que o conhecimento compartilhado seja desvalorizado ou apropriado sem reconhecimento. Esse receio reduz a disposição para contribuir e enfraquece a troca de conhecimento no ECOS.",
     "estudos": [
       "E02"
     ],
@@ -64,6 +69,7 @@
     "id": "D06",
     "icone": "history",
     "desafio": "Reter conhecimento de discussões distantes no tempo, hoje agregadas manualmente por veteranos",
+    "explicacao": "Esse desafio ocorre quando conhecimentos gerados em discussões anteriores permanecem dispersos e dependem da memória de participantes experientes. A recuperação manual dificulta preservar aprendizados e reutilizá-los ao longo do tempo.",
     "estudos": [
       "E03"
     ],
@@ -75,6 +81,7 @@
     "id": "D07",
     "icone": "users-round",
     "desafio": "Aproveitar o conhecimento experiencial diante do baixo engajamento comunitário",
+    "explicacao": "Esse desafio ocorre quando o baixo engajamento da comunidade limita a troca de experiências entre participantes. Como resultado, conhecimentos práticos deixam de circular e de apoiar novas contribuições no ECOS.",
     "estudos": [
       "E04"
     ],
@@ -86,6 +93,7 @@
     "id": "D08",
     "icone": "columns-2",
     "desafio": "Romper os silos entre equipes, que reduzem a visibilidade das decisões no ecossistema",
+    "explicacao": "Esse desafio ocorre quando decisões e informações permanecem isoladas em equipes ou organizações. A baixa visibilidade dificulta a coordenação, o aprendizado coletivo e o reuso de conhecimento no ECOS.",
     "estudos": [
       "E05"
     ],
@@ -97,6 +105,7 @@
     "id": "D09",
     "icone": "lock-keyhole",
     "desafio": "Superar as barreiras de paywalls no acesso aos recursos de conhecimento",
+    "explicacao": "Esse desafio ocorre quando paywalls ou outras restrições limitam o acesso a recursos de conhecimento. A barreira impede que participantes consultem informações necessárias para resolver problemas e atuar no ECOS.",
     "estudos": [
       "E06"
     ],
@@ -109,6 +118,7 @@
     "id": "D10",
     "icone": "graduation-cap",
     "desafio": "Capacitar juniores a avaliar soluções obtidas em fóruns antes de aplicá-las",
+    "explicacao": "Esse desafio ocorre quando participantes menos experientes precisam aplicar soluções encontradas em fóruns sem capacidade suficiente para avaliá-las. Isso pode levar ao uso inadequado de informações e comprometer a qualidade das decisões técnicas.",
     "estudos": [
       "E06"
     ],
@@ -120,6 +130,7 @@
     "id": "D11",
     "icone": "gauge",
     "desafio": "Aliviar a sobrecarga da organização central diante da relutância dos membros em contribuir",
+    "explicacao": "Esse desafio ocorre quando a organização central concentra atividades porque outros membros relutam em contribuir. A sobrecarga reduz a capacidade de manter e compartilhar conhecimento de forma distribuída.",
     "estudos": [
       "E07"
     ],
@@ -131,6 +142,7 @@
     "id": "D12",
     "icone": "handshake",
     "desafio": "Manter parceiros engajados apesar das exigências dos processos de licitação",
+    "explicacao": "Esse desafio ocorre quando exigências de processos de licitação dificultam a participação contínua de parceiros. A descontinuidade enfraquece os vínculos de colaboração e o compartilhamento de conhecimento no ECOS.",
     "estudos": [
       "E07"
     ],
@@ -140,6 +152,7 @@
     "id": "D13",
     "icone": "file-warning",
     "desafio": "Suprir a insuficiência da documentação diante de problemas específicos dos atores",
+    "explicacao": "Esse desafio ocorre quando a documentação disponível não atende às necessidades específicas dos participantes. Sem orientação contextualizada, torna-se mais difícil aplicar conhecimentos e tomar decisões adequadas no ECOS.",
     "estudos": [
       "E09"
     ],
@@ -152,6 +165,7 @@
     "id": "D14",
     "icone": "message-circle",
     "desafio": "Sustentar programas de mentoria diante da limitação de recursos disponíveis",
+    "explicacao": "Esse desafio ocorre quando recursos limitados dificultam a continuidade de programas de mentoria. Isso reduz o apoio à integração de participantes e à transmissão de conhecimentos práticos no ECOS.",
     "estudos": [
       "E11"
     ],
@@ -163,6 +177,7 @@
     "id": "D15",
     "icone": "file-pen",
     "desafio": "Corrigir informações ausentes, enganosas ou desatualizadas na documentação técnica",
+    "explicacao": "Esse desafio ocorre quando a documentação técnica contém informações ausentes, enganosas ou desatualizadas. A inconsistência compromete a orientação dos participantes e o uso confiável do conhecimento no ECOS.",
     "estudos": [
       "E12"
     ],
@@ -175,6 +190,7 @@
     "id": "D16",
     "icone": "messages-square",
     "desafio": "Integrar o conhecimento disperso entre múltiplos canais de comunicação do ecossistema",
+    "explicacao": "Esse desafio ocorre quando o conhecimento fica disperso entre múltiplos canais de comunicação. A fragmentação dificulta localizar, integrar e reutilizar informações produzidas pelos participantes do ECOS.",
     "estudos": [
       "E13"
     ],
@@ -184,6 +200,7 @@
     "id": "D17",
     "icone": "scale",
     "desafio": "Equilibrar a tensão entre a propriedade da informação e a disposição para compartilhá-la",
+    "explicacao": "Esse desafio ocorre quando preocupações com a propriedade da informação entram em tensão com a disposição para compartilhá-la. O equilíbrio entre esses interesses afeta a disponibilidade de conhecimento para os participantes do ECOS.",
     "estudos": [
       "E14"
     ],

@@ -394,46 +394,40 @@ function iconeInformacao() {
   return svg;
 }
 
-/**
- * Uma relação de desafio. A linha continua de uma linha só, e o
- * que sustenta a ligação com este conhecimento fica atrás dela, aberto por quem
- * quiser saber.
- */
-function linhaRelacao({ id, texto, estudos, icone }, evidencia) {
-  const item = criar('li');
-  const caixa = criar('details', 'relacao');
+function acessoAosEstudos(desafio, conhecimento) {
+  const estudos = conhecimento.estudosResolvidos
+    .filter((estudo) => desafio.estudos.includes(estudo.id) && estudo.url);
+  if (!estudos.length) return document.createDocumentFragment();
 
-  const linha = criar('summary', 'relacao__linha');
-  const conteudo = criar('span', 'relacao__conteudo');
-  const meta = criar('span', 'relacao__meta');
-  meta.append(criar('span', 'relacao__estudos', estudos.join(', ')));
-  conteudo.append(
-    criar('span', 'codigo-id', id),
-    criar('span', 'relacao__nome', texto),
-    meta
+  const acessar = criar('a', 'desafio-card__acessar', estudos.length > 1 ? 'Acessar estudos' : 'Acessar estudo');
+  acessar.href = estudos[0].url;
+  acessar.target = '_blank';
+  acessar.rel = 'noopener noreferrer';
+  acessar.setAttribute('aria-label', `${estudos.length > 1 ? 'Acessar estudos associados' : 'Acessar estudo associado'} ao desafio ${desafio.id}`);
+  if (estudos.length > 1) acessar.title = 'Abre o primeiro estudo associado; os demais estão listados na seção de estudos primários.';
+  acessar.append(iconeLinkExterno());
+  return acessar;
+}
+
+/** Cada desafio aparece como um cartão de leitura direta, sem repetir evidências. */
+function linhaDesafio(desafio, conhecimento) {
+  const item = criar('li', 'desafio-card');
+  const conteudo = criar('div', 'desafio-card__conteudo');
+  const cabecalho = criar('div', 'desafio-card__cabecalho');
+  cabecalho.append(
+    criar('span', 'codigo-id', desafio.id),
+    criar('h4', 'desafio-card__titulo', desafio.desafio)
   );
-  linha.append(iconeDesafio(icone), conteudo);
-  caixa.append(linha);
-
-  if (evidencia) {
-    const porque = criar('div', 'relacao__porque');
-    if (evidencia.estudo) {
-      porque.append(criar('p', 'relacao__confirmacao', `Confirmado em ${evidencia.estudo}`));
-    }
-    if (evidencia.motivo) porque.append(criar('p', 'relacao__motivo', evidencia.motivo));
-    caixa.append(porque);
-  }
-
-  item.append(caixa);
+  conteudo.append(
+    cabecalho,
+    criar('p', 'desafio-card__descricao', desafio.explicacao || desafio.desafio)
+  );
+  item.append(iconeDesafio(desafio.icone), conteudo, acessoAosEstudos(desafio, conhecimento));
   return item;
 }
 
-const linhaDesafio = (d, evidencia) =>
-  linhaRelacao({ id: d.id, texto: d.desafio, estudos: d.estudos, icone: d.icone }, evidencia);
-
 /** Os desafios confirmados deste conhecimento. */
 function desafios(conhecimento) {
-  const evidencia = conhecimento.evidencia || {};
   const bloco = criar('div', 'relacoes-bloco');
   if (!conhecimento.desafiosResolvidos.length) {
     const aviso = criar('div', 'relacoes__vazio');
@@ -446,7 +440,7 @@ function desafios(conhecimento) {
     return bloco;
   }
   const lista = criar('ul', 'relacoes');
-  conhecimento.desafiosResolvidos.forEach((d) => lista.append(linhaDesafio(d, evidencia[d.id])));
+  conhecimento.desafiosResolvidos.forEach((d) => lista.append(linhaDesafio(d, conhecimento)));
   bloco.append(lista);
   return bloco;
 }
