@@ -166,9 +166,8 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-function linhaEvidencia({ icone, titulo, descricao, complemento, empilhado = false }) {
+function linhaEvidencia({ icone, titulo, descricao, complemento }) {
   const item = criar('section', 'estrutura__evidencia-linha');
-  if (empilhado) item.classList.add('estrutura__evidencia-linha--desafios');
   const conteudo = criar('div', 'estrutura__evidencia-conteudo');
   conteudo.append(criar('p', 'estrutura__evidencia-texto', descricao));
   if (complemento) conteudo.append(criar('p', 'estrutura__evidencia-complemento', complemento));
@@ -198,14 +197,15 @@ function composicaoEvidencias(dados, definicao) {
     criar('p', 'estrutura__origem-descricao', cartoes.estudosDescricao),
     criar('p', 'estrutura__origem-fonte', base?.conteudo)
   );
-  texto.append(estudos);
-  origem.append(texto);
+  origem.append(texto, estudos);
 
-  composicao.append(
-    origem,
+  const secundarios = criar('div', 'estrutura__evidencias-secundarias');
+  secundarios.append(
     linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
-    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento, empilhado: true })
+    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
   );
+
+  composicao.append(origem, secundarios);
   return composicao;
 }
 
@@ -285,13 +285,15 @@ function explicacaoClassificacao(dados, aba, definicao, selecionar) {
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
-  return painel(
+  const resultado = painel(
     definicao,
     aba,
     dados.meta.gerenciaConhecimento,
     [composicaoGerencia(definicao.campos, definicao.nota)],
     'estrutura__grade--gerencia'
   );
+  resultado.classList.add('estrutura__painel--gerencia');
+  return resultado;
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {

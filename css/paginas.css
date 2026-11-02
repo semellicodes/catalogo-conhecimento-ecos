@@ -280,6 +280,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-base);
   line-height: 1.6;
 }
+.estrutura__painel--gerencia .estrutura__painel-intro {
+  width: var(--largura-cheia);
+  max-width: none;
+  box-sizing: border-box;
+}
 .estrutura__aviso {
   max-width: var(--largura-texto);
   margin: var(--esp-4) 0 0;
@@ -402,40 +407,25 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__nota-icone svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
 .estrutura__nota-texto { margin-top: var(--esp-1); }
 .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+.estrutura__composicao-evidencias { display: grid; gap: var(--esp-4); }
 .estrutura__evidencia-linha {
   display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 2.22fr);
-  gap: var(--esp-5);
+  align-content: start;
+  gap: var(--esp-3);
   padding: var(--esp-4);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
   border-top: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
-.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1.55fr) minmax(12rem, 0.85fr); }
+.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 1fr); gap: var(--esp-5); }
 .estrutura__origem-estudos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
 .estrutura__origem-total { margin-top: var(--esp-1); color: var(--cor-acento); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
 .estrutura__origem-descricao { margin-top: var(--esp-2); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__origem-fonte { margin-top: var(--esp-2); color: var(--cor-texto-fraco); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
-.estrutura__evidencia-linha--desafios { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-.estrutura__evidencia-linha--desafios .estrutura__evidencia-complemento { margin-top: var(--esp-2); }
-.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); }
-.estrutura__evidencia-linha--origem .estrutura__origem-estudos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--esp-2) var(--esp-3);
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-3);
-  padding-left: var(--esp-0);
-  border-top: var(--borda-suave);
-  border-left: none;
-}
-.estrutura__evidencia-linha--origem .estrutura__origem-total { margin-top: var(--esp-0); font-size: var(--tam-lg); }
-.estrutura__evidencia-linha--origem .estrutura__origem-descricao,
-.estrutura__evidencia-linha--origem .estrutura__origem-fonte { margin-top: var(--esp-0); }
+.estrutura__evidencias-secundarias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); align-items: stretch; }
 @media (min-width: 76rem) {
   .estrutura__composicao-conhecimento { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); align-items: stretch; }
   .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
@@ -445,11 +435,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (max-width: 69.99rem) {
   .estrutura__natureza,
   .estrutura__atributo-classificacao,
-  .estrutura__evidencia-linha,
   .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+  .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: var(--esp-0); border-top: var(--borda-suave); border-left: none; }
+  .estrutura__evidencias-secundarias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 39.99rem) {
