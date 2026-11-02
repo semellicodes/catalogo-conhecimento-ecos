@@ -448,13 +448,71 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencias-secundarias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); align-items: stretch; }
-@media (min-width: 76rem) {
-  .estrutura__composicao-conhecimento { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-5); align-items: stretch; }
-  .estrutura__natureza { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-  .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .estrutura__natureza-exemplos { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+/* Em telas de trabalho, os painéis usam uma escala mais densa: as explicações
+   continuam completas, mas deixam de reservar espaço apenas decorativo. */
+@media (min-width: 48rem) {
+  .estrutura__painel { padding: 1.5rem; }
+  .estrutura__painel-intro {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .estrutura__composicao-conhecimento,
+  .estrutura__composicao-classificacao,
+  .estrutura__composicao-gerencia,
+  .estrutura__composicao-evidencias { margin-top: 1rem; }
+  .estrutura__natureza,
+  .estrutura__atributo-classificacao,
+  .estrutura__gerencia-item,
+  .estrutura__evidencia-linha { padding: 1rem; }
+  .estrutura__natureza-texto,
+  .estrutura__gerencia-texto,
+  .estrutura__evidencia-texto,
+  .estrutura__nota-texto,
+  .estrutura__categoria-classificacao-texto,
+  .estrutura__atributo-classificacao-descricao,
+  .estrutura__origem-descricao { font-size: 0.875rem; line-height: 1.5; }
+  .estrutura__natureza-cabecalho-titulo,
+  .estrutura__gerencia-cabecalho-titulo,
+  .estrutura__evidencia-cabecalho-titulo,
+  .estrutura__atributo-classificacao-cabecalho-titulo { font-size: 1rem; }
+  .estrutura__composicao-conhecimento,
+  .estrutura__composicao-classificacao,
+  .estrutura__composicao-gerencia,
+  .estrutura__composicao-evidencias { gap: 0.75rem; }
+  .estrutura__origem-total { font-size: 1.5rem; }
+  .estrutura__evidencia-fonte,
+  .estrutura__evidencia-complemento { margin-top: 0.75rem; padding-top: 0.75rem; }
+  .estrutura__nota-metodologica { gap: 0.75rem; padding: 1rem; }
 }
-@media (max-width: 69.99rem) {
+@media (min-width: 62rem) {
+  .estrutura__composicao-conhecimento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+  .estrutura__natureza,
+  .estrutura__natureza-conteudo { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .estrutura__natureza-exemplos { padding-top: 0.75rem; padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+
+  .estrutura__composicao-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+  .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+  .estrutura__categorias-classificacao,
+  .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
+  .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
+    padding-top: 0.625rem;
+    padding-left: 0;
+    border-top: var(--borda-suave);
+    border-left: 0;
+  }
+
+  .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .estrutura__composicao-evidencias { gap: 0.75rem; }
+  .estrutura__evidencia-linha--origem { gap: 1rem; }
+  .estrutura__origem-estudos { padding-left: 1rem; }
+  .estrutura__evidencias-secundarias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+}
+@media (max-width: 61.99rem) {
   .estrutura__natureza,
   .estrutura__atributo-classificacao,
   .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
