@@ -974,6 +974,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
+.estudo__link-publicacao { color: var(--cor-acento); text-decoration: none; }
+.estudo__link-publicacao:hover { color: var(--cor-acento-forte); text-decoration: underline; }
 
 /* Título que abre um assunto novo dentro da mesma página de texto, antes
    escrito como style inline em sobre.html e referencias.html. */

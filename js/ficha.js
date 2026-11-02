@@ -14,6 +14,19 @@ function criar(tag, className, texto) {
   return el;
 }
 
+function iconeLinkExterno() {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 16 16');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'estudo__icone-link');
+  svg.append(
+    traco('path', { d: 'M9 2h5v5M14 2 7.5 8.5' }),
+    traco('path', { d: 'M12 9.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3.5' })
+  );
+  return svg;
+}
+
 /* ---------- Classificação ---------- */
 
 /**
@@ -427,10 +440,11 @@ function estudos(conhecimento) {
     );
     item.append(corpo);
     if (e.url) {
-      const acessar = criar('a', 'botao estudo__acessar', 'Acessar estudo');
+      const acessar = criar('a', 'estudo__acessar', 'Acessar publicação');
       acessar.href = e.url;
       acessar.target = '_blank';
-      acessar.rel = 'noreferrer';
+      acessar.rel = 'noopener noreferrer';
+      acessar.append(iconeLinkExterno());
       item.dataset.comLink = '';
       item.append(acessar);
     }
