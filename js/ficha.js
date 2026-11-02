@@ -477,7 +477,7 @@ function estudos(conhecimento) {
     );
     item.append(corpo);
     if (e.url) {
-      const acessar = criar('a', 'estudo__acessar', 'Acessar publicação');
+      const acessar = criar('a', 'estudo__acessar', 'Acessar estudo');
       acessar.href = e.url;
       acessar.target = '_blank';
       acessar.rel = 'noopener noreferrer';

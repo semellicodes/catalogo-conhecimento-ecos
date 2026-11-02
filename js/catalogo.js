@@ -5,7 +5,7 @@
 import { carregar, conhecimentoCompleto } from './dados.js?v=20261102-6';
 import * as filtros from './filtros.js';
 import * as lista from './lista.js';
-import * as ficha from './ficha.js?v=20261102-9';
+import * as ficha from './ficha.js?v=20261102-10';
 
 const el = (seletor) => document.querySelector(seletor);
 

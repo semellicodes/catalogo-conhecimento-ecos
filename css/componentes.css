@@ -1279,13 +1279,18 @@
   .estudo__meta { font-size: 0.6875rem; }
   .estudo__acessar {
     min-height: 1.875rem;
-    padding: 0.2rem 0;
-    background: transparent;
-    border-color: transparent;
-    color: var(--cor-acento);
+    padding: 0.2rem 0.45rem;
+    background: var(--cor-superficie);
+    border-color: var(--cor-linha);
+    color: var(--cor-texto-suave);
     font-size: 0.6875rem;
   }
-  .estudo__acessar:hover { background: transparent; border-color: transparent; text-decoration: underline; }
+  .estudo__acessar:hover {
+    background: var(--cor-acento-fundo);
+    border-color: var(--cor-acento-linha);
+    color: var(--cor-acento);
+    text-decoration: none;
+  }
 }
 /* ---------- Tabela simples ---------- */
 .tabela { width: 100%; border-collapse: collapse; font-size: var(--tam-sm); }
