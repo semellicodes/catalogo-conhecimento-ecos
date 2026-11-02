@@ -76,6 +76,8 @@
   --tam-xs: clamp(0.8125rem, 0.789rem + 0.095vw, 0.875rem);
   --tam-sm: clamp(0.9375rem, 0.914rem + 0.095vw, 1rem);
   --tam-base: clamp(1rem, 0.977rem + 0.095vw, 1.0625rem);
+  --tam-contato: 0.875rem;
+  --tam-rodape: 0.75rem;
   --tam-lg: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
   --tam-xl: clamp(1.375rem, 1.143rem + 0.952vw, 2rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
@@ -126,14 +128,16 @@
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
   --coluna-id: 3.5rem;
-  --retrato: clamp(5.5rem, 7vw, 6rem);
+  --retrato: 4.5rem;
   --largura-texto-contato: 60ch;
-  --largura-contato: 56.25rem;
+  --largura-contato: 50rem;
   --largura-rodape: 52rem;
   --borda: 1px solid var(--cor-linha);
   --borda-suave: 1px solid var(--cor-linha-suave);
   --borda-acento: 2px solid var(--cor-acento-linha);
   --borda-acento-suave: 1px solid var(--cor-acento-linha);
+  --aro-retrato: 0 0 0 var(--esp-1) color-mix(in srgb, var(--cor-acento) 28%, transparent);
+  --aro-retrato-hover: 0 0 0 var(--esp-1) color-mix(in srgb, var(--cor-acento) 44%, transparent);
   --borda-faixa: 1px solid var(--cor-faixa-linha);
   --raio: 10px;
   --raio-pilula: 999px;

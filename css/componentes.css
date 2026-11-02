@@ -303,7 +303,7 @@
   max-width: var(--largura-texto-contato);
   margin: var(--esp-3) auto 0;
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
+  font-size: var(--tam-contato);
   line-height: 1.6;
 }
 .contato__lista {
@@ -325,13 +325,15 @@
   object-position: center;
   border: var(--borda-acento-suave);
   border-radius: var(--raio-pilula);
+  box-shadow: var(--aro-retrato);
   margin-bottom: var(--esp-1);
+  transition: border-color var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
 }
 .pessoa__retrato--paula { object-position: center 42%; }
 .pessoa__retrato--mellynda { object-position: 66% 38%; }
 .pessoa__retrato--malcher { object-position: center 34%; }
 .pessoa__retrato--larissa { object-position: center 24%; }
-.pessoa__nome { font-size: var(--tam-sm); font-weight: 600; }
+.pessoa__nome { font-size: var(--tam-contato); font-weight: 600; }
 .pessoa__email {
   display: inline-flex;
   align-items: center;
@@ -343,13 +345,16 @@
   transition: color var(--dur-rapida) var(--curva);
 }
 .pessoa__email:hover { color: var(--cor-acento-forte); }
+@media (hover: hover) and (pointer: fine) {
+  .pessoa__retrato:hover { border-color: var(--cor-acento); box-shadow: var(--aro-retrato-hover); }
+}
 
 /* ---------- Rodapé ---------- */
 .rodape {
   margin: 0;
   padding-bottom: var(--esp-4);
   background: var(--cor-superficie-alta);
-  font-size: var(--tam-xs);
+  font-size: var(--tam-rodape);
   color: var(--cor-texto-fraco);
 }
 .rodape__interno {
