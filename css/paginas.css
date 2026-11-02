@@ -9,6 +9,8 @@
 }
 .abertura__interno {
   display: grid;
+  max-width: var(--largura-abertura);
+  margin-inline: auto;
   gap: var(--esp-abertura-interno);
   align-items: center;
 }
@@ -18,7 +20,10 @@
   align-items: center;
 }
 @media (min-width: 64rem) {
-  .abertura__principal { grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
+  .abertura__principal {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--esp-abertura-colunas);
+  }
 }
 @media (max-width: 43.99rem) {
   .abertura__interno,
@@ -27,7 +32,6 @@
     max-width: var(--largura-painel-abertura-compacto);
     justify-self: center;
   }
-  .abertura__diagrama { height: var(--altura-diagrama-abertura-compacto); }
 }
 /* Entre celular e notebook a abertura recebe duas composições próprias. A
    ilustração entra ao lado do texto só depois de haver uma coluna textual
@@ -45,7 +49,6 @@
     max-width: var(--largura-painel-abertura-tablet);
     justify-self: end;
   }
-  .abertura__diagrama { height: var(--altura-diagrama-abertura-tablet); }
 }
 @media (min-width: 57rem) and (max-width: 63.99rem) {
   .abertura { padding-block: var(--esp-7); }
@@ -60,7 +63,6 @@
     max-width: var(--largura-painel-abertura-intermediario);
     justify-self: end;
   }
-  .abertura__diagrama { height: var(--altura-diagrama-abertura-intermediario); }
 }
 .abertura__conteudo {
   display: grid;
@@ -76,16 +78,16 @@
   color: var(--cor-faixa-acento);
 }
 .abertura__titulo {
-  font-size: var(--tam-titulo);
+  max-width: 24ch;
+  font-size: var(--tam-titulo-abertura);
   line-height: 1.05;
   letter-spacing: var(--entre-letras-faixa);
-  max-width: 19ch;
 }
 .abertura__resumo {
-  font-size: var(--tam-base);
+  font-size: var(--tam-resumo-abertura);
   line-height: 1.6;
   color: var(--cor-faixa-suave);
-  max-width: 58ch;
+  max-width: 62ch;
 }
 .abertura__painel {
   align-self: center;
@@ -100,7 +102,8 @@
 .abertura__diagrama {
   display: block;
   width: 100%;
-  height: var(--altura-diagrama-abertura);
+  box-sizing: border-box;
+  aspect-ratio: var(--proporcao-diagrama-abertura);
   padding: var(--esp-5);
   color: var(--cor-faixa-suave);
 }
