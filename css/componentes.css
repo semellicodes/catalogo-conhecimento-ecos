@@ -1197,6 +1197,12 @@
 .estudo:first-child { padding-top: var(--esp-0); }
 .estudo:last-child { padding-bottom: var(--esp-0); border-bottom: 0; }
 .estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto; }
+.estudo > .codigo-id {
+  align-self: start;
+  padding-top: 0.125rem;
+  font-size: 0.6875rem;
+  line-height: 1.2;
+}
 .estudo__corpo { display: grid; gap: var(--esp-0); }
 .estudo__titulo { font-weight: 600; line-height: 1.35; }
 .estudo__meta { font-size: var(--tam-xs); line-height: 1.35; color: var(--cor-texto-fraco); }
