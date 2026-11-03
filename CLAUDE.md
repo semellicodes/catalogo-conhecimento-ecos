@@ -178,9 +178,10 @@ nativamente pelo navegador com `type="module"`.
 - A altura igual numa fileira vem de `align-items: stretch`, que é o padrão da grade e deixa a
   linha crescer com o conteúdo. Nunca de `height: 100%` no filho nem de `grid-auto-rows: 1fr`, que
   travam a altura e fazem a última linha do texto vazar o bloco
-- A fonte é uma lista que quebra inteira, cada citação um item que não parte no meio, separadas por
-  espaço. O ponto e vírgula fica só no texto, para quem copia a linha ou usa leitor de tela, e não
-  é desenhado, senão sobra pendurado no fim da linha quando a lista quebra
+- A fonte é uma lista que quebra inteira, cada citação um item que não parte no meio. O ponto e
+  vírgula fica preso ao item anterior, sem espaço antes dele, e não entra depois do último. O
+  espaço entre as citações é o `gap` da lista, e o espaço do texto vai em `apenas-leitor`, para
+  quem copia a linha receber a pontuação certa
 - As quatro camadas da Estrutura têm funções separadas e nessa progressão. Ponto de Partida diz o
   que é conhecimento em ECOS e quais são as três naturezas epistemológicas, só o conceito.
   Atributos diz como os conhecimentos foram caracterizados, por natureza, nível e dimensão, com a
@@ -191,8 +192,16 @@ nativamente pelo navegador com `type="module"`.
   repete é a definição, que existe num lugar só
 - O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, detalhe de
   atributo nem número da revisão. Só o conceito, a frase central e as três definições breves
-- `classificacoes.json` guarda dois textos por natureza com papéis separados. `definicaoBreve` é a
-  do Ponto de Partida e `descricao` é a completa do glossário do Explorar
+- `classificacoes.json` guarda três textos por categoria, com papéis separados. `definicaoBreve` é
+  a do Ponto de Partida, só nas naturezas, `explicacao` é a da camada de Atributos e `descricao` é
+  a completa do glossário do Explorar
+- As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura
+- Depois que ECOS é apresentado por extenso no Ponto de Partida, o resto da Estrutura usa a sigla
+- A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
+  borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
+- Os dois cartões de cima da Base de Evidências têm a mesma forma, título, uma linha de descrição e
+  dois números grandes lado a lado. Quem cresce para baixo é o par de números, não a descrição,
+  senão os números desalinham entre os cartões quando um rótulo quebra em duas linhas
 - `classificacoes[].funcao` diz o que o atributo identifica, e é o que a camada de Atributos mostra
   no lugar de redefinir cada categoria
 - A Base de Evidências mostra a progressão da revisão, dos registros recuperados aos estudos

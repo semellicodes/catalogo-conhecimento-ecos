@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-6';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-10';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -32,10 +32,12 @@ function fonteConceitual(chaves) {
     } else {
       item.append(rotuloDaReferencia(chave));
     }
-    /* O ponto e vírgula não é desenhado, porque sobraria pendurado no fim da
-       linha quando a lista quebra. Fica só no texto, para quem copia a linha ou
-       usa leitor de tela receber a lista pontuada. */
-    if (indice < referencias.length - 1) item.append(criar('span', 'apenas-leitor', '; '));
+    /* O ponto e vírgula fica dentro do item anterior, sem espaço antes dele, e
+       o item não parte no meio. Assim o separador nunca se descola da citação
+       que ele fecha quando a lista quebra. Depois do último não entra. */
+    if (indice < referencias.length - 1) {
+      item.append(';', criar('span', 'apenas-leitor', ' '));
+    }
     fonte.append(item);
   });
   return fonte;
@@ -96,7 +98,9 @@ function cabecalhoComIcone(icone, titulo, classe) {
  */
 function composicaoNaturezas(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-conhecimento');
-  composicao.append(criar('h4', 'estrutura__coluna-titulo', definicao.tituloNaturezas));
+  const divisor = criar('h4', 'estrutura__divisor');
+  divisor.append(criar('span', 'estrutura__divisor-texto', definicao.tituloNaturezas));
+  composicao.append(divisor);
   const fileira = criar('ul', 'estrutura__categorias-classificacao estrutura__categorias-classificacao--fileira');
   dados.classificacoes.natureza.valores.forEach((valor) => {
     const item = criar('li', 'estrutura__categoria-classificacao');
@@ -150,7 +154,7 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-/** Um número grande com o rótulo embaixo, usado na progressão da revisão. */
+/** Um número grande com o rótulo embaixo, usado nos dois cartões de cima. */
 function numeroEvidencia(valor, rotulo) {
   const bloco = criar('div', 'estrutura__numero-evidencia');
   bloco.append(
@@ -161,35 +165,20 @@ function numeroEvidencia(valor, rotulo) {
 }
 
 /**
- * A progressão da revisão, dos registros recuperados aos estudos selecionados.
- * O total de estudos sai dos próprios dados, nunca escrito aqui. O de registros
- * recuperados vem do meta, porque é número do protocolo e não do catálogo.
+ * Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e
+ * dois números grandes lado a lado, para alinharem entre si.
  */
-function blocoRevisao(dados, revisao) {
-  const bloco = criar('section', 'estrutura__evidencia-linha estrutura__evidencia-linha--revisao');
-  bloco.append(cabecalhoComIcone('revisao', revisao.titulo, 'estrutura__evidencia-cabecalho'));
-  const funil = criar('div', 'estrutura__funil');
-  funil.append(
-    numeroEvidencia(revisao.registrosRecuperados, revisao.rotuloRecuperados),
-    criar('span', 'estrutura__funil-seta'),
-    numeroEvidencia(dados.estudos.length, revisao.rotuloSelecionados)
-  );
-  bloco.append(funil);
-  return bloco;
-}
-
-/** O que a revisão produziu, com as contagens vindas dos próprios dados. */
-function blocoResultados(dados, resultados) {
+function cartaoEvidencia(icone, titulo, descricao, numeros, comSeta) {
   const bloco = criar('section', 'estrutura__evidencia-linha');
-  bloco.append(cabecalhoComIcone('estudos', resultados.titulo, 'estrutura__evidencia-cabecalho'));
-  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
-  conteudo.append(
-    numeroEvidencia(dados.conhecimentos.length, resultados.rotuloConhecimentos),
-    criar('p', 'estrutura__evidencia-texto', resultados.descricaoConhecimentos),
-    criar('p', 'estrutura__rotulo', resultados.tituloRastreabilidade),
-    criar('p', 'estrutura__evidencia-texto', resultados.descricaoRastreabilidade)
+  bloco.append(
+    cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
+    criar('p', 'estrutura__evidencia-texto', descricao)
   );
-  bloco.append(conteudo);
+  const par = criar('div', 'estrutura__par-numeros');
+  par.append(numeroEvidencia(...numeros[0]));
+  if (comSeta) par.append(criar('span', 'estrutura__funil-seta'));
+  par.append(numeroEvidencia(...numeros[1]));
+  bloco.append(par);
   return bloco;
 }
 
@@ -212,9 +201,19 @@ function blocoDesafios(dados, desafios) {
 }
 
 function composicaoEvidencias(dados, definicao) {
+  const { revisao, resultados } = definicao;
   const composicao = criar('article', 'estrutura__composicao-evidencias');
   const blocos = criar('div', 'estrutura__evidencias-blocos');
-  blocos.append(blocoRevisao(dados, definicao.revisao), blocoResultados(dados, definicao.resultados));
+  blocos.append(
+    cartaoEvidencia('revisao', revisao.titulo, revisao.descricao, [
+      [revisao.registrosRecuperados, revisao.rotuloRecuperados],
+      [dados.estudos.length, revisao.rotuloSelecionados]
+    ], true),
+    cartaoEvidencia('estudos', resultados.titulo, resultados.descricao, [
+      [dados.conhecimentos.length, resultados.rotuloConhecimentos],
+      [dados.desafios.length, resultados.rotuloDesafios]
+    ], false)
+  );
   composicao.append(blocos, blocoDesafios(dados, definicao.desafios), fonteConceitual(definicao.referencias));
   return composicao;
 }
@@ -255,10 +254,16 @@ function atributoClassificacao(chave, atributo) {
 
   const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-atributo');
-  atributo.valores.forEach((valor) =>
-    categorias.append(criar('li', 'estrutura__categoria-atributo', valor.valor))
-  );
-  conteudo.append(criar('p', 'estrutura__rotulo', 'Categorias'), categorias, fonteConceitual(atributo.referencia));
+  atributo.valores.forEach((valor) => {
+    const item = criar('li', 'estrutura__categoria-atributo');
+    item.append(
+      criar('p', 'estrutura__categoria-atributo-nome', valor.valor),
+      criar('p', 'estrutura__categoria-atributo-texto', valor.explicacao)
+    );
+    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
+    categorias.append(item);
+  });
+  conteudo.append(categorias);
   bloco.append(cabecalho, conteudo);
   return bloco;
 }
