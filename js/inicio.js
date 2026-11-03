@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261103-3';
+import { carregar, rotuloDaReferencia } from './dados.js?v=20261103-4';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -13,17 +13,6 @@ function criar(tag, className, texto) {
   return elemento;
 }
 
-const ROTULOS_REFERENCIAS = {
-  alavi2001: 'Alavi e Leidner (2001)',
-  cartaxo2018: 'Cartaxo et al. (2018)',
-  cartaxo2020: 'Cartaxo et al. (2020)',
-  charmaz2006: 'Charmaz (2006)',
-  johnson2020: 'Johnson et al. (2020)',
-  kauschinger2021: 'Kauschinger et al. (2021)',
-  manikas2016: 'Manikas (2016)',
-  nonaka1997: 'Nonaka e Takeuchi (1997)',
-  santos2011: 'Santos e Werner (2011)'
-};
 
 function fonteConceitual(chaves) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
@@ -31,7 +20,7 @@ function fonteConceitual(chaves) {
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
     if (indice) fonte.append('; ');
-    const link = criar('a', '', ROTULOS_REFERENCIAS[chave] || chave);
+    const link = criar('a', '', rotuloDaReferencia(chave));
     link.href = `referencias.html#referencia-${chave}`;
     fonte.append(link);
   });
@@ -122,6 +111,7 @@ function blocoConhecimento(valor) {
     conteudo.classList.add('estrutura__natureza-conteudo--completo');
   }
   bloco.append(cabecalho, conteudo);
+  if (valor.referencia) bloco.append(fonteConceitual(valor.referencia));
   return bloco;
 }
 
@@ -224,6 +214,7 @@ function categoriaClassificacao(valor, incluirDescricao = true) {
     item.append(exemplos);
   }
   if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-classificacao-pergunta', valor.pergunta));
+  if (valor.referencia) item.append(fonteConceitual(valor.referencia));
   return item;
 }
 
@@ -236,7 +227,6 @@ function atributoClassificacao(chave, atributo) {
   atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
   conteudo.append(categorias);
   if (chave !== 'natureza') conteudo.append(criar('p', 'estrutura__atributo-classificacao-pergunta', atributo.pergunta));
-  conteudo.append(fonteConceitual(atributo.referencia));
   bloco.append(cabecalho, conteudo);
   return bloco;
 }
@@ -276,9 +266,10 @@ function composicaoTiposEcos(dados, definicao) {
       criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
       criar('p', 'estrutura__tipo-ecos-texto', valor.descricao)
     );
+    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
     lista.append(item);
   });
-  composicao.append(lista, fonteConceitual(definicao.referenciasTiposEcos));
+  composicao.append(lista);
   return composicao;
 }
 

@@ -480,10 +480,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-style: italic;
   line-height: 1.5;
 }
+/* A fonte fica no pé de cada cartão, sempre visível, separada do corpo por uma
+   linha fina. Repete-se de cartão em cartão de propósito, porque cada cartão
+   tem que se sustentar sozinho fora da ordem de leitura. */
 .estrutura__fonte-conceitual {
   margin-top: var(--esp-3);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-suave);
   color: var(--cor-texto-fraco);
   font-size: var(--tam-xs);
+  font-style: italic;
   line-height: 1.5;
 }
 .estrutura__fonte-conceitual a {
@@ -1202,13 +1208,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   padding: 0 var(--esp-5) var(--esp-5);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
-}
-.dialogo-ajuda__fonte {
-  padding-top: var(--esp-3);
-  border-top: var(--borda-suave);
-  color: var(--cor-texto-fraco);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
 }
 @media (max-width: 31.24rem) {
   .dialogo-ajuda__topo { padding: var(--esp-4) var(--esp-4) var(--esp-2); }

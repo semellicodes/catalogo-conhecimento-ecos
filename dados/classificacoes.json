@@ -11,21 +11,24 @@
         "tituloPorta": "Conhecimentos explícitos",
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
-        "pergunta": "Responde à pergunta: Que informações podem ser documentadas, consultadas e reutilizadas pelos participantes do ECOS?"
+        "pergunta": "Responde à pergunta: Que informações podem ser documentadas, consultadas e reutilizadas pelos participantes do ECOS?",
+        "referencia": "nonaka1997"
       },
       {
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de terceiros no negócio (C16).",
-        "pergunta": "Responde à pergunta: Quais percepções, experiências e interpretações dos participantes precisam ser compreendidas?"
+        "pergunta": "Responde à pergunta: Quais percepções, experiências e interpretações dos participantes precisam ser compreendidas?",
+        "referencia": "alavi2001"
       },
       {
         "valor": "Tácito-técnico",
         "tituloPorta": "Conhecimentos tácito-técnicos",
         "descricao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada pelos participantes ao atuar no ECOS.",
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
-        "pergunta": "Responde à pergunta: Quais habilidades práticas e experiências podem apoiar a atuação dos participantes no ECOS?"
+        "pergunta": "Responde à pergunta: Quais habilidades práticas e experiências podem apoiar a atuação dos participantes no ECOS?",
+        "referencia": "alavi2001"
       }
     ]
   },
@@ -38,15 +41,18 @@
     "valores": [
       {
         "valor": "Produto",
-        "descricao": "Conhecimento relacionado a uma solução, aplicação, componente ou produto específico."
+        "descricao": "Conhecimento relacionado a uma solução, aplicação, componente ou produto específico.",
+        "referencia": "johnson2020, kauschinger2021"
       },
       {
         "valor": "Plataforma",
-        "descricao": "Conhecimento relacionado à base tecnológica comum, sua arquitetura, especificações e requisitos."
+        "descricao": "Conhecimento relacionado à base tecnológica comum, sua arquitetura, especificações e requisitos.",
+        "referencia": "johnson2020, kauschinger2021"
       },
       {
         "valor": "Ecossistema",
-        "descricao": "Conhecimento relacionado às relações, participantes, regras, necessidades e interdependências do ECOS."
+        "descricao": "Conhecimento relacionado às relações, participantes, regras, necessidades e interdependências do ECOS.",
+        "referencia": "johnson2020, kauschinger2021"
       }
     ]
   },
@@ -59,15 +65,18 @@
     "valores": [
       {
         "valor": "Técnica",
-        "descricao": "Relacionada à plataforma tecnológica, infraestrutura, arquitetura, componentes e governança técnica."
+        "descricao": "Relacionada à plataforma tecnológica, infraestrutura, arquitetura, componentes e governança técnica.",
+        "referencia": "santos2011"
       },
       {
         "valor": "Negócio",
-        "descricao": "Relacionada à competitividade, inovação, mercado, geração de valor e interesses dos participantes."
+        "descricao": "Relacionada à competitividade, inovação, mercado, geração de valor e interesses dos participantes.",
+        "referencia": "santos2011"
       },
       {
         "valor": "Social",
-        "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento."
+        "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
+        "referencia": "santos2011"
       }
     ]
   },
@@ -80,15 +89,18 @@
     "valores": [
       {
         "valor": "Código aberto",
-        "descricao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, geralmente com forte atuação comunitária."
+        "descricao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, geralmente com forte atuação comunitária.",
+        "referencia": "manikas2016"
       },
       {
         "valor": "Híbrido",
-        "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional."
+        "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional.",
+        "referencia": "manikas2016"
       },
       {
         "valor": "Proprietário",
-        "descricao": "Plataforma tecnológica, componentes e regras de participação são controlados pela organização central."
+        "descricao": "Plataforma tecnológica, componentes e regras de participação são controlados pela organização central.",
+        "referencia": "manikas2016"
       }
     ]
   },
