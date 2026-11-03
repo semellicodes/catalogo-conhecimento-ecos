@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js';
+import { referenciaCurta } from './dados.js?v=20261103-9';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -247,7 +247,7 @@ function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
 /* A fonte entra por último, depois do conteúdo que cada seção acrescenta, por
    isso cada seção termina passando por aqui em vez de a secao já fechar. */
 function fecharSecao(bloco) {
-  if (bloco.fonte) bloco.append(criar('p', 'bloco-ficha__fonte', `Fonte: ${bloco.fonte}`));
+  if (bloco.fonte) bloco.append(criar('p', 'bloco-ficha__fonte', bloco.fonte));
   return bloco;
 }
 

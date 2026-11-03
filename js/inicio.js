@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia } from './dados.js?v=20261103-4';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-9';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -14,12 +14,17 @@ function criar(tag, className, texto) {
 }
 
 
+/* Só a citação, sem o rótulo "Fonte" na frente. O lugar e o estilo já dizem
+   que aquilo é a fonte do cartão. */
 function fonteConceitual(chaves) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
-  fonte.append('Fonte: ');
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
     if (indice) fonte.append('; ');
+    if (!temVerbete(chave)) {
+      fonte.append(rotuloDaReferencia(chave));
+      return;
+    }
     const link = criar('a', '', rotuloDaReferencia(chave));
     link.href = `referencias.html#referencia-${chave}`;
     fonte.append(link);
@@ -231,6 +236,14 @@ function atributoClassificacao(chave, atributo) {
   return bloco;
 }
 
+/**
+ * A taxonomia ocupa a largura inteira e empilha. A natureza vem primeiro, com
+ * os três cartões lado a lado, e nível e dimensão dividem a linha seguinte.
+ *
+ * Antes isso era a coluna esquerda de um par de colunas, mas a coluna direita
+ * acabava depois de três cartões e a esquerda seguia por mais três blocos, então
+ * metade da largura ficava vazia enquanto o texto da esquerda se espremia.
+ */
 function composicaoClassificacao(dados, definicao) {
   const composicao = criar('section', 'estrutura__classificacao-coluna');
   composicao.append(
@@ -238,9 +251,11 @@ function composicaoClassificacao(dados, definicao) {
     criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
   );
   const atributos = criar('article', 'estrutura__composicao-classificacao');
-  ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
-    atributos.append(atributoClassificacao(chave, dados.classificacoes[chave]));
+  const par = criar('div', 'estrutura__atributos-par');
+  ['nivel', 'dimensao'].forEach((chave) => {
+    par.append(atributoClassificacao(chave, dados.classificacoes[chave]));
   });
+  atributos.append(atributoClassificacao('natureza', dados.classificacoes.natureza), par);
   composicao.append(atributos);
   return composicao;
 }

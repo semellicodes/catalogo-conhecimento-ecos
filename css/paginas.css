@@ -499,9 +499,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__fonte-conceitual a:hover,
 .estrutura__fonte-conceitual a:focus-visible { text-decoration: underline; }
+/* Tudo em largura inteira e empilhado. O par de colunas externas saiu porque a
+   coluna dos exemplos acabava na metade da altura da outra. */
 .estrutura__composicao-atributos {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(19rem, 0.9fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-5);
   align-items: start;
   min-width: 0;
@@ -559,10 +561,23 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-2);
   margin-top: var(--esp-3);
 }
-.estrutura__classificacao-coluna .estrutura__categorias-classificacao,
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
+.estrutura__classificacao-coluna .estrutura__categorias-classificacao {
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-2);
+}
+/* Três colunas só aqui, na largura inteira, onde cada cartão fica com cerca de
+   um terço de 1200px. Estreito é o que se proibiu, e isto não é estreito. */
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--esp-3);
+  align-items: stretch;
+}
+.estrutura__atributos-par {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-3);
+  align-items: start;
+  min-width: 0;
 }
 .estrutura__classificacao-coluna .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
   padding: 0;
@@ -571,18 +586,27 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__classificacao-coluna .estrutura__categoria-classificacao {
   min-width: 0;
 }
+/* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
+   empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao,
+.estrutura__tipo-ecos {
+  display: flex;
+  flex-direction: column;
+}
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao .estrutura__fonte-conceitual,
+.estrutura__tipo-ecos .estrutura__fonte-conceitual { margin-top: auto; }
 .estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao {
   padding: var(--esp-3);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
   border-radius: var(--raio);
 }
+/* Nome em cima, texto em largura inteira abaixo e fonte no pé, igual aos
+   cartões da natureza. Antes era rótulo à esquerda e texto à direita, e o
+   rótulo curto deixava um buraco em cada linha. */
 .estrutura__classificacao-coluna .estrutura__atributo-classificacao--nivel .estrutura__categoria-classificacao,
 .estrutura__classificacao-coluna .estrutura__atributo-classificacao--dimensao .estrutura__categoria-classificacao {
-  display: grid;
-  grid-template-columns: minmax(8.5rem, 0.52fr) minmax(0, 1fr);
-  gap: var(--esp-3);
-  padding: var(--esp-2) 0;
+  padding: var(--esp-3) 0 0;
   border-top: var(--borda-suave);
 }
 .estrutura__classificacao-coluna .estrutura__atributo-classificacao--nivel .estrutura__categoria-classificacao:first-child,
@@ -597,10 +621,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__classificacao-coluna .estrutura__categoria-classificacao-texto {
   margin-top: var(--esp-1);
 }
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--nivel .estrutura__categoria-classificacao-texto,
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--dimensao .estrutura__categoria-classificacao-texto {
-  margin-top: 0;
-}
+
 .estrutura__categoria-classificacao-rotulo {
   display: block;
   margin-bottom: var(--esp-1);
@@ -630,7 +651,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 .estrutura__tipos-ecos-intro { margin-top: var(--esp-2); }
-.estrutura__tipos-ecos-lista { display: grid; grid-auto-rows: 1fr; gap: var(--esp-2); margin-top: var(--esp-3); }
+.estrutura__tipos-ecos-lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--esp-3);
+  margin-top: var(--esp-3);
+}
 .estrutura__tipo-ecos {
   min-width: 0;
   padding: var(--esp-3);
@@ -714,6 +741,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-atributos,
   .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-atributos > * { min-width: 0; }
+  .estrutura__atributos-par,
+  .estrutura__tipos-ecos-lista,
+  .estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .estrutura__classificacao-coluna .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); }
   .estrutura__natureza,
   .estrutura__atributo-classificacao,

@@ -544,8 +544,8 @@
   },
   {
     "id": "C16",
-    "nome": "Impactos de mudanças de terceiros no negócio",
-    "descricao": "Esse conhecimento envolve a percepção das consequências econômicas e operacionais que alterações em serviços externos trazem para o seu produto. A incapacidade de antecipar esses impactos pode gerar perdas financeiras e quebras abruptas na entrega de valor.",
+    "nome": "Impactos de mudanças de desenvolvedores externos no negócio",
+    "descricao": "Esse conhecimento envolve a percepção das consequências econômicas e operacionais que alterações em serviços de desenvolvedores externos trazem para o seu produto. A incapacidade de antecipar esses impactos pode gerar perdas financeiras e quebras abruptas na entrega de valor.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -563,10 +563,10 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "Os impactos de mudanças de terceiros no negócio são classificados como conhecimento tácito-cognitivo porque compreendê-los exige interpretar relações entre serviços e atividades em andamento. O nível Ecossistema se aplica porque envolvem ofertas de terceiros conectadas a diferentes participantes. A dimensão Negócio foi selecionada porque essas mudanças afetam serviços e decisões em curso.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos provedores de serviços de terceiros, a partir das mudanças que realizam nos serviços dos quais o negócio depende.",
+    "justificativaClassificacao": "Os impactos de mudanças de desenvolvedores externos no negócio são classificados como conhecimento tácito-cognitivo porque compreendê-los exige interpretar relações entre serviços e atividades em andamento. O nível Ecossistema se aplica porque envolvem ofertas de desenvolvedores externos conectadas a diferentes participantes. A dimensão Negócio foi selecionada porque essas mudanças afetam serviços e decisões em curso.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos que mantêm os serviços dos quais o negócio depende, a partir das mudanças que realizam neles.",
     "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS cujas atividades em andamento dependem desses serviços e precisam antecipar seus impactos.",
-    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário considerar, nas decisões arquiteturais e de negócio, como mudanças em serviços de terceiros podem afetar as atividades em andamento."
+    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário considerar, nas decisões arquiteturais e de negócio, como mudanças em serviços de desenvolvedores externos podem afetar as atividades em andamento."
   },
   {
     "id": "C17",

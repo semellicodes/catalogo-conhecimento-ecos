@@ -170,7 +170,18 @@ nativamente pelo navegador com `type="module"`.
   fechado para proprietário e camadas empilhadas para híbrido. Como o símbolo passou a ser do valor,
   o estado vai escrito para quem usa leitor de tela, não só no fundo da caixa
 - Cada bloco da ficha tem título em acento e um botão de ajuda no canto. A ajuda é uma por seção,
-  não uma por atributo, e reúne a pergunta e a referência de cada atributo do bloco
+  não uma por atributo, e traz a explicação dos atributos do bloco
+- A fonte fica no pé de cada cartão, sempre visível, nunca atrás do botão de ajuda e nunca uma só
+  no pé do bloco. Mesmo visual em toda a Estrutura, na ficha e no Explorar, pequena, itálica,
+  apagada e separada do corpo por linha fina, sem caixa nem fundo. Repete-se de cartão em cartão de
+  propósito, porque fora da ordem de leitura cada cartão tem que se sustentar sozinho
+- A citação aparece sozinha, sem o rótulo "Fonte" na frente. O lugar e o estilo já dizem o que é
+- O rótulo curto de cada referência mora em `js/dados.js`, porque a forma abreviada não sai da
+  citação sozinha, "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a obra tem.
+  É um lugar só, para a Estrutura e a ficha citarem igual
+- `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
+  publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
+  `temVerbete` do `dados.js`, num lugar só
 - A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - O bloco de gerência mostra quem possui, quem precisa e como gerenciar, um por linha. Esses três
@@ -219,6 +230,12 @@ nativamente pelo navegador com `type="module"`.
   publica o site
 - Arquivo de experimento e de protótipo nunca vai para a `main`. Fica na branch e é apagado
   antes do merge
+- Depois de uma PR ser fechada com squash, aquela branch morre. O trabalho seguinte começa numa
+  branch nova tirada da `main` atualizada. Continuar commitando na branch que já foi espremida
+  cria duas histórias concorrentes nos mesmos arquivos, e o conflito que aparece é de git, não de
+  conteúdo
+- Conflito assim se resolve na linha de comando, nunca pelo editor do GitHub. Branch nova a partir
+  da `main`, `git cherry-pick` só dos commits que a `main` ainda não tem, e PR nova
 
 ## Qualidade de código
 
@@ -241,6 +258,22 @@ nativamente pelo navegador com `type="module"`.
 - Sem o caractere traço como pontuação
 - Sem dois pontos como pontuação
 - Tom direto, sem linguagem de marketing
+
+## Versão dos arquivos em cache
+
+Todo CSS e JS leva `?v=`, inclusive os imports entre módulos, e os arquivos de dados levam a mesma
+versão pela constante `VERSAO` do `js/dados.js`. A versão é uma só para tudo, nunca uma por arquivo.
+
+```
+python3 ferramentas/versionar.py 20261104-1
+```
+
+O script não gera nada e não é etapa de build. Ele só troca o `?v=` em todos os pontos de uma vez,
+porque versão por arquivo desencontra e o navegador passa a servir metade nova e metade velha.
+
+O HTML não leva `?v=`, porque é o endereço que a pessoa abre. Se o navegador guardar o HTML antigo,
+ele serve junto as versões antigas de tudo, e aí só recarregar sem cache resolve. No Safari o
+recarregar sem cache não despeja o cache de módulos, para isso é ⌥⌘E.
 
 ## Rodar localmente
 
