@@ -233,6 +233,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   width: var(--largura-cheia);
   height: auto;
 }
+.estrutura__mapa-imagem--claro { display: none; }
+:root[data-tema="claro"] .estrutura__mapa-imagem--escuro { display: none; }
+:root[data-tema="claro"] .estrutura__mapa-imagem--claro { display: block; }
 .estrutura__legenda {
   max-width: var(--largura-texto);
   margin: var(--esp-3) auto 0;
