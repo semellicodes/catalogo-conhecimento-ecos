@@ -148,7 +148,7 @@ function exemplosDeEcos(conhecimento) {
     painel.replaceChildren();
     const estudos = grupos.get(categoria) || [];
     if (!estudos.length) {
-      painel.append(criar('p', 'exemplos-ecos__texto', `Nenhum exemplo de ${categoria} foi relatado nos estudos primários associados a este conhecimento. Isso reflete o escopo da literatura analisada, não a inaplicabilidade do conhecimento a esse tipo de ECOS.`));
+      painel.append(criar('p', 'exemplos-ecos__texto', `Nenhum exemplo de ${categoria} foi relatado nos estudos primários associados a esse conhecimento. Isso reflete o escopo da literatura analisada, não a inaplicabilidade do conhecimento a esse tipo de ECOS.`));
       return;
     }
 
@@ -280,7 +280,7 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de Ecossistemas em que este conhecimento foi observado', 'tipoEcos');
+  const bloco = secao(dados, 'Exemplos de Ecossistemas em que esse conhecimento foi observado', 'tipoEcos');
   bloco.classList.add('bloco-ficha--exemplos');
   bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
@@ -442,7 +442,7 @@ function desafios(conhecimento) {
     aviso.setAttribute('role', 'status');
     aviso.append(
       iconeInformacao(),
-      criar('p', null, 'Nenhum desafio foi confirmado para este conhecimento.')
+      criar('p', null, 'Nenhum desafio foi confirmado para esse conhecimento.')
     );
     bloco.append(aviso);
     return bloco;
@@ -462,7 +462,7 @@ function estudos(conhecimento) {
   });
   const bloco = criar('div', 'estudos-bloco');
   if (!associados.length) {
-    bloco.append(criar('p', 'vazio', 'Nenhum estudo primário foi associado a este conhecimento.'));
+    bloco.append(criar('p', 'vazio', 'Nenhum estudo primário foi associado a esse conhecimento.'));
     return bloco;
   }
 
