@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261103-11';
+import { referenciaCurta } from './dados.js?v=20261103-12';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
