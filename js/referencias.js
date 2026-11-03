@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar } from './dados.js?v=20261103-2';
+import { carregar, temVerbete } from './dados.js?v=20261103-8';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -61,9 +61,7 @@ async function iniciar() {
 
   const lista = el('#lista-referencias');
   Object.keys(dados.referencias)
-    /* O registro do manuscrito é mantido nos dados como rastreabilidade interna,
-       mas não integra a lista pública de referências enquanto não houver publicação. */
-    .filter((chave) => chave !== 'revisaoRapidaManuscrito' && !referenciasConceituais.includes(chave))
+    .filter((chave) => temVerbete(chave) && !referenciasConceituais.includes(chave))
     .sort((a, b) => dados.referencias[a].localeCompare(dados.referencias[b], 'pt-BR'))
     .forEach((chave) => adicionarReferencia(lista, chave));
 }

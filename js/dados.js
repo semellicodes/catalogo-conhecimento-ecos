@@ -3,14 +3,17 @@
  * os identificadores em objetos completos.
  */
 
-const ARQUIVOS = {
-  meta: 'dados/meta.json?v=20261103-4',
-  conhecimentos: 'dados/conhecimentos.json?v=20261103-4',
-  desafios: 'dados/desafios.json?v=20261103-4',
-  estudos: 'dados/estudos.json?v=20261102-3',
-  classificacoes: 'dados/classificacoes.json?v=20261103-4',
-  referencias: 'dados/referencias.json?v=20261103-4'
-};
+/* Uma versão só para tudo que o navegador guarda em cache, dados, CSS e JS.
+   Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
+   servia metade nova e metade velha. O ferramentas/versionar.py troca esta
+   linha e todas as outras de uma vez. */
+const VERSAO = '20261103-8';
+
+const ARQUIVOS = Object.fromEntries(
+  ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
+    (nome) => [nome, `dados/${nome}.json?v=${VERSAO}`]
+  )
+);
 
 let promessa = null;
 
@@ -74,10 +77,20 @@ const ROTULOS_REFERENCIAS = {
   kauschinger2021: 'Kauschinger et al. (2021)',
   manikas2016: 'Manikas (2016)',
   nonaka1997: 'Nonaka e Takeuchi (1997)',
+  /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */
+  revisaoRapidaManuscrito: 'Revisão rápida deste trabalho',
   santos2011: 'Santos e Werner (2011)'
 };
 
 export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;
+
+/* O manuscrito da revisão fica nos dados como rastreabilidade interna, mas não
+   integra a lista pública de referências enquanto não houver publicação. Sem
+   verbete não há âncora, então quem cita essa chave escreve em texto, em vez de
+   abrir um link que cairia no topo da página de referências. */
+const SEM_VERBETE = new Set(['revisaoRapidaManuscrito']);
+
+export const temVerbete = (chave) => !SEM_VERBETE.has(chave);
 
 export function referenciaCurta(dados, chaves) {
   if (!chaves) return '';
