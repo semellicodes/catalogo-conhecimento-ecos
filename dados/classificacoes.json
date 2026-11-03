@@ -18,7 +18,7 @@
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
-        "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de terceiros no negócio (C16).",
+        "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: Quais percepções, experiências e interpretações dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001"
       },
@@ -109,7 +109,7 @@
     "principal": false,
     "pendente": true,
     "pergunta": "Como esse conhecimento pode ser identificado, acessado, compartilhado, atualizado ou preservado no ecossistema?",
-    "referencia": "",
+    "referencia": "revisaoRapidaManuscrito",
     "valores": [
       {
         "valor": "Disponibilização",

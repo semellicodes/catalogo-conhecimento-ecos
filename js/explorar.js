@@ -5,8 +5,8 @@
  * extraído e não aparecem em ficha alguma.
  */
 
-import { carregar, porId, referenciaCurta } from './dados.js';
-import { renderizar } from './listagem.js';
+import { carregar, porId, referenciaCurta } from './dados.js?v=20261103-8';
+import { renderizar } from './listagem.js?v=20261103-8';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -103,7 +103,7 @@ function montarAtributos(dados) {
         d.rotulo,
         valores(d),
         celula('td', d.pergunta),
-        celula('td', referenciaCurta(dados, d.referencia) || 'Definido na QP1 da revisão rápida')
+        celula('td', referenciaCurta(dados, d.referencia))
       )
     )
   );
