@@ -2,10 +2,10 @@
  * Liga os módulos anteriores na página do catálogo.
  */
 
-import { carregar, conhecimentoCompleto } from './dados.js?v=20261104-10';
-import * as filtros from './filtros.js?v=20261104-10';
-import * as lista from './lista.js?v=20261104-10';
-import * as ficha from './ficha.js?v=20261104-10';
+import { carregar, conhecimentoCompleto } from './dados.js?v=20261104-14';
+import * as filtros from './filtros.js?v=20261104-14';
+import * as lista from './lista.js?v=20261104-14';
+import * as ficha from './ficha.js?v=20261104-14';
 
 const el = (seletor) => document.querySelector(seletor);
 

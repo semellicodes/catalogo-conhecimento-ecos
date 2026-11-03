@@ -196,7 +196,20 @@ nativamente pelo navegador com `type="module"`.
   a do Ponto de Partida, só nas naturezas, `explicacao` é a da camada de Atributos e `descricao` é
   a completa do glossário do Explorar
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura
-- Depois que ECOS é apresentado por extenso no Ponto de Partida, o resto da Estrutura usa a sigla
+- A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante
+  só a sigla. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
+  rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
+- A dimensão do ECOS cita `santos2011` e `santos2012`, nessa ordem. O de 2011 descreve o conteúdo
+  de cada dimensão mas chama a primeira de arquitetural, e o de 2012 é que faz o recorte em três e
+  usa o nome técnica, que é o que este catálogo adota
+- O nível no ECOS cita só `johnson2020`, que é quem define os três níveis. O `kauschinger2021`
+  continua nas ajudas da ficha, onde sustenta outra coisa
+- Cada categoria dos quatro atributos tem `explicacao`, de duas ou três frases, e `pergunta`, a
+  linha "Responde à pergunta". As duas são literais dos artigos primários
+- As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
+  mostra é a do trabalho, no topo do Sobre
+- A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha. "Fonte do conhecimento",
+  na camada de Gerência, é nome de campo e não rótulo de citação
 - A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
   borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
 - Os dois cartões de cima da Base de Evidências têm a mesma forma, título, uma linha de descrição e

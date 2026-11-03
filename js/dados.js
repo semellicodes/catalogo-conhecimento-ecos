@@ -7,7 +7,7 @@
    Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
    servia metade nova e metade velha. O ferramentas/versionar.py troca esta
    linha e todas as outras de uma vez. */
-const VERSAO = '20261104-10';
+const VERSAO = '20261104-14';
 
 const ARQUIVOS = Object.fromEntries(
   ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
@@ -81,6 +81,7 @@ const ROTULOS_REFERENCIAS = {
   /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */
   revisaoRapidaManuscrito: 'Revisão rápida deste trabalho',
   santos2011: 'Santos e Werner (2011)',
+  santos2012: 'Santos et al. (2012)',
   seichter2010: 'Seichter et al. (2010)',
   viana2015: 'Viana e Conte (2015)'
 };
