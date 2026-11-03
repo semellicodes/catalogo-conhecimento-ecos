@@ -521,64 +521,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__fonte-conceitual a:hover,
 .estrutura__fonte-conceitual a:focus-visible { text-decoration: underline; }
-/* A camada de atributos segue a progressão da aba, introdução, faixa de
-   perguntas e detalhamento. A faixa e as colunas empilham nessa ordem. */
-.estrutura__camada-atributos {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
-  margin-top: var(--esp-4);
-  min-width: 0;
-}
-/* A faixa de transição é breve de propósito. Ela só diz de antemão que pergunta
-   cada atributo responde, antes do detalhamento vir abaixo. */
-.estrutura__perguntas {
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-radius: var(--raio);
-}
-.estrutura__perguntas-lista {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-3);
-  margin-top: var(--esp-3);
-  align-items: stretch;
-  counter-reset: pergunta;
-  list-style: none;
-}
-/* A resposta vai para o pé do item, senão as três linhas de resposta ficam
-   desencontradas quando uma pergunta quebra em duas linhas e as outras não. */
-.estrutura__pergunta {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  counter-increment: pergunta;
-}
-.estrutura__pergunta-resposta { margin-top: auto; }
-.estrutura__pergunta-texto {
-  color: var(--cor-titulo);
-  font-size: var(--tam-sm);
-  font-weight: 600;
-  line-height: 1.4;
-}
-.estrutura__pergunta-texto::before {
-  content: counter(pergunta) '. ';
-  color: var(--cor-acento);
-  font-family: var(--fonte-mono);
-}
-.estrutura__pergunta-resposta {
-  padding-top: var(--esp-1);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
-}
+/* O negrito da introdução marca o termo que a aba vai detalhar, sem mudar a
+   cor nem o tamanho do texto em volta. */
+.estrutura__painel-intro strong { color: var(--cor-titulo); font-weight: 600; }
 /* Duas colunas apenas, a taxonomia mais larga que os exemplos. No celular a
    taxonomia vem primeiro e os exemplos descem para baixo dela. */
 .estrutura__composicao-atributos {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-4);
+  margin-top: var(--esp-4);
   align-items: start;
   min-width: 0;
 }
@@ -768,7 +720,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   /* Duas colunas apenas, e a esquerda mais larga, porque a taxonomia tem três
      seções e os exemplos só uma lista. */
   .estrutura__composicao-atributos { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
-  .estrutura__perguntas-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   /* A coluna dos exemplos é bem mais curta que a taxonomia. Em vez de deixar
      meia tela vazia ao lado, ela acompanha a rolagem da coluna da esquerda. */
   .estrutura__tipos-ecos {

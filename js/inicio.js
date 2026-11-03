@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-15';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-16';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -215,7 +215,24 @@ function composicaoEvidencias(dados, definicao) {
   return composicao;
 }
 
-function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false) {
+/* O destaque é o trecho que a introdução põe em negrito. Vem de dados/ como
+   texto, não como marcação, para o conteúdo continuar fora do código. */
+function textoIntroducao(introducao, destaque) {
+  const paragrafo = criar('p', 'estrutura__painel-intro');
+  const corte = destaque ? introducao.indexOf(destaque) : -1;
+  if (corte < 0) {
+    paragrafo.textContent = introducao;
+    return paragrafo;
+  }
+  paragrafo.append(
+    introducao.slice(0, corte),
+    criar('strong', '', destaque),
+    introducao.slice(corte + destaque.length)
+  );
+  return paragrafo;
+}
+
+function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDepois = false, destaque) {
   const raiz = criar('section', 'estrutura__painel');
   raiz.id = `painel-${definicao.id}`;
   raiz.setAttribute('role', 'tabpanel');
@@ -226,7 +243,7 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
   cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.tituloPainel || definicao.rotulo));
   raiz.append(cabecalho);
-  if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
+  if (introducao) raiz.append(textoIntroducao(introducao, destaque));
   const nota = aviso ? criar('p', 'estrutura__aviso', aviso) : null;
   if (nota && !avisoDepois) raiz.append(nota);
   const grade = criar('div', `estrutura__grade ${classe}`.trim());
@@ -270,26 +287,6 @@ function secaoTaxonomia(atributo, comPergunta = false) {
      de citação repetidas competiam com o conteúdo que elas sustentam. */
   if (atributo.referencia) bloco.append(fonteConceitual(atributo.referencia));
   return bloco;
-}
-
-/**
- * A faixa de transição entre a introdução e o detalhamento. São três itens
- * curtos, só para dizer de antemão que pergunta cada atributo responde.
- */
-function faixaPerguntas(definicao) {
-  const faixa = criar('section', 'estrutura__perguntas');
-  faixa.append(criar('p', 'estrutura__rotulo', definicao.tituloPerguntas));
-  const lista = criar('ol', 'estrutura__perguntas-lista');
-  definicao.perguntas.forEach((item) => {
-    const linha = criar('li', 'estrutura__pergunta');
-    linha.append(
-      criar('p', 'estrutura__pergunta-texto', item.pergunta),
-      criar('p', 'estrutura__pergunta-resposta', item.resposta)
-    );
-    lista.append(linha);
-  });
-  faixa.append(lista);
-  return faixa;
 }
 
 /**
@@ -355,16 +352,15 @@ function explicacaoConhecimento(dados, aba, definicao) {
 }
 
 /**
- * A aba segue a mesma progressão do resto do catálogo, introdução geral, faixa
- * de transição e então o detalhamento em duas colunas, a taxonomia à esquerda e
- * os tipos de ECOS observados à direita.
+ * A aba vai da introdução geral direto ao detalhamento em duas colunas, a
+ * taxonomia à esquerda e os tipos de ECOS observados à direita. A explicação
+ * do que são os atributos cabe na introdução, e repeti-la numa faixa logo
+ * abaixo era dizer duas vezes a mesma coisa antes do conteúdo começar.
  */
 function explicacaoClassificacao(dados, aba, definicao) {
-  const camada = criar('article', 'estrutura__camada-atributos');
   const colunas = criar('div', 'estrutura__composicao-atributos');
   colunas.append(colunaTaxonomia(dados, definicao), colunaTiposEcos(dados, definicao));
-  camada.append(faixaPerguntas(definicao), colunas);
-  const resultado = painel(definicao, aba, definicao.introducao, [camada], 'estrutura__grade--classificacao');
+  const resultado = painel(definicao, aba, definicao.introducao, [colunas], 'estrutura__grade--classificacao', undefined, false, definicao.destaqueIntroducao);
   resultado.classList.add('estrutura__painel--classificacao');
   return resultado;
 }

@@ -20,21 +20,7 @@
         "tituloPainel": "Atributos do conhecimento",
         "icone": "classificacao",
         "introducao": "Cada conhecimento identificado é descrito por três atributos complementares, natureza epistemológica, nível no ECOS e dimensão do ECOS. Em conjunto, esses atributos indicam como o conhecimento se manifesta, onde ele se concentra no ecossistema e qual aspecto do ECOS ele aborda.",
-        "tituloPerguntas": "A classificação responde a três perguntas complementares",
-        "perguntas": [
-          {
-            "pergunta": "Que tipo de conhecimento é este?",
-            "resposta": "Natureza epistemológica."
-          },
-          {
-            "pergunta": "Em qual nível do ECOS esse conhecimento se concentra?",
-            "resposta": "Produto, plataforma ou ecossistema."
-          },
-          {
-            "pergunta": "Qual aspecto do ECOS é abordado?",
-            "resposta": "Técnica, negócio ou social."
-          }
-        ],
+        "destaqueIntroducao": "três atributos complementares",
         "tituloClassificacao": "Taxonomia do conhecimento",
         "subtituloClassificacao": "Os conhecimentos foram classificados por sua natureza epistemológica, seu nível no ECOS e sua dimensão no ecossistema.",
         "tituloTiposEcos": "Exemplos de ECOS em que o conhecimento foi observado",
