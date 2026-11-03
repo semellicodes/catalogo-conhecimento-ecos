@@ -10,11 +10,13 @@
   /* Fundo do miolo que rola na ficha, um tom abaixo do fundo da página, para o
      cartão se destacar dele em vez de se confundir */
   --cor-miolo: #090D12;
-  /* Fundo do cartão do catálogo. Precisa de tom próprio, distinto do fundo da
-     seção, senão o cartão deixa de se ler como objeto */
+  /* Fundo do cartão do catálogo. Compartilha a base grafite dos painéis para
+     manter a lista como parte do mesmo sistema visual. */
   --cor-cartao: #1A2230;
-  --cor-cartao-catalogo: #142821;
-  --cor-cartao-catalogo-hover: #19342A;
+  /* A lista do catálogo compartilha a mesma superfície grafite dos painéis e
+     filtros; a natureza aparece apenas nos detalhes e estados interativos. */
+  --cor-cartao-catalogo: var(--cor-superficie);
+  --cor-cartao-catalogo-hover: var(--cor-superficie-alta);
   --cor-cabecalho: var(--cor-fundo);
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
