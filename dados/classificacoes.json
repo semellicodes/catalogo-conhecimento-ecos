@@ -11,33 +11,33 @@
         "tituloPorta": "Conhecimentos explícitos",
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
-        "pergunta": "Responde à pergunta: que conhecimento já está registrado e pode ser consultado por qualquer participante do ECOS?",
+        "pergunta": "Responde à pergunta: que informação pode ser registrada, consultada e reutilizada pelos participantes do ECOS?",
         "referencia": "alavi2001, nonaka1997",
         "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos.",
-        "explicacao": "Conhecimento articulado e generalizado, que foi posto em palavras e por isso pode ser consultado por quem não participou de sua produção. Por estar registrado, tende a ser tratado como mais legítimo, o que pode levar a decidir por ele mesmo quando o conhecimento tácito aponta em outra direção."
+        "explicacao": "Conhecimento que pode ser formalizado, documentado e registrado, como especificações técnicas, regras de governança e decisões arquiteturais."
       },
       {
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
-        "pergunta": "Responde à pergunta: que entendimento sobre o ECOS existe entre os participantes e ainda não foi posto em palavras?",
+        "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
         "definicaoBreve": "Conhecimentos relacionados à experiência, percepção, interpretação e compreensão dos participantes.",
-        "explicacao": "Conhecimento enraizado na ação, na experiência e no envolvimento em um contexto específico, que se manifesta como modelos mentais, por exemplo a crença de alguém sobre relações de causa e efeito. Por não estar articulado, depende de convívio e de um repertório comum entre quem compartilha e quem recebe."
+        "explicacao": "Conhecimento relacionado a percepções, experiências, interpretações, necessidades e modelos mentais dos participantes."
       },
       {
         "valor": "Tácito-técnico",
         "tituloPorta": "Conhecimentos tácito-técnicos",
         "descricao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada pelos participantes ao atuar no ECOS.",
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
-        "pergunta": "Responde à pergunta: que habilidade prática só se aprende fazendo junto com quem já sabe?",
+        "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
         "definicaoBreve": "Conhecimentos associados às habilidades práticas e à capacidade de executar atividades.",
-        "explicacao": "Conhecimento enraizado na ação que se manifesta como saber fazer aplicável a um trabalho específico, como uma habilidade que se aprende praticando e não lendo. Ele circula por demonstração e acompanhamento, não por documento."
+        "explicacao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada ao atuar no ECOS."
       }
     ],
-    "funcao": "Identifica a forma de manifestação do conhecimento."
+    "funcao": "Indica a forma como o conhecimento se manifesta e pode ser compreendido ou compartilhado."
   },
   "nivel": {
     "rotulo": "Nível no ECOS",
@@ -50,25 +50,25 @@
         "valor": "Produto",
         "descricao": "Conhecimento relacionado a uma solução, aplicação, componente ou produto específico.",
         "referencia": "johnson2020",
-        "explicacao": "Diz respeito a uma solução ou aplicação específica. Nesse nível as demandas vêm dos usuários do próprio produto, por canais como fóruns de usuário, suporte e contato direto.",
+        "explicacao": "Relacionado a uma solução, aplicação, componente ou produto específico.",
         "pergunta": "Responde à pergunta: o conhecimento se concentra em um produto ou aplicação específica?"
       },
       {
         "valor": "Plataforma",
         "descricao": "Conhecimento relacionado à base tecnológica comum, sua arquitetura, especificações e requisitos.",
         "referencia": "johnson2020",
-        "explicacao": "Diz respeito à base tecnológica comum sobre a qual os outros constroem. Nesse nível a conversa é com os desenvolvedores externos, por canais próprios como fóruns de desenvolvedor e programas de relacionamento.",
+        "explicacao": "Relacionado à base tecnológica comum, à arquitetura, às especificações e aos requisitos da plataforma.",
         "pergunta": "Responde à pergunta: o conhecimento se concentra na base tecnológica comum do ECOS?"
       },
       {
         "valor": "Ecossistema",
         "descricao": "Conhecimento relacionado às relações, participantes, regras, necessidades e interdependências do ECOS.",
         "referencia": "johnson2020",
-        "explicacao": "Diz respeito às relações e interdependências entre os atores. Nesse nível é preciso entender também os usuários das aplicações parceiras, o que exige olhar além dos clientes diretos da plataforma.",
+        "explicacao": "Relacionado às relações, participantes, regras e interdependências entre organizações, produtos e plataforma.",
         "pergunta": "Responde à pergunta: o conhecimento se concentra nas relações e interdependências entre os participantes?"
       }
     ],
-    "funcao": "Identifica o alcance do conhecimento no ecossistema."
+    "funcao": "Indica onde o conhecimento se concentra na estrutura do ecossistema."
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
@@ -81,25 +81,25 @@
         "valor": "Técnica",
         "descricao": "Relacionada à plataforma tecnológica, infraestrutura, arquitetura, componentes e governança técnica.",
         "referencia": "santos2011, santos2012",
-        "explicacao": "Volta-se à plataforma do ECOS, seja ela um mercado, uma tecnologia, uma infraestrutura ou uma organização. Trata da engenharia de domínio da plataforma, da gestão do que é comum e do que varia entre os produtos e da arquitetura desenvolvida sobre ela.",
+        "explicacao": "Relacionada à plataforma tecnológica, à infraestrutura, à arquitetura e aos componentes.",
         "pergunta": "Responde à pergunta: o conhecimento diz respeito à plataforma e à arquitetura sobre a qual o ECOS é construído?"
       },
       {
         "valor": "Negócio",
         "descricao": "Relacionada à competitividade, inovação, mercado, geração de valor e interesses dos participantes.",
         "referencia": "santos2011, santos2012",
-        "explicacao": "Volta-se ao fluxo de conhecimento pelo negócio, ou seja, aos artefatos, recursos e informações que circulam por ele. Trata do estabelecimento de metas e planos de ação, da inovação que liga o ECOS a um mercado e do planejamento de como, quando, onde e por quem as metas serão cumpridas.",
+        "explicacao": "Relacionada ao mercado, à competitividade, à inovação e à geração de valor.",
         "pergunta": "Responde à pergunta: o conhecimento diz respeito a metas, mercado e planejamento do ECOS?"
       },
       {
         "valor": "Social",
         "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
         "referencia": "santos2011, santos2012",
-        "explicacao": "Volta-se aos participantes do ECOS. Trata de por que eles integram, estendem e modificam conhecimento no ecossistema e interagem entre si, de como suas capacidades e seu engajamento são reconhecidos, e do que a colaboração e o desenvolvimento aberto trazem para eles.",
+        "explicacao": "Relacionada à colaboração, à comunidade, às relações e aos participantes do ECOS.",
         "pergunta": "Responde à pergunta: o conhecimento diz respeito às relações entre os participantes e ao que os mantém engajados?"
       }
     ],
-    "funcao": "Identifica o aspecto do ECOS a que o conhecimento se refere."
+    "funcao": "Indica qual aspecto do ECOS é mais diretamente abordado pelo conhecimento."
   },
   "tipoEcos": {
     "rotulo": "Tipo de ECOS observado",
@@ -112,21 +112,21 @@
         "valor": "Código aberto",
         "descricao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, geralmente com forte atuação comunitária.",
         "referencia": "manikas2016",
-        "explicacao": "As contribuições são em geral abertas aos demais atores ou ao público. O valor nesse tipo de ecossistema costuma ser não monetário, como conhecimento, experiência ou satisfação de uma necessidade.",
+        "explicacao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, com forte atuação comunitária.",
         "pergunta": "Responde à pergunta: as contribuições circulam abertamente entre os participantes?"
       },
       {
         "valor": "Híbrido",
         "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional.",
         "referencia": "manikas2016",
-        "explicacao": "Ecossistema que suporta tanto contribuições proprietárias quanto de código aberto. Os dois modelos convivem no mesmo ambiente, o que exige equilibrar a colaboração externa e o controle da organização central.",
+        "explicacao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa e o controle organizacional.",
         "pergunta": "Responde à pergunta: o ecossistema combina contribuição aberta e proprietária?"
       },
       {
         "valor": "Proprietário",
         "descricao": "Plataforma tecnológica, componentes e regras de participação são controlados pela organização central.",
         "referencia": "manikas2016",
-        "explicacao": "A criação de valor se baseia em contribuições proprietárias. Esse tipo de ecossistema costuma ser protegido por processos de gestão de propriedade intelectual e o valor se relaciona a compensação monetária.",
+        "explicacao": "A plataforma tecnológica, os componentes e as regras de participação são controlados pela organização central.",
         "pergunta": "Responde à pergunta: as contribuições são controladas pela organização central e remuneradas?"
       }
     ],

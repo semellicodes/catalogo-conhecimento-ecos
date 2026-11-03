@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-14';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-15';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -48,9 +48,6 @@ const SVG = 'http://www.w3.org/2000/svg';
 const ICONES_ESTRUTURA = {
   conhecimento: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
-  natureza: [['circle', { cx: 10, cy: 10, r: 6 }], ['path', { d: 'M10 4v12M4 10h12' }]],
-  nivel: [['path', { d: 'm4 7 6-3 6 3-6 3zM4 10l6 3 6-3M4 13l6 3 6-3' }]],
-  dimensao: [['path', { d: 'M4 16V5M4 16h12M7 13l3-4 3 2 3-5' }]],
   gerencia: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
   fontes: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   receptores: [['circle', { cx: 10, cy: 6.5, r: 3 }], ['path', { d: 'M4.5 16c.8-2.8 2.7-4.2 5.5-4.2s4.7 1.4 5.5 4.2' }]],
@@ -240,19 +237,21 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
 }
 
 /**
- * Um atributo na camada de caracterização. Diz o que o atributo identifica e
- * lista as categorias que ele admite, pelo nome.
+ * Uma seção da taxonomia. Diz o que o atributo identifica, lista as categorias
+ * que ele admite e fecha com a fonte do esquema adotado.
  *
- * A definição de cada categoria não entra aqui. A da natureza já está no Ponto
- * de Partida e as demais estão no glossário do Explorar, e repeti-las era o que
- * misturava a camada conceitual com a camada de caracterização.
+ * A pergunta de cada categoria só entra na natureza, que é a entrada principal
+ * do catálogo. Em nível e dimensão ela repetiria em miniatura a faixa de
+ * perguntas que abre a aba.
  */
-function atributoClassificacao(chave, atributo) {
-  const bloco = criar('section', `estrutura__atributo-classificacao estrutura__atributo-classificacao--${chave}`);
-  const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
-  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.funcao));
+function secaoTaxonomia(atributo, comPergunta = false) {
+  const bloco = criar('section', 'estrutura__taxonomia-secao');
+  const cabecalho = criar('header');
+  cabecalho.append(
+    criar('h5', 'estrutura__taxonomia-secao-titulo', atributo.rotulo),
+    criar('p', 'estrutura__taxonomia-secao-descricao', atributo.funcao)
+  );
 
-  const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-atributo');
   atributo.valores.forEach((valor) => {
     const item = criar('li', 'estrutura__categoria-atributo');
@@ -260,37 +259,58 @@ function atributoClassificacao(chave, atributo) {
       criar('p', 'estrutura__categoria-atributo-nome', valor.valor),
       criar('p', 'estrutura__categoria-atributo-texto', valor.explicacao)
     );
-    if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
-    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
+    if (comPergunta && valor.pergunta) {
+      item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
+    }
     categorias.append(item);
   });
-  conteudo.append(categorias);
-  bloco.append(cabecalho, conteudo);
+
+  bloco.append(cabecalho, categorias);
+  /* Uma fonte por seção, no pé. Antes era uma por categoria, e as três linhas
+     de citação repetidas competiam com o conteúdo que elas sustentam. */
+  if (atributo.referencia) bloco.append(fonteConceitual(atributo.referencia));
   return bloco;
 }
 
 /**
- * A taxonomia ocupa a largura inteira e empilha. A natureza vem primeiro, com
- * os três cartões lado a lado, e nível e dimensão dividem a linha seguinte.
- *
- * Antes isso era a coluna esquerda de um par de colunas, mas a coluna direita
- * acabava depois de três cartões e a esquerda seguia por mais três blocos, então
- * metade da largura ficava vazia enquanto o texto da esquerda se espremia.
+ * A faixa de transição entre a introdução e o detalhamento. São três itens
+ * curtos, só para dizer de antemão que pergunta cada atributo responde.
  */
-function composicaoClassificacao(dados, definicao) {
-  const composicao = criar('section', 'estrutura__classificacao-coluna');
-  composicao.append(
+function faixaPerguntas(definicao) {
+  const faixa = criar('section', 'estrutura__perguntas');
+  faixa.append(criar('p', 'estrutura__rotulo', definicao.tituloPerguntas));
+  const lista = criar('ol', 'estrutura__perguntas-lista');
+  definicao.perguntas.forEach((item) => {
+    const linha = criar('li', 'estrutura__pergunta');
+    linha.append(
+      criar('p', 'estrutura__pergunta-texto', item.pergunta),
+      criar('p', 'estrutura__pergunta-resposta', item.resposta)
+    );
+    lista.append(linha);
+  });
+  faixa.append(lista);
+  return faixa;
+}
+
+/**
+ * A coluna esquerda, mais larga. As três seções empilham, uma abaixo da outra,
+ * porque dividir texto corrido em colunas estreitas era o que quebrava a
+ * leitura da aba.
+ */
+function colunaTaxonomia(dados, definicao) {
+  const coluna = criar('section', 'estrutura__classificacao-coluna');
+  coluna.append(
     criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao),
     criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
   );
-  const atributos = criar('article', 'estrutura__composicao-classificacao');
-  const fileira = criar('div', 'estrutura__atributos-fileira');
-  ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
-    fileira.append(atributoClassificacao(chave, dados.classificacoes[chave]));
-  });
-  atributos.append(fileira);
-  composicao.append(atributos);
-  return composicao;
+  const secoes = criar('div', 'estrutura__taxonomia-secoes');
+  secoes.append(
+    secaoTaxonomia(dados.classificacoes.natureza, true),
+    secaoTaxonomia(dados.classificacoes.nivel),
+    secaoTaxonomia(dados.classificacoes.dimensao)
+  );
+  coluna.append(secoes);
+  return coluna;
 }
 
 function nomeTipoEcos(valor) {
@@ -301,15 +321,16 @@ function nomeTipoEcos(valor) {
   }[valor] || valor;
 }
 
-/* O tipo de ECOS segue o mesmo formato dos outros atributos, com a função do
-   atributo, a explicação de cada valor, a pergunta que ele responde e a fonte. */
-function composicaoTiposEcos(dados, definicao) {
+/**
+ * A coluna direita. Só o nome do tipo e uma linha de descrição, porque aqui o
+ * papel é mostrar onde o conhecimento foi observado, não classificar.
+ */
+function colunaTiposEcos(dados, definicao) {
   const atributo = dados.classificacoes.tipoEcos;
-  const composicao = criar('section', 'estrutura__tipos-ecos');
-  composicao.append(
+  const coluna = criar('section', 'estrutura__tipos-ecos');
+  coluna.append(
     criar('h4', 'estrutura__coluna-titulo', definicao.tituloTiposEcos),
-    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos),
-    criar('p', 'estrutura__tipos-ecos-funcao', atributo.funcao)
+    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos)
   );
   const lista = criar('ul', 'estrutura__tipos-ecos-lista');
   atributo.valores.forEach((valor) => {
@@ -318,12 +339,11 @@ function composicaoTiposEcos(dados, definicao) {
       criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
       criar('p', 'estrutura__tipo-ecos-texto', valor.explicacao)
     );
-    if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
-    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
     lista.append(item);
   });
-  composicao.append(lista);
-  return composicao;
+  coluna.append(lista);
+  if (definicao.referenciasTiposEcos) coluna.append(fonteConceitual(definicao.referenciasTiposEcos));
+  return coluna;
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
@@ -334,10 +354,17 @@ function explicacaoConhecimento(dados, aba, definicao) {
   return resultado;
 }
 
+/**
+ * A aba segue a mesma progressão do resto do catálogo, introdução geral, faixa
+ * de transição e então o detalhamento em duas colunas, a taxonomia à esquerda e
+ * os tipos de ECOS observados à direita.
+ */
 function explicacaoClassificacao(dados, aba, definicao) {
-  const atributos = criar('article', 'estrutura__composicao-atributos');
-  atributos.append(composicaoClassificacao(dados, definicao), composicaoTiposEcos(dados, definicao));
-  const resultado = painel(definicao, aba, definicao.introducao, [atributos], 'estrutura__grade--classificacao');
+  const camada = criar('article', 'estrutura__camada-atributos');
+  const colunas = criar('div', 'estrutura__composicao-atributos');
+  colunas.append(colunaTaxonomia(dados, definicao), colunaTiposEcos(dados, definicao));
+  camada.append(faixaPerguntas(definicao), colunas);
+  const resultado = painel(definicao, aba, definicao.introducao, [camada], 'estrutura__grade--classificacao');
   resultado.classList.add('estrutura__painel--classificacao');
   return resultado;
 }

@@ -354,7 +354,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
 .estrutura__composicao-conhecimento,
-.estrutura__composicao-classificacao,
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias { margin-top: var(--esp-4); }
 .estrutura__composicao-conhecimento { display: grid; gap: var(--esp-2); align-items: start; }
@@ -391,22 +390,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__evidencia-texto,
 .estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.6; }
 .estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
-.estrutura__atributo-classificacao {
-  display: grid;
-  grid-template-columns: minmax(13rem, 0.85fr) minmax(0, 1.55fr);
-  gap: var(--esp-5);
-  padding: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
-  border-radius: var(--raio);
-}
-.estrutura__atributo-classificacao-cabecalho { display: flex; flex-wrap: wrap; gap: var(--esp-3); align-content: start; }
-.estrutura__atributo-classificacao-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
-.estrutura__atributo-classificacao-descricao { flex-basis: var(--largura-cheia); margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
-.estrutura__atributo-classificacao-conteudo { display: grid; gap: var(--esp-3); align-content: start; }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
-.estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-left: var(--esp-4); border-left: var(--borda-suave); }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__referencia-natureza { padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
@@ -537,17 +521,71 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__fonte-conceitual a:hover,
 .estrutura__fonte-conceitual a:focus-visible { text-decoration: underline; }
-/* Tudo em largura inteira e empilhado. O par de colunas externas saiu porque a
-   coluna dos exemplos acabava na metade da altura da outra. */
+/* A camada de atributos segue a progressão da aba, introdução, faixa de
+   perguntas e detalhamento. A faixa e as colunas empilham nessa ordem. */
+.estrutura__camada-atributos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-4);
+  margin-top: var(--esp-4);
+  min-width: 0;
+}
+/* A faixa de transição é breve de propósito. Ela só diz de antemão que pergunta
+   cada atributo responde, antes do detalhamento vir abaixo. */
+.estrutura__perguntas {
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+.estrutura__perguntas-lista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-3);
+  margin-top: var(--esp-3);
+  align-items: stretch;
+  counter-reset: pergunta;
+  list-style: none;
+}
+/* A resposta vai para o pé do item, senão as três linhas de resposta ficam
+   desencontradas quando uma pergunta quebra em duas linhas e as outras não. */
+.estrutura__pergunta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  counter-increment: pergunta;
+}
+.estrutura__pergunta-resposta { margin-top: auto; }
+.estrutura__pergunta-texto {
+  color: var(--cor-titulo);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.estrutura__pergunta-texto::before {
+  content: counter(pergunta) '. ';
+  color: var(--cor-acento);
+  font-family: var(--fonte-mono);
+}
+.estrutura__pergunta-resposta {
+  padding-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
+/* Duas colunas apenas, a taxonomia mais larga que os exemplos. No celular a
+   taxonomia vem primeiro e os exemplos descem para baixo dela. */
 .estrutura__composicao-atributos {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-5);
+  gap: var(--esp-4);
   align-items: start;
   min-width: 0;
 }
 .estrutura__classificacao-coluna,
 .estrutura__tipos-ecos {
+  display: flex;
+  flex-direction: column;
   padding: var(--esp-4);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
@@ -557,76 +595,55 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   max-width: 100%;
 }
 .estrutura__coluna-titulo {
+  color: var(--cor-acento);
   font-size: var(--tam-base);
   font-weight: 600;
   line-height: 1.3;
 }
 .estrutura__coluna-subtitulo {
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
+/* As três seções da taxonomia, uma abaixo da outra. Nunca lado a lado, porque
+   texto corrido em coluna estreita é o que atravancava a leitura da aba. */
+.estrutura__taxonomia-secoes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-4);
+  margin-top: var(--esp-4);
+}
+.estrutura__taxonomia-secao {
+  min-width: 0;
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+.estrutura__taxonomia-secao-titulo {
+  font-size: var(--tam-base);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-nome);
+  line-height: 1.3;
+}
+.estrutura__taxonomia-secao-descricao {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
   line-height: 1.5;
 }
-.estrutura__classificacao-coluna .estrutura__composicao-classificacao {
+.estrutura__categorias-atributo {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-3);
-  margin-top: var(--esp-3);
+  margin-top: var(--esp-4);
 }
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao {
-  display: block;
-  min-width: 0;
-  padding: var(--esp-4);
-  background: var(--cor-superficie);
-  border: var(--borda-suave);
-  border-top: var(--borda-suave);
-  border-radius: var(--raio);
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao:first-child { border-top: var(--borda-acento-suave); }
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao-cabecalho {
-  display: block;
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao-cabecalho .estrutura__icone {
-  display: none;
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao-cabecalho-titulo {
-  font-size: var(--tam-base);
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao-descricao {
-  margin-top: var(--esp-1);
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao-conteudo {
-  gap: var(--esp-2);
-  margin-top: var(--esp-3);
-}
-.estrutura__classificacao-coluna .estrutura__categorias-classificacao {
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-2);
-}
-/* Três colunas só aqui, na largura inteira, onde cada cartão fica com cerca de
-   um terço de 1200px. Estreito é o que se proibiu, e isto não é estreito. */
-.estrutura__categorias-classificacao--fileira {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--esp-3);
-  align-items: stretch;
-  margin-top: var(--esp-3);
-}
-/* Os três atributos lado a lado. Cada um diz o que identifica e lista as
-   categorias pelo nome, sem redefini-las. */
-.estrutura__atributos-fileira {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--esp-3);
-  align-items: stretch;
-  min-width: 0;
-}
-.estrutura__categorias-atributo { display: grid; gap: var(--esp-3); margin-top: var(--esp-3); }
 .estrutura__categoria-atributo + .estrutura__categoria-atributo {
   padding-top: var(--esp-3);
   border-top: var(--borda-suave);
 }
 .estrutura__categoria-atributo-nome {
-  color: var(--cor-texto);
+  color: var(--cor-titulo);
   font-size: var(--tam-sm);
   font-weight: 600;
   line-height: 1.3;
@@ -637,20 +654,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-sm);
   line-height: 1.5;
 }
-/* A pergunta que a categoria responde, em itálico, logo acima da fonte. */
+/* A pergunta é texto auxiliar, menor e apagado, para não disputar com a
+   descrição da categoria logo acima dela. */
 .estrutura__categoria-atributo-pergunta {
   margin-top: var(--esp-2);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
   font-style: italic;
   line-height: 1.5;
 }
-.estrutura__tipos-ecos-funcao {
-  margin-top: var(--esp-2);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
-}
+/* A fonte é da seção inteira, no pé, separada do conteúdo e discreta. */
+.estrutura__taxonomia-secao .estrutura__fonte-conceitual,
+.estrutura__tipos-ecos > .estrutura__fonte-conceitual { margin-top: var(--esp-4); }
 /* As ações de gerência, em fileira de pílulas, no pé da camada. */
 .estrutura__acoes-gerencia { grid-column: 1 / -1; margin-top: var(--esp-2); }
 .estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
@@ -663,48 +678,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
   line-height: 1.6;
 }
-.estrutura__classificacao-coluna .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
-  padding: 0;
-  border: 0;
-}
-.estrutura__classificacao-coluna .estrutura__categoria-classificacao {
-  min-width: 0;
-}
 /* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
    empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
-.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao,
-.estrutura__tipo-ecos {
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
   display: flex;
   flex-direction: column;
-}
-.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao .estrutura__fonte-conceitual,
-.estrutura__tipo-ecos .estrutura__fonte-conceitual { margin-top: auto; }
-.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
   padding: var(--esp-3);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
   border-radius: var(--raio);
 }
-/* Nome em cima, texto em largura inteira abaixo e fonte no pé, igual aos
-   cartões da natureza. Antes era rótulo à esquerda e texto à direita, e o
-   rótulo curto deixava um buraco em cada linha. */
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--nivel .estrutura__categoria-classificacao,
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--dimensao .estrutura__categoria-classificacao {
-  padding: var(--esp-3) 0 0;
-  border-top: var(--borda-suave);
-}
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--nivel .estrutura__categoria-classificacao:first-child,
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--dimensao .estrutura__categoria-classificacao:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-.estrutura__classificacao-coluna .estrutura__categoria-classificacao-titulo {
-  font-size: var(--tam-sm);
-  color: var(--cor-titulo);
-}
-.estrutura__classificacao-coluna .estrutura__categoria-classificacao-texto {
-  margin-top: var(--esp-1);
-}
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao .estrutura__fonte-conceitual { margin-top: auto; }
 
 .estrutura__tipos-ecos-intro,
 .estrutura__tipo-ecos-texto {
@@ -713,11 +697,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 .estrutura__tipos-ecos-intro { margin-top: var(--esp-2); }
+/* Cartões verticais, um por tipo. A coluna é estreita e três lado a lado
+   voltariam a espremer o texto. */
 .estrutura__tipos-ecos-lista {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-3);
-  margin-top: var(--esp-3);
+  margin-top: var(--esp-4);
 }
 .estrutura__tipo-ecos {
   min-width: 0;
@@ -743,12 +729,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    linha crescer com o conteúdo. Nunca de height 100% nem de grid-auto-rows 1fr,
    que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
-.estrutura__atributos-fileira,
 .estrutura__composicao-gerencia,
 .estrutura__evidencias-blocos,
 .estrutura__tipos-ecos-lista { align-items: stretch; }
 .estrutura__evidencias-blocos .estrutura__evidencia-linha { display: flex; flex-direction: column; }
-.estrutura__atributos-fileira .estrutura__fonte-conceitual,
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
 /* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
    em vez de ficar espremida na largura de um cartão. */
@@ -764,50 +748,40 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     line-height: 1.5;
   }
   .estrutura__composicao-conhecimento,
-  .estrutura__composicao-classificacao,
   .estrutura__composicao-gerencia,
   .estrutura__composicao-evidencias { margin-top: 1rem; }
-  .estrutura__atributo-classificacao,
   .estrutura__gerencia-item,
   .estrutura__evidencia-linha { padding: 1rem; }
   .estrutura__gerencia-texto,
   .estrutura__evidencia-texto,
   .estrutura__nota-texto,
   .estrutura__categoria-classificacao-texto,
-  .estrutura__atributo-classificacao-descricao,
   .estrutura__gerencia-cabecalho-titulo,
-  .estrutura__evidencia-cabecalho-titulo,
-  .estrutura__atributo-classificacao-cabecalho-titulo { font-size: 1rem; }
+  .estrutura__evidencia-cabecalho-titulo { font-size: 1rem; }
   .estrutura__composicao-conhecimento,
-  .estrutura__composicao-classificacao,
   .estrutura__composicao-gerencia,
   .estrutura__composicao-evidencias { gap: 0.75rem; }
   .estrutura__numero-evidencia-valor { font-size: 1.5rem; }
   .estrutura__nota-metodologica { gap: 0.75rem; padding: 1rem; }
 }
 @media (min-width: 62rem) {
-  .estrutura__composicao-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
-  .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
-  .estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
-  .estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
-    padding-top: 0.625rem;
-    padding-left: 0;
-    border-top: var(--borda-suave);
-    border-left: 0;
+  /* Duas colunas apenas, e a esquerda mais larga, porque a taxonomia tem três
+     seções e os exemplos só uma lista. */
+  .estrutura__composicao-atributos { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+  .estrutura__perguntas-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  /* A coluna dos exemplos é bem mais curta que a taxonomia. Em vez de deixar
+     meia tela vazia ao lado, ela acompanha a rolagem da coluna da esquerda. */
+  .estrutura__tipos-ecos {
+    position: sticky;
+    top: calc(var(--altura-cabecalho) + var(--esp-4));
   }
-
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .estrutura__composicao-evidencias { gap: 0.75rem; }
 }
 @media (max-width: 61.99rem) {
-  .estrutura__composicao-atributos,
   .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-atributos > * { min-width: 0; }
-  .estrutura__atributos-fileira,
-  .estrutura__tipos-ecos-lista,
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__classificacao-coluna .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
@@ -825,7 +799,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__gerencia-item,
-  .estrutura__atributo-classificacao,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
