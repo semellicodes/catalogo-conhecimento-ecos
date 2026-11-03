@@ -230,6 +230,12 @@ nativamente pelo navegador com `type="module"`.
   publica o site
 - Arquivo de experimento e de protótipo nunca vai para a `main`. Fica na branch e é apagado
   antes do merge
+- Depois de uma PR ser fechada com squash, aquela branch morre. O trabalho seguinte começa numa
+  branch nova tirada da `main` atualizada. Continuar commitando na branch que já foi espremida
+  cria duas histórias concorrentes nos mesmos arquivos, e o conflito que aparece é de git, não de
+  conteúdo
+- Conflito assim se resolve na linha de comando, nunca pelo editor do GitHub. Branch nova a partir
+  da `main`, `git cherry-pick` só dos commits que a `main` ainda não tem, e PR nova
 
 ## Qualidade de código
 
