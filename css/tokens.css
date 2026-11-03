@@ -15,6 +15,7 @@
   --cor-cartao: #1A2230;
   --cor-cartao-catalogo: #142821;
   --cor-cartao-catalogo-hover: #19342A;
+  --cor-cabecalho: var(--cor-fundo);
   --cor-linha: #283140;
   --cor-linha-suave: #1E2733;
   --cor-texto: #E6EAF0;
@@ -52,6 +53,13 @@
   --cor-faixa-linha: #1D4A3C;
   --cor-faixa-painel: #104536;
   --cor-faixa-painel-profundo: #0A3428;
+  --cor-acao-abertura-primaria-fundo: var(--cor-faixa-texto);
+  --cor-acao-abertura-primaria-texto: var(--cor-faixa);
+  --cor-acao-abertura-primaria-hover: var(--cor-faixa-acento);
+  --cor-acao-abertura-secundaria-fundo: var(--cor-faixa-texto);
+  --cor-acao-abertura-secundaria-texto: var(--cor-faixa);
+  --cor-acao-abertura-secundaria-borda: transparent;
+  --cor-acao-abertura-secundaria-hover: var(--cor-faixa-acento);
 
   /* Profundidade. No escuro quem separa é a borda, então a sombra quase não entra */
   --sombra-1: none;
@@ -174,13 +182,14 @@
   color-scheme: light;
   /* Superfícies claras em camadas, com um leve viés verde para preservar a
      identidade do catálogo sem transformar o tema em uma extensão do escuro. */
-  --cor-fundo: #F2F6F4;
+  --cor-fundo: #F3F7F5;
   --cor-superficie: #FEFFFE;
   --cor-superficie-alta: #F7FAF8;
-  --cor-miolo: #E8EFEB;
+  --cor-miolo: #EAF1ED;
   --cor-cartao: #FFFFFF;
   --cor-cartao-catalogo: #FCFEFD;
   --cor-cartao-catalogo-hover: #F3F9F5;
+  --cor-cabecalho: #FFFFFF;
   --cor-linha: #C9D8D1;
   --cor-linha-suave: #E0E9E4;
   --cor-texto: #17231F;
@@ -209,13 +218,22 @@
   --cor-neutro-pilula-texto: #40514A;
 
 
-  --cor-faixa: #0A3B2D;
-  --cor-faixa-texto: #F2F7F4;
-  --cor-faixa-suave: #BFD9CE;
-  --cor-faixa-acento: #6FDCB6;
-  --cor-faixa-linha: #1F5C49;
-  --cor-faixa-painel: #104536;
-  --cor-faixa-painel-profundo: #0A3428;
+  /* No claro, a abertura ganha luminosidade própria: a página deixa de ser
+     uma cópia do tema escuro e preserva o verde profundo só nos destaques. */
+  --cor-faixa: #E7F3EC;
+  --cor-faixa-texto: #153D31;
+  --cor-faixa-suave: #3F5B51;
+  --cor-faixa-acento: #177657;
+  --cor-faixa-linha: #B8D8C8;
+  --cor-faixa-painel: #F7FCF9;
+  --cor-faixa-painel-profundo: #EEF8F2;
+  --cor-acao-abertura-primaria-fundo: #153D31;
+  --cor-acao-abertura-primaria-texto: #FFFFFF;
+  --cor-acao-abertura-primaria-hover: #0D563F;
+  --cor-acao-abertura-secundaria-fundo: #FFFFFF;
+  --cor-acao-abertura-secundaria-texto: #153D31;
+  --cor-acao-abertura-secundaria-borda: #A8D2BF;
+  --cor-acao-abertura-secundaria-hover: #EEF8F2;
 
   --sombra-1: 0 1px 2px rgb(20 54 42 / 0.04), 0 2px 5px rgb(20 54 42 / 0.06);
   --sombra-2: 0 5px 14px rgb(20 54 42 / 0.06), 0 16px 32px rgb(20 54 42 / 0.08);

@@ -124,15 +124,27 @@
   flex: 1 1 12rem;
   min-height: var(--alvo-toque);
   padding-inline: var(--esp-5);
-  background: var(--cor-faixa-texto);
-  color: var(--cor-faixa);
+  background: var(--cor-acao-abertura-primaria-fundo);
+  color: var(--cor-acao-abertura-primaria-texto);
   border-radius: var(--raio);
   font-size: var(--tam-sm);
   font-weight: 600;
   text-decoration: none;
   transition: background-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
-.abertura__acao:hover { background: var(--cor-faixa-acento); color: var(--cor-faixa); }
+.abertura__acao:hover {
+  background: var(--cor-acao-abertura-primaria-hover);
+  color: var(--cor-acao-abertura-primaria-texto);
+}
+.abertura__acao--secundaria {
+  background: var(--cor-acao-abertura-secundaria-fundo);
+  color: var(--cor-acao-abertura-secundaria-texto);
+  border: 1px solid var(--cor-acao-abertura-secundaria-borda);
+}
+.abertura__acao--secundaria:hover {
+  background: var(--cor-acao-abertura-secundaria-hover);
+  color: var(--cor-acao-abertura-secundaria-texto);
+}
 .abertura__acao:focus-visible { outline-offset: var(--esp-1); }
 @media (min-width: 42rem) {
   .abertura__acoes { width: auto; }

@@ -1,7 +1,7 @@
 /* ---------- Cabeçalho ---------- */
 .cabecalho {
   border-bottom: var(--borda);
-  background: var(--cor-fundo);
+  background: var(--cor-cabecalho);
   position: sticky;
   top: 0;
   z-index: 5;
