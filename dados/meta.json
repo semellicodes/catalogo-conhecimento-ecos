@@ -9,19 +9,19 @@
         "id": "conhecimento",
         "rotulo": "Ponto de Partida",
         "icone": "conhecimento",
-        "introducao": "Conhecimento pode ser entendido como uma combinação de experiências, valores e informações contextuais que permitem avaliar e assimilar novas situações. Em ECOS, o conhecimento ultrapassa os limites de uma única organização e precisa circular entre os atores e artefatos do ecossistema. Sua gerência não pode ser centralizada, porque decisões, informações e dependências atravessam fronteiras organizacionais.",
-        "perguntaPesquisa": "Pergunta de pesquisa: Quais conhecimentos específicos devem ser gerenciados em ECOS?",
+        "introducao": "Os conhecimentos em Ecossistemas de Software (ECOS) compreendem informações, experiências e habilidades desenvolvidas e compartilhadas entre os participantes do ecossistema, contribuindo para a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
         "referencias": "davenport1998, seichter2010, viana2015",
-        "tituloNaturezas": "Os conhecimentos em ECOS podem ser classificados em três naturezas epistemológicas"
+        "tituloNaturezas": "Os conhecimentos em ECOS podem ser classificados em três naturezas epistemológicas",
+        "tituloPainel": "Conhecimento em Ecossistemas de Software"
       },
       {
         "id": "classificacao",
         "rotulo": "Atributos do conhecimento",
-        "tituloPainel": "Atributos do conhecimento",
+        "tituloPainel": "Classificação dos Conhecimentos em ECOS",
         "icone": "classificacao",
-        "introducao": "Cada conhecimento catalogado é organizado segundo sua natureza epistemológica, o nível do ECOS em que se concentra e a dimensão que aborda. Esses atributos tornam explícito o que é conhecido, onde esse conhecimento se situa e qual aspecto do ECOS está relacionado a ele.",
-        "tituloClassificacao": "Taxonomia e atributos do conhecimento",
-        "subtituloClassificacao": "Como cada conhecimento é classificado?",
+        "introducao": "Os conhecimentos identificados na literatura foram caracterizados por três atributos complementares, natureza epistemológica, nível no ECOS e dimensão do ECOS. Esses atributos permitem compreender a forma como o conhecimento se manifesta, seu alcance no ecossistema e o contexto ao qual está relacionado.",
+        "tituloClassificacao": "Atributos de caracterização",
+        "subtituloClassificacao": "O que cada atributo identifica e quais categorias ele admite",
         "tituloTiposEcos": "Exemplos de ECOS em que o conhecimento foi observado",
         "introducaoTiposEcos": "Os exemplos mostram em quais tipos de ECOS os estudos primários observaram cada conhecimento. Um mesmo conhecimento pode possuir evidências em mais de um tipo de ECOS.",
         "referenciasTiposEcos": "manikas2016"
@@ -29,15 +29,15 @@
       {
         "id": "gerencia",
         "rotulo": "Gerência do conhecimento",
-        "tituloPainel": "Como o conhecimento pode ser gerenciado no ECOS?",
+        "tituloPainel": "Gerência do Conhecimento",
         "icone": "gerencia",
-        "introducao": "A gerência do conhecimento no ECOS envolve identificar onde ele é gerado ou registrado, quais participantes podem se beneficiar de seu uso e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação.",
+        "introducao": "A gerência do conhecimento em ECOS envolve práticas voltadas à identificação, captura, compartilhamento, organização e reutilização dos conhecimentos existentes entre os participantes do ecossistema.",
         "nota": "As oito ações foram definidas a partir dos resultados da revisão rápida deste trabalho e não reproduzem um esquema publicado. Elas descrevem o que precisa acontecer com um conhecimento para que ele chegue a quem precisa dele.",
-        "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
+        "referencias": "revisaoRapidaManuscrito",
         "campos": [
           {
-            "titulo": "Fontes do conhecimento",
-            "rotulo": "Fontes do conhecimento",
+            "titulo": "Fonte do conhecimento",
+            "rotulo": "Fonte do conhecimento",
             "descricao": "Indicam onde o conhecimento tende a ser gerado ou registrado.",
             "icone": "fontes"
           },
@@ -53,30 +53,33 @@
             "descricao": "Reúnem orientações que favorecem o acesso, compartilhamento, atualização e preservação do conhecimento.",
             "icone": "praticas"
           }
-        ]
+        ],
+        "tituloAcoes": "Ações de gerência adotadas no catálogo"
       },
       {
         "id": "evidencias",
         "rotulo": "Base de evidências",
-        "tituloPainel": "Base de evidências científicas",
+        "tituloPainel": "Base de Evidências",
         "icone": "evidencias",
-        "introducao": "Cada conhecimento catalogado possui rastreabilidade com os estudos primários que o identificaram. A base de evidências reúne os estudos selecionados, as associações entre conhecimentos e estudos e os desafios identificados na literatura.",
+        "introducao": "A Revisão Rápida da Literatura foi utilizada para identificar e analisar evidências científicas relacionadas à gerência de conhecimento em Ecossistemas de Software. A busca foi realizada na base Scopus, seguida da aplicação dos critérios de seleção e da extração e análise dos dados.",
         "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
-        "cartoes": {
-          "revisao": "Revisão Rápida da Literatura",
-          "revisaoDescricao": "A Revisão Rápida da Literatura constitui a base metodológica utilizada para identificar os conhecimentos e as evidências analisadas no KM4SECO.",
-          "estudos": "18 estudos primários",
-          "estudosDescricao": "Os estudos primários selecionados sustentam a identificação e a caracterização dos conhecimentos catalogados.",
-          "rastreabilidade": "Rastreabilidade das evidências",
-          "rastreabilidadeDescricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados.",
-          "desafios": "Desafios identificados na literatura",
-          "desafiosDescricao": "Os desafios não constituem uma classificação adicional dos conhecimentos. Eles representam achados identificados na literatura que podem dificultar sua gerência e são vinculados aos estudos primários correspondentes.",
-          "icones": {
-            "revisao": "revisao",
-            "estudos": "estudos",
-            "rastreabilidade": "rastreabilidade",
-            "desafios": "desafios"
-          }
+        "revisao": {
+          "titulo": "Revisão Rápida da Literatura",
+          "registrosRecuperados": 1096,
+          "rotuloRecuperados": "registros recuperados",
+          "rotuloSelecionados": "estudos primários selecionados"
+        },
+        "resultados": {
+          "titulo": "Evidências identificadas",
+          "rotuloConhecimentos": "conhecimentos catalogados",
+          "descricaoConhecimentos": "Os conhecimentos foram identificados a partir dos estudos primários selecionados e constituem o conteúdo principal do KM4SECO.",
+          "tituloRastreabilidade": "Rastreabilidade aos estudos primários",
+          "descricaoRastreabilidade": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados."
+        },
+        "desafios": {
+          "titulo": "Desafios relacionados à Gerência de Conhecimento",
+          "descricao": "Os estudos primários também permitiram identificar desafios associados à gerência de conhecimento em ECOS. Esses desafios representam dificuldades relatadas na literatura e foram relacionados aos conhecimentos catalogados conforme as evidências encontradas, sem a adoção de uma taxonomia específica.",
+          "rotuloAssociacoes": "associações entre desafios e conhecimentos"
         }
       }
     ]

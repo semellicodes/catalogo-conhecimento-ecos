@@ -12,7 +12,8 @@
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: Que informações podem ser documentadas, consultadas e reutilizadas pelos participantes do ECOS?",
-        "referencia": "nonaka1997"
+        "referencia": "nonaka1997",
+        "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos."
       },
       {
         "valor": "Tácito-cognitivo",
@@ -20,7 +21,8 @@
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: Quais percepções, experiências e interpretações dos participantes precisam ser compreendidas?",
-        "referencia": "alavi2001"
+        "referencia": "alavi2001",
+        "definicaoBreve": "Conhecimentos relacionados à experiência, percepção, interpretação e compreensão dos participantes."
       },
       {
         "valor": "Tácito-técnico",
@@ -28,9 +30,11 @@
         "descricao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada pelos participantes ao atuar no ECOS.",
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: Quais habilidades práticas e experiências podem apoiar a atuação dos participantes no ECOS?",
-        "referencia": "alavi2001"
+        "referencia": "alavi2001",
+        "definicaoBreve": "Conhecimentos associados às habilidades práticas e à capacidade de executar atividades."
       }
-    ]
+    ],
+    "funcao": "Identifica a forma de manifestação do conhecimento."
   },
   "nivel": {
     "rotulo": "Nível no ECOS",
@@ -54,7 +58,8 @@
         "descricao": "Conhecimento relacionado às relações, participantes, regras, necessidades e interdependências do ECOS.",
         "referencia": "johnson2020, kauschinger2021"
       }
-    ]
+    ],
+    "funcao": "Identifica o alcance do conhecimento no contexto do ecossistema."
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
@@ -78,7 +83,8 @@
         "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
         "referencia": "santos2011"
       }
-    ]
+    ],
+    "funcao": "Identifica o contexto predominante ao qual o conhecimento está relacionado."
   },
   "tipoEcos": {
     "rotulo": "Tipo de ECOS observado",

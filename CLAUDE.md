@@ -181,10 +181,32 @@ nativamente pelo navegador com `type="module"`.
 - A fonte é uma lista que quebra inteira, cada citação um item que não parte no meio, separadas por
   espaço. O ponto e vírgula fica só no texto, para quem copia a linha ou usa leitor de tela, e não
   é desenhado, senão sobra pendurado no fim da linha quando a lista quebra
-- A aba Ponto de Partida define o que é conhecimento em ECOS e emenda na natureza epistemológica,
-  com os três cartões de definição, exemplos e fonte. Conceito e classificação principal ficam na
-  mesma aba, que é o que o próprio artigo faz. A aba Atributos do conhecimento trata do resto,
-  nível no ECOS, dimensão do ECOS e tipo de ECOS. A natureza não aparece nas duas
+- As quatro camadas da Estrutura têm funções separadas e nessa progressão. Ponto de Partida diz o
+  que é conhecimento em ECOS e quais são as três naturezas epistemológicas, só o conceito.
+  Atributos diz como os conhecimentos foram caracterizados, por natureza, nível e dimensão, com a
+  função de cada atributo e as categorias pelo nome. Gerência diz fonte, participantes beneficiados
+  e práticas. Base de Evidências diz o que sustenta o catálogo
+- A natureza aparece nas duas primeiras camadas de propósito, com funções diferentes. No Ponto de
+  Partida ela é definida, no Atributos ela é um dos critérios de caracterização. O que não se
+  repete é a definição, que existe num lugar só
+- O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, detalhe de
+  atributo nem número da revisão. Só o conceito, a frase central e as três definições breves
+- `classificacoes.json` guarda dois textos por natureza com papéis separados. `definicaoBreve` é a
+  do Ponto de Partida e `descricao` é a completa do glossário do Explorar
+- `classificacoes[].funcao` diz o que o atributo identifica, e é o que a camada de Atributos mostra
+  no lugar de redefinir cada categoria
+- A Base de Evidências mostra a progressão da revisão, dos registros recuperados aos estudos
+  selecionados, depois os resultados e por último os desafios, em cartão próprio. Os desafios não
+  viram quinta camada. A contagem dos desafios é de associações entre desafio e conhecimento, não
+  de desafios distintos, e o rótulo diz isso
+- Só `registrosRecuperados` é escrito em `meta.json`, porque é número do protocolo da revisão. O
+  total de estudos, de conhecimentos e de associações sai dos próprios dados
+- Cartaxo fundamenta a revisão rápida e Charmaz a codificação. Nenhum dos dois é autor das práticas
+  de gerência, que saíram da própria revisão, então a camada de Gerência cita
+  `revisaoRapidaManuscrito`
+- O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
+  nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
+  painéis
 - A fonte fica no pé de cada cartão, sempre visível, nunca atrás do botão de ajuda e nunca uma só
   no pé do bloco. Mesmo visual em toda a Estrutura, na ficha e no Explorar, pequena, itálica,
   apagada e separada do corpo por linha fina, sem caixa nem fundo. Repete-se de cartão em cartão de
