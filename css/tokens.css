@@ -59,9 +59,10 @@
   --sombra-menu: 0 8px 20px rgb(0 0 0 / 0.22);
 
   /* Tipografia */
-  --fonte-texto: 'Source Sans 3', system-ui, sans-serif;
-  --fonte-titulo: 'Creato Display', Georgia, serif;
-  --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --fonte-texto: var(--font-sans);
+  --fonte-titulo: var(--font-sans);
+  --fonte-mono: var(--font-sans);
   /* Entre letras. Texto grande pede aperto, rótulo em caixa alta pede folga */
   --entre-letras-faixa: -0.03em;
   --entre-letras-titulo: -0.02em;

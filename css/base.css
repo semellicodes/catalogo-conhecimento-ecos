@@ -1,24 +1,9 @@
 @font-face {
-  font-family: 'Creato Display';
-  src: url('../fontes/CreatoDisplay-Regular.otf') format('opentype');
+  font-family: 'IBM Plex Sans';
+  src: url('../assets/fonts/ibm-plex-sans/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Creato Display';
-  src: url('../fontes/CreatoDisplay-Medium.otf') format('opentype');
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Creato Display';
-  src: url('../fontes/CreatoDisplay-Bold.otf') format('opentype');
-  font-style: normal;
-  font-weight: 700;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
   font-display: swap;
 }
 
@@ -91,7 +76,7 @@ button, input, select {
   padding-inline: clamp(var(--esp-4), 3vw, var(--esp-6));
 }
 
-.mono { font-family: var(--fonte-mono); }
+.mono { font-family: var(--font-sans); }
 
 /* Rolagem suave para as âncoras da página única. Quem pede menos movimento
    continua com o salto seco. */
