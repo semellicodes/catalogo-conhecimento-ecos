@@ -172,22 +172,24 @@
    O claro só entra pela escolha do botão, nunca pela preferência do sistema. */
 :root[data-tema="claro"] {
   color-scheme: light;
-  --cor-fundo: #EEF1F4;
-  --cor-superficie: #FFFFFF;
-  --cor-superficie-alta: #F7F9FB;
-  --cor-miolo: #E4E9EE;
+  /* Superfícies claras em camadas, com um leve viés verde para preservar a
+     identidade do catálogo sem transformar o tema em uma extensão do escuro. */
+  --cor-fundo: #F2F6F4;
+  --cor-superficie: #FEFFFE;
+  --cor-superficie-alta: #F7FAF8;
+  --cor-miolo: #E8EFEB;
   --cor-cartao: #FFFFFF;
-  --cor-cartao-catalogo: #F8FBF9;
-  --cor-cartao-catalogo-hover: #F1F8F4;
-  --cor-linha: #D7DDE4;
-  --cor-linha-suave: #E6EAEF;
-  --cor-texto: #14181D;
-  --cor-texto-suave: #4A545F;
-  --cor-texto-fraco: #5A6472;
-  --cor-acento: #0F6B51;
-  --cor-acento-forte: #0B5440;
-  --cor-acento-fundo: #DCEFE8;
-  --cor-acento-linha: #9FCFBE;
+  --cor-cartao-catalogo: #FCFEFD;
+  --cor-cartao-catalogo-hover: #F3F9F5;
+  --cor-linha: #C9D8D1;
+  --cor-linha-suave: #E0E9E4;
+  --cor-texto: #17231F;
+  --cor-texto-suave: #465851;
+  --cor-texto-fraco: #63736C;
+  --cor-acento: #116B52;
+  --cor-acento-forte: #0B563F;
+  --cor-acento-fundo: #E2F1E9;
+  --cor-acento-linha: #A8D2BF;
   --cor-contraste: #FFFFFF;
 
   --cor-explicito: #6E3E91;
@@ -203,8 +205,8 @@
   --cor-tacito-cognitivo-pilula-texto: #6B4410;
   --cor-tacito-tecnico-pilula: #E2EDF9;
   --cor-tacito-tecnico-pilula-texto: #17406B;
-  --cor-neutro-pilula: #E9EDF1;
-  --cor-neutro-pilula-texto: #3F4854;
+  --cor-neutro-pilula: #EAF0ED;
+  --cor-neutro-pilula-texto: #40514A;
 
 
   --cor-faixa: #0A3B2D;
@@ -215,7 +217,7 @@
   --cor-faixa-painel: #104536;
   --cor-faixa-painel-profundo: #0A3428;
 
-  --sombra-1: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.08);
-  --sombra-2: 0 4px 10px rgb(16 24 40 / 0.07), 0 14px 28px rgb(16 24 40 / 0.10);
-  --sombra-menu: 0 3px 10px rgb(16 24 40 / 0.08);
+  --sombra-1: 0 1px 2px rgb(20 54 42 / 0.04), 0 2px 5px rgb(20 54 42 / 0.06);
+  --sombra-2: 0 5px 14px rgb(20 54 42 / 0.06), 0 16px 32px rgb(20 54 42 / 0.08);
+  --sombra-menu: 0 4px 12px rgb(20 54 42 / 0.08);
 }
