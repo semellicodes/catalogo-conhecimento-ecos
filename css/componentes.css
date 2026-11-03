@@ -1140,11 +1140,12 @@
 }
 .desafio-card__titulo {
   margin: 0;
-  color: var(--cor-acento);
+  color: #F1F5F9;
   font-size: var(--tam-sm);
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1.4;
 }
+:root[data-tema="claro"] .desafio-card__titulo { color: #111827; }
 .desafio-card__descricao {
   margin: 0;
   color: var(--cor-texto-suave);
