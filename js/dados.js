@@ -4,12 +4,12 @@
  */
 
 const ARQUIVOS = {
-  meta: 'dados/meta.json?v=20261103-2',
-  conhecimentos: 'dados/conhecimentos.json?v=20261103-1',
-  desafios: 'dados/desafios.json?v=20261103-1',
+  meta: 'dados/meta.json?v=20261103-4',
+  conhecimentos: 'dados/conhecimentos.json?v=20261103-4',
+  desafios: 'dados/desafios.json?v=20261103-4',
   estudos: 'dados/estudos.json?v=20261102-3',
-  classificacoes: 'dados/classificacoes.json?v=20261103-2',
-  referencias: 'dados/referencias.json?v=20261103-2'
+  classificacoes: 'dados/classificacoes.json?v=20261103-4',
+  referencias: 'dados/referencias.json?v=20261103-4'
 };
 
 let promessa = null;
@@ -61,12 +61,32 @@ export function conhecimentoCompleto(dados, id) {
 }
 
 /** Rótulo curto da referência, como aparece ao lado de um atributo. */
+/* Rótulo curto de cada referência. A forma abreviada não sai da citação sozinha,
+   porque "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a
+   obra tem, então o rótulo fica escrito aqui, num lugar só, para a Estrutura e
+   a ficha citarem igual. */
+const ROTULOS_REFERENCIAS = {
+  alavi2001: 'Alavi e Leidner (2001)',
+  cartaxo2018: 'Cartaxo et al. (2018)',
+  cartaxo2020: 'Cartaxo et al. (2020)',
+  charmaz2006: 'Charmaz (2006)',
+  johnson2020: 'Johnson et al. (2020)',
+  kauschinger2021: 'Kauschinger et al. (2021)',
+  manikas2016: 'Manikas (2016)',
+  nonaka1997: 'Nonaka e Takeuchi (1997)',
+  santos2011: 'Santos e Werner (2011)'
+};
+
+export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;
+
 export function referenciaCurta(dados, chaves) {
   if (!chaves) return '';
   return chaves
     .split(',')
     .map((c) => {
-      const texto = dados.referencias[c.trim()];
+      const chave = c.trim();
+      if (ROTULOS_REFERENCIAS[chave]) return ROTULOS_REFERENCIAS[chave];
+      const texto = dados.referencias[chave];
       if (!texto) return '';
       const autor = texto.split(';')[0].split(',')[0].trim();
       const ano = (texto.match(/\b(19|20)\d{2}\b/) || [''])[0];

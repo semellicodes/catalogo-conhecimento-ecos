@@ -18,10 +18,11 @@
         "rotulo": "Atributos do conhecimento",
         "tituloPainel": "Atributos do conhecimento",
         "icone": "classificacao",
-        "introducao": "Cada conhecimento é caracterizado por sua natureza epistemológica, pelo nível do ECOS em que se concentra e pela dimensão que aborda.",
-        "tituloClassificacao": "Como cada conhecimento é classificado?",
+        "introducao": "Cada conhecimento catalogado é organizado segundo sua natureza epistemológica, o nível do ECOS em que se concentra e a dimensão que aborda. Esses atributos tornam explícito o que é conhecido, onde esse conhecimento se situa e qual aspecto do ECOS está relacionado a ele.",
+        "tituloClassificacao": "Taxonomia e atributos do conhecimento",
+        "subtituloClassificacao": "Como cada conhecimento é classificado?",
         "tituloTiposEcos": "Exemplos de ECOS em que o conhecimento foi observado",
-        "introducaoTiposEcos": "Os exemplos mostram em quais tipos de ECOS os estudos primários observaram cada conhecimento. Um mesmo conhecimento pode ter evidências em mais de um tipo de ECOS.",
+        "introducaoTiposEcos": "Os exemplos mostram em quais tipos de ECOS os estudos primários observaram cada conhecimento. Um mesmo conhecimento pode possuir evidências em mais de um tipo de ECOS.",
         "referenciasTiposEcos": "manikas2016"
       },
       {

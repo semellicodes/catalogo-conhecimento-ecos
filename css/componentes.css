@@ -793,6 +793,17 @@
   margin-bottom: var(--esp-3);
 }
 .bloco-ficha__textos { display: grid; gap: var(--esp-1); }
+/* Mesmo tratamento da fonte da Estrutura. Pequena, itálica, apagada e separada
+   do corpo por linha fina, sem caixa nem fundo próprio. */
+.bloco-ficha__fonte {
+  margin-top: var(--esp-4);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-suave);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
+  font-style: italic;
+  line-height: 1.5;
+}
 .bloco-ficha__esquema { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
 .bloco-ficha__titulo {
   font-family: var(--fonte-mono);
@@ -1005,6 +1016,7 @@
   .bloco-ficha__topo { gap: var(--esp-2); margin-bottom: var(--esp-2); }
   .bloco-ficha__titulo { font-size: 0.6875rem; }
   .bloco-ficha__esquema { font-size: 0.6875rem; }
+  .bloco-ficha__fonte { margin-top: var(--esp-3); font-size: 0.6875rem; }
   .ajuda__abrir { width: 1.375rem; height: 1.375rem; font-size: 0.6875rem; }
 
   .classificacao { gap: var(--esp-3); }

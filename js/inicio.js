@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261103-2';
+import { carregar, rotuloDaReferencia } from './dados.js?v=20261103-4';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -13,17 +13,6 @@ function criar(tag, className, texto) {
   return elemento;
 }
 
-const ROTULOS_REFERENCIAS = {
-  alavi2001: 'Alavi e Leidner (2001)',
-  cartaxo2018: 'Cartaxo et al. (2018)',
-  cartaxo2020: 'Cartaxo et al. (2020)',
-  charmaz2006: 'Charmaz (2006)',
-  johnson2020: 'Johnson et al. (2020)',
-  kauschinger2021: 'Kauschinger et al. (2021)',
-  manikas2016: 'Manikas (2016)',
-  nonaka1997: 'Nonaka e Takeuchi (1997)',
-  santos2011: 'Santos e Werner (2011)'
-};
 
 function fonteConceitual(chaves) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
@@ -31,7 +20,7 @@ function fonteConceitual(chaves) {
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
     if (indice) fonte.append('; ');
-    const link = criar('a', '', ROTULOS_REFERENCIAS[chave] || chave);
+    const link = criar('a', '', rotuloDaReferencia(chave));
     link.href = `referencias.html#referencia-${chave}`;
     fonte.append(link);
   });
@@ -122,6 +111,7 @@ function blocoConhecimento(valor) {
     conteudo.classList.add('estrutura__natureza-conteudo--completo');
   }
   bloco.append(cabecalho, conteudo);
+  if (valor.referencia) bloco.append(fonteConceitual(valor.referencia));
   return bloco;
 }
 
@@ -218,25 +208,35 @@ function categoriaClassificacao(valor, incluirDescricao = true) {
   const item = criar('li', 'estrutura__categoria-classificacao');
   item.append(criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor));
   if (incluirDescricao) item.append(criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao));
+  if (valor.exemplos) {
+    const exemplos = criar('p', 'estrutura__categoria-classificacao-exemplos', valor.exemplos);
+    exemplos.prepend(criar('span', 'estrutura__categoria-classificacao-rotulo', 'Exemplos'));
+    item.append(exemplos);
+  }
+  if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-classificacao-pergunta', valor.pergunta));
+  if (valor.referencia) item.append(fonteConceitual(valor.referencia));
   return item;
 }
 
 function atributoClassificacao(chave, atributo) {
   const bloco = criar('section', `estrutura__atributo-classificacao estrutura__atributo-classificacao--${chave}`);
   const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
-  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
+  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.introducao));
   const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-classificacao');
   atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
   conteudo.append(categorias);
-  conteudo.append(fonteConceitual(atributo.referencia));
+  if (chave !== 'natureza') conteudo.append(criar('p', 'estrutura__atributo-classificacao-pergunta', atributo.pergunta));
   bloco.append(cabecalho, conteudo);
   return bloco;
 }
 
 function composicaoClassificacao(dados, definicao) {
   const composicao = criar('section', 'estrutura__classificacao-coluna');
-  composicao.append(criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao));
+  composicao.append(
+    criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao),
+    criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
+  );
   const atributos = criar('article', 'estrutura__composicao-classificacao');
   ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
     atributos.append(atributoClassificacao(chave, dados.classificacoes[chave]));
@@ -266,9 +266,10 @@ function composicaoTiposEcos(dados, definicao) {
       criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
       criar('p', 'estrutura__tipo-ecos-texto', valor.descricao)
     );
+    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
     lista.append(item);
   });
-  composicao.append(lista, fonteConceitual(definicao.referenciasTiposEcos));
+  composicao.append(lista);
   return composicao;
 }
 

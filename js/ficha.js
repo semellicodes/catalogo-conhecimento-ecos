@@ -218,17 +218,19 @@ export function abrirAjuda(dados, conteudo) {
 
   document.querySelector('#dialogo-ajuda-titulo').textContent = conteudo.titulo;
   document.querySelector('#dialogo-ajuda-texto').textContent = conteudo.texto;
-  const fonte = document.querySelector('#dialogo-ajuda-fonte');
-  const referencia = referenciaCurta(dados, conteudo.referencia);
-  fonte.hidden = !referencia;
-  fonte.textContent = referencia ? `Fonte: ${referencia}` : '';
   dialogo.showModal();
   /* O diálogo recebe o foco inicial. Assim o contexto é anunciado sem criar
      um destaque visual indevido no botão de fechar. */
   dialogo.focus({ preventScroll: true });
 }
 
-/** Uma seção da ficha, com título, linha opcional de apoio e ajuda. */
+/**
+ * Uma seção da ficha, com título, linha opcional de apoio e ajuda.
+ *
+ * A fonte fica no pé da seção, sempre visível. Antes ela só aparecia dentro do
+ * painel de ajuda, e quem não abrisse o painel não via de onde vem o esquema.
+ * A ajuda continua, para a explicação de cada atributo.
+ */
 function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   const bloco = criar('section', 'bloco-ficha');
   const topo = criar('header', 'bloco-ficha__topo');
@@ -237,6 +239,15 @@ function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   if (linhaDeApoio) textos.append(criar('p', 'bloco-ficha__esquema', linhaDeApoio));
   topo.append(textos, controleAjuda || ajuda(dados, chaveDaAjuda));
   bloco.append(topo);
+
+  bloco.fonte = referenciaCurta(dados, dados.meta.ajudas?.[chaveDaAjuda]?.referencia);
+  return bloco;
+}
+
+/* A fonte entra por último, depois do conteúdo que cada seção acrescenta, por
+   isso cada seção termina passando por aqui em vez de a secao já fechar. */
+function fecharSecao(bloco) {
+  if (bloco.fonte) bloco.append(criar('p', 'bloco-ficha__fonte', `Fonte: ${bloco.fonte}`));
   return bloco;
 }
 
@@ -275,7 +286,7 @@ function classificacao(dados, conhecimento) {
     porque.append(abrir, texto);
     bloco.append(porque);
   }
-  return bloco;
+  return fecharSecao(bloco);
 }
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
@@ -284,7 +295,7 @@ function tiposDeEcos(dados, conhecimento) {
   bloco.classList.add('bloco-ficha--exemplos');
   bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
-  return bloco;
+  return fecharSecao(bloco);
 }
 
 /* Os três campos de gerência não afirmam posse do conhecimento. Eles indicam
@@ -311,7 +322,7 @@ function gerencia(dados, conhecimento) {
   });
 
   bloco.append(lista);
-  return bloco;
+  return fecharSecao(bloco);
 }
 
 /* ---------- Relações e estudos ---------- */
@@ -494,13 +505,13 @@ function estudos(conhecimento) {
 function desafiosRelacionados(dados, conhecimento) {
   const bloco = secao(dados, 'Desafios identificados na literatura — base de evidências', 'desafios');
   bloco.append(desafios(conhecimento));
-  return bloco;
+  return fecharSecao(bloco);
 }
 
 function estudosPrimariosAssociados(dados, conhecimento) {
   const bloco = secao(dados, 'Estudos primários associados', 'estudos');
   bloco.append(estudos(conhecimento));
-  return bloco;
+  return fecharSecao(bloco);
 }
 
 /** Monta a ficha completa e devolve o elemento pronto para inserir. */
