@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261103-2';
+import { carregar } from './dados.js?v=20261103-3';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -218,17 +218,24 @@ function categoriaClassificacao(valor, incluirDescricao = true) {
   const item = criar('li', 'estrutura__categoria-classificacao');
   item.append(criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor));
   if (incluirDescricao) item.append(criar('p', 'estrutura__categoria-classificacao-texto', valor.descricao));
+  if (valor.exemplos) {
+    const exemplos = criar('p', 'estrutura__categoria-classificacao-exemplos', valor.exemplos);
+    exemplos.prepend(criar('span', 'estrutura__categoria-classificacao-rotulo', 'Exemplos'));
+    item.append(exemplos);
+  }
+  if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-classificacao-pergunta', valor.pergunta));
   return item;
 }
 
 function atributoClassificacao(chave, atributo) {
   const bloco = criar('section', `estrutura__atributo-classificacao estrutura__atributo-classificacao--${chave}`);
   const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
-  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
+  cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.introducao));
   const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-classificacao');
   atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
   conteudo.append(categorias);
+  if (chave !== 'natureza') conteudo.append(criar('p', 'estrutura__atributo-classificacao-pergunta', atributo.pergunta));
   conteudo.append(fonteConceitual(atributo.referencia));
   bloco.append(cabecalho, conteudo);
   return bloco;
@@ -236,7 +243,10 @@ function atributoClassificacao(chave, atributo) {
 
 function composicaoClassificacao(dados, definicao) {
   const composicao = criar('section', 'estrutura__classificacao-coluna');
-  composicao.append(criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao));
+  composicao.append(
+    criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao),
+    criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
+  );
   const atributos = criar('article', 'estrutura__composicao-classificacao');
   ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
     atributos.append(atributoClassificacao(chave, dados.classificacoes[chave]));
