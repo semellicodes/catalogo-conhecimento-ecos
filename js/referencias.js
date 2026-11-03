@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar, temVerbete } from './dados.js?v=20261104-10';
+import { carregar, temVerbete } from './dados.js?v=20261104-11';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -50,7 +50,7 @@ async function iniciar() {
   const referenciasConceituais = [
     'davenport1998', 'seichter2010', 'viana2015',
     'nonaka1997', 'alavi2001', 'johnson2020', 'kauschinger2021',
-    'santos2011', 'manikas2016', 'cartaxo2018', 'cartaxo2020', 'charmaz2006'
+    'santos2011', 'santos2012', 'manikas2016', 'cartaxo2018', 'cartaxo2020', 'charmaz2006'
   ];
 
   const adicionarReferencia = (lista, chave) => {

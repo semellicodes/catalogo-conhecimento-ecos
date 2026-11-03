@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-10';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-11';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -260,6 +260,7 @@ function atributoClassificacao(chave, atributo) {
       criar('p', 'estrutura__categoria-atributo-nome', valor.valor),
       criar('p', 'estrutura__categoria-atributo-texto', valor.explicacao)
     );
+    if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
     if (valor.referencia) item.append(fonteConceitual(valor.referencia));
     categorias.append(item);
   });
@@ -300,19 +301,24 @@ function nomeTipoEcos(valor) {
   }[valor] || valor;
 }
 
+/* O tipo de ECOS segue o mesmo formato dos outros atributos, com a função do
+   atributo, a explicação de cada valor, a pergunta que ele responde e a fonte. */
 function composicaoTiposEcos(dados, definicao) {
+  const atributo = dados.classificacoes.tipoEcos;
   const composicao = criar('section', 'estrutura__tipos-ecos');
   composicao.append(
     criar('h4', 'estrutura__coluna-titulo', definicao.tituloTiposEcos),
-    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos)
+    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos),
+    criar('p', 'estrutura__tipos-ecos-funcao', atributo.funcao)
   );
   const lista = criar('ul', 'estrutura__tipos-ecos-lista');
-  dados.classificacoes.tipoEcos.valores.forEach((valor) => {
+  atributo.valores.forEach((valor) => {
     const item = criar('li', 'estrutura__tipo-ecos');
     item.append(
       criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
-      criar('p', 'estrutura__tipo-ecos-texto', valor.descricao)
+      criar('p', 'estrutura__tipo-ecos-texto', valor.explicacao)
     );
+    if (valor.pergunta) item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
     if (valor.referencia) item.append(fonteConceitual(valor.referencia));
     lista.append(item);
   });

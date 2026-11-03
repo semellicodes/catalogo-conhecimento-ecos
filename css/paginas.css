@@ -637,6 +637,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-sm);
   line-height: 1.5;
 }
+/* A pergunta que a categoria responde, em itálico, logo acima da fonte. */
+.estrutura__categoria-atributo-pergunta {
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  font-style: italic;
+  line-height: 1.5;
+}
+.estrutura__tipos-ecos-funcao {
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
 /* As ações de gerência, em fileira de pílulas, no pé da camada. */
 .estrutura__acoes-gerencia { grid-column: 1 / -1; margin-top: var(--esp-2); }
 .estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
