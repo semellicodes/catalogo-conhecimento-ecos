@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-9';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-12';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -74,18 +74,6 @@ function iconeEstrutura(nome) {
   return icone;
 }
 
-function definicaoComExemplo(valor) {
-  const { descricao = '', exemplos } = valor;
-  if (exemplos) return { descricao, exemplo: exemplos };
-  const marcador = 'Incluem, por exemplo,';
-  const indice = descricao.indexOf(marcador);
-  if (indice < 0) return { descricao };
-  return {
-    descricao: descricao.slice(0, indice).trim(),
-    exemplo: descricao.slice(indice).trim()
-  };
-}
-
 function cabecalhoComIcone(icone, titulo, classe) {
   const cabecalho = criar('header', classe);
   const simbolo = criar('span', 'estrutura__icone');
@@ -94,35 +82,38 @@ function cabecalhoComIcone(icone, titulo, classe) {
   return cabecalho;
 }
 
-function blocoConhecimento(valor) {
+/**
+ * Uma natureza na aba de conhecimentos, com o nome e quantos conhecimentos ela
+ * tem. Sem definição, porque a definição é da aba de atributos e repeti-la aqui
+ * fazia quem lesse as duas em sequência ler a mesma coisa duas vezes.
+ */
+function blocoNatureza(valor, quantos) {
   const bloco = criar('section', 'estrutura__natureza');
-  const { descricao, exemplo } = definicaoComExemplo(valor);
-  const cabecalho = cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho');
-  const conteudo = criar('div', 'estrutura__natureza-conteudo');
-  const definicao = criar('div', 'estrutura__natureza-definicao');
-  definicao.append(
-    criar('p', 'estrutura__rotulo', 'Definição'),
-    criar('p', 'estrutura__natureza-texto', descricao)
+  bloco.append(
+    cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho'),
+    criar('p', 'estrutura__natureza-contagem', String(quantos))
   );
-  conteudo.append(definicao);
-  if (exemplo) {
-    const exemplos = criar('div', 'estrutura__natureza-exemplos');
-    exemplos.append(
-      criar('p', 'estrutura__rotulo', 'Exemplos'),
-      criar('p', 'estrutura__natureza-texto', exemplo)
-    );
-    conteudo.append(exemplos);
-  } else {
-    conteudo.classList.add('estrutura__natureza-conteudo--completo');
-  }
-  bloco.append(cabecalho, conteudo);
-  if (valor.referencia) bloco.append(fonteConceitual(valor.referencia));
   return bloco;
 }
 
-function composicaoConhecimento(valores) {
+/**
+ * Como o catálogo está organizado. A contagem sai dos próprios conhecimentos,
+ * nunca escrita no código, para acompanhar sozinha qualquer mudança de
+ * classificação.
+ */
+function composicaoConhecimento(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-conhecimento');
-  valores.forEach((valor) => composicao.append(blocoConhecimento(valor)));
+  composicao.append(
+    criar('h4', 'estrutura__coluna-titulo', definicao.tituloOrganizacao),
+    criar('p', 'estrutura__coluna-subtitulo', definicao.introducaoOrganizacao)
+  );
+
+  const quantos = (valor) => dados.conhecimentos.filter((c) => c.natureza === valor).length;
+  const fileira = criar('div', 'estrutura__naturezas');
+  dados.classificacoes.natureza.valores.forEach((valor) =>
+    fileira.append(blocoNatureza(valor, quantos(valor.valor)))
+  );
+  composicao.append(fileira);
   return composicao;
 }
 
@@ -289,13 +280,12 @@ function composicaoTiposEcos(dados, definicao) {
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
-  const valores = dados.classificacoes.natureza.valores;
   const contexto = criar('div', 'estrutura__contexto-academico');
   contexto.append(
     criar('p', 'estrutura__pergunta-pesquisa', definicao.perguntaPesquisa),
     fonteConceitual(definicao.referencias)
   );
-  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
+  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoConhecimento(dados, definicao)], 'estrutura__grade--conhecimento');
   resultado.classList.add('estrutura__painel--conhecimento');
   return resultado;
 }
