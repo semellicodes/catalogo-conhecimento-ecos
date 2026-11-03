@@ -175,6 +175,12 @@ nativamente pelo navegador com `type="module"`.
   altura dos cartões, o espaçamento interno é o mesmo e a fonte é empurrada para o pé, senão as
   linhas de fonte terminam desencontradas quando os textos têm tamanhos diferentes. Vale para as
   quatro abas, para não divergir de uma para outra
+- A altura igual numa fileira vem de `align-items: stretch`, que é o padrão da grade e deixa a
+  linha crescer com o conteúdo. Nunca de `height: 100%` no filho nem de `grid-auto-rows: 1fr`, que
+  travam a altura e fazem a última linha do texto vazar o bloco
+- A fonte é uma lista que quebra inteira, cada citação um item que não parte no meio, separadas por
+  espaço. O ponto e vírgula fica só no texto, para quem copia a linha ou usa leitor de tela, e não
+  é desenhado, senão sobra pendurado no fim da linha quando a lista quebra
 - A aba Ponto de Partida define o que é conhecimento em ECOS e emenda na natureza epistemológica,
   com os três cartões de definição, exemplos e fonte. Conceito e classificação principal ficam na
   mesma aba, que é o que o próprio artigo faz. A aba Atributos do conhecimento trata do resto,

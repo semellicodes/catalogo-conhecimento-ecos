@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-15';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-3';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -15,19 +15,28 @@ function criar(tag, className, texto) {
 
 
 /* Só a citação, sem o rótulo "Fonte" na frente. O lugar e o estilo já dizem
-   que aquilo é a fonte do cartão. */
+   que aquilo é a fonte do cartão.
+   
+   Cada citação é um item que quebra inteiro, separado por espaço e não por
+   ponto e vírgula, senão o separador sobra pendurado no fim da linha quando a
+   lista quebra. */
 function fonteConceitual(chaves) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
-    if (indice) fonte.append('; ');
-    if (!temVerbete(chave)) {
-      fonte.append(rotuloDaReferencia(chave));
-      return;
+    const item = criar('span', 'estrutura__fonte-item');
+    if (temVerbete(chave)) {
+      const link = criar('a', '', rotuloDaReferencia(chave));
+      link.href = `referencias.html#referencia-${chave}`;
+      item.append(link);
+    } else {
+      item.append(rotuloDaReferencia(chave));
     }
-    const link = criar('a', '', rotuloDaReferencia(chave));
-    link.href = `referencias.html#referencia-${chave}`;
-    fonte.append(link);
+    /* O ponto e vírgula não é desenhado, porque sobraria pendurado no fim da
+       linha quando a lista quebra. Fica só no texto, para quem copia a linha ou
+       usa leitor de tela receber a lista pontuada. */
+    if (indice < referencias.length - 1) item.append(criar('span', 'apenas-leitor', '; '));
+    fonte.append(item);
   });
   return fonte;
 }

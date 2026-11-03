@@ -468,6 +468,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    linha fina. Repete-se de cartão em cartão de propósito, porque cada cartão
    tem que se sustentar sozinho fora da ordem de leitura. */
 .estrutura__fonte-conceitual {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--esp-3);
+  row-gap: var(--esp-1);
   margin-top: var(--esp-3);
   padding-top: var(--esp-2);
   border-top: var(--borda-suave);
@@ -476,6 +480,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-style: italic;
   line-height: 1.5;
 }
+.estrutura__fonte-item { white-space: nowrap; }
 .estrutura__fonte-conceitual a {
   color: var(--cor-acento);
   text-decoration: none;
@@ -639,7 +644,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__tipos-ecos-lista {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
   gap: var(--esp-3);
   margin-top: var(--esp-3);
 }
@@ -661,20 +665,24 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 
 /* Cartão em fileira segue sempre o mesmo padrão em toda a Estrutura. A fileira
    iguala a altura e a fonte é empurrada para o pé, senão as linhas de fonte
-   terminam desencontradas quando os textos têm tamanhos diferentes. */
+   terminam desencontradas quando os textos têm tamanhos diferentes.
+
+   A altura igual vem de align-items stretch, que é o padrão da grade e deixa a
+   linha crescer com o conteúdo. Nunca de height 100% nem de grid-auto-rows 1fr,
+   que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
 .estrutura__composicao-gerencia,
 .estrutura__evidencias-blocos,
 .estrutura__evidencias-secundarias,
-.estrutura__tipos-ecos-lista,
-.estrutura__composicao-gerencia > *,
-.estrutura__evidencias-blocos > *,
-.estrutura__evidencias-secundarias > * { height: 100%; }
+.estrutura__tipos-ecos-lista { align-items: stretch; }
 .estrutura__evidencias-blocos .estrutura__evidencia-linha,
 .estrutura__evidencias-secundarias .estrutura__evidencia-linha { display: flex; flex-direction: column; }
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual,
 .estrutura__evidencias-blocos .estrutura__evidencia-fonte,
 .estrutura__evidencias-blocos .estrutura__evidencia-complemento { margin-top: auto; }
+/* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
+   em vez de ficar espremida na largura de um cartão. */
+.estrutura__composicao-gerencia > .estrutura__fonte-conceitual { grid-column: 1 / -1; }
 /* Em telas de trabalho, os painéis usam uma escala mais densa: as explicações
    continuam completas, mas deixam de reservar espaço apenas decorativo. */
 @media (min-width: 48rem) {
