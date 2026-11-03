@@ -7,13 +7,12 @@
     "abas": [
       {
         "id": "conhecimento",
-        "rotulo": "Conhecimentos em ECOS",
+        "rotulo": "Ponto de Partida",
         "icone": "conhecimento",
-        "introducao": "O KM4SECO reúne conhecimentos cuja disponibilização, compartilhamento, transferência, registro, localização, compreensão, manutenção ou reutilização se mostra necessária no contexto dos ECOS. Esses conhecimentos foram identificados por meio de uma Revisão Rápida da Literatura e organizados para apoiar sua compreensão e gerência.",
+        "introducao": "Conhecimento pode ser entendido como uma combinação de experiências, valores e informações contextuais que permitem avaliar e assimilar novas situações. Em ECOS, o conhecimento ultrapassa os limites de uma única organização e precisa circular entre os atores e artefatos do ecossistema. Sua gerência não pode ser centralizada, porque decisões, informações e dependências atravessam fronteiras organizacionais.",
         "perguntaPesquisa": "Pergunta de pesquisa: Quais conhecimentos específicos devem ser gerenciados em ECOS?",
-        "referencias": "cartaxo2018, cartaxo2020",
-        "tituloOrganizacao": "Como o catálogo está organizado",
-        "introducaoOrganizacao": "A entrada principal do catálogo é a natureza epistemológica do conhecimento. A definição de cada natureza está na aba Atributos do conhecimento."
+        "referencias": "davenport1998, seichter2010, viana2015",
+        "tituloNaturezas": "Os conhecimentos em ECOS podem ser classificados em três naturezas epistemológicas"
       },
       {
         "id": "classificacao",

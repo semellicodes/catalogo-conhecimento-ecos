@@ -175,10 +175,10 @@ nativamente pelo navegador com `type="module"`.
   altura dos cartões, o espaçamento interno é o mesmo e a fonte é empurrada para o pé, senão as
   linhas de fonte terminam desencontradas quando os textos têm tamanhos diferentes. Vale para as
   quatro abas, para não divergir de uma para outra
-- A natureza epistemológica é atributo e se define uma vez só, na aba Atributos do conhecimento. A
-  aba Conhecimentos em ECOS mostra só o nome e a contagem de cada uma, porque definir os três nas
-  duas abas fazia quem lesse em sequência ler a mesma coisa duas vezes. A contagem sai de
-  `conhecimentos.json`, calculada, nunca escrita no código
+- A aba Ponto de Partida define o que é conhecimento em ECOS e emenda na natureza epistemológica,
+  com os três cartões de definição, exemplos e fonte. Conceito e classificação principal ficam na
+  mesma aba, que é o que o próprio artigo faz. A aba Atributos do conhecimento trata do resto,
+  nível no ECOS, dimensão do ECOS e tipo de ECOS. A natureza não aparece nas duas
 - A fonte fica no pé de cada cartão, sempre visível, nunca atrás do botão de ajuda e nunca uma só
   no pé do bloco. Mesmo visual em toda a Estrutura, na ficha e no Explorar, pequena, itálica,
   apagada e separada do corpo por linha fina, sem caixa nem fundo. Repete-se de cartão em cartão de

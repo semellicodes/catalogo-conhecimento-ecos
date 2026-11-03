@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar, temVerbete } from './dados.js?v=20261103-12';
+import { carregar, temVerbete } from './dados.js?v=20261103-15';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -44,7 +44,11 @@ async function iniciar() {
     corpo.append(linha);
   });
 
+  /* As que sustentam os conceitos e os esquemas do catálogo, na ordem em que a
+     seção Estrutura as apresenta. As três primeiras sustentam a definição de
+     conhecimento em ECOS, no Ponto de Partida. */
   const referenciasConceituais = [
+    'davenport1998', 'seichter2010', 'viana2015',
     'nonaka1997', 'alavi2001', 'johnson2020', 'kauschinger2021',
     'santos2011', 'manikas2016', 'cartaxo2018', 'cartaxo2020', 'charmaz2006'
   ];
