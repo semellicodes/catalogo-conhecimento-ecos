@@ -1145,7 +1145,15 @@
   font-weight: 700;
   line-height: 1.4;
 }
-:root[data-tema="claro"] .desafio-card__titulo { color: #111827; }
+:root[data-tema="claro"] .desafio-card__titulo {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #111827;
+  font-weight: 600;
+  letter-spacing: 0;
+}
 .desafio-card__descricao {
   margin: 0;
   color: var(--cor-texto-suave);
@@ -1262,6 +1270,7 @@
   .desafio-card__cabecalho { gap: 0.125rem; }
   .desafio-card__cabecalho .codigo-id { font-size: 0.6875rem; }
   .desafio-card__titulo { font-size: 0.875rem; line-height: 1.35; }
+  :root[data-tema="claro"] .desafio-card__titulo { font-size: 14px; line-height: 1.3; }
   .desafio-card__descricao {
     display: -webkit-box;
     overflow: hidden;
