@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-12';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261103-15';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -36,9 +36,6 @@ const SVG = 'http://www.w3.org/2000/svg';
 
 const ICONES_ESTRUTURA = {
   conhecimento: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
-  explicito: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
-  cognitivo: [['path', { d: 'M7.5 15.5h5M8 18h4' }], ['path', { d: 'M7 12.5c-1.1-.9-1.8-2.3-1.8-3.8A4.8 4.8 0 0 1 10 4a4.8 4.8 0 0 1 4.8 4.7c0 1.5-.7 2.9-1.8 3.8-.7.6-1 1.2-1 2H8c0-.8-.3-1.4-1-2Z' }]],
-  tecnico: [['path', { d: 'm12.8 4.2 3 3-7.6 7.6-3-3z' }], ['path', { d: 'm13.4 3.6 1.8-1.8 3 3-1.8 1.8M5.2 13.8 3.7 15.3l1 1 1.5-1.5' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
   natureza: [['circle', { cx: 10, cy: 10, r: 6 }], ['path', { d: 'M10 4v12M4 10h12' }]],
   nivel: [['path', { d: 'm4 7 6-3 6 3-6 3zM4 10l6 3 6-3M4 13l6 3 6-3' }]],
@@ -83,35 +80,17 @@ function cabecalhoComIcone(icone, titulo, classe) {
 }
 
 /**
- * Uma natureza na aba de conhecimentos, com o nome e quantos conhecimentos ela
- * tem. Sem definição, porque a definição é da aba de atributos e repeti-la aqui
- * fazia quem lesse as duas em sequência ler a mesma coisa duas vezes.
+ * As três naturezas, no Ponto de Partida. São os mesmos cartões que a aba de
+ * atributos usava, com definição, exemplos, pergunta e fonte, porque definir o
+ * conceito e a classificação principal na mesma aba é o que a referência faz e
+ * o que o próprio artigo faz, que emenda a natureza logo depois da definição.
  */
-function blocoNatureza(valor, quantos) {
-  const bloco = criar('section', 'estrutura__natureza');
-  bloco.append(
-    cabecalhoComIcone(iconeDaNatureza(valor.valor), valor.valor, 'estrutura__natureza-cabecalho'),
-    criar('p', 'estrutura__natureza-contagem', String(quantos))
-  );
-  return bloco;
-}
-
-/**
- * Como o catálogo está organizado. A contagem sai dos próprios conhecimentos,
- * nunca escrita no código, para acompanhar sozinha qualquer mudança de
- * classificação.
- */
-function composicaoConhecimento(dados, definicao) {
+function composicaoNaturezas(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-conhecimento');
-  composicao.append(
-    criar('h4', 'estrutura__coluna-titulo', definicao.tituloOrganizacao),
-    criar('p', 'estrutura__coluna-subtitulo', definicao.introducaoOrganizacao)
-  );
-
-  const quantos = (valor) => dados.conhecimentos.filter((c) => c.natureza === valor).length;
-  const fileira = criar('div', 'estrutura__naturezas');
+  composicao.append(criar('h4', 'estrutura__coluna-titulo', definicao.tituloNaturezas));
+  const fileira = criar('ul', 'estrutura__categorias-classificacao estrutura__categorias-classificacao--fileira');
   dados.classificacoes.natureza.valores.forEach((valor) =>
-    fileira.append(blocoNatureza(valor, quantos(valor.valor)))
+    fileira.append(categoriaClassificacao(valor))
   );
   composicao.append(fileira);
   return composicao;
@@ -192,14 +171,6 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   return raiz;
 }
 
-function iconeDaNatureza(valor) {
-  return {
-    'Explícito': 'explicito',
-    'Tácito-cognitivo': 'cognitivo',
-    'Tácito-técnico': 'tecnico'
-  }[valor] || 'conhecimento';
-}
-
 function categoriaClassificacao(valor, incluirDescricao = true) {
   const item = criar('li', 'estrutura__categoria-classificacao');
   item.append(criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor));
@@ -222,7 +193,7 @@ function atributoClassificacao(chave, atributo) {
   const categorias = criar('ul', 'estrutura__categorias-classificacao');
   atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
   conteudo.append(categorias);
-  if (chave !== 'natureza') conteudo.append(criar('p', 'estrutura__atributo-classificacao-pergunta', atributo.pergunta));
+  conteudo.append(criar('p', 'estrutura__atributo-classificacao-pergunta', atributo.pergunta));
   bloco.append(cabecalho, conteudo);
   return bloco;
 }
@@ -246,7 +217,7 @@ function composicaoClassificacao(dados, definicao) {
   ['nivel', 'dimensao'].forEach((chave) => {
     par.append(atributoClassificacao(chave, dados.classificacoes[chave]));
   });
-  atributos.append(atributoClassificacao('natureza', dados.classificacoes.natureza), par);
+  atributos.append(par);
   composicao.append(atributos);
   return composicao;
 }
@@ -285,7 +256,7 @@ function explicacaoConhecimento(dados, aba, definicao) {
     criar('p', 'estrutura__pergunta-pesquisa', definicao.perguntaPesquisa),
     fonteConceitual(definicao.referencias)
   );
-  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoConhecimento(dados, definicao)], 'estrutura__grade--conhecimento');
+  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoNaturezas(dados, definicao)], 'estrutura__grade--conhecimento');
   resultado.classList.add('estrutura__painel--conhecimento');
   return resultado;
 }

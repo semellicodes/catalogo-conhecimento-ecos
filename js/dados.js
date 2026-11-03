@@ -7,7 +7,7 @@
    Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
    servia metade nova e metade velha. O ferramentas/versionar.py troca esta
    linha e todas as outras de uma vez. */
-const VERSAO = '20261103-12';
+const VERSAO = '20261103-15';
 
 const ARQUIVOS = Object.fromEntries(
   ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
@@ -73,13 +73,16 @@ const ROTULOS_REFERENCIAS = {
   cartaxo2018: 'Cartaxo et al. (2018)',
   cartaxo2020: 'Cartaxo et al. (2020)',
   charmaz2006: 'Charmaz (2006)',
+  davenport1998: 'Davenport (1998)',
   johnson2020: 'Johnson et al. (2020)',
   kauschinger2021: 'Kauschinger et al. (2021)',
   manikas2016: 'Manikas (2016)',
   nonaka1997: 'Nonaka e Takeuchi (1997)',
   /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */
   revisaoRapidaManuscrito: 'Revisão rápida deste trabalho',
-  santos2011: 'Santos e Werner (2011)'
+  santos2011: 'Santos e Werner (2011)',
+  seichter2010: 'Seichter et al. (2010)',
+  viana2015: 'Viana e Conte (2015)'
 };
 
 export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;

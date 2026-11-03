@@ -358,36 +358,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias { margin-top: var(--esp-4); }
 .estrutura__composicao-conhecimento { display: grid; gap: var(--esp-2); align-items: start; }
-/* Os três em fileira, com o nome e a contagem. A definição de cada natureza
-   vive na aba de atributos, e repeti-la aqui fazia quem lesse as duas em
-   sequência ler a mesma coisa duas vezes. */
-.estrutura__naturezas {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--esp-3);
-  margin-top: var(--esp-3);
+/* Uma linha fina separa a definição de conhecimento dos cartões de natureza. */
+.estrutura__composicao-conhecimento > .estrutura__coluna-titulo {
+  padding-top: var(--esp-4);
+  border-top: var(--borda-suave);
 }
-.estrutura__natureza {
-  display: flex;
-  flex-direction: column;
-  gap: var(--esp-3);
-  padding: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
-  border-radius: var(--raio);
-}
-.estrutura__natureza-contagem {
-  margin-top: auto;
-  color: var(--cor-acento);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-titulo);
-  line-height: 1;
-}
-.estrutura__natureza-cabecalho,
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
-.estrutura__natureza-cabecalho-titulo,
 .estrutura__gerencia-cabecalho-titulo,
 .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
 .estrutura__gerencia-texto,
@@ -409,8 +386,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__atributo-classificacao-descricao { flex-basis: var(--largura-cheia); margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__atributo-classificacao-conteudo { display: grid; gap: var(--esp-3); align-content: start; }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
-.estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-left: var(--esp-4); border-left: var(--borda-suave); }
+.estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-left: var(--esp-4); border-left: var(--borda-suave); }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
 .estrutura__referencia-natureza { padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
@@ -575,10 +551,11 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 /* Três colunas só aqui, na largura inteira, onde cada cartão fica com cerca de
    um terço de 1200px. Estreito é o que se proibiu, e isto não é estreito. */
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
+.estrutura__categorias-classificacao--fileira {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-3);
   align-items: stretch;
+  margin-top: var(--esp-3);
 }
 .estrutura__atributos-par {
   display: grid;
@@ -596,14 +573,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 /* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
    empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao,
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao,
 .estrutura__tipo-ecos {
   display: flex;
   flex-direction: column;
 }
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao .estrutura__fonte-conceitual,
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao .estrutura__fonte-conceitual,
 .estrutura__tipo-ecos .estrutura__fonte-conceitual { margin-top: auto; }
-.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categoria-classificacao {
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
   padding: var(--esp-3);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
@@ -685,19 +662,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* Cartão em fileira segue sempre o mesmo padrão em toda a Estrutura. A fileira
    iguala a altura e a fonte é empurrada para o pé, senão as linhas de fonte
    terminam desencontradas quando os textos têm tamanhos diferentes. */
-.estrutura__naturezas,
+.estrutura__categorias-classificacao--fileira,
 .estrutura__composicao-gerencia,
 .estrutura__evidencias-blocos,
 .estrutura__evidencias-secundarias,
 .estrutura__tipos-ecos-lista,
-.estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { align-items: stretch; }
-.estrutura__naturezas > *,
 .estrutura__composicao-gerencia > *,
 .estrutura__evidencias-blocos > *,
 .estrutura__evidencias-secundarias > * { height: 100%; }
 .estrutura__evidencias-blocos .estrutura__evidencia-linha,
 .estrutura__evidencias-secundarias .estrutura__evidencia-linha { display: flex; flex-direction: column; }
-.estrutura__naturezas .estrutura__fonte-conceitual,
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual,
 .estrutura__evidencias-blocos .estrutura__evidencia-fonte,
 .estrutura__evidencias-blocos .estrutura__evidencia-complemento { margin-top: auto; }
@@ -715,7 +689,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-classificacao,
   .estrutura__composicao-gerencia,
   .estrutura__composicao-evidencias { margin-top: 1rem; }
-  .estrutura__natureza,
   .estrutura__atributo-classificacao,
   .estrutura__gerencia-item,
   .estrutura__evidencia-linha { padding: 1rem; }
@@ -725,7 +698,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categoria-classificacao-texto,
   .estrutura__atributo-classificacao-descricao,
   .estrutura__origem-descricao { font-size: 0.875rem; line-height: 1.5; }
-  .estrutura__natureza-cabecalho-titulo,
   .estrutura__gerencia-cabecalho-titulo,
   .estrutura__evidencia-cabecalho-titulo,
   .estrutura__atributo-classificacao-cabecalho-titulo { font-size: 1rem; }
@@ -741,9 +713,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (min-width: 62rem) {
   .estrutura__composicao-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
   .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
-  .estrutura__categorias-classificacao,
-  .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
-  .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
+  .estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) { grid-template-columns: minmax(0, 1fr); gap: 0.625rem; }
+  .estrutura__categorias-classificacao:not(.estrutura__categorias-classificacao--fileira) .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
     padding-top: 0.625rem;
     padding-left: 0;
     border-top: var(--borda-suave);
@@ -761,17 +732,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-atributos > * { min-width: 0; }
   .estrutura__atributos-par,
-  .estrutura__naturezas,
   .estrutura__tipos-ecos-lista,
-  .estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
-    grid-template-columns: minmax(0, 1fr);
-  }
+  .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__classificacao-coluna .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__natureza,
   .estrutura__atributo-classificacao,
   .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
   .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: var(--esp-0); border-top: var(--borda-suave); border-left: none; }
   .estrutura__evidencias-secundarias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
@@ -789,7 +755,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     white-space: normal;
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__natureza { gap: var(--esp-3); padding: var(--esp-4); }
   .estrutura__gerencia-item,
   .estrutura__atributo-classificacao,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
