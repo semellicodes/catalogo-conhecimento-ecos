@@ -11,7 +11,9 @@
         "icone": "conhecimento",
         "introducao": "O KM4SECO reúne conhecimentos cuja disponibilização, compartilhamento, transferência, registro, localização, compreensão, manutenção ou reutilização se mostra necessária no contexto dos ECOS. Esses conhecimentos foram identificados por meio de uma Revisão Rápida da Literatura e organizados para apoiar sua compreensão e gerência.",
         "perguntaPesquisa": "Pergunta de pesquisa: Quais conhecimentos específicos devem ser gerenciados em ECOS?",
-        "referencias": "cartaxo2018, cartaxo2020"
+        "referencias": "cartaxo2018, cartaxo2020",
+        "tituloOrganizacao": "Como o catálogo está organizado",
+        "introducaoOrganizacao": "A entrada principal do catálogo é a natureza epistemológica do conhecimento. A definição de cada uma está na aba Atributos do conhecimento."
       },
       {
         "id": "classificacao",
