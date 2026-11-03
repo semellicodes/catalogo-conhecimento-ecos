@@ -1,34 +1,33 @@
-# Catálogo de Conhecimento em Ecossistemas de Software
+```md
+## Responsividade
 
-Catálogo dos conhecimentos que precisam ser gerenciados em ECOS, construído a partir dos
-resultados de uma revisão rápida da literatura com 18 estudos primários.
+O KM4SECO foi desenvolvido com uma interface responsiva, permitindo a consulta do catálogo, a navegação entre seções e a leitura das fichas em telas compactas e amplas, nos temas claro e escuro.
 
-Reúne 20 conhecimentos (C01 a C20), os desafios relacionados de forma específica e os estudos que
-sustentam cada item.
+### Catálogo em tela compacta
 
-## Rodar localmente
+<p align="center">
+  <img src="IMAGENS CATÁLOGO/catalogo-compacto-escuro.png" alt="Catálogo de conhecimentos em tela compacta no tema escuro" width="48%">
+  <img src="IMAGENS CATÁLOGO/catalogo-compacto-claro.png" alt="Catálogo de conhecimentos em tela compacta no tema claro" width="48%">
+</p>
 
+### Página inicial em celular
+
+<p align="center">
+  <img src="IMAGENS CATÁLOGO/inicio-celular-escuro.png" alt="Página inicial do KM4SECO em celular no tema escuro" width="32%">
+  <img src="IMAGENS CATÁLOGO/inicio-celular-claro.png" alt="Página inicial do KM4SECO em celular no tema claro" width="32%">
+</p>
+
+### Página inicial em desktop
+
+<p align="center">
+  <img src="IMAGENS CATÁLOGO/inicio-desktop-escuro.png" alt="Página inicial do KM4SECO em desktop no tema escuro" width="48%">
+  <img src="IMAGENS CATÁLOGO/inicio-desktop-claro.png" alt="Página inicial do KM4SECO em desktop no tema claro" width="48%">
+</p>
+
+### Fichas detalhadas dos conhecimentos
+
+<p align="center">
+  <img src="IMAGENS CATÁLOGO/ficha-desktop-claro.png" alt="Ficha detalhada de conhecimento no tema claro" width="48%">
+  <img src="IMAGENS CATÁLOGO/ficha-desktop-escuro.png" alt="Ficha detalhada de conhecimento no tema escuro" width="48%">
+</p>
 ```
-python3 -m http.server
-```
-
-Depois abrir `http://localhost:8000`. O servidor é necessário porque os dados são carregados por
-`fetch`, que o navegador bloqueia quando a página é aberta direto do sistema de arquivos.
-
-## Publicar
-
-O repositório é estático e não tem etapa de build. Em Settings, Pages, apontar para a branch `main`
-e a pasta raiz. O arquivo `.nojekyll` evita que o GitHub Pages ignore arquivos iniciados por
-underscore.
-
-## Atualizar o conteúdo
-
-Todo o conteúdo está em `dados/`. Editar o JSON e publicar, sem tocar no código. A estrutura de
-cada arquivo e as regras de preenchimento estão em `CLAUDE.md`.
-
-## Pendências
-
-- Classificar o tipo de ECOS de cada um dos 18 estudos, segundo Manikas (2016)
-- Definir a ação de gerência requerida de cada conhecimento a partir dos verbos das unidades de
-  análise da QP1
-- Decidir se os desafios (D01 a D17) entram como itens relacionados
