@@ -280,7 +280,7 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de Ecossistemas em que esse conhecimento foi observado', 'tipoEcos');
+  const bloco = secao(dados, 'Exemplos de ECOS em que esse conhecimento foi observado', 'tipoEcos');
   bloco.classList.add('bloco-ficha--exemplos');
   bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
@@ -290,9 +290,9 @@ function tiposDeEcos(dados, conhecimento) {
 /* Os três campos de gerência não afirmam posse do conhecimento. Eles indicam
    de onde ele tende a vir, quem pode precisar dele e como pode ser cuidado. */
 const GERENCIA = [
-  ['quemPossui', 'Principais fontes'],
-  ['quemPrecisa', 'Principais receptores'],
-  ['comoGerenciar', 'Práticas de gerência']
+  ['quemPossui', 'Onde o conhecimento é gerado ou registrado'],
+  ['quemPrecisa', 'Quem utiliza ou se beneficia do conhecimento'],
+  ['comoGerenciar', 'Práticas de gerência do conhecimento']
 ];
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
@@ -492,7 +492,7 @@ function estudos(conhecimento) {
 }
 
 function desafiosRelacionados(dados, conhecimento) {
-  const bloco = secao(dados, 'Desafios identificados na literatura para a gerência do conhecimento', 'desafios');
+  const bloco = secao(dados, 'Desafios identificados na literatura — base de evidências', 'desafios');
   bloco.append(desafios(conhecimento));
   return bloco;
 }

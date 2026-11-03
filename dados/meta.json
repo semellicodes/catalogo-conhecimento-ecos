@@ -1,6 +1,6 @@
 {
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
-  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes atores dos ECOS.",
+  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes participantes do ECOS.",
   "fonte": "Revisão Rápida da Literatura, conduzida sobre 18 estudos primários.",
   "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
   "estruturaCatalogo": {
@@ -25,22 +25,22 @@
         "id": "gerencia",
         "rotulo": "Gerência do Conhecimento",
         "icone": "gerencia",
-        "nota": "Fontes, receptores e práticas constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
+        "nota": "Os campos sobre geração ou registro, uso ou benefício e práticas de gerência constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
         "campos": [
           {
-            "titulo": "Principais fontes",
-            "rotulo": "Fontes",
+            "titulo": "Onde o conhecimento é gerado ou registrado",
+            "rotulo": "Geração ou registro",
             "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
             "icone": "fontes"
           },
           {
-            "titulo": "Principais receptores",
-            "rotulo": "Receptores",
+            "titulo": "Quem utiliza ou se beneficia do conhecimento",
+            "rotulo": "Uso ou benefício",
             "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
             "icone": "receptores"
           },
           {
-            "titulo": "Práticas de gerência",
+            "titulo": "Práticas de gerência do conhecimento",
             "rotulo": "Práticas",
             "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
             "icone": "praticas"
@@ -59,7 +59,7 @@
           "rastreabilidade": "Rastreabilidade das evidências",
           "rastreabilidadeDescricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados.",
           "desafios": "Desafios identificados na literatura",
-          "desafiosDescricao": "Os desafios foram identificados na literatura e relacionados aos conhecimentos quando houve evidência suficiente para estabelecer essa associação.",
+          "desafiosDescricao": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência.",
           "desafiosComplemento": "A ausência de desafios associados não significa que determinado conhecimento esteja livre de dificuldades.",
           "icones": {
             "revisao": "revisao",
@@ -84,12 +84,12 @@
     },
     "gerencia": {
       "titulo": "Gerência do conhecimento no ECOS",
-      "texto": "As fontes, os receptores e as práticas de gerência apresentados nesta seção constituem uma síntese aplicada, elaborada a partir dos resultados da Revisão Rápida da Literatura. Essas orientações articulam soluções identificadas nos estudos e interpretações derivadas das evidências analisadas, não representando necessariamente recomendações explícitas dos autores dos estudos primários.",
+      "texto": "Os campos sobre onde o conhecimento é gerado ou registrado, quem o utiliza ou se beneficia dele e as práticas de gerência do conhecimento constituem uma síntese aplicada, elaborada a partir dos resultados da Revisão Rápida da Literatura. Essas orientações articulam soluções identificadas nos estudos e interpretações derivadas das evidências analisadas, não representando necessariamente recomendações explícitas dos autores dos estudos primários.",
       "referencia": "kauschinger2021"
     },
     "desafios": {
       "titulo": "Desafios identificados na literatura",
-      "texto": "Os desafios apresentados foram identificados na literatura e associados aos conhecimentos catalogados com base nas evidências dos estudos primários analisados. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",
+      "texto": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",
       "referencia": ""
     },
     "estudos": {

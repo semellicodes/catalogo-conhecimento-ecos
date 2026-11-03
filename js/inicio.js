@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261101-3';
+import { carregar } from './dados.js?v=20261103-1';
 
 const el = (seletor) => document.querySelector(seletor);
 

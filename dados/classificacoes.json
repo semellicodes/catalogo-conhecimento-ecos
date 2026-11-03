@@ -14,7 +14,7 @@
         "valor": "Tácito-cognitivo",
         "tituloPorta": "Conhecimentos tácito-cognitivos",
         "descricao": "São conhecimentos que envolvem percepções, interpretações e formas de compreender situações, desenvolvidas pelos participantes do ecossistema.",
-        "exemplos": "Entendimento das necessidades dos parceiros e reconhecimento das competências de outros participantes."
+        "exemplos": "Entendimento das necessidades de outros participantes do ECOS e reconhecimento de suas competências."
       },
       {
         "valor": "Tácito-técnico",
@@ -40,14 +40,14 @@
       },
       {
         "valor": "Ecossistema",
-        "descricao": "Relações e interdependências entre os atores."
+        "descricao": "Relações e interdependências entre participantes do ECOS."
       }
     ]
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
     "principal": false,
-    "pergunta": "Esse conhecimento diz respeito à tecnologia, ao negócio ou às relações entre atores?",
+    "pergunta": "Esse conhecimento diz respeito à tecnologia, ao negócio ou às relações entre participantes do ECOS?",
     "referencia": "santos2011",
     "valores": [
       {
@@ -56,7 +56,7 @@
       },
       {
         "valor": "Negócio",
-        "descricao": "Competitividade, inovação e interesses dos atores."
+        "descricao": "Competitividade, inovação e interesses dos participantes do ECOS."
       },
       {
         "valor": "Social",

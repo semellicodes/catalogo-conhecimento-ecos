@@ -31,8 +31,8 @@
   {
     "id": "D03",
     "icone": "share-2",
-    "desafio": "Sistematizar o compartilhamento, hoje fragmentado entre os atores do ecossistema",
-    "explicacao": "Esse desafio ocorre quando o compartilhamento de conhecimento acontece de forma fragmentada entre os atores do ecossistema. A ausência de sistematização dificulta a circulação, o reuso e o aprendizado coletivo.",
+    "desafio": "Sistematizar o compartilhamento, hoje fragmentado entre participantes do ECOS",
+    "explicacao": "Esse desafio ocorre quando o compartilhamento de conhecimento acontece de forma fragmentada entre participantes do ECOS. A ausência de sistematização dificulta a circulação, o reuso e o aprendizado coletivo.",
     "estudos": [
       "E15",
       "E17"
@@ -141,8 +141,8 @@
   {
     "id": "D12",
     "icone": "handshake",
-    "desafio": "Manter parceiros engajados apesar das exigências dos processos de licitação",
-    "explicacao": "Esse desafio ocorre quando exigências de processos de licitação dificultam a participação contínua de parceiros. A descontinuidade enfraquece os vínculos de colaboração e o compartilhamento de conhecimento no ECOS.",
+    "desafio": "Manter participantes do ECOS engajados apesar das exigências dos processos de licitação",
+    "explicacao": "Esse desafio ocorre quando exigências de processos de licitação dificultam a participação contínua de participantes do ECOS. A descontinuidade enfraquece os vínculos de colaboração e o compartilhamento de conhecimento no ECOS.",
     "estudos": [
       "E07"
     ],
@@ -151,7 +151,7 @@
   {
     "id": "D13",
     "icone": "file-warning",
-    "desafio": "Suprir a insuficiência da documentação diante de problemas específicos dos atores",
+    "desafio": "Suprir a insuficiência da documentação diante de problemas específicos dos participantes do ECOS",
     "explicacao": "Esse desafio ocorre quando a documentação disponível não atende às necessidades específicas dos participantes. Sem orientação contextualizada, torna-se mais difícil aplicar conhecimentos e tomar decisões adequadas no ECOS.",
     "estudos": [
       "E09"

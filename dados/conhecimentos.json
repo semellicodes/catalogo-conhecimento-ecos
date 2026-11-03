@@ -2,7 +2,7 @@
   {
     "id": "C01",
     "nome": "Dependências técnicas entre componentes do ecossistema",
-    "descricao": "Esse conhecimento consiste no mapeamento e entendimento das relações de interdependência técnica entre módulos, pacotes e projetos no ecossistema. Nesse contexto, alterações não coordenadas em um componente podem gerar impactos em cadeia, quebrar compatibilidades ou inviabilizar a integração de soluções de terceiros à plataforma.",
+    "descricao": "Esse conhecimento consiste no mapeamento e entendimento das relações de interdependência técnica entre módulos, pacotes e projetos no ECOS. Nesse contexto, alterações não coordenadas em um componente podem gerar impactos em cadeia, quebrar compatibilidades ou inviabilizar a integração de soluções desenvolvidas por participantes do ECOS à plataforma tecnológica comum.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -25,14 +25,14 @@
     "desafios": [],
     "evidencia": {},
     "justificativaClassificacao": "As dependências técnicas entre componentes do ecossistema são classificadas como conhecimento explícito porque suas relações podem ser formalizadas em mapas e registros de dependência. O nível Ecossistema se aplica porque uma alteração pode se propagar entre pacotes, projetos e produtos conectados. A dimensão Técnica foi selecionada porque sua gerência exige compreender tecnologias, interfaces e interdependências de integração.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos mantenedores do projeto que origina a dependência, em mapas e registros de dependências mantidos no repositório.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por mantenedores de pacotes dependentes, colaboradores que entram no projeto e complementadores durante mudanças e integrações à plataforma.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos responsáveis pelo projeto que origina a dependência, em mapas e registros de dependências mantidos no repositório.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos responsáveis por pacotes dependentes e por participantes do ECOS que ingressam no projeto, durante mudanças e integrações à plataforma tecnológica comum.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário registrar e atualizar as relações de dependência entre componentes e projetos, tornando esses mapas consultáveis antes de mudanças e integrações."
   },
   {
     "id": "C02",
     "nome": "Arquitetura e tecnologias de base da plataforma",
-    "descricao": "Esse conhecimento abrange a infraestrutura tecnológica central, os padrões arquiteturais e os componentes estruturais fornecidos pela organização orquestradora. Sua falta pode dificultar que desenvolvedores externos construam complementos compatíveis e comprometer a continuidade do ecossistema em momentos de transição de equipes.",
+    "descricao": "Esse conhecimento abrange a plataforma tecnológica comum, os padrões arquiteturais e os componentes estruturais disponibilizados pela organização central. Sua falta pode dificultar que desenvolvedores externos construam complementos compatíveis e comprometer a continuidade do ECOS em momentos de transição de equipes.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -76,8 +76,8 @@
       }
     },
     "justificativaClassificacao": "A arquitetura e as tecnologias de base da plataforma são classificadas como conhecimento explícito porque podem ser documentadas, transferidas e consultadas por quem desenvolve sobre ela. O nível Plataforma se aplica porque definem sua infraestrutura e configuração arquitetural. A dimensão Técnica foi selecionada porque esse conhecimento orienta a compatibilidade e a integração de produtos externos à base tecnológica comum.",
-    "quemPossui": "Esse conhecimento é gerado pela organização orquestradora e registrado em documentos de arquitetura, especificações técnicas, repositórios, tutoriais e materiais de integração da plataforma.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos e equipes parceiras durante a criação, adaptação e integração de complementos à plataforma.",
+    "quemPossui": "Esse conhecimento é gerado pela organização central e registrado em documentos de arquitetura, especificações técnicas, repositórios, tutoriais e materiais de integração da plataforma tecnológica comum.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos e outros participantes do ECOS durante a criação, adaptação e integração de complementos à plataforma tecnológica comum.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário versionar e atualizar a documentação técnica, relacioná-la a exemplos de implementação e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais."
   },
   {
@@ -125,8 +125,8 @@
       }
     },
     "justificativaClassificacao": "As especificações técnicas de implementação da plataforma são classificadas como conhecimento explícito porque podem ser registradas em documentação e disponibilizadas aos desenvolvedores. O nível Plataforma se aplica porque orientam a implementação de suas funcionalidades. A dimensão Técnica foi selecionada porque incluem autenticação, conectividade, estruturas de dados e demais tecnologias de implementação.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização orquestradora, em documentação técnica, especificações de implementação e tutoriais da plataforma.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento e a integração de aplicações à plataforma.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização central, em documentação técnica, especificações de implementação e tutoriais da plataforma tecnológica comum.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento e a integração de aplicações à plataforma tecnológica comum.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário manter atualizada a documentação das especificações e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais."
   },
   {
@@ -170,7 +170,7 @@
     },
     "justificativaClassificacao": "As decisões arquiteturais anteriores e seu contexto são classificadas como conhecimento explícito porque podem ser documentados, localizados e reutilizados em novas situações. O nível Ecossistema se aplica porque decisões tomadas por uma organização podem orientar outras em contextos semelhantes. A dimensão Técnica foi selecionada porque esse conhecimento orienta escolhas arquiteturais e a evolução de soluções integradas.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelas organizações que tomaram decisões arquiteturais e pelos repositórios que preservam suas justificativas e contextos.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por atores que enfrentam uma nova decisão arquitetural em contexto semelhante e precisam avaliar escolhas anteriores.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS que enfrentam uma nova decisão arquitetural em contexto semelhante e precisam avaliar escolhas anteriores.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário registrar decisões junto com seus contextos e disponibilizá-las em repositórios que permitam recuperar e comparar situações semelhantes."
   },
   {
@@ -209,13 +209,13 @@
     },
     "justificativaClassificacao": "As regras e a estrutura de governança do ecossistema são classificadas como conhecimento explícito porque papéis, critérios de engajamento e regras de decisão podem ser formalizados e compartilhados. O nível Ecossistema se aplica porque estruturam a colaboração entre organizações participantes. A dimensão Técnica foi selecionada conforme a categorização adotada para os conhecimentos que organizam a operação do ecossistema.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela estrutura de governança do consórcio, nas diretrizes, papéis e decisões que organizam a participação conjunta.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por organizações participantes, especialmente quando precisam compreender ou discutir decisões tomadas coletivamente.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS, especialmente quando precisam compreender ou discutir decisões tomadas coletivamente.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário formalizar e tornar compreensíveis as regras de governança, recorrendo a papéis de intermediação quando necessários para ampliar a transparência."
   },
   {
     "id": "C06",
     "nome": "Critérios de aceitação de contribuições externas",
-    "descricao": "Esse conhecimento diz respeito às exigências formais para que um código, módulo ou correção enviado por desenvolvedores externos seja aprovado e incorporado à plataforma. A falta de clareza nesses critérios pode resultar em altas taxas de rejeição, desperdício de esforço dos contribuidores e insatisfação da comunidade.",
+    "descricao": "Esse conhecimento diz respeito às exigências formais para que um código, módulo ou correção enviado por desenvolvedores externos seja aprovado e incorporado à plataforma tecnológica comum. A falta de clareza nesses critérios pode resultar em altas taxas de rejeição, desperdício de esforço dos desenvolvedores externos e insatisfação da comunidade.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -233,9 +233,9 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "Os critérios de aceitação de contribuições externas são classificados como conhecimento explícito porque podem ser definidos, publicados e comunicados previamente. O nível Ecossistema se aplica porque orientam a participação de contribuidores externos. A dimensão Técnica foi selecionada porque estabelecem requisitos para a contribuição de software antes de sua integração.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização orquestradora, nas diretrizes que estabelecem os critérios para contribuições externas.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por contribuidores externos antes de investir esforço na preparação e submissão de uma contribuição.",
+    "justificativaClassificacao": "Os critérios de aceitação de contribuições externas são classificados como conhecimento explícito porque podem ser definidos, publicados e comunicados previamente. O nível Ecossistema se aplica porque orientam a participação de desenvolvedores externos. A dimensão Técnica foi selecionada porque estabelecem requisitos para a contribuição de software antes de sua integração.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nas diretrizes que estabelecem os critérios para contribuições externas.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos antes de investir esforço na preparação e submissão de uma contribuição.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário disponibilizar diretrizes documentadas, claras e acessíveis antes da submissão de contribuições externas."
   },
   {
@@ -268,9 +268,9 @@
       }
     },
     "justificativaClassificacao": "Os requisitos técnicos impostos pela plataforma são classificados como conhecimento explícito porque requisitos de design, qualidade, teste e certificação podem ser registrados e comunicados. O nível Plataforma se aplica porque definem como produtos externos devem se adequar a ela. A dimensão Técnica foi selecionada porque trata de condições de implementação e de qualidade do software.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização orquestradora, nos requisitos técnicos que orientam a construção e homologação de produtos.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por complementadores durante o desenvolvimento de produtos que precisam atender aos requisitos da plataforma.",
-    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário disponibilizar e comunicar os requisitos técnicos aos complementadores, complementando esse acesso com programas de acesso antecipado e treinamento técnico quando aplicáveis."
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos requisitos técnicos que orientam a construção e homologação de produtos.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento de produtos que precisam atender aos requisitos da plataforma tecnológica comum.",
+    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário disponibilizar e comunicar os requisitos técnicos aos desenvolvedores externos, complementando esse acesso com programas de acesso antecipado e treinamento técnico quando aplicáveis."
   },
   {
     "id": "C08",
@@ -300,9 +300,9 @@
         "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento"
       }
     },
-    "justificativaClassificacao": "Os processos e as ferramentas nos níveis de ecossistema e projeto são classificados como conhecimento explícito porque seus fluxos de trabalho podem ser ensinados, atualizados e transferidos durante a integração de novos atores. O nível Ecossistema se aplica porque articulam práticas comuns e específicas de projetos participantes. A dimensão Técnica foi selecionada porque tratam da operação e da evolução dos projetos de software.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização orquestradora, nos materiais de treinamento sobre processos, ferramentas e projetos.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por novos contribuidores durante sua integração às práticas e ferramentas do ecossistema.",
+    "justificativaClassificacao": "Os processos e as ferramentas nos níveis de ecossistema e projeto são classificados como conhecimento explícito porque seus fluxos de trabalho podem ser ensinados, atualizados e transferidos durante a integração de novos participantes do ECOS. O nível Ecossistema se aplica porque articulam práticas comuns e específicas de projetos participantes. A dimensão Técnica foi selecionada porque tratam da operação e da evolução dos projetos de software.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos materiais de treinamento sobre processos, ferramentas e projetos.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por novos desenvolvedores externos durante sua integração às práticas e ferramentas do ECOS.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário estruturar programas de onboarding com materiais instrucionais atualizados conforme processos, ferramentas e projetos evoluem."
   },
   {
@@ -329,13 +329,13 @@
     "evidencia": {},
     "justificativaClassificacao": "As boas práticas de tomada de decisão são classificadas como conhecimento explícito porque podem ser descritas, operacionalizadas e reutilizadas. O nível Ecossistema se aplica porque apoiam decisões de diferentes usuários e organizações. A dimensão Técnica foi selecionada porque orientam a seleção e a combinação de componentes de software.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente na literatura e em métodos já consolidados, quando são operacionalizados em módulos de software de apoio à decisão.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por atores que precisam comparar alternativas e decidir sobre a seleção de componentes.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS que precisam comparar alternativas e decidir sobre a seleção de componentes.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário encapsular o conhecimento procedimental em ferramentas interativas de suporte à decisão baseadas em casos anteriores."
   },
   {
     "id": "C10",
     "nome": "Projetos que geram incidentes na plataforma",
-    "descricao": "Esse conhecimento identifica quais aplicações ou módulos de terceiros apresentam histórico recorrente de falhas, gargalos ou indisponibilidade na plataforma. Sem esse monitoramento, a estabilidade do núcleo tecnológico pode ficar comprometida sem que as causas-raiz sejam contidas.",
+    "descricao": "Esse conhecimento identifica quais aplicações ou módulos desenvolvidos por participantes do ECOS apresentam histórico recorrente de falhas, gargalos ou indisponibilidade na plataforma tecnológica comum. Sem esse monitoramento, a estabilidade da plataforma tecnológica comum pode ficar comprometida sem que as causas-raiz sejam contidas.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -360,13 +360,13 @@
     },
     "justificativaClassificacao": "Os projetos que geram incidentes na plataforma são classificados como conhecimento explícito porque os incidentes e seus projetos de origem podem ser registrados e relacionados. O nível Ecossistema se aplica porque um projeto pode comprometer a estabilidade compartilhada por outros participantes. A dimensão Técnica foi selecionada porque esse conhecimento apoia o monitoramento da plataforma e o diagnóstico de incidentes.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente no processo de diagnóstico de incidentes e nos registros do backlog relacionados aos projetos de origem.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por uma equipe de gestão de TI responsável por acompanhar a estabilidade da plataforma e investigar seus incidentes.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por uma equipe de gestão de TI da organização central, responsável por acompanhar a estabilidade da plataforma tecnológica comum e investigar seus incidentes.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário registrar e estruturar as informações sobre incidentes, relacionando-as aos projetos de origem para apoiar o monitoramento e a tomada de decisão."
   },
   {
     "id": "C11",
     "nome": "Necessidades de mercado e lacunas do ecossistema",
-    "descricao": "Esse conhecimento mapeia oportunidades de negócio, demandas não atendidas dos usuários e tendências de mercado para os parceiros do ecossistema. A ausência dessa visão pode levar desenvolvedores a criar soluções redundantes em vez de inovações complementares.",
+    "descricao": "Esse conhecimento mapeia oportunidades de negócio, demandas não atendidas dos usuários e tendências de mercado relevantes para os participantes do ECOS. A ausência dessa visão pode levar desenvolvedores externos a criar soluções redundantes em vez de inovações complementares.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -385,13 +385,13 @@
     "desafios": [],
     "evidencia": {},
     "justificativaClassificacao": "As necessidades de mercado e lacunas do ecossistema são classificadas como conhecimento explícito porque informações sobre clientes, mercado e produtos disponíveis podem ser coletadas e compartilhadas. O nível Ecossistema se aplica porque revelam oportunidades para diferentes participantes. A dimensão Negócio foi selecionada porque orientam diferenciação e decisões sobre a oferta de produtos.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização orquestradora, a partir de dados de uso, dados de mercado e informações sobre necessidades e lacunas percebidas.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por complementadores que buscam se diferenciar e identificar oportunidades para novos produtos ou serviços.",
-    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário compartilhar periodicamente dados de uso, necessidades de mercado, lacunas e análises competitivas com os complementadores."
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela organização central, a partir de dados de uso, dados de mercado e informações sobre necessidades e lacunas percebidas.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que buscam se diferenciar e identificar oportunidades para novos produtos ou serviços.",
+    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário compartilhar periodicamente dados de uso, necessidades de mercado, lacunas e análises competitivas com os desenvolvedores externos."
   },
   {
     "id": "C12",
-    "nome": "Expertise dos atores do ecossistema",
+    "nome": "Expertise dos participantes do ECOS",
     "descricao": "Esse conhecimento permite identificar as competências, domínios de especialidade e conhecimentos práticos detidos por indivíduos e equipes no ecossistema. A falta desse conhecimento pode dificultar a localização do especialista adequado para resolver problemas complexos, o que pode prolongar a resolução de problemas técnicos.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
@@ -432,15 +432,15 @@
         "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
       }
     },
-    "justificativaClassificacao": "A expertise dos atores do ecossistema é classificada como conhecimento tácito-cognitivo porque reside nas experiências, percepções e competências reconhecidas entre os participantes. O nível Ecossistema se aplica porque permite localizar pessoas capazes de atuar entre diferentes comunidades. A dimensão Social foi selecionada porque depende das relações e da colaboração entre atores.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente nas habilidades demonstradas pelos colaboradores e nas interações dos agentes de ligação entre comunidades.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por quem forma equipes, por novatos que procuram orientação e por comunidades que dependem da resolução de problemas entre fronteiras.",
-    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário tornar localizável a expertise dos atores por mecanismos de recomendação baseados em repositórios semânticos e redes sociais, apoiados por intermediação entre comunidades."
+    "justificativaClassificacao": "A expertise dos participantes do ECOS é classificada como conhecimento tácito-cognitivo porque reside nas experiências, percepções e competências reconhecidas entre eles. O nível Ecossistema se aplica porque permite localizar pessoas capazes de atuar entre diferentes comunidades. A dimensão Social foi selecionada porque depende das relações e da colaboração entre participantes do ECOS.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente nas habilidades demonstradas pelos participantes do ECOS e nas interações dos agentes de ligação entre comunidades.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS que formam equipes, por novos integrantes que procuram orientação e por comunidades que dependem da resolução de problemas entre fronteiras.",
+    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário tornar localizável a expertise dos participantes do ECOS por mecanismos de recomendação baseados em repositórios semânticos e redes sociais, apoiados por intermediação entre comunidades."
   },
   {
     "id": "C13",
-    "nome": "Necessidades e prioridades dos atores do ecossistema",
-    "descricao": "Esse conhecimento está relacionado às motivações, restrições e objetivos estratégicos dos diferentes tipos de participantes, como governos, empresas e universidades. O desconhecimento dessas particularidades pode resultar em decisões unilaterais do orquestrador que desengajam parceiros.",
+    "nome": "Necessidades e prioridades dos participantes do ECOS",
+    "descricao": "Esse conhecimento está relacionado às motivações, restrições e objetivos estratégicos dos diferentes tipos de participantes do ECOS, como governos, empresas e universidades. O desconhecimento dessas particularidades pode resultar em decisões unilaterais da organização central que desengajam outros participantes do ECOS.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -465,18 +465,18 @@
     "evidencia": {
       "D11": {
         "estudo": "E07",
-        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos atores, o mesmo objeto"
+        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos participantes do ECOS, o mesmo objeto"
       }
     },
-    "justificativaClassificacao": "As necessidades e prioridades dos atores do ecossistema são classificadas como conhecimento tácito-cognitivo porque dependem das percepções e dos interesses de cada participante. O nível Ecossistema se aplica porque decisões coletivas exigem entendimento entre atores com demandas distintas. A dimensão Negócio foi selecionada porque essas prioridades orientam investimentos e atributos de qualidade da plataforma.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos próprios atores, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por atores envolvidos em decisões conjuntas e por quem projeta a plataforma comum.",
+    "justificativaClassificacao": "As necessidades e prioridades dos participantes do ECOS são classificadas como conhecimento tácito-cognitivo porque dependem das percepções e dos interesses de cada participante. O nível Ecossistema se aplica porque decisões coletivas exigem entendimento entre participantes do ECOS com demandas distintas. A dimensão Negócio foi selecionada porque essas prioridades orientam investimentos e atributos de qualidade da plataforma tecnológica comum.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos próprios participantes do ECOS, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS envolvidos em decisões conjuntas e pela organização central responsável pela plataforma tecnológica comum.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário promover espaços de articulação interorganizacional para compartilhar e compreender necessidades distintas, recorrendo à intermediação quando ela existir."
   },
   {
     "id": "C14",
-    "nome": "Competência e confiabilidade dos atores do ecossistema",
-    "descricao": "Esse conhecimento envolve a avaliação da reputação, capacidade técnica comprovada e grau de compromisso dos parceiros ao longo das interações históricas. A falta dessa percepção pode aumentar o risco na escolha de parceiros para projetos críticos e prejudicar a governança.",
+    "nome": "Competência e confiabilidade dos participantes do ECOS",
+    "descricao": "Esse conhecimento envolve a avaliação da reputação, capacidade técnica comprovada e grau de compromisso dos participantes do ECOS ao longo das interações históricas. A falta dessa percepção pode aumentar o risco na escolha de participantes para projetos críticos e prejudicar a governança.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Social",
@@ -502,15 +502,15 @@
         "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto"
       }
     },
-    "justificativaClassificacao": "A competência e confiabilidade dos atores do ecossistema são classificadas como conhecimento tácito-cognitivo porque são percebidas a partir das interações e da experiência acumulada. O nível Ecossistema se aplica porque influenciam relações entre organizações participantes. A dimensão Social foi selecionada porque sustentam confiança e legitimidade nas decisões coletivas.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelas competências que os próprios atores demonstram em suas atividades e interações com outros participantes.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por organizações que precisam decidir com quem cooperar e em quem confiar para realizar atividades conjuntas.",
+    "justificativaClassificacao": "A competência e confiabilidade dos participantes do ECOS são classificadas como conhecimento tácito-cognitivo porque são percebidas a partir das interações e da experiência acumulada. O nível Ecossistema se aplica porque influenciam relações entre organizações participantes. A dimensão Social foi selecionada porque sustentam confiança e legitimidade nas decisões coletivas.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelas competências que os próprios participantes do ECOS demonstram em suas atividades e interações.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS que precisam decidir com quem cooperar e em quem confiar para realizar atividades conjuntas.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário promover reuniões informativas, compartilhamento de documentos e papéis de intermediação que apoiem o reconhecimento de competências e a construção de confiança."
   },
   {
     "id": "C15",
     "nome": "Dificuldades dos desenvolvedores externos",
-    "descricao": "Esse conhecimento abrange os pontos de fricção, dúvidas recorrentes e barreiras enfrentadas por desenvolvedores ao utilizar a plataforma. O não reconhecimento dessas barreiras pode comprometer a melhoria dos guias de apoio e contribuir para a desistência de colaboradores.",
+    "descricao": "Esse conhecimento abrange os pontos de fricção, dúvidas recorrentes e barreiras enfrentadas por desenvolvedores externos ao utilizar a plataforma tecnológica comum. O não reconhecimento dessas barreiras pode comprometer a melhoria dos guias de apoio e contribuir para a desistência de desenvolvedores externos.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Plataforma",
     "dimensao": "Negócio",
@@ -537,9 +537,9 @@
         "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada"
       }
     },
-    "justificativaClassificacao": "As dificuldades dos desenvolvedores externos são classificadas como conhecimento tácito-cognitivo porque se revelam nas interpretações, dúvidas e erros recorrentes desses desenvolvedores. O nível Plataforma se aplica porque esse conhecimento orienta seus recursos de apoio. A dimensão Negócio foi selecionada porque essas dificuldades afetam o esforço e a atuação dos contribuidores externos.",
+    "justificativaClassificacao": "As dificuldades dos desenvolvedores externos são classificadas como conhecimento tácito-cognitivo porque se revelam nas interpretações, dúvidas e erros recorrentes desses desenvolvedores. O nível Plataforma se aplica porque esse conhecimento orienta seus recursos de apoio. A dimensão Negócio foi selecionada porque essas dificuldades afetam o esforço e a atuação dos desenvolvedores externos.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos, nos erros, dúvidas e discussões que registram nas comunidades.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por equipes da organização orquestradora para revisar documentação e outros recursos de apoio aos desenvolvedores.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por equipes da organização central para revisar documentação e outros recursos de apoio aos desenvolvedores externos.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário analisar discussões e dúvidas recorrentes nas comunidades e, quando pertinente, aplicar modelagem de tópicos para identificar lacunas nos recursos de apoio."
   },
   {
@@ -565,7 +565,7 @@
     "evidencia": {},
     "justificativaClassificacao": "Os impactos de mudanças de terceiros no negócio são classificados como conhecimento tácito-cognitivo porque compreendê-los exige interpretar relações entre serviços e atividades em andamento. O nível Ecossistema se aplica porque envolvem ofertas de terceiros conectadas a diferentes participantes. A dimensão Negócio foi selecionada porque essas mudanças afetam serviços e decisões em curso.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos provedores de serviços de terceiros, a partir das mudanças que realizam nos serviços dos quais o negócio depende.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por stakeholders cujas atividades em andamento dependem desses serviços e precisam antecipar seus impactos.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS cujas atividades em andamento dependem desses serviços e precisam antecipar seus impactos.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário considerar, nas decisões arquiteturais e de negócio, como mudanças em serviços de terceiros podem afetar as atividades em andamento."
   },
   {
@@ -598,8 +598,8 @@
     },
     "justificativaClassificacao": "As composições de componentes para tarefas específicas são classificadas como conhecimento tácito-cognitivo porque incorporam a experiência de quem avaliou o contexto de trabalho. O nível Produto se aplica porque orientam a execução de tarefas específicas. A dimensão Técnica foi selecionada porque tratam da combinação de componentes e configurações adequadas à tarefa.",
     "quemPossui": "Esse conhecimento é gerado ou registrado principalmente por quem montou a composição de componentes e pela própria composição preservada como artefato.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por outros atores que executam tarefas semelhantes e precisam avaliar composições já utilizadas.",
-    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário compartilhar composições de componentes para que outros participantes possam consultá-las, discuti-las e integrar uma composição completa ou parcial ao seu ambiente."
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por participantes do ECOS que executam tarefas semelhantes e precisam avaliar composições já utilizadas.",
+    "comoGerenciar": "Para mantê-lo acessível e útil, é necessário compartilhar composições de componentes para que participantes do ECOS possam consultá-las, discuti-las e integrar uma composição completa ou parcial ao seu ambiente."
   },
   {
     "id": "C18",
@@ -623,8 +623,8 @@
     "desafios": [],
     "evidencia": {},
     "justificativaClassificacao": "As funcionalidades e a complementaridade no ecossistema são classificadas como conhecimento tácito-cognitivo porque identificá-las exige interpretar as funcionalidades já existentes. O nível Ecossistema se aplica porque considera a relação entre contribuições e projetos participantes. A dimensão Técnica foi selecionada porque trata das funcionalidades e de sua integração.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos mantenedores que avaliam contribuições, a partir das funcionalidades e projetos já existentes.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por contribuidores que propõem novas funcionalidades e precisam avaliar sua complementaridade em relação ao que já existe.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que avaliam contribuições, a partir das funcionalidades e projetos já existentes.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que propõem novas funcionalidades e precisam avaliar sua complementaridade em relação ao que já existe.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário tornar visíveis as funcionalidades existentes e utilizar referências cruzadas entre projetos antes de novas contribuições."
   },
   {
@@ -664,14 +664,14 @@
       }
     },
     "justificativaClassificacao": "Os problemas e soluções do ecossistema aplicáveis ao contexto são classificados como conhecimento tácito-técnico porque sua aplicação exige julgamento prático sobre a adequação ao contexto. O nível Ecossistema se aplica porque recuperam experiências de diferentes participantes. A dimensão Técnica foi selecionada porque apoiam a resolução de problemas de software.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pela comunidade de desenvolvedores que já enfrentou problemas comparáveis e compartilhou suas soluções.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores diante de erros desconhecidos ou em busca de ideias que possam se adequar ao seu contexto.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que já enfrentaram problemas comparáveis e compartilharam suas soluções.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos diante de erros desconhecidos ou em busca de ideias que possam se adequar ao seu contexto.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário manter canais comunitários com boa capacidade de busca e apoiar a avaliação da adequação das soluções antes de aplicá-las."
   },
   {
     "id": "C20",
     "nome": "Experiência externa com tecnologias do ecossistema",
-    "descricao": "Esse conhecimento diz respeito à experiência prática acumulada por desenvolvedores ao utilizar repetidamente as tecnologias da plataforma em projetos reais. A falta dessa vivência pode reduzir a velocidade de inovação e limitar a capacidade do ecossistema de evoluir com base no uso prático.",
+    "descricao": "Esse conhecimento diz respeito à experiência prática acumulada por desenvolvedores externos ao utilizar repetidamente as tecnologias da plataforma tecnológica comum em projetos reais. A falta dessa vivência pode reduzir a velocidade de inovação e limitar a capacidade do ECOS de evoluir com base no uso prático.",
     "natureza": "Tácito-técnico",
     "nivel": "Produto",
     "dimensao": "Técnica",
@@ -697,8 +697,8 @@
       }
     },
     "justificativaClassificacao": "A experiência externa com tecnologias do ecossistema é classificada como conhecimento tácito-técnico porque resulta da execução repetida de tarefas e se incorpora às habilidades e ao julgamento do ator. O nível Produto se aplica porque se manifesta no uso das tecnologias em tarefas concretas. A dimensão Técnica foi selecionada porque trata desse saber fazer.",
-    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos complementadores experientes, a partir da vivência acumulada no uso de tecnologias da plataforma.",
-    "quemPrecisa": "Esse conhecimento é utilizado principalmente por complementadores que ainda não acumularam essa experiência e enfrentam dificuldades para inovar.",
+    "quemPossui": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos experientes, a partir da vivência acumulada no uso de tecnologias da plataforma tecnológica comum.",
+    "quemPrecisa": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que ainda não acumularam essa experiência e enfrentam dificuldades para inovar.",
     "comoGerenciar": "Para mantê-lo acessível e útil, é necessário incentivar a participação contínua e o compartilhamento de experiências na comunidade, utilizando mecanismos de reconhecimento ou recompensa quando adequados ao contexto."
   }
 ]

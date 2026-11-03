@@ -93,7 +93,7 @@
   },
   {
     "id": "S08",
-    "nome": "Collab-RS: ferramenta para recomendação de colaboradores",
+    "nome": "Collab-RS: ferramenta para recomendação de participantes do ECOS",
     "tipo": "Ferramenta",
     "estudos": [
       "E08"
@@ -272,7 +272,7 @@
   },
   {
     "id": "S20",
-    "nome": "Utilização de diretrizes documentadas para contribuidores",
+    "nome": "Utilização de diretrizes documentadas para desenvolvedores externos",
     "tipo": "Prática",
     "estudos": [
       "E02",
