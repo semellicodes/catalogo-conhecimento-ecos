@@ -442,14 +442,40 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-top: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
-.estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 1fr); gap: var(--esp-5); }
-.estrutura__origem-estudos { padding-left: var(--esp-5); border-left: var(--borda-suave); }
-.estrutura__origem-total { margin-top: var(--esp-1); color: var(--cor-acento); font-size: var(--tam-titulo); font-weight: 600; line-height: 1; }
-.estrutura__origem-descricao { margin-top: var(--esp-2); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
-.estrutura__origem-fonte { margin-top: var(--esp-2); color: var(--cor-texto-fraco); font-size: var(--tam-xs); line-height: 1.5; }
-.estrutura__evidencia-fonte,
-.estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
-.estrutura__evidencias-secundarias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); align-items: stretch; }
+/* A progressão da revisão, do que foi recuperado ao que foi selecionado. */
+.estrutura__funil {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-4);
+  margin-top: var(--esp-3);
+}
+.estrutura__funil-seta {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--cor-acento);
+  border-bottom: 2px solid var(--cor-acento);
+  transform: rotate(-45deg);
+}
+.estrutura__numero-evidencia-valor {
+  color: var(--cor-acento);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-titulo);
+  /* Folga para a caixa caber o desenho inteiro do algarismo. Com 1 exato o
+     navegador recorta por alguns pixels. */
+  line-height: 1.3;
+}
+.estrutura__numero-evidencia-rotulo {
+  margin-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.4;
+}
+/* O cartão dos desafios fica separado da revisão, porque os desafios não são
+   etapa dela, são achado dos estudos. */
+.estrutura__evidencia-linha--desafios { margin-top: var(--esp-4); }
+.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia { margin-top: var(--esp-3); }
 
 /* As abas explicativas organizam as definições acadêmicas por camada, sem
    recorrer a cartões redundantes. As fontes levam à seção conceitual pública. */
@@ -457,12 +483,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   gap: var(--esp-2);
   margin-top: var(--esp-4);
-}
-.estrutura__pergunta-pesquisa {
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  font-style: italic;
-  line-height: 1.5;
 }
 /* A fonte fica no pé de cada cartão, sempre visível, separada do corpo por uma
    linha fina. Repete-se de cartão em cartão de propósito, porque cada cartão
@@ -562,12 +582,33 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: stretch;
   margin-top: var(--esp-3);
 }
-.estrutura__atributos-par {
+/* Os três atributos lado a lado. Cada um diz o que identifica e lista as
+   categorias pelo nome, sem redefini-las. */
+.estrutura__atributos-fileira {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-3);
-  align-items: start;
+  align-items: stretch;
   min-width: 0;
+}
+.estrutura__categorias-atributo { display: grid; gap: var(--esp-1); margin-top: var(--esp-2); }
+.estrutura__categoria-atributo {
+  color: var(--cor-texto);
+  font-size: var(--tam-sm);
+  font-weight: 500;
+  line-height: 1.4;
+}
+/* As ações de gerência, em fileira de pílulas, no pé da camada. */
+.estrutura__acoes-gerencia { grid-column: 1 / -1; margin-top: var(--esp-2); }
+.estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
+.estrutura__acao-gerencia {
+  padding: var(--esp-1) var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: 1px solid var(--cor-acento-linha);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-acento);
+  font-size: var(--tam-xs);
+  line-height: 1.6;
 }
 .estrutura__classificacao-coluna .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
   padding: 0;
@@ -612,28 +653,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-top: var(--esp-1);
 }
 
-.estrutura__categoria-classificacao-rotulo {
-  display: block;
-  margin-bottom: var(--esp-1);
-  color: var(--cor-acento);
-  font-size: var(--tam-xs);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-}
-.estrutura__categoria-classificacao-exemplos,
-.estrutura__categoria-classificacao-pergunta,
-.estrutura__atributo-classificacao-pergunta {
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
-}
-.estrutura__categoria-classificacao-exemplos { margin-top: var(--esp-3); }
-.estrutura__categoria-classificacao-pergunta,
-.estrutura__atributo-classificacao-pergunta {
-  margin-top: var(--esp-3);
-  font-style: italic;
-}
 .estrutura__tipos-ecos-intro,
 .estrutura__tipo-ecos-texto {
   color: var(--cor-texto-suave);
@@ -671,15 +690,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    linha crescer com o conteúdo. Nunca de height 100% nem de grid-auto-rows 1fr,
    que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
+.estrutura__atributos-fileira,
 .estrutura__composicao-gerencia,
 .estrutura__evidencias-blocos,
-.estrutura__evidencias-secundarias,
 .estrutura__tipos-ecos-lista { align-items: stretch; }
-.estrutura__evidencias-blocos .estrutura__evidencia-linha,
-.estrutura__evidencias-secundarias .estrutura__evidencia-linha { display: flex; flex-direction: column; }
-.estrutura__composicao-gerencia .estrutura__fonte-conceitual,
-.estrutura__evidencias-blocos .estrutura__evidencia-fonte,
-.estrutura__evidencias-blocos .estrutura__evidencia-complemento { margin-top: auto; }
+.estrutura__evidencias-blocos .estrutura__evidencia-linha { display: flex; flex-direction: column; }
+.estrutura__atributos-fileira .estrutura__fonte-conceitual,
+.estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
 /* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
    em vez de ficar espremida na largura de um cartão. */
 .estrutura__composicao-gerencia > .estrutura__fonte-conceitual { grid-column: 1 / -1; }
@@ -705,7 +722,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__nota-texto,
   .estrutura__categoria-classificacao-texto,
   .estrutura__atributo-classificacao-descricao,
-  .estrutura__origem-descricao { font-size: 0.875rem; line-height: 1.5; }
   .estrutura__gerencia-cabecalho-titulo,
   .estrutura__evidencia-cabecalho-titulo,
   .estrutura__atributo-classificacao-cabecalho-titulo { font-size: 1rem; }
@@ -713,9 +729,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-classificacao,
   .estrutura__composicao-gerencia,
   .estrutura__composicao-evidencias { gap: 0.75rem; }
-  .estrutura__origem-total { font-size: 1.5rem; }
-  .estrutura__evidencia-fonte,
-  .estrutura__evidencia-complemento { margin-top: 0.75rem; padding-top: 0.75rem; }
+  .estrutura__numero-evidencia-valor { font-size: 1.5rem; }
   .estrutura__nota-metodologica { gap: 0.75rem; padding: 1rem; }
 }
 @media (min-width: 62rem) {
@@ -731,23 +745,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .estrutura__composicao-evidencias { gap: 0.75rem; }
-  .estrutura__evidencia-linha--origem { gap: 1rem; }
-  .estrutura__origem-estudos { padding-left: 1rem; }
-  .estrutura__evidencias-secundarias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
 }
 @media (max-width: 61.99rem) {
   .estrutura__composicao-atributos,
   .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-atributos > * { min-width: 0; }
-  .estrutura__atributos-par,
+  .estrutura__atributos-fileira,
   .estrutura__tipos-ecos-lista,
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__classificacao-coluna .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__atributo-classificacao,
-  .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
+  .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .estrutura__origem-estudos { padding-top: var(--esp-4); padding-left: var(--esp-0); border-top: var(--borda-suave); border-left: none; }
-  .estrutura__evidencias-secundarias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 39.99rem) {
