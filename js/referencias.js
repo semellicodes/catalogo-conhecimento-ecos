@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar } from './dados.js?v=20261102-5';
+import { carregar } from './dados.js?v=20261103-2';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -44,17 +44,28 @@ async function iniciar() {
     corpo.append(linha);
   });
 
+  const referenciasConceituais = [
+    'nonaka1997', 'alavi2001', 'johnson2020', 'kauschinger2021',
+    'santos2011', 'manikas2016', 'cartaxo2018', 'cartaxo2020', 'charmaz2006'
+  ];
+
+  const adicionarReferencia = (lista, chave) => {
+    const item = document.createElement('li');
+    item.id = `referencia-${chave}`;
+    item.textContent = dados.referencias[chave];
+    lista.append(item);
+  };
+
+  const listaConceitual = el('#lista-referencias-conceituais');
+  referenciasConceituais.forEach((chave) => adicionarReferencia(listaConceitual, chave));
+
   const lista = el('#lista-referencias');
   Object.keys(dados.referencias)
     /* O registro do manuscrito é mantido nos dados como rastreabilidade interna,
        mas não integra a lista pública de referências enquanto não houver publicação. */
-    .filter((chave) => chave !== 'revisaoRapidaManuscrito')
+    .filter((chave) => chave !== 'revisaoRapidaManuscrito' && !referenciasConceituais.includes(chave))
     .sort((a, b) => dados.referencias[a].localeCompare(dados.referencias[b], 'pt-BR'))
-    .forEach((chave) => {
-      const item = document.createElement('li');
-      item.textContent = dados.referencias[chave];
-      lista.append(item);
-    });
+    .forEach((chave) => adicionarReferencia(lista, chave));
 }
 
 iniciar();

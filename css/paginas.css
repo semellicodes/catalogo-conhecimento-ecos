@@ -466,6 +466,95 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__evidencia-fonte,
 .estrutura__evidencia-complemento { margin-top: var(--esp-3); padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__evidencias-secundarias { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-4); align-items: stretch; }
+
+/* As abas explicativas organizam as definições acadêmicas por camada, sem
+   recorrer a cartões redundantes. As fontes levam à seção conceitual pública. */
+.estrutura__contexto-academico {
+  display: grid;
+  gap: var(--esp-2);
+  margin-top: var(--esp-4);
+}
+.estrutura__pergunta-pesquisa {
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  font-style: italic;
+  line-height: 1.5;
+}
+.estrutura__fonte-conceitual {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
+  line-height: 1.5;
+}
+.estrutura__fonte-conceitual a {
+  color: var(--cor-acento);
+  text-decoration: none;
+  text-underline-offset: var(--esp-1);
+}
+.estrutura__fonte-conceitual a:hover,
+.estrutura__fonte-conceitual a:focus-visible { text-decoration: underline; }
+.estrutura__composicao-atributos {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 0.9fr);
+  gap: var(--esp-4);
+  align-items: start;
+}
+.estrutura__classificacao-coluna,
+.estrutura__tipos-ecos {
+  padding: var(--esp-4);
+  background: var(--cor-superficie-alta);
+  border: var(--borda-suave);
+  border-top: var(--borda-acento-suave);
+  border-radius: var(--raio);
+}
+.estrutura__coluna-titulo {
+  font-size: var(--tam-base);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.estrutura__classificacao-coluna .estrutura__composicao-classificacao {
+  display: grid;
+  gap: var(--esp-3);
+  margin-top: var(--esp-3);
+}
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao {
+  grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.28fr);
+  gap: var(--esp-3);
+  padding: var(--esp-3);
+  background: transparent;
+  border: 0;
+  border-top: var(--borda-suave);
+  border-radius: 0;
+}
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao:first-child { border-top: 0; }
+.estrutura__classificacao-coluna .estrutura__categorias-classificacao,
+.estrutura__classificacao-coluna .estrutura__atributo-classificacao--natureza .estrutura__categorias-classificacao {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-2);
+}
+.estrutura__classificacao-coluna .estrutura__categoria-classificacao + .estrutura__categoria-classificacao {
+  padding-top: var(--esp-2);
+  padding-left: 0;
+  border-top: var(--borda-suave);
+  border-left: 0;
+}
+.estrutura__tipos-ecos-intro,
+.estrutura__tipo-ecos-texto {
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
+.estrutura__tipos-ecos-intro { margin-top: var(--esp-2); }
+.estrutura__tipos-ecos-lista { display: grid; gap: var(--esp-2); margin-top: var(--esp-3); }
+.estrutura__tipo-ecos { padding-top: var(--esp-3); border-top: var(--borda-suave); }
+.estrutura__tipo-ecos-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
+.estrutura__tipo-ecos-texto { margin-top: var(--esp-1); }
+.estrutura__evidencias-blocos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-3);
+}
+.estrutura__evidencias-blocos .estrutura__evidencia-linha { min-height: 0; }
 /* Em telas de trabalho, os painéis usam uma escala mais densa: as explicações
    continuam completas, mas deixam de reservar espaço apenas decorativo. */
 @media (min-width: 48rem) {
@@ -531,6 +620,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__evidencias-secundarias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
 }
 @media (max-width: 61.99rem) {
+  .estrutura__composicao-atributos,
+  .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__classificacao-coluna .estrutura__atributo-classificacao { grid-template-columns: minmax(0, 1fr); }
   .estrutura__natureza,
   .estrutura__atributo-classificacao,
   .estrutura__evidencia-linha--origem { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
@@ -562,6 +654,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel { padding: var(--esp-4); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
+  .estrutura__composicao-atributos { gap: var(--esp-3); }
+  .estrutura__classificacao-coluna,
+  .estrutura__tipos-ecos { padding: var(--esp-4); }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

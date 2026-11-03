@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar } from './dados.js?v=20261103-1';
+import { carregar } from './dados.js?v=20261103-2';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -11,6 +11,31 @@ function criar(tag, className, texto) {
   if (className) elemento.className = className;
   if (texto !== undefined) elemento.textContent = texto;
   return elemento;
+}
+
+const ROTULOS_REFERENCIAS = {
+  alavi2001: 'Alavi e Leidner (2001)',
+  cartaxo2018: 'Cartaxo et al. (2018)',
+  cartaxo2020: 'Cartaxo et al. (2020)',
+  charmaz2006: 'Charmaz (2006)',
+  johnson2020: 'Johnson et al. (2020)',
+  kauschinger2021: 'Kauschinger et al. (2021)',
+  manikas2016: 'Manikas (2016)',
+  nonaka1997: 'Nonaka e Takeuchi (1997)',
+  santos2011: 'Santos e Werner (2011)'
+};
+
+function fonteConceitual(chaves) {
+  const fonte = criar('p', 'estrutura__fonte-conceitual');
+  fonte.append('Fonte: ');
+  const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
+  referencias.forEach((chave, indice) => {
+    if (indice) fonte.append('; ');
+    const link = criar('a', '', ROTULOS_REFERENCIAS[chave] || chave);
+    link.href = `referencias.html#referencia-${chave}`;
+    fonte.append(link);
+  });
+  return fonte;
 }
 
 const SVG = 'http://www.w3.org/2000/svg';
@@ -148,31 +173,15 @@ function linhaEvidencia({ icone, titulo, descricao, complemento }) {
 function composicaoEvidencias(dados, definicao) {
   const { cartoes } = definicao;
   const icones = cartoes.icones;
-  const base = dados.meta.camadas.find((camada) => camada.n === 3);
   const composicao = criar('article', 'estrutura__composicao-evidencias');
-  const origem = criar('section', 'estrutura__evidencia-linha estrutura__evidencia-linha--origem');
-  const texto = criar('div', 'estrutura__origem-texto');
-  texto.append(
-    cabecalhoComIcone(icones.revisao, cartoes.revisao, 'estrutura__evidencia-cabecalho'),
-    criar('p', 'estrutura__evidencia-texto', cartoes.revisaoDescricao),
-    criar('p', 'estrutura__evidencia-fonte', dados.meta.fonte)
-  );
-  const estudos = criar('div', 'estrutura__origem-estudos');
-  estudos.append(
-    criar('p', 'estrutura__rotulo', cartoes.estudos),
-    criar('p', 'estrutura__origem-total mono', String(dados.meta.totalEstudos)),
-    criar('p', 'estrutura__origem-descricao', cartoes.estudosDescricao),
-    criar('p', 'estrutura__origem-fonte', base?.conteudo)
-  );
-  origem.append(texto, estudos);
-
-  const secundarios = criar('div', 'estrutura__evidencias-secundarias');
-  secundarios.append(
+  const blocos = criar('div', 'estrutura__evidencias-blocos');
+  blocos.append(
+    linhaEvidencia({ icone: icones.revisao, titulo: cartoes.revisao, descricao: cartoes.revisaoDescricao }),
+    linhaEvidencia({ icone: icones.estudos, titulo: cartoes.estudos, descricao: cartoes.estudosDescricao }),
     linhaEvidencia({ icone: icones.rastreabilidade, titulo: cartoes.rastreabilidade, descricao: cartoes.rastreabilidadeDescricao }),
-    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao, complemento: cartoes.desafiosComplemento })
+    linhaEvidencia({ icone: icones.desafios, titulo: cartoes.desafios, descricao: cartoes.desafiosDescricao })
   );
-
-  composicao.append(origem, secundarios);
+  composicao.append(blocos, fonteConceitual(definicao.referencias));
   return composicao;
 }
 
@@ -185,7 +194,7 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   const cabecalho = criar('header', 'estrutura__painel-cabecalho');
   const simbolo = criar('span', 'estrutura__painel-icone');
   simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
-  cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.rotulo));
+  cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.tituloPainel || definicao.rotulo));
   raiz.append(cabecalho);
   if (introducao) raiz.append(criar('p', 'estrutura__painel-intro', introducao));
   const nota = aviso ? criar('p', 'estrutura__aviso', aviso) : null;
@@ -212,55 +221,85 @@ function categoriaClassificacao(valor, incluirDescricao = true) {
   return item;
 }
 
-function atributoClassificacao(chave, atributo, referenciaNatureza, consultarConhecimento) {
+function atributoClassificacao(chave, atributo) {
   const bloco = criar('section', `estrutura__atributo-classificacao estrutura__atributo-classificacao--${chave}`);
   const cabecalho = cabecalhoComIcone(chave, atributo.rotulo, 'estrutura__atributo-classificacao-cabecalho');
   cabecalho.append(criar('p', 'estrutura__atributo-classificacao-descricao', atributo.pergunta));
   const conteudo = criar('div', 'estrutura__atributo-classificacao-conteudo');
   const categorias = criar('ul', 'estrutura__categorias-classificacao');
-  const incluirDescricao = chave !== 'natureza';
-  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor, incluirDescricao)));
+  atributo.valores.forEach((valor) => categorias.append(categoriaClassificacao(valor)));
   conteudo.append(categorias);
-  if (chave === 'natureza' && referenciaNatureza) {
-    const referencia = criar('div', 'estrutura__referencia-natureza');
-    referencia.append(criar('p', '', referenciaNatureza.texto));
-    const acao = criar('button', 'estrutura__referencia-acao', referenciaNatureza.acao);
-    acao.type = 'button';
-    acao.addEventListener('click', consultarConhecimento);
-    referencia.append(acao);
-    conteudo.append(referencia);
-  }
+  conteudo.append(fonteConceitual(atributo.referencia));
   bloco.append(cabecalho, conteudo);
   return bloco;
 }
 
-function composicaoClassificacao(dados, definicao, consultarConhecimento) {
-  const composicao = criar('article', 'estrutura__composicao-classificacao');
+function composicaoClassificacao(dados, definicao) {
+  const composicao = criar('section', 'estrutura__classificacao-coluna');
+  composicao.append(criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao));
+  const atributos = criar('article', 'estrutura__composicao-classificacao');
   ['natureza', 'nivel', 'dimensao'].forEach((chave) => {
-    composicao.append(atributoClassificacao(chave, dados.classificacoes[chave], definicao.referenciaNatureza, consultarConhecimento));
+    atributos.append(atributoClassificacao(chave, dados.classificacoes[chave]));
   });
+  composicao.append(atributos);
+  return composicao;
+}
+
+function nomeTipoEcos(valor) {
+  return {
+    'Código aberto': 'ECOS de Código Aberto',
+    'Híbrido': 'ECOS Híbrido',
+    'Proprietário': 'ECOS Proprietário'
+  }[valor] || valor;
+}
+
+function composicaoTiposEcos(dados, definicao) {
+  const composicao = criar('section', 'estrutura__tipos-ecos');
+  composicao.append(
+    criar('h4', 'estrutura__coluna-titulo', definicao.tituloTiposEcos),
+    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos)
+  );
+  const lista = criar('ul', 'estrutura__tipos-ecos-lista');
+  dados.classificacoes.tipoEcos.valores.forEach((valor) => {
+    const item = criar('li', 'estrutura__tipo-ecos');
+    item.append(
+      criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
+      criar('p', 'estrutura__tipo-ecos-texto', valor.descricao)
+    );
+    lista.append(item);
+  });
+  composicao.append(lista, fonteConceitual(definicao.referenciasTiposEcos));
   return composicao;
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
   const valores = dados.classificacoes.natureza.valores;
-  const resultado = painel(definicao, aba, definicao.introducao, [composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
+  const contexto = criar('div', 'estrutura__contexto-academico');
+  contexto.append(
+    criar('p', 'estrutura__pergunta-pesquisa', definicao.perguntaPesquisa),
+    fonteConceitual(definicao.referencias)
+  );
+  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoConhecimento(valores)], 'estrutura__grade--conhecimento');
   resultado.classList.add('estrutura__painel--conhecimento');
   return resultado;
 }
 
-function explicacaoClassificacao(dados, aba, definicao, selecionar) {
-  const resultado = painel(definicao, aba, definicao.introducao, [composicaoClassificacao(dados, definicao, () => selecionar(0))], 'estrutura__grade--classificacao');
+function explicacaoClassificacao(dados, aba, definicao) {
+  const atributos = criar('article', 'estrutura__composicao-atributos');
+  atributos.append(composicaoClassificacao(dados, definicao), composicaoTiposEcos(dados, definicao));
+  const resultado = painel(definicao, aba, definicao.introducao, [atributos], 'estrutura__grade--classificacao');
   resultado.classList.add('estrutura__painel--classificacao');
   return resultado;
 }
 
 function explicacaoGerencia(dados, aba, definicao) {
+  const composicao = composicaoGerencia(definicao.campos, definicao.nota);
+  composicao.append(fonteConceitual(definicao.referencias));
   const resultado = painel(
     definicao,
     aba,
-    dados.meta.gerenciaConhecimento,
-    [composicaoGerencia(definicao.campos, definicao.nota)],
+    definicao.introducao,
+    [composicao],
     'estrutura__grade--gerencia'
   );
   resultado.classList.add('estrutura__painel--gerencia');
@@ -268,7 +307,7 @@ function explicacaoGerencia(dados, aba, definicao) {
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
-  return painel(definicao, aba, '', [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
+  return painel(definicao, aba, definicao.introducao, [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
 }
 
 function iconeDoPainel(definicao) {

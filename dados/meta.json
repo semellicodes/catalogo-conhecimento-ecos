@@ -7,60 +7,68 @@
     "abas": [
       {
         "id": "conhecimento",
-        "rotulo": "Conhecimento",
+        "rotulo": "Conhecimentos em ECOS",
         "icone": "conhecimento",
-        "introducao": "Os conhecimentos catalogados assumem naturezas epistemológicas distintas, que orientam sua compreensão e gerência no ECOS."
+        "introducao": "O KM4SECO reúne conhecimentos cuja disponibilização, compartilhamento, transferência, registro, localização, compreensão, manutenção ou reutilização se mostra necessária no contexto dos ECOS. Esses conhecimentos foram identificados por meio de uma Revisão Rápida da Literatura e organizados para apoiar sua compreensão e gerência.",
+        "perguntaPesquisa": "Pergunta de pesquisa: Quais conhecimentos específicos devem ser gerenciados em ECOS?",
+        "referencias": "cartaxo2018, cartaxo2020"
       },
       {
         "id": "classificacao",
-        "rotulo": "Classificação",
+        "rotulo": "Atributos do conhecimento",
+        "tituloPainel": "Atributos do conhecimento",
         "icone": "classificacao",
-        "introducao": "O catálogo caracteriza cada conhecimento por três atributos distintos: natureza epistemológica, nível no ECOS e dimensão do ECOS.",
-        "referenciaNatureza": {
-          "texto": "As definições das naturezas epistemológicas podem ser consultadas no painel Conhecimento.",
-          "acao": "Consultar definições em Conhecimento"
-        }
+        "introducao": "Cada conhecimento é caracterizado por sua natureza epistemológica, pelo nível do ECOS em que se concentra e pela dimensão que aborda.",
+        "tituloClassificacao": "Como cada conhecimento é classificado?",
+        "tituloTiposEcos": "Exemplos de ECOS em que o conhecimento foi observado",
+        "introducaoTiposEcos": "Os exemplos mostram em quais tipos de ECOS os estudos primários observaram cada conhecimento. Um mesmo conhecimento pode ter evidências em mais de um tipo de ECOS.",
+        "referenciasTiposEcos": "manikas2016"
       },
       {
         "id": "gerencia",
-        "rotulo": "Gerência do Conhecimento",
+        "rotulo": "Gerência do conhecimento",
+        "tituloPainel": "Como o conhecimento pode ser gerenciado no ECOS?",
         "icone": "gerencia",
-        "nota": "Os campos sobre geração ou registro, uso ou benefício e práticas de gerência constituem uma síntese aplicada derivada dos resultados da Revisão Rápida da Literatura, articulando evidências dos estudos e interpretações elaboradas para apoiar a gerência do conhecimento em ECOS.",
+        "introducao": "A gerência do conhecimento no ECOS envolve identificar onde ele é gerado ou registrado, quais participantes podem se beneficiar de seu uso e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação.",
+        "nota": "Esses descritores constituem uma síntese operacional elaborada a partir dos resultados da revisão.",
+        "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
         "campos": [
           {
-            "titulo": "Onde o conhecimento é gerado ou registrado",
-            "rotulo": "Geração ou registro",
-            "descricao": "Indicam onde os conhecimentos tendem a ser gerados ou registrados.",
+            "titulo": "Fontes do conhecimento",
+            "rotulo": "Fontes do conhecimento",
+            "descricao": "Indicam onde o conhecimento tende a ser gerado ou registrado.",
             "icone": "fontes"
           },
           {
-            "titulo": "Quem utiliza ou se beneficia do conhecimento",
-            "rotulo": "Uso ou benefício",
-            "descricao": "Indicam quem pode se beneficiar dos conhecimentos no ECOS.",
+            "titulo": "Participantes que se beneficiam",
+            "rotulo": "Participantes que se beneficiam",
+            "descricao": "Indicam quais participantes podem utilizar ou se beneficiar do conhecimento.",
             "icone": "receptores"
           },
           {
-            "titulo": "Práticas de gerência do conhecimento",
-            "rotulo": "Práticas",
-            "descricao": "Reúnem práticas que favorecem o acesso, o compartilhamento, a atualização e a preservação dos conhecimentos.",
+            "titulo": "Práticas de gerência",
+            "rotulo": "Práticas de gerência",
+            "descricao": "Reúnem orientações que favorecem o acesso, compartilhamento, atualização e preservação do conhecimento.",
             "icone": "praticas"
           }
         ]
       },
       {
         "id": "evidencias",
-        "rotulo": "Base de Evidências",
+        "rotulo": "Base de evidências",
+        "tituloPainel": "Base de evidências científicas",
         "icone": "evidencias",
+        "introducao": "Cada conhecimento catalogado possui rastreabilidade com os estudos primários que o identificaram. A base de evidências reúne os estudos selecionados, as associações entre conhecimentos e estudos e os desafios identificados na literatura.",
+        "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
         "cartoes": {
           "revisao": "Revisão Rápida da Literatura",
           "revisaoDescricao": "A Revisão Rápida da Literatura constitui a base metodológica utilizada para identificar os conhecimentos e as evidências analisadas no KM4SECO.",
-          "estudos": "Estudos primários",
+          "estudos": "18 estudos primários",
           "estudosDescricao": "Os estudos primários selecionados sustentam a identificação e a caracterização dos conhecimentos catalogados.",
           "rastreabilidade": "Rastreabilidade das evidências",
           "rastreabilidadeDescricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados.",
           "desafios": "Desafios identificados na literatura",
-          "desafiosDescricao": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência.",
-          "desafiosComplemento": "A ausência de desafios associados não significa que determinado conhecimento esteja livre de dificuldades.",
+          "desafiosDescricao": "Os desafios não constituem uma classificação adicional dos conhecimentos. Eles representam achados identificados na literatura que podem dificultar sua gerência e são vinculados aos estudos primários correspondentes.",
           "icones": {
             "revisao": "revisao",
             "estudos": "estudos",

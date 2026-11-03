@@ -4,12 +4,12 @@
  */
 
 const ARQUIVOS = {
-  meta: 'dados/meta.json?v=20261103-1',
+  meta: 'dados/meta.json?v=20261103-2',
   conhecimentos: 'dados/conhecimentos.json?v=20261103-1',
   desafios: 'dados/desafios.json?v=20261103-1',
   estudos: 'dados/estudos.json?v=20261102-3',
-  classificacoes: 'dados/classificacoes.json?v=20261103-1',
-  referencias: 'dados/referencias.json'
+  classificacoes: 'dados/classificacoes.json?v=20261103-2',
+  referencias: 'dados/referencias.json?v=20261103-2'
 };
 
 let promessa = null;
