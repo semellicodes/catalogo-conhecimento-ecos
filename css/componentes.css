@@ -1196,8 +1196,8 @@
 .estudos { list-style: none; display: grid; gap: var(--esp-0); }
 .estudo {
   display: grid;
-  grid-template-columns: var(--coluna-id) minmax(0, 1fr);
-  gap: var(--esp-2);
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.625rem;
   align-items: start;
   padding: var(--esp-2) var(--esp-0);
   border-bottom: var(--borda-suave);
@@ -1205,16 +1205,16 @@
 }
 .estudo:first-child { padding-top: var(--esp-0); }
 .estudo:last-child { padding-bottom: var(--esp-0); border-bottom: 0; }
-.estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr) auto; }
+.estudo[data-com-link] { grid-template-columns: 3rem minmax(0, 1fr) auto; }
 .estudo > .codigo-id {
   align-self: start;
   padding-top: 0.125rem;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1.2;
 }
 .estudo__corpo { display: grid; gap: var(--esp-0); }
-.estudo__titulo { font-weight: 600; line-height: 1.35; }
-.estudo__meta { font-size: var(--tam-xs); line-height: 1.35; color: var(--cor-texto-fraco); }
+.estudo__titulo { font-size: 0.875rem; font-weight: 600; line-height: 1.3; }
+.estudo__meta { font-size: 0.75rem; line-height: 1.35; color: var(--cor-texto-fraco); }
 .estudo__acessar {
   display: inline-flex;
   align-items: center;
@@ -1240,8 +1240,8 @@
 }
 .estudo__icone-link { width: 0.9rem; height: 0.9rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 @container (max-width: 34rem) {
-  .estudo { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
-  .estudo[data-com-link] { grid-template-columns: var(--coluna-id) minmax(0, 1fr); }
+  .estudo { grid-template-columns: 3rem minmax(0, 1fr); }
+  .estudo[data-com-link] { grid-template-columns: 3rem minmax(0, 1fr); }
   .estudo__acessar { grid-column: 2; justify-self: start; }
 }
 /* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
