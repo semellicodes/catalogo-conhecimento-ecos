@@ -358,10 +358,30 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias { margin-top: var(--esp-4); }
 .estrutura__composicao-conhecimento { display: grid; gap: var(--esp-2); align-items: start; }
-/* Uma linha fina separa a definição de conhecimento dos cartões de natureza. */
-.estrutura__composicao-conhecimento > .estrutura__coluna-titulo {
-  padding-top: var(--esp-4);
-  border-top: var(--borda-suave);
+.estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: var(--esp-3); }
+/* A frase central é um divisor, com a linha saindo para os dois lados até a
+   borda do bloco. */
+.estrutura__divisor {
+  display: grid;
+  grid-template-columns: minmax(var(--esp-4), 1fr) auto minmax(var(--esp-4), 1fr);
+  align-items: center;
+  gap: var(--esp-4);
+}
+.estrutura__divisor::before,
+.estrutura__divisor::after {
+  content: '';
+  height: 1px;
+  background: var(--cor-linha-suave);
+}
+.estrutura__divisor-texto {
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 500;
+  letter-spacing: var(--entre-letras-rotulo);
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
 }
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
@@ -442,16 +462,25 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-top: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
-/* A progressão da revisão, do que foi recuperado ao que foi selecionado. */
-.estrutura__funil {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--esp-4);
-  margin-top: var(--esp-3);
+/* Os dois números de cada cartão, lado a lado, com a mesma forma nos dois
+   cartões para as linhas alinharem entre eles. */
+.estrutura__par-numeros {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--esp-3);
+  padding-top: var(--esp-4);
+}
+/* O par de números é que cresce para baixo, não a descrição. Assim ele começa
+   logo depois da descrição nos dois cartões e os números alinham, mesmo quando
+   um rótulo quebra em duas linhas e o outro não. */
+.estrutura__evidencias-blocos .estrutura__par-numeros { flex: 1; align-content: start; }
+/* Sem seta, a coluna do meio some e os dois números dividem a linha igual. */
+.estrutura__par-numeros:not(:has(> .estrutura__funil-seta)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .estrutura__funil-seta {
-  flex: none;
+  align-self: center;
   width: 0.5rem;
   height: 0.5rem;
   border-right: 2px solid var(--cor-acento);
@@ -591,12 +620,22 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: stretch;
   min-width: 0;
 }
-.estrutura__categorias-atributo { display: grid; gap: var(--esp-1); margin-top: var(--esp-2); }
-.estrutura__categoria-atributo {
+.estrutura__categorias-atributo { display: grid; gap: var(--esp-3); margin-top: var(--esp-3); }
+.estrutura__categoria-atributo + .estrutura__categoria-atributo {
+  padding-top: var(--esp-3);
+  border-top: var(--borda-suave);
+}
+.estrutura__categoria-atributo-nome {
   color: var(--cor-texto);
   font-size: var(--tam-sm);
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.estrutura__categoria-atributo-texto {
+  margin-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
 }
 /* As ações de gerência, em fileira de pílulas, no pé da camada. */
 .estrutura__acoes-gerencia { grid-column: 1 / -1; margin-top: var(--esp-2); }

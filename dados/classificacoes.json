@@ -13,7 +13,8 @@
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: Que informações podem ser documentadas, consultadas e reutilizadas pelos participantes do ECOS?",
         "referencia": "nonaka1997",
-        "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos."
+        "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos.",
+        "explicacao": "Pode ser formalizado e registrado, o que permite consultá-lo e reutilizá-lo sem depender de quem o produziu."
       },
       {
         "valor": "Tácito-cognitivo",
@@ -22,7 +23,8 @@
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: Quais percepções, experiências e interpretações dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
-        "definicaoBreve": "Conhecimentos relacionados à experiência, percepção, interpretação e compreensão dos participantes."
+        "definicaoBreve": "Conhecimentos relacionados à experiência, percepção, interpretação e compreensão dos participantes.",
+        "explicacao": "Está associado a modelos mentais e percepções, e é mais difícil de formalizar e transmitir."
       },
       {
         "valor": "Tácito-técnico",
@@ -31,7 +33,8 @@
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: Quais habilidades práticas e experiências podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
-        "definicaoBreve": "Conhecimentos associados às habilidades práticas e à capacidade de executar atividades."
+        "definicaoBreve": "Conhecimentos associados às habilidades práticas e à capacidade de executar atividades.",
+        "explicacao": "Está associado ao saber fazer e às habilidades práticas."
       }
     ],
     "funcao": "Identifica a forma de manifestação do conhecimento."
@@ -46,20 +49,23 @@
       {
         "valor": "Produto",
         "descricao": "Conhecimento relacionado a uma solução, aplicação, componente ou produto específico.",
-        "referencia": "johnson2020, kauschinger2021"
+        "referencia": "johnson2020, kauschinger2021",
+        "explicacao": "Refere-se a soluções ou aplicações específicas."
       },
       {
         "valor": "Plataforma",
         "descricao": "Conhecimento relacionado à base tecnológica comum, sua arquitetura, especificações e requisitos.",
-        "referencia": "johnson2020, kauschinger2021"
+        "referencia": "johnson2020, kauschinger2021",
+        "explicacao": "Relaciona-se à base tecnológica comum."
       },
       {
         "valor": "Ecossistema",
         "descricao": "Conhecimento relacionado às relações, participantes, regras, necessidades e interdependências do ECOS.",
-        "referencia": "johnson2020, kauschinger2021"
+        "referencia": "johnson2020, kauschinger2021",
+        "explicacao": "Envolve relações e interdependências entre os atores."
       }
     ],
-    "funcao": "Identifica o alcance do conhecimento no contexto do ecossistema."
+    "funcao": "Identifica o alcance do conhecimento no ecossistema. Essa distinção acompanha a organização dos ECOS em torno de uma plataforma comum."
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
@@ -71,17 +77,20 @@
       {
         "valor": "Técnica",
         "descricao": "Relacionada à plataforma tecnológica, infraestrutura, arquitetura, componentes e governança técnica.",
-        "referencia": "santos2011"
+        "referencia": "santos2011",
+        "explicacao": "Envolve aspectos relacionados à plataforma, à infraestrutura de desenvolvimento e à governança."
       },
       {
         "valor": "Negócio",
         "descricao": "Relacionada à competitividade, inovação, mercado, geração de valor e interesses dos participantes.",
-        "referencia": "santos2011"
+        "referencia": "santos2011",
+        "explicacao": "Considera competitividade, inovação e interesses dos atores."
       },
       {
         "valor": "Social",
         "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
-        "referencia": "santos2011"
+        "referencia": "santos2011",
+        "explicacao": "Compreende as relações, a colaboração e a comunidade formada em torno da plataforma."
       }
     ],
     "funcao": "Identifica o contexto predominante ao qual o conhecimento está relacionado."

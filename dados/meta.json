@@ -7,7 +7,7 @@
     "abas": [
       {
         "id": "conhecimento",
-        "rotulo": "Ponto de Partida",
+        "rotulo": "1. Ponto de Partida",
         "icone": "conhecimento",
         "introducao": "Os conhecimentos em Ecossistemas de Software (ECOS) compreendem informações, experiências e habilidades desenvolvidas e compartilhadas entre os participantes do ecossistema, contribuindo para a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
         "referencias": "davenport1998, seichter2010, viana2015",
@@ -16,7 +16,7 @@
       },
       {
         "id": "classificacao",
-        "rotulo": "Atributos do conhecimento",
+        "rotulo": "2. Atributos",
         "tituloPainel": "Classificação dos Conhecimentos em ECOS",
         "icone": "classificacao",
         "introducao": "Os conhecimentos identificados na literatura foram caracterizados por três atributos complementares, natureza epistemológica, nível no ECOS e dimensão do ECOS. Esses atributos permitem compreender a forma como o conhecimento se manifesta, seu alcance no ecossistema e o contexto ao qual está relacionado.",
@@ -28,7 +28,7 @@
       },
       {
         "id": "gerencia",
-        "rotulo": "Gerência do conhecimento",
+        "rotulo": "3. Gerência do conhecimento",
         "tituloPainel": "Gerência do Conhecimento",
         "icone": "gerencia",
         "introducao": "A gerência do conhecimento em ECOS envolve práticas voltadas à identificação, captura, compartilhamento, organização e reutilização dos conhecimentos existentes entre os participantes do ecossistema.",
@@ -58,23 +58,23 @@
       },
       {
         "id": "evidencias",
-        "rotulo": "Base de evidências",
+        "rotulo": "4. Base de evidências",
         "tituloPainel": "Base de Evidências",
         "icone": "evidencias",
-        "introducao": "A Revisão Rápida da Literatura foi utilizada para identificar e analisar evidências científicas relacionadas à gerência de conhecimento em Ecossistemas de Software. A busca foi realizada na base Scopus, seguida da aplicação dos critérios de seleção e da extração e análise dos dados.",
+        "introducao": "A Revisão Rápida da Literatura foi utilizada para identificar e analisar evidências científicas relacionadas à gerência de conhecimento em ECOS. A busca foi realizada na base Scopus, seguida da aplicação dos critérios de seleção e da extração e análise dos dados.",
         "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
         "revisao": {
           "titulo": "Revisão Rápida da Literatura",
           "registrosRecuperados": 1096,
           "rotuloRecuperados": "registros recuperados",
-          "rotuloSelecionados": "estudos primários selecionados"
+          "rotuloSelecionados": "estudos primários selecionados",
+          "descricao": "A Revisão Rápida da Literatura é a base metodológica que identificou os conhecimentos e as evidências analisadas no KM4SECO."
         },
         "resultados": {
           "titulo": "Evidências identificadas",
           "rotuloConhecimentos": "conhecimentos catalogados",
-          "descricaoConhecimentos": "Os conhecimentos foram identificados a partir dos estudos primários selecionados e constituem o conteúdo principal do KM4SECO.",
-          "tituloRastreabilidade": "Rastreabilidade aos estudos primários",
-          "descricaoRastreabilidade": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados."
+          "rotuloDesafios": "desafios identificados",
+          "descricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados."
         },
         "desafios": {
           "titulo": "Desafios relacionados à Gerência de Conhecimento",
