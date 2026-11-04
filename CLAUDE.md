@@ -37,10 +37,16 @@ Está lá `relacoes-confirmadas.json` e `gerencia-conhecimento.json`, este últi
 
 ### Campos ainda pendentes
 
-`tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
-os estudos. `acaoGerencia` recebe de uma a três das ações do vocabulário, conforme as evidências dos
-estudos primários de cada conhecimento, nunca as três por padrão. Enquanto estiver vazio, a ficha diz
-que as ações ainda não foram atribuídas, em vez de acender todas.
+`tipoEcos` está vazio em todos os conhecimentos e em todos os estudos.
+
+`acaoGerencia` está preenchido nos vinte, de uma a três ações do vocabulário, nunca as três por
+padrão. Só o C02 e o C04 recebem as três. A atribuição foi derivada dos verbos do
+`praticasGerencia` de cada conhecimento, que é texto literal da planilha de extração, e não de uma
+leitura nova dos estudos E01 a E18. Registrar e versionar levam a Criação e registro, disponibilizar
+e compartilhar levam a Compartilhamento, e consultar, integrar e apoiar decisão levam a Uso e
+aplicação. Cada par continua precisando de conferência contra o artigo primário antes da defesa.
+Enquanto um conhecimento estiver sem ação, a ficha diz que ainda não foram atribuídas, em vez de
+acender todas.
 
 `recursosConhecimento`, `participacaoCompartilhamento` e `praticasGerencia` estão preenchidos nos
 vinte, texto literal da planilha de extração, e são o que o bloco de gerência da ficha mostra. A
