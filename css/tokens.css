@@ -100,6 +100,9 @@
   /* Um degrau entre o --tam-lg e o --tam-xl, para o título de seção dentro de
      uma página de texto não competir com o h1 dela. */
   --tam-secao: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+  /* Título de página de texto. Um degrau acima do --tam-xl, para a abertura do
+     Sobre ter o peso que o h1 de uma página inteira pede. */
+  --tam-titulo-pagina: clamp(1.75rem, 1.5rem + 0.9vw, 2.25rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
   --tam-titulo-abertura: clamp(2.75rem, 2.226rem + 2.143vw, 4rem);
   --tam-resumo-abertura: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);
@@ -130,6 +133,11 @@
   /* Página de texto. Mais estreita que o Explorar, porque ali o que manda é a
      tabela e aqui é a leitura corrida. */
   --largura-sobre: 65rem;
+  /* A página Sobre foi especificada em degraus que a escala de 4px não tem.
+     Ficam nomeados aqui, em vez de literais espalhados pelo CSS. */
+  --esp-sobre-lateral: 1.25rem;
+  --esp-sobre-pergunta: 1.75rem;
+  --esp-sobre-cartao: 1.375rem;
   --largura-cartao-unico: 28rem;
   --largura-cartao-estrutura: 20rem;
   --largura-mapa-estrutura: 64rem;

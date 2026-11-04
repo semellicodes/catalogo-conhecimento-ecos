@@ -980,7 +980,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    reserva para blocos que sangram. */
 .sobre {
   max-width: var(--largura-sobre);
-  padding-block: var(--esp-7) var(--esp-6);
+  padding-block: var(--esp-7) var(--esp-5);
 }
 .sobre__cabecalho {
   max-width: var(--largura-texto);
@@ -996,7 +996,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .sobre__cabecalho h1 {
   margin-top: var(--esp-2);
-  font-size: var(--tam-xl);
+  font-size: var(--tam-titulo-pagina);
+  letter-spacing: var(--entre-letras-titulo);
+  line-height: 1.15;
 }
 .sobre__cabecalho > p:last-child {
   margin-top: var(--esp-3);
@@ -1005,8 +1007,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A pergunta do trabalho abre o Sobre, antes do método. Em destaque, porque é
    o que o catálogo inteiro responde. */
 .sobre__pergunta {
+  max-width: var(--largura-texto);
   margin-top: 0;
-  padding: var(--esp-4) var(--esp-5);
+  padding: var(--esp-4) var(--esp-sobre-lateral);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
   border-left: var(--borda-acento);
@@ -1033,7 +1036,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .sobre__grade {
   display: grid;
   gap: var(--esp-5);
-  margin-top: var(--esp-5);
+  margin-top: var(--esp-sobre-pergunta);
   align-items: start;
 }
 .sobre__conteudo { max-width: var(--largura-texto); }
@@ -1062,7 +1065,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .sobre__acao:active { transform: scale(var(--escala-acao)); }
 .sobre__base {
-  padding: var(--esp-5);
+  padding: var(--esp-sobre-cartao);
   min-width: 0;
   background: var(--cor-superficie-alta);
   border: var(--borda);
@@ -1110,15 +1113,21 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    ordem da fonte vale, que é abertura, pergunta, primeira seção, números,
    facetas e origem dos dados. */
 @media (min-width: 48rem) {
-  .sobre__grade { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
+  .sobre__grade { grid-template-columns: minmax(0, 1.65fr) minmax(17.5rem, 0.75fr); }
   .sobre__conteudo--abertura { grid-column: 1; grid-row: 1; }
   .sobre__base { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
   .sobre__conteudo--metodo { grid-column: 1; grid-row: 2; margin-top: 0; }
   .sobre__base { position: sticky; top: calc(var(--altura-cabecalho) + var(--esp-5)); }
 }
-@media (max-width: 39.99rem) {
-  .sobre { padding-block: var(--esp-6) var(--esp-5); }
-  .sobre__pergunta { padding: var(--esp-4); }
+@media (max-width: 47.99rem) {
+  .sobre {
+    padding-block: var(--esp-5) var(--esp-4);
+    padding-inline: var(--esp-sobre-lateral);
+  }
+  .sobre__pergunta {
+    max-width: none;
+    padding: var(--esp-4);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .sobre__acao:active { transform: none; }
