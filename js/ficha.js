@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-53';
+import { referenciaCurta } from './dados.js?v=20261104-54';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -74,6 +74,29 @@ function linkDoEstudo(estudo) {
   link.setAttribute('aria-label', `Acessar publicação ${estudo.id}`);
   link.append(iconeLinkExterno());
   return link;
+}
+
+/* Um ícone por ação, no mesmo traço dos de tipo de ECOS. Pena para criação e
+   registro, troca entre dois pontos para compartilhamento e engrenagem em
+   movimento para uso e aplicação. */
+function iconeAcaoGerencia(acao) {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'exemplos-ecos__icone-categoria');
+
+  if (acao === 'Criação e registro') {
+    svg.append(traco('path', { d: 'M13.5 3.5 16.5 6.5 7 16H4v-3l9.5-9.5Z' }), traco('path', { d: 'M12 5 15 8' }));
+  } else if (acao === 'Compartilhamento') {
+    svg.append(
+      traco('path', { d: 'M4 7h9M10.5 4.5 13 7l-2.5 2.5' }),
+      traco('path', { d: 'M16 13H7M9.5 10.5 7 13l2.5 2.5' })
+    );
+  } else {
+    svg.append(traco('circle', { cx: 10, cy: 10, r: 2.6 }), traco('path', { d: 'M10 3v2M10 15v2M3 10h2M15 10h2M5 5l1.5 1.5M13.5 13.5 15 15M15 5l-1.5 1.5M6.5 13.5 5 15' }));
+  }
+  return svg;
 }
 
 function iconeCategoriaEcos(categoria) {
@@ -173,7 +196,7 @@ function exemplosDeEcos(conhecimento) {
     botao.type = 'button';
     botao.setAttribute('aria-controls', idPainel);
     botao.setAttribute('aria-expanded', 'false');
-    botao.dataset.temExemplos = String(grupos.has(categoria));
+    botao.dataset.identificado = String(grupos.has(categoria));
     botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria));
     botao.addEventListener('click', () => {
       const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
@@ -305,30 +328,87 @@ function tiposDeEcos(dados, conhecimento) {
 /* Os campos de gerência não afirmam posse do conhecimento. Eles dizem por que
    recursos ele circula, quem participa dessa circulação e que ações o apoiam.
    Os rótulos moram aqui porque são do desenho da ficha, não do vocabulário. */
+/* O praticasGerencia saiu desta lista. Ele agora aparece dentro do painel de
+   cada ação identificada, e mantê-lo também como linha solta mostraria o mesmo
+   texto duas vezes no bloco. */
 const GERENCIA = [
   ['recursosConhecimento', 'Recursos de conhecimento no ECOS'],
-  ['participacaoCompartilhamento', 'Participação e compartilhamento no ECOS'],
-  ['praticasGerencia', 'Ações de gerência']
+  ['participacaoCompartilhamento', 'Participação e compartilhamento no ECOS']
 ];
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
 
+/* O painel de uma ação identificada. Duas partes rotuladas, porque o texto da
+   prática é um só por conhecimento e não está dividido por ação. Rotular evita
+   que ele seja lido como explicação exclusiva daquela ação. */
+function painelDaAcao(painel, valor, praticas) {
+  painel.append(
+    criar('p', 'acoes-gerencia__rotulo', 'Sobre a ação'),
+    criar('p', 'exemplos-ecos__texto', valor.descricao)
+  );
+  if (praticas) {
+    painel.append(
+      criar('p', 'acoes-gerencia__rotulo', 'Prática de gerência do conhecimento'),
+      criar('p', 'exemplos-ecos__texto', praticas)
+    );
+  }
+}
+
 /**
- * As ações associadas a este conhecimento, entre as três do vocabulário. São
- * uma, duas ou três, conforme as evidências dos estudos primários, e nunca as
- * três por padrão. Enquanto o campo estiver vazio, a ficha diz que está
- * pendente em vez de acender todas.
+ * As três ações do vocabulário, sempre as três, como cartões que abrem.
+ *
+ * A identificada acende e abre a descrição da ação mais a prática daquele
+ * conhecimento. A não identificada fica apagada, mas continua clicável e diz
+ * que não há evidência registrada, sem afirmar que a ação não caberia ali.
+ *
+ * O desenho e o comportamento são os mesmos de exemplosDeEcos, um painel só
+ * que troca de conteúdo e recolhe ao clicar de novo no mesmo cartão.
  */
 function acoesDeGerencia(dados, conhecimento) {
   const escolhidas = conhecimento.acaoGerencia || [];
-  if (!escolhidas.length) {
-    return criar('p', 'gerencia__pendente', 'Ações ainda não atribuídas a este conhecimento.');
-  }
-  const lista = criar('ul', 'gerencia__acoes');
-  dados.classificacoes.acaoGerencia.valores
-    .filter((valor) => escolhidas.includes(valor.valor))
-    .forEach((valor) => lista.append(criar('li', 'gerencia__acao', valor.valor)));
-  return lista;
+  const praticas = texto(conhecimento.praticasGerencia);
+  const raiz = criar('div', 'acoes-gerencia');
+  const painel = criar('div', 'exemplos-ecos__painel');
+  painel.id = `acoes-gerencia-${conhecimento.id}`;
+  painel.hidden = true;
+
+  const lista = criar('div', 'acoes-gerencia__cartoes');
+  lista.setAttribute('role', 'group');
+  lista.setAttribute('aria-label', 'Ações de gerência do conhecimento');
+
+  dados.classificacoes.acaoGerencia.valores.forEach((valor) => {
+    const identificada = escolhidas.includes(valor.valor);
+    const botao = criar('button', 'exemplos-ecos__categoria');
+    botao.type = 'button';
+    botao.setAttribute('aria-controls', painel.id);
+    botao.setAttribute('aria-expanded', 'false');
+    botao.dataset.identificado = String(identificada);
+    botao.append(iconeAcaoGerencia(valor.valor), criar('span', '', valor.valor));
+    /* O estado vai escrito, porque quem usa leitor de tela não recebe a cor. */
+    botao.append(criar('span', 'apenas-leitor', identificada ? ', identificada' : ', sem evidência registrada'));
+
+    botao.addEventListener('click', () => {
+      const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
+      lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
+      if (estavaAberto) {
+        painel.hidden = true;
+        return;
+      }
+      botao.setAttribute('aria-expanded', 'true');
+      painel.replaceChildren();
+      if (identificada) {
+        painelDaAcao(painel, valor, praticas);
+      } else {
+        painel.append(criar('p', 'exemplos-ecos__texto',
+          `Nenhuma evidência de ${valor.valor} foi identificada para este conhecimento nos estudos primários associados.`));
+      }
+      painel.hidden = false;
+    });
+    lista.append(botao);
+  });
+
+  raiz.append(lista, painel);
+  return raiz;
 }
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
@@ -341,12 +421,11 @@ function gerencia(dados, conhecimento) {
     if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
   });
 
-  /* As etiquetas fecham o bloco, abaixo do texto das práticas, porque são a
-     forma resumida daquilo que o texto acima descreve por extenso. */
+  /* Os três cartões fecham o bloco, sempre com o rótulo, porque agora são eles
+     que trazem a prática de gerência deste conhecimento. */
   const acoes = criar('dd', 'gerencia__valor gerencia__valor--acoes');
   acoes.append(acoesDeGerencia(dados, conhecimento));
-  if (!texto(conhecimento.praticasGerencia)) lista.append(criar('dt', 'gerencia__rotulo', 'Ações de gerência'));
-  lista.append(acoes);
+  lista.append(criar('dt', 'gerencia__rotulo', 'Ações de gerência'), acoes);
 
   bloco.append(lista);
   return bloco;
