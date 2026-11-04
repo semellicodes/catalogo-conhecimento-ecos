@@ -264,15 +264,23 @@ nativamente pelo navegador com `type="module"`.
   ainda declara um
 - Os três cartões são as três categorias da natureza epistemológica, um por categoria, e não um
   por atributo com as categorias dentro. A ordem é Explícito, Tácito-cognitivo e Tácito-técnico
-- A ordem dentro do cartão é título, linha de subdivisão quando houver, definição e fonte
-- Os três cartões dividem a linha, mas não são três categorias do mesmo nível teórico. O
-  conhecimento se classifica em explícito e tácito, e é o tácito que se subdivide nos dois
-  últimos. O `subdivisaoDe` marca isso por escrito nos dois, porque a posição lado a lado sozinha
-  diria o contrário
+- A ordem dentro do cartão é título, definição e fonte
+- Entre o cartão de conceito e os três cartões vai o divisor, uma frase só, centralizada, em caixa
+  alta discreta, com uma linha fina saindo para cada lado. Sem fundo, borda, sombra, ícone nem
+  cartão. A frase mora em `abas[0].divisor.principal`, em caixa normal, e quem põe em maiúscula é
+  o CSS, como nos outros rótulos, para o acento se preservar no dado
+- O divisor é `h4`, porque anuncia os três cartões e é ponto de navegação para leitor de tela
+- O divisor chegou a ter uma segunda linha, dizendo que o tácito se subdivide nos dois últimos,
+  e ela saiu por decisão da autora. Com isso nada na aba diz por escrito que tácito-cognitivo e
+  tácito-técnico não estão no mesmo nível do explícito, e o orientador tinha pedido que essa
+  distinção ficasse perceptível. O ponto está levantado e aguarda decisão
 - A atribuição é separada por afirmação. O conceito de conhecimento em ECOS cita `davenport1998`,
-  `seichter2010` e `viana2015`. A divisão entre explícito e tácito e a definição do tácito citam
-  `nonaka1997`. A subdivisão do tácito cita `alavi2001`. A ponte cita as duas últimas porque
-  contém as duas afirmações, e cada cartão carrega a sua
+  `seichter2010` e `viana2015`. A definição do explícito cita `nonaka1997` e as dos dois tácitos
+  citam `alavi2001`. Cada cartão carrega a sua, e o divisor não cita nada, porque é frase de
+  passagem e não afirmação com fonte própria
+- O cartão verde é compacto de propósito. O que cede é o respiro, recuo vertical de `--esp-3`,
+  vão de `--esp-2` entre cabeçalho, texto e fonte, e entrelinha 1.5 no parágrafo. Nenhum corpo de
+  texto encolhe, porque a prioridade declarada da aba é a compreensão dos conceitos
 - `perguntaOrientadora` e `funcao` ficaram sem leitor quando o cartão passou a ser por categoria e
   não por atributo. Continuam no arquivo, sem uso. Apagar ou não é decisão da autora
 - `principal` não tem leitor em módulo nenhum. Marca a natureza como entrada principal do

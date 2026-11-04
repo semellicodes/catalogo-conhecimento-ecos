@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-60';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-61';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -149,23 +149,19 @@ function cartaoDeNatureza(valor) {
 }
 
 /**
- * O divisor entre o conceito e os cartões. Duas linhas centralizadas, com uma
+ * O divisor entre o conceito e os cartões. Uma frase centralizada, com uma
  * linha fina saindo para cada lado, sem fundo, borda, sombra, ícone nem
  * cartão.
  *
- * A principal é cabeçalho de verdade, porque anuncia os cartões que vêm
- * abaixo e serve de ponto de navegação para quem usa leitor de tela. A
- * secundária é parágrafo, porque é frase de apoio e não título.
+ * É cabeçalho de verdade, porque anuncia os cartões que vêm abaixo e serve de
+ * ponto de navegação para quem usa leitor de tela.
  *
- * As duas vêm em caixa normal do dado. A maiúscula da principal é do CSS,
- * como nos outros rótulos do catálogo, e assim o acento se preserva.
+ * Vem em caixa normal do dado. A maiúscula é do CSS, como nos outros rótulos
+ * do catálogo, e assim o acento se preserva.
  */
 function divisorDeClassificacao(conteudo) {
   const divisor = criar('div', 'estrutura__divisor');
-  const textos = criar('div', 'estrutura__divisor-textos');
-  textos.append(criar('h4', 'estrutura__divisor-texto', conteudo.principal));
-  if (conteudo.secundaria) textos.append(criar('p', 'estrutura__divisor-apoio', conteudo.secundaria));
-  divisor.append(textos);
+  divisor.append(criar('h4', 'estrutura__divisor-texto', conteudo.principal));
   return divisor;
 }
 
