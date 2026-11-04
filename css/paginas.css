@@ -638,11 +638,21 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-micro);
   line-height: 1.5;
 }
-/* A citação é global, então o degrau a menos vale só dentro desta camada. */
+/* A citação é global, então o degrau a menos vale só dentro desta camada.
+   O prefixo e a citação são itens de flex, então o vão entre eles é o
+   column-gap e precisa medir um espaço de palavra, não um separador de lista,
+   senão "Adaptação de" se solta do nome que ela qualifica. */
 .estrutura__painel--gerencia .estrutura__fonte-conceitual {
+  column-gap: var(--esp-1);
   padding-top: var(--esp-2);
-  font-size: var(--tam-micro);
+  border-top: var(--borda-fina);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
 }
+/* As etiquetas são o último conteúdo do terceiro cartão, e é só ali que o
+   margin-top auto da citação não sobra. Sem esta folga a linha divisória
+   encostaria nelas. */
+.estrutura__painel--gerencia .estrutura__acoes-lista { margin-bottom: var(--esp-3); }
 /* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
    empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
 .estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
