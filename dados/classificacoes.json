@@ -12,7 +12,7 @@
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: que informação pode ser registrada, consultada e reutilizada pelos participantes do ECOS?",
-        "referencia": "alavi2001, nonaka1997",
+        "referencia": "nonaka1997, alavi2001",
         "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos.",
         "explicacao": "Conhecimento que pode ser formalizado, documentado e registrado, como especificações técnicas, regras de governança e decisões arquiteturais."
       },

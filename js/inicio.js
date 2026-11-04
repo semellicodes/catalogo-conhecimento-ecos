@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-20';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-21';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -389,7 +389,9 @@ function explicacaoGerencia(dados, aba, definicao) {
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
-  return painel(definicao, aba, definicao.introducao, [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
+  const resultado = painel(definicao, aba, definicao.introducao, [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
+  resultado.classList.add('estrutura__painel--evidencias');
+  return resultado;
 }
 
 function iconeDoPainel(definicao) {

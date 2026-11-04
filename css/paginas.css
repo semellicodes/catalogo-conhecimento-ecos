@@ -318,9 +318,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-base);
   line-height: 1.6;
 }
+/* A introdução acompanha a largura do painel nas quatro abas. A Base de
+   Evidências ficava de fora e a caixa parava no meio, deixando o vazio à
+   direita que destoava das outras. */
 .estrutura__painel--conhecimento .estrutura__painel-intro,
 .estrutura__painel--classificacao .estrutura__painel-intro,
-.estrutura__painel--gerencia .estrutura__painel-intro {
+.estrutura__painel--gerencia .estrutura__painel-intro,
+.estrutura__painel--evidencias .estrutura__painel-intro {
   width: var(--largura-cheia);
   max-width: none;
   box-sizing: border-box;
@@ -357,7 +361,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias { margin-top: var(--esp-4); }
 .estrutura__composicao-conhecimento { display: grid; gap: var(--esp-2); align-items: start; }
-.estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: var(--esp-3); }
+.estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: var(--esp-4); }
 /* A frase central é um divisor, com a linha saindo para os dois lados até a
    borda do bloco. */
 .estrutura__divisor {
@@ -385,7 +389,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
 .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
-.estrutura__evidencia-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.6; }
+.estrutura__evidencia-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
 /* A Gerência roda um degrau abaixo da Base de Evidências. São três cartões
    lado a lado, com texto corrido, etiquetas e citação dentro de cada um, e na
    escala do painel cada cartão ocupava quase uma tela. */
@@ -395,7 +399,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
-.estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-sm); line-height: 1.5; }
+.estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__referencia-natureza { padding-top: var(--esp-3); color: var(--cor-texto-fraco); border-top: var(--borda-suave); font-size: var(--tam-xs); line-height: 1.5; }
 .estrutura__referencia-acao {
   min-height: var(--alvo-toque);
@@ -459,7 +463,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: start;
   gap: var(--esp-3);
-  padding-top: var(--esp-4);
+  padding-top: var(--esp-3);
 }
 /* O par de números é que cresce para baixo, não a descrição. Assim ele começa
    logo depois da descrição nos dois cartões e os números alinham, mesmo quando
@@ -488,20 +492,37 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__numero-evidencia-rotulo {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
+  font-size: var(--tam-micro);
   line-height: 1.4;
 }
 /* O cartão dos desafios fica separado da revisão, porque os desafios não são
    etapa dela, são achado dos estudos. */
-.estrutura__evidencia-linha--desafios { margin-top: var(--esp-4); }
-.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia { margin-top: var(--esp-3); }
+.estrutura__evidencia-linha--desafios { margin-top: var(--esp-3); }
+.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia { margin-top: var(--esp-2); }
+/* A citação fecha a camada, na mesma escala das outras abas. */
+.estrutura__composicao-evidencias > .estrutura__fonte-conceitual {
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-fina);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
+}
 
 /* As abas explicativas organizam as definições acadêmicas por camada, sem
    recorrer a cartões redundantes. As fontes levam à seção conceitual pública. */
 .estrutura__contexto-academico {
   display: grid;
   gap: var(--esp-2);
-  margin-top: var(--esp-4);
+  margin-top: 0;
+}
+/* A citação que fecha a introdução é linha de apoio, não faixa. Antes somava
+   a margem do bloco à margem dela própria e abria 28px acima do texto. */
+.estrutura__painel--conhecimento .estrutura__contexto-academico .estrutura__fonte-conceitual {
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-fina);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
 }
 /* A fonte fica no pé de cada cartão, sempre visível, separada do corpo por uma
    linha fina. Repete-se de cartão em cartão de propósito, porque cada cartão
@@ -663,7 +684,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border: var(--borda-suave);
   border-radius: var(--raio);
 }
-.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao .estrutura__fonte-conceitual { margin-top: auto; }
+.estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao .estrutura__fonte-conceitual {
+  margin-top: auto;
+  padding-top: var(--esp-2);
+  border-top: var(--borda-fina);
+  column-gap: var(--esp-1);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
+}
 
 .estrutura__tipos-ecos-intro,
 .estrutura__tipo-ecos-texto {
@@ -729,12 +757,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__painel--gerencia .estrutura__painel-intro { margin-top: var(--esp-3); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
-  .estrutura__evidencia-texto,
-  .estrutura__categoria-classificacao-texto,
-  .estrutura__evidencia-cabecalho-titulo { font-size: 1rem; }
+  .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); }
   .estrutura__composicao-conhecimento,
   .estrutura__composicao-evidencias { gap: var(--esp-3); }
-  .estrutura__numero-evidencia-valor { font-size: 1.5rem; }
+  .estrutura__numero-evidencia-valor { font-size: var(--tam-lg); }
 }
 @media (min-width: 62rem) {
   /* Duas colunas apenas, e a esquerda mais larga, porque a taxonomia tem três
