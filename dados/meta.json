@@ -2,7 +2,6 @@
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
   "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes participantes do ECOS.",
   "fonte": "Revisão Rápida da Literatura, conduzida sobre 18 estudos primários.",
-  "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve disponibilizar recursos adequados, favorecer a participação dos diferentes atores e apoiar práticas que permitam criar, registrar, compartilhar e aplicar conhecimentos no ecossistema.",
   "estruturaCatalogo": {
     "abas": [
       {
@@ -99,6 +98,7 @@
     "gerencia": {
       "titulo": "Gerência do conhecimento no ECOS",
       "texto": "Os recursos de conhecimento, a participação dos atores do ECOS e as ações de gerência compõem uma síntese aplicada, que articula os esquemas adotados na literatura com as evidências analisadas na Revisão Rápida da Literatura. As ações indicadas não representam necessariamente recomendações explícitas dos autores dos estudos primários.",
+      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
       "referencia": "kauschinger2024, kauschinger2023, zaim2019"
     },
     "desafios": {

@@ -967,14 +967,6 @@
 }
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
 .gerencia { display: grid; gap: normal; }
-.gerencia__introducao {
-  margin: 0 0 var(--esp-4);
-  font-size: var(--tam-sm);
-  line-height: 1.6;
-  text-align: justify;
-  hyphens: auto;
-  color: var(--cor-texto-suave);
-}
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -1011,7 +1003,6 @@
 }
 
 @media (max-width: 35.99rem) {
-  .gerencia__introducao,
   .gerencia__valor {
     text-align: left;
     hyphens: manual;
@@ -1050,7 +1041,6 @@
   .exemplos-ecos__lista { font-size: 0.8125rem; line-height: 1.5; }
   .exemplos-ecos__lista { gap: var(--esp-1); }
 
-  .gerencia__introducao { margin-bottom: var(--esp-3); font-size: 0.875rem; line-height: 1.5; }
   .gerencia__rotulo { font-size: 0.6875rem; }
   .gerencia__valor { margin-bottom: var(--esp-2); font-size: 0.875rem; line-height: 1.5; }
 

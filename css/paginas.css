@@ -1300,12 +1300,22 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   flex: none;
   margin: calc(var(--esp-2) * -1);
 }
+/* O corpo tem o texto e, quando a ajuda declara o prefixo, a citação. O vão
+   pequeno é para a citação ficar presa ao texto que ela sustenta. */
 .dialogo-ajuda__corpo {
   display: grid;
-  gap: var(--esp-4);
+  gap: var(--esp-2);
   padding: 0 var(--esp-5) var(--esp-5);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
+}
+/* Citação acadêmica, na mesma escala das fontes no pé dos cartões. */
+.dialogo-ajuda__fonte {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-citacao);
+  font-style: italic;
+  line-height: 1.4;
 }
 @media (max-width: 31.24rem) {
   .dialogo-ajuda__topo { padding: var(--esp-4) var(--esp-4) var(--esp-2); }

@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-26';
+import { referenciaCurta } from './dados.js?v=20261104-27';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -218,6 +218,15 @@ export function abrirAjuda(dados, conteudo) {
 
   document.querySelector('#dialogo-ajuda-titulo').textContent = conteudo.titulo;
   document.querySelector('#dialogo-ajuda-texto').textContent = conteudo.texto;
+
+  /* A citação entra só onde a ajuda declara o prefixo, porque nem toda
+     explicação é uma síntese deste trabalho. Os autores saem das mesmas chaves
+     que o rodapé do bloco já usa, então não há duas listas a manter. */
+  const fonte = document.querySelector('#dialogo-ajuda-fonte');
+  const citacao = referenciaCurta(dados, conteudo.referencia);
+  const mostrarFonte = Boolean(conteudo.prefixoFonte && citacao);
+  fonte.textContent = mostrarFonte ? `${conteudo.prefixoFonte} ${citacao}.` : '';
+  fonte.hidden = !mostrarFonte;
   dialogo.showModal();
   /* O diálogo recebe o foco inicial. Assim o contexto é anunciado sem criar
      um destaque visual indevido no botão de fechar. */
@@ -332,9 +341,6 @@ function gerencia(dados, conhecimento) {
   const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');
 
-  if (dados.meta.gerenciaConhecimento) {
-    bloco.append(criar('p', 'gerencia__introducao', dados.meta.gerenciaConhecimento));
-  }
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
     if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));

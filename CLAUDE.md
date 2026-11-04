@@ -257,13 +257,19 @@ nativamente pelo navegador com `type="module"`.
 - O rótulo curto de cada referência mora em `js/dados.js`, porque a forma abreviada não sai da
   citação sozinha, "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a obra tem.
   É um lugar só, para a Estrutura e a ficha citarem igual
+- O diálogo de ajuda fecha com a citação quando a ajuda declara `prefixoFonte` em `meta.json`.
+  Hoje só a da Gerência declara, porque só ela é síntese deste trabalho e não explicação de um
+  esquema alheio. Os autores saem das mesmas chaves de `referencia` que o rodapé do bloco usa, para
+  não haver duas listas a manter
 - `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
   publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
   `temVerbete` do `dados.js`, num lugar só
 - A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
 - O bloco de gerência da ficha mostra recursos de conhecimento, participação e compartilhamento, e
-  ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. Esses rótulos não
+  ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. O parágrafo genérico
+  sobre o que é gerência do conhecimento saiu, porque repetia em cada uma das vinte fichas a
+  introdução da camada de Gerência. Ele existe num lugar só, na aba 3 da Estrutura. Esses rótulos não
   existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O conteúdo continua
   vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
