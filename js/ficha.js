@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-41';
+import { referenciaCurta } from './dados.js?v=20261104-42';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -240,9 +240,9 @@ export function abrirAjuda(dados, conteudo) {
 /**
  * Uma seção da ficha, com título, linha opcional de apoio e ajuda.
  *
- * A fonte fica no pé da seção, sempre visível. Antes ela só aparecia dentro do
- * painel de ajuda, e quem não abrisse o painel não via de onde vem o esquema.
- * A ajuda continua, para a explicação de cada atributo.
+ * A fonte não aparece no pé do bloco. Ela já fecha o painel de ajuda do mesmo
+ * bloco, então repetir no pé mostrava a mesma citação duas vezes na mesma
+ * seção. Na Estrutura e no Explorar o pé continua, porque lá não há ajuda.
  */
 function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   const bloco = criar('section', 'bloco-ficha');
@@ -252,15 +252,6 @@ function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   if (linhaDeApoio) textos.append(criar('p', 'bloco-ficha__esquema', linhaDeApoio));
   topo.append(textos, controleAjuda || ajuda(dados, chaveDaAjuda));
   bloco.append(topo);
-
-  bloco.fonte = referenciaCurta(dados, dados.meta.ajudas?.[chaveDaAjuda]?.referencia);
-  return bloco;
-}
-
-/* A fonte entra por último, depois do conteúdo que cada seção acrescenta, por
-   isso cada seção termina passando por aqui em vez de a secao já fechar. */
-function fecharSecao(bloco) {
-  if (bloco.fonte) bloco.append(criar('p', 'bloco-ficha__fonte', bloco.fonte));
   return bloco;
 }
 
@@ -299,7 +290,7 @@ function classificacao(dados, conhecimento) {
     porque.append(abrir, texto);
     bloco.append(porque);
   }
-  return fecharSecao(bloco);
+  return bloco;
 }
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
@@ -308,7 +299,7 @@ function tiposDeEcos(dados, conhecimento) {
   bloco.classList.add('bloco-ficha--exemplos');
   bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
-  return fecharSecao(bloco);
+  return bloco;
 }
 
 /* Os campos de gerência não afirmam posse do conhecimento. Eles dizem por que
@@ -358,7 +349,7 @@ function gerencia(dados, conhecimento) {
   lista.append(acoes);
 
   bloco.append(lista);
-  return fecharSecao(bloco);
+  return bloco;
 }
 
 /* ---------- Relações e estudos ---------- */
@@ -541,13 +532,13 @@ function estudos(conhecimento) {
 function desafiosRelacionados(dados, conhecimento) {
   const bloco = secao(dados, 'Desafios relacionados à Gerência de Conhecimento', 'desafios');
   bloco.append(desafios(conhecimento));
-  return fecharSecao(bloco);
+  return bloco;
 }
 
 function estudosPrimariosAssociados(dados, conhecimento) {
   const bloco = secao(dados, 'Estudos primários associados', 'estudos');
   bloco.append(estudos(conhecimento));
-  return fecharSecao(bloco);
+  return bloco;
 }
 
 /** Monta a ficha completa e devolve o elemento pronto para inserir. */
