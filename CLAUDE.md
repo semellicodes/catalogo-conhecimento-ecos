@@ -56,9 +56,8 @@ vinte continua o da planilha e ainda está escrito na moldura antiga, de onde o 
 quem o utiliza, então reescrevê-lo em termos de recursos e de participação é trabalho pendente que
 depende da planilha, não do código.
 
-`portador` e `tipoSaber` continuam vazios nos vinte e não aparecem em tela nenhuma. São anteriores
-aos três campos acima e podem estar sobrando. Não apagar sem confirmar. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
-correspondente aparece com o aviso de atributo não preenchido.
+`portador` e `tipoSaber` foram apagados dos vinte. Eram anteriores aos três campos de gerência,
+nasceram vazios, nunca apareceram em tela e nenhum módulo os lia. Não voltam.
 
 Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
 
