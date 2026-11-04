@@ -220,11 +220,17 @@ nativamente pelo navegador com `type="module"`.
   categorias, e fecha com a fonte
 - O painel de Atributos não tem introdução própria. Cada bloco já abre com a sua, e um terceiro
   parágrafo antes deles diria pela terceira vez do que a aba trata
-- O bloco de exemplos de ECOS é um cartão só, com as três categorias numeradas dentro, em leitura
-  vertical. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e não pastilha
-  nem ícone. A tipologia é a de Manikas, e a relação de cada modelo com a circulação do
-  conhecimento é contextualização da literatura de gerência de conhecimento, por isso a fonte traz
-  `manikas2016` e `kauschinger2024`, sem atribuir tudo ao primeiro
+- O bloco de exemplos de ECOS tem três cartões lado a lado, numerados. A numeração é o `counter`
+  do `ol`, no `::before` do título, apagada, e não pastilha nem ícone. A tipologia é a de Manikas,
+  e a relação de cada modelo com a circulação do conhecimento é contextualização da literatura de
+  gerência de conhecimento, por isso a fonte traz `manikas2016` e `kauschinger2024`, sem atribuir
+  tudo ao primeiro
+- Os dois blocos usam a mesma receita de cartão e a mesma grade, três colunas no desktop, mesmo
+  `gap`, mesmo recuo interno e mesma superfície com a linha de acento no topo. Eles chegaram a
+  divergir, com o primeiro empilhado e o segundo em fileira, e dois arranjos diferentes na mesma
+  seção fazem parecer que são duas lógicas. Mexer na grade de um exige mexer na do outro
+- O que distingue os cartões dos dois blocos é só o que abre cada um, número no primeiro e ícone
+  no segundo. O resto é igual de propósito
 - O bloco de gerência manteve os três cartões lado a lado, os ícones, as etiquetas de ação e a
   nota metodológica, que fecha o bloco abaixo deles
 - A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.

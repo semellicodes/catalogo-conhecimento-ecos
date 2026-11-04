@@ -646,10 +646,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 
-/* As três categorias de tipo de ECOS, em leitura vertical dentro de um cartão
-   só. A numeração é discreta, do próprio ol, e não pastilha nem ícone. */
+/* Os três tipos de ECOS ficam lado a lado, na mesma grade e com o mesmo
+   cartão da gerência logo abaixo. Os dois blocos são da mesma seção, e um
+   empilhado ao lado do outro em fileira fazia parecerem lógicas diferentes.
+   A numeração é discreta, do próprio ol, e não pastilha nem ícone. */
 .estrutura__tipos-ecos-lista {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-3);
   margin-top: var(--esp-3);
   counter-reset: tipo-ecos;
@@ -657,9 +660,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__tipo-ecos {
   counter-increment: tipo-ecos;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-superficie);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--esp-4);
+  background: var(--cor-superficie-alta);
   border: var(--borda-suave);
+  border-top: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
 /* O número fica na mesma linha do nome, à frente dele, apagado, para numerar
@@ -774,6 +781,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     line-height: 1.5;
   }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
+  .estrutura__tipos-ecos-lista { margin-top: var(--esp-3); }
   .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* O par de números cresce para baixo, não a descrição, para os números dos
      dois cartões de cima alinharem mesmo quando um rótulo quebra em duas
@@ -786,6 +794,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 @media (min-width: 62rem) {
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .estrutura__tipos-ecos-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 61.99rem) {
   /* Três colunas de texto longo abaixo de 992px dariam uns 280px cada, e aí a
@@ -794,6 +803,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__tipos-ecos-lista { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 39.99rem) {
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
@@ -815,6 +825,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__gerencia-item,
+  .estrutura__tipo-ecos,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
   .estrutura__tipos-ecos,
