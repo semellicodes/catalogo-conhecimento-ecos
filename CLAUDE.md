@@ -218,17 +218,22 @@ nativamente pelo navegador com `type="module"`.
   que a reestruturação desfaz
 - O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20 nem número
   da revisão. Leva o conceito, a frase central e os três cartões de atributo
-- O cartão de atributo traz o `rotulo`, a `funcao` e os nomes das categorias, nada mais. A
-  definição de cada categoria fica no glossário do Explorar e na ajuda da ficha, e trazê-la para o
-  cartão seria o terceiro lugar. Os nomes são lista de verdade, para o leitor de tela anunciar
-  três itens, desenhada em linha
-- O ponto separador entre os nomes é pseudo-elemento preso ao fim do item anterior, nunca no começo
-  do seguinte. Como prefixo ele abria a linha quando a lista quebrava, e o cartão da natureza, que
-  tem os nomes mais longos, quebra em duas linhas no desktop
+- Cada atributo tem um cartão, com o `rotulo`, a `funcao` e as três categorias explicadas uma a
+  uma, cada uma com `explicacao` e a linha `pergunta`. Só os nomes das categorias não bastam,
+  porque quem não vem de ECOS não sabe o que é nível de plataforma nem dimensão de negócio, e a
+  camada existe justamente para ensinar isso antes do catálogo
+- Os três cartões empilham, não dividem a linha. Texto corrido em três colunas estreitas é o que
+  quebra a leitura da aba, e por isso a aba 2 já empilhava os mesmos cartões
+- O desenho é o do `secaoTaxonomia`, o mesmo que a aba 2 usa hoje. Quando a aba 2 for reconstruída
+  e perder a coluna de classificação, o `colunaTaxonomia` sai e o `secaoTaxonomia` fica, porque
+  passa a servir só ao Ponto de Partida
+- A `pergunta` aparece nos três atributos. Antes só a natureza a mostrava, e no Ponto de Partida os
+  três são pares, então tratar um diferente dos outros pareceria descuido
 - `classificacoes.json` guarda três textos por categoria. `explicacao` é a da camada de Atributos
   e `descricao` é a completa do glossário do Explorar. `definicaoBreve`, que existe só nas três
-  naturezas, era a do Ponto de Partida e ficou sem leitor quando o cartão passou a mostrar só os
-  nomes. Está no arquivo, sem uso. Apagar ou não é decisão da autora
+  naturezas, era a do Ponto de Partida e ficou sem leitor quando a camada passou a usar a
+  `explicacao`, a mesma das outras duas, para as três lerem igual. Está no arquivo, sem uso.
+  Apagar ou não é decisão da autora
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
   Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
   na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior

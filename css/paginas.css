@@ -709,34 +709,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.35;
 }
 
-/* Os nomes das categorias do atributo. Lista de verdade, para o leitor de tela
-   anunciar três itens, desenhada em linha. O ponto separador é pseudo-elemento
-   e não entra no texto copiado, e a lista quebra inteira quando não cabe. */
-.estrutura__valores-atributo {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--esp-2);
-  row-gap: var(--esp-1);
-  margin-top: var(--esp-2);
-  margin-bottom: var(--esp-3);
-}
-.estrutura__valor-atributo {
-  position: relative;
-  color: var(--cor-texto);
-  font-size: var(--tam-xs);
-  font-weight: 600;
-  line-height: 1.4;
-}
-/* O separador fica preso ao fim do item anterior, nunca no começo do seguinte.
-   Como prefixo, ele abria a linha quando a lista quebrava, e o cartão da
-   natureza, que é o de nomes mais longos, quebra. */
-.estrutura__valor-atributo:not(:last-child)::after {
-  content: "·";
-  margin-left: var(--esp-2);
-  color: var(--cor-texto-fraco);
-  font-weight: 400;
-}
-
 .estrutura__tipos-ecos-intro,
 .estrutura__tipo-ecos-texto {
   color: var(--cor-texto-suave);

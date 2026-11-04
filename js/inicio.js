@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-44';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-45';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -112,38 +112,24 @@ function divisorDaPartida(definicao) {
   return divisor;
 }
 
-/* O cartão traz a função do atributo e os nomes das suas categorias, nada
-   mais. A definição de cada categoria vive no glossário do Explorar e na ajuda
-   da ficha, e repeti-la aqui seria o terceiro lugar. */
-function cartaoAtributo(atributo) {
-  const item = criar('li', 'estrutura__categoria-classificacao');
-  item.append(
-    criar('h4', 'estrutura__categoria-classificacao-titulo', atributo.rotulo),
-    criar('p', 'estrutura__categoria-classificacao-texto', atributo.funcao)
-  );
-
-  const categorias = criar('ul', 'estrutura__valores-atributo');
-  atributo.valores.forEach((valor) => {
-    categorias.append(criar('li', 'estrutura__valor-atributo', valor.valor));
-  });
-  item.append(categorias);
-
-  if (atributo.referencia) item.append(fonteConceitual(atributo.referencia));
-  return item;
-}
-
 /**
  * O Ponto de Partida apresenta o conceito e os três atributos que
  * caracterizam cada conhecimento. A natureza aparece aqui uma vez só, como um
  * dos três, e não mais definida numa camada e retomada como critério na
  * seguinte.
+ *
+ * Cada atributo ganha um cartão com a própria função e com as três categorias
+ * explicadas uma a uma. Só os nomes não bastavam, porque quem não vem de ECOS
+ * não sabe o que é nível de plataforma nem dimensão de negócio. Os cartões
+ * empilham, e não dividem a linha, porque texto corrido em coluna estreita é o
+ * que quebra a leitura da aba.
  */
 function composicaoAtributos(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-conhecimento');
   composicao.append(divisorDaPartida(definicao));
-  const fileira = criar('ul', 'estrutura__categorias-classificacao estrutura__categorias-classificacao--fileira');
-  ATRIBUTOS_PARTIDA.forEach((chave) => fileira.append(cartaoAtributo(dados.classificacoes[chave])));
-  composicao.append(fileira);
+  const secoes = criar('div', 'estrutura__taxonomia-secoes');
+  ATRIBUTOS_PARTIDA.forEach((chave) => secoes.append(secaoTaxonomia(dados.classificacoes[chave], true)));
+  composicao.append(secoes);
   return composicao;
 }
 
