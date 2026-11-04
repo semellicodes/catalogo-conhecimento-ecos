@@ -325,6 +325,9 @@ nativamente pelo navegador com `type="module"`.
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
+- Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. O cartão verde do
+  Ponto de Partida escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
+  repetir a forma por extenso, e eram duas apresentações numa página só
 - A dimensão do ECOS cita só `santos2011` e o nível cita `johnson2020` e `kauschinger2021`. As
   duas citações estão no arquivo mas não aparecem em tela desde que os dois atributos saíram da
   aba 1. Fica registrado o que a decisão sobre a dimensão dizia, porque a questão não desapareceu.
