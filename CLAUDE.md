@@ -279,10 +279,19 @@ nativamente pelo navegador com `type="module"`.
 - O rótulo curto de cada referência mora em `js/dados.js`, porque a forma abreviada não sai da
   citação sozinha, "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a obra tem.
   É um lugar só, para a Estrutura e a ficha citarem igual
-- O diálogo de ajuda fecha com a citação quando a ajuda declara `prefixoFonte` em `meta.json`.
-  Hoje só a da Gerência declara, porque só ela é síntese deste trabalho e não explicação de um
-  esquema alheio. Os autores saem das mesmas chaves de `referencia` que o rodapé do bloco usa, para
-  não haver duas listas a manter
+- Toda ajuda da ficha fecha com a sua citação, nas cinco. Os autores saem das mesmas chaves de
+  `referencia` que o rodapé do bloco usa, para não haver duas listas a manter. Ajuda sem chave de
+  referência não existe, e se alguma surgir sem, a linha some em vez de aparecer vazia
+- O `prefixoFonte` em `meta.json` é opcional e só a ajuda da Gerência o declara, com "Síntese do
+  KM4SECO elaborada com base em", porque só ela é síntese deste trabalho e não explicação de um
+  esquema alheio. Sem ele a citação aparece sozinha, como em todo o resto do catálogo
+- A ajuda dos desafios cita `revisaoRapidaManuscrito`, porque os desafios são achado da revisão
+  deste trabalho e não de um esquema publicado. Essa chave não tem verbete, então a citação sai
+  como texto e não como link
+- O bloco de desafios da ficha e o cartão de desafios da Base de Evidências levam o mesmo nome,
+  "Desafios relacionados à Gerência de Conhecimento". São a mesma coisa vista de dois lugares, e
+  dois nomes fariam parecer que são duas. A ajuda do bloco repete esse nome, em vez da forma curta
+  que as outras ajudas usam, porque aqui o nome já é curto
 - `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
   publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
   `temVerbete` do `dados.js`, num lugar só

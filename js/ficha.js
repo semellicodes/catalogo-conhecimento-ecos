@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-37';
+import { referenciaCurta } from './dados.js?v=20261104-39';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -219,14 +219,18 @@ export function abrirAjuda(dados, conteudo) {
   document.querySelector('#dialogo-ajuda-titulo').textContent = conteudo.titulo;
   document.querySelector('#dialogo-ajuda-texto').textContent = conteudo.texto;
 
-  /* A citação entra só onde a ajuda declara o prefixo, porque nem toda
-     explicação é uma síntese deste trabalho. Os autores saem das mesmas chaves
-     que o rodapé do bloco já usa, então não há duas listas a manter. */
+  /* Toda ajuda fecha com a sua citação. Os autores saem das mesmas chaves que
+     o rodapé do bloco já usa, então não há duas listas a manter.
+
+     O prefixo é opcional e existe para a ajuda que não explica um esquema
+     alheio, e sim uma síntese deste trabalho. Sem ele a citação aparece
+     sozinha, como em todo o resto do catálogo. */
   const fonte = document.querySelector('#dialogo-ajuda-fonte');
   const citacao = referenciaCurta(dados, conteudo.referencia);
-  const mostrarFonte = Boolean(conteudo.prefixoFonte && citacao);
-  fonte.textContent = mostrarFonte ? `${conteudo.prefixoFonte} ${citacao}.` : '';
-  fonte.hidden = !mostrarFonte;
+  fonte.textContent = citacao
+    ? `${conteudo.prefixoFonte ? `${conteudo.prefixoFonte} ` : ''}${citacao}.`
+    : '';
+  fonte.hidden = !citacao;
   dialogo.showModal();
   /* O diálogo recebe o foco inicial. Assim o contexto é anunciado sem criar
      um destaque visual indevido no botão de fechar. */
@@ -535,7 +539,7 @@ function estudos(conhecimento) {
 }
 
 function desafiosRelacionados(dados, conhecimento) {
-  const bloco = secao(dados, 'Desafios identificados na literatura — base de evidências', 'desafios');
+  const bloco = secao(dados, 'Desafios relacionados à Gerência de Conhecimento', 'desafios');
   bloco.append(desafios(conhecimento));
   return fecharSecao(bloco);
 }
