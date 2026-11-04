@@ -96,7 +96,7 @@ lista os dezessete, não só os ligados.
 | `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
 | `explorar.html` | Glossário dos atributos com a referência de cada esquema e os 17 desafios, cada um com os conhecimentos ligados |
-| `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar |
+| `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar. A coluna principal é dividida em dois blocos, abertura e método, só para o cartão de números poder entrar entre eles no celular. No desktop o cartão vai para a segunda coluna por posicionamento explícito e os dois blocos voltam a ler como um |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
 ## Módulos
@@ -209,7 +209,8 @@ nativamente pelo navegador com `type="module"`.
   a completa do glossário do Explorar
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura
 - A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante
-  só a sigla. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
+  só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
+  quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
 - A dimensão do ECOS cita `santos2011` e `santos2012`, nessa ordem. O de 2011 descreve o conteúdo
   de cada dimensão mas chama a primeira de arquitetural, e o de 2012 é que faz o recorte em três e

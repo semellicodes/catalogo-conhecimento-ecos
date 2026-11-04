@@ -12,10 +12,10 @@
     if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
   } catch (erro) {}
 </script>
-<link rel="stylesheet" href="css/tokens.css?v=20261104-29">
-<link rel="stylesheet" href="css/base.css?v=20261104-29">
-<link rel="stylesheet" href="css/componentes.css?v=20261104-29">
-<link rel="stylesheet" href="css/paginas.css?v=20261104-29">
+<link rel="stylesheet" href="css/tokens.css?v=20261104-30">
+<link rel="stylesheet" href="css/base.css?v=20261104-30">
+<link rel="stylesheet" href="css/componentes.css?v=20261104-30">
+<link rel="stylesheet" href="css/paginas.css?v=20261104-30">
 </head>
 <body>
 <a class="pular-para-conteudo" href="#conteudo">Pular para o conteúdo</a>
@@ -53,7 +53,7 @@
   <header class="sobre__cabecalho">
     <p class="sobre__olho">KM4SECO</p>
     <h1>Sobre o catálogo</h1>
-    <p>Como os conhecimentos foram reunidos, classificados e disponibilizados para consulta em Ecossistemas de Software (ECOS).</p>
+    <p>Como os conhecimentos foram reunidos, classificados e disponibilizados para consulta no ECOS.</p>
   </header>
 
   <section class="sobre__pergunta" aria-labelledby="titulo-pergunta">
@@ -62,8 +62,8 @@
   </section>
 
   <div class="sobre__grade">
-    <article class="sobre__conteudo prosa">
-      <h2>Um ponto de consulta para o conhecimento em ECOS</h2>
+    <section class="sobre__conteudo sobre__conteudo--abertura prosa" aria-labelledby="titulo-consulta">
+      <h2 id="titulo-consulta">Um ponto de consulta para o conhecimento em ECOS</h2>
       <p>
         Catálogos são artefatos usados para organizar, compartilhar, reutilizar e evoluir o
         conhecimento de um domínio, favorecendo sua recuperação e aplicação em diferentes contextos.
@@ -71,8 +71,26 @@
         NFR4ES e no SECO-Risk, o que indica o formato como adequado para sistematizar os achados de
         uma revisão da literatura.
       </p>
+    </section>
 
-      <h2>Classificação por facetas</h2>
+    <aside class="sobre__base" aria-labelledby="titulo-base">
+      <p class="sobre__olho">Base da pesquisa</p>
+      <h2 id="titulo-base">O catálogo em números</h2>
+      <dl class="sobre__numeros">
+        <div>
+          <dt>Conhecimentos</dt>
+          <dd id="sobre-conhecimentos">—</dd>
+        </div>
+        <div>
+          <dt>Estudos primários</dt>
+          <dd id="sobre-estudos">—</dd>
+        </div>
+      </dl>
+      <a class="sobre__referencias" href="referencias.html">Ver estudos e referências <span aria-hidden="true">→</span></a>
+    </aside>
+
+    <section class="sobre__conteudo sobre__conteudo--metodo prosa" aria-labelledby="titulo-facetas">
+      <h2 id="titulo-facetas">Classificação por facetas</h2>
       <p>
         O catálogo adota uma classificação por facetas, em que cada conhecimento é descrito por um
         conjunto fixo de atributos, em vez de uma classificação enumerativa que exigiria definir todas
@@ -95,23 +113,7 @@
         <a class="botao sobre__acao sobre__acao--primaria" href="index.html#catalogo">Catálogo</a>
         <a class="botao sobre__acao" href="explorar.html">Explorar</a>
       </div>
-    </article>
-
-    <aside class="sobre__base" aria-labelledby="titulo-base">
-      <p class="sobre__olho">Base da pesquisa</p>
-      <h2 id="titulo-base">O catálogo em números</h2>
-      <dl class="sobre__numeros">
-        <div>
-          <dt>Conhecimentos</dt>
-          <dd id="sobre-conhecimentos">—</dd>
-        </div>
-        <div>
-          <dt>Estudos primários</dt>
-          <dd id="sobre-estudos">—</dd>
-        </div>
-      </dl>
-      <a class="sobre__referencias" href="referencias.html">Ver estudos e referências <span aria-hidden="true">→</span></a>
-    </aside>
+    </section>
   </div>
 
 </main>
@@ -122,8 +124,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/tema.js?v=20261104-29"></script>
-<script type="module" src="js/menu.js?v=20261104-29"></script>
-<script type="module" src="js/sobre.js?v=20261104-29"></script>
+<script type="module" src="js/tema.js?v=20261104-30"></script>
+<script type="module" src="js/menu.js?v=20261104-30"></script>
+<script type="module" src="js/sobre.js?v=20261104-30"></script>
 </body>
 </html>

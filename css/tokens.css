@@ -97,6 +97,9 @@
   --tam-citacao: 0.6875rem;
   --tam-lg: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
   --tam-xl: clamp(1.375rem, 1.143rem + 0.952vw, 2rem);
+  /* Um degrau entre o --tam-lg e o --tam-xl, para o título de seção dentro de
+     uma página de texto não competir com o h1 dela. */
+  --tam-secao: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
   --tam-titulo-abertura: clamp(2.75rem, 2.226rem + 2.143vw, 4rem);
   --tam-resumo-abertura: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);
@@ -124,6 +127,9 @@
   --largura-cheia: 100%;
   --largura-texto: 68ch;
   --largura-explorar: 70rem;
+  /* Página de texto. Mais estreita que o Explorar, porque ali o que manda é a
+     tabela e aqui é a leitura corrida. */
+  --largura-sobre: 65rem;
   --largura-cartao-unico: 28rem;
   --largura-cartao-estrutura: 20rem;
   --largura-mapa-estrutura: 64rem;
