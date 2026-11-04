@@ -404,14 +404,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: center;
   gap: var(--esp-4);
 }
-/* As duas linhas empilham na coluna do meio. Tamanho, entrelinha e
-   alinhamento vão em cada uma, e não no contêiner, porque é o strut de cada
-   bloco que dimensiona as suas linhas. */
-.estrutura__divisor-textos {
-  display: grid;
-  gap: var(--esp-1);
-  text-align: center;
-}
 .estrutura__divisor-texto {
   color: var(--cor-texto-suave);
   font-family: var(--fonte-mono);
@@ -419,16 +411,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-weight: 500;
   letter-spacing: var(--entre-letras-rotulo);
   line-height: 1.5;
+  text-align: center;
   text-transform: uppercase;
-  text-wrap: balance;
-}
-/* A linha de apoio é menor e mais apagada, para dizer a subdivisão sem
-   disputar com a frase que anuncia os cartões. Fica em caixa normal, porque é
-   frase e não rótulo. */
-.estrutura__divisor-apoio {
-  color: var(--cor-texto-fraco);
-  font-size: var(--tam-micro);
-  line-height: 1.45;
   text-wrap: balance;
 }
 .estrutura__divisor::before,
@@ -594,7 +578,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    Verde bem suave, o mesmo da nota que abre a aba de Atributos, para as duas
    introduções da Estrutura se reconhecerem. */
 .estrutura__cartao-conceito {
-  padding: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-acento-fundo);
   border: var(--borda-suave);
   border-radius: var(--raio);
@@ -602,7 +586,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__conceito-cabecalho {
   display: flex;
   align-items: center;
-  gap: var(--esp-3);
+  gap: var(--esp-2);
 }
 .estrutura__conceito-cabecalho-titulo {
   font-size: var(--tam-base);
@@ -611,18 +595,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.25;
 }
 .estrutura__conceito-texto {
-  margin-top: var(--esp-3);
+  margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
-  line-height: 1.6;
+  /* 1.5 em vez de 1.6. O corpo do texto não encolhe, só o vão entre as
+     linhas, que é de onde vinha a maior parte da altura vazia do cartão. */
+  line-height: 1.5;
   /* À esquerda mesmo com a prosa do site justificada, como a nota da aba 2. */
   text-align: left;
 }
 /* A citação fecha o cartão, separada do parágrafo pela linha fina e na mesma
    escala das outras citações da Estrutura. */
 .estrutura__cartao-conceito .estrutura__fonte-conceitual {
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-2);
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-1);
   border-top: var(--borda-fina);
   font-size: var(--tam-citacao);
   line-height: 1.35;
@@ -875,7 +861,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     grid-template-columns: minmax(var(--esp-2), 1fr) auto minmax(var(--esp-2), 1fr);
   }
   .estrutura__divisor-texto { font-size: var(--tam-micro); line-height: 1.45; }
-  .estrutura__divisor-apoio { font-size: var(--tam-citacao); line-height: 1.4; }
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
