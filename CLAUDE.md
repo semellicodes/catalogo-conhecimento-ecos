@@ -296,8 +296,9 @@ nativamente pelo navegador com `type="module"`.
 - O conteúdo é longo e a aba fica alta. É troca aceita de propósito, porque encurtar o texto para
   baixar a altura tiraria o que torna os conceitos compreensíveis para quem nunca viu gerência de
   conhecimento em ECOS
-- A introdução do cartão e a explicação de cada categoria são justificadas, como o resto da prosa
-  do site, e entram na lista de seletores do `base.css`. A caixa de texto tem uns 280px no
+- O parágrafo do cartão verde e a explicação de cada categoria são justificados, como o resto da
+  prosa do site, e entram na lista de seletores do `base.css`. O cartão verde já esteve de fora,
+  alinhado à esquerda como a nota da aba 2, mas é prosa corrida e não nota curta. A caixa de texto tem uns 280px no
   desktop, e numa coluna dessa largura quem segura a justificação é a hifenização, então o
   `hyphens: auto` não é opcional ali. Abaixo de 36rem as duas voltam para a esquerda, como todas
   as outras

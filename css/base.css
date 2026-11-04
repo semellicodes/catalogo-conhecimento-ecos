@@ -144,10 +144,15 @@ button, input, select {
 
    Os cartões do Ponto de Partida entram, por decisão da autora, embora a
    coluna tenha uns 314px no desktop. Numa coluna dessa largura quem segura a
-   justificação é a hifenização, e por isso ela não é opcional ali. */
+   justificação é a hifenização, e por isso ela não é opcional ali.
+
+   O cartão verde do Ponto de Partida também entra. Ele já esteve de fora, à
+   esquerda como a nota da aba 2, mas é parágrafo de prosa corrida e não nota
+   curta, então lê como o resto do texto do site. */
 .abertura__resumo,
 .estrutura__painel-intro,
 .estrutura__evidencia-texto,
+.estrutura__conceito-texto,
 .atributo-card__intro,
 .estrutura__bloco-intro,
 .estrutura__bloco-chamada,
@@ -170,6 +175,7 @@ button, input, select {
   .abertura__resumo,
   .estrutura__painel-intro,
   .estrutura__evidencia-texto,
+  .estrutura__conceito-texto,
   .atributo-card__intro,
   .estrutura__bloco-intro,
   .estrutura__bloco-chamada,

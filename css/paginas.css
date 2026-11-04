@@ -601,8 +601,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   /* 1.5 em vez de 1.6. O corpo do texto não encolhe, só o vão entre as
      linhas, que é de onde vinha a maior parte da altura vazia do cartão. */
   line-height: 1.5;
-  /* À esquerda mesmo com a prosa do site justificada, como a nota da aba 2. */
-  text-align: left;
 }
 /* A citação fecha o cartão, separada do parágrafo pela linha fina e na mesma
    escala das outras citações da Estrutura. */
