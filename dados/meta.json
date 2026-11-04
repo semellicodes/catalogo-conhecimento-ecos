@@ -14,8 +14,9 @@
           "referencias": "davenport1998, seichter2010, viana2015"
         },
         "divisor": {
-          "principal": "O conhecimento em ECOS pode ser explícito ou tácito"
-        }
+          "principal": "Os conhecimentos em ECOS podem ser classificados por natureza epistemológica"
+        },
+        "prefixoCategoria": "Conhecimento"
       },
       {
         "id": "atributos",

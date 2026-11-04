@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-61';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-62';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -130,18 +130,18 @@ function cabecalhoComIcone(icone, titulo, classe) {
  * o que o próprio artigo faz, que emenda a natureza logo depois da definição.
  */
 /**
- * Um cartão por categoria de natureza epistemológica. Título, a linha que
- * marca a subdivisão quando houver, a definição e a fonte.
+ * Um cartão por categoria de natureza epistemológica, com título, definição e
+ * fonte.
  *
- * Os três cartões dividem a linha, mas não são três categorias do mesmo nível
- * teórico. O conhecimento se classifica em explícito e tácito, e é o tácito
- * que se subdivide nos dois últimos. Por isso os dois trazem a linha de
- * subdivisão, que diz isso por escrito, e não só pela posição.
+ * O prefixo é opcional e vem da aba. Ele existe para o título do cartão ler
+ * como frase inteira, "Conhecimento explícito", sem duplicar o nome da
+ * categoria, que continua num lugar só, no vocabulário. Sem prefixo o título é
+ * o nome da categoria, como nas pastilhas e no selo do catálogo.
  */
-function cartaoDeNatureza(valor) {
+function cartaoDeNatureza(valor, prefixo) {
   const cartao = criar('article', 'atributo-card');
   cartao.append(
-    criar('h4', 'atributo-card__titulo', valor.valor),
+    criar('h4', 'atributo-card__titulo', prefixo ? `${prefixo} ${valor.valor}` : valor.valor),
     criar('p', 'atributo-card__intro', valor.explicacao)
   );
   if (valor.referencia) cartao.append(fonteConceitual(valor.referencia));
@@ -165,9 +165,11 @@ function divisorDeClassificacao(conteudo) {
   return divisor;
 }
 
-function composicaoNaturezas(dados) {
+function composicaoNaturezas(dados, prefixo) {
   const composicao = criar('div', 'estrutura__atributos-cards');
-  dados.classificacoes.natureza.valores.forEach((valor) => composicao.append(cartaoDeNatureza(valor)));
+  dados.classificacoes.natureza.valores.forEach((valor) =>
+    composicao.append(cartaoDeNatureza(valor, prefixo))
+  );
   return composicao;
 }
 
@@ -403,7 +405,7 @@ function cartaoConceito(icone, conteudo) {
 function explicacaoConhecimento(dados, aba, definicao) {
   const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
   if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
-  conteudo.push(composicaoNaturezas(dados));
+  conteudo.push(composicaoNaturezas(dados, definicao.prefixoCategoria));
   return painel(definicao, aba, '', conteudo, 'estrutura__grade--conhecimento');
 }
 

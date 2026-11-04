@@ -269,6 +269,10 @@ nativamente pelo navegador com `type="module"`.
   alta discreta, com uma linha fina saindo para cada lado. Sem fundo, borda, sombra, ícone nem
   cartão. A frase mora em `abas[0].divisor.principal`, em caixa normal, e quem põe em maiúscula é
   o CSS, como nos outros rótulos, para o acento se preservar no dado
+- A frase é "Os conhecimentos em ECOS podem ser classificados por natureza epistemológica". Ela
+  anuncia o critério da classificação, e não o resultado dela. A redação anterior dizia o
+  resultado, que o conhecimento pode ser explícito ou tácito, e os três cartões logo abaixo já
+  dizem isso sozinhos
 - O divisor é `h4`, porque anuncia os três cartões e é ponto de navegação para leitor de tela
 - O divisor chegou a ter uma segunda linha, dizendo que o tácito se subdivide nos dois últimos,
   e ela saiu por decisão da autora. Com isso nada na aba diz por escrito que tácito-cognitivo e
@@ -304,10 +308,16 @@ nativamente pelo navegador com `type="module"`.
   de cada categoria é a linha "Responde à pergunta" da tabela do Explorar. O `definicaoBreve`, que
   existia só nas três naturezas, foi apagado por ser um terceiro texto sem leitor
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
-  Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
-  na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior
-  do que a frase mais completa num deles. A forma longa, "Conhecimentos explícitos", vivia em
-  `tituloPorta` sem nenhum módulo ler, e foi apagada. Não volta
+  Ele aparece no selo do cartão do catálogo, nas pastilhas de filtro, na classificação da ficha, no
+  glossário do Explorar e na ordenação, e um nome por lugar seria pior do que a frase mais completa
+  num deles
+- O cartão do Ponto de Partida é a exceção, e diz "Conhecimento Explícito". A palavra não está
+  escrita no vocabulário nem repetida três vezes. Ela vem de `abas[0].prefixoCategoria`, num lugar
+  só, e o `cartaoDeNatureza` emenda prefixo e nome. Sem o prefixo o título continua sendo o nome da
+  categoria, como em todo o resto. Ali o cartão é a definição do conceito e precisa ler como frase
+  inteira, enquanto um selo ou uma pastilha com o prefixo ficaria longo demais
+- A forma longa "Conhecimentos explícitos", no plural, vivia em `tituloPorta` sem nenhum módulo
+  ler, e foi apagada. Não volta
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura.
   A numeração vem escrita no `rotulo` de cada aba, em `meta.json`, então renumerar é editar ali
 - A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante

@@ -5,8 +5,8 @@
  * extraído e não aparecem em ficha alguma.
  */
 
-import { carregar, porId, referenciaCurta } from './dados.js?v=20261104-61';
-import { renderizar } from './listagem.js?v=20261104-61';
+import { carregar, porId, referenciaCurta } from './dados.js?v=20261104-62';
+import { renderizar } from './listagem.js?v=20261104-62';
 
 const el = (seletor) => document.querySelector(seletor);
 
