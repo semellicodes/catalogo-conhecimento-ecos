@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-46';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-47';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -128,7 +128,7 @@ function cartaoDeAtributo(atributo) {
   cartao.append(
     criar('h4', 'atributo-card__titulo', atributo.rotulo),
     criar('p', 'atributo-card__pergunta', atributo.perguntaOrientadora),
-    criar('p', 'atributo-card__intro', atributo.introducao)
+    criar('p', 'atributo-card__intro', atributo.funcao)
   );
 
   const categorias = criar('ul', 'atributo-card__categorias');
