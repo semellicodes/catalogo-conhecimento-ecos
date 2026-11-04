@@ -10,7 +10,7 @@
         "icone": "conhecimento",
         "cartaoIntroducao": {
           "titulo": "Conhecimento em ECOS",
-          "texto": "Nos Ecossistemas de Software (ECOS), o conhecimento compreende experiências, valores e informações contextuais relacionadas às atividades e interações dos participantes do ecossistema. Esse conhecimento pode estar distribuído entre diferentes atores e organizações, sendo utilizado e compartilhado para apoiar a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
+          "texto": "Nos ECOS, o conhecimento compreende experiências, valores e informações contextuais relacionadas às atividades e interações dos participantes do ecossistema. Esse conhecimento pode estar distribuído entre diferentes atores e organizações, sendo utilizado e compartilhado para apoiar a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
           "referencias": "davenport1998, seichter2010, viana2015"
         },
         "divisor": {
