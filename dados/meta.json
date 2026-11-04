@@ -8,10 +8,8 @@
         "id": "conhecimento",
         "rotulo": "1. Ponto de Partida",
         "icone": "conhecimento",
-        "introducao": "Os conhecimentos em ECOS compreendem informações, experiências e habilidades desenvolvidas e compartilhadas entre os participantes do ecossistema, contribuindo para a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
-        "referencias": "davenport1998, seichter2010, viana2015",
-        "tituloAtributos": "Os conhecimentos em ECOS são caracterizados por três atributos complementares",
-        "tituloAtributosCurto": "Caracterização dos conhecimentos",
+        "introducao": "O conhecimento é um recurso importante para o desenvolvimento de software, pois reúne experiências, informações e habilidades que auxiliam na compreensão de situações e na tomada de decisões. Nos ECOS, esse conhecimento está distribuído entre diferentes participantes e organizações, sendo necessário identificá-lo, compartilhá-lo e preservá-lo para apoiar a colaboração e a evolução do ecossistema.",
+        "referencias": "davenport1998, seichter2010, kauschinger2021",
         "tituloPainel": "Conhecimento em ECOS"
       },
       {

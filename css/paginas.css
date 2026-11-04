@@ -357,35 +357,82 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__composicao-conhecimento,
 .estrutura__composicao-gerencia,
 .estrutura__composicao-evidencias { margin-top: var(--esp-4); }
-.estrutura__composicao-conhecimento { display: grid; gap: var(--esp-2); align-items: start; }
-.estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: var(--esp-4); }
-/* A frase central é um divisor, com a linha saindo para os dois lados até a
-   borda do bloco. */
-.estrutura__divisor {
+
+/* Os três cartões de atributo do Ponto de Partida, lado a lado. O align-items
+   stretch é o padrão da grade e iguala a altura sem travá-la, para a última
+   linha do texto não vazar quando um cartão tem mais conteúdo que o outro. */
+.estrutura__atributos-cards {
   display: grid;
-  grid-template-columns: minmax(var(--esp-4), 1fr) auto minmax(var(--esp-4), 1fr);
-  align-items: center;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-4);
+  margin-top: var(--esp-4);
 }
-.estrutura__divisor::before,
-.estrutura__divisor::after {
-  content: '';
-  height: 1px;
-  background: var(--cor-linha-suave);
+/* O cartão empilha em coluna para a fonte poder ser empurrada para o pé com
+   margin-top auto, e as três linhas de fonte se alinharem entre os cartões. */
+.atributo-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--esp-4);
+  background: var(--cor-superficie);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
 }
-.estrutura__divisor-texto--curto { display: none; }
-.estrutura__divisor-texto {
-  color: var(--cor-texto-suave);
-  font-family: var(--fonte-mono);
+.atributo-card__titulo {
+  font-size: var(--tam-base);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-nome);
+  line-height: 1.3;
+}
+/* A pergunta orientadora é hierarquia secundária, acima da introdução, porque
+   é ela que enquadra o que vem a seguir. */
+.atributo-card__pergunta {
+  margin-top: var(--esp-1);
+  color: var(--cor-acento-forte);
   font-size: var(--tam-xs);
-  font-weight: 500;
-  letter-spacing: var(--entre-letras-rotulo);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.atributo-card__intro {
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-xs);
   line-height: 1.5;
-  text-align: center;
-  text-transform: uppercase;
+}
+.atributo-card__categorias {
+  display: grid;
+  gap: var(--esp-3);
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-3);
+  border-top: var(--borda-fina);
+}
+/* A separação entre categorias é discreta, só a linha e a folga dela, para não
+   parecer que cada categoria é um cartão dentro do cartão. */
+.atributo-card__categoria + .atributo-card__categoria {
+  padding-top: var(--esp-3);
+  border-top: var(--borda-fina);
+}
+.atributo-card__categoria-nome {
+  color: var(--cor-titulo);
+  font-size: var(--tam-sm);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.atributo-card__categoria-texto {
+  margin-top: var(--esp-1);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-xs);
+  line-height: 1.55;
+}
+.atributo-card .estrutura__fonte-conceitual {
+  margin-top: auto;
+  padding-top: var(--esp-3);
+  border-top: var(--borda-fina);
+  column-gap: var(--esp-1);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
 }
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
@@ -767,7 +814,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel--gerencia .estrutura__painel-intro,
   .estrutura__painel--classificacao .estrutura__painel-intro { margin-top: var(--esp-3); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
-  .estrutura__composicao-conhecimento { gap: var(--esp-3); }
   .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* O par de números cresce para baixo, não a descrição, para os números dos
      dois cartões de cima alinharem mesmo quando um rótulo quebra em duas
@@ -791,52 +837,19 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 61.99rem) {
+  /* Três colunas de texto longo abaixo de 992px dariam uns 280px cada, e aí a
+     explicação de cada categoria vira uma palavra por linha. Empilha. */
+  .estrutura__atributos-cards { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-atributos > * { min-width: 0; }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
-/* Até 600px o divisor deixa de ser divisor e a redação longa dá lugar à curta.
-   Encolher a longa não resolvia, porque oitenta e dois caracteres em caixa
-   alta não cabem em 308px sem virar três linhas de texto espremido. Vira
-   título de seção comum, alinhado à esquerda, com uma linha fina acima. */
-@media (max-width: 37.5rem) {
-  .estrutura__divisor {
-    display: block;
-    /* A margem própria somava à da composição, que por sua vez soma ao gap da
-       grade, e as três abriam quase cinquenta pixels de vazio entre a citação
-       e o título. Aqui quem separa é só o gap da grade. */
-    margin-top: 0;
-    margin-bottom: var(--esp-3);
-    padding: var(--esp-3) 0 0;
-    border-top: var(--borda-fina);
-    /* Tamanho e entrelinha vão no bloco, não só no span. O span é inline,
-       então quem dimensiona cada linha é o strut do h4, e ele usava o tamanho
-       herdado do painel. */
-    font-size: var(--tam-xs);
-    line-height: 1.4;
-    text-align: left;
-  }
-  .estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: 0; }
-  .estrutura__divisor::before,
-  .estrutura__divisor::after { display: none; }
-  .estrutura__divisor-texto { display: none; }
-  .estrutura__divisor-texto--curto {
-    display: inline;
-    color: var(--cor-titulo);
-    font-family: var(--fonte-texto);
-    font-size: var(--tam-xs);
-    font-weight: 700;
-    letter-spacing: normal;
-    line-height: 1.4;
-    text-transform: none;
-  }
-  /* Os cartões ficam leves, não comprimidos. */
-  .estrutura__categorias-classificacao--fileira { gap: var(--esp-3); }
-  .estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao { padding: var(--esp-3); }
-  .estrutura__categoria-classificacao-texto { line-height: 1.45; }
-}
 @media (max-width: 39.99rem) {
+  /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
+     porque a prioridade declarada é a compreensão dos conceitos. */
+  .atributo-card { padding: var(--esp-3); }
+  .atributo-card__categorias { gap: var(--esp-3); }
   .estrutura__categoria-atributo-pergunta { font-size: var(--tam-xs); }
   .estrutura__gerencia-texto,
   .estrutura__nota-texto { font-size: var(--tam-sm); }
