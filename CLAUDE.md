@@ -218,8 +218,17 @@ nativamente pelo navegador com `type="module"`.
   dois têm a mesma superfície, para lerem como partes de uma seção só e não como duas abas
   coladas. Cada um abre com título, introdução, uma linha fina e a chamada que apresenta as
   categorias, e fecha com a fonte
-- O painel de Atributos não tem introdução própria. Cada bloco já abre com a sua, e um terceiro
-  parágrafo antes deles diria pela terceira vez do que a aba trata
+- O painel de Atributos não tem cabeçalho. O nome da etapa já está no botão da aba, e o
+  `aria-labelledby` aponta para ele, então o painel continua com nome acessível sem o `h3`. Quem
+  decide isso é o `tituloPainel`, que as outras duas abas declaram e essa não. Sem ele o `painel`
+  não monta cabeçalho nenhum
+- No lugar do cabeçalho vai uma nota curta, em `nota`, que é o primeiro item da grade e não um
+  bloco antes dela. Entrando na grade, ela herda sozinha a largura e o vão vertical dos dois
+  cartões, sem precisar repetir medida nenhuma. É discreta de propósito, fundo de acento suave,
+  borda fina, sem ícone nem título, e alinhada à esquerda mesmo com a prosa do site justificada
+- O painel de Atributos usa o mesmo recuo das outras abas. Ele chegou a ter um recuo menor, de
+  quando abria direto nos cartões e a moldura do painel só somava respiro ao que eles já traziam.
+  Com a nota no topo, o recuo menor deixava o texto colado na borda
 - O bloco de exemplos de ECOS tem três cartões lado a lado, numerados. A numeração é o `counter`
   do `ol`, no `::before` do título, apagada, e não pastilha nem ícone. A tipologia é a de Manikas,
   e a relação de cada modelo com a circulação do conhecimento é contextualização da literatura de

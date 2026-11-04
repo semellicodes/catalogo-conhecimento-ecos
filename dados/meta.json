@@ -16,7 +16,7 @@
         "id": "atributos",
         "rotulo": "2. Atributos",
         "icone": "classificacao",
-        "tituloPainel": "Atributos do conhecimento",
+        "nota": "Os atributos apresentados permitem compreender os contextos em que os conhecimentos foram observados e os aspectos relacionados à sua gerência nos ECOS.",
         "tiposEcos": {
           "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
           "introducao": "Apresenta os tipos de ECOS em que os conhecimentos foram identificados nos estudos primários, classificados conforme suas características de organização e participação.",
