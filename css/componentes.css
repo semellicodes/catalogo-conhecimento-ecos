@@ -839,7 +839,8 @@
   stroke-linejoin: round;
 }
 .exemplos-ecos { display: grid; gap: var(--esp-2); }
-.exemplos-ecos__categorias {
+.exemplos-ecos__categorias,
+.acoes-gerencia__cartoes {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-2);
@@ -862,7 +863,7 @@
   transition: background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva), color var(--dur-rapida) var(--curva);
 }
 .exemplos-ecos__categoria:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
-.exemplos-ecos__categoria[data-tem-exemplos="true"] {
+.exemplos-ecos__categoria[data-identificado="true"] {
   background: color-mix(in srgb, var(--cor-acento-fundo) 46%, var(--cor-superficie));
   border-color: var(--cor-acento-linha);
   color: color-mix(in srgb, var(--cor-acento) 82%, var(--cor-texto-suave));
@@ -922,8 +923,10 @@
 @media (max-width: 35.99rem) {
   .exemplos-ecos__texto { text-align: left; hyphens: manual; }
   .ficha__descricao { text-align: left; hyphens: manual; }
-  .exemplos-ecos__categorias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .exemplos-ecos__categoria:last-child { grid-column: 1 / -1; }
+  .exemplos-ecos__categorias,
+  .acoes-gerencia__cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .exemplos-ecos__categorias .exemplos-ecos__categoria:last-child,
+  .acoes-gerencia__cartoes .exemplos-ecos__categoria:last-child { grid-column: 1 / -1; }
   .exemplos-ecos__categoria { width: 100%; }
 }
 
@@ -972,25 +975,21 @@
   hyphens: auto;
 }
 .gerencia__valor:last-child { margin-bottom: 0; }
-/* As ações do conhecimento, em pílulas, com o mesmo par de cores das etiquetas
-   da camada de Gerência. São uma, duas ou três, nunca as três por padrão. */
-.gerencia__acoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
-.gerencia__acao {
-  padding: var(--esp-1) var(--esp-3);
-  background: var(--cor-acento-fundo);
-  border: 1px solid var(--cor-acento-linha);
-  border-radius: var(--raio-pilula);
-  color: var(--cor-acento);
+/* As ações deixaram de ser pílulas e viraram três cartões que abrem, com o
+   mesmo desenho e o mesmo comportamento dos exemplos de ECOS. Por isso elas
+   reaproveitam as regras daquele bloco em vez de ter cópia própria, e o que
+   existe aqui é só o que é delas.
+
+   O rótulo separa as duas partes do painel. O texto da prática é um só por
+   conhecimento e não está dividido por ação, então ele precisa aparecer
+   rotulado para não ser lido como explicação exclusiva da ação aberta. */
+.acoes-gerencia__rotulo {
+  color: var(--cor-titulo);
   font-size: var(--tam-xs);
-  line-height: 1.6;
+  font-weight: 600;
+  line-height: 1.4;
 }
-.gerencia__pendente {
-  margin: 0;
-  color: var(--cor-texto-fraco);
-  font-size: var(--tam-xs);
-  font-style: italic;
-  line-height: 1.5;
-}
+.acoes-gerencia__rotulo + .exemplos-ecos__texto { margin-top: calc(var(--esp-1) * -1); }
 
 @media (max-width: 35.99rem) {
   .gerencia__valor {
