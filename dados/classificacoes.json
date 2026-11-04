@@ -17,7 +17,6 @@
       },
       {
         "valor": "Tácito-cognitivo",
-        "subdivisaoDe": "Subdivisão do conhecimento tácito",
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
@@ -26,7 +25,6 @@
       },
       {
         "valor": "Tácito-técnico",
-        "subdivisaoDe": "Subdivisão do conhecimento tácito",
         "descricao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada pelos participantes ao atuar no ECOS.",
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",

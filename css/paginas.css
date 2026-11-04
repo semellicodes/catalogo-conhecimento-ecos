@@ -385,19 +385,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   letter-spacing: var(--entre-letras-nome);
   line-height: 1.3;
 }
-/* A linha de subdivisão diz, por escrito, que aquela categoria não está no
-   mesmo nível teórico do conhecimento explícito. Os três cartões dividem a
-   linha, mas só dois são subdivisões do tácito, e a posição sozinha não
-   contaria isso. */
-.atributo-card__subdivisao {
-  margin-top: var(--esp-1);
-  color: var(--cor-acento-forte);
-  font-size: var(--tam-micro);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-rotulo);
-  line-height: 1.4;
-  text-transform: uppercase;
-}
 .atributo-card__intro {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
@@ -405,15 +392,50 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 
-/* A ponte entre o conceito e os cartões. Reaproveita a superfície da nota de
-   seção e só acrescenta o espaço da citação que ela carrega. */
-.estrutura__ponte { display: grid; gap: var(--esp-2); }
-.estrutura__ponte-texto { font: inherit; color: inherit; }
-.estrutura__ponte .estrutura__fonte-conceitual {
-  padding-top: var(--esp-2);
-  border-top: var(--borda-fina);
-  font-size: var(--tam-citacao);
-  line-height: 1.35;
+/* O divisor entre o conceito e os cartões. A frase ao centro, com uma linha
+   fina saindo para cada lado até a borda do bloco. Sem fundo, borda externa,
+   sombra, ícone nem cartão.
+
+   A coluna do meio é `auto`, que encolhe até o min-content, então em tela
+   estreita a frase quebra sozinha em vez de empurrar as linhas para fora. */
+.estrutura__divisor {
+  display: grid;
+  grid-template-columns: minmax(var(--esp-4), 1fr) auto minmax(var(--esp-4), 1fr);
+  align-items: center;
+  gap: var(--esp-4);
+}
+/* As duas linhas empilham na coluna do meio. Tamanho, entrelinha e
+   alinhamento vão em cada uma, e não no contêiner, porque é o strut de cada
+   bloco que dimensiona as suas linhas. */
+.estrutura__divisor-textos {
+  display: grid;
+  gap: var(--esp-1);
+  text-align: center;
+}
+.estrutura__divisor-texto {
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 500;
+  letter-spacing: var(--entre-letras-rotulo);
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+/* A linha de apoio é menor e mais apagada, para dizer a subdivisão sem
+   disputar com a frase que anuncia os cartões. Fica em caixa normal, porque é
+   frase e não rótulo. */
+.estrutura__divisor-apoio {
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-micro);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+.estrutura__divisor::before,
+.estrutura__divisor::after {
+  content: '';
+  height: 1px;
+  background: var(--cor-linha-suave);
 }
 .atributo-card .estrutura__fonte-conceitual {
   margin-top: auto;
@@ -846,6 +868,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__tipos-ecos-lista { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 39.99rem) {
+  /* O divisor acompanha a escala compacta do celular. A linha de cada lado
+     encurta para a frase ter mais largura antes de quebrar. */
+  .estrutura__divisor {
+    gap: var(--esp-3);
+    grid-template-columns: minmax(var(--esp-2), 1fr) auto minmax(var(--esp-2), 1fr);
+  }
+  .estrutura__divisor-texto { font-size: var(--tam-micro); line-height: 1.45; }
+  .estrutura__divisor-apoio { font-size: var(--tam-citacao); line-height: 1.4; }
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
