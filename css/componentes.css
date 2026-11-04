@@ -959,7 +959,13 @@
   line-height: 1.35;
 }
 /* A gerência é um campo por linha, porque o conteúdo é frase, não etiqueta. */
-.gerencia { display: grid; gap: normal; }
+/* O ritmo vertical do bloco é declarado, e não herdado da margem de cada
+   parágrafo somada à entrelinha. Cada subtítulo fica colado ao próprio texto e
+   separado do texto anterior, que é o agrupamento certo, e os cartões ganham
+   uma folga do rótulo em vez de encostarem nele. */
+/* A margem de 1em que o navegador dá ao dl é zerada aqui. Era ela, e não o
+   cabeçalho, que abria 17px entre o título do bloco e o primeiro subtítulo. */
+.gerencia { display: grid; gap: 0; margin: 0; }
 .gerencia__rotulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -968,13 +974,22 @@
   color: var(--cor-texto-fraco);
 }
 .gerencia__valor {
-  margin: 0 0 var(--esp-2);
+  margin: 0 0 var(--esp-1);
   font-size: var(--tam-sm);
   line-height: 1.6;
   text-align: justify;
   hyphens: auto;
 }
 .gerencia__valor:last-child { margin-bottom: 0; }
+/* Os cartões não encostam no rótulo, mas também não abrem um vão que os
+   soltaria do subtítulo que os nomeia. */
+.gerencia__valor--acoes { margin-top: var(--esp-2); }
+/* Só neste bloco o cabeçalho aperta, porque abaixo dele vem um subtítulo e não
+   um parágrafo, e dois rótulos seguidos não precisam do mesmo respiro que um
+   rótulo seguido de texto corrido. */
+/* Com o dl zerado, o vão até o primeiro subtítulo passa a ser só este, então
+   ele volta ao mesmo respiro que os outros blocos da ficha usam. */
+.bloco-ficha:has(> .gerencia) .bloco-ficha__topo { margin-bottom: var(--esp-2); }
 /* As ações deixaram de ser pílulas e viraram três cartões que abrem, com o
    mesmo desenho e o mesmo comportamento dos exemplos de ECOS. Por isso elas
    reaproveitam as regras daquele bloco em vez de ter cópia própria, e o que
@@ -993,6 +1008,7 @@
 
 @media (max-width: 35.99rem) {
   .gerencia__valor {
+    margin-bottom: var(--esp-1);
     text-align: left;
     hyphens: manual;
   }
@@ -1030,7 +1046,7 @@
   .exemplos-ecos__lista { gap: var(--esp-1); }
 
   .gerencia__rotulo { font-size: 0.6875rem; }
-  .gerencia__valor { margin-bottom: var(--esp-2); font-size: 0.875rem; line-height: 1.5; }
+  .gerencia__valor { margin-bottom: var(--esp-1); font-size: 0.875rem; line-height: 1.5; }
 
 }
 
