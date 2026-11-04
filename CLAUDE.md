@@ -208,6 +208,11 @@ nativamente pelo navegador com `type="module"`.
 - `classificacoes.json` guarda três textos por categoria, com papéis separados. `definicaoBreve` é
   a do Ponto de Partida, só nas naturezas, `explicacao` é a da camada de Atributos e `descricao` é
   a completa do glossário do Explorar
+- O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
+  Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
+  na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior
+  do que a frase mais completa num deles. A forma longa, "Conhecimentos explícitos", vivia em
+  `tituloPorta` sem nenhum módulo ler, e foi apagada. Não volta
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura
 - A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
