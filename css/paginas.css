@@ -802,7 +802,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 @media (max-width: 37.5rem) {
   .estrutura__divisor {
     display: block;
-    margin-top: var(--esp-4);
+    /* A margem própria somava à da composição, que por sua vez soma ao gap da
+       grade, e as três abriam quase cinquenta pixels de vazio entre a citação
+       e o título. Aqui quem separa é só o gap da grade. */
+    margin-top: 0;
     margin-bottom: var(--esp-3);
     padding: var(--esp-3) 0 0;
     border-top: var(--borda-fina);
@@ -813,6 +816,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     line-height: 1.4;
     text-align: left;
   }
+  .estrutura__painel--conhecimento .estrutura__composicao-conhecimento { margin-top: 0; }
   .estrutura__divisor::before,
   .estrutura__divisor::after { display: none; }
   .estrutura__divisor-texto { display: none; }
