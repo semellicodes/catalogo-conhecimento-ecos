@@ -114,6 +114,7 @@ lista os dezessete, não só os ligados.
 | `js/inicio.js` | Preenche o resumo da abertura, a tarja de números e as camadas |
 | `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
+| `js/versao.js` | Recarrega a página uma vez quando o HTML guardado pelo navegador ficou para trás da versão publicada |
 
 Alterar o visual de um card nunca encosta na lógica dos filtros. Os módulos são carregados
 nativamente pelo navegador com `type="module"`.
@@ -374,8 +375,19 @@ O script não gera nada e não é etapa de build. Ele só troca o `?v=` em todos
 porque versão por arquivo desencontra e o navegador passa a servir metade nova e metade velha.
 
 O HTML não leva `?v=`, porque é o endereço que a pessoa abre. Se o navegador guardar o HTML antigo,
-ele serve junto as versões antigas de tudo, e aí só recarregar sem cache resolve. No Safari o
-recarregar sem cache não despeja o cache de módulos, para isso é ⌥⌘E.
+ele serve junto as versões antigas de tudo, e o site parece congelado mesmo com a publicação
+correta. É o que o `js/versao.js` resolve.
+
+Cada página de conteúdo leva a versão numa `<meta name="versao">` e carrega o `js/versao.js`, que
+busca o `versao.json` sem cache e compara. Se a página for mais velha que a publicada, ele recarrega
+uma vez. Uma marca em `sessionStorage` impede o laço quando o recarregar não traz HTML novo, e aí
+ele só avisa no console. Sem rede, sem o arquivo ou com JSON quebrado, a página serve como está,
+porque um guarda de cache nunca pode impedir a leitura do catálogo.
+
+O `catalogo.html` fica de fora, porque só redireciona e o guarda disputaria com o `location.replace`.
+
+A meta e o `versao.json` entram na mesma passada do versionador. Mexer num sem o outro faz o guarda
+desencontrar e recarregar para sempre, então nunca editar a meta à mão.
 
 ## Rodar localmente
 

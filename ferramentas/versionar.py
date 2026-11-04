@@ -9,8 +9,10 @@ e metade velha.
     python3 ferramentas/versionar.py 20261103-7
 
 O index.html e as demais páginas não levam ?v=, porque são o endereço que a
-pessoa abre. Se o navegador guardar o HTML antigo, ele serve junto as versões
-antigas de tudo. Para isso só recarregar sem cache resolve.
+pessoa abre. Elas levam a versão numa meta, e o js/versao.js compara essa meta
+com o versao.json para recarregar sozinho um HTML que ficou para trás. Por isso
+a meta e o versao.json entram nesta mesma passada, senão o guarda desencontra e
+recarrega a página para sempre.
 """
 
 import glob
@@ -23,6 +25,7 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALVOS = (
     ('*.html', r'((?:css|js)/[a-z]+\.(?:css|js))(?:\?v=[0-9A-Za-z.-]+)?(?=")'),
     ('js/*.js', r"(\./[a-z]+\.js)(?:\?v=[0-9A-Za-z.-]+)?(?=')"),
+    ('*.html', r'(<meta name="versao" content=")[^"]*(?=">)'),
 )
 
 
@@ -33,7 +36,10 @@ def aplicar(versao):
     for padrao_de_arquivo, padrao in ALVOS:
         for caminho in glob.glob(padrao_de_arquivo):
             texto = open(caminho, encoding='utf-8').read()
-            novo = re.sub(padrao, lambda m: f'{m.group(1)}?v={versao}', texto)
+            if 'name="versao"' in padrao:
+                novo = re.sub(padrao, lambda m: f'{m.group(1)}{versao}', texto)
+            else:
+                novo = re.sub(padrao, lambda m: f'{m.group(1)}?v={versao}', texto)
             if novo != texto:
                 open(caminho, 'w', encoding='utf-8').write(novo)
                 tocados.append(caminho)
@@ -45,6 +51,12 @@ def aplicar(versao):
         open('js/dados.js', 'w', encoding='utf-8').write(novo)
         if 'js/dados.js' not in tocados:
             tocados.append('js/dados.js')
+
+    # O guarda de versão lê este arquivo sem cache para saber se o HTML
+    # guardado pelo navegador ficou para trás.
+    with open('versao.json', 'w', encoding='utf-8') as arquivo:
+        arquivo.write(f'{{ "versao": "{versao}" }}\n')
+    tocados.append('versao.json')
 
     return tocados
 
