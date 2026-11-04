@@ -968,10 +968,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 
 /* ---------- Sobre ---------- */
-.sobre { max-width: var(--largura-explorar); }
+/* A medida da página de texto é menor que a do Explorar, porque aqui é leitura
+   corrida e não tabela. A abertura abre o quadro sem o vão que a seção padrão
+   reserva para blocos que sangram. */
+.sobre {
+  max-width: var(--largura-sobre);
+  padding-block: var(--esp-7) var(--esp-6);
+}
 .sobre__cabecalho {
   max-width: var(--largura-texto);
-  margin-bottom: var(--esp-7);
+  margin-bottom: var(--esp-5);
 }
 .sobre__olho {
   font-family: var(--fonte-mono);
@@ -992,7 +998,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A pergunta do trabalho abre o Sobre, antes do método. Em destaque, porque é
    o que o catálogo inteiro responde. */
 .sobre__pergunta {
-  margin-top: var(--esp-5);
+  margin-top: 0;
   padding: var(--esp-4) var(--esp-5);
   background: var(--cor-superficie-alta);
   border: var(--borda-suave);
@@ -1019,11 +1025,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 
 .sobre__grade {
   display: grid;
-  gap: var(--esp-6);
+  gap: var(--esp-5);
+  margin-top: var(--esp-5);
   align-items: start;
 }
 .sobre__conteudo { max-width: var(--largura-texto); }
+.sobre__conteudo.prosa h2 { font-size: var(--tam-secao); }
 .sobre__conteudo h2:first-child { margin-top: 0; }
+/* As duas metades da coluna principal são blocos separados só para a lateral
+   poder entrar entre elas no celular. Lidas em sequência, o vão entre elas é o
+   mesmo que separa duas seções dentro de uma. */
+.sobre__conteudo--metodo { margin-top: calc(var(--esp-6) - var(--esp-5)); }
 .sobre__acoes {
   display: flex;
   flex-wrap: wrap;
@@ -1044,6 +1056,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .sobre__acao:active { transform: scale(var(--escala-acao)); }
 .sobre__base {
   padding: var(--esp-5);
+  min-width: 0;
   background: var(--cor-superficie-alta);
   border: var(--borda);
   border-radius: var(--raio);
@@ -1056,20 +1069,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .sobre__numeros {
   display: grid;
   gap: var(--esp-3);
-  margin-top: var(--esp-5);
+  margin-top: var(--esp-4);
 }
 .sobre__numeros > div {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--esp-4);
-  padding-bottom: var(--esp-3);
-  border-bottom: var(--borda-suave);
+  padding-bottom: var(--esp-2);
+  border-bottom: var(--borda-fina);
 }
 .sobre__numeros dt { color: var(--cor-texto-suave); }
 .sobre__numeros dd {
   font-family: var(--fonte-mono);
-  font-size: var(--tam-xl);
+  font-size: var(--tam-lg);
   font-weight: 600;
   /* Folga para a caixa caber o desenho inteiro do algarismo, como na Estrutura. */
   line-height: 1.3;
@@ -1085,9 +1098,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-decoration: none;
 }
 .sobre__referencias span { margin-left: var(--esp-2); }
-@media (min-width: 64rem) {
-  .sobre__grade { grid-template-columns: minmax(0, 1fr) minmax(0, 0.7fr); }
+/* A partir de 768px a coluna lateral sai da sequência e vai para a segunda
+   coluna, ao lado da primeira seção. Abaixo disso a grade é uma coluna e a
+   ordem da fonte vale, que é abertura, pergunta, primeira seção, números,
+   facetas e origem dos dados. */
+@media (min-width: 48rem) {
+  .sobre__grade { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
+  .sobre__conteudo--abertura { grid-column: 1; grid-row: 1; }
+  .sobre__base { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
+  .sobre__conteudo--metodo { grid-column: 1; grid-row: 2; margin-top: 0; }
   .sobre__base { position: sticky; top: calc(var(--altura-cabecalho) + var(--esp-5)); }
+}
+@media (max-width: 39.99rem) {
+  .sobre { padding-block: var(--esp-6) var(--esp-5); }
+  .sobre__pergunta { padding: var(--esp-4); }
 }
 @media (prefers-reduced-motion: reduce) {
   .sobre__acao:active { transform: none; }
