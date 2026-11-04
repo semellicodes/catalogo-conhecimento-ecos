@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-54';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-56';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -129,65 +129,37 @@ function cabecalhoComIcone(icone, titulo, classe) {
  * conceito e a classificação principal na mesma aba é o que a referência faz e
  * o que o próprio artigo faz, que emenda a natureza logo depois da definição.
  */
-/* Os três atributos do Ponto de Partida, na ordem em que o catálogo os lê. */
-const ATRIBUTOS_PARTIDA = ['natureza', 'nivel', 'dimensao'];
-
-/* A categoria é nome e explicação, sem pergunta própria. A pergunta agora é uma
-   por cartão, orientadora do atributo inteiro, e não uma por categoria.
-
-   São dois campos de pergunta de propósito. A `pergunta` do atributo é a da
-   tabela do Explorar, com outra redação e outro papel, e mexer nela mudaria
-   aquela página. A `perguntaOrientadora` é só deste cartão. */
-function categoriaDoAtributo(valor) {
-  const item = criar('li', 'atributo-card__categoria');
-  item.append(
-    criar('h5', 'atributo-card__categoria-nome', valor.valor),
-    criar('p', 'atributo-card__categoria-texto', valor.explicacao)
-  );
-  return item;
-}
-
 /**
- * Um cartão por atributo, com as três categorias dentro dele. Não são nove
- * cartões soltos, porque o que agrupa as categorias é justamente o atributo.
+ * Um cartão por categoria de natureza epistemológica. Título, a linha que
+ * marca a subdivisão quando houver, a definição e a fonte.
  *
- * A ordem dentro do cartão é título, pergunta orientadora, introdução,
- * categorias e fonte. A pergunta vem antes da introdução porque é ela que
- * enquadra o que se vai ler, e a fonte fecha, como em toda a Estrutura.
+ * Os três cartões dividem a linha, mas não são três categorias do mesmo nível
+ * teórico. O conhecimento se classifica em explícito e tácito, e é o tácito
+ * que se subdivide nos dois últimos. Por isso os dois trazem a linha de
+ * subdivisão, que diz isso por escrito, e não só pela posição.
  */
-function cartaoDeAtributo(atributo) {
+function cartaoDeNatureza(valor) {
   const cartao = criar('article', 'atributo-card');
-  cartao.append(
-    criar('h4', 'atributo-card__titulo', atributo.rotulo),
-    criar('p', 'atributo-card__pergunta', atributo.perguntaOrientadora),
-    criar('p', 'atributo-card__intro', atributo.funcao)
-  );
-
-  const categorias = criar('ul', 'atributo-card__categorias');
-  atributo.valores.forEach((valor) => categorias.append(categoriaDoAtributo(valor)));
-  cartao.append(categorias);
-
-  if (atributo.referencia) cartao.append(fonteConceitual(atributo.referencia));
+  cartao.append(criar('h4', 'atributo-card__titulo', valor.valor));
+  if (valor.subdivisaoDe) cartao.append(criar('p', 'atributo-card__subdivisao', valor.subdivisaoDe));
+  cartao.append(criar('p', 'atributo-card__intro', valor.explicacao));
+  if (valor.referencia) cartao.append(fonteConceitual(valor.referencia));
   return cartao;
 }
 
-/**
- * O Ponto de Partida apresenta o conceito e os três atributos que
- * caracterizam cada conhecimento. A natureza aparece aqui uma vez só, como um
- * dos três, e não mais definida numa camada e retomada como critério na
- * seguinte.
- *
- * Os três cartões dividem a linha no desktop. O conteúdo é longo e a aba fica
- * alta, e é a troca aceita de propósito, porque encurtar o texto para baixar a
- * altura tiraria justamente o que torna os conceitos compreensíveis para quem
- * nunca viu gerência de conhecimento em ECOS.
- *
- * Não há faixa divisória antes dos cartões nem parágrafo depois deles. A aba é
- * conceito, cartões, e termina.
- */
-function composicaoAtributos(dados) {
+/* A ponte entre o conceito e os cartões. Diz que o conhecimento se divide em
+   explícito e tácito, define o tácito e anuncia a subdivisão, para quem lê
+   chegar aos cartões sabendo o que eles são. */
+function ponteParaClassificacao(conteudo) {
+  const bloco = criar('section', 'estrutura__nota-secao estrutura__ponte');
+  bloco.append(criar('p', 'estrutura__ponte-texto', conteudo.texto));
+  if (conteudo.referencias) bloco.append(fonteConceitual(conteudo.referencias));
+  return bloco;
+}
+
+function composicaoNaturezas(dados) {
   const composicao = criar('div', 'estrutura__atributos-cards');
-  ATRIBUTOS_PARTIDA.forEach((chave) => composicao.append(cartaoDeAtributo(dados.classificacoes[chave])));
+  dados.classificacoes.natureza.valores.forEach((valor) => composicao.append(cartaoDeNatureza(valor)));
   return composicao;
 }
 
@@ -412,11 +384,19 @@ function cartaoConceito(icone, conteudo) {
  * a largura e o vão vertical dos três cartões de atributo. É o mesmo arranjo
  * da nota que abre a aba de Atributos.
  */
+/**
+ * A aba vai do conceito à classificação, nessa ordem. Cartão de conceito,
+ * ponte que apresenta a divisão, e os três cartões de categoria.
+ *
+ * Nível no ECOS e dimensão do ECOS saíram daqui. Eles caracterizam o
+ * conhecimento, não definem o que ele é, e a aba agora trata só do conceito e
+ * da sua classificação epistemológica.
+ */
 function explicacaoConhecimento(dados, aba, definicao) {
-  return painel(definicao, aba, '', [
-    cartaoConceito(definicao.icone, definicao.cartaoIntroducao),
-    composicaoAtributos(dados)
-  ], 'estrutura__grade--conhecimento');
+  const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
+  if (definicao.classificacao) conteudo.push(ponteParaClassificacao(definicao.classificacao));
+  conteudo.push(composicaoNaturezas(dados));
+  return painel(definicao, aba, '', conteudo, 'estrutura__grade--conhecimento');
 }
 
 /**

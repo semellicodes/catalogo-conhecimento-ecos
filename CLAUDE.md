@@ -246,10 +246,15 @@ nativamente pelo navegador com `type="module"`.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
   sequência
-- O Ponto de Partida tem duas partes e nada mais. Primeiro um cartão de conceito, com o título,
-  o ícone, o parágrafo e a fonte numa composição só. Depois os três cartões de atributo. Não leva
-  pergunta de pesquisa, exemplo de conhecimento C01 a C20, número da revisão, faixa divisória
-  entre as partes nem parágrafo de encerramento depois dos cartões
+- O Ponto de Partida tem três partes, nessa ordem. O cartão de conceito, com título, ícone,
+  parágrafo e fonte numa composição só. A ponte, que diz que o conhecimento se classifica em
+  explícito e tácito, define o tácito e anuncia a subdivisão. E os três cartões de categoria. Não
+  leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, número da revisão nem parágrafo de
+  encerramento
+- A aba trata só do conceito e da sua classificação epistemológica. Nível no ECOS e dimensão do
+  ECOS saíram dela, porque caracterizam o conhecimento e não definem o que ele é. Eles continuam
+  na ficha, no bloco de classificação, e nos filtros do catálogo, então não sumiram do site. A
+  camada que vai recebê-los ainda não existe
 - O cartão de conceito é o primeiro item da grade, não um bloco antes dela, então herda sozinho a
   largura e o vão vertical dos três cartões de atributo. É o mesmo arranjo da nota que abre a aba
   de Atributos, e as duas usam o mesmo verde suave para as introduções da Estrutura se
@@ -257,17 +262,19 @@ nativamente pelo navegador com `type="module"`.
 - A aba 1 também não tem cabeçalho de painel, porque o título vive dentro do cartão. Como as
   outras duas abas, quem decide isso é a ausência do `tituloPainel`. Hoje só a Base de Evidências
   ainda declara um
-- São três cartões, não nove. Cada atributo é um cartão e as três categorias dele moram dentro,
-  porque o que agrupa as categorias é justamente o atributo. A ordem é natureza epistemológica,
-  nível no ECOS e dimensão do ECOS
-- A ordem dentro do cartão é título, pergunta orientadora, introdução, categorias e fonte. A
-  pergunta vem antes da introdução porque é ela que enquadra o que se vai ler
-- Há dois campos de pergunta no atributo, de propósito. `pergunta` é a da tabela do Explorar, com
-  outra redação e outro papel, e mexer nela mudaria aquela página. `perguntaOrientadora` é só do
-  cartão do Ponto de Partida. A `pergunta` de cada categoria também continua, na mesma tabela
-- O texto de introdução do cartão mora em `funcao`, um campo só. O atributo chegou a ter `funcao`
-  e `introducao` dizendo quase a mesma coisa, e os dois viraram um. Ficou o nome `funcao` porque é
-  o que os cinco atributos usam, e um nome só vale mais do que o nome mais bonito em três deles
+- Os três cartões são as três categorias da natureza epistemológica, um por categoria, e não um
+  por atributo com as categorias dentro. A ordem é Explícito, Tácito-cognitivo e Tácito-técnico
+- A ordem dentro do cartão é título, linha de subdivisão quando houver, definição e fonte
+- Os três cartões dividem a linha, mas não são três categorias do mesmo nível teórico. O
+  conhecimento se classifica em explícito e tácito, e é o tácito que se subdivide nos dois
+  últimos. O `subdivisaoDe` marca isso por escrito nos dois, porque a posição lado a lado sozinha
+  diria o contrário
+- A atribuição é separada por afirmação. O conceito de conhecimento em ECOS cita `davenport1998`,
+  `seichter2010` e `viana2015`. A divisão entre explícito e tácito e a definição do tácito citam
+  `nonaka1997`. A subdivisão do tácito cita `alavi2001`. A ponte cita as duas últimas porque
+  contém as duas afirmações, e cada cartão carrega a sua
+- `perguntaOrientadora` e `funcao` ficaram sem leitor quando o cartão passou a ser por categoria e
+  não por atributo. Continuam no arquivo, sem uso. Apagar ou não é decisão da autora
 - `principal` não tem leitor em módulo nenhum. Marca a natureza como entrada principal do
   catálogo, o que é verdade, mas hoje quem decide isso é a ordenação. Está no arquivo, sem uso.
   Não é duplicação, por isso ficou
@@ -299,16 +306,16 @@ nativamente pelo navegador com `type="module"`.
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
-- A dimensão do ECOS cita só `santos2011`, por decisão da autora. Fica registrado o que a decisão
-  anterior dizia, porque a questão não desapareceu. O de 2011 descreve o conteúdo de cada dimensão
-  mas chama a primeira de arquitetural, e era o `santos2012` que fazia o recorte em três e usava o
-  nome técnica, que é o que este catálogo adota. Conferir antes da defesa
-- O nível no ECOS cita `johnson2020` e `kauschinger2021`, nessa ordem. O Johnson é quem define os
-  três níveis
-- A `explicacao` das categorias de natureza, nível e dimensão foi reescrita pela autora para o
-  Ponto de Partida, e a do `tipoEcos` para o bloco de exemplos da aba de Atributos, as duas em
-  texto didático. Nenhuma é mais citação literal dos artigos primários. A `pergunta` continua
-  literal
+- A dimensão do ECOS cita só `santos2011` e o nível cita `johnson2020` e `kauschinger2021`. As
+  duas citações estão no arquivo mas não aparecem em tela desde que os dois atributos saíram da
+  aba 1. Fica registrado o que a decisão sobre a dimensão dizia, porque a questão não desapareceu.
+  O de 2011 descreve o conteúdo de cada dimensão mas chama a primeira de arquitetural, e era o
+  `santos2012` que fazia o recorte em três e usava o nome técnica, que é o que este catálogo
+  adota. Conferir antes da defesa
+- A `explicacao` das três naturezas é a definição que o cartão mostra, reescrita pela autora
+  conforme a orientação do professor. A de `nivel` e `dimensao` continua no arquivo mas não tem
+  mais leitor, porque essas duas saíram da aba. A do `tipoEcos` é a do bloco de exemplos da aba de
+  Atributos. Nenhuma é citação literal dos artigos primários. A `pergunta` continua literal
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o

@@ -385,14 +385,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   letter-spacing: var(--entre-letras-nome);
   line-height: 1.3;
 }
-/* A pergunta orientadora é hierarquia secundária, acima da introdução, porque
-   é ela que enquadra o que vem a seguir. */
-.atributo-card__pergunta {
+/* A linha de subdivisão diz, por escrito, que aquela categoria não está no
+   mesmo nível teórico do conhecimento explícito. Os três cartões dividem a
+   linha, mas só dois são subdivisões do tácito, e a posição sozinha não
+   contaria isso. */
+.atributo-card__subdivisao {
   margin-top: var(--esp-1);
   color: var(--cor-acento-forte);
-  font-size: var(--tam-xs);
+  font-size: var(--tam-micro);
   font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
   line-height: 1.4;
+  text-transform: uppercase;
 }
 .atributo-card__intro {
   margin-top: var(--esp-2);
@@ -400,30 +404,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
   line-height: 1.5;
 }
-.atributo-card__categorias {
-  display: grid;
-  gap: var(--esp-3);
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-3);
+
+/* A ponte entre o conceito e os cartões. Reaproveita a superfície da nota de
+   seção e só acrescenta o espaço da citação que ela carrega. */
+.estrutura__ponte { display: grid; gap: var(--esp-2); }
+.estrutura__ponte-texto { font: inherit; color: inherit; }
+.estrutura__ponte .estrutura__fonte-conceitual {
+  padding-top: var(--esp-2);
   border-top: var(--borda-fina);
-}
-/* A separação entre categorias é discreta, só a linha e a folga dela, para não
-   parecer que cada categoria é um cartão dentro do cartão. */
-.atributo-card__categoria + .atributo-card__categoria {
-  padding-top: var(--esp-3);
-  border-top: var(--borda-fina);
-}
-.atributo-card__categoria-nome {
-  color: var(--cor-titulo);
-  font-size: var(--tam-sm);
-  font-weight: 600;
-  line-height: 1.3;
-}
-.atributo-card__categoria-texto {
-  margin-top: var(--esp-1);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  line-height: 1.55;
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
 }
 .atributo-card .estrutura__fonte-conceitual {
   margin-top: auto;
@@ -859,7 +849,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
-  .atributo-card__categorias { gap: var(--esp-3); }
   .estrutura__gerencia-texto,
   .estrutura__nota-texto { font-size: var(--tam-sm); }
   .estrutura__mapa { margin-top: var(--esp-5); }

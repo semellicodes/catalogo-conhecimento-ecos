@@ -12,24 +12,26 @@
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: que informação pode ser registrada, consultada e reutilizada pelos participantes do ECOS?",
-        "referencia": "nonaka1997, alavi2001",
-        "explicacao": "É o conhecimento que pode ser expresso, organizado e registrado por meio de palavras, documentos, manuais e outras representações. Por estar formalizado, pode ser armazenado, consultado e compartilhado entre diferentes participantes, facilitando sua transmissão e reutilização."
+        "referencia": "nonaka1997",
+        "explicacao": "É o conhecimento que pode ser formalizado, registrado e comunicado por meio de documentos, especificações e outros artefatos, facilitando sua transmissão e consulta pelos participantes do ECOS."
       },
       {
         "valor": "Tácito-cognitivo",
+        "subdivisaoDe": "Subdivisão do conhecimento tácito",
         "descricao": "Conhecimento relacionado às percepções, interpretações, experiências, necessidades, prioridades e modelos mentais dos participantes do ECOS.",
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
-        "explicacao": "É o conhecimento relacionado à maneira como uma pessoa compreende e interpreta determinadas situações. Envolve crenças, percepções e modelos mentais construídos a partir de suas experiências, que influenciam seus julgamentos e decisões. Por estar associado à forma individual de pensar, esse conhecimento pode ser difícil de explicar completamente ou registrar em documentos."
+        "explicacao": "Relaciona-se aos modelos mentais, às percepções, às interpretações e aos conhecimentos construídos a partir das experiências individuais."
       },
       {
         "valor": "Tácito-técnico",
+        "subdivisaoDe": "Subdivisão do conhecimento tácito",
         "descricao": "Conhecimento relacionado ao saber fazer, às habilidades práticas e à experiência acumulada pelos participantes ao atuar no ECOS.",
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
-        "explicacao": "É o conhecimento relacionado ao saber fazer (know-how), envolvendo habilidades e competências práticas desenvolvidas por meio da experiência. Manifesta-se na capacidade de executar atividades, utilizar técnicas e resolver problemas em situações específicas. Muitas vezes, a pessoa consegue realizar determinada tarefa, mas encontra dificuldades para explicar detalhadamente como adquiriu ou aplica essa habilidade."
+        "explicacao": "Relaciona-se às habilidades práticas, à experiência na execução de atividades e ao saber fazer desenvolvido pelos indivíduos."
       }
     ]
   },
