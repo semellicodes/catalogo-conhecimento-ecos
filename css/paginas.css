@@ -403,16 +403,32 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   grid-template-columns: minmax(var(--esp-4), 1fr) auto minmax(var(--esp-4), 1fr);
   align-items: center;
   gap: var(--esp-4);
-  /* Tamanho, entrelinha e alinhamento vão no bloco, não no span. O span é
-     inline, então quem dimensiona cada linha é o strut do h4. */
+}
+/* As duas linhas empilham na coluna do meio. Tamanho, entrelinha e
+   alinhamento vão em cada uma, e não no contêiner, porque é o strut de cada
+   bloco que dimensiona as suas linhas. */
+.estrutura__divisor-textos {
+  display: grid;
+  gap: var(--esp-1);
+  text-align: center;
+}
+.estrutura__divisor-texto {
   color: var(--cor-texto-suave);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
   font-weight: 500;
   letter-spacing: var(--entre-letras-rotulo);
   line-height: 1.5;
-  text-align: center;
   text-transform: uppercase;
+  text-wrap: balance;
+}
+/* A linha de apoio é menor e mais apagada, para dizer a subdivisão sem
+   disputar com a frase que anuncia os cartões. Fica em caixa normal, porque é
+   frase e não rótulo. */
+.estrutura__divisor-apoio {
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-micro);
+  line-height: 1.45;
   text-wrap: balance;
 }
 .estrutura__divisor::before,
@@ -857,9 +873,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__divisor {
     gap: var(--esp-3);
     grid-template-columns: minmax(var(--esp-2), 1fr) auto minmax(var(--esp-2), 1fr);
-    font-size: var(--tam-micro);
-    line-height: 1.45;
   }
+  .estrutura__divisor-texto { font-size: var(--tam-micro); line-height: 1.45; }
+  .estrutura__divisor-apoio { font-size: var(--tam-citacao); line-height: 1.4; }
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
