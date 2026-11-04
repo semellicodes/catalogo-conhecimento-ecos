@@ -266,10 +266,9 @@ nativamente pelo navegador com `type="module"`.
   taxonomia. A classificação combina esquemas de autores diferentes, um por atributo, e chamar o
   conjunto de taxonomia sugeriria um esquema único que não existe. Os nomes de classe no CSS e no
   `inicio.js` ainda dizem `taxonomia`, de quando a coluna tinha esse nome
-- A coluna leva dois parágrafos antes dos cartões, `subtituloClassificacao` e
-  `transicaoClassificacao`. O primeiro diz de onde vêm os três atributos, o segundo o que eles
-  permitem identificar em conjunto. Os dois usam o mesmo parágrafo do subtítulo, para não abrir um
-  ritmo novo de espaçamento entre o título e os cartões
+- A coluna leva um parágrafo só antes dos cartões, e ele acrescenta a fundamentação teórica. O que
+  são os três atributos e o que eles permitem identificar em conjunto fica na caixa de introdução
+  do painel, num lugar só. A coluna já tentou repetir isso e foi o que se tirou
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as

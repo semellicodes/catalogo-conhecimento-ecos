@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-23';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-24';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -310,11 +310,6 @@ function colunaTaxonomia(dados, definicao) {
     criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao),
     criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
   );
-  /* A frase de transição usa o mesmo parágrafo do subtítulo, para não abrir um
-     ritmo novo de espaçamento entre o título e os cartões. */
-  if (definicao.transicaoClassificacao) {
-    coluna.append(criar('p', 'estrutura__coluna-subtitulo', definicao.transicaoClassificacao));
-  }
   const secoes = criar('div', 'estrutura__taxonomia-secoes');
   secoes.append(
     secaoTaxonomia(dados.classificacoes.natureza, true),
