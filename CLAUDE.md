@@ -229,12 +229,12 @@ nativamente pelo navegador com `type="module"`.
 - Há dois campos de pergunta no atributo, de propósito. `pergunta` é a da tabela do Explorar, com
   outra redação e outro papel, e mexer nela mudaria aquela página. `perguntaOrientadora` é só do
   cartão do Ponto de Partida. A `pergunta` de cada categoria também continua, na mesma tabela
-- O texto de introdução do cartão mora em `introducao`, campo que já existia no atributo e estava
-  sem nenhum leitor. O `funcao`, que diz quase a mesma coisa, continua intocado porque é o que a
-  aba 2 ainda mostra. Quando a aba 2 perder a coluna de classificação, o `funcao` fica sem leitor
-  e os dois viram um só
-- `principal` também não tem leitor em módulo nenhum. Marca a natureza como entrada principal do
-  catálogo, o que é verdade, mas hoje quem decide isso é a ordenação. Está no arquivo, sem uso
+- O texto de introdução do cartão mora em `funcao`, um campo só. O atributo chegou a ter `funcao`
+  e `introducao` dizendo quase a mesma coisa, e os dois viraram um. Ficou o nome `funcao` porque é
+  o que os cinco atributos usam, e um nome só vale mais do que o nome mais bonito em três deles
+- `principal` não tem leitor em módulo nenhum. Marca a natureza como entrada principal do
+  catálogo, o que é verdade, mas hoje quem decide isso é a ordenação. Está no arquivo, sem uso.
+  Não é duplicação, por isso ficou
 - Os três cartões dividem a linha no desktop, em três colunas de largura igual. Até 992px
   empilham, porque três colunas de texto longo dariam uns 280px cada e a explicação viraria uma
   palavra por linha. No celular só o respiro interno cede, e nenhum texto encolhe ou some
@@ -246,11 +246,10 @@ nativamente pelo navegador com `type="module"`.
   numa lista de seletores, e esse não entrou
 - Nada de carrossel, aba, acordeão, modal, texto escondido com expandir nem rolagem dentro do
   cartão. Toda explicação fica visível sem interação
-- `classificacoes.json` guarda três textos por categoria. `explicacao` é a do cartão do Ponto de
-  Partida, `pergunta` é a linha "Responde à pergunta" da tabela do Explorar e `descricao` é a
-  completa do glossário. `definicaoBreve`, que existe só nas três naturezas, ficou sem leitor
-  quando o cartão passou a usar a `explicacao`. Está no arquivo, sem uso. Apagar ou não é decisão
-  da autora
+- `classificacoes.json` guarda dois textos por categoria, com papéis separados. `explicacao` é a
+  do cartão do Ponto de Partida e `descricao` é a completa do glossário do Explorar. A `pergunta`
+  de cada categoria é a linha "Responde à pergunta" da tabela do Explorar. O `definicaoBreve`, que
+  existia só nas três naturezas, foi apagado por ser um terceiro texto sem leitor
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
   Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
   na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior

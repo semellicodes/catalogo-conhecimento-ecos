@@ -4,7 +4,7 @@
     "principal": true,
     "pergunta": "Que tipo de conhecimento é este?",
     "perguntaOrientadora": "Como o conhecimento se manifesta?",
-    "introducao": "A natureza epistemológica permite compreender as diferentes formas pelas quais o conhecimento se manifesta e pode ser compartilhado.",
+    "funcao": "A natureza epistemológica permite compreender as diferentes formas pelas quais o conhecimento se manifesta e pode ser compartilhado.",
     "referencia": "nonaka1997, alavi2001",
     "valores": [
       {
@@ -13,7 +13,6 @@
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: que informação pode ser registrada, consultada e reutilizada pelos participantes do ECOS?",
         "referencia": "nonaka1997, alavi2001",
-        "definicaoBreve": "Conhecimentos que podem ser formalizados, documentados e compartilhados por meio de registros e artefatos.",
         "explicacao": "É o conhecimento que pode ser expresso, organizado e registrado por meio de palavras, documentos, manuais e outras representações. Por estar formalizado, pode ser armazenado, consultado e compartilhado entre diferentes participantes, facilitando sua transmissão e reutilização."
       },
       {
@@ -22,7 +21,6 @@
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
-        "definicaoBreve": "Conhecimentos relacionados à experiência, percepção, interpretação e compreensão dos participantes.",
         "explicacao": "É o conhecimento relacionado à maneira como uma pessoa compreende e interpreta determinadas situações. Envolve crenças, percepções e modelos mentais construídos a partir de suas experiências, que influenciam seus julgamentos e decisões. Por estar associado à forma individual de pensar, esse conhecimento pode ser difícil de explicar completamente ou registrar em documentos."
       },
       {
@@ -31,18 +29,16 @@
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
-        "definicaoBreve": "Conhecimentos associados às habilidades práticas e à capacidade de executar atividades.",
         "explicacao": "É o conhecimento relacionado ao saber fazer (know-how), envolvendo habilidades e competências práticas desenvolvidas por meio da experiência. Manifesta-se na capacidade de executar atividades, utilizar técnicas e resolver problemas em situações específicas. Muitas vezes, a pessoa consegue realizar determinada tarefa, mas encontra dificuldades para explicar detalhadamente como adquiriu ou aplica essa habilidade."
       }
-    ],
-    "funcao": "Indica a forma como o conhecimento se manifesta e pode ser compreendido ou compartilhado."
+    ]
   },
   "nivel": {
     "rotulo": "Nível no ECOS",
     "principal": false,
     "pergunta": "Em qual nível do ECOS esse conhecimento se concentra?",
     "perguntaOrientadora": "Onde o conhecimento está situado?",
-    "introducao": "O nível no ECOS permite compreender em qual parte da estrutura do ecossistema determinado conhecimento está situado.",
+    "funcao": "O nível no ECOS permite compreender em qual parte da estrutura do ecossistema determinado conhecimento está situado.",
     "referencia": "johnson2020, kauschinger2021",
     "valores": [
       {
@@ -66,15 +62,14 @@
         "explicacao": "Compreende o conjunto de participantes, organizações, produtos e plataformas que estabelecem relações e interdependências. Nesse ambiente, diferentes atores colaboram, compartilham recursos e desenvolvem soluções, contribuindo para o funcionamento e a evolução do ECOS.",
         "pergunta": "Responde à pergunta: o conhecimento se concentra nas relações e interdependências entre os participantes?"
       }
-    ],
-    "funcao": "Indica onde o conhecimento se concentra na estrutura do ecossistema."
+    ]
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
     "principal": false,
     "pergunta": "Qual aspecto do ECOS é mais diretamente abordado?",
     "perguntaOrientadora": "A qual aspecto o conhecimento está relacionado?",
-    "introducao": "A dimensão do ECOS permite compreender o principal aspecto ao qual determinado conhecimento está associado.",
+    "funcao": "A dimensão do ECOS permite compreender o principal aspecto ao qual determinado conhecimento está associado.",
     "referencia": "santos2011",
     "valores": [
       {
@@ -98,8 +93,7 @@
         "explicacao": "Abrange os conhecimentos relacionados às pessoas, equipes, organizações e comunidades que participam do ECOS. Envolve aspectos como comunicação, colaboração, interação e compartilhamento de experiências. Esses conhecimentos ajudam a compreender como os participantes estabelecem relações, cooperam e contribuem para as atividades do ecossistema.",
         "pergunta": "Responde à pergunta: o conhecimento diz respeito às relações entre os participantes e ao que os mantém engajados?"
       }
-    ],
-    "funcao": "Indica qual aspecto do ECOS é mais diretamente abordado pelo conhecimento."
+    ]
   },
   "tipoEcos": {
     "rotulo": "Tipo de ECOS observado",
