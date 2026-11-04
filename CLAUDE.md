@@ -139,6 +139,19 @@ nativamente pelo navegador com `type="module"`.
 ## Convenções de interface
 
 - Mobile primeiro. A grade de cards é uma coluna no celular, duas a partir de 48rem e três a partir de 76rem
+- A prosa é justificada, como num texto acadêmico. A lista de seletores mora num lugar só, no fim
+  de `css/base.css`, porque é decisão tipográfica do site inteiro e não de um componente. Junto
+  dela vai `hyphens: auto`, que depende do `lang="pt-BR"` do `html`. Justificar sem hifenizar abre
+  rio de espaço entre as palavras, e o português tem palavra longa
+- Abaixo de 36rem a prosa volta a ser alinhada à esquerda, com `hyphens: manual`. Em coluna
+  estreita o espaço entre as palavras cresce até virar buraco. É o corte que a ficha já usava para
+  `.exemplos-ecos__texto` e `.gerencia__valor`, agora valendo para todas
+- A exceção de celular da ficha mora em `componentes.css`, não em `base.css`, porque
+  `componentes.css` carrega depois e venceria a regra do `base.css` por ordem, já que media query
+  não acrescenta especificidade
+- Não se justifica a intro centralizada de cada seção, que não é prosa corrida; a lista de
+  referências, que a ABNT NBR 6023 manda alinhar à esquerda; a fileira de conhecimentos ligados do
+  Explorar, que é etiqueta e não texto; nem as células estreitas do glossário
 - O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
   nome em título, uma prévia visual de até três linhas da descrição e um link "Ver ficha completa"
   no pé. A ficha preserva a descrição completa. A dimensão não aparece no card, só na ficha
