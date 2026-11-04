@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar, temVerbete } from './dados.js?v=20261104-16';
+import { carregar, temVerbete, citacaoDaReferencia, urlDaReferencia } from './dados.js?v=20261104-17';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -50,13 +50,27 @@ async function iniciar() {
   const referenciasConceituais = [
     'davenport1998', 'seichter2010', 'viana2015',
     'nonaka1997', 'alavi2001', 'johnson2020', 'kauschinger2021',
-    'santos2011', 'santos2012', 'manikas2016', 'cartaxo2018', 'cartaxo2020', 'charmaz2006'
+    'santos2011', 'santos2012', 'manikas2016',
+    'kauschinger2024', 'kauschinger2023', 'zaim2019',
+    'cartaxo2018', 'cartaxo2020', 'charmaz2006'
   ];
 
+  /* Quem tem DOI ou publicação oficial aberta ganha o endereço no fim do
+     verbete, para a citação da Estrutura levar à obra e não só à âncora. */
   const adicionarReferencia = (lista, chave) => {
     const item = document.createElement('li');
     item.id = `referencia-${chave}`;
-    item.textContent = dados.referencias[chave];
+    item.append(citacaoDaReferencia(dados, chave));
+    const url = urlDaReferencia(dados, chave);
+    if (url) {
+      const link = document.createElement('a');
+      link.className = 'lista-referencias__link';
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = url.replace(/^https?:\/\//, '');
+      item.append(' ', link);
+    }
     lista.append(item);
   };
 
@@ -66,7 +80,7 @@ async function iniciar() {
   const lista = el('#lista-referencias');
   Object.keys(dados.referencias)
     .filter((chave) => temVerbete(chave) && !referenciasConceituais.includes(chave))
-    .sort((a, b) => dados.referencias[a].localeCompare(dados.referencias[b], 'pt-BR'))
+    .sort((a, b) => citacaoDaReferencia(dados, a).localeCompare(citacaoDaReferencia(dados, b), 'pt-BR'))
     .forEach((chave) => adicionarReferencia(lista, chave));
 }
 

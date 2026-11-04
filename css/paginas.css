@@ -514,6 +514,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 .estrutura__fonte-item { white-space: nowrap; }
+/* O "Adaptação de" vem antes da citação, no mesmo tom apagado, para avisar que
+   os nomes exibidos não saem do artigo ao pé da letra. */
+.estrutura__fonte-prefixo { color: var(--cor-texto-fraco); }
 .estrutura__fonte-conceitual a {
   color: var(--cor-acento);
   text-decoration: none;
@@ -618,9 +621,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A fonte é da seção inteira, no pé, separada do conteúdo e discreta. */
 .estrutura__taxonomia-secao .estrutura__fonte-conceitual,
 .estrutura__tipos-ecos > .estrutura__fonte-conceitual { margin-top: var(--esp-4); }
-/* As ações de gerência, em fileira de pílulas, no pé da camada. */
-.estrutura__acoes-gerencia { grid-column: 1 / -1; margin-top: var(--esp-2); }
-.estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
+/* As ações de gerência, em pílulas, dentro do cartão que as apresenta. */
+.estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-3); }
 .estrutura__acao-gerencia {
   padding: var(--esp-1) var(--esp-3);
   background: var(--cor-acento-fundo);
@@ -1325,8 +1327,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
-.estudo__link-publicacao { color: var(--cor-acento); text-decoration: none; }
-.estudo__link-publicacao:hover { color: var(--cor-acento-forte); text-decoration: underline; }
+.estudo__link-publicacao,
+.lista-referencias__link { color: var(--cor-acento); text-decoration: none; }
+.estudo__link-publicacao:hover,
+.lista-referencias__link:hover { color: var(--cor-acento-forte); text-decoration: underline; }
+/* O endereço fecha o verbete, quebrando inteiro em vez de partir no meio. */
+.lista-referencias__link { display: inline-block; overflow-wrap: anywhere; }
 
 /* Título que abre um assunto novo dentro da mesma página de texto, antes
    escrito como style inline em sobre.html e referencias.html. */

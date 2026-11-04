@@ -25,7 +25,7 @@ identidade visual muda sem tocar no conteúdo.
 | `dados/desafios.json` | 17 desafios (D01 a D17), com o texto, os estudos e os conhecimentos que os citam |
 | `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e a lista de tipos de ECOS que o estudo observou |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
-| `dados/referencias.json` | Citação completa de cada referência, identificada por chave |
+| `dados/referencias.json` | Citação completa de cada referência, identificada por chave. O valor é texto, ou o par `texto` e `url` quando há DOI ou publicação oficial aberta |
 | `dados/meta.json` | Título, fonte e camadas da estrutura |
 
 `conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
@@ -38,11 +38,17 @@ Está lá `relacoes-confirmadas.json` e `gerencia-conhecimento.json`, este últi
 ### Campos ainda pendentes
 
 `tipoEcos` e `acaoGerencia` estão vazios em todos os conhecimentos, e `tipoEcos` está vazio em todos
-os estudos.
+os estudos. `acaoGerencia` recebe de uma a três das ações do vocabulário, conforme as evidências dos
+estudos primários de cada conhecimento, nunca as três por padrão. Enquanto estiver vazio, a ficha diz
+que as ações ainda não foram atribuídas, em vez de acender todas.
 
-`quemPossui`, `quemPrecisa` e `comoGerenciar` estão preenchidos nos vinte, texto literal da planilha
-de extração, e são o que o bloco de gerência da ficha mostra. A origem está em
-`origem/gerencia-conhecimento.json`.
+`recursosConhecimento`, `participacaoCompartilhamento` e `praticasGerencia` estão preenchidos nos
+vinte, texto literal da planilha de extração, e são o que o bloco de gerência da ficha mostra. A
+origem está em `origem/gerencia-conhecimento.json`, onde ainda se chamam `quemPossui`, `quemPrecisa`
+e `comoGerenciar`. Os nomes antigos afirmavam posse do conhecimento e saíram por isso. O texto dos
+vinte continua o da planilha e ainda está escrito na moldura antiga, de onde o conhecimento vem e
+quem o utiliza, então reescrevê-lo em termos de recursos e de participação é trabalho pendente que
+depende da planilha, não do código.
 
 `portador` e `tipoSaber` continuam vazios nos vinte e não aparecem em tela nenhuma. São anteriores
 aos três campos acima e podem estar sobrando. Não apagar sem confirmar. São as atividades pendentes antes do preenchimento. Enquanto estiverem vazios, o filtro
@@ -185,8 +191,9 @@ nativamente pelo navegador com `type="module"`.
 - As quatro camadas da Estrutura têm funções separadas e nessa progressão. Ponto de Partida diz o
   que é conhecimento em ECOS e quais são as três naturezas epistemológicas, só o conceito.
   Atributos diz como os conhecimentos foram caracterizados, por natureza, nível e dimensão, com a
-  função de cada atributo e as categorias pelo nome. Gerência diz fonte, participantes beneficiados
-  e práticas. Base de Evidências diz o que sustenta o catálogo
+  função de cada atributo e as categorias pelo nome. Gerência diz recursos de conhecimento,
+  participação e compartilhamento, e ações de gerência. Base de Evidências diz o que sustenta o
+  catálogo
 - A natureza aparece nas duas primeiras camadas de propósito, com funções diferentes. No Ponto de
   Partida ela é definida, no Atributos ela é um dos critérios de caracterização. O que não se
   repete é a definição, que existe num lugar só
@@ -208,8 +215,9 @@ nativamente pelo navegador com `type="module"`.
   linha "Responde à pergunta". As duas são literais dos artigos primários
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
-- A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha. "Fonte do conhecimento",
-  na camada de Gerência, é nome de campo e não rótulo de citação
+- A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
+  "Adaptação de" do cartão de ações, que avisa que os três nomes exibidos não são a taxonomia
+  literal do artigo citado
 - A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
   borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
 - Os dois cartões de cima da Base de Evidências têm a mesma forma, título, uma linha de descrição e
@@ -223,9 +231,15 @@ nativamente pelo navegador com `type="module"`.
   de desafios distintos, e o rótulo diz isso
 - Só `registrosRecuperados` é escrito em `meta.json`, porque é número do protocolo da revisão. O
   total de estudos, de conhecimentos e de associações sai dos próprios dados
-- Cartaxo fundamenta a revisão rápida e Charmaz a codificação. Nenhum dos dois é autor das práticas
-  de gerência, que saíram da própria revisão, então a camada de Gerência cita
-  `revisaoRapidaManuscrito`
+- A camada de Gerência tem três cartões, cada um com a sua citação no pé e nenhuma citação única no
+  pé da camada. Recursos de conhecimento cita `kauschinger2024`, que define recurso de fronteira do
+  conhecimento e lista documentação, portais, treinamentos, exemplos de código, blogs e comunidades.
+  Participação e compartilhamento cita `kauschinger2023`, que estuda a comunidade patrocinada e os
+  papéis de organização central, desenvolvedores externos e comunidade. Ações de gerência cita
+  `zaim2019`, que trabalha com geração, captura, compartilhamento e utilização, e por isso a citação
+  leva "Adaptação de", já que os três nomes exibidos condensam esses quatro processos
+- As oito ações genéricas saíram. Não eram taxonomia de ninguém e não tinham descrição. O
+  vocabulário agora tem três, Criação e registro, Compartilhamento, e Uso e aplicação
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
   nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
   painéis
@@ -242,9 +256,10 @@ nativamente pelo navegador com `type="module"`.
   `temVerbete` do `dados.js`, num lugar só
 - A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
   nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
-- O bloco de gerência mostra quem possui, quem precisa e como gerenciar, um por linha. Esses três
-  rótulos não existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O
-  conteúdo continua vindo só de `dados/`
+- O bloco de gerência da ficha mostra recursos de conhecimento, participação e compartilhamento, e
+  ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. Esses rótulos não
+  existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O conteúdo continua
+  vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
 - A entrada principal do catálogo é a natureza do conhecimento

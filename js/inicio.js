@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-16';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-17';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -20,8 +20,12 @@ function criar(tag, className, texto) {
    Cada citação é um item que quebra inteiro, separado por espaço e não por
    ponto e vírgula, senão o separador sobra pendurado no fim da linha quando a
    lista quebra. */
-function fonteConceitual(chaves) {
+function fonteConceitual(chaves, prefixo) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
+  /* O prefixo existe para a citação que não sustenta o conteúdo ao pé da
+     letra, como "Adaptação de", que avisa que os nomes exibidos não são a
+     taxonomia literal do artigo. */
+  if (prefixo) fonte.append(criar('span', 'estrutura__fonte-prefixo', `${prefixo} `));
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
     const item = criar('span', 'estrutura__fonte-item');
@@ -49,9 +53,9 @@ const ICONES_ESTRUTURA = {
   conhecimento: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
   gerencia: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
-  fontes: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
-  receptores: [['circle', { cx: 10, cy: 6.5, r: 3 }], ['path', { d: 'M4.5 16c.8-2.8 2.7-4.2 5.5-4.2s4.7 1.4 5.5 4.2' }]],
-  praticas: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
+  recursos: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
+  participacao: [['circle', { cx: 7, cy: 7, r: 2.5 }], ['circle', { cx: 14, cy: 8, r: 2 }], ['path', { d: 'M2.8 16c.5-3 2-4.5 4.2-4.5s3.7 1.5 4.2 4.5M12.2 12.5c2.4-.1 4 1.2 4.5 3.5' }]],
+  acoes: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
   nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]],
@@ -112,28 +116,34 @@ function composicaoNaturezas(dados, definicao) {
   return composicao;
 }
 
-function blocoGerencia({ titulo, rotulo, descricao, icone }) {
+/* As etiquetas vêm do vocabulário, nunca escritas aqui, para acompanharem
+   sozinhas qualquer mudança na classificação. */
+function etiquetasDeAcao(dados) {
+  const lista = criar('ul', 'estrutura__acoes-lista');
+  dados.classificacoes.acaoGerencia.valores.forEach((valor) =>
+    lista.append(criar('li', 'estrutura__acao-gerencia', valor.valor))
+  );
+  return lista;
+}
+
+/**
+ * Um cartão da camada. Os três têm a mesma forma, ícone, título, texto e a
+ * citação no pé, e o das ações traz ainda as etiquetas.
+ */
+function blocoGerencia(dados, campo) {
   const bloco = criar('section', 'estrutura__gerencia-item');
-  const cabecalho = cabecalhoComIcone(icone, rotulo || titulo, 'estrutura__gerencia-cabecalho');
-  bloco.append(cabecalho, criar('p', 'estrutura__gerencia-texto', descricao));
+  bloco.append(
+    cabecalhoComIcone(campo.icone, campo.rotulo, 'estrutura__gerencia-cabecalho'),
+    criar('p', 'estrutura__gerencia-texto', campo.descricao)
+  );
+  if (campo.acoes) bloco.append(etiquetasDeAcao(dados));
+  if (campo.referencia) bloco.append(fonteConceitual(campo.referencia, campo.prefixoFonte));
   return bloco;
 }
 
 function composicaoGerencia(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-gerencia');
-  definicao.campos.forEach((campo) => composicao.append(blocoGerencia(campo)));
-
-  /* As ações vêm do vocabulário, nunca escritas aqui, para acompanharem
-     sozinhas qualquer mudança na classificação. */
-  const acoes = criar('section', 'estrutura__acoes-gerencia');
-  acoes.append(criar('p', 'estrutura__rotulo', definicao.tituloAcoes));
-  const lista = criar('ul', 'estrutura__acoes-lista');
-  dados.classificacoes.acaoGerencia.valores.forEach((valor) =>
-    lista.append(criar('li', 'estrutura__acao-gerencia', valor.valor))
-  );
-  acoes.append(lista);
-  composicao.append(acoes);
-
+  definicao.campos.forEach((campo) => composicao.append(blocoGerencia(dados, campo)));
   if (definicao.nota) composicao.append(notaMetodologica(definicao.nota));
   return composicao;
 }
@@ -367,7 +377,6 @@ function explicacaoClassificacao(dados, aba, definicao) {
 
 function explicacaoGerencia(dados, aba, definicao) {
   const composicao = composicaoGerencia(dados, definicao);
-  composicao.append(fonteConceitual(definicao.referencias));
   const resultado = painel(
     definicao,
     aba,

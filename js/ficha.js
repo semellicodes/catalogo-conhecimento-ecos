@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-16';
+import { referenciaCurta } from './dados.js?v=20261104-17';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -298,15 +298,34 @@ function tiposDeEcos(dados, conhecimento) {
   return fecharSecao(bloco);
 }
 
-/* Os três campos de gerência não afirmam posse do conhecimento. Eles indicam
-   de onde ele tende a vir, quem pode precisar dele e como pode ser cuidado. */
+/* Os campos de gerência não afirmam posse do conhecimento. Eles dizem por que
+   recursos ele circula, quem participa dessa circulação e que ações o apoiam.
+   Os rótulos moram aqui porque são do desenho da ficha, não do vocabulário. */
 const GERENCIA = [
-  ['quemPossui', 'Onde o conhecimento é gerado ou registrado'],
-  ['quemPrecisa', 'Quem utiliza ou se beneficia do conhecimento'],
-  ['comoGerenciar', 'Práticas de gerência do conhecimento']
+  ['recursosConhecimento', 'Recursos de conhecimento no ECOS'],
+  ['participacaoCompartilhamento', 'Participação e compartilhamento no ECOS'],
+  ['praticasGerencia', 'Ações de gerência']
 ];
 
 const texto = (bruto) => (Array.isArray(bruto) ? bruto.join(', ') : bruto) || '';
+
+/**
+ * As ações associadas a este conhecimento, entre as três do vocabulário. São
+ * uma, duas ou três, conforme as evidências dos estudos primários, e nunca as
+ * três por padrão. Enquanto o campo estiver vazio, a ficha diz que está
+ * pendente em vez de acender todas.
+ */
+function acoesDeGerencia(dados, conhecimento) {
+  const escolhidas = conhecimento.acaoGerencia || [];
+  if (!escolhidas.length) {
+    return criar('p', 'gerencia__pendente', 'Ações ainda não atribuídas a este conhecimento.');
+  }
+  const lista = criar('ul', 'gerencia__acoes');
+  dados.classificacoes.acaoGerencia.valores
+    .filter((valor) => escolhidas.includes(valor.valor))
+    .forEach((valor) => lista.append(criar('li', 'gerencia__acao', valor.valor)));
+  return lista;
+}
 
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
@@ -320,6 +339,13 @@ function gerencia(dados, conhecimento) {
     const conteudo = texto(conhecimento[chave]);
     if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
   });
+
+  /* As etiquetas fecham o bloco, abaixo do texto das práticas, porque são a
+     forma resumida daquilo que o texto acima descreve por extenso. */
+  const acoes = criar('dd', 'gerencia__valor gerencia__valor--acoes');
+  acoes.append(acoesDeGerencia(dados, conhecimento));
+  if (!texto(conhecimento.praticasGerencia)) lista.append(criar('dt', 'gerencia__rotulo', 'Ações de gerência'));
+  lista.append(acoes);
 
   bloco.append(lista);
   return fecharSecao(bloco);
