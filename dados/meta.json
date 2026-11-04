@@ -92,8 +92,8 @@
       "referencia": "nonaka1997, alavi2001, johnson2020, kauschinger2021, santos2011"
     },
     "tipoEcos": {
-      "titulo": "Exemplos de ECOS observados",
-      "texto": "Os exemplos mostram contextos empíricos ou analíticos presentes nos estudos primários associados a esse conhecimento.",
+      "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
+      "texto": "Este campo apresenta em que tipos de ECOS este conhecimento foi observado pelos estudos primários associados a ele. Quando os estudos primários não relatam explicitamente o conhecimento em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências, o que não significa que o conhecimento seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
       "referencia": "manikas2016"
     },
     "gerencia": {
@@ -108,7 +108,7 @@
       "referencia": "revisaoRapidaManuscrito"
     },
     "estudos": {
-      "titulo": "Estudos primários",
+      "titulo": "Estudos primários associados",
       "texto": "Os estudos primários associados a cada conhecimento constituem a base científica de sua identificação e caracterização. As informações bibliográficas permitem consultar as pesquisas que sustentam os conhecimentos apresentados no catálogo.",
       "referencia": "cartaxo2018, cartaxo2020"
     }

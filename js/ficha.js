@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-39';
+import { referenciaCurta } from './dados.js?v=20261104-41';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -304,7 +304,7 @@ function classificacao(dados, conhecimento) {
 
 /** Tipo de ECOS é evidencial e independente da classificação principal. */
 function tiposDeEcos(dados, conhecimento) {
-  const bloco = secao(dados, 'Exemplos de ECOS em que esse conhecimento foi observado', 'tipoEcos');
+  const bloco = secao(dados, 'Exemplos de ECOS em que o conhecimento foi observado', 'tipoEcos');
   bloco.classList.add('bloco-ficha--exemplos');
   bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
