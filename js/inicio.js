@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-58';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-59';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -140,21 +140,22 @@ function cabecalhoComIcone(icone, titulo, classe) {
  */
 function cartaoDeNatureza(valor) {
   const cartao = criar('article', 'atributo-card');
-  cartao.append(criar('h4', 'atributo-card__titulo', valor.valor));
-  if (valor.subdivisaoDe) cartao.append(criar('p', 'atributo-card__subdivisao', valor.subdivisaoDe));
-  cartao.append(criar('p', 'atributo-card__intro', valor.explicacao));
+  cartao.append(
+    criar('h4', 'atributo-card__titulo', valor.valor),
+    criar('p', 'atributo-card__intro', valor.explicacao)
+  );
   if (valor.referencia) cartao.append(fonteConceitual(valor.referencia));
   return cartao;
 }
 
-/* A ponte entre o conceito e os cartões. Diz que o conhecimento se divide em
-   explícito e tácito, define o tácito e anuncia a subdivisão, para quem lê
-   chegar aos cartões sabendo o que eles são. */
-function ponteParaClassificacao(conteudo) {
-  const bloco = criar('section', 'estrutura__nota-secao estrutura__ponte');
-  bloco.append(criar('p', 'estrutura__ponte-texto', conteudo.texto));
-  if (conteudo.referencias) bloco.append(fonteConceitual(conteudo.referencias));
-  return bloco;
+/* O divisor entre o conceito e os cartões. Uma frase centralizada com uma
+   linha fina saindo para cada lado, sem fundo, borda, sombra, ícone nem
+   cartão. O texto vem em caixa normal do dado e quem o põe em maiúscula é o
+   CSS, como nos outros rótulos do catálogo. */
+function divisorDeClassificacao(texto) {
+  const divisor = criar('h4', 'estrutura__divisor');
+  divisor.append(criar('span', 'estrutura__divisor-texto', texto));
+  return divisor;
 }
 
 function composicaoNaturezas(dados) {
@@ -386,7 +387,7 @@ function cartaoConceito(icone, conteudo) {
  */
 /**
  * A aba vai do conceito à classificação, nessa ordem. Cartão de conceito,
- * ponte que apresenta a divisão, e os três cartões de categoria.
+ * divisor que anuncia a classificação, e os três cartões de categoria.
  *
  * Nível no ECOS e dimensão do ECOS saíram daqui. Eles caracterizam o
  * conhecimento, não definem o que ele é, e a aba agora trata só do conceito e
@@ -394,7 +395,7 @@ function cartaoConceito(icone, conteudo) {
  */
 function explicacaoConhecimento(dados, aba, definicao) {
   const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
-  if (definicao.classificacao) conteudo.push(ponteParaClassificacao(definicao.classificacao));
+  if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
   conteudo.push(composicaoNaturezas(dados));
   return painel(definicao, aba, '', conteudo, 'estrutura__grade--conhecimento');
 }
