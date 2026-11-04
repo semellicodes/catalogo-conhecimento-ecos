@@ -93,7 +93,7 @@
     },
     "tipoEcos": {
       "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
-      "texto": "As três caixas mostram em que tipos de ECOS este conhecimento foi observado pelos estudos primários associados a ele. A caixa acesa indica que houve relato naquele tipo e a apagada indica que não houve, o que não significa que o conhecimento não se aplique ali, apenas que os estudos analisados não o relataram. Quando um tipo observado tem contexto registrado, a caixa abre esse detalhe abaixo da fileira.",
+      "texto": "Este campo apresenta em que tipos de ECOS este conhecimento foi observado pelos estudos primários associados a ele. Quando os estudos primários não relatam explicitamente o conhecimento em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências, o que não significa que o conhecimento seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
       "referencia": "manikas2016"
     },
     "gerencia": {
