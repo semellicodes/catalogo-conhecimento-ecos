@@ -560,7 +560,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-4);
-  margin-top: var(--esp-4);
+  margin-top: var(--esp-3);
   align-items: start;
   min-width: 0;
 }
@@ -585,20 +585,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__coluna-subtitulo {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
+  font-size: var(--tam-xs);
+  line-height: 1.45;
 }
 /* As três seções da taxonomia, uma abaixo da outra. Nunca lado a lado, porque
    texto corrido em coluna estreita é o que atravancava a leitura da aba. */
 .estrutura__taxonomia-secoes {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
-  margin-top: var(--esp-4);
+  gap: var(--esp-3);
+  margin-top: var(--esp-3);
 }
 .estrutura__taxonomia-secao {
   min-width: 0;
-  padding: var(--esp-4);
+  padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda-suave);
   border-radius: var(--raio);
@@ -612,17 +612,19 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__taxonomia-secao-descricao {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
+  font-size: var(--tam-xs);
+  line-height: 1.45;
 }
 .estrutura__categorias-atributo {
   display: grid;
-  gap: var(--esp-3);
-  margin-top: var(--esp-4);
+  gap: var(--esp-2);
+  margin-top: var(--esp-3);
 }
+/* O separador entre categorias é só a linha e a folga dela. Antes somava o gap
+   da grade ao próprio recuo e abria 24px entre uma categoria e a outra. */
 .estrutura__categoria-atributo + .estrutura__categoria-atributo {
   padding-top: var(--esp-3);
-  border-top: var(--borda-suave);
+  border-top: var(--borda-fina);
 }
 .estrutura__categoria-atributo-nome {
   color: var(--cor-titulo);
@@ -633,21 +635,30 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__categoria-atributo-texto {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
+  font-size: var(--tam-xs);
+  line-height: 1.45;
 }
 /* A pergunta é texto auxiliar, menor e apagado, para não disputar com a
    descrição da categoria logo acima dela. */
 .estrutura__categoria-atributo-pergunta {
   margin-top: var(--esp-2);
+  margin-bottom: var(--esp-2);
   color: var(--cor-texto-fraco);
-  font-size: var(--tam-xs);
+  font-size: var(--tam-micro);
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.45;
 }
-/* A fonte é da seção inteira, no pé, separada do conteúdo e discreta. */
+/* A fonte é da seção inteira, no pé, separada do conteúdo e discreta. Na mesma
+   escala das outras abas, para as quatro lerem igual. */
 .estrutura__taxonomia-secao .estrutura__fonte-conceitual,
-.estrutura__tipos-ecos > .estrutura__fonte-conceitual { margin-top: var(--esp-4); }
+.estrutura__tipos-ecos > .estrutura__fonte-conceitual {
+  padding-top: var(--esp-2);
+  border-top: var(--borda-fina);
+  font-size: var(--tam-citacao);
+  line-height: 1.35;
+}
+.estrutura__taxonomia-secao .estrutura__fonte-conceitual { margin-top: var(--esp-2); }
+.estrutura__tipos-ecos > .estrutura__fonte-conceitual { margin-top: var(--esp-3); }
 /* As ações de gerência, em pílulas, dentro do cartão que as apresenta. */
 .estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
 .estrutura__acao-gerencia {
@@ -696,17 +707,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__tipos-ecos-intro,
 .estrutura__tipo-ecos-texto {
   color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-  line-height: 1.5;
+  font-size: var(--tam-xs);
+  line-height: 1.4;
 }
-.estrutura__tipos-ecos-intro { margin-top: var(--esp-2); }
+.estrutura__tipos-ecos-intro { margin-top: var(--esp-2); line-height: 1.45; }
 /* Cartões verticais, um por tipo. A coluna é estreita e três lado a lado
    voltariam a espremer o texto. */
 .estrutura__tipos-ecos-lista {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-3);
-  margin-top: var(--esp-4);
+  gap: var(--esp-2);
+  margin-top: var(--esp-3);
 }
 .estrutura__tipo-ecos {
   min-width: 0;
@@ -746,7 +757,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel { padding: var(--esp-5); }
   /* A Gerência aperta o quadro, porque os três cartões já trazem o seu próprio
      respiro e o painel só somava moldura em volta. */
-  .estrutura__painel--gerencia { padding: var(--esp-4); }
+  .estrutura__painel--gerencia,
+  .estrutura__painel--classificacao { padding: var(--esp-4); }
   .estrutura__painel-intro {
     margin-top: var(--esp-4);
     padding: var(--esp-3) var(--esp-4);
@@ -755,7 +767,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     font-size: 0.875rem;
     line-height: 1.5;
   }
-  .estrutura__painel--gerencia .estrutura__painel-intro { margin-top: var(--esp-3); }
+  .estrutura__painel--gerencia .estrutura__painel-intro,
+  .estrutura__painel--classificacao .estrutura__painel-intro { margin-top: var(--esp-3); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
   .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); }
   .estrutura__composicao-conhecimento,
@@ -782,6 +795,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 39.99rem) {
+  .estrutura__categoria-atributo-pergunta { font-size: var(--tam-xs); }
   .estrutura__gerencia-texto,
   .estrutura__nota-texto { font-size: var(--tam-sm); }
   .estrutura__mapa { margin-top: var(--esp-5); }
