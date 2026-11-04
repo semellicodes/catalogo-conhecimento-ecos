@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-51';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-52';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -361,12 +361,29 @@ function blocoGerenciaDoEcos(dados, conteudo) {
   return bloco;
 }
 
+/* O conceito, o título com ícone e a fonte numa composição só. Eram três
+   elementos soltos, o cabeçalho do painel, uma caixa de texto e a citação
+   abaixo dela, e a separação não dizia nada que a leitura já não dissesse. */
+function cartaoConceito(icone, conteudo) {
+  const cartao = criar('article', 'estrutura__cartao-conceito');
+  cartao.append(
+    cabecalhoComIcone(icone, conteudo.titulo, 'estrutura__conceito-cabecalho'),
+    criar('p', 'estrutura__conceito-texto', conteudo.texto)
+  );
+  if (conteudo.referencias) cartao.append(fonteConceitual(conteudo.referencias));
+  return cartao;
+}
+
+/**
+ * O cartão de conceito entra na grade, e não antes dela, para herdar sozinho
+ * a largura e o vão vertical dos três cartões de atributo. É o mesmo arranjo
+ * da nota que abre a aba de Atributos.
+ */
 function explicacaoConhecimento(dados, aba, definicao) {
-  const contexto = criar('div', 'estrutura__contexto-academico');
-  contexto.append(fonteConceitual(definicao.referencias));
-  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoAtributos(dados)], 'estrutura__grade--conhecimento');
-  resultado.classList.add('estrutura__painel--conhecimento');
-  return resultado;
+  return painel(definicao, aba, '', [
+    cartaoConceito(definicao.icone, definicao.cartaoIntroducao),
+    composicaoAtributos(dados)
+  ], 'estrutura__grade--conhecimento');
 }
 
 /**
