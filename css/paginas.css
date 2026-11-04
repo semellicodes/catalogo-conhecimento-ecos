@@ -376,6 +376,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   height: 1px;
   background: var(--cor-linha-suave);
 }
+.estrutura__divisor-texto--curto { display: none; }
 .estrutura__divisor-texto {
   color: var(--cor-texto-suave);
   font-family: var(--fonte-mono);
@@ -794,35 +795,41 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
 }
-/* Até 600px o divisor deixa de ser divisor. As duas linhas laterais custam a
-   largura que o texto precisa, e com elas a frase quebrava em quatro linhas
-   espremidas no meio de dois riscos de vinte pixels. Vira título de faixa, em
-   largura inteira. */
+/* Até 600px o divisor deixa de ser divisor e a redação longa dá lugar à curta.
+   Encolher a longa não resolvia, porque oitenta e dois caracteres em caixa
+   alta não cabem em 308px sem virar três linhas de texto espremido. Vira
+   título de seção comum, alinhado à esquerda, com uma linha fina acima. */
 @media (max-width: 37.5rem) {
   .estrutura__divisor {
     display: block;
-    padding: var(--esp-3) var(--esp-2) var(--esp-2);
+    margin-top: var(--esp-4);
+    margin-bottom: var(--esp-3);
+    padding: var(--esp-3) 0 0;
+    border-top: var(--borda-fina);
     /* Tamanho e entrelinha vão no bloco, não só no span. O span é inline,
        então quem dimensiona cada linha é o strut do h4, e ele usava o tamanho
-       herdado do painel. Cada linha media 21px em vez de 14,85. */
-    font-size: var(--tam-citacao);
-    line-height: 1.35;
-    /* Centrar e equilibrar são do bloco, não do span. No span, que é inline,
-       o text-align do desenho antigo deixava de valer assim que a grade saía. */
-    text-align: center;
-    text-wrap: balance;
+       herdado do painel. */
+    font-size: var(--tam-xs);
+    line-height: 1.4;
+    text-align: left;
   }
   .estrutura__divisor::before,
   .estrutura__divisor::after { display: none; }
-  .estrutura__divisor-texto {
-    font-size: var(--tam-citacao);
+  .estrutura__divisor-texto { display: none; }
+  .estrutura__divisor-texto--curto {
+    display: inline;
+    color: var(--cor-titulo);
+    font-family: var(--fonte-texto);
+    font-size: var(--tam-xs);
     font-weight: 700;
-    /* O rótulo usa 0.08em, e em mono maiúsculo isso custa quase um caractere
-       a cada doze. É o que empurrava a frase para a quarta linha, então aqui
-       o espaço entre letras fica só o da sigla. */
-    letter-spacing: var(--entre-letras-sigla);
-    line-height: 1.35;
+    letter-spacing: normal;
+    line-height: 1.4;
+    text-transform: none;
   }
+  /* Os cartões ficam leves, não comprimidos. */
+  .estrutura__categorias-classificacao--fileira { gap: var(--esp-3); }
+  .estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao { padding: var(--esp-3); }
+  .estrutura__categoria-classificacao-texto { line-height: 1.45; }
 }
 @media (max-width: 39.99rem) {
   .estrutura__categoria-atributo-pergunta { font-size: var(--tam-xs); }

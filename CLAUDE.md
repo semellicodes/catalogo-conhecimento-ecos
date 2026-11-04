@@ -226,13 +226,16 @@ nativamente pelo navegador com `type="module"`.
   literal do artigo citado
 - A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
   borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
-- Até 600px o divisor deixa de ser divisor e vira título de faixa, em largura inteira. As duas
-  linhas laterais custam a largura de que o texto precisa, e com elas a frase quebrava em quatro
-  linhas espremidas entre dois riscos de vinte pixels. O espaçamento entre letras cai para o da
-  sigla, porque em mono maiúsculo o do rótulo custa quase um caractere a cada doze
-- Tamanho, entrelinha, centralização e `text-wrap: balance` vão no `h4` do divisor, não no `span`
-  de dentro. O span é inline, então quem dimensiona cada linha é o strut do bloco, e as três
-  propriedades do bloco deixam de valer no span assim que a grade sai
+- Até 600px o divisor some e a redação longa dá lugar à curta, `tituloNaturezasCurto`. Encolher a
+  longa não resolve, porque oitenta e dois caracteres em caixa alta não cabem em 308px sem virar
+  três linhas de texto espremido. No celular vira título de seção comum, em sans, caixa normal,
+  13px em peso 700, alinhado à esquerda e com uma linha fina acima
+- As duas redações ficam no DOM e quem está fora do tamanho de tela sai com `display: none`, que
+  também a tira da árvore de acessibilidade. O leitor de tela anuncia uma só, conferido pelo
+  `innerText` nas duas larguras
+- Tamanho, entrelinha e alinhamento vão no `h4` do divisor, não no `span` de dentro. O span é
+  inline, então quem dimensiona cada linha é o strut do bloco, e as propriedades do bloco deixam
+  de valer no span assim que a grade sai
 - Os dois cartões de cima da Base de Evidências têm a mesma forma, título, uma linha de descrição e
   dois números grandes lado a lado. Quem cresce para baixo é o par de números, não a descrição,
   senão os números desalinham entre os cartões quando um rótulo quebra em duas linhas

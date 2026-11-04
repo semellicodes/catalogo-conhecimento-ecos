@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-30';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-31';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -100,7 +100,13 @@ function cabecalhoComIcone(icone, titulo, classe) {
 function composicaoNaturezas(dados, definicao) {
   const composicao = criar('article', 'estrutura__composicao-conhecimento');
   const divisor = criar('h4', 'estrutura__divisor');
+  /* Duas redações do mesmo título, a longa e a curta. Quem está fora do
+     tamanho de tela sai com display none, que também o tira da árvore de
+     acessibilidade, então o leitor de tela anuncia uma só. */
   divisor.append(criar('span', 'estrutura__divisor-texto', definicao.tituloNaturezas));
+  if (definicao.tituloNaturezasCurto) {
+    divisor.append(criar('span', 'estrutura__divisor-texto estrutura__divisor-texto--curto', definicao.tituloNaturezasCurto));
+  }
   composicao.append(divisor);
   const fileira = criar('ul', 'estrutura__categorias-classificacao estrutura__categorias-classificacao--fileira');
   dados.classificacoes.natureza.valores.forEach((valor) => {
