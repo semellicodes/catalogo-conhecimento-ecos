@@ -133,44 +133,28 @@
     "funcao": "Identifica como o valor é criado no ecossistema e sob qual regime as contribuições circulam."
   },
   "acaoGerencia": {
-    "rotulo": "Gerência do conhecimento no ECOS",
+    "rotulo": "Ações de gerência",
     "principal": false,
     "pendente": true,
-    "pergunta": "Como esse conhecimento pode ser identificado, acessado, compartilhado, atualizado ou preservado no ecossistema?",
-    "referencia": "revisaoRapidaManuscrito",
+    "pergunta": "Que ações de gerência apoiam esse conhecimento no ecossistema?",
+    "referencia": "zaim2019",
     "valores": [
       {
-        "valor": "Disponibilização",
-        "descricao": ""
+        "valor": "Criação e registro",
+        "descricao": "Geração de novos conhecimentos e sua captura em documentos, processos e sistemas, de modo que fiquem recuperáveis para uso posterior.",
+        "referencia": "zaim2019"
       },
       {
         "valor": "Compartilhamento",
-        "descricao": ""
+        "descricao": "Troca de conhecimento entre os participantes, para que ele circule além de quem o gerou.",
+        "referencia": "zaim2019"
       },
       {
-        "valor": "Transferência",
-        "descricao": ""
-      },
-      {
-        "valor": "Registro",
-        "descricao": ""
-      },
-      {
-        "valor": "Localização",
-        "descricao": ""
-      },
-      {
-        "valor": "Compreensão",
-        "descricao": ""
-      },
-      {
-        "valor": "Manutenção",
-        "descricao": ""
-      },
-      {
-        "valor": "Reutilização",
-        "descricao": ""
+        "valor": "Uso e aplicação",
+        "descricao": "Utilização efetiva do conhecimento no trabalho, que é o que converte os demais processos em resultado.",
+        "referencia": "zaim2019"
       }
-    ]
+    ],
+    "funcao": "Reúnem ações que podem ser associadas aos conhecimentos catalogados para apoiar sua criação, registro, compartilhamento e aplicação no ECOS."
   }
 }

@@ -7,7 +7,7 @@
    Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
    servia metade nova e metade velha. O ferramentas/versionar.py troca esta
    linha e todas as outras de uma vez. */
-const VERSAO = '20261104-16';
+const VERSAO = '20261104-18';
 
 const ARQUIVOS = Object.fromEntries(
   ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
@@ -76,6 +76,11 @@ const ROTULOS_REFERENCIAS = {
   davenport1998: 'Davenport (1998)',
   johnson2020: 'Johnson et al. (2020)',
   kauschinger2021: 'Kauschinger et al. (2021)',
+  /* Os três autores escritos por extenso, e não abreviados em et al., porque
+     são três trabalhos de Kauschinger no catálogo e a camada de Gerência cita
+     dois deles lado a lado. */
+  kauschinger2023: 'Kauschinger, Münch e Schreieck (2023)',
+  kauschinger2024: 'Kauschinger, Schreieck e Krcmar (2024)',
   manikas2016: 'Manikas (2016)',
   nonaka1997: 'Nonaka e Takeuchi (1997)',
   /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */
@@ -83,7 +88,8 @@ const ROTULOS_REFERENCIAS = {
   santos2011: 'Santos e Werner (2011)',
   santos2012: 'Santos et al. (2012)',
   seichter2010: 'Seichter et al. (2010)',
-  viana2015: 'Viana e Conte (2015)'
+  viana2015: 'Viana e Conte (2015)',
+  zaim2019: 'Zaim, Muhammed e Tarim (2019)'
 };
 
 export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;
@@ -96,6 +102,17 @@ const SEM_VERBETE = new Set(['revisaoRapidaManuscrito']);
 
 export const temVerbete = (chave) => !SEM_VERBETE.has(chave);
 
+/* Uma referência é texto ou um par de texto e endereço. O endereço existe para
+   as que têm DOI ou publicação oficial aberta, e quem desenha a lista decide se
+   abre link. Aqui só se normaliza a forma, num lugar só. */
+const verbete = (dados, chave) => {
+  const bruto = dados.referencias[chave];
+  return typeof bruto === 'string' ? { texto: bruto, url: '' } : bruto || { texto: '', url: '' };
+};
+
+export const citacaoDaReferencia = (dados, chave) => verbete(dados, chave).texto;
+export const urlDaReferencia = (dados, chave) => verbete(dados, chave).url || '';
+
 export function referenciaCurta(dados, chaves) {
   if (!chaves) return '';
   return chaves
@@ -103,7 +120,7 @@ export function referenciaCurta(dados, chaves) {
     .map((c) => {
       const chave = c.trim();
       if (ROTULOS_REFERENCIAS[chave]) return ROTULOS_REFERENCIAS[chave];
-      const texto = dados.referencias[chave];
+      const texto = citacaoDaReferencia(dados, chave);
       if (!texto) return '';
       const autor = texto.split(';')[0].split(',')[0].trim();
       const ano = (texto.match(/\b(19|20)\d{2}\b/) || [''])[0];

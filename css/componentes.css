@@ -990,6 +990,25 @@
   hyphens: auto;
 }
 .gerencia__valor:last-child { margin-bottom: 0; }
+/* As ações do conhecimento, em pílulas, com o mesmo par de cores das etiquetas
+   da camada de Gerência. São uma, duas ou três, nunca as três por padrão. */
+.gerencia__acoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.gerencia__acao {
+  padding: var(--esp-1) var(--esp-3);
+  background: var(--cor-acento-fundo);
+  border: 1px solid var(--cor-acento-linha);
+  border-radius: var(--raio-pilula);
+  color: var(--cor-acento);
+  font-size: var(--tam-xs);
+  line-height: 1.6;
+}
+.gerencia__pendente {
+  margin: 0;
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-xs);
+  font-style: italic;
+  line-height: 1.5;
+}
 
 @media (max-width: 35.99rem) {
   .gerencia__introducao,

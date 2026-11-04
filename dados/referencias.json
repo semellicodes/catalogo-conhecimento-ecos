@@ -19,5 +19,17 @@
   "davenport1998": "DAVENPORT, T. Conhecimento empresarial. Rio de Janeiro: Campus, 1998.",
   "seichter2010": "SEICHTER, D.; DHUNGANA, D.; PLEUSS, A.; HAUPTMANN, B. Knowledge management in software ecosystems, software artefacts as first-class citizens. In: Fourth European Conference on Software Architecture, Companion Volume, 2010, p. 119 a 126.",
   "viana2015": "VIANA, D.; CONTE, T. Oportunizando a aprendizagem e gerência do conhecimento em ecossistemas de software. In: IX Workshop em Desenvolvimento Distribuído de Software, Ecossistemas de Software e Sistemas-de-Sistemas, 2015, p. 73 a 76.",
-  "santos2012": "SANTOS, R.; WERNER, C.; BARBOSA, O.; ALVES, C. Software ecosystems, trends and impacts on software engineering. In: 26th Brazilian Symposium on Software Engineering, 2012, p. 206 a 210."
+  "santos2012": "SANTOS, R.; WERNER, C.; BARBOSA, O.; ALVES, C. Software ecosystems, trends and impacts on software engineering. In: 26th Brazilian Symposium on Software Engineering, 2012, p. 206 a 210.",
+  "kauschinger2024": {
+    "texto": "KAUSCHINGER, M.; SCHREIECK, M.; KRCMAR, H. The role of knowledge boundary resources for platform ecosystems, insights and design implications from SAP's Business Technology Platform. R&D Management, v. 54, n. 3, p. 470 a 495, 2024.",
+    "url": "https://doi.org/10.1111/radm.12644"
+  },
+  "kauschinger2023": {
+    "texto": "KAUSCHINGER, M.; MÜNCH, C.; SCHREIECK, M. Knowledge sharing in platform ecosystems through sponsored online communities, the influence of user roles and media richness. In: 31st European Conference on Information Systems (ECIS), Kristiansand, Noruega, 2023.",
+    "url": "https://aisel.aisnet.org/ecis2023_rp/242"
+  },
+  "zaim2019": {
+    "texto": "ZAIM, H.; MUHAMMED, S.; TARIM, M. Relationship between knowledge management processes and performance, critical role of knowledge utilization in organizations. Knowledge Management Research & Practice, v. 17, n. 1, p. 24 a 38, 2019.",
+    "url": "https://doi.org/10.1080/14778238.2018.1538669"
+  }
 }

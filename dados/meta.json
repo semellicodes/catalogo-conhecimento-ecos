@@ -2,7 +2,7 @@
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
   "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes participantes do ECOS.",
   "fonte": "Revisão Rápida da Literatura, conduzida sobre 18 estudos primários.",
-  "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve identificar onde os conhecimentos são gerados ou registrados, quem pode se beneficiar deles e quais práticas favorecem seu acesso, compartilhamento, atualização e preservação entre os participantes do ecossistema.",
+  "gerenciaConhecimento": "A gerência do conhecimento em ECOS envolve disponibilizar recursos adequados, favorecer a participação dos diferentes atores e apoiar práticas que permitam criar, registrar, compartilhar e aplicar conhecimentos no ecossistema.",
   "estruturaCatalogo": {
     "abas": [
       {
@@ -30,32 +30,32 @@
       {
         "id": "gerencia",
         "rotulo": "3. Gerência do conhecimento",
-        "tituloPainel": "Gerência do Conhecimento",
+        "tituloPainel": "Gerência do conhecimento no ECOS",
         "icone": "gerencia",
-        "introducao": "A gerência do conhecimento em ECOS envolve práticas voltadas à identificação, captura, compartilhamento, organização e reutilização dos conhecimentos existentes entre os participantes do ecossistema.",
-        "nota": "As oito ações foram definidas a partir dos resultados da revisão rápida deste trabalho e não reproduzem um esquema publicado. Elas descrevem o que precisa acontecer com um conhecimento para que ele chegue a quem precisa dele.",
-        "referencias": "revisaoRapidaManuscrito",
+        "introducao": "A gerência do conhecimento em ECOS envolve disponibilizar recursos adequados, favorecer a participação dos diferentes atores e apoiar práticas que permitam criar, registrar, compartilhar e aplicar conhecimentos no ecossistema.",
         "campos": [
           {
-            "titulo": "Fonte do conhecimento",
-            "rotulo": "Fonte do conhecimento",
-            "descricao": "Indicam onde o conhecimento tende a ser gerado ou registrado.",
-            "icone": "fontes"
+            "rotulo": "Recursos de conhecimento no ECOS",
+            "descricao": "Indicam os recursos por meio dos quais o conhecimento pode ser disponibilizado e acessado pelos participantes, como documentação técnica, portais, treinamentos, exemplos de código, blogs e comunidades.",
+            "icone": "recursos",
+            "referencia": "kauschinger2024"
           },
           {
-            "titulo": "Participantes que se beneficiam",
-            "rotulo": "Participantes que se beneficiam",
-            "descricao": "Indicam quais participantes podem utilizar ou se beneficiar do conhecimento.",
-            "icone": "receptores"
+            "rotulo": "Participação e compartilhamento no ECOS",
+            "descricao": "Evidenciam como organização central, desenvolvedores externos e comunidades contribuem para criar, compartilhar, avaliar e utilizar conhecimentos no ecossistema.",
+            "icone": "participacao",
+            "referencia": "kauschinger2023"
           },
           {
-            "titulo": "Práticas de gerência",
-            "rotulo": "Práticas de gerência",
-            "descricao": "Reúnem orientações que favorecem o acesso, compartilhamento, atualização e preservação do conhecimento.",
-            "icone": "praticas"
+            "rotulo": "Ações de gerência",
+            "descricao": "Reúnem ações que podem ser associadas aos conhecimentos catalogados para apoiar sua criação, registro, compartilhamento e aplicação no ECOS.",
+            "icone": "acoes",
+            "referencia": "zaim2019",
+            "prefixoFonte": "Adaptação de",
+            "acoes": true
           }
         ],
-        "tituloAcoes": "Ações de gerência adotadas no catálogo"
+        "nota": "As ações de gerência apresentadas nas fichas indicam práticas pertinentes a cada conhecimento, conforme as evidências dos estudos primários associados. Nem todas as ações se aplicam a todos os conhecimentos."
       },
       {
         "id": "evidencias",
@@ -98,8 +98,8 @@
     },
     "gerencia": {
       "titulo": "Gerência do conhecimento no ECOS",
-      "texto": "Os campos sobre onde o conhecimento é gerado ou registrado, quem o utiliza ou se beneficia dele e as práticas de gerência do conhecimento constituem uma síntese aplicada, elaborada a partir dos resultados da Revisão Rápida da Literatura. Essas orientações articulam soluções identificadas nos estudos e interpretações derivadas das evidências analisadas, não representando necessariamente recomendações explícitas dos autores dos estudos primários.",
-      "referencia": "kauschinger2021"
+      "texto": "Os recursos de conhecimento, a participação dos atores do ECOS e as ações de gerência compõem uma síntese aplicada, que articula os esquemas adotados na literatura com as evidências analisadas na Revisão Rápida da Literatura. As ações indicadas não representam necessariamente recomendações explícitas dos autores dos estudos primários.",
+      "referencia": "kauschinger2024, kauschinger2023, zaim2019"
     },
     "desafios": {
       "titulo": "Desafios identificados na literatura",
