@@ -241,9 +241,11 @@ nativamente pelo navegador com `type="module"`.
 - O conteúdo é longo e a aba fica alta. É troca aceita de propósito, porque encurtar o texto para
   baixar a altura tiraria o que torna os conceitos compreensíveis para quem nunca viu gerência de
   conhecimento em ECOS
-- A explicação da categoria não é justificada, embora a prosa do site seja. A coluna tem uns 314px
-  no desktop e justificar ali abriria rio. A regra de justificação não a alcança porque ela mora
-  numa lista de seletores, e esse não entrou
+- A introdução do cartão e a explicação de cada categoria são justificadas, como o resto da prosa
+  do site, e entram na lista de seletores do `base.css`. A caixa de texto tem uns 280px no
+  desktop, e numa coluna dessa largura quem segura a justificação é a hifenização, então o
+  `hyphens: auto` não é opcional ali. Abaixo de 36rem as duas voltam para a esquerda, como todas
+  as outras
 - Nada de carrossel, aba, acordeão, modal, texto escondido com expandir nem rolagem dentro do
   cartão. Toda explicação fica visível sem interação
 - `classificacoes.json` guarda dois textos por categoria, com papéis separados. `explicacao` é a
