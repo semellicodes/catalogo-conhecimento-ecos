@@ -498,9 +498,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-3);
   align-items: stretch;
 }
+/* O cartão empilha em coluna e o par de números é empurrado para o pé com
+   margin-top auto. Como a fileira iguala a altura dos dois cartões e as
+   quatro caixas de indicador têm a mesma altura, encostar no pé faz os dois
+   pares começarem na mesma altura, por mais que as descrições tenham
+   comprimentos diferentes. Em grade o fr não distribuía a folga como
+   esperado, e os números de um cartão desciam 20px em relação ao outro. */
 .estrutura__evidencia-linha {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: var(--esp-3);
   padding: var(--esp-4);
   background: var(--cor-superficie-alta);
@@ -508,26 +514,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-top: var(--borda-acento-suave);
   border-radius: var(--raio);
 }
-/* Os dois números de cada cartão, lado a lado, com a mesma forma nos dois
-   cartões para as linhas alinharem entre eles. */
 .estrutura__par-numeros {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: start;
-  gap: var(--esp-3);
-  padding-top: var(--esp-3);
-}
-/* Sem seta, a coluna do meio some e os dois números dividem a linha igual. */
-.estrutura__par-numeros:not(:has(> .estrutura__funil-seta)) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--esp-3);
+  margin-top: auto;
 }
-.estrutura__funil-seta {
-  align-self: center;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-right: 2px solid var(--cor-acento);
-  border-bottom: 2px solid var(--cor-acento);
-  transform: rotate(-45deg);
+/* Cada indicador na sua caixa, para o número ler como dado e não como parte
+   do parágrafo acima. */
+.estrutura__numero-evidencia {
+  padding: var(--esp-3);
+  background: var(--cor-superficie);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
 }
 .estrutura__numero-evidencia-valor {
   color: var(--cor-acento);
@@ -543,10 +543,28 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-micro);
   line-height: 1.4;
 }
+/* Onde os dois cartões dividem a fileira, o rótulo reserva duas linhas. Sem
+   isso um rótulo de uma linha e outro de duas deixam as caixas com alturas
+   diferentes, e o par de números de um cartão começa mais abaixo que o do
+   outro. É reserva de linha, medida na entrelinha do próprio texto, não
+   altura em pixel, então rótulo mais longo cresce em vez de ser cortado.
+
+   O subgrid resolveria isso sozinho, mas nos testes o navegador repartia as
+   faixas do pai em partes iguais em vez de medi-las pelo conteúdo, e as
+   descrições de tamanhos diferentes voltavam a desalinhar os números. */
+@media (min-width: 48rem) {
+  .estrutura__par-numeros .estrutura__numero-evidencia-rotulo { min-height: 2.8em; }
+}
 /* O cartão dos desafios atravessa as duas colunas, porque os desafios não são
    etapa da revisão, são achado dos estudos. O gap da grade já o separa. */
 .estrutura__evidencia-linha--desafios { grid-column: 1 / -1; }
-.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia { margin-top: var(--esp-2); }
+/* A caixa única não acompanha a largura do cartão, senão vira faixa. Ocupa a
+   medida de uma coluna dos cartões de cima, para as três lerem do mesmo
+   tamanho. */
+.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia {
+  justify-self: start;
+  min-width: min(100%, var(--largura-indicador));
+}
 /* A citação fecha a camada, na mesma escala das outras abas. */
 .estrutura__composicao-evidencias > .estrutura__fonte-conceitual {
   grid-column: 1 / -1;
@@ -804,7 +822,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__categorias-classificacao--fileira,
 .estrutura__composicao-gerencia,
 .estrutura__tipos-ecos-lista { align-items: stretch; }
-.estrutura__evidencia-linha:not(.estrutura__evidencia-linha--desafios) { display: flex; flex-direction: column; min-height: 0; }
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
 /* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
    em vez de ficar espremida na largura de um cartão. */
@@ -824,14 +841,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
   .estrutura__tipos-ecos-lista { margin-top: var(--esp-3); }
   .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  /* O par de números cresce para baixo, não a descrição, para os números dos
-     dois cartões de cima alinharem mesmo quando um rótulo quebra em duas
-     linhas e o outro não. Só vale onde eles dividem a linha. Em coluna única
-     isso viraria vazio no pé do cartão. */
-  .estrutura__evidencia-linha:not(.estrutura__evidencia-linha--desafios) .estrutura__par-numeros {
-    flex: 1;
-    align-content: start;
-  }
 }
 @media (min-width: 62rem) {
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
