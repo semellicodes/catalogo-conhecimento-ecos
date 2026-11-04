@@ -242,9 +242,15 @@ nativamente pelo navegador com `type="module"`.
 - Tamanho, entrelinha e alinhamento vão no `h4` do divisor, não no `span` de dentro. O span é
   inline, então quem dimensiona cada linha é o strut do bloco, e as propriedades do bloco deixam
   de valer no span assim que a grade sai
-- Os dois cartões de cima da Base de Evidências têm a mesma forma, título, uma linha de descrição e
-  dois números grandes lado a lado. Quem cresce para baixo é o par de números, não a descrição,
-  senão os números desalinham entre os cartões quando um rótulo quebra em duas linhas
+- Os três cartões da Base de Evidências ficam numa grade só, duas colunas a partir de 48rem, com o
+  dos desafios em `grid-column: 1 / -1`. Não há invólucro agrupando os dois de cima
+- Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e dois números grandes
+  lado a lado. Quem cresce para baixo é o par de números, não a descrição, senão os números
+  desalinham entre os cartões quando um rótulo quebra em duas linhas. Isso vale só onde os dois
+  dividem a linha. Em coluna única viraria vazio no pé do cartão, então o `flex` mora na media query
+- A escala do cartão de evidências mora na regra base, não na media query de 48rem. Enquanto morou
+  lá, abaixo de 768px tudo voltava ao tamanho cheio e o número da métrica chegava a 37px no tablet
+  contra 22 no desktop, maior no aparelho menor
 - `classificacoes[].funcao` diz o que o atributo identifica, e é o que a camada de Atributos mostra
   no lugar de redefinir cada categoria
 - A Base de Evidências mostra a progressão da revisão, dos registros recuperados aos estudos

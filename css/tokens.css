@@ -103,6 +103,9 @@
   /* Título de página de texto. Um degrau acima do --tam-xl, para a abertura do
      Sobre ter o peso que o h1 de uma página inteira pede. */
   --tam-titulo-pagina: clamp(1.75rem, 1.5rem + 0.9vw, 2.25rem);
+  /* Número de métrica. Precisa de destaque sem virar título, e a faixa entre o
+     --tam-xl e o --tam-lg é larga demais para isso. */
+  --tam-metrica: clamp(1.5rem, 1.35rem + 0.5vw, 1.625rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
   --tam-titulo-abertura: clamp(2.75rem, 2.226rem + 2.143vw, 4rem);
   --tam-resumo-abertura: clamp(1.0625rem, 1.016rem + 0.19vw, 1.1875rem);

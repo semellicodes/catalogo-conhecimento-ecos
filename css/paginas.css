@@ -389,8 +389,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
-.estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-lg); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.2; }
-.estrutura__evidencia-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
+.estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
+/* O vão entre o título e o texto é o gap do cartão. A margem própria somava a
+   ele e abria dezesseis pixels onde dez bastam. */
+.estrutura__evidencia-texto { margin-top: 0; color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.45; }
 /* A Gerência roda um degrau abaixo da Base de Evidências. São três cartões
    lado a lado, com texto corrido, etiquetas e citação dentro de cada um, e na
    escala do painel cada cartão ocupava quase uma tela. */
@@ -446,7 +448,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__nota-icone svg { width: var(--esp-4); height: var(--esp-4); }
 .estrutura__nota-texto { margin-top: var(--esp-1); }
 .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__composicao-evidencias { display: grid; gap: var(--esp-4); }
+.estrutura__composicao-evidencias {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--esp-3);
+  align-items: stretch;
+}
 .estrutura__evidencia-linha {
   display: grid;
   align-content: start;
@@ -466,10 +473,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   gap: var(--esp-3);
   padding-top: var(--esp-3);
 }
-/* O par de números é que cresce para baixo, não a descrição. Assim ele começa
-   logo depois da descrição nos dois cartões e os números alinham, mesmo quando
-   um rótulo quebra em duas linhas e o outro não. */
-.estrutura__evidencias-blocos .estrutura__par-numeros { flex: 1; align-content: start; }
 /* Sem seta, a coluna do meio some e os dois números dividem a linha igual. */
 .estrutura__par-numeros:not(:has(> .estrutura__funil-seta)) {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -485,7 +488,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__numero-evidencia-valor {
   color: var(--cor-acento);
   font-family: var(--fonte-mono);
-  font-size: var(--tam-titulo);
+  font-size: var(--tam-metrica);
   /* Folga para a caixa caber o desenho inteiro do algarismo. Com 1 exato o
      navegador recorta por alguns pixels. */
   line-height: 1.3;
@@ -496,13 +499,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-micro);
   line-height: 1.4;
 }
-/* O cartão dos desafios fica separado da revisão, porque os desafios não são
-   etapa dela, são achado dos estudos. */
-.estrutura__evidencia-linha--desafios { margin-top: var(--esp-3); }
+/* O cartão dos desafios atravessa as duas colunas, porque os desafios não são
+   etapa da revisão, são achado dos estudos. O gap da grade já o separa. */
+.estrutura__evidencia-linha--desafios { grid-column: 1 / -1; }
 .estrutura__evidencia-linha--desafios .estrutura__numero-evidencia { margin-top: var(--esp-2); }
 /* A citação fecha a camada, na mesma escala das outras abas. */
 .estrutura__composicao-evidencias > .estrutura__fonte-conceitual {
-  margin-top: var(--esp-3);
+  grid-column: 1 / -1;
+  margin-top: var(--esp-1);
   padding-top: var(--esp-2);
   border-top: var(--borda-fina);
   font-size: var(--tam-citacao);
@@ -729,13 +733,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .estrutura__tipo-ecos-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__tipo-ecos-texto { margin-top: var(--esp-1); }
-.estrutura__evidencias-blocos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--esp-3);
-}
-.estrutura__evidencias-blocos .estrutura__evidencia-linha { min-height: 0; }
-
 /* Cartão em fileira segue sempre o mesmo padrão em toda a Estrutura. A fileira
    iguala a altura e a fonte é empurrada para o pé, senão as linhas de fonte
    terminam desencontradas quando os textos têm tamanhos diferentes.
@@ -745,9 +742,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
 .estrutura__composicao-gerencia,
-.estrutura__evidencias-blocos,
 .estrutura__tipos-ecos-lista { align-items: stretch; }
-.estrutura__evidencias-blocos .estrutura__evidencia-linha { display: flex; flex-direction: column; }
+.estrutura__evidencia-linha:not(.estrutura__evidencia-linha--desafios) { display: flex; flex-direction: column; min-height: 0; }
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
 /* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
    em vez de ficar espremida na largura de um cartão. */
@@ -771,10 +767,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel--gerencia .estrutura__painel-intro,
   .estrutura__painel--classificacao .estrutura__painel-intro { margin-top: var(--esp-3); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
-  .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); }
-  .estrutura__composicao-conhecimento,
-  .estrutura__composicao-evidencias { gap: var(--esp-3); }
-  .estrutura__numero-evidencia-valor { font-size: var(--tam-lg); }
+  .estrutura__composicao-conhecimento { gap: var(--esp-3); }
+  .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* O par de números cresce para baixo, não a descrição, para os números dos
+     dois cartões de cima alinharem mesmo quando um rótulo quebra em duas
+     linhas e o outro não. Só vale onde eles dividem a linha. Em coluna única
+     isso viraria vazio no pé do cartão. */
+  .estrutura__evidencia-linha:not(.estrutura__evidencia-linha--desafios) .estrutura__par-numeros {
+    flex: 1;
+    align-content: start;
+  }
 }
 @media (min-width: 62rem) {
   /* Duas colunas apenas, e a esquerda mais larga, porque a taxonomia tem três
@@ -789,7 +791,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 61.99rem) {
-  .estrutura__evidencias-blocos { grid-template-columns: minmax(0, 1fr); }
   .estrutura__composicao-atributos > * { min-width: 0; }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }

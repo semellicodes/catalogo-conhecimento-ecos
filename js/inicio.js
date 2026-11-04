@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-36';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-37';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -213,11 +213,13 @@ function blocoDesafios(dados, desafios) {
   return bloco;
 }
 
+/* Os três cartões numa grade só. O invólucro que agrupava os dois de cima saiu,
+   porque a mesma grade resolve, com o cartão dos desafios atravessando as duas
+   colunas. Menos um nível de aninhamento e um conjunto de regras a menos. */
 function composicaoEvidencias(dados, definicao) {
   const { revisao, resultados } = definicao;
   const composicao = criar('article', 'estrutura__composicao-evidencias');
-  const blocos = criar('div', 'estrutura__evidencias-blocos');
-  blocos.append(
+  composicao.append(
     cartaoEvidencia('revisao', revisao.titulo, revisao.descricao, [
       [revisao.registrosRecuperados, revisao.rotuloRecuperados],
       [dados.estudos.length, revisao.rotuloSelecionados]
@@ -225,9 +227,10 @@ function composicaoEvidencias(dados, definicao) {
     cartaoEvidencia('estudos', resultados.titulo, resultados.descricao, [
       [dados.conhecimentos.length, resultados.rotuloConhecimentos],
       [dados.desafios.length, resultados.rotuloDesafios]
-    ], false)
+    ], false),
+    blocoDesafios(dados, definicao.desafios),
+    fonteConceitual(definicao.referencias)
   );
-  composicao.append(blocos, blocoDesafios(dados, definicao.desafios), fonteConceitual(definicao.referencias));
   return composicao;
 }
 
