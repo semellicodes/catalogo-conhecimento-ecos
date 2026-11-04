@@ -207,20 +207,33 @@ nativamente pelo navegador com `type="module"`.
   vírgula fica preso ao item anterior, sem espaço antes dele, e não entra depois do último. O
   espaço entre as citações é o `gap` da lista, e o espaço do texto vai em `apenas-leitor`, para
   quem copia a linha receber a pontuação certa
-- As quatro camadas da Estrutura têm funções separadas e nessa progressão. Ponto de Partida diz o
-  que é conhecimento em ECOS e quais são as três naturezas epistemológicas, só o conceito.
-  Atributos diz como os conhecimentos foram caracterizados, por natureza, nível e dimensão, com a
-  função de cada atributo e as categorias pelo nome. Gerência diz recursos de conhecimento,
-  participação e compartilhamento, e ações de gerência. Base de Evidências diz o que sustenta o
-  catálogo
-- A natureza aparece nas duas primeiras camadas de propósito, com funções diferentes. No Ponto de
-  Partida ela é definida, no Atributos ela é um dos critérios de caracterização. O que não se
-  repete é a definição, que existe num lugar só
-- O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, detalhe de
-  atributo nem número da revisão. Só o conceito, a frase central e as três definições breves
-- `classificacoes.json` guarda três textos por categoria, com papéis separados. `definicaoBreve` é
-  a do Ponto de Partida, só nas naturezas, `explicacao` é a da camada de Atributos e `descricao` é
-  a completa do glossário do Explorar
+- A Estrutura está passando de quatro camadas para três, uma por vez. O destino é Ponto de
+  Partida, Atributos e Base de Evidências. O Ponto de Partida já foi, e carrega o conceito de
+  conhecimento em ECOS mais os três atributos que caracterizam cada conhecimento, natureza
+  epistemológica, nível no ECOS e dimensão do ECOS. Faltam a aba de Atributos, que vai ficar com
+  exemplos de ECOS observados e gerência do conhecimento, só esses dois, e a renumeração da Base
+  de Evidências. Enquanto isso, a aba 2 ainda repete a classificação e a 3 ainda é a Gerência
+- A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
+  Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
+  que a reestruturação desfaz
+- O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20 nem número
+  da revisão. Leva o conceito, a frase central e os três cartões de atributo
+- Cada atributo tem um cartão, com o `rotulo`, a `funcao` e as três categorias explicadas uma a
+  uma, cada uma com `explicacao` e a linha `pergunta`. Só os nomes das categorias não bastam,
+  porque quem não vem de ECOS não sabe o que é nível de plataforma nem dimensão de negócio, e a
+  camada existe justamente para ensinar isso antes do catálogo
+- Os três cartões empilham, não dividem a linha. Texto corrido em três colunas estreitas é o que
+  quebra a leitura da aba, e por isso a aba 2 já empilhava os mesmos cartões
+- O desenho é o do `secaoTaxonomia`, o mesmo que a aba 2 usa hoje. Quando a aba 2 for reconstruída
+  e perder a coluna de classificação, o `colunaTaxonomia` sai e o `secaoTaxonomia` fica, porque
+  passa a servir só ao Ponto de Partida
+- A `pergunta` aparece nos três atributos. Antes só a natureza a mostrava, e no Ponto de Partida os
+  três são pares, então tratar um diferente dos outros pareceria descuido
+- `classificacoes.json` guarda três textos por categoria. `explicacao` é a da camada de Atributos
+  e `descricao` é a completa do glossário do Explorar. `definicaoBreve`, que existe só nas três
+  naturezas, era a do Ponto de Partida e ficou sem leitor quando a camada passou a usar a
+  `explicacao`, a mesma das outras duas, para as três lerem igual. Está no arquivo, sem uso.
+  Apagar ou não é decisão da autora
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
   Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
   na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior
@@ -245,8 +258,8 @@ nativamente pelo navegador com `type="module"`.
   literal do artigo citado
 - A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
   borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
-- Até 600px o divisor some e a redação longa dá lugar à curta, `tituloNaturezasCurto`. Encolher a
-  longa não resolve, porque oitenta e dois caracteres em caixa alta não cabem em 308px sem virar
+- Até 600px o divisor some e a redação longa dá lugar à curta, `tituloAtributosCurto`. Encolher a
+  longa não resolve, porque setenta e sete caracteres em caixa alta não cabem em 308px sem virar
   três linhas de texto espremido. No celular vira título de seção comum, em sans, caixa normal,
   13px em peso 700, alinhado à esquerda e com uma linha fina acima
 - As duas redações ficam no DOM e quem está fora do tamanho de tela sai com `display: none`, que

@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-43';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-45';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -97,28 +97,39 @@ function cabecalhoComIcone(icone, titulo, classe) {
  * conceito e a classificação principal na mesma aba é o que a referência faz e
  * o que o próprio artigo faz, que emenda a natureza logo depois da definição.
  */
-function composicaoNaturezas(dados, definicao) {
-  const composicao = criar('article', 'estrutura__composicao-conhecimento');
+/* Os três atributos do Ponto de Partida, na ordem em que o catálogo os lê. */
+const ATRIBUTOS_PARTIDA = ['natureza', 'nivel', 'dimensao'];
+
+function divisorDaPartida(definicao) {
   const divisor = criar('h4', 'estrutura__divisor');
   /* Duas redações do mesmo título, a longa e a curta. Quem está fora do
      tamanho de tela sai com display none, que também o tira da árvore de
      acessibilidade, então o leitor de tela anuncia uma só. */
-  divisor.append(criar('span', 'estrutura__divisor-texto', definicao.tituloNaturezas));
-  if (definicao.tituloNaturezasCurto) {
-    divisor.append(criar('span', 'estrutura__divisor-texto estrutura__divisor-texto--curto', definicao.tituloNaturezasCurto));
+  divisor.append(criar('span', 'estrutura__divisor-texto', definicao.tituloAtributos));
+  if (definicao.tituloAtributosCurto) {
+    divisor.append(criar('span', 'estrutura__divisor-texto estrutura__divisor-texto--curto', definicao.tituloAtributosCurto));
   }
-  composicao.append(divisor);
-  const fileira = criar('ul', 'estrutura__categorias-classificacao estrutura__categorias-classificacao--fileira');
-  dados.classificacoes.natureza.valores.forEach((valor) => {
-    const item = criar('li', 'estrutura__categoria-classificacao');
-    item.append(
-      criar('h4', 'estrutura__categoria-classificacao-titulo', valor.valor),
-      criar('p', 'estrutura__categoria-classificacao-texto', valor.definicaoBreve)
-    );
-    if (valor.referencia) item.append(fonteConceitual(valor.referencia));
-    fileira.append(item);
-  });
-  composicao.append(fileira);
+  return divisor;
+}
+
+/**
+ * O Ponto de Partida apresenta o conceito e os três atributos que
+ * caracterizam cada conhecimento. A natureza aparece aqui uma vez só, como um
+ * dos três, e não mais definida numa camada e retomada como critério na
+ * seguinte.
+ *
+ * Cada atributo ganha um cartão com a própria função e com as três categorias
+ * explicadas uma a uma. Só os nomes não bastavam, porque quem não vem de ECOS
+ * não sabe o que é nível de plataforma nem dimensão de negócio. Os cartões
+ * empilham, e não dividem a linha, porque texto corrido em coluna estreita é o
+ * que quebra a leitura da aba.
+ */
+function composicaoAtributos(dados, definicao) {
+  const composicao = criar('article', 'estrutura__composicao-conhecimento');
+  composicao.append(divisorDaPartida(definicao));
+  const secoes = criar('div', 'estrutura__taxonomia-secoes');
+  ATRIBUTOS_PARTIDA.forEach((chave) => secoes.append(secaoTaxonomia(dados.classificacoes[chave], true)));
+  composicao.append(secoes);
   return composicao;
 }
 
@@ -365,7 +376,7 @@ function colunaTiposEcos(dados, definicao) {
 function explicacaoConhecimento(dados, aba, definicao) {
   const contexto = criar('div', 'estrutura__contexto-academico');
   contexto.append(fonteConceitual(definicao.referencias));
-  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoNaturezas(dados, definicao)], 'estrutura__grade--conhecimento');
+  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoAtributos(dados, definicao)], 'estrutura__grade--conhecimento');
   resultado.classList.add('estrutura__painel--conhecimento');
   return resultado;
 }
