@@ -288,10 +288,13 @@ nativamente pelo navegador com `type="module"`.
 - A ajuda dos desafios cita `revisaoRapidaManuscrito`, porque os desafios são achado da revisão
   deste trabalho e não de um esquema publicado. Essa chave não tem verbete, então a citação sai
   como texto e não como link
-- O bloco de desafios da ficha e o cartão de desafios da Base de Evidências levam o mesmo nome,
-  "Desafios relacionados à Gerência de Conhecimento". São a mesma coisa vista de dois lugares, e
-  dois nomes fariam parecer que são duas. A ajuda do bloco repete esse nome, em vez da forma curta
-  que as outras ajudas usam, porque aqui o nome já é curto
+- O bloco da ficha, a ajuda dele e, quando existir, o cartão da Estrutura que trata do mesmo
+  assunto levam o mesmo nome, palavra por palavra. A ajuda não usa forma curta. Nomes diferentes
+  para a mesma coisa fazem parecer que são duas, e o catálogo já teve três redações para os
+  exemplos de ECOS, uma na camada, outra no bloco e outra na ajuda
+- Os cinco pares hoje são "Classificação do conhecimento", "Exemplos de ECOS em que o conhecimento
+  foi observado", "Gerência do conhecimento no ECOS", "Desafios relacionados à Gerência de
+  Conhecimento" e "Estudos primários associados". Mexer num exige mexer no outro
 - `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
   publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
   `temVerbete` do `dados.js`, num lugar só
