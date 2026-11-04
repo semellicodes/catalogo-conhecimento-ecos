@@ -262,6 +262,14 @@ nativamente pelo navegador com `type="module"`.
   vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
+- A coluna esquerda da camada de Atributos chama-se "Classificação dos conhecimentos em ECOS", não
+  taxonomia. A classificação combina esquemas de autores diferentes, um por atributo, e chamar o
+  conjunto de taxonomia sugeriria um esquema único que não existe. Os nomes de classe no CSS e no
+  `inicio.js` ainda dizem `taxonomia`, de quando a coluna tinha esse nome
+- A coluna leva dois parágrafos antes dos cartões, `subtituloClassificacao` e
+  `transicaoClassificacao`. O primeiro diz de onde vêm os três atributos, o segundo o que eles
+  permitem identificar em conjunto. Os dois usam o mesmo parágrafo do subtítulo, para não abrir um
+  ritmo novo de espaçamento entre o título e os cartões
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as
