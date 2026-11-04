@@ -13,51 +13,48 @@
         "tituloPainel": "Conhecimento em ECOS"
       },
       {
-        "id": "classificacao",
+        "id": "atributos",
         "rotulo": "2. Atributos",
-        "tituloPainel": "Atributos do conhecimento",
         "icone": "classificacao",
-        "introducao": "Cada conhecimento identificado é descrito por três atributos complementares, natureza epistemológica, nível no ECOS e dimensão do ECOS. Em conjunto, esses atributos indicam como o conhecimento se manifesta, onde ele se concentra no ecossistema e qual aspecto do ECOS ele aborda.",
-        "destaqueIntroducao": "três atributos complementares",
-        "tituloClassificacao": "Classificação dos conhecimentos em ECOS",
-        "subtituloClassificacao": "Os atributos adotados combinam abordagens consolidadas sobre gerência do conhecimento e ECOS. As referências que fundamentam cada atributo são apresentadas nas seções abaixo.",
-        "tituloTiposEcos": "Exemplos de ECOS em que o conhecimento foi observado",
-        "introducaoTiposEcos": "Os estudos primários evidenciam em quais tipos de ECOS cada conhecimento foi observado. Um mesmo conhecimento pode possuir evidências em mais de um tipo de ECOS.",
-        "referenciasTiposEcos": "manikas2016"
-      },
-      {
-        "id": "gerencia",
-        "rotulo": "3. Gerência do conhecimento",
-        "tituloPainel": "Gerência do conhecimento no ECOS",
-        "icone": "gerencia",
-        "introducao": "A gerência do conhecimento em ECOS envolve disponibilizar recursos adequados, favorecer a participação dos diferentes atores e apoiar práticas que permitam criar, registrar, compartilhar e aplicar conhecimentos no ecossistema.",
-        "campos": [
-          {
-            "rotulo": "Recursos de conhecimento no ECOS",
-            "descricao": "Indicam os recursos por meio dos quais o conhecimento pode ser disponibilizado e acessado pelos participantes, como documentação técnica, portais, treinamentos, exemplos de código, blogs e comunidades.",
-            "icone": "recursos",
-            "referencia": "kauschinger2024"
-          },
-          {
-            "rotulo": "Participação e compartilhamento no ECOS",
-            "descricao": "Evidenciam como organização central, desenvolvedores externos e comunidades contribuem para criar, compartilhar, avaliar e utilizar conhecimentos no ecossistema.",
-            "icone": "participacao",
-            "referencia": "kauschinger2023"
-          },
-          {
-            "rotulo": "Ações de gerência",
-            "descricao": "Reúnem ações que podem ser associadas aos conhecimentos catalogados para apoiar sua criação, registro, compartilhamento e aplicação no ECOS.",
-            "icone": "acoes",
-            "referencia": "zaim2019",
-            "prefixoFonte": "Adaptação de",
-            "acoes": true
-          }
-        ],
-        "nota": "As ações de gerência apresentadas nas fichas indicam práticas pertinentes a cada conhecimento, conforme as evidências dos estudos primários associados. Nem todas as ações se aplicam a todos os conhecimentos."
+        "tituloPainel": "Atributos do conhecimento",
+        "tiposEcos": {
+          "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
+          "introducao": "Apresenta os tipos de ECOS em que os conhecimentos foram identificados nos estudos primários, classificados conforme suas características de organização e participação.",
+          "chamada": "Os exemplos permitem compreender como diferentes modelos de organização, participação e compartilhamento podem influenciar a circulação do conhecimento entre os atores do ECOS:",
+          "referencias": "manikas2016, kauschinger2024"
+        },
+        "gerencia": {
+          "titulo": "Gerência do conhecimento no ECOS",
+          "introducao": "A gerência do conhecimento no ECOS envolve atividades voltadas à criação, ao registro, ao compartilhamento e à utilização de conhecimentos distribuídos entre diferentes participantes e organizações.",
+          "chamada": "A organização segue três recursos lógicos para identificar os meios utilizados no ECOS:",
+          "campos": [
+            {
+              "rotulo": "Recursos de conhecimento no ECOS",
+              "descricao": "São meios utilizados para disponibilizar e facilitar o acesso aos conhecimentos necessários aos participantes. Incluem documentações técnicas, portais de informação, materiais de aprendizagem, exemplos de código e comunidades on-line, que podem apoiar a compreensão das tecnologias e a resolução de problemas.",
+              "icone": "recursos",
+              "referencia": "kauschinger2024"
+            },
+            {
+              "rotulo": "Participação e compartilhamento no ECOS",
+              "descricao": "Envolve a interação entre organizações responsáveis pelas plataformas, desenvolvedores externos e comunidades. Por meio dessas relações, os participantes podem trocar experiências, esclarecer dúvidas e compartilhar conhecimentos que contribuem para o desenvolvimento de soluções e a aprendizagem coletiva.",
+              "icone": "participacao",
+              "referencia": "kauschinger2023"
+            },
+            {
+              "rotulo": "Ações de gerência",
+              "descricao": "São atividades relacionadas à criação, ao registro, ao compartilhamento e à utilização do conhecimento. Essas ações permitem que conhecimentos sejam desenvolvidos, preservados e utilizados pelos participantes, considerando as necessidades de cada contexto.",
+              "icone": "acoes",
+              "referencia": "zaim2019",
+              "prefixoFonte": "Adaptado de",
+              "acoes": true
+            }
+          ],
+          "nota": "As ações de gerência apresentadas nas fichas indicam práticas pertinentes a cada conhecimento, conforme as evidências dos estudos primários associados. Nem todas as ações se aplicam a todos os conhecimentos."
+        }
       },
       {
         "id": "evidencias",
-        "rotulo": "4. Base de evidências",
+        "rotulo": "3. Base de evidências",
         "tituloPainel": "Base de Evidências",
         "icone": "evidencias",
         "introducao": "A Revisão Rápida da Literatura foi utilizada para identificar e analisar evidências científicas relacionadas à gerência de conhecimento em ECOS. A busca foi realizada na base Scopus, seguida da aplicação dos critérios de seleção e da extração e análise dos dados.",

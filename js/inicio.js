@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-48';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-49';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -184,13 +184,6 @@ function blocoGerencia(dados, campo) {
   return bloco;
 }
 
-function composicaoGerencia(dados, definicao) {
-  const composicao = criar('article', 'estrutura__composicao-gerencia');
-  definicao.campos.forEach((campo) => composicao.append(blocoGerencia(dados, campo)));
-  if (definicao.nota) composicao.append(notaMetodologica(definicao.nota));
-  return composicao;
-}
-
 function notaMetodologica(texto) {
   const nota = criar('aside', 'estrutura__nota-metodologica');
   const icone = criar('span', 'estrutura__nota-icone');
@@ -309,63 +302,6 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   return raiz;
 }
 
-/**
- * Uma seção da taxonomia. Diz o que o atributo identifica, lista as categorias
- * que ele admite e fecha com a fonte do esquema adotado.
- *
- * A pergunta de cada categoria só entra na natureza, que é a entrada principal
- * do catálogo. Em nível e dimensão ela repetiria em miniatura a faixa de
- * perguntas que abre a aba.
- */
-function secaoTaxonomia(atributo, comPergunta = false) {
-  const bloco = criar('section', 'estrutura__taxonomia-secao');
-  const cabecalho = criar('header');
-  cabecalho.append(
-    criar('h5', 'estrutura__taxonomia-secao-titulo', atributo.rotulo),
-    criar('p', 'estrutura__taxonomia-secao-descricao', atributo.funcao)
-  );
-
-  const categorias = criar('ul', 'estrutura__categorias-atributo');
-  atributo.valores.forEach((valor) => {
-    const item = criar('li', 'estrutura__categoria-atributo');
-    item.append(
-      criar('p', 'estrutura__categoria-atributo-nome', valor.valor),
-      criar('p', 'estrutura__categoria-atributo-texto', valor.explicacao)
-    );
-    if (comPergunta && valor.pergunta) {
-      item.append(criar('p', 'estrutura__categoria-atributo-pergunta', valor.pergunta));
-    }
-    categorias.append(item);
-  });
-
-  bloco.append(cabecalho, categorias);
-  /* Uma fonte por seção, no pé. Antes era uma por categoria, e as três linhas
-     de citação repetidas competiam com o conteúdo que elas sustentam. */
-  if (atributo.referencia) bloco.append(fonteConceitual(atributo.referencia));
-  return bloco;
-}
-
-/**
- * A coluna esquerda, mais larga. As três seções empilham, uma abaixo da outra,
- * porque dividir texto corrido em colunas estreitas era o que quebrava a
- * leitura da aba.
- */
-function colunaTaxonomia(dados, definicao) {
-  const coluna = criar('section', 'estrutura__classificacao-coluna');
-  coluna.append(
-    criar('h4', 'estrutura__coluna-titulo', definicao.tituloClassificacao),
-    criar('p', 'estrutura__coluna-subtitulo', definicao.subtituloClassificacao)
-  );
-  const secoes = criar('div', 'estrutura__taxonomia-secoes');
-  secoes.append(
-    secaoTaxonomia(dados.classificacoes.natureza, true),
-    secaoTaxonomia(dados.classificacoes.nivel),
-    secaoTaxonomia(dados.classificacoes.dimensao)
-  );
-  coluna.append(secoes);
-  return coluna;
-}
-
 function nomeTipoEcos(valor) {
   return {
     'Código aberto': 'ECOS de Código Aberto',
@@ -374,19 +310,29 @@ function nomeTipoEcos(valor) {
   }[valor] || valor;
 }
 
-/**
- * A coluna direita. Só o nome do tipo e uma linha de descrição, porque aqui o
- * papel é mostrar onde o conhecimento foi observado, não classificar.
- */
-function colunaTiposEcos(dados, definicao) {
-  const atributo = dados.classificacoes.tipoEcos;
-  const coluna = criar('section', 'estrutura__tipos-ecos');
-  coluna.append(
-    criar('h4', 'estrutura__coluna-titulo', definicao.tituloTiposEcos),
-    criar('p', 'estrutura__tipos-ecos-intro', definicao.introducaoTiposEcos)
+/* Os dois blocos da aba abrem igual, com título, introdução, uma linha fina e
+   a chamada que apresenta as três categorias. A forma é a mesma para os dois
+   lerem como partes de uma seção só. */
+function aberturaDeBloco(conteudo, classe) {
+  const bloco = criar('section', classe);
+  bloco.append(
+    criar('h4', 'estrutura__bloco-titulo', conteudo.titulo),
+    criar('p', 'estrutura__bloco-intro', conteudo.introducao)
   );
-  const lista = criar('ul', 'estrutura__tipos-ecos-lista');
-  atributo.valores.forEach((valor) => {
+  if (conteudo.chamada) bloco.append(criar('p', 'estrutura__bloco-chamada', conteudo.chamada));
+  return bloco;
+}
+
+/**
+ * Primeiro bloco da aba. Um cartão só, com as três categorias numeradas
+ * dentro dele, em leitura vertical. A tipologia é a de Manikas, e a relação de
+ * cada modelo com a circulação do conhecimento é contextualização da
+ * literatura de gerência de conhecimento, por isso a fonte traz as duas obras.
+ */
+function blocoTiposEcos(dados, conteudo) {
+  const bloco = aberturaDeBloco(conteudo, 'estrutura__tipos-ecos');
+  const lista = criar('ol', 'estrutura__tipos-ecos-lista');
+  dados.classificacoes.tipoEcos.valores.forEach((valor) => {
     const item = criar('li', 'estrutura__tipo-ecos');
     item.append(
       criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
@@ -394,9 +340,20 @@ function colunaTiposEcos(dados, definicao) {
     );
     lista.append(item);
   });
-  coluna.append(lista);
-  if (definicao.referenciasTiposEcos) coluna.append(fonteConceitual(definicao.referenciasTiposEcos));
-  return coluna;
+  bloco.append(lista);
+  if (conteudo.referencias) bloco.append(fonteConceitual(conteudo.referencias));
+  return bloco;
+}
+
+/* Segundo bloco. Os três cartões de gerência vieram da etapa que existia
+   sozinha, com o desenho preservado, e a nota metodológica fecha o bloco. */
+function blocoGerenciaDoEcos(dados, conteudo) {
+  const bloco = aberturaDeBloco(conteudo, 'estrutura__gerencia-bloco');
+  const cartoes = criar('div', 'estrutura__composicao-gerencia');
+  conteudo.campos.forEach((campo) => cartoes.append(blocoGerencia(dados, campo)));
+  bloco.append(cartoes);
+  if (conteudo.nota) bloco.append(notaMetodologica(conteudo.nota));
+  return bloco;
 }
 
 function explicacaoConhecimento(dados, aba, definicao) {
@@ -408,29 +365,19 @@ function explicacaoConhecimento(dados, aba, definicao) {
 }
 
 /**
- * A aba vai da introdução geral direto ao detalhamento em duas colunas, a
- * taxonomia à esquerda e os tipos de ECOS observados à direita. A explicação
- * do que são os atributos cabe na introdução, e repeti-la numa faixa logo
- * abaixo era dizer duas vezes a mesma coisa antes do conteúdo começar.
+ * A aba reúne os dois blocos, um abaixo do outro, na mesma etapa. A gerência
+ * deixou de ser etapa própria porque é atributo do conhecimento, não uma fase
+ * seguinte da leitura.
+ *
+ * O painel não leva introdução própria. Cada bloco já abre com a sua, e um
+ * terceiro parágrafo antes deles diria pela terceira vez do que a aba trata.
  */
-function explicacaoClassificacao(dados, aba, definicao) {
-  const colunas = criar('div', 'estrutura__composicao-atributos');
-  colunas.append(colunaTaxonomia(dados, definicao), colunaTiposEcos(dados, definicao));
-  const resultado = painel(definicao, aba, definicao.introducao, [colunas], 'estrutura__grade--classificacao', undefined, false, definicao.destaqueIntroducao);
-  resultado.classList.add('estrutura__painel--classificacao');
-  return resultado;
-}
-
-function explicacaoGerencia(dados, aba, definicao) {
-  const composicao = composicaoGerencia(dados, definicao);
-  const resultado = painel(
-    definicao,
-    aba,
-    definicao.introducao,
-    [composicao],
-    'estrutura__grade--gerencia'
-  );
-  resultado.classList.add('estrutura__painel--gerencia');
+function explicacaoAtributos(dados, aba, definicao) {
+  const resultado = painel(definicao, aba, '', [
+    blocoTiposEcos(dados, definicao.tiposEcos),
+    blocoGerenciaDoEcos(dados, definicao.gerencia)
+  ], 'estrutura__grade--atributos');
+  resultado.classList.add('estrutura__painel--atributos');
   return resultado;
 }
 
@@ -462,7 +409,7 @@ function abasDaEstrutura(dados) {
   });
   navegacao.replaceChildren(...abas);
 
-  const criadores = { conhecimento: explicacaoConhecimento, classificacao: explicacaoClassificacao, gerencia: explicacaoGerencia, evidencias: explicacaoEvidencias };
+  const criadores = { conhecimento: explicacaoConhecimento, atributos: explicacaoAtributos, evidencias: explicacaoEvidencias };
   let todosPaineis = [];
 
   const selecionar = (indice, focar = false) => {

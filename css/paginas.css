@@ -322,8 +322,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    Evidências ficava de fora e a caixa parava no meio, deixando o vazio à
    direita que destoava das outras. */
 .estrutura__painel--conhecimento .estrutura__painel-intro,
-.estrutura__painel--classificacao .estrutura__painel-intro,
-.estrutura__painel--gerencia .estrutura__painel-intro,
 .estrutura__painel--evidencias .estrutura__painel-intro {
   width: var(--largura-cheia);
   max-width: none;
@@ -446,7 +444,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__gerencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
 .estrutura__gerencia-texto,
 .estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
-.estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
@@ -466,7 +463,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-underline-offset: var(--esp-1);
   cursor: pointer;
 }
-.estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
 .estrutura__composicao-gerencia { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-3); }
 .estrutura__gerencia-item {
   display: flex;
@@ -606,18 +602,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* O negrito da introdução marca o termo que a aba vai detalhar, sem mudar a
    cor nem o tamanho do texto em volta. */
 .estrutura__painel-intro strong { color: var(--cor-titulo); font-weight: 600; }
-/* Duas colunas apenas, a taxonomia mais larga que os exemplos. No celular a
-   taxonomia vem primeiro e os exemplos descem para baixo dela. */
-.estrutura__composicao-atributos {
-  display: grid;
+/* Os dois blocos da aba, um abaixo do outro. A gerência deixou de ser etapa
+   própria e passou a ser o segundo bloco daqui. */
+.estrutura__grade--atributos {
   grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-4);
-  margin-top: var(--esp-3);
-  align-items: start;
-  min-width: 0;
+  gap: var(--esp-5);
 }
-.estrutura__classificacao-coluna,
-.estrutura__tipos-ecos {
+/* Os dois blocos têm a mesma superfície, para lerem como partes de uma seção
+   só e não como duas abas empilhadas. */
+.estrutura__tipos-ecos,
+.estrutura__gerencia-bloco {
   display: flex;
   flex-direction: column;
   padding: var(--esp-4);
@@ -628,89 +622,82 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   min-width: 0;
   max-width: 100%;
 }
-.estrutura__coluna-titulo {
+.estrutura__bloco-titulo {
   color: var(--cor-acento);
   font-size: var(--tam-base);
   font-weight: 600;
   line-height: 1.3;
 }
-.estrutura__coluna-subtitulo {
+.estrutura__bloco-intro {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
-  line-height: 1.45;
+  line-height: 1.5;
 }
-/* As três seções da taxonomia, uma abaixo da outra. Nunca lado a lado, porque
-   texto corrido em coluna estreita é o que atravancava a leitura da aba. */
-.estrutura__taxonomia-secoes {
+/* A chamada apresenta as categorias, e a linha fina acima dela separa o que a
+   seção é do que vem listado. É a mesma linha que abre as categorias do
+   cartão de atributo, no Ponto de Partida. */
+.estrutura__bloco-chamada {
+  margin-top: var(--esp-3);
+  padding-top: var(--esp-3);
+  border-top: var(--borda-fina);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-xs);
+  line-height: 1.5;
+}
+
+/* As três categorias de tipo de ECOS, em leitura vertical dentro de um cartão
+   só. A numeração é discreta, do próprio ol, e não pastilha nem ícone. */
+.estrutura__tipos-ecos-lista {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-3);
   margin-top: var(--esp-3);
+  counter-reset: tipo-ecos;
+  list-style: none;
 }
-.estrutura__taxonomia-secao {
-  min-width: 0;
+.estrutura__tipo-ecos {
+  counter-increment: tipo-ecos;
   padding: var(--esp-3) var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda-suave);
   border-radius: var(--raio);
 }
-.estrutura__taxonomia-secao-titulo {
-  font-size: var(--tam-base);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-nome);
-  line-height: 1.3;
+/* O número fica na mesma linha do nome, à frente dele, apagado, para numerar
+   sem virar um segundo título. */
+.estrutura__tipo-ecos-titulo::before {
+  content: counter(tipo-ecos) ". ";
+  color: var(--cor-texto-fraco);
+  font-weight: 400;
 }
-.estrutura__taxonomia-secao-descricao {
-  margin-top: var(--esp-1);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  line-height: 1.45;
-}
-.estrutura__categorias-atributo {
-  display: grid;
-  gap: var(--esp-2);
-  margin-top: var(--esp-3);
-}
-/* O separador entre categorias é só a linha e a folga dela. Antes somava o gap
-   da grade ao próprio recuo e abria 24px entre uma categoria e a outra. */
-.estrutura__categoria-atributo + .estrutura__categoria-atributo {
-  padding-top: var(--esp-3);
-  border-top: var(--borda-fina);
-}
-.estrutura__categoria-atributo-nome {
+.estrutura__tipo-ecos-titulo {
   color: var(--cor-titulo);
   font-size: var(--tam-sm);
   font-weight: 600;
   line-height: 1.3;
 }
-.estrutura__categoria-atributo-texto {
+.estrutura__tipo-ecos-texto {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
-  line-height: 1.45;
+  line-height: 1.55;
 }
-/* A pergunta é texto auxiliar, menor e apagado, para não disputar com a
-   descrição da categoria logo acima dela. */
-.estrutura__categoria-atributo-pergunta {
-  margin-top: var(--esp-2);
-  margin-bottom: var(--esp-2);
-  color: var(--cor-texto-fraco);
-  font-size: var(--tam-micro);
-  font-style: italic;
-  line-height: 1.45;
+/* A nota fecha o bloco de gerência, abaixo dos três cartões, com o canto
+   arredondado da base porque ali ela encosta na borda do bloco. */
+.estrutura__gerencia-bloco .estrutura__nota-metodologica {
+  margin-top: var(--esp-4);
+  border-radius: var(--raio);
+  border: var(--borda-suave);
+  border-top: var(--borda-acento-suave);
 }
-/* A fonte é da seção inteira, no pé, separada do conteúdo e discreta. Na mesma
-   escala das outras abas, para as quatro lerem igual. */
-.estrutura__taxonomia-secao .estrutura__fonte-conceitual,
+
+/* A fonte fecha cada bloco, na mesma escala das outras abas. */
 .estrutura__tipos-ecos > .estrutura__fonte-conceitual {
+  margin-top: var(--esp-3);
   padding-top: var(--esp-2);
   border-top: var(--borda-fina);
   font-size: var(--tam-citacao);
   line-height: 1.35;
 }
-.estrutura__taxonomia-secao .estrutura__fonte-conceitual { margin-top: var(--esp-2); }
-.estrutura__tipos-ecos > .estrutura__fonte-conceitual { margin-top: var(--esp-3); }
 /* As ações de gerência, em pílulas, dentro do cartão que as apresenta. */
 .estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
 .estrutura__acao-gerencia {
@@ -726,7 +713,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    O prefixo e a citação são itens de flex, então o vão entre eles é o
    column-gap e precisa medir um espaço de palavra, não um separador de lista,
    senão "Adaptação de" se solta do nome que ela qualifica. */
-.estrutura__painel--gerencia .estrutura__fonte-conceitual {
+.estrutura__gerencia-item .estrutura__fonte-conceitual {
   column-gap: var(--esp-1);
   padding-top: var(--esp-2);
   border-top: var(--borda-fina);
@@ -736,7 +723,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* As etiquetas são o último conteúdo do terceiro cartão, e é só ali que o
    margin-top auto da citação não sobra. Sem esta folga a linha divisória
    encostaria nelas. */
-.estrutura__painel--gerencia .estrutura__acoes-lista { margin-bottom: var(--esp-3); }
+.estrutura__gerencia-item .estrutura__acoes-lista { margin-bottom: var(--esp-3); }
 /* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
    empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
 .estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
@@ -756,30 +743,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.35;
 }
 
-.estrutura__tipos-ecos-intro,
-.estrutura__tipo-ecos-texto {
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  line-height: 1.4;
-}
-.estrutura__tipos-ecos-intro { margin-top: var(--esp-2); line-height: 1.45; }
-/* Cartões verticais, um por tipo. A coluna é estreita e três lado a lado
-   voltariam a espremer o texto. */
-.estrutura__tipos-ecos-lista {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-2);
-  margin-top: var(--esp-3);
-}
-.estrutura__tipo-ecos {
-  min-width: 0;
-  padding: var(--esp-3);
-  background: var(--cor-superficie);
-  border: var(--borda-suave);
-  border-radius: var(--raio);
-}
-.estrutura__tipo-ecos-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
-.estrutura__tipo-ecos-texto { margin-top: var(--esp-1); }
 /* Cartão em fileira segue sempre o mesmo padrão em toda a Estrutura. A fileira
    iguala a altura e a fonte é empurrada para o pé, senão as linhas de fonte
    terminam desencontradas quando os textos têm tamanhos diferentes.
@@ -801,8 +764,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel { padding: var(--esp-5); }
   /* A Gerência aperta o quadro, porque os três cartões já trazem o seu próprio
      respiro e o painel só somava moldura em volta. */
-  .estrutura__painel--gerencia,
-  .estrutura__painel--classificacao { padding: var(--esp-4); }
+  .estrutura__painel--atributos { padding: var(--esp-4); }
   .estrutura__painel-intro {
     margin-top: var(--esp-4);
     padding: var(--esp-3) var(--esp-4);
@@ -811,8 +773,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     font-size: 0.875rem;
     line-height: 1.5;
   }
-  .estrutura__painel--gerencia .estrutura__painel-intro,
-  .estrutura__painel--classificacao .estrutura__painel-intro { margin-top: var(--esp-3); }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
   .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* O par de números cresce para baixo, não a descrição, para os números dos
@@ -825,22 +785,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
 }
 @media (min-width: 62rem) {
-  /* Duas colunas apenas, e a esquerda mais larga, porque a taxonomia tem três
-     seções e os exemplos só uma lista. */
-  .estrutura__composicao-atributos { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
-  /* A coluna dos exemplos é bem mais curta que a taxonomia. Em vez de deixar
-     meia tela vazia ao lado, ela acompanha a rolagem da coluna da esquerda. */
-  .estrutura__tipos-ecos {
-    position: sticky;
-    top: calc(var(--altura-cabecalho) + var(--esp-4));
-  }
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 61.99rem) {
   /* Três colunas de texto longo abaixo de 992px dariam uns 280px cada, e aí a
      explicação de cada categoria vira uma palavra por linha. Empilha. */
   .estrutura__atributos-cards { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .estrutura__composicao-atributos > * { min-width: 0; }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
@@ -850,7 +800,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
   .atributo-card__categorias { gap: var(--esp-3); }
-  .estrutura__categoria-atributo-pergunta { font-size: var(--tam-xs); }
   .estrutura__gerencia-texto,
   .estrutura__nota-texto { font-size: var(--tam-sm); }
   .estrutura__mapa { margin-top: var(--esp-5); }
@@ -868,9 +817,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__gerencia-item,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
-  .estrutura__composicao-atributos { gap: var(--esp-3); }
-  .estrutura__classificacao-coluna,
-  .estrutura__tipos-ecos { padding: var(--esp-4); }
+  .estrutura__tipos-ecos,
+  .estrutura__gerencia-bloco { padding: var(--esp-4); }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

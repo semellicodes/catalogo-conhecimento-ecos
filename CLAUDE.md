@@ -207,12 +207,26 @@ nativamente pelo navegador com `type="module"`.
   vírgula fica preso ao item anterior, sem espaço antes dele, e não entra depois do último. O
   espaço entre as citações é o `gap` da lista, e o espaço do texto vai em `apenas-leitor`, para
   quem copia a linha receber a pontuação certa
-- A Estrutura está passando de quatro camadas para três, uma por vez. O destino é Ponto de
-  Partida, Atributos e Base de Evidências. O Ponto de Partida já foi, e carrega o conceito de
-  conhecimento em ECOS mais os três atributos que caracterizam cada conhecimento, natureza
-  epistemológica, nível no ECOS e dimensão do ECOS. Faltam a aba de Atributos, que vai ficar com
-  exemplos de ECOS observados e gerência do conhecimento, só esses dois, e a renumeração da Base
-  de Evidências. Enquanto isso, a aba 2 ainda repete a classificação e a 3 ainda é a Gerência
+- A Estrutura tem três etapas, Ponto de Partida, Atributos e Base de Evidências. A Gerência do
+  conhecimento era a etapa 3 e deixou de ser etapa própria, porque é atributo do conhecimento e
+  não uma fase seguinte da leitura. O conteúdo dela virou o segundo bloco dos Atributos, e a
+  antiga Base de Evidências, que era a 4, passou a ser a 3
+- A navegação é montada a partir de `estruturaCatalogo.abas`, então quem define quantas etapas
+  existem é o arquivo de dados. O `criadores` do `inicio.js` casa por `id`, e um `id` sem
+  construtor quebra a aba. Os três hoje são `conhecimento`, `atributos` e `evidencias`
+- A aba de Atributos tem dois blocos empilhados, exemplos de ECOS primeiro e gerência depois. Os
+  dois têm a mesma superfície, para lerem como partes de uma seção só e não como duas abas
+  coladas. Cada um abre com título, introdução, uma linha fina e a chamada que apresenta as
+  categorias, e fecha com a fonte
+- O painel de Atributos não tem introdução própria. Cada bloco já abre com a sua, e um terceiro
+  parágrafo antes deles diria pela terceira vez do que a aba trata
+- O bloco de exemplos de ECOS é um cartão só, com as três categorias numeradas dentro, em leitura
+  vertical. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e não pastilha
+  nem ícone. A tipologia é a de Manikas, e a relação de cada modelo com a circulação do
+  conhecimento é contextualização da literatura de gerência de conhecimento, por isso a fonte traz
+  `manikas2016` e `kauschinger2024`, sem atribuir tudo ao primeiro
+- O bloco de gerência manteve os três cartões lado a lado, os ícones, as etiquetas de ação e a
+  nota metodológica, que fecha o bloco abaixo deles
 - A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
@@ -257,7 +271,8 @@ nativamente pelo navegador com `type="module"`.
   na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior
   do que a frase mais completa num deles. A forma longa, "Conhecimentos explícitos", vivia em
   `tituloPorta` sem nenhum módulo ler, e foi apagada. Não volta
-- As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura
+- As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura.
+  A numeração vem escrita no `rotulo` de cada aba, em `meta.json`, então renumerar é editar ali
 - A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
@@ -269,8 +284,9 @@ nativamente pelo navegador com `type="module"`.
 - O nível no ECOS cita `johnson2020` e `kauschinger2021`, nessa ordem. O Johnson é quem define os
   três níveis
 - A `explicacao` das categorias de natureza, nível e dimensão foi reescrita pela autora para o
-  Ponto de Partida, em texto didático de duas a quatro frases, e não é mais citação literal dos
-  artigos primários. A `pergunta` continua literal. A `explicacao` do `tipoEcos` não foi tocada
+  Ponto de Partida, e a do `tipoEcos` para o bloco de exemplos da aba de Atributos, as duas em
+  texto didático. Nenhuma é mais citação literal dos artigos primários. A `pergunta` continua
+  literal
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
@@ -285,21 +301,25 @@ nativamente pelo navegador com `type="module"`.
 - A escala do cartão de evidências mora na regra base, não na media query de 48rem. Enquanto morou
   lá, abaixo de 768px tudo voltava ao tamanho cheio e o número da métrica chegava a 37px no tablet
   contra 22 no desktop, maior no aparelho menor
-- `classificacoes[].funcao` diz o que o atributo identifica, e é o que a camada de Atributos mostra
-  no lugar de redefinir cada categoria
+- `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão no Ponto
+  de Partida
 - A Base de Evidências mostra a progressão da revisão, dos registros recuperados aos estudos
   selecionados, depois os resultados e por último os desafios, em cartão próprio. Os desafios não
   viram quinta camada. A contagem dos desafios é de associações entre desafio e conhecimento, não
   de desafios distintos, e o rótulo diz isso
 - Só `registrosRecuperados` é escrito em `meta.json`, porque é número do protocolo da revisão. O
   total de estudos, de conhecimentos e de associações sai dos próprios dados
-- A camada de Gerência tem três cartões, cada um com a sua citação no pé e nenhuma citação única no
-  pé da camada. Recursos de conhecimento cita `kauschinger2024`, que define recurso de fronteira do
+- O bloco de Gerência tem três cartões, cada um com a sua citação no pé e nenhuma citação única no
+  pé do bloco. Recursos de conhecimento cita `kauschinger2024`, que define recurso de fronteira do
   conhecimento e lista documentação, portais, treinamentos, exemplos de código, blogs e comunidades.
   Participação e compartilhamento cita `kauschinger2023`, que estuda a comunidade patrocinada e os
   papéis de organização central, desenvolvedores externos e comunidade. Ações de gerência cita
   `zaim2019`, que trabalha com geração, captura, compartilhamento e utilização, e por isso a citação
-  leva "Adaptação de", já que os três nomes exibidos condensam esses quatro processos
+  leva "Adaptado de", já que os três nomes exibidos condensam esses quatro processos
+- O `zaim2019` está cadastrado com o ano do fascículo, volume 17, número 1, de 2019. A
+  especificação da reformulação pediu 2018, que é o ano da publicação antecipada no DOI. Ficou
+  2019, que é o que a bibliografia traz, para a citação e o verbete não se contradizerem.
+  Conferir antes da defesa qual das duas o trabalho adota
 - As oito ações genéricas saíram. Não eram taxonomia de ninguém e não tinham descrição. O
   vocabulário agora tem três, Criação e registro, Compartilhamento, e Uso e aplicação
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
@@ -350,13 +370,6 @@ nativamente pelo navegador com `type="module"`.
   vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
-- A coluna esquerda da camada de Atributos chama-se "Classificação dos conhecimentos em ECOS", não
-  taxonomia. A classificação combina esquemas de autores diferentes, um por atributo, e chamar o
-  conjunto de taxonomia sugeriria um esquema único que não existe. Os nomes de classe no CSS e no
-  `inicio.js` ainda dizem `taxonomia`, de quando a coluna tinha esse nome
-- A coluna leva um parágrafo só antes dos cartões, e ele acrescenta a fundamentação teórica. O que
-  são os três atributos e o que eles permitem identificar em conjunto fica na caixa de introdução
-  do painel, num lugar só. A coluna já tentou repetir isso e foi o que se tirou
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as

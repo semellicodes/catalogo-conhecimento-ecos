@@ -106,21 +106,21 @@
         "valor": "Código aberto",
         "descricao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, geralmente com forte atuação comunitária.",
         "referencia": "manikas2016",
-        "explicacao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, com forte atuação comunitária.",
+        "explicacao": "Modelo em que o código-fonte é disponibilizado para acesso, utilização e modificação, conforme as licenças adotadas. A participação de desenvolvedores e comunidades permite que conhecimentos, experiências e soluções sejam compartilhados entre diferentes atores, favorecendo a aprendizagem coletiva e a colaboração no desenvolvimento e na evolução do ECOS.",
         "pergunta": "Responde à pergunta: as contribuições circulam abertamente entre os participantes?"
       },
       {
         "valor": "Híbrido",
         "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional.",
         "referencia": "manikas2016",
-        "explicacao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa e o controle organizacional.",
+        "explicacao": "Modelo que combina características de código aberto e proprietário, permitindo a coexistência de recursos compartilhados e componentes sob controle de determinadas organizações. Essa estrutura possibilita diferentes formas de colaboração e circulação do conhecimento, considerando tanto as contribuições externas quanto as regras de acesso e participação estabelecidas pelos responsáveis.",
         "pergunta": "Responde à pergunta: o ecossistema combina contribuição aberta e proprietária?"
       },
       {
         "valor": "Proprietário",
         "descricao": "Plataforma tecnológica, componentes e regras de participação são controlados pela organização central.",
         "referencia": "manikas2016",
-        "explicacao": "A plataforma tecnológica, os componentes e as regras de participação são controlados pela organização central.",
+        "explicacao": "Modelo em que uma organização central mantém o controle sobre a plataforma, seus componentes e as condições de participação. O compartilhamento do conhecimento ocorre conforme as políticas e os recursos disponibilizados pela organização, envolvendo parceiros, desenvolvedores e outros participantes autorizados. Nesse contexto, a circulação do conhecimento pode depender de mecanismos formais de acesso, documentação e comunicação.",
         "pergunta": "Responde à pergunta: as contribuições são controladas pela organização central e remuneradas?"
       }
     ],
