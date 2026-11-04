@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-19';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-20';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -25,7 +25,7 @@ function fonteConceitual(chaves, prefixo) {
   /* O prefixo existe para a citação que não sustenta o conteúdo ao pé da
      letra, como "Adaptação de", que avisa que os nomes exibidos não são a
      taxonomia literal do artigo. */
-  if (prefixo) fonte.append(criar('span', 'estrutura__fonte-prefixo', `${prefixo} `));
+  if (prefixo) fonte.append(criar('span', 'estrutura__fonte-prefixo', prefixo));
   const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
   referencias.forEach((chave, indice) => {
     const item = criar('span', 'estrutura__fonte-item');

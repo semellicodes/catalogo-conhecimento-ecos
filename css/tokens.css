@@ -92,6 +92,9 @@
   /* Um degrau abaixo do --tam-xs, para citação e etiqueta que acompanham o
      texto sem disputar com ele. */
   --tam-micro: 0.75rem;
+  /* O menor tamanho do catálogo, só para a citação no pé do cartão. Abaixo
+     disso o contraste mínimo de 4.5 para 1 deixa de bastar para a leitura. */
+  --tam-citacao: 0.6875rem;
   --tam-lg: clamp(1.125rem, 1.032rem + 0.381vw, 1.375rem);
   --tam-xl: clamp(1.375rem, 1.143rem + 0.952vw, 2rem);
   --tam-titulo: clamp(1.75rem, 1.193rem + 2.286vw, 3.25rem);
@@ -148,6 +151,9 @@
   --largura-rodape: 52rem;
   --borda: 1px solid var(--cor-linha);
   --borda-suave: 1px solid var(--cor-linha-suave);
+  /* Mais sutil que a --borda-suave, para separar sem virar moldura. Deriva da
+     mesma linha, então acompanha os dois temas sozinha. */
+  --borda-fina: 1px solid color-mix(in srgb, var(--cor-linha-suave) 60%, transparent);
   --borda-acento: 2px solid var(--cor-acento-linha);
   --borda-acento-suave: 1px solid var(--cor-acento-linha);
   --aro-retrato: 0 0 0 var(--esp-1) color-mix(in srgb, var(--cor-acento) 28%, transparent);
