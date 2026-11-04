@@ -143,6 +143,9 @@
   --esp-sobre-cartao: 1.375rem;
   --largura-cartao-unico: 28rem;
   --largura-cartao-estrutura: 20rem;
+  /* A caixa de indicador do cartão de desafios, que atravessa as duas colunas.
+     Sem medida ela viraria faixa de ponta a ponta. */
+  --largura-indicador: 17rem;
   --largura-mapa-estrutura: 64rem;
   --largura-dialogo: 47.5rem;
   --largura-dialogo-ajuda: 32rem;

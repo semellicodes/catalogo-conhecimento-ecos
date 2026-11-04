@@ -57,27 +57,26 @@
       {
         "id": "evidencias",
         "rotulo": "3. Base de evidências",
-        "tituloPainel": "Base de Evidências",
         "icone": "evidencias",
-        "introducao": "A Revisão Rápida da Literatura foi utilizada para identificar e analisar evidências científicas relacionadas à gerência de conhecimento em ECOS. A busca foi realizada na base Scopus, seguida da aplicação dos critérios de seleção e da extração e análise dos dados.",
+        "nota": "Os conhecimentos e desafios apresentados no KM4SECO foram identificados por meio de uma Revisão Rápida da Literatura, permitindo relacionar os resultados aos estudos primários que os fundamentam.",
         "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
         "revisao": {
           "titulo": "Revisão Rápida da Literatura",
+          "descricao": "Método utilizado para identificar, selecionar e analisar estudos científicos relacionados à gerência de conhecimento em ECOS.",
           "registrosRecuperados": 1096,
-          "rotuloRecuperados": "registros recuperados",
-          "rotuloSelecionados": "estudos primários selecionados",
-          "descricao": "A Revisão Rápida da Literatura é a base metodológica que identificou os conhecimentos e as evidências analisadas no KM4SECO."
+          "rotuloRecuperados": "Registros identificados",
+          "rotuloSelecionados": "Estudos primários selecionados"
         },
         "resultados": {
-          "titulo": "Evidências identificadas",
-          "rotuloConhecimentos": "conhecimentos catalogados",
-          "rotuloDesafios": "desafios identificados",
-          "descricao": "As associações entre conhecimentos e estudos primários permitem consultar as fontes científicas que sustentam os itens catalogados."
+          "titulo": "Evidências do catálogo",
+          "descricao": "A análise dos estudos primários permitiu identificar conhecimentos específicos que precisam ser gerenciados em ECOS e desafios associados à sua gerência.",
+          "rotuloConhecimentos": "Conhecimentos catalogados",
+          "rotuloDesafios": "Desafios identificados"
         },
         "desafios": {
           "titulo": "Desafios relacionados à Gerência de Conhecimento",
-          "descricao": "Os estudos primários também permitiram identificar desafios associados à gerência de conhecimento em ECOS. Esses desafios representam dificuldades relatadas na literatura e foram relacionados aos conhecimentos catalogados conforme as evidências encontradas, sem a adoção de uma taxonomia específica.",
-          "rotuloAssociacoes": "associações entre desafios e conhecimentos"
+          "descricao": "Os desafios identificados representam dificuldades relatadas nos estudos primários. A análise permitiu estabelecer associações entre esses desafios e os conhecimentos catalogados, conforme as evidências científicas encontradas.",
+          "rotuloAssociacoes": "Associações entre desafios e conhecimentos"
         }
       }
     ]

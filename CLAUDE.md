@@ -314,23 +314,44 @@ nativamente pelo navegador com `type="module"`.
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
   "Adaptação de" do cartão de ações, que avisa que os três nomes exibidos não são a taxonomia
   literal do artigo citado
-- Os três cartões da Base de Evidências ficam numa grade só, duas colunas a partir de 48rem, com o
-  dos desafios em `grid-column: 1 / -1`. Não há invólucro agrupando os dois de cima
-- Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e dois números grandes
-  lado a lado. Quem cresce para baixo é o par de números, não a descrição, senão os números
-  desalinham entre os cartões quando um rótulo quebra em duas linhas. Isso vale só onde os dois
-  dividem a linha. Em coluna única viraria vazio no pé do cartão, então o `flex` mora na media query
+- A Base de Evidências não tem cabeçalho de painel. Abre com uma nota, no mesmo estilo da nota da
+  aba de Atributos, e as três abas usam o mesmo arranjo, nota ou cartão como item da grade
+- Os três cartões ficam numa grade só, duas colunas a partir de 48rem, com o dos desafios em
+  `grid-column: 1 / -1`. Não há invólucro agrupando os dois de cima
+- O cartão é coluna flex e o par de números é empurrado para o pé com `margin-top: auto`. Como a
+  fileira iguala a altura dos dois cartões e as caixas de indicador têm a mesma altura, encostar
+  no pé faz os dois pares começarem na mesma altura, por mais que as descrições tenham
+  comprimentos diferentes
+- O par de números já teve `flex: 1`, para crescer a partir da descrição. Era o contrário disso, e
+  as duas regras brigavam. Em grade com `auto 1fr auto` a folga também não ia para a faixa do
+  meio. O subgrid seria o certo, mas no teste o navegador repartia as faixas do pai em partes
+  iguais em vez de medi-las pelo conteúdo, então o arranjo ficou em flex
+- Cada indicador tem caixa própria, com superfície, borda e raio, para o número ler como dado e
+  não como parte do parágrafo acima. O rótulo reserva duas linhas onde os dois cartões dividem a
+  fileira, medidas na entrelinha do próprio texto e não em pixel, então rótulo mais longo cresce
+  em vez de ser cortado
+- A caixa do cartão de desafios não acompanha a largura do cartão, senão vira faixa. Usa
+  `--largura-indicador`, e no celular cede para a largura disponível
+- A seta de funil entre 1.096 e 18 saiu. Os dois pares de indicadores têm que ler igual, e uma
+  seta em um e não no outro quebrava isso
 - A escala do cartão de evidências mora na regra base, não na media query de 48rem. Enquanto morou
   lá, abaixo de 768px tudo voltava ao tamanho cheio e o número da métrica chegava a 37px no tablet
   contra 22 no desktop, maior no aparelho menor
 - `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão no Ponto
   de Partida
-- A Base de Evidências mostra a progressão da revisão, dos registros recuperados aos estudos
-  selecionados, depois os resultados e por último os desafios, em cartão próprio. Os desafios não
-  viram quinta camada. A contagem dos desafios é de associações entre desafio e conhecimento, não
-  de desafios distintos, e o rótulo diz isso
+- A Base de Evidências mostra a revisão, depois as evidências do catálogo e por último os
+  desafios, em cartão próprio. Os desafios não viram quarta etapa. O cartão de desafios conta
+  associações entre desafio e conhecimento, 22, e o cartão de evidências conta desafios
+  distintos, 17. São números diferentes e cada rótulo diz qual é qual
 - Só `registrosRecuperados` é escrito em `meta.json`, porque é número do protocolo da revisão. O
-  total de estudos, de conhecimentos e de associações sai dos próprios dados
+  total de estudos, de conhecimentos, de desafios e de associações sai dos próprios dados
+- A Base de Evidências tem uma citação só, embaixo dos três cartões, sem link e com os anos do
+  Cartaxo juntos, "Cartaxo et al. (2018, 2020); Charmaz (2006)". É referência de método, não
+  autoria dos números, e abrir a página de referências dali tiraria a pessoa da leitura
+- O `fonteConceitual` aceita `semLink` e `agrupar`. O `agrupar` junta os anos de obras seguidas
+  dos mesmos autores, derivando dos mesmos rótulos de `dados.js`, então continua havendo um lugar
+  só para a forma abreviada. Só agrupa onde é pedido, porque agrupar sempre mudaria as linhas que
+  hoje citam as duas obras do Cartaxo separadas de propósito
 - O bloco de Gerência tem três cartões, cada um com a sua citação no pé e nenhuma citação única no
   pé do bloco. Recursos de conhecimento cita `kauschinger2024`, que define recurso de fronteira do
   conhecimento e lista documentação, portais, treinamentos, exemplos de código, blogs e comunidades.

@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-52';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-53';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -20,21 +20,53 @@ function criar(tag, className, texto) {
    Cada citação é um item que quebra inteiro, separado por espaço e não por
    ponto e vírgula, senão o separador sobra pendurado no fim da linha quando a
    lista quebra. */
-function fonteConceitual(chaves, prefixo) {
+/* Obras seguidas dos mesmos autores viram uma citação só, com os anos juntos,
+   como "Cartaxo et al. (2018, 2020)". É norma de citação, não economia de
+   espaço. Só agrupa quando pedido, porque agrupar sempre mudaria linhas que
+   hoje citam as duas obras separadas de propósito. */
+function agruparPorAutores(chaves) {
+  const partes = (rotulo) => rotulo.match(/^(.*?)\s*\((\d{4}[a-z]?)\)\s*$/);
+  return chaves.reduce((grupos, chave) => {
+    const atual = partes(rotuloDaReferencia(chave));
+    const anterior = grupos[grupos.length - 1];
+    if (atual && anterior?.autores === atual[1]) {
+      anterior.anos.push(atual[2]);
+      anterior.chaves.push(chave);
+      return grupos;
+    }
+    grupos.push(atual
+      ? { autores: atual[1], anos: [atual[2]], chaves: [chave] }
+      : { rotulo: rotuloDaReferencia(chave), chaves: [chave] });
+    return grupos;
+  }, []);
+}
+
+const rotuloDoGrupo = (grupo) => grupo.rotulo || `${grupo.autores} (${grupo.anos.join(', ')})`;
+
+/**
+ * A linha de citação de um bloco.
+ *
+ * `prefixo` existe para a citação que não sustenta o conteúdo ao pé da letra,
+ * como "Adaptado de", que avisa que os nomes exibidos não são a taxonomia
+ * literal do artigo. `semLink` serve onde a citação é metodológica e abrir a
+ * página de referências tiraria a pessoa da leitura. `agrupar` junta os anos
+ * de obras seguidas dos mesmos autores.
+ */
+function fonteConceitual(chaves, prefixo, { semLink = false, agrupar = false } = {}) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
-  /* O prefixo existe para a citação que não sustenta o conteúdo ao pé da
-     letra, como "Adaptação de", que avisa que os nomes exibidos não são a
-     taxonomia literal do artigo. */
   if (prefixo) fonte.append(criar('span', 'estrutura__fonte-prefixo', prefixo));
-  const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
-  referencias.forEach((chave, indice) => {
+  const lista = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
+  const referencias = agrupar ? agruparPorAutores(lista) : lista.map((c) => ({ chaves: [c] }));
+  referencias.forEach((grupo, indice) => {
+    const chave = grupo.chaves[0];
+    const rotulo = agrupar ? rotuloDoGrupo(grupo) : rotuloDaReferencia(chave);
     const item = criar('span', 'estrutura__fonte-item');
-    if (temVerbete(chave)) {
-      const link = criar('a', '', rotuloDaReferencia(chave));
+    if (temVerbete(chave) && !semLink) {
+      const link = criar('a', '', rotulo);
       link.href = `referencias.html#referencia-${chave}`;
       item.append(link);
     } else {
-      item.append(rotuloDaReferencia(chave));
+      item.append(rotulo);
     }
     /* O ponto e vírgula fica dentro do item anterior, sem espaço antes dele, e
        o item não parte no meio. Assim o separador nunca se descola da citação
@@ -211,16 +243,14 @@ function numeroEvidencia(valor, rotulo) {
  * Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e
  * dois números grandes lado a lado, para alinharem entre si.
  */
-function cartaoEvidencia(icone, titulo, descricao, numeros, comSeta) {
+function cartaoEvidencia(icone, titulo, descricao, numeros) {
   const bloco = criar('section', 'estrutura__evidencia-linha');
   bloco.append(
     cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
     criar('p', 'estrutura__evidencia-texto', descricao)
   );
   const par = criar('div', 'estrutura__par-numeros');
-  par.append(numeroEvidencia(...numeros[0]));
-  if (comSeta) par.append(criar('span', 'estrutura__funil-seta'));
-  par.append(numeroEvidencia(...numeros[1]));
+  numeros.forEach((numero) => par.append(numeroEvidencia(...numero)));
   bloco.append(par);
   return bloco;
 }
@@ -253,13 +283,16 @@ function composicaoEvidencias(dados, definicao) {
     cartaoEvidencia('revisao', revisao.titulo, revisao.descricao, [
       [revisao.registrosRecuperados, revisao.rotuloRecuperados],
       [dados.estudos.length, revisao.rotuloSelecionados]
-    ], true),
+    ]),
     cartaoEvidencia('estudos', resultados.titulo, resultados.descricao, [
       [dados.conhecimentos.length, resultados.rotuloConhecimentos],
       [dados.desafios.length, resultados.rotuloDesafios]
-    ], false),
+    ]),
     blocoDesafios(dados, definicao.desafios),
-    fonteConceitual(definicao.referencias)
+    /* Uma citação só para os três cartões, sem link e com os anos do Cartaxo
+       juntos. É referência de método, não autoria dos números, e abrir a
+       página de referências daqui tiraria a pessoa da leitura. */
+    fonteConceitual(definicao.referencias, undefined, { semLink: true, agrupar: true })
   );
   return composicao;
 }
@@ -405,7 +438,11 @@ function explicacaoAtributos(dados, aba, definicao) {
 }
 
 function explicacaoEvidencias(dados, aba, definicao) {
-  const resultado = painel(definicao, aba, definicao.introducao, [composicaoEvidencias(dados, definicao)], 'estrutura__grade--evidencias');
+  /* A nota entra como item da grade, como nas outras duas abas, para herdar o
+     alinhamento lateral sem repetir medida. */
+  const conteudo = [composicaoEvidencias(dados, definicao)];
+  if (definicao.nota) conteudo.unshift(criar('p', 'estrutura__nota-secao', definicao.nota));
+  const resultado = painel(definicao, aba, '', conteudo, 'estrutura__grade--evidencias');
   resultado.classList.add('estrutura__painel--evidencias');
   return resultado;
 }
