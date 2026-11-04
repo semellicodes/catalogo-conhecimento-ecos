@@ -10,11 +10,11 @@
         "icone": "conhecimento",
         "cartaoIntroducao": {
           "titulo": "Conhecimento em ECOS",
-          "texto": "Nos Ecossistemas de Software (ECOS), o conhecimento compreende informações contextualizadas, experiências e habilidades relacionadas às atividades e interações dos participantes do ecossistema. Esse conhecimento pode estar distribuído entre diferentes atores e organizações, sendo utilizado e compartilhado para apoiar a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
+          "texto": "Nos Ecossistemas de Software (ECOS), o conhecimento compreende experiências, valores e informações contextuais relacionadas às atividades e interações dos participantes do ecossistema. Esse conhecimento pode estar distribuído entre diferentes atores e organizações, sendo utilizado e compartilhado para apoiar a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
           "referencias": "davenport1998, seichter2010, viana2015"
         },
         "classificacao": {
-          "texto": "O conhecimento pode ser classificado em explícito e tácito. O tácito é o conhecimento associado às experiências, percepções e habilidades dos indivíduos, sendo mais difícil de formalizar e transmitir por meios documentais. Na classificação adotada nesta pesquisa, ele se subdivide em tácito-cognitivo e tácito-técnico.",
+          "texto": "O conhecimento pode ser classificado em explícito e tácito. O tácito é o conhecimento associado às experiências, percepções e interpretações individuais, sendo mais difícil de formalizar e transmitir. Na classificação adotada nesta pesquisa, ele se subdivide em tácito-cognitivo e tácito-técnico.",
           "referencias": "nonaka1997, alavi2001"
         }
       },
