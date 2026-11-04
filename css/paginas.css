@@ -850,8 +850,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__gerencia-item,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
-  .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__categoria-classificacao + .estrutura__categoria-classificacao { padding-top: var(--esp-3); padding-left: 0; border-top: var(--borda-suave); border-left: 0; }
   .estrutura__composicao-atributos { gap: var(--esp-3); }
   .estrutura__classificacao-coluna,
   .estrutura__tipos-ecos { padding: var(--esp-4); }
