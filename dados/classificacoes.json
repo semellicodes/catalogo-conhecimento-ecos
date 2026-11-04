@@ -135,7 +135,6 @@
   "acaoGerencia": {
     "rotulo": "Ações de gerência",
     "principal": false,
-    "pendente": true,
     "pergunta": "Que ações de gerência apoiam esse conhecimento no ecossistema?",
     "referencia": "zaim2019",
     "valores": [

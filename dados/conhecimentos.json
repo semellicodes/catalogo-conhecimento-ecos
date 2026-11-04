@@ -7,7 +7,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -37,7 +40,11 @@
     "nivel": "Plataforma",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -88,7 +95,10 @@
     "nivel": "Plataforma",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -137,7 +147,11 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -181,7 +195,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -220,7 +237,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -246,7 +266,10 @@
     "nivel": "Plataforma",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -280,7 +303,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -313,7 +339,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -340,7 +369,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Criação e registro",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [],
@@ -371,7 +403,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -397,7 +431,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Social",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -445,7 +482,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -481,7 +520,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Social",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -515,7 +556,9 @@
     "nivel": "Plataforma",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -550,7 +593,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -576,7 +621,10 @@
     "nivel": "Produto",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -609,7 +657,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -635,7 +686,10 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento",
+      "Uso e aplicação"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
@@ -676,7 +730,9 @@
     "nivel": "Produto",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [],
+    "acaoGerencia": [
+      "Compartilhamento"
+    ],
     "portador": "",
     "tipoSaber": "",
     "solucoes": [
