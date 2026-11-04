@@ -288,6 +288,10 @@ nativamente pelo navegador com `type="module"`.
 - A ajuda dos desafios cita `revisaoRapidaManuscrito`, porque os desafios são achado da revisão
   deste trabalho e não de um esquema publicado. Essa chave não tem verbete, então a citação sai
   como texto e não como link
+- O bloco de desafios da ficha e o cartão de desafios da Base de Evidências levam o mesmo nome,
+  "Desafios relacionados à Gerência de Conhecimento". São a mesma coisa vista de dois lugares, e
+  dois nomes fariam parecer que são duas. A ajuda do bloco repete esse nome, em vez da forma curta
+  que as outras ajudas usam, porque aqui o nome já é curto
 - `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
   publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
   `temVerbete` do `dados.js`, num lugar só

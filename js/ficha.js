@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261104-38';
+import { referenciaCurta } from './dados.js?v=20261104-39';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -539,7 +539,7 @@ function estudos(conhecimento) {
 }
 
 function desafiosRelacionados(dados, conhecimento) {
-  const bloco = secao(dados, 'Desafios identificados na literatura, base de evidências', 'desafios');
+  const bloco = secao(dados, 'Desafios relacionados à Gerência de Conhecimento', 'desafios');
   bloco.append(desafios(conhecimento));
   return fecharSecao(bloco);
 }
