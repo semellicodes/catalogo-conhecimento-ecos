@@ -127,3 +127,47 @@ button, input, select {
 /* A catalogo.html só redireciona e carrega apenas tokens e base, então o
    espaçamento do seu único parágrafo mora aqui. */
 .redirecionamento { padding: var(--esp-6); }
+
+/* ---------- Justificação da prosa ---------- */
+/* A prosa do catálogo é justificada, como num texto acadêmico. A decisão vale
+   para o site inteiro, então mora aqui e não espalhada pelos componentes.
+
+   A hifenização entra junto porque justificar sem hífen abre rios de espaço
+   entre as palavras. O português tem palavra longa e o rio aparece rápido.
+   O lang="pt-BR" do html é o que diz ao navegador onde pode quebrar.
+
+   Fora daqui ficam, de propósito, a intro centralizada de cada seção, que não
+   é prosa corrida; a lista de referências, que a ABNT NBR 6023 manda alinhar à
+   esquerda; a lista de conhecimentos ligados do Explorar, que é fileira de
+   etiqueta; e as células estreitas do glossário, onde justificar só produziria
+   rio. */
+.abertura__resumo,
+.estrutura__painel-intro,
+.estrutura__evidencia-texto,
+.cartao__descricao,
+.explorar__intro,
+.item-listagem__texto,
+.secao__intro,
+.sobre__cabecalho p,
+.prosa p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Abaixo de 36rem a coluna fica estreita demais para justificar. O espaço entre
+   as palavras cresce até virar buraco, e aí o texto ragged lê melhor. É o mesmo
+   corte que a ficha já usava. */
+@media (max-width: 35.99rem) {
+  .abertura__resumo,
+  .estrutura__painel-intro,
+  .estrutura__evidencia-texto,
+  .cartao__descricao,
+  .explorar__intro,
+  .item-listagem__texto,
+  .secao__intro,
+  .sobre__cabecalho p,
+  .prosa p {
+    text-align: left;
+    hyphens: manual;
+  }
+}

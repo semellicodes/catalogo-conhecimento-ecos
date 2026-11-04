@@ -921,6 +921,7 @@
 .exemplos-ecos__referencia .estudo__icone-link { width: 0.82rem; height: 0.82rem; }
 @media (max-width: 35.99rem) {
   .exemplos-ecos__texto { text-align: left; hyphens: manual; }
+  .ficha__descricao { text-align: left; hyphens: manual; }
   .exemplos-ecos__categorias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .exemplos-ecos__categoria:last-child { grid-column: 1 / -1; }
   .exemplos-ecos__categoria { width: 100%; }
