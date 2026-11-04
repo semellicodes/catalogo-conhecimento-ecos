@@ -215,25 +215,42 @@ nativamente pelo navegador com `type="module"`.
   de Evidências. Enquanto isso, a aba 2 ainda repete a classificação e a 3 ainda é a Gerência
 - A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
-  que a reestruturação desfaz
-- O Ponto de Partida não leva pergunta de pesquisa, exemplo de conhecimento C01 a C20 nem número
-  da revisão. Leva o conceito, a frase central e os três cartões de atributo
-- Cada atributo tem um cartão, com o `rotulo`, a `funcao` e as três categorias explicadas uma a
-  uma, cada uma com `explicacao` e a linha `pergunta`. Só os nomes das categorias não bastam,
-  porque quem não vem de ECOS não sabe o que é nível de plataforma nem dimensão de negócio, e a
-  camada existe justamente para ensinar isso antes do catálogo
-- Os três cartões empilham, não dividem a linha. Texto corrido em três colunas estreitas é o que
-  quebra a leitura da aba, e por isso a aba 2 já empilhava os mesmos cartões
-- O desenho é o do `secaoTaxonomia`, o mesmo que a aba 2 usa hoje. Quando a aba 2 for reconstruída
-  e perder a coluna de classificação, o `colunaTaxonomia` sai e o `secaoTaxonomia` fica, porque
-  passa a servir só ao Ponto de Partida
-- A `pergunta` aparece nos três atributos. Antes só a natureza a mostrava, e no Ponto de Partida os
-  três são pares, então tratar um diferente dos outros pareceria descuido
-- `classificacoes.json` guarda três textos por categoria. `explicacao` é a da camada de Atributos
-  e `descricao` é a completa do glossário do Explorar. `definicaoBreve`, que existe só nas três
-  naturezas, era a do Ponto de Partida e ficou sem leitor quando a camada passou a usar a
-  `explicacao`, a mesma das outras duas, para as três lerem igual. Está no arquivo, sem uso.
-  Apagar ou não é decisão da autora
+  que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
+  sequência
+- O Ponto de Partida tem duas partes e nada mais. Primeiro o título, um parágrafo de introdução e
+  a fonte dele. Depois os três cartões de atributo. Não leva pergunta de pesquisa, exemplo de
+  conhecimento C01 a C20, número da revisão, faixa divisória entre as partes nem parágrafo de
+  encerramento depois dos cartões
+- São três cartões, não nove. Cada atributo é um cartão e as três categorias dele moram dentro,
+  porque o que agrupa as categorias é justamente o atributo. A ordem é natureza epistemológica,
+  nível no ECOS e dimensão do ECOS
+- A ordem dentro do cartão é título, pergunta orientadora, introdução, categorias e fonte. A
+  pergunta vem antes da introdução porque é ela que enquadra o que se vai ler
+- Há dois campos de pergunta no atributo, de propósito. `pergunta` é a da tabela do Explorar, com
+  outra redação e outro papel, e mexer nela mudaria aquela página. `perguntaOrientadora` é só do
+  cartão do Ponto de Partida. A `pergunta` de cada categoria também continua, na mesma tabela
+- O texto de introdução do cartão mora em `introducao`, campo que já existia no atributo e estava
+  sem nenhum leitor. O `funcao`, que diz quase a mesma coisa, continua intocado porque é o que a
+  aba 2 ainda mostra. Quando a aba 2 perder a coluna de classificação, o `funcao` fica sem leitor
+  e os dois viram um só
+- `principal` também não tem leitor em módulo nenhum. Marca a natureza como entrada principal do
+  catálogo, o que é verdade, mas hoje quem decide isso é a ordenação. Está no arquivo, sem uso
+- Os três cartões dividem a linha no desktop, em três colunas de largura igual. Até 992px
+  empilham, porque três colunas de texto longo dariam uns 280px cada e a explicação viraria uma
+  palavra por linha. No celular só o respiro interno cede, e nenhum texto encolhe ou some
+- O conteúdo é longo e a aba fica alta. É troca aceita de propósito, porque encurtar o texto para
+  baixar a altura tiraria o que torna os conceitos compreensíveis para quem nunca viu gerência de
+  conhecimento em ECOS
+- A explicação da categoria não é justificada, embora a prosa do site seja. A coluna tem uns 314px
+  no desktop e justificar ali abriria rio. A regra de justificação não a alcança porque ela mora
+  numa lista de seletores, e esse não entrou
+- Nada de carrossel, aba, acordeão, modal, texto escondido com expandir nem rolagem dentro do
+  cartão. Toda explicação fica visível sem interação
+- `classificacoes.json` guarda três textos por categoria. `explicacao` é a do cartão do Ponto de
+  Partida, `pergunta` é a linha "Responde à pergunta" da tabela do Explorar e `descricao` é a
+  completa do glossário. `definicaoBreve`, que existe só nas três naturezas, ficou sem leitor
+  quando o cartão passou a usar a `explicacao`. Está no arquivo, sem uso. Apagar ou não é decisão
+  da autora
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
   Ele aparece no cartão do Ponto de Partida, no selo do cartão do catálogo, nas pastilhas de filtro,
   na classificação da ficha, no glossário do Explorar e na ordenação, e um nome por lugar seria pior
@@ -244,30 +261,20 @@ nativamente pelo navegador com `type="module"`.
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
-- A dimensão do ECOS cita `santos2011` e `santos2012`, nessa ordem. O de 2011 descreve o conteúdo
-  de cada dimensão mas chama a primeira de arquitetural, e o de 2012 é que faz o recorte em três e
-  usa o nome técnica, que é o que este catálogo adota
-- O nível no ECOS cita só `johnson2020`, que é quem define os três níveis. O `kauschinger2021`
-  continua nas ajudas da ficha, onde sustenta outra coisa
-- Cada categoria dos quatro atributos tem `explicacao`, de duas ou três frases, e `pergunta`, a
-  linha "Responde à pergunta". As duas são literais dos artigos primários
+- A dimensão do ECOS cita só `santos2011`, por decisão da autora. Fica registrado o que a decisão
+  anterior dizia, porque a questão não desapareceu. O de 2011 descreve o conteúdo de cada dimensão
+  mas chama a primeira de arquitetural, e era o `santos2012` que fazia o recorte em três e usava o
+  nome técnica, que é o que este catálogo adota. Conferir antes da defesa
+- O nível no ECOS cita `johnson2020` e `kauschinger2021`, nessa ordem. O Johnson é quem define os
+  três níveis
+- A `explicacao` das categorias de natureza, nível e dimensão foi reescrita pela autora para o
+  Ponto de Partida, em texto didático de duas a quatro frases, e não é mais citação literal dos
+  artigos primários. A `pergunta` continua literal. A `explicacao` do `tipoEcos` não foi tocada
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
   "Adaptação de" do cartão de ações, que avisa que os três nomes exibidos não são a taxonomia
   literal do artigo citado
-- A frase central do Ponto de Partida é um divisor, com a linha saindo para os dois lados até a
-  borda do bloco e o texto no meio em mono, maiúsculo pequeno, com espaçamento entre letras
-- Até 600px o divisor some e a redação longa dá lugar à curta, `tituloAtributosCurto`. Encolher a
-  longa não resolve, porque setenta e sete caracteres em caixa alta não cabem em 308px sem virar
-  três linhas de texto espremido. No celular vira título de seção comum, em sans, caixa normal,
-  13px em peso 700, alinhado à esquerda e com uma linha fina acima
-- As duas redações ficam no DOM e quem está fora do tamanho de tela sai com `display: none`, que
-  também a tira da árvore de acessibilidade. O leitor de tela anuncia uma só, conferido pelo
-  `innerText` nas duas larguras
-- Tamanho, entrelinha e alinhamento vão no `h4` do divisor, não no `span` de dentro. O span é
-  inline, então quem dimensiona cada linha é o strut do bloco, e as propriedades do bloco deixam
-  de valer no span assim que a grade sai
 - Os três cartões da Base de Evidências ficam numa grade só, duas colunas a partir de 48rem, com o
   dos desafios em `grid-column: 1 / -1`. Não há invólucro agrupando os dois de cima
 - Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e dois números grandes
@@ -309,6 +316,9 @@ nativamente pelo navegador com `type="module"`.
 - O rótulo curto de cada referência mora em `js/dados.js`, porque a forma abreviada não sai da
   citação sozinha, "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a obra tem.
   É um lugar só, para a Estrutura e a ficha citarem igual
+- O rótulo do `davenport1998` é "Davenport e Prusak (1998)", mas o verbete em `referencias.json`
+  traz só "DAVENPORT, T.". Os dois se contradizem e quem está incompleto é o verbete, que precisa
+  ganhar o segundo autor. Não foi mexido porque é bibliografia, não código
 - Toda ajuda da ficha fecha com a sua citação, nas cinco, e é o único lugar onde a ficha cita. Os
   autores saem das chaves de `referencia` de `meta.ajudas`, um lugar só, que a Estrutura também
   usa. Ajuda sem chave de referência não existe, e se alguma surgir sem, a linha some em vez de

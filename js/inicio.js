@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-45';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-46';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -100,16 +100,43 @@ function cabecalhoComIcone(icone, titulo, classe) {
 /* Os três atributos do Ponto de Partida, na ordem em que o catálogo os lê. */
 const ATRIBUTOS_PARTIDA = ['natureza', 'nivel', 'dimensao'];
 
-function divisorDaPartida(definicao) {
-  const divisor = criar('h4', 'estrutura__divisor');
-  /* Duas redações do mesmo título, a longa e a curta. Quem está fora do
-     tamanho de tela sai com display none, que também o tira da árvore de
-     acessibilidade, então o leitor de tela anuncia uma só. */
-  divisor.append(criar('span', 'estrutura__divisor-texto', definicao.tituloAtributos));
-  if (definicao.tituloAtributosCurto) {
-    divisor.append(criar('span', 'estrutura__divisor-texto estrutura__divisor-texto--curto', definicao.tituloAtributosCurto));
-  }
-  return divisor;
+/* A categoria é nome e explicação, sem pergunta própria. A pergunta agora é uma
+   por cartão, orientadora do atributo inteiro, e não uma por categoria.
+
+   São dois campos de pergunta de propósito. A `pergunta` do atributo é a da
+   tabela do Explorar, com outra redação e outro papel, e mexer nela mudaria
+   aquela página. A `perguntaOrientadora` é só deste cartão. */
+function categoriaDoAtributo(valor) {
+  const item = criar('li', 'atributo-card__categoria');
+  item.append(
+    criar('h5', 'atributo-card__categoria-nome', valor.valor),
+    criar('p', 'atributo-card__categoria-texto', valor.explicacao)
+  );
+  return item;
+}
+
+/**
+ * Um cartão por atributo, com as três categorias dentro dele. Não são nove
+ * cartões soltos, porque o que agrupa as categorias é justamente o atributo.
+ *
+ * A ordem dentro do cartão é título, pergunta orientadora, introdução,
+ * categorias e fonte. A pergunta vem antes da introdução porque é ela que
+ * enquadra o que se vai ler, e a fonte fecha, como em toda a Estrutura.
+ */
+function cartaoDeAtributo(atributo) {
+  const cartao = criar('article', 'atributo-card');
+  cartao.append(
+    criar('h4', 'atributo-card__titulo', atributo.rotulo),
+    criar('p', 'atributo-card__pergunta', atributo.perguntaOrientadora),
+    criar('p', 'atributo-card__intro', atributo.introducao)
+  );
+
+  const categorias = criar('ul', 'atributo-card__categorias');
+  atributo.valores.forEach((valor) => categorias.append(categoriaDoAtributo(valor)));
+  cartao.append(categorias);
+
+  if (atributo.referencia) cartao.append(fonteConceitual(atributo.referencia));
+  return cartao;
 }
 
 /**
@@ -118,18 +145,17 @@ function divisorDaPartida(definicao) {
  * dos três, e não mais definida numa camada e retomada como critério na
  * seguinte.
  *
- * Cada atributo ganha um cartão com a própria função e com as três categorias
- * explicadas uma a uma. Só os nomes não bastavam, porque quem não vem de ECOS
- * não sabe o que é nível de plataforma nem dimensão de negócio. Os cartões
- * empilham, e não dividem a linha, porque texto corrido em coluna estreita é o
- * que quebra a leitura da aba.
+ * Os três cartões dividem a linha no desktop. O conteúdo é longo e a aba fica
+ * alta, e é a troca aceita de propósito, porque encurtar o texto para baixar a
+ * altura tiraria justamente o que torna os conceitos compreensíveis para quem
+ * nunca viu gerência de conhecimento em ECOS.
+ *
+ * Não há faixa divisória antes dos cartões nem parágrafo depois deles. A aba é
+ * conceito, cartões, e termina.
  */
-function composicaoAtributos(dados, definicao) {
-  const composicao = criar('article', 'estrutura__composicao-conhecimento');
-  composicao.append(divisorDaPartida(definicao));
-  const secoes = criar('div', 'estrutura__taxonomia-secoes');
-  ATRIBUTOS_PARTIDA.forEach((chave) => secoes.append(secaoTaxonomia(dados.classificacoes[chave], true)));
-  composicao.append(secoes);
+function composicaoAtributos(dados) {
+  const composicao = criar('div', 'estrutura__atributos-cards');
+  ATRIBUTOS_PARTIDA.forEach((chave) => composicao.append(cartaoDeAtributo(dados.classificacoes[chave])));
   return composicao;
 }
 
@@ -376,7 +402,7 @@ function colunaTiposEcos(dados, definicao) {
 function explicacaoConhecimento(dados, aba, definicao) {
   const contexto = criar('div', 'estrutura__contexto-academico');
   contexto.append(fonteConceitual(definicao.referencias));
-  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoAtributos(dados, definicao)], 'estrutura__grade--conhecimento');
+  const resultado = painel(definicao, aba, definicao.introducao, [contexto, composicaoAtributos(dados)], 'estrutura__grade--conhecimento');
   resultado.classList.add('estrutura__painel--conhecimento');
   return resultado;
 }
