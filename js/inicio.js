@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-50';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-51';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -287,11 +287,16 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   raiz.setAttribute('role', 'tabpanel');
   raiz.setAttribute('aria-labelledby', aba.id);
   raiz.tabIndex = 0;
-  const cabecalho = criar('header', 'estrutura__painel-cabecalho');
-  const simbolo = criar('span', 'estrutura__painel-icone');
-  simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
-  cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.tituloPainel || definicao.rotulo));
-  raiz.append(cabecalho);
+  /* Aba sem tituloPainel não leva cabeçalho. O nome da etapa já está no botão
+     da aba, e o aria-labelledby aponta para ele, então o painel continua com
+     nome acessível sem o h3. */
+  if (definicao.tituloPainel) {
+    const cabecalho = criar('header', 'estrutura__painel-cabecalho');
+    const simbolo = criar('span', 'estrutura__painel-icone');
+    simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
+    cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.tituloPainel));
+    raiz.append(cabecalho);
+  }
   if (introducao) raiz.append(textoIntroducao(introducao, destaque));
   const nota = aviso ? criar('p', 'estrutura__aviso', aviso) : null;
   if (nota && !avisoDepois) raiz.append(nota);
@@ -373,10 +378,11 @@ function explicacaoConhecimento(dados, aba, definicao) {
  * terceiro parágrafo antes deles diria pela terceira vez do que a aba trata.
  */
 function explicacaoAtributos(dados, aba, definicao) {
-  const resultado = painel(definicao, aba, '', [
-    blocoTiposEcos(dados, definicao.tiposEcos),
-    blocoGerenciaDoEcos(dados, definicao.gerencia)
-  ], 'estrutura__grade--atributos');
+  /* A nota entra como primeiro item da grade, e não antes dela, para herdar o
+     alinhamento lateral e o mesmo vão vertical que separa os dois blocos. */
+  const conteudo = [blocoTiposEcos(dados, definicao.tiposEcos), blocoGerenciaDoEcos(dados, definicao.gerencia)];
+  if (definicao.nota) conteudo.unshift(criar('p', 'estrutura__nota-secao', definicao.nota));
+  const resultado = painel(definicao, aba, '', conteudo, 'estrutura__grade--atributos');
   resultado.classList.add('estrutura__painel--atributos');
   return resultado;
 }

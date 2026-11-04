@@ -608,6 +608,25 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-5);
 }
+/* A nota que abre a aba, no lugar do cabeçalho que havia ali. É item da
+   grade, não um bloco antes dela, então acompanha sozinha a largura e o vão
+   dos dois cartões. O espaço acima é o padding do painel, sem margem negativa
+   para compensar o cabeçalho que saiu.
+
+   Discreta de propósito. Fundo de acento suave, borda fina e nada de ícone ou
+   título, para introduzir sem disputar com os blocos que vêm abaixo. */
+.estrutura__nota-secao {
+  padding: var(--esp-3) var(--esp-4);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-xs);
+  line-height: 1.5;
+  /* À esquerda mesmo com a prosa do site justificada. São duas linhas numa
+     caixa larga, e justificar abriria vão sem ganho nenhum. */
+  text-align: left;
+}
 /* Os dois blocos têm a mesma superfície, para lerem como partes de uma seção
    só e não como duas abas empilhadas. */
 .estrutura__tipos-ecos,
@@ -769,9 +788,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    continuam completas, mas deixam de reservar espaço apenas decorativo. */
 @media (min-width: 48rem) {
   .estrutura__painel { padding: var(--esp-5); }
-  /* A Gerência aperta o quadro, porque os três cartões já trazem o seu próprio
-     respiro e o painel só somava moldura em volta. */
-  .estrutura__painel--atributos { padding: var(--esp-4); }
   .estrutura__painel-intro {
     margin-top: var(--esp-4);
     padding: var(--esp-3) var(--esp-4);
