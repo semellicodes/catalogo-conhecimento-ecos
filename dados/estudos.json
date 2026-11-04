@@ -17,7 +17,7 @@
     "ano": 2025,
     "pais": "China",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1108/EJIM-08-2024-0953",
+    "url": "https://doi.org/10.1108/EJIM-08-2024-0953",
     "categoriaEcos": "ECOS de Código Aberto",
     "contextoEcos": "nas comunidades open source PaddlePaddle, Apollo, openEuler, OpenHarmony, MindSpore, openGauss e EdgeGallery, nas quais os participantes coordenam o compartilhamento de conhecimento"
   },
@@ -28,7 +28,7 @@
     "ano": 2025,
     "pais": "Canadá",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1145/3757462",
+    "url": "https://doi.org/10.1145/3757462",
     "categoriaEcos": "ECOS de Código Aberto",
     "contextoEcos": "no ecossistema científico open source Astropy, formado por pacotes Python interoperáveis voltados à astronomia e mantido por diferentes subcomunidades"
   },
@@ -61,7 +61,7 @@
     "ano": 2024,
     "pais": "Alemanha",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1111/radm.12644",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/radm.12644#:~:text=https%3A//doi.org,Object%20Identifier%20(DOI)",
     "categoriaEcos": "ECOS Híbrido",
     "contextoEcos": "na SAP Business Technology Platform, em que desenvolvedores de empresas parceiras utilizam documentação, cursos, comunidade e exemplos de código"
   },
@@ -117,7 +117,7 @@
     "ano": 2022,
     "pais": "Brasil",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1145/3571473.3571486",
+    "url": "https://doi.org/10.1145/3571473.3571486",
     "categoriaEcos": "ECOS Proprietário",
     "contextoEcos": "em um ecossistema proprietário anonimizado de uma organização internacional de seguros, no qual a governança de incidentes conecta participantes e componentes internos"
   },
@@ -128,7 +128,7 @@
     "ano": 2021,
     "pais": "Canadá",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1109/ICSE43902.2021.00097",
+    "url": "https://doi.org/10.1109/ICSE43902.2021.00097",
     "categoriaEcos": "ECOS de Código Aberto",
     "contextoEcos": "no OpenStack, em que treinamentos, mentoria e contribuições distribuídas apoiam participantes que atuam em múltiplos projetos"
   },
@@ -139,7 +139,7 @@
     "ano": 2021,
     "pais": "Alemanha",
     "tipoEcos": [],
-    "url": "https://link-springer-com.ez4.periodicos.capes.gov.br/chapter/10.1007/978-3-030-86797-3_2",
+    "url": "https://doi.org/10.1007/978-3-030-86797-3_2",
     "categoriaEcos": "ECOS Híbrido",
     "contextoEcos": "na SAP Cloud Platform e na SAP Developer Community, onde desenvolvedores acessam e compartilham conhecimento sobre a plataforma"
   },
@@ -161,7 +161,7 @@
     "ano": 2017,
     "pais": "Suécia",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1109/SYSCON.2017.7934757"
+    "url": "https://ieeexplore.ieee.org/document/7934757#:~:text=10.1109/SYSCON.2017.7934757"
   },
   {
     "id": "E15",
@@ -170,7 +170,7 @@
     "ano": 2015,
     "pais": "Brasil",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1145/2857218.2857264",
+    "url": "https://doi.org/10.1145/2857218.2857264",
     "categoriaEcos": "ECOS de Código Aberto",
     "contextoEcos": "no Portal do Software Público Brasileiro e na comunidade 4CMBr, ligados à adoção de software livre por municípios e seus participantes"
   },
@@ -181,7 +181,7 @@
     "ano": 2015,
     "pais": "Áustria",
     "tipoEcos": [],
-    "url": "https://doi-org.ez4.periodicos.capes.gov.br/10.1145/2797433.2797480",
+    "url": "https://doi.org/10.1145/2797433.2797480",
     "categoriaEcos": "ECOS Híbrido",
     "contextoEcos": "em um ecossistema industrial de cidade inteligente, com plataforma de entrega de serviços, fornecedores, dispositivos, órgãos públicos e usuários"
   },
