@@ -271,17 +271,22 @@ nativamente pelo navegador com `type="module"`.
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
   nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
   painéis
-- A fonte fica no pé de cada cartão, sempre visível, nunca atrás do botão de ajuda e nunca uma só
-  no pé do bloco. Mesmo visual em toda a Estrutura, na ficha e no Explorar, pequena, itálica,
-  apagada e separada do corpo por linha fina, sem caixa nem fundo. Repete-se de cartão em cartão de
-  propósito, porque fora da ordem de leitura cada cartão tem que se sustentar sozinho
+- Na Estrutura a fonte fica no pé de cada cartão, sempre visível, pequena, itálica, apagada e
+  separada do corpo por linha fina, sem caixa nem fundo. Repete-se de cartão em cartão de
+  propósito, porque fora da ordem de leitura cada cartão tem que se sustentar sozinho. Lá não há
+  botão de ajuda, então o pé é o único lugar onde a citação pode estar
+- Na ficha é o contrário. O bloco não leva fonte no pé, porque a ajuda daquele mesmo bloco já fecha
+  com a citação, e as duas saem da mesma chave de `referencia`. A mesma citação duas vezes dentro
+  de uma seção de meia tela é repetição, não reforço. Quem quiser a origem do esquema abre o "?",
+  que é o lugar onde a explicação dele também está
 - A citação aparece sozinha, sem o rótulo "Fonte" na frente. O lugar e o estilo já dizem o que é
 - O rótulo curto de cada referência mora em `js/dados.js`, porque a forma abreviada não sai da
   citação sozinha, "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a obra tem.
   É um lugar só, para a Estrutura e a ficha citarem igual
-- Toda ajuda da ficha fecha com a sua citação, nas cinco. Os autores saem das mesmas chaves de
-  `referencia` que o rodapé do bloco usa, para não haver duas listas a manter. Ajuda sem chave de
-  referência não existe, e se alguma surgir sem, a linha some em vez de aparecer vazia
+- Toda ajuda da ficha fecha com a sua citação, nas cinco, e é o único lugar onde a ficha cita. Os
+  autores saem das chaves de `referencia` de `meta.ajudas`, um lugar só, que a Estrutura também
+  usa. Ajuda sem chave de referência não existe, e se alguma surgir sem, a linha some em vez de
+  aparecer vazia
 - O `prefixoFonte` em `meta.json` é opcional e só a ajuda da Gerência o declara, com "Síntese do
   KM4SECO elaborada com base em", porque só ela é síntese deste trabalho e não explicação de um
   esquema alheio. Sem ele a citação aparece sozinha, como em todo o resto do catálogo
