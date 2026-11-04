@@ -7,7 +7,7 @@
    Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
    servia metade nova e metade velha. O ferramentas/versionar.py troca esta
    linha e todas as outras de uma vez. */
-const VERSAO = '20261104-21';
+const VERSAO = '20261104-22';
 
 const ARQUIVOS = Object.fromEntries(
   ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
