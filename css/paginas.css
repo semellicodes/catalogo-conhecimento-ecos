@@ -321,7 +321,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A introdução acompanha a largura do painel nas quatro abas. A Base de
    Evidências ficava de fora e a caixa parava no meio, deixando o vazio à
    direita que destoava das outras. */
-.estrutura__painel--conhecimento .estrutura__painel-intro,
 .estrutura__painel--evidencias .estrutura__painel-intro {
   width: var(--largura-cheia);
   max-width: none;
@@ -365,7 +364,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--esp-4);
-  margin-top: var(--esp-4);
+  /* Sem margem própria. O bloco é item da grade do painel, e quem separa ele
+     do cartão de conceito é o gap dela. A margem somava ao gap e abria 32px
+     onde a grade já pedia 16. */
 }
 /* O cartão empilha em coluna para a fonte poder ser empurrada para o pé com
    margin-top auto, e as três linhas de fonte se alinharem entre os cartões. */
@@ -556,17 +557,41 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.35;
 }
 
-/* As abas explicativas organizam as definições acadêmicas por camada, sem
-   recorrer a cartões redundantes. As fontes levam à seção conceitual pública. */
-.estrutura__contexto-academico {
-  display: grid;
-  gap: var(--esp-2);
-  margin-top: 0;
+/* O cartão que abre o Ponto de Partida. Título com ícone, conceito e fonte
+   numa composição só, e não três elementos soltos como antes. Entra na grade,
+   então acompanha sozinho a largura e o vão dos três cartões de atributo.
+
+   Verde bem suave, o mesmo da nota que abre a aba de Atributos, para as duas
+   introduções da Estrutura se reconhecerem. */
+.estrutura__cartao-conceito {
+  padding: var(--esp-4);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-suave);
+  border-radius: var(--raio);
 }
-/* A citação que fecha a introdução é linha de apoio, não faixa. Antes somava
-   a margem do bloco à margem dela própria e abria 28px acima do texto. */
-.estrutura__painel--conhecimento .estrutura__contexto-academico .estrutura__fonte-conceitual {
-  margin-top: var(--esp-2);
+.estrutura__conceito-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+}
+.estrutura__conceito-cabecalho-titulo {
+  font-size: var(--tam-base);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-nome);
+  line-height: 1.25;
+}
+.estrutura__conceito-texto {
+  margin-top: var(--esp-3);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.6;
+  /* À esquerda mesmo com a prosa do site justificada, como a nota da aba 2. */
+  text-align: left;
+}
+/* A citação fecha o cartão, separada do parágrafo pela linha fina e na mesma
+   escala das outras citações da Estrutura. */
+.estrutura__cartao-conceito .estrutura__fonte-conceitual {
+  margin-top: var(--esp-3);
   padding-top: var(--esp-2);
   border-top: var(--borda-fina);
   font-size: var(--tam-citacao);

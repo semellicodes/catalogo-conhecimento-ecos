@@ -246,10 +246,17 @@ nativamente pelo navegador com `type="module"`.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
   sequência
-- O Ponto de Partida tem duas partes e nada mais. Primeiro o título, um parágrafo de introdução e
-  a fonte dele. Depois os três cartões de atributo. Não leva pergunta de pesquisa, exemplo de
-  conhecimento C01 a C20, número da revisão, faixa divisória entre as partes nem parágrafo de
-  encerramento depois dos cartões
+- O Ponto de Partida tem duas partes e nada mais. Primeiro um cartão de conceito, com o título,
+  o ícone, o parágrafo e a fonte numa composição só. Depois os três cartões de atributo. Não leva
+  pergunta de pesquisa, exemplo de conhecimento C01 a C20, número da revisão, faixa divisória
+  entre as partes nem parágrafo de encerramento depois dos cartões
+- O cartão de conceito é o primeiro item da grade, não um bloco antes dela, então herda sozinho a
+  largura e o vão vertical dos três cartões de atributo. É o mesmo arranjo da nota que abre a aba
+  de Atributos, e as duas usam o mesmo verde suave para as introduções da Estrutura se
+  reconhecerem. O conteúdo dele mora em `cartaoIntroducao`, com `titulo`, `texto` e `referencias`
+- A aba 1 também não tem cabeçalho de painel, porque o título vive dentro do cartão. Como as
+  outras duas abas, quem decide isso é a ausência do `tituloPainel`. Hoje só a Base de Evidências
+  ainda declara um
 - São três cartões, não nove. Cada atributo é um cartão e as três categorias dele moram dentro,
   porque o que agrupa as categorias é justamente o atributo. A ordem é natureza epistemológica,
   nível no ECOS e dimensão do ECOS
