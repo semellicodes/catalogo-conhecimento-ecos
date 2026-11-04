@@ -140,10 +140,16 @@ button, input, select {
    é prosa corrida; a lista de referências, que a ABNT NBR 6023 manda alinhar à
    esquerda; a lista de conhecimentos ligados do Explorar, que é fileira de
    etiqueta; e as células estreitas do glossário, onde justificar só produziria
-   rio. */
+   rio.
+
+   Os cartões do Ponto de Partida entram, por decisão da autora, embora a
+   coluna tenha uns 314px no desktop. Numa coluna dessa largura quem segura a
+   justificação é a hifenização, e por isso ela não é opcional ali. */
 .abertura__resumo,
 .estrutura__painel-intro,
 .estrutura__evidencia-texto,
+.atributo-card__intro,
+.atributo-card__categoria-texto,
 .cartao__descricao,
 .explorar__intro,
 .item-listagem__texto,
@@ -161,6 +167,8 @@ button, input, select {
   .abertura__resumo,
   .estrutura__painel-intro,
   .estrutura__evidencia-texto,
+  .atributo-card__intro,
+  .atributo-card__categoria-texto,
   .cartao__descricao,
   .explorar__intro,
   .item-listagem__texto,
