@@ -839,6 +839,54 @@
   stroke-linejoin: round;
 }
 .exemplos-ecos { display: grid; gap: var(--esp-2); }
+/* As cápsulas de atividade não dividem a linha em colunas iguais como as
+   categorias de ECOS. Elas são três pílulas de larguras diferentes, que
+   acompanham o nome de cada processo e se reorganizam em mais linhas quando a
+   largura acaba. */
+.acoes-gerencia__capsulas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+}
+/* O resto é a mesma linguagem das categorias de ECOS, verde no texto e no
+   ícone, fundo neutro e borda discreta. Só o canto é totalmente arredondado e
+   o conteúdo lê em linha, com a seta no fim. */
+.exemplos-ecos__categoria.atividade-gerencia {
+  grid-auto-flow: column;
+  justify-items: start;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-4);
+  border-radius: var(--raio-pilula);
+  text-align: left;
+  /* O mesmo verde das categorias de ECOS identificadas, pela mesma expressão,
+     para as duas fileiras lerem como a mesma família de controle. O fundo
+     continua neutro, que é o que distingue a cápsula do botão de categoria. */
+  color: color-mix(in srgb, var(--cor-acento) 82%, var(--cor-texto-suave));
+}
+/* A seta diz que a cápsula abre, e gira para cima quando ela está aberta.
+   Desenhada com borda, para não depender de fonte nem de um svg a mais. */
+.atividade-gerencia__seta {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.12rem) rotate(45deg);
+  transition: transform var(--dur-rapida) var(--curva);
+}
+.atividade-gerencia[aria-expanded="true"] .atividade-gerencia__seta {
+  transform: translateY(0.08rem) rotate(-135deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .atividade-gerencia__seta { transition: none; }
+}
+/* A linha dos estudos fecha o painel da atividade, menor e apagada, porque é
+   procedência e não a descrição da atividade. */
+.exemplos-ecos__texto--estudos {
+  margin-top: var(--esp-2);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-citacao);
+}
 .exemplos-ecos__categorias,
 .acoes-gerencia__cartoes {
   display: grid;
