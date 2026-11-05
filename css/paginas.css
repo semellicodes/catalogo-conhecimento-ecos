@@ -760,10 +760,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.3;
 }
 .estrutura__atributo-categoria-texto {
-  margin-top: var(--esp-1);
+  margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
   line-height: 1.55;
+}
+/* A introdução do cartão também lê à esquerda, pelo mesmo motivo das
+   categorias. A exceção mora aqui, e não na lista do base.css, porque o
+   seletor é compartilhado com o bloco da aba de Gerência, que continua
+   justificado. */
+.estrutura__cartao-atributo > .estrutura__bloco-intro {
+  text-align: left;
+  hyphens: manual;
 }
 /* A nota fecha o bloco de gerência, abaixo dos três cartões, com o canto
    arredondado da base porque ali ela encosta na borda do bloco. */
