@@ -381,17 +381,19 @@ nativamente pelo navegador com `type="module"`.
 - Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. O cartão verde do
   Ponto de Partida escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
   repetir a forma por extenso, e eram duas apresentações numa página só
-- A dimensão do ECOS cita só `santos2011` e o nível cita `johnson2020` e `kauschinger2021`. As
-  duas citações estão no arquivo mas não aparecem em tela desde que os dois atributos saíram da
-  aba 1. Fica registrado o que a decisão sobre a dimensão dizia, porque a questão não desapareceu.
-  O de 2011 descreve o conteúdo de cada dimensão mas chama a primeira de arquitetural, e era o
-  `santos2012` que fazia o recorte em três e usava o nome técnica, que é o que este catálogo
-  adota. Conferir antes da defesa
-- A conferência foi tentada e não se concluiu. O repositório não guarda os artigos, e a rede desta
-  sessão não alcança nem o CEUR, onde o de 2011 está aberto, nem o arXiv. A dimensão continua
-  citando `santos2011`, provisoriamente, e a pendência segue de pé. O `santos2012` continua
-  cadastrado em `referencias.json` com rótulo próprio, pronto para entrar se a conferência apontar
-  para ele
+- A classificação das dimensões do ECOS em Técnica, Negócio e Social foi mantida conforme a
+  organização adotada na pesquisa. Santos e Werner (2011) apresentam originalmente as dimensões
+  Arquitetural, Negócio e Social. No KM4SECO, a dimensão Técnica corresponde a uma interpretação
+  mais abrangente da perspectiva arquitetural, razão pela qual a referência é identificada como
+  adaptação conceitual
+- Por isso o rodapé do cartão diz "Adaptado de Santos e Werner (2011)". O prefixo vem de
+  `abas[1].atributos[].prefixoFonte`, na aba e não no vocabulário, porque é ressalva de atribuição
+  e não parte da classificação. A chave continua sendo `santos2011` e o link continua abrindo o
+  mesmo verbete
+- O `santos2012` continua cadastrado, sem citação em tela. Ele discute aspectos técnicos, de
+  negócio e de participação da comunidade, mas não apresenta literalmente o mesmo recorte em três,
+  então não foi acrescentado ao rodapé. A pendência que pedia conferência nas fontes originais está
+  encerrada, porque a leitura foi feita pela autora
 - A `explicacao` das três naturezas é a definição que o cartão mostra, reescrita pela autora
   conforme a orientação do professor. A de `nivel` e `dimensao` continua no arquivo mas não tem
   mais leitor, porque essas duas saíram da aba. A do `tipoEcos` é a do bloco de exemplos da aba de
@@ -399,8 +401,11 @@ nativamente pelo navegador com `type="module"`.
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
-  "Adaptação de" do cartão de ações, que avisa que os três nomes exibidos não são a taxonomia
-  literal do artigo citado
+  "Adaptado de" do cartão de dimensão, que avisa que os nomes exibidos adaptam a nomenclatura do
+  artigo citado. O prefixo e a citação são itens de flex, e o vão entre eles precisa medir um
+  espaço de palavra, não um separador de lista, senão o prefixo se solta do nome que ele
+  qualifica. A regra é presa ao cartão que tem prefixo, para as duas citações do nível
+  continuarem separadas pelo vão de lista
 - A Base de Evidências tem dois componentes, e só eles, por orientação do professor. Estudos
   primários associados e Referências bibliográficas. O arranjo é o da Classificação, cartão verde
   atravessando a grade e os dois componentes dividindo a linha abaixo, com a mesma altura

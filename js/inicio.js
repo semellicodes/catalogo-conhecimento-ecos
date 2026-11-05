@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-22';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-26';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -218,7 +218,9 @@ function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
     });
     cartao.append(lista);
   }
-  if (conteudo.referencias) cartao.append(fonteConceitual(conteudo.referencias));
+  if (conteudo.referencias) {
+    cartao.append(fonteConceitual(conteudo.referencias, conteudo.prefixoFonte));
+  }
   /* O rodapé diz de onde a informação vem quando a origem é a evidência deste
      trabalho e não uma obra publicada. Usa a mesma linha da citação, para os
      cartões da Estrutura fecharem todos igual. */
@@ -240,7 +242,11 @@ function cartaoDeAtributo(dados, atributo) {
       icone: atributo.icone,
       titulo: vocabulario.rotulo,
       introducao: vocabulario.funcao,
-      referencias: vocabulario.referencia
+      referencias: vocabulario.referencia,
+      /* O prefixo vem da aba, e não do vocabulário, porque é ressalva de
+         atribuição e não parte da classificação. O da dimensão avisa que os
+         nomes exibidos adaptam a nomenclatura do artigo citado. */
+      prefixoFonte: atributo.prefixoFonte
     },
     vocabulario.valores
   );

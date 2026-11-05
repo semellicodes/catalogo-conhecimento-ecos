@@ -36,7 +36,8 @@
           },
           {
             "chave": "dimensao",
-            "icone": "dimensao"
+            "icone": "dimensao",
+            "prefixoFonte": "Adaptado de"
           }
         ],
         "tiposEcos": {
