@@ -151,6 +151,12 @@
       "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
       "referencia": "kauschinger2024, kauschinger2023, zaim2019"
     },
+    "gerenciaComponentes": {
+      "titulo": "Como gerenciar esse conhecimento em ECOS",
+      "texto": "A importância de gerenciar o conhecimento e os atores envolvidos vêm das evidências dos estudos primários associados a ele. As atividades são classificadas segundo os processos de gerência do conhecimento apresentados por Lopes et al. (2026), e a associação entre cada atividade e o processo correspondente é análise deste trabalho, não classificação dos autores dos estudos.",
+      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
+      "referencia": "lopes2026"
+    },
     "desafios": {
       "titulo": "Desafios relacionados à Gerência de Conhecimento",
       "texto": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",

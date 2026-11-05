@@ -184,7 +184,37 @@ nativamente pelo navegador com `type="module"`.
   superfície distinta do conteúdo que ficou atrás dela
 - A ficha usa superfícies para classificação, exemplos de ecossistema, gerência e abas, sem cartões
   internos repetidos
-- A ordem dos blocos é classificação, exemplos de ecossistema, gerência do conhecimento e as abas
+- A ficha tem quatro blocos, nesta ordem. Classificação do conhecimento, Exemplos de ECOS em que o
+  conhecimento foi observado, Como gerenciar esse conhecimento em ECOS e Estudos primários
+  associados
+- Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é onde a relação entre
+  desafio e conhecimento se lê inteira, nos dois sentidos. Na ficha eram um quinto bloco sobre um
+  assunto que a ficha não trata. Saíram com eles o `desafiosRelacionados`, o `linhaDesafio`, o
+  `estudosDoDesafio`, o `acessoAosEstudos`, o `iconeDesafio` e o `iconeInformacao`. A
+  `meta.ajudas.desafios` continua no arquivo, sem leitor, como os outros campos sem uso
+- A natureza saiu da classificação da ficha. Ela já aparece no selo do topo, ao lado do
+  identificador, e repeti-la dizia duas vezes a mesma coisa na mesma tela. Ficam o nível e a
+  dimensão, que o topo não mostra
+- A primeira categoria de ECOS com evidência já abre quando a ficha monta, para a seção não começar
+  vazia. O recolher continua e nada impede que nenhuma fique aberta depois
+- O bloco de gerência da ficha existe em duas formas, enquanto as vinte são revistas uma a uma. A
+  nova traz Importância de gerenciar esse conhecimento, Atores envolvidos e Atividades de gerência
+  do conhecimento, e a antiga traz recursos, participação e ações. Quem decide qual monta é a
+  presença de `atividadesGerencia` no conhecimento, não uma lista de identificadores, para a troca
+  acontecer sozinha conforme o dado for escrito
+- Só o C01 tem a forma nova. Os outros dezenove continuam na antiga até a leitura dos estudos
+  primários de cada um
+- As duas formas têm ajuda própria, `gerencia` e `gerenciaComponentes`, porque uma descreve
+  recursos, participação e ações e a outra descreve importância, atores e atividades. A antiga sai
+  quando a última ficha for revista
+- As atividades aparecem em cápsulas, uma por processo identificado. Só entram os processos que as
+  evidências sustentam. Nenhum aparece apagado para completar a lista, porque ausência de evidência
+  não é evidência de ausência, e a aba 3 já diz que não se pressupõe que todos estejam presentes
+- A cápsula reusa o desenho das categorias de ECOS, verde no texto, fundo neutro e borda discreta,
+  e muda só o canto, totalmente arredondado, e a seta que diz que ela abre. O verde é da interação,
+  não da natureza epistemológica, então a cor do explícito não entra ali
+- A cápsula declara as duas coisas no seletor composto, `.exemplos-ecos__categoria.atividade-gerencia`,
+  porque a regra das categorias vem depois no arquivo e venceria por ordem num seletor de classe só
 - Natureza, nível e dimensão aparecem juntos na classificação, como rótulo em cima e valor embaixo,
   em três colunas no desktop e empilhados no celular
 - Tipo de ECOS aparece na ficha mesmo antes do preenchimento, porque é atributo complementar do TCC II,

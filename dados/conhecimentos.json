@@ -2,7 +2,7 @@
   {
     "id": "C01",
     "nome": "Dependências técnicas entre componentes do ecossistema",
-    "descricao": "Esse conhecimento consiste no mapeamento e entendimento das relações de interdependência técnica entre módulos, pacotes e projetos no ECOS. Nesse contexto, alterações não coordenadas em um componente podem gerar impactos em cadeia, quebrar compatibilidades ou inviabilizar a integração de soluções desenvolvidas por participantes do ECOS à plataforma tecnológica comum.",
+    "descricao": "Esse conhecimento abrange as relações de interdependência técnica entre componentes, módulos, pacotes e projetos que integram o ECOS, considerando as conexões e os requisitos necessários ao funcionamento conjunto desses elementos. Envolve a compreensão de quais componentes dependem de outros, das tecnologias utilizadas nessas relações e das condições de compatibilidade e integração entre soluções desenvolvidas por diferentes participantes.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -25,10 +25,37 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "As dependências técnicas entre componentes do ecossistema são classificadas como conhecimento explícito porque suas relações podem ser formalizadas em mapas e registros de dependência. O nível Ecossistema se aplica porque uma alteração pode se propagar entre pacotes, projetos e produtos conectados. A dimensão Técnica foi selecionada porque sua gerência exige compreender tecnologias, interfaces e interdependências de integração.",
+    "justificativaClassificacao": "As dependências técnicas entre componentes do ecossistema são classificadas no nível Ecossistema porque uma alteração pode se propagar entre pacotes, projetos e produtos conectados. A dimensão Técnica foi aplicada porque sua gerência exige compreender tecnologias, interfaces e interdependências de integração.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos responsáveis pelo projeto que origina a dependência, em mapas e registros de dependências mantidos no repositório.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos responsáveis por pacotes dependentes e por participantes do ECOS que ingressam no projeto, durante mudanças e integrações à plataforma tecnológica comum.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e atualizar as relações de dependência entre componentes e projetos, tornando esses mapas consultáveis antes de mudanças e integrações."
+    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e atualizar as relações de dependência entre componentes e projetos, tornando esses mapas consultáveis antes de mudanças e integrações.",
+    "importanciaGerencia": "Gerenciar as dependências técnicas entre componentes do ecossistema é importante para coordenar alterações entre projetos interdependentes, preservar a compatibilidade entre componentes e evitar impactos em cadeia que comprometam a integração de soluções à plataforma tecnológica comum.",
+    "atoresEnvolvidos": "A organização central pode disponibilizar informações sobre as dependências técnicas da plataforma, utilizadas pelos desenvolvedores externos na integração e manutenção de seus componentes. Entretanto, esse conhecimento também é produzido e compartilhado por colaboradores de diferentes projetos do ECOS, especialmente durante alterações, atualizações e atividades que exigem coordenação entre componentes interdependentes.",
+    "atividadesGerencia": [
+      {
+        "processo": "Identificação",
+        "descricao": "Análise das relações de dependência entre pacotes e projetos, com base em informações técnicas e dados de repositórios.",
+        "estudos": [
+          "E03",
+          "E08"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "Troca de informações sobre dependências e alterações entre colaboradores de projetos interdependentes, incluindo discussões em issues e pull requests.",
+        "estudos": [
+          "E03"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "Utilização do conhecimento sobre dependências técnicas para coordenar alterações entre projetos interdependentes e apoiar a identificação de colaboradores com experiência nas tecnologias utilizadas.",
+        "estudos": [
+          "E03",
+          "E08"
+        ]
+      }
+    ]
   },
   {
     "id": "C02",

@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261105-26';
+import { referenciaCurta } from './dados.js?v=20261105-30';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -189,6 +189,10 @@ function exemplosDeEcos(conhecimento) {
 
   const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Híbrido', 'ECOS Proprietário'];
   const lista = criar('div', 'exemplos-ecos__categorias');
+  /* A primeira categoria com evidência já abre, para a seção não começar vazia
+     e pedir um clique só para mostrar o que ela tem. O recolher continua, e
+     nada impede que nenhuma fique aberta depois. */
+  const primeiraComEvidencia = ordemCategorias.find((categoria) => grupos.has(categoria));
   lista.setAttribute('role', 'group');
   lista.setAttribute('aria-label', 'Categorias de ECOS observados');
   ordemCategorias.forEach((categoria) => {
@@ -210,10 +214,13 @@ function exemplosDeEcos(conhecimento) {
       painel.hidden = false;
     });
     lista.append(botao);
+    if (categoria === primeiraComEvidencia) {
+      botao.setAttribute('aria-expanded', 'true');
+      mostrar(categoria);
+      painel.hidden = false;
+    }
   });
-  raiz.append(lista);
-
-  raiz.append(painel);
+  raiz.append(lista, painel);
   return raiz;
 }
 
@@ -278,9 +285,10 @@ function secao(dados, titulo, chaveDaAjuda, linhaDeApoio, controleAjuda) {
   return bloco;
 }
 
-/* Os três atributos são a classificação completa que a revisão apresenta para
-   cada conhecimento. */
-const CLASSIFICACAO = ['natureza', 'nivel', 'dimensao'];
+/* A natureza saiu daqui. Ela já aparece no selo do topo da ficha, ao lado do
+   identificador, e repeti-la na classificação dizia duas vezes a mesma coisa
+   na mesma tela. Ficam o nível e a dimensão, que o topo não mostra. */
+const CLASSIFICACAO = ['nivel', 'dimensao'];
 
 /**
  * A classificação é texto, não caixa. Com um valor possível por atributo, a
@@ -411,8 +419,91 @@ function acoesDeGerencia(dados, conhecimento) {
   return raiz;
 }
 
+/* Uma atividade do referencial, como cápsula que abre o painel abaixo.
+   O desenho e o comportamento são os de exemplosDeEcos, um painel só que troca
+   de conteúdo e recolhe ao clicar de novo na mesma cápsula. */
+function capsulaDeAtividade(atividade, painel, lista) {
+  const botao = criar('button', 'exemplos-ecos__categoria atividade-gerencia');
+  botao.type = 'button';
+  botao.setAttribute('aria-controls', painel.id);
+  botao.setAttribute('aria-expanded', 'false');
+  botao.append(criar('span', '', atividade.processo), criar('span', 'atividade-gerencia__seta'));
+  botao.addEventListener('click', () => {
+    const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
+    lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
+    if (estavaAberto) {
+      painel.hidden = true;
+      return;
+    }
+    botao.setAttribute('aria-expanded', 'true');
+    painel.replaceChildren(
+      criar('p', 'acoes-gerencia__rotulo', atividade.processo),
+      criar('p', 'exemplos-ecos__texto', atividade.descricao)
+    );
+    if (atividade.estudos?.length) {
+      painel.append(criar('p', 'exemplos-ecos__texto exemplos-ecos__texto--estudos',
+        `Estudos associados: ${atividade.estudos.join(' e ')}`));
+    }
+    painel.hidden = false;
+  });
+  return botao;
+}
+
+/**
+ * As atividades identificadas para este conhecimento, nas cápsulas.
+ *
+ * Só entram os processos que as evidências sustentam. Nenhum processo do
+ * referencial é exibido apagado para completar a lista, porque ausência de
+ * evidência não é evidência de ausência e a aba 3 já diz que não se pressupõe
+ * que todos estejam presentes.
+ */
+function atividadesDeGerencia(conhecimento) {
+  const raiz = criar('div', 'acoes-gerencia');
+  const painel = criar('div', 'exemplos-ecos__painel');
+  painel.id = `atividades-gerencia-${conhecimento.id}`;
+  painel.hidden = true;
+
+  const lista = criar('div', 'acoes-gerencia__capsulas');
+  lista.setAttribute('role', 'group');
+  lista.setAttribute('aria-label', 'Atividades de gerência do conhecimento');
+  conhecimento.atividadesGerencia.forEach((atividade) =>
+    lista.append(capsulaDeAtividade(atividade, painel, lista)));
+
+  raiz.append(lista, painel);
+  return raiz;
+}
+
+/* Os três componentes que a aba 3 da Estrutura apresenta, na ordem dela. */
+const COMPONENTES_GERENCIA = [
+  ['importanciaGerencia', 'Importância de gerenciar esse conhecimento'],
+  ['atoresEnvolvidos', 'Atores envolvidos']
+];
+
+/**
+ * O bloco de gerência na organização nova, com os três componentes.
+ *
+ * Convive com a antiga enquanto as fichas forem revistas uma a uma. Quem
+ * decide qual das duas monta é a presença de `atividadesGerencia`, e não uma
+ * lista de identificadores, para a troca acontecer sozinha conforme o dado de
+ * cada conhecimento for escrito.
+ */
+function gerenciaPorComponentes(dados, conhecimento) {
+  const bloco = secao(dados, 'Como gerenciar esse conhecimento em ECOS', 'gerenciaComponentes');
+  const lista = criar('dl', 'gerencia');
+  COMPONENTES_GERENCIA.forEach(([chave, rotulo]) => {
+    const conteudo = texto(conhecimento[chave]);
+    if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
+  });
+  const atividades = criar('dd', 'gerencia__valor gerencia__valor--acoes');
+  atividades.append(atividadesDeGerencia(conhecimento));
+  lista.append(criar('dt', 'gerencia__rotulo', 'Atividades de gerência do conhecimento'), atividades);
+  bloco.append(lista);
+  return bloco;
+}
+
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
+  if (conhecimento.atividadesGerencia?.length) return gerenciaPorComponentes(dados, conhecimento);
   const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');
 
@@ -432,143 +523,6 @@ function gerencia(dados, conhecimento) {
 }
 
 /* ---------- Relações e estudos ---------- */
-
-/* Os ícones descrevem visualmente o tipo de dificuldade. A chave vem do dado
-   do desafio, para que a escolha não se misture à relação científica. */
-const ICONES_DESAFIOS = {
-  search: [['circle', { cx: 8.5, cy: 8.5, r: 4 }], ['path', { d: 'm11.5 11.5 4.5 4.5' }]],
-  'user-search': [
-    ['circle', { cx: 7.5, cy: 6.5, r: 2.5 }], ['path', { d: 'M3.5 16c.4-2.7 1.9-4 4-4 1 0 1.9.3 2.6.9' }],
-    ['circle', { cx: 15, cy: 14, r: 2.5 }], ['path', { d: 'm16.8 15.8 2 2' }]
-  ],
-  'share-2': [
-    ['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15.5, cy: 4.5, r: 2 }], ['circle', { cx: 15.5, cy: 15.5, r: 2 }],
-    ['path', { d: 'm6.8 9 6.8-3.6M6.8 11l6.8 3.6' }]
-  ],
-  scale: [
-    ['path', { d: 'M10 3v13M4 6h12M6 6l-2.2 5h4.4L6 6Zm8 0-2.2 5h4.4L14 6ZM4 17h12' }]
-  ],
-  'circle-alert': [
-    ['circle', { cx: 10, cy: 10, r: 7 }], ['path', { d: 'M10 6.5v4M10 13.5h.01' }]
-  ],
-  history: [
-    ['path', { d: 'M4 9a6 6 0 1 1 1.6 4.1M4 5v4h4M10 6.5V10l2.5 1.5' }]
-  ],
-  'users-round': [
-    ['circle', { cx: 7, cy: 7, r: 2.5 }], ['circle', { cx: 14, cy: 8, r: 2 }],
-    ['path', { d: 'M2.8 16c.5-3 2-4.5 4.2-4.5s3.7 1.5 4.2 4.5M12.2 12.5c2.4-.1 4 1.2 4.5 3.5' }]
-  ],
-  'columns-2': [
-    ['rect', { x: 3, y: 4, width: 14, height: 12, rx: 1 }], ['path', { d: 'M10 4v12' }]
-  ],
-  'lock-keyhole': [
-    ['rect', { x: 4.5, y: 9, width: 11, height: 8, rx: 1 }], ['path', { d: 'M6.5 9V6.7a3.5 3.5 0 0 1 7 0V9M10 12v2.5' }]
-  ],
-  'graduation-cap': [
-    ['path', { d: 'm2.5 8 7.5-4 7.5 4-7.5 4-7.5-4ZM5 9.3v4.2c2.7 1.7 7.3 1.7 10 0V9.3M17.5 8v4' }]
-  ],
-  gauge: [
-    ['path', { d: 'M4 15a6 6 0 0 1 12 0M10 11l3-2M6 16h8' }], ['circle', { cx: 10, cy: 11, r: 1 }]
-  ],
-  handshake: [
-    ['path', { d: 'm3 10 3-3 2.5 2.2L11 7l3 3-2 2 1.2 1.2a1.4 1.4 0 0 1-2 2L10 14l-.8.8a1.4 1.4 0 0 1-2-2L6 11.6l-1.2 1.2a1.4 1.4 0 0 1-2-2L4 9.6' }]
-  ],
-  'file-warning': [
-    ['path', { d: 'M6 3h5l3 3v11H6zM11 3v3h3M10 9v3M10 14h.01' }]
-  ],
-  'message-circle': [
-    ['path', { d: 'M16 9a6 6 0 0 1-6 6 6.7 6.7 0 0 1-2.7-.6L4 16l1.1-3A6 6 0 1 1 16 9Z' }]
-  ],
-  'file-pen': [
-    ['path', { d: 'M6 3h5l3 3v5M11 3v3h3M6 3v14h4M11.5 15.5l4.2-4.2 1.5 1.5-4.2 4.2-2 .5z' }]
-  ],
-  'messages-square': [
-    ['path', { d: 'M3 5h11v8H8l-3 3v-3H3zM9 8h8v8h-2v2l-3-2H9z' }]
-  ]
-};
-
-function iconeDesafio(nome) {
-  const caixa = criar('span', 'relacao__icone');
-  const svg = document.createElementNS(SVG, 'svg');
-  svg.setAttribute('viewBox', '0 0 20 20');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.setAttribute('focusable', 'false');
-  (ICONES_DESAFIOS[nome] || ICONES_DESAFIOS['circle-alert'])
-    .forEach(([tag, atributos]) => svg.append(traco(tag, atributos)));
-  caixa.append(svg);
-  return caixa;
-}
-
-function iconeInformacao() {
-  const svg = document.createElementNS(SVG, 'svg');
-  svg.setAttribute('viewBox', '0 0 20 20');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.setAttribute('focusable', 'false');
-  svg.append(
-    traco('circle', { cx: 10, cy: 10, r: 7 }),
-    traco('path', { d: 'M10 9v4M10 6.5h.01' })
-  );
-  return svg;
-}
-
-function estudosDoDesafio(desafio, conhecimento) {
-  return conhecimento.estudosResolvidos
-    .filter((estudo) => desafio.estudos.includes(estudo.id));
-}
-
-function acessoAosEstudos(desafio, conhecimento) {
-  const estudos = estudosDoDesafio(desafio, conhecimento).filter((estudo) => estudo.url);
-  if (!estudos.length) return document.createDocumentFragment();
-
-  const acessar = criar('a', 'desafio-card__acessar', estudos.length > 1 ? 'Acessar estudos' : 'Acessar estudo');
-  acessar.href = estudos[0].url;
-  acessar.target = '_blank';
-  acessar.rel = 'noopener noreferrer';
-  acessar.setAttribute('aria-label', `${estudos.length > 1 ? 'Acessar estudos associados' : 'Acessar estudo associado'} ao desafio ${desafio.id}`);
-  if (estudos.length > 1) acessar.title = 'Abre o primeiro estudo associado; os demais estão listados na seção de estudos primários.';
-  acessar.append(iconeLinkExterno());
-  return acessar;
-}
-
-/** Cada desafio aparece como um cartão de leitura direta, sem repetir evidências. */
-function linhaDesafio(desafio, conhecimento) {
-  const item = criar('li', 'desafio-card');
-  const conteudo = criar('div', 'desafio-card__conteudo');
-  const cabecalho = criar('div', 'desafio-card__cabecalho');
-  const estudos = estudosDoDesafio(desafio, conhecimento);
-  const metadado = [desafio.id, ...estudos.map((estudo) => estudo.id)].join(' · ');
-  const explicacao = criar('p', 'desafio-card__descricao', desafio.explicacao || desafio.desafio);
-  explicacao.title = explicacao.textContent;
-  cabecalho.append(
-    criar('span', 'codigo-id', metadado),
-    criar('h4', 'desafio-card__titulo', desafio.desafio)
-  );
-  conteudo.append(
-    cabecalho,
-    explicacao
-  );
-  item.append(iconeDesafio(desafio.icone), conteudo, acessoAosEstudos(desafio, conhecimento));
-  return item;
-}
-
-/** Os desafios confirmados deste conhecimento. */
-function desafios(conhecimento) {
-  const bloco = criar('div', 'relacoes-bloco');
-  if (!conhecimento.desafiosResolvidos.length) {
-    const aviso = criar('div', 'relacoes__vazio');
-    aviso.setAttribute('role', 'status');
-    aviso.append(
-      iconeInformacao(),
-      criar('p', null, 'Nenhum desafio foi confirmado para esse conhecimento.')
-    );
-    bloco.append(aviso);
-    return bloco;
-  }
-  const lista = criar('ul', 'relacoes');
-  conhecimento.desafiosResolvidos.forEach((d) => lista.append(linhaDesafio(d, conhecimento)));
-  bloco.append(lista);
-  return bloco;
-}
 
 function estudos(conhecimento) {
   const vistos = new Set();
@@ -608,12 +562,6 @@ function estudos(conhecimento) {
   return bloco;
 }
 
-function desafiosRelacionados(dados, conhecimento) {
-  const bloco = secao(dados, 'Desafios relacionados à Gerência de Conhecimento', 'desafios');
-  bloco.append(desafios(conhecimento));
-  return bloco;
-}
-
 function estudosPrimariosAssociados(dados, conhecimento) {
   const bloco = secao(dados, 'Estudos primários associados', 'estudos');
   bloco.append(estudos(conhecimento));
@@ -624,11 +572,14 @@ function estudosPrimariosAssociados(dados, conhecimento) {
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
 
+  /* Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é
+     onde a relação entre desafio e conhecimento se lê inteira, nos dois
+     sentidos. Na ficha eram uma sexta seção sobre um assunto que a ficha não
+     trata. */
   const secoes = [
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),
     gerencia(dados, conhecimento),
-    desafiosRelacionados(dados, conhecimento),
     estudosPrimariosAssociados(dados, conhecimento)
   ];
   raiz.append(...secoes);
