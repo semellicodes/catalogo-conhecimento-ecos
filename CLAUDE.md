@@ -202,8 +202,11 @@ nativamente pelo navegador com `type="module"`.
   do conhecimento, e a antiga traz recursos, participação e ações. Quem decide qual monta é a
   presença de `atividadesGerencia` no conhecimento, não uma lista de identificadores, para a troca
   acontecer sozinha conforme o dado for escrito
-- Só o C01 tem a forma nova. Os outros dezenove continuam na antiga até a leitura dos estudos
+- O C01 e o C12 têm a forma nova. Os outros dezoito continuam na antiga até a leitura dos estudos
   primários de cada um
+- O número de atividades varia por conhecimento, porque só entram os processos que as evidências
+  sustentam. O C01 tem três e o C12 tem quatro, e as cápsulas se reorganizam em mais linhas quando
+  a largura acaba
 - As duas formas têm ajuda própria, `gerencia` e `gerenciaComponentes`, porque uma descreve
   recursos, participação e ações e a outra descreve importância, atores e atividades. A antiga sai
   quando a última ficha for revista
