@@ -84,26 +84,22 @@
         "id": "evidencias",
         "rotulo": "4. Base de evidências",
         "icone": "evidencias",
-        "nota": "Os conhecimentos e desafios apresentados no KM4SECO foram identificados por meio de uma Revisão Rápida da Literatura, permitindo relacionar os resultados aos estudos primários que os fundamentam.",
-        "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
-        "revisao": {
-          "titulo": "Revisão Rápida da Literatura",
-          "descricao": "Método utilizado para identificar, selecionar e analisar estudos científicos relacionados à gerência de conhecimento em ECOS.",
-          "registrosRecuperados": 1096,
-          "rotuloRecuperados": "Registros identificados",
-          "rotuloSelecionados": "Estudos primários selecionados"
+        "cartaoIntroducao": {
+          "titulo": "Base de evidências",
+          "texto": "A Base de evidências reúne as publicações que fundamentam a identificação e a caracterização dos conhecimentos catalogados, permitindo consultar os estudos associados e suas respectivas informações bibliográficas."
         },
-        "resultados": {
-          "titulo": "Evidências do catálogo",
-          "descricao": "A análise dos estudos primários permitiu identificar conhecimentos específicos que precisam ser gerenciados em ECOS e desafios associados à sua gerência.",
-          "rotuloConhecimentos": "Conhecimentos catalogados",
-          "rotuloDesafios": "Desafios identificados"
-        },
-        "desafios": {
-          "titulo": "Desafios relacionados à Gerência de Conhecimento",
-          "descricao": "Os desafios identificados representam dificuldades relatadas nos estudos primários. A análise permitiu estabelecer associações entre esses desafios e os conhecimentos catalogados, conforme as evidências científicas encontradas.",
-          "rotuloAssociacoes": "Associações entre desafios e conhecimentos"
-        }
+        "componentes": [
+          {
+            "icone": "estudos",
+            "titulo": "Estudos primários associados",
+            "introducao": "São as publicações selecionadas na Revisão Rápida que apresentam evidências utilizadas para identificar e caracterizar determinado conhecimento em ECOS. Cada conhecimento pode estar associado a um ou mais estudos, conforme as evidências identificadas na pesquisa."
+          },
+          {
+            "icone": "revisao",
+            "titulo": "Referências bibliográficas",
+            "introducao": "As referências bibliográficas apresentam as informações necessárias para identificar e consultar os estudos associados a cada conhecimento, incluindo autores, título, ano de publicação e acesso às respectivas publicações."
+          }
+        ]
       }
     ]
   },
