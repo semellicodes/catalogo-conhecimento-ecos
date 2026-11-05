@@ -240,6 +240,11 @@ nativamente pelo navegador com `type="module"`.
   citação é empurrada para o pé com `margin-top: auto`
 - A natureza epistemológica não se repete na aba 2. Ela é a etapa 1 inteira, e retomá-la aqui era
   a redundância que a reestruturação desfez
+- As categorias da Classificação leem à esquerda, sem hifenização. São definições curtas numa
+  coluna de meia tela, e ali a justificação abria vão entre as palavras e hifenizava onde não
+  precisava. O seletor da categoria saiu da lista do `base.css`, que é o lugar único dessa decisão.
+  A introdução do cartão é exceção local, em `paginas.css`, porque o seletor `estrutura__bloco-intro`
+  é compartilhado com o bloco da aba de Gerência, que continua justificado
 - Nível cita `johnson2020` e `kauschinger2021`, dimensão cita `santos2011` e os exemplos citam
   `manikas2016`. O cartão verde não cita nada, porque a decisão de classificar por nível e
   dimensão é deste trabalho e não de um esquema alheio
@@ -341,6 +346,11 @@ nativamente pelo navegador com `type="module"`.
   O de 2011 descreve o conteúdo de cada dimensão mas chama a primeira de arquitetural, e era o
   `santos2012` que fazia o recorte em três e usava o nome técnica, que é o que este catálogo
   adota. Conferir antes da defesa
+- A conferência foi tentada e não se concluiu. O repositório não guarda os artigos, e a rede desta
+  sessão não alcança nem o CEUR, onde o de 2011 está aberto, nem o arXiv. A dimensão continua
+  citando `santos2011`, provisoriamente, e a pendência segue de pé. O `santos2012` continua
+  cadastrado em `referencias.json` com rótulo próprio, pronto para entrar se a conferência apontar
+  para ele
 - A `explicacao` das três naturezas é a definição que o cartão mostra, reescrita pela autora
   conforme a orientação do professor. A de `nivel` e `dimensao` continua no arquivo mas não tem
   mais leitor, porque essas duas saíram da aba. A do `tipoEcos` é a do bloco de exemplos da aba de

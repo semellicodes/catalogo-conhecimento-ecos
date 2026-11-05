@@ -142,6 +142,10 @@ button, input, select {
    etiqueta; e as células estreitas do glossário, onde justificar só produziria
    rio.
 
+   As categorias dos cartões da Classificação ficam de fora. São definições
+   curtas numa coluna de meia tela, e ali a justificação abria vão entre as
+   palavras e hifenizava onde não precisava.
+
    Os cartões do Ponto de Partida entram, por decisão da autora, embora a
    coluna tenha uns 314px no desktop. Numa coluna dessa largura quem segura a
    justificação é a hifenização, e por isso ela não é opcional ali.
@@ -156,7 +160,6 @@ button, input, select {
 .atributo-card__intro,
 .estrutura__bloco-intro,
 .estrutura__bloco-chamada,
-.estrutura__atributo-categoria-texto,
 .estrutura__gerencia-texto,
 .cartao__descricao,
 .explorar__intro,
@@ -179,8 +182,7 @@ button, input, select {
   .atributo-card__intro,
   .estrutura__bloco-intro,
   .estrutura__bloco-chamada,
-  .estrutura__atributo-categoria-texto,
-  .estrutura__gerencia-texto,
+    .estrutura__gerencia-texto,
   .cartao__descricao,
   .explorar__intro,
   .item-listagem__texto,

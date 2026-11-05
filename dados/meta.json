@@ -24,7 +24,7 @@
         "icone": "classificacao",
         "cartaoIntroducao": {
           "titulo": "Classificação do conhecimento em ECOS",
-          "texto": "Os conhecimentos identificados na Revisão Rápida são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. Os diferentes tipos de ECOS também são apresentados como contextos que auxiliam na compreensão desses conhecimentos."
+          "texto": "Os conhecimentos identificados na Revisão Rápida são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. A apresentação dos diferentes tipos de ECOS complementa essa classificação, contextualizando os ambientes em que o conhecimento pode ser produzido, compartilhado e utilizado."
         },
         "divisor": {
           "principal": "Classificação do conhecimento segundo níveis e dimensões do ECOS"
