@@ -318,14 +318,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-base);
   line-height: 1.6;
 }
-/* A introdução acompanha a largura do painel nas quatro abas. A Base de
-   Evidências ficava de fora e a caixa parava no meio, deixando o vazio à
-   direita que destoava das outras. */
-.estrutura__painel--evidencias .estrutura__painel-intro {
-  width: var(--largura-cheia);
-  max-width: none;
-  box-sizing: border-box;
-}
 .estrutura__aviso {
   max-width: var(--largura-texto);
   margin: var(--esp-4) 0 0;
@@ -354,8 +346,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__composicao-gerencia,
-.estrutura__composicao-evidencias { margin-top: var(--esp-4); }
+.estrutura__composicao-gerencia { margin-top: var(--esp-4); }
 
 /* Os três cartões de atributo do Ponto de Partida, lado a lado. O align-items
    stretch é o padrão da grade e iguala a altura sem travá-la, para a última
@@ -430,12 +421,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.35;
 }
 .estrutura__atributo-cabecalho,
-.estrutura__gerencia-cabecalho,
-.estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
-.estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
-/* O vão entre o título e o texto é o gap do cartão. A margem própria somava a
-   ele e abria dezesseis pixels onde dez bastam. */
-.estrutura__evidencia-texto { margin-top: 0; color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.45; }
+.estrutura__gerencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
 /* A Gerência roda um degrau abaixo da Base de Evidências. São três cartões
    lado a lado, com texto corrido, etiquetas e citação dentro de cada um, e na
    escala do painel cada cartão ocupava quase uma tela. */
@@ -489,90 +475,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .estrutura__nota-icone { color: var(--cor-acento); }
 .estrutura__nota-icone svg { width: var(--esp-4); height: var(--esp-4); }
 .estrutura__nota-texto { margin-top: var(--esp-1); }
-.estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__composicao-evidencias {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-3);
-  align-items: stretch;
-}
-/* O cartão empilha em coluna e o par de números é empurrado para o pé com
-   margin-top auto. Como a fileira iguala a altura dos dois cartões e as
-   quatro caixas de indicador têm a mesma altura, encostar no pé faz os dois
-   pares começarem na mesma altura, por mais que as descrições tenham
-   comprimentos diferentes. Em grade o fr não distribuía a folga como
-   esperado, e os números de um cartão desciam 20px em relação ao outro. */
-.estrutura__evidencia-linha {
-  display: flex;
-  flex-direction: column;
-  gap: var(--esp-3);
-  padding: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
-  border-radius: var(--raio);
-}
-.estrutura__par-numeros {
-  display: grid;
+/* A Base de Evidências repete o arranjo da Classificação. O cartão verde
+   atravessa a grade e os dois componentes dividem a linha abaixo dele, com a
+   mesma altura, porque align-items stretch sobrescreve o start da grade base. */
+.estrutura__grade--evidencias {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-4);
   align-items: stretch;
-  gap: var(--esp-3);
-  margin-top: auto;
 }
-/* Cada indicador na sua caixa, para o número ler como dado e não como parte
-   do parágrafo acima. */
-.estrutura__numero-evidencia {
-  padding: var(--esp-3);
-  background: var(--cor-superficie);
-  border: var(--borda-suave);
-  border-radius: var(--raio);
-}
-.estrutura__numero-evidencia-valor {
-  color: var(--cor-acento);
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-metrica);
-  /* Folga para a caixa caber o desenho inteiro do algarismo. Com 1 exato o
-     navegador recorta por alguns pixels. */
-  line-height: 1.3;
-}
-.estrutura__numero-evidencia-rotulo {
-  margin-top: var(--esp-1);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-micro);
-  line-height: 1.4;
-}
-/* Onde os dois cartões dividem a fileira, o rótulo reserva duas linhas. Sem
-   isso um rótulo de uma linha e outro de duas deixam as caixas com alturas
-   diferentes, e o par de números de um cartão começa mais abaixo que o do
-   outro. É reserva de linha, medida na entrelinha do próprio texto, não
-   altura em pixel, então rótulo mais longo cresce em vez de ser cortado.
-
-   O subgrid resolveria isso sozinho, mas nos testes o navegador repartia as
-   faixas do pai em partes iguais em vez de medi-las pelo conteúdo, e as
-   descrições de tamanhos diferentes voltavam a desalinhar os números. */
-@media (min-width: 48rem) {
-  .estrutura__par-numeros .estrutura__numero-evidencia-rotulo { min-height: 2.8em; }
-}
-/* O cartão dos desafios atravessa as duas colunas, porque os desafios não são
-   etapa da revisão, são achado dos estudos. O gap da grade já o separa. */
-.estrutura__evidencia-linha--desafios { grid-column: 1 / -1; }
-/* A caixa única não acompanha a largura do cartão, senão vira faixa. Ocupa a
-   medida de uma coluna dos cartões de cima, para as três lerem do mesmo
-   tamanho. */
-.estrutura__evidencia-linha--desafios .estrutura__numero-evidencia {
-  justify-self: start;
-  min-width: min(100%, var(--largura-indicador));
-}
-/* A citação fecha a camada, na mesma escala das outras abas. */
-.estrutura__composicao-evidencias > .estrutura__fonte-conceitual {
-  grid-column: 1 / -1;
-  margin-top: var(--esp-1);
-  padding-top: var(--esp-2);
-  border-top: var(--borda-fina);
-  font-size: var(--tam-citacao);
-  line-height: 1.35;
-}
-
+.estrutura__grade--evidencias > .estrutura__cartao-conceito { grid-column: 1 / -1; }
 /* O cartão que abre o Ponto de Partida. Título com ícone, conceito e fonte
    numa composição só, e não três elementos soltos como antes. Entra na grade,
    então acompanha sozinho a largura e o vão dos três cartões de atributo.
@@ -760,10 +671,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.3;
 }
 .estrutura__atributo-categoria-texto {
-  margin-top: var(--esp-1);
+  margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
   line-height: 1.55;
+}
+/* A introdução do cartão também lê à esquerda, pelo mesmo motivo das
+   categorias. A exceção mora aqui, e não na lista do base.css, porque o
+   seletor é compartilhado com o bloco da aba de Gerência, que continua
+   justificado. */
+.estrutura__cartao-atributo > .estrutura__bloco-intro {
+  text-align: left;
+  hyphens: manual;
 }
 /* A nota fecha o bloco de gerência, abaixo dos três cartões, com o canto
    arredondado da base porque ali ela encosta na borda do bloco. */
@@ -856,7 +775,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
   .estrutura__atributo-categorias { margin-top: var(--esp-3); }
-  .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 62rem) {
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -871,7 +789,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__grade--classificacao,
+  .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -902,7 +821,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__gerencia-item,
-  .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
   .estrutura__cartao-atributo,
   .estrutura__gerencia-bloco { padding: var(--esp-4); }

@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-3';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-9';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -20,48 +20,21 @@ function criar(tag, className, texto) {
    Cada citação é um item que quebra inteiro, separado por espaço e não por
    ponto e vírgula, senão o separador sobra pendurado no fim da linha quando a
    lista quebra. */
-/* Obras seguidas dos mesmos autores viram uma citação só, com os anos juntos,
-   como "Cartaxo et al. (2018, 2020)". É norma de citação, não economia de
-   espaço. Só agrupa quando pedido, porque agrupar sempre mudaria linhas que
-   hoje citam as duas obras separadas de propósito. */
-function agruparPorAutores(chaves) {
-  const partes = (rotulo) => rotulo.match(/^(.*?)\s*\((\d{4}[a-z]?)\)\s*$/);
-  return chaves.reduce((grupos, chave) => {
-    const atual = partes(rotuloDaReferencia(chave));
-    const anterior = grupos[grupos.length - 1];
-    if (atual && anterior?.autores === atual[1]) {
-      anterior.anos.push(atual[2]);
-      anterior.chaves.push(chave);
-      return grupos;
-    }
-    grupos.push(atual
-      ? { autores: atual[1], anos: [atual[2]], chaves: [chave] }
-      : { rotulo: rotuloDaReferencia(chave), chaves: [chave] });
-    return grupos;
-  }, []);
-}
-
-const rotuloDoGrupo = (grupo) => grupo.rotulo || `${grupo.autores} (${grupo.anos.join(', ')})`;
-
 /**
  * A linha de citação de um bloco.
  *
  * `prefixo` existe para a citação que não sustenta o conteúdo ao pé da letra,
  * como "Adaptado de", que avisa que os nomes exibidos não são a taxonomia
- * literal do artigo. `semLink` serve onde a citação é metodológica e abrir a
- * página de referências tiraria a pessoa da leitura. `agrupar` junta os anos
- * de obras seguidas dos mesmos autores.
+ * literal do artigo.
  */
-function fonteConceitual(chaves, prefixo, { semLink = false, agrupar = false } = {}) {
+function fonteConceitual(chaves, prefixo) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
   if (prefixo) fonte.append(criar('span', 'estrutura__fonte-prefixo', prefixo));
-  const lista = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
-  const referencias = agrupar ? agruparPorAutores(lista) : lista.map((c) => ({ chaves: [c] }));
-  referencias.forEach((grupo, indice) => {
-    const chave = grupo.chaves[0];
-    const rotulo = agrupar ? rotuloDoGrupo(grupo) : rotuloDaReferencia(chave);
+  const referencias = (chaves || '').split(',').map((chave) => chave.trim()).filter(Boolean);
+  referencias.forEach((chave, indice) => {
+    const rotulo = rotuloDaReferencia(chave);
     const item = criar('span', 'estrutura__fonte-item');
-    if (temVerbete(chave) && !semLink) {
+    if (temVerbete(chave)) {
       const link = criar('a', '', rotulo);
       link.href = `referencias.html#referencia-${chave}`;
       item.append(link);
@@ -92,6 +65,7 @@ const ICONES_ESTRUTURA = {
   dimensao: [['circle', { cx: 7.5, cy: 8, r: 4 }], ['circle', { cx: 12.5, cy: 8, r: 4 }], ['circle', { cx: 10, cy: 12.5, r: 4 }]],
   tipos: [['path', { d: 'M3 7.5h4v9H3zM8 4.5h4v12H8zM13 9.5h4v7h-4z' }]],
   nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
+  evidencias: [['path', { d: 'M3.5 6.5h9v10h-9z' }], ['path', { d: 'M7 3.5h9.5v10' }], ['path', { d: 'M6 10h4M6 13h4' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]],
   rastreabilidade: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
@@ -214,74 +188,6 @@ function notaMetodologica(texto) {
   return nota;
 }
 
-/** Um número grande com o rótulo embaixo, usado nos dois cartões de cima. */
-function numeroEvidencia(valor, rotulo) {
-  const bloco = criar('div', 'estrutura__numero-evidencia');
-  bloco.append(
-    criar('p', 'estrutura__numero-evidencia-valor', valor.toLocaleString('pt-BR')),
-    criar('p', 'estrutura__numero-evidencia-rotulo', rotulo)
-  );
-  return bloco;
-}
-
-/**
- * Os dois cartões de cima têm a mesma forma, título, uma linha de descrição e
- * dois números grandes lado a lado, para alinharem entre si.
- */
-function cartaoEvidencia(icone, titulo, descricao, numeros) {
-  const bloco = criar('section', 'estrutura__evidencia-linha');
-  bloco.append(
-    cabecalhoComIcone(icone, titulo, 'estrutura__evidencia-cabecalho'),
-    criar('p', 'estrutura__evidencia-texto', descricao)
-  );
-  const par = criar('div', 'estrutura__par-numeros');
-  numeros.forEach((numero) => par.append(numeroEvidencia(...numero)));
-  bloco.append(par);
-  return bloco;
-}
-
-/**
- * Os desafios, em cartão próprio dentro da base de evidências. A contagem é de
- * associações entre desafio e conhecimento, não de desafios distintos, e por
- * isso o rótulo diz associações.
- */
-function blocoDesafios(dados, desafios) {
-  const associacoes = dados.conhecimentos.reduce((total, c) => total + (c.desafios?.length || 0), 0);
-  const bloco = criar('section', 'estrutura__evidencia-linha estrutura__evidencia-linha--desafios');
-  bloco.append(cabecalhoComIcone('desafios', desafios.titulo, 'estrutura__evidencia-cabecalho'));
-  const conteudo = criar('div', 'estrutura__evidencia-conteudo');
-  conteudo.append(
-    criar('p', 'estrutura__evidencia-texto', desafios.descricao),
-    numeroEvidencia(associacoes, desafios.rotuloAssociacoes)
-  );
-  bloco.append(conteudo);
-  return bloco;
-}
-
-/* Os três cartões numa grade só. O invólucro que agrupava os dois de cima saiu,
-   porque a mesma grade resolve, com o cartão dos desafios atravessando as duas
-   colunas. Menos um nível de aninhamento e um conjunto de regras a menos. */
-function composicaoEvidencias(dados, definicao) {
-  const { revisao, resultados } = definicao;
-  const composicao = criar('article', 'estrutura__composicao-evidencias');
-  composicao.append(
-    cartaoEvidencia('revisao', revisao.titulo, revisao.descricao, [
-      [revisao.registrosRecuperados, revisao.rotuloRecuperados],
-      [dados.estudos.length, revisao.rotuloSelecionados]
-    ]),
-    cartaoEvidencia('estudos', resultados.titulo, resultados.descricao, [
-      [dados.conhecimentos.length, resultados.rotuloConhecimentos],
-      [dados.desafios.length, resultados.rotuloDesafios]
-    ]),
-    blocoDesafios(dados, definicao.desafios),
-    /* Uma citação só para os três cartões, sem link e com os anos do Cartaxo
-       juntos. É referência de método, não autoria dos números, e abrir a
-       página de referências daqui tiraria a pessoa da leitura. */
-    fonteConceitual(definicao.referencias, undefined, { semLink: true, agrupar: true })
-  );
-  return composicao;
-}
-
 /* O destaque é o trecho que a introdução põe em negrito. Vem de dados/ como
    texto, não como marcação, para o conteúdo continuar fora do código. */
 function textoIntroducao(introducao, destaque) {
@@ -311,7 +217,7 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   if (definicao.tituloPainel) {
     const cabecalho = criar('header', 'estrutura__painel-cabecalho');
     const simbolo = criar('span', 'estrutura__painel-icone');
-    simbolo.append(iconeEstrutura(iconeDoPainel(definicao)));
+    simbolo.append(iconeEstrutura(definicao.icone));
     cabecalho.append(simbolo, criar('h3', 'estrutura__painel-titulo', definicao.tituloPainel));
     raiz.append(cabecalho);
   }
@@ -338,29 +244,33 @@ function aberturaDeBloco(conteudo, classe) {
 }
 
 /**
- * Um cartão da aba de Classificação. Cabeçalho com ícone, introdução, as
- * categorias numeradas dentro do próprio cartão e a citação no pé.
+ * Um cartão de aba da Estrutura. Cabeçalho com ícone, introdução, as
+ * categorias numeradas dentro do próprio cartão quando houver, e a citação no
+ * pé quando houver.
  *
- * Os três usam o mesmo construtor. O que muda é de onde vem o texto e se as
- * categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
- * componente, senão a aba teria três desenhos para a mesma coisa.
+ * A Classificação usa os três com categorias e a Base de Evidências usa os
+ * dois sem nenhuma. O que muda é de onde vem o texto e se as categorias leem
+ * em coluna ou em fileira, e isso é decisão de grade, não de componente,
+ * senão a Estrutura teria um desenho por aba para a mesma coisa.
  */
-function cartaoDeClassificacao(conteudo, valores, classe = '') {
+function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
   const cartao = criar('article', `estrutura__cartao-atributo ${classe}`.trim());
   cartao.append(
     cabecalhoComIcone(conteudo.icone, conteudo.titulo, 'estrutura__atributo-cabecalho'),
     criar('p', 'estrutura__bloco-intro', conteudo.introducao)
   );
-  const lista = criar('ol', 'estrutura__atributo-categorias');
-  valores.forEach((valor) => {
-    const item = criar('li', 'estrutura__atributo-categoria');
-    item.append(
-      criar('h5', 'estrutura__atributo-categoria-titulo', valor.valor),
-      criar('p', 'estrutura__atributo-categoria-texto', valor.explicacao)
-    );
-    lista.append(item);
-  });
-  cartao.append(lista);
+  if (valores.length) {
+    const lista = criar('ol', 'estrutura__atributo-categorias');
+    valores.forEach((valor) => {
+      const item = criar('li', 'estrutura__atributo-categoria');
+      item.append(
+        criar('h5', 'estrutura__atributo-categoria-titulo', valor.valor),
+        criar('p', 'estrutura__atributo-categoria-texto', valor.explicacao)
+      );
+      lista.append(item);
+    });
+    cartao.append(lista);
+  }
   if (conteudo.referencias) cartao.append(fonteConceitual(conteudo.referencias));
   return cartao;
 }
@@ -370,7 +280,7 @@ function cartaoDeClassificacao(conteudo, valores, classe = '') {
    decisão de interface e não parte da classificação. */
 function cartaoDeAtributo(dados, atributo) {
   const vocabulario = dados.classificacoes[atributo.chave];
-  return cartaoDeClassificacao(
+  return cartaoDeEstrutura(
     {
       icone: atributo.icone,
       titulo: vocabulario.rotulo,
@@ -387,7 +297,7 @@ function cartaoDeAtributo(dados, atributo) {
    do vocabulário, "Tipo de ECOS observado", nomeia o campo da ficha e não
    este cartão. */
 function cartaoDeExemplos(dados, conteudo) {
-  return cartaoDeClassificacao(
+  return cartaoDeEstrutura(
     conteudo,
     dados.classificacoes[conteudo.chave].valores,
     'estrutura__cartao-atributo--largo'
@@ -466,18 +376,20 @@ function explicacaoGerencia(dados, aba, definicao) {
   return resultado;
 }
 
+/**
+ * A aba tem o cartão verde e os dois componentes que o orientador definiu,
+ * estudos primários associados e referências bibliográficas. Sem divisor,
+ * porque são os dois componentes da mesma coisa e não um critério anunciando
+ * categorias.
+ *
+ * Ela explica o que cada componente é. Os estudos de cada conhecimento e os
+ * verbetes ficam na ficha e na página de referências, que é onde o dado
+ * específico mora.
+ */
 function explicacaoEvidencias(dados, aba, definicao) {
-  /* A nota entra como item da grade, como nas outras duas abas, para herdar o
-     alinhamento lateral sem repetir medida. */
-  const conteudo = [composicaoEvidencias(dados, definicao)];
-  if (definicao.nota) conteudo.unshift(criar('p', 'estrutura__nota-secao', definicao.nota));
-  const resultado = painel(definicao, aba, '', conteudo, 'estrutura__grade--evidencias');
-  resultado.classList.add('estrutura__painel--evidencias');
-  return resultado;
-}
-
-function iconeDoPainel(definicao) {
-  return definicao.id === 'evidencias' ? 'revisao' : definicao.icone;
+  const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
+  definicao.componentes.forEach((componente) => conteudo.push(cartaoDeEstrutura(componente)));
+  return painel(definicao, aba, '', conteudo, 'estrutura__grade--evidencias');
 }
 
 function abasDaEstrutura(dados) {

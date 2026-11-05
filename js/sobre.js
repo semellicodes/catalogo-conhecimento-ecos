@@ -1,4 +1,4 @@
-import { carregar } from './dados.js?v=20261105-3';
+import { carregar } from './dados.js?v=20261105-9';
 
 const el = (seletor) => document.querySelector(seletor);
 
