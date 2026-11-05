@@ -207,41 +207,48 @@ nativamente pelo navegador com `type="module"`.
   vírgula fica preso ao item anterior, sem espaço antes dele, e não entra depois do último. O
   espaço entre as citações é o `gap` da lista, e o espaço do texto vai em `apenas-leitor`, para
   quem copia a linha receber a pontuação certa
-- A Estrutura tem três etapas, Ponto de Partida, Atributos e Base de Evidências. A Gerência do
-  conhecimento era a etapa 3 e deixou de ser etapa própria, porque é atributo do conhecimento e
-  não uma fase seguinte da leitura. O conteúdo dela virou o segundo bloco dos Atributos, e a
-  antiga Base de Evidências, que era a 4, passou a ser a 3
+- A Estrutura tem quatro etapas, Ponto de Partida, Classificação, Gerência do conhecimento e Base
+  de Evidências. A etapa 2 chamava-se Atributos e reunia os exemplos de ECOS e a gerência. Ela
+  passou a tratar só dos critérios de classificação, e a gerência voltou a ser etapa própria, a 3,
+  com o bloco inteiro preservado. A Base de Evidências voltou a ser a 4
 - A navegação é montada a partir de `estruturaCatalogo.abas`, então quem define quantas etapas
   existem é o arquivo de dados. O `criadores` do `inicio.js` casa por `id`, e um `id` sem
-  construtor quebra a aba. Os três hoje são `conhecimento`, `atributos` e `evidencias`
-- A aba de Atributos tem dois blocos empilhados, exemplos de ECOS primeiro e gerência depois. Os
-  dois têm a mesma superfície, para lerem como partes de uma seção só e não como duas abas
-  coladas. Cada um abre com título, introdução, uma linha fina e a chamada que apresenta as
-  categorias, e fecha com a fonte
-- O painel de Atributos não tem cabeçalho. O nome da etapa já está no botão da aba, e o
-  `aria-labelledby` aponta para ele, então o painel continua com nome acessível sem o `h3`. Quem
-  decide isso é o `tituloPainel`, que as outras duas abas declaram e essa não. Sem ele o `painel`
-  não monta cabeçalho nenhum
-- No lugar do cabeçalho vai uma nota curta, em `nota`, que é o primeiro item da grade e não um
-  bloco antes dela. Entrando na grade, ela herda sozinha a largura e o vão vertical dos dois
-  cartões, sem precisar repetir medida nenhuma. É discreta de propósito, fundo de acento suave,
-  borda fina, sem ícone nem título, e alinhada à esquerda mesmo com a prosa do site justificada
-- O painel de Atributos usa o mesmo recuo das outras abas. Ele chegou a ter um recuo menor, de
-  quando abria direto nos cartões e a moldura do painel só somava respiro ao que eles já traziam.
-  Com a nota no topo, o recuo menor deixava o texto colado na borda
-- O bloco de exemplos de ECOS tem três cartões lado a lado, numerados. A numeração é o `counter`
-  do `ol`, no `::before` do título, apagada, e não pastilha nem ícone. A tipologia é a de Manikas,
-  e a relação de cada modelo com a circulação do conhecimento é contextualização da literatura de
-  gerência de conhecimento, por isso a fonte traz `manikas2016` e `kauschinger2024`, sem atribuir
-  tudo ao primeiro
-- Os dois blocos usam a mesma receita de cartão e a mesma grade, três colunas no desktop, mesmo
-  `gap`, mesmo recuo interno e mesma superfície com a linha de acento no topo. Eles chegaram a
-  divergir, com o primeiro empilhado e o segundo em fileira, e dois arranjos diferentes na mesma
-  seção fazem parecer que são duas lógicas. Mexer na grade de um exige mexer na do outro
-- O que distingue os cartões dos dois blocos é só o que abre cada um, número no primeiro e ícone
-  no segundo. O resto é igual de propósito
-- O bloco de gerência manteve os três cartões lado a lado, os ícones, as etiquetas de ação e a
-  nota metodológica, que fecha o bloco abaixo deles
+  construtor quebra a aba. Os quatro hoje são `conhecimento`, `classificacao`, `gerencia` e
+  `evidencias`
+- A Classificação repete o arranjo do Ponto de Partida, e é de propósito. Cartão verde, divisor,
+  e os cartões, todos itens da mesma grade. Quem olha a aba 2 depois da 1 reconhece a forma antes
+  de ler, e o paralelo diz que as duas apresentam critérios
+- A aba tem três cartões. Nível no ECOS e Dimensão do ECOS dividem a linha no desktop, e Exemplos
+  de ECOS ocupa a linha inteira abaixo deles, com `grid-column: 1 / -1`
+- Exemplos de ECOS não leva divisor próprio nem título externo. Não é um terceiro critério de
+  classificação do conhecimento, é contexto de organização do ecossistema, e um segundo divisor o
+  anunciaria como se fosse. O cartão já traz o seu título dentro
+- Os três cartões usam o mesmo construtor, `cartaoDeClassificacao`. O que muda é de onde vem o
+  texto e se as categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
+  componente. Três desenhos para a mesma coisa fariam a aba parecer três seções
+- A categoria é item do cartão, não cartão dentro de cartão. Quem separa uma da outra é uma linha
+  fina, não uma superfície. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e
+  não pastilha nem ícone
+- Nível e Dimensão tiram título, introdução e citação do próprio vocabulário, de `rotulo`, `funcao`
+  e `referencia`, que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é decisão de
+  interface e não parte da classificação
+- Exemplos de ECOS tira o título e a introdução da aba, em `tiposEcos`, porque o `rotulo` do
+  vocabulário, "Tipo de ECOS observado", nomeia o campo da ficha e não este cartão. O `funcao` do
+  `tipoEcos` continua no arquivo sem leitor
+- Os dois cartões da fileira têm a mesma altura e as duas citações fecham na mesma linha. A altura
+  igual vem de `align-items: stretch` na grade da aba, que sobrescreve o `start` da grade base, e a
+  citação é empurrada para o pé com `margin-top: auto`
+- A natureza epistemológica não se repete na aba 2. Ela é a etapa 1 inteira, e retomá-la aqui era
+  a redundância que a reestruturação desfez
+- Nível cita `johnson2020` e `kauschinger2021`, dimensão cita `santos2011` e os exemplos citam
+  `manikas2016`. O cartão verde não cita nada, porque a decisão de classificar por nível e
+  dimensão é deste trabalho e não de um esquema alheio
+- O `kauschinger2024` saiu da citação dos exemplos. Ele sustentava a relação entre cada modelo e a
+  circulação do conhecimento, que era o enquadramento do texto antigo. O texto novo descreve só o
+  modelo de organização, que é Manikas, então a segunda obra passou a citar o que o cartão não diz
+- A aba da Gerência tem um bloco só, o mesmo que fechava a antiga aba de Atributos, com título,
+  introdução, a chamada, os três cartões lado a lado, os ícones, as etiquetas de ação e a nota
+  metodológica. Nada do conteúdo mudou ao mudar de aba
 - A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
@@ -437,7 +444,7 @@ nativamente pelo navegador com `type="module"`.
 - O bloco de gerência da ficha mostra recursos de conhecimento, participação e compartilhamento, e
   ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. O parágrafo genérico
   sobre o que é gerência do conhecimento saiu, porque repetia em cada uma das vinte fichas a
-  introdução da camada de Gerência. Ele existe num lugar só, na aba 3 da Estrutura. Esses rótulos não
+  introdução da camada de Gerência. Ele existe num lugar só, na aba 3 da Estrutura, a da Gerência. Esses rótulos não
   existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O conteúdo continua
   vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os

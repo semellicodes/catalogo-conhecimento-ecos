@@ -429,6 +429,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-citacao);
   line-height: 1.35;
 }
+.estrutura__atributo-cabecalho,
 .estrutura__gerencia-cabecalho,
 .estrutura__evidencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
 .estrutura__evidencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
@@ -438,6 +439,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A Gerência roda um degrau abaixo da Base de Evidências. São três cartões
    lado a lado, com texto corrido, etiquetas e citação dentro de cada um, e na
    escala do painel cada cartão ocupava quase uma tela. */
+.estrutura__atributo-cabecalho-titulo,
 .estrutura__gerencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
 .estrutura__gerencia-texto,
 .estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
@@ -641,12 +643,30 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* O negrito da introdução marca o termo que a aba vai detalhar, sem mudar a
    cor nem o tamanho do texto em volta. */
 .estrutura__painel-intro strong { color: var(--cor-titulo); font-weight: 600; }
-/* Os dois blocos da aba, um abaixo do outro. A gerência deixou de ser etapa
-   própria e passou a ser o segundo bloco daqui. */
+/* A aba da gerência tem um bloco só, mas a grade segue a mesma das outras,
+   para o recuo e o vão não divergirem de uma aba para a outra. */
 .estrutura__grade--atributos {
   grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-5);
 }
+/* A aba de Classificação repete o arranjo do Ponto de Partida. Cartão verde,
+   divisor e os cartões, todos itens da mesma grade, então o vão entre eles é o
+   gap e nenhum deles precisa de margem própria.
+
+   Os dois critérios dividem a linha e os exemplos de ECOS ocupam a linha
+   inteira logo abaixo, sem divisor nem título externo, porque são contexto do
+   ecossistema e não um terceiro critério. */
+.estrutura__grade--classificacao {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-4);
+  /* Stretch, e não o start da grade base, para os dois cartões da fileira
+     terem a mesma altura e as duas citações fecharem na mesma linha. A altura
+     cresce com o conteúdo, sem height 100% nem grid-auto-rows 1fr. */
+  align-items: stretch;
+}
+.estrutura__grade--classificacao > .estrutura__cartao-conceito,
+.estrutura__grade--classificacao > .estrutura__divisor,
+.estrutura__grade--classificacao > .estrutura__cartao-atributo--largo { grid-column: 1 / -1; }
 /* A nota que abre a aba, no lugar do cabeçalho que havia ali. É item da
    grade, não um bloco antes dela, então acompanha sozinha a largura e o vão
    dos dois cartões. O espaço acima é o padding do painel, sem margem negativa
@@ -666,9 +686,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
      caixa larga, e justificar abriria vão sem ganho nenhum. */
   text-align: left;
 }
-/* Os dois blocos têm a mesma superfície, para lerem como partes de uma seção
-   só e não como duas abas empilhadas. */
-.estrutura__tipos-ecos,
+/* O cartão de classificação e o bloco de gerência têm a mesma superfície, para
+   as duas abas lerem como partes do mesmo catálogo. */
+.estrutura__cartao-atributo,
 .estrutura__gerencia-bloco {
   display: flex;
   flex-direction: column;
@@ -704,43 +724,42 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.5;
 }
 
-/* Os três tipos de ECOS ficam lado a lado, na mesma grade e com o mesmo
-   cartão da gerência logo abaixo. Os dois blocos são da mesma seção, e um
-   empilhado ao lado do outro em fileira fazia parecerem lógicas diferentes.
-   A numeração é discreta, do próprio ol, e não pastilha nem ícone. */
-.estrutura__tipos-ecos-lista {
+/* As categorias leem em coluna dentro do próprio cartão, e não como três
+   cartões soltos. Cartão dentro de cartão faria parecer que cada categoria é
+   uma seção, quando ela é um item do critério que o cartão apresenta.
+
+   Quem separa uma da outra é uma linha fina, não uma superfície. A numeração é
+   discreta, do próprio ol, e não pastilha nem ícone. */
+.estrutura__atributo-categorias {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-3);
   margin-top: var(--esp-3);
-  counter-reset: tipo-ecos;
+  counter-reset: categoria-atributo;
   list-style: none;
 }
-.estrutura__tipo-ecos {
-  counter-increment: tipo-ecos;
+.estrutura__atributo-categoria {
+  counter-increment: categoria-atributo;
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
-  border-radius: var(--raio);
+  padding-top: var(--esp-3);
+  border-top: var(--borda-fina);
 }
 /* O número fica na mesma linha do nome, à frente dele, apagado, para numerar
    sem virar um segundo título. */
-.estrutura__tipo-ecos-titulo::before {
-  content: counter(tipo-ecos) ". ";
+.estrutura__atributo-categoria-titulo::before {
+  content: counter(categoria-atributo) ". ";
   color: var(--cor-texto-fraco);
   font-weight: 400;
 }
-.estrutura__tipo-ecos-titulo {
+.estrutura__atributo-categoria-titulo {
   color: var(--cor-titulo);
   font-size: var(--tam-sm);
   font-weight: 600;
   line-height: 1.3;
 }
-.estrutura__tipo-ecos-texto {
+.estrutura__atributo-categoria-texto {
   margin-top: var(--esp-1);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
@@ -755,9 +774,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   border-top: var(--borda-acento-suave);
 }
 
-/* A fonte fecha cada bloco, na mesma escala das outras abas. */
-.estrutura__tipos-ecos > .estrutura__fonte-conceitual {
-  margin-top: var(--esp-3);
+/* A fonte fecha cada cartão, na mesma escala das outras abas, e é empurrada
+   para o pé, para os dois cartões da fileira citarem na mesma altura. */
+.estrutura__cartao-atributo > .estrutura__fonte-conceitual {
+  margin-top: auto;
   padding-top: var(--esp-2);
   border-top: var(--borda-fina);
   font-size: var(--tam-citacao);
@@ -817,7 +837,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
 .estrutura__composicao-gerencia,
-.estrutura__tipos-ecos-lista { align-items: stretch; }
+.estrutura__atributo-categorias { align-items: stretch; }
 .estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
 /* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
    em vez de ficar espremida na largura de um cartão. */
@@ -835,12 +855,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     line-height: 1.5;
   }
   .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
-  .estrutura__tipos-ecos-lista { margin-top: var(--esp-3); }
+  .estrutura__atributo-categorias { margin-top: var(--esp-3); }
   .estrutura__composicao-evidencias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 62rem) {
   .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .estrutura__tipos-ecos-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 @media (max-width: 61.99rem) {
   /* Três colunas de texto longo abaixo de 992px dariam uns 280px cada, e aí a
@@ -849,7 +871,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__tipos-ecos-lista { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__grade--classificacao { grid-template-columns: minmax(0, 1fr); }
+  .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 @media (max-width: 39.99rem) {
   /* O divisor acompanha a escala compacta do celular. A linha de cada lado
@@ -877,10 +902,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__gerencia-item,
-  .estrutura__tipo-ecos,
   .estrutura__evidencia-linha { padding: var(--esp-4); }
   .estrutura__painel { padding: var(--esp-4); }
-  .estrutura__tipos-ecos,
+  .estrutura__cartao-atributo,
   .estrutura__gerencia-bloco { padding: var(--esp-4); }
 }
 /* ---------- Explorar ---------- */

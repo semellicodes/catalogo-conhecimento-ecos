@@ -19,16 +19,38 @@
         "prefixoCategoria": "Conhecimento"
       },
       {
-        "id": "atributos",
-        "rotulo": "2. Atributos",
+        "id": "classificacao",
+        "rotulo": "2. Classificação",
         "icone": "classificacao",
-        "nota": "Os atributos apresentados permitem compreender os contextos em que os conhecimentos foram observados e os aspectos relacionados à sua gerência nos ECOS.",
-        "tiposEcos": {
-          "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
-          "introducao": "Apresenta os tipos de ECOS em que os conhecimentos foram identificados nos estudos primários, classificados conforme suas características de organização e participação.",
-          "chamada": "Os exemplos permitem compreender como diferentes modelos de organização, participação e compartilhamento podem influenciar a circulação do conhecimento entre os atores do ECOS:",
-          "referencias": "manikas2016, kauschinger2024"
+        "cartaoIntroducao": {
+          "titulo": "Classificação do conhecimento em ECOS",
+          "texto": "Os conhecimentos identificados na Revisão Rápida são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. Os diferentes tipos de ECOS também são apresentados como contextos que auxiliam na compreensão desses conhecimentos."
         },
+        "divisor": {
+          "principal": "Classificação do conhecimento segundo níveis e dimensões do ECOS"
+        },
+        "atributos": [
+          {
+            "chave": "nivel",
+            "icone": "nivel"
+          },
+          {
+            "chave": "dimensao",
+            "icone": "dimensao"
+          }
+        ],
+        "tiposEcos": {
+          "chave": "tipoEcos",
+          "icone": "tipos",
+          "titulo": "Exemplos de ECOS",
+          "introducao": "Os ECOS podem apresentar diferentes modelos de organização, conforme as formas de participação dos atores, a disponibilização de recursos e os mecanismos de controle sobre as contribuições realizadas no ecossistema.",
+          "referencias": "manikas2016"
+        }
+      },
+      {
+        "id": "gerencia",
+        "rotulo": "3. Gerência do conhecimento",
+        "icone": "gerencia",
         "gerencia": {
           "titulo": "Gerência do conhecimento no ECOS",
           "introducao": "A gerência do conhecimento no ECOS envolve atividades voltadas à criação, ao registro, ao compartilhamento e à utilização de conhecimentos distribuídos entre diferentes participantes e organizações.",
@@ -60,7 +82,7 @@
       },
       {
         "id": "evidencias",
-        "rotulo": "3. Base de evidências",
+        "rotulo": "4. Base de evidências",
         "icone": "evidencias",
         "nota": "Os conhecimentos e desafios apresentados no KM4SECO foram identificados por meio de uma Revisão Rápida da Literatura, permitindo relacionar os resultados aos estudos primários que os fundamentam.",
         "referencias": "cartaxo2018, cartaxo2020, charmaz2006",
