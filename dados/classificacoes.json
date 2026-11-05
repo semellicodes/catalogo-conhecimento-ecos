@@ -21,7 +21,7 @@
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
-        "explicacao": "Relaciona-se aos modelos mentais, às percepções, às interpretações e aos conhecimentos construídos a partir das experiências individuais."
+        "explicacao": "É o conhecimento que envolve modelos mentais, percepções e interpretações construídos a partir das experiências individuais."
       },
       {
         "valor": "Tácito-técnico",
@@ -29,7 +29,7 @@
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
-        "explicacao": "Relaciona-se às habilidades práticas, à experiência na execução de atividades e ao saber fazer desenvolvido pelos indivíduos."
+        "explicacao": "É o conhecimento que envolve habilidades práticas, experiência na execução de atividades e o saber fazer desenvolvido pelos indivíduos."
       }
     ]
   },
@@ -90,7 +90,7 @@
         "valor": "Social",
         "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
         "referencia": "santos2011, santos2012",
-        "explicacao": "Compreende as relações entre os participantes do ECOS, incluindo comunicação, colaboração, interação entre organizações e formação de comunidades em torno da plataforma.",
+        "explicacao": "Compreende os aspectos relacionados às interações entre os participantes do ECOS, incluindo comunicação, colaboração, relações entre organizações e formação de comunidades em torno da plataforma.",
         "pergunta": "Responde à pergunta: o conhecimento diz respeito às relações entre os participantes e ao que os mantém engajados?"
       }
     ]
@@ -113,7 +113,7 @@
         "valor": "Híbrido",
         "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional.",
         "referencia": "manikas2016",
-        "explicacao": "Combina características dos modelos abertos e proprietários, permitindo a coexistência de contribuições abertas com recursos ou componentes sujeitos a mecanismos específicos de controle.",
+        "explicacao": "Caracteriza-se pela combinação de elementos dos modelos abertos e proprietários, permitindo a coexistência de contribuições abertas com recursos ou componentes sujeitos a mecanismos específicos de controle.",
         "pergunta": "Responde à pergunta: o ecossistema combina contribuição aberta e proprietária?"
       },
       {
