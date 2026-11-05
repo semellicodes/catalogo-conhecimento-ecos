@@ -346,7 +346,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-.estrutura__composicao-gerencia { margin-top: var(--esp-4); }
+/* A exceção do Ponto de Partida. Lá o cartão verde continua justificado, por
+   decisão da autora, e a hifenização não é opcional, porque sem ela a
+   justificação abre rio.
+
+   Vale só a partir de 36rem, que é o corte do site inteiro. Abaixo disso ele
+   volta à esquerda com a regra base, como toda a prosa do catálogo. */
+@media (min-width: 36rem) {
+  .estrutura__grade--conhecimento > .estrutura__cartao-conceito .estrutura__conceito-texto {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
 
 /* Os três cartões de atributo do Ponto de Partida, lado a lado. O align-items
    stretch é o padrão da grade e iguala a altura sem travá-la, para a última
@@ -420,15 +431,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-citacao);
   line-height: 1.35;
 }
-.estrutura__atributo-cabecalho,
-.estrutura__gerencia-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
-/* A Gerência roda um degrau abaixo da Base de Evidências. São três cartões
-   lado a lado, com texto corrido, etiquetas e citação dentro de cada um, e na
-   escala do painel cada cartão ocupava quase uma tela. */
-.estrutura__atributo-cabecalho-titulo,
-.estrutura__gerencia-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
-.estrutura__gerencia-texto,
-.estrutura__nota-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
+.estrutura__atributo-cabecalho { display: flex; gap: var(--esp-3); align-items: flex-start; }
+.estrutura__atributo-cabecalho-titulo { font-size: var(--tam-base); font-weight: 600; letter-spacing: var(--entre-letras-nome); line-height: 1.25; }
 .estrutura__categorias-classificacao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-4); align-items: start; }
 .estrutura__categoria-classificacao-titulo { font-size: var(--tam-sm); font-weight: 600; line-height: 1.3; }
 .estrutura__categoria-classificacao-texto { margin-top: var(--esp-1); color: var(--cor-texto-suave); font-size: var(--tam-xs); line-height: 1.5; }
@@ -448,33 +452,16 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-underline-offset: var(--esp-1);
   cursor: pointer;
 }
-.estrutura__composicao-gerencia { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-3); }
-.estrutura__gerencia-item {
-  display: flex;
-  flex-direction: column;
-  padding: var(--esp-4);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
-  border-radius: var(--raio);
+/* A Gerência segue o arranjo das outras duas. Cartão verde atravessando a
+   grade, os dois componentes dividindo a linha e as atividades atravessando de
+   novo, com os oito processos dentro do próprio cartão. */
+.estrutura__grade--gerencia {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-4);
+  align-items: stretch;
 }
-.estrutura__gerencia-texto { margin-top: var(--esp-2); }
-/* A nota é observação complementar, não o elemento dominante da camada, então
-   a faixa, o ícone e o rótulo ficam menores que os dos cartões. */
-.estrutura__nota-metodologica {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  grid-column: 1 / -1;
-  gap: var(--esp-2);
-  margin: 0;
-  padding: var(--esp-3) var(--esp-4);
-  background: var(--cor-acento-fundo);
-  border-top: var(--borda-acento-suave);
-}
-.estrutura__nota-metodologica .estrutura__rotulo { font-size: var(--tam-micro); }
-.estrutura__nota-icone { color: var(--cor-acento); }
-.estrutura__nota-icone svg { width: var(--esp-4); height: var(--esp-4); }
-.estrutura__nota-texto { margin-top: var(--esp-1); }
+.estrutura__grade--gerencia > .estrutura__cartao-conceito,
+.estrutura__grade--gerencia > .estrutura__cartao-atributo--largo { grid-column: 1 / -1; }
 /* A Base de Evidências repete o arranjo da Classificação. O cartão verde
    atravessa a grade e os dois componentes dividem a linha abaixo dele, com a
    mesma altura, porque align-items stretch sobrescreve o start da grade base. */
@@ -507,10 +494,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   letter-spacing: var(--entre-letras-nome);
   line-height: 1.25;
 }
+/* O parágrafo do cartão verde lê à esquerda, sem hifenização, como o resto
+   dos cartões da Estrutura. O Ponto de Partida é a exceção, declarada junto da
+   grade dele, porque o seletor é o mesmo das outras abas. */
 .estrutura__conceito-texto {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
+  text-align: left;
+  hyphens: manual;
   /* 1.5 em vez de 1.6. O corpo do texto não encolhe, só o vão entre as
      linhas, que é de onde vinha a maior parte da altura vazia do cartão. */
   line-height: 1.5;
@@ -554,12 +546,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* O negrito da introdução marca o termo que a aba vai detalhar, sem mudar a
    cor nem o tamanho do texto em volta. */
 .estrutura__painel-intro strong { color: var(--cor-titulo); font-weight: 600; }
-/* A aba da gerência tem um bloco só, mas a grade segue a mesma das outras,
-   para o recuo e o vão não divergirem de uma aba para a outra. */
-.estrutura__grade--atributos {
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--esp-5);
-}
 /* A aba de Classificação repete o arranjo do Ponto de Partida. Cartão verde,
    divisor e os cartões, todos itens da mesma grade, então o vão entre eles é o
    gap e nenhum deles precisa de margem própria.
@@ -597,10 +583,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
      caixa larga, e justificar abriria vão sem ganho nenhum. */
   text-align: left;
 }
-/* O cartão de classificação e o bloco de gerência têm a mesma superfície, para
-   as duas abas lerem como partes do mesmo catálogo. */
-.estrutura__cartao-atributo,
-.estrutura__gerencia-bloco {
+/* O cartão das três abas tem a mesma superfície, para elas lerem como partes
+   do mesmo catálogo. */
+.estrutura__cartao-atributo {
   display: flex;
   flex-direction: column;
   padding: var(--esp-4);
@@ -611,28 +596,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   min-width: 0;
   max-width: 100%;
 }
-.estrutura__bloco-titulo {
-  color: var(--cor-acento);
-  font-size: var(--tam-base);
-  font-weight: 600;
-  line-height: 1.3;
-}
 .estrutura__bloco-intro {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
   line-height: 1.5;
-}
-/* A chamada apresenta as categorias, e a linha fina acima dela separa o que a
-   seção é do que vem listado. É a mesma linha que abre as categorias do
-   cartão de atributo, no Ponto de Partida. */
-.estrutura__bloco-chamada {
-  margin-top: var(--esp-3);
-  padding-top: var(--esp-3);
-  border-top: var(--borda-fina);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  line-height: 1.5;
+  text-align: left;
+  hyphens: manual;
 }
 
 /* As categorias leem em coluna dentro do próprio cartão, e não como três
@@ -676,21 +646,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
   line-height: 1.55;
 }
-/* A introdução do cartão também lê à esquerda, pelo mesmo motivo das
-   categorias. A exceção mora aqui, e não na lista do base.css, porque o
-   seletor é compartilhado com o bloco da aba de Gerência, que continua
-   justificado. */
-.estrutura__cartao-atributo > .estrutura__bloco-intro {
-  text-align: left;
-  hyphens: manual;
-}
-/* A nota fecha o bloco de gerência, abaixo dos três cartões, com o canto
-   arredondado da base porque ali ela encosta na borda do bloco. */
-.estrutura__gerencia-bloco .estrutura__nota-metodologica {
-  margin-top: var(--esp-4);
-  border-radius: var(--raio);
+/* Os oito processos do referencial. Dividem o cartão em duas colunas e cada um
+   ganha superfície e borda, diferente das categorias da Classificação, que só
+   levam a linha fina. São oito itens curtos, e sem a caixa a leitura em duas
+   colunas vira uma lista indistinta. */
+.estrutura__cartao-atributo--processos .estrutura__atributo-categoria {
+  padding: var(--esp-3);
+  background: var(--cor-superficie);
   border: var(--borda-suave);
-  border-top: var(--borda-acento-suave);
+  border-radius: var(--raio);
+}
+.estrutura__cartao-atributo--processos .estrutura__atributo-categoria-texto {
+  margin-top: var(--esp-1);
 }
 
 /* A fonte fecha cada cartão, na mesma escala das outras abas, e é empurrada
@@ -702,32 +669,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-citacao);
   line-height: 1.35;
 }
-/* As ações de gerência, em pílulas, dentro do cartão que as apresenta. */
-.estrutura__acoes-lista { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin-top: var(--esp-2); }
-.estrutura__acao-gerencia {
-  padding: var(--esp-1) var(--esp-2);
-  background: var(--cor-acento-fundo);
-  border: 1px solid var(--cor-acento-linha);
-  border-radius: var(--raio-pilula);
-  color: var(--cor-acento);
-  font-size: var(--tam-micro);
-  line-height: 1.5;
-}
-/* A citação é global, então o degrau a menos vale só dentro desta camada.
-   O prefixo e a citação são itens de flex, então o vão entre eles é o
-   column-gap e precisa medir um espaço de palavra, não um separador de lista,
-   senão "Adaptação de" se solta do nome que ela qualifica. */
-.estrutura__gerencia-item .estrutura__fonte-conceitual {
-  column-gap: var(--esp-1);
-  padding-top: var(--esp-2);
-  border-top: var(--borda-fina);
-  font-size: var(--tam-citacao);
-  line-height: 1.35;
-}
-/* As etiquetas são o último conteúdo do terceiro cartão, e é só ali que o
-   margin-top auto da citação não sobra. Sem esta folga a linha divisória
-   encostaria nelas. */
-.estrutura__gerencia-item .estrutura__acoes-lista { margin-bottom: var(--esp-3); }
 /* Os cartões lado a lado têm textos de tamanhos diferentes, então a fonte é
    empurrada para o pé em todos, para as três linhas de fonte se alinharem. */
 .estrutura__categorias-classificacao--fileira .estrutura__categoria-classificacao {
@@ -755,12 +696,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    linha crescer com o conteúdo. Nunca de height 100% nem de grid-auto-rows 1fr,
    que travam a altura e fazem a última linha do texto vazar o bloco. */
 .estrutura__categorias-classificacao--fileira,
-.estrutura__composicao-gerencia,
 .estrutura__atributo-categorias { align-items: stretch; }
-.estrutura__composicao-gerencia .estrutura__fonte-conceitual { margin-top: auto; }
-/* A fonte é do bloco inteiro, não de uma coluna dele, então atravessa a grade
-   em vez de ficar espremida na largura de um cartão. */
-.estrutura__composicao-gerencia > .estrutura__fonte-conceitual { grid-column: 1 / -1; }
 /* Em telas de trabalho, os painéis usam uma escala mais densa: as explicações
    continuam completas, mas deixam de reservar espaço apenas decorativo. */
 @media (min-width: 48rem) {
@@ -773,13 +709,14 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     font-size: 0.875rem;
     line-height: 1.5;
   }
-  .estrutura__composicao-gerencia { margin-top: var(--esp-3); }
   .estrutura__atributo-categorias { margin-top: var(--esp-3); }
 }
 @media (min-width: 62rem) {
-  .estrutura__composicao-gerencia { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .estrutura__cartao-atributo--processos .estrutura__atributo-categorias {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (max-width: 61.99rem) {
@@ -788,8 +725,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__atributos-cards { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
-  .estrutura__composicao-gerencia { grid-template-columns: minmax(0, 1fr); }
   .estrutura__grade--classificacao,
+  .estrutura__grade--gerencia,
   .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
     grid-template-columns: minmax(0, 1fr);
@@ -806,8 +743,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   /* O texto não encolhe e nenhuma categoria some. Só o respiro interno cede,
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
-  .estrutura__gerencia-texto,
-  .estrutura__nota-texto { font-size: var(--tam-sm); }
   .estrutura__mapa { margin-top: var(--esp-5); }
   .estrutura__navegacao { grid-template-columns: repeat(2, minmax(0, 1fr)); width: var(--largura-cheia); }
   .estrutura__aba {
@@ -820,10 +755,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     white-space: normal;
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
-  .estrutura__gerencia-item,
-  .estrutura__painel { padding: var(--esp-4); }
-  .estrutura__cartao-atributo,
-  .estrutura__gerencia-bloco { padding: var(--esp-4); }
+  .estrutura__painel,
+  .estrutura__cartao-atributo { padding: var(--esp-4); }
 }
 /* ---------- Explorar ---------- */
 /* A página deixa de ser uma sequência única de tabelas. As abas não escondem

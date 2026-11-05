@@ -223,14 +223,19 @@ nativamente pelo navegador com `type="module"`.
 - Exemplos de ECOS não leva divisor próprio nem título externo. Não é um terceiro critério de
   classificação do conhecimento, é contexto de organização do ecossistema, e um segundo divisor o
   anunciaria como se fosse. O cartão já traz o seu título dentro
-- Os três cartões usam o mesmo construtor, `cartaoDeClassificacao`. O que muda é de onde vem o
+- Os três cartões usam o mesmo construtor, `cartaoDeEstrutura`. O que muda é de onde vem o
   texto e se as categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
   componente. Três desenhos para a mesma coisa fariam a aba parecer três seções
 - A categoria é item do cartão, não cartão dentro de cartão. Quem separa uma da outra é uma linha
   fina, não uma superfície. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e
   não pastilha nem ícone
-- O `cartaoDeEstrutura` serve às duas abas. A Classificação usa os três cartões com categorias e a
-  Base de Evidências usa os dois sem nenhuma, e a lista só é montada quando há valores
+- O `cartaoDeEstrutura` serve às três abas. A Classificação usa os três cartões com categorias, a
+  Gerência usa dois sem e um com os oito processos, e a Base de Evidências usa os dois sem nenhuma.
+  A lista só é montada quando há valores
+- O cartão aceita `referencias`, que vira citação com link, ou `rodape`, que é texto solto. O
+  rodapé existe para quem diz de onde a informação vem quando a origem é a evidência deste
+  trabalho e não uma obra publicada, como o "Estudos primários associados" dos dois primeiros
+  cartões da Gerência. Os dois usam a mesma linha, para os cartões fecharem todos igual
 - Nível e Dimensão tiram título, introdução e citação do próprio vocabulário, de `rotulo`, `funcao`
   e `referencia`, que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é decisão de
   interface e não parte da classificação
@@ -242,20 +247,46 @@ nativamente pelo navegador com `type="module"`.
   citação é empurrada para o pé com `margin-top: auto`
 - A natureza epistemológica não se repete na aba 2. Ela é a etapa 1 inteira, e retomá-la aqui era
   a redundância que a reestruturação desfez
-- As categorias da Classificação leem à esquerda, sem hifenização. São definições curtas numa
-  coluna de meia tela, e ali a justificação abria vão entre as palavras e hifenizava onde não
-  precisava. O seletor da categoria saiu da lista do `base.css`, que é o lugar único dessa decisão.
-  A introdução do cartão é exceção local, em `paginas.css`, porque o seletor `estrutura__bloco-intro`
-  é compartilhado com o bloco da aba de Gerência, que continua justificado
+- Os cartões da Estrutura leem à esquerda, sem hifenização, nas abas 2, 3 e 4. Vale para o
+  parágrafo do cartão verde, para a introdução de cada cartão e para o texto de cada categoria. São
+  textos curtos em coluna estreita, e ali a justificação abria vão entre as palavras e hifenizava
+  onde não precisava. Os três seletores saíram da lista do `base.css`, que é o lugar único dessa
+  decisão
+- O Ponto de Partida é a exceção, por decisão da autora. Os três cartões de categoria continuam na
+  lista do `base.css`, e o cartão verde dele tem uma regra própria em `paginas.css`, presa à grade
+  da aba, porque o seletor do parágrafo é o mesmo das outras abas. A exceção vale a partir de
+  36rem; abaixo disso ele volta à esquerda com a regra base, como toda a prosa do site
+- `word-break` e `overflow-wrap` ficam no valor padrão. Nenhum texto do catálogo tem palavra longa
+  o bastante para transbordar, e `break-word` reintroduziria a quebra no meio da palavra, que é
+  justamente o que a revisão tipográfica tirou
 - Nível cita `johnson2020` e `kauschinger2021`, dimensão cita `santos2011` e os exemplos citam
   `manikas2016`. O cartão verde não cita nada, porque a decisão de classificar por nível e
   dimensão é deste trabalho e não de um esquema alheio
 - O `kauschinger2024` saiu da citação dos exemplos. Ele sustentava a relação entre cada modelo e a
   circulação do conhecimento, que era o enquadramento do texto antigo. O texto novo descreve só o
   modelo de organização, que é Manikas, então a segunda obra passou a citar o que o cartão não diz
-- A aba da Gerência tem um bloco só, o mesmo que fechava a antiga aba de Atributos, com título,
-  introdução, a chamada, os três cartões lado a lado, os ícones, as etiquetas de ação e a nota
-  metodológica. Nada do conteúdo mudou ao mudar de aba
+- A Gerência apresenta os três componentes que organizam a gerência de cada conhecimento, por
+  orientação do professor. Importância de gerenciar esse conhecimento e Atores envolvidos dividem
+  a linha, e Atividades de gerência do conhecimento atravessa a linha abaixo, com os oito
+  processos dentro do próprio cartão
+- Os oito processos são os de `lopes2026`, Identificação, Aquisição, Compartilhamento,
+  Armazenamento, Codificação, Criação, Aplicação e Avaliação. Eles fundamentam a análise, não as
+  atividades atribuídas a cada conhecimento. A introdução do cartão diz por escrito que não se
+  pressupõe que todos estejam presentes
+- Cada processo ganha superfície e borda, diferente das categorias da Classificação, que só levam
+  a linha fina. São oito itens curtos em duas colunas, e sem a caixa a leitura vira uma lista
+  indistinta
+- O arranjo anterior da Gerência saiu inteiro, com os cartões de Recursos de conhecimento,
+  Participação e compartilhamento e Ações de gerência, as etiquetas de ação, a nota metodológica e
+  os construtores `blocoGerencia`, `etiquetasDeAcao`, `notaMetodologica`, `aberturaDeBloco` e
+  `blocoGerenciaDoEcos`, mais as regras de CSS deles. Está no histórico se a decisão voltar
+- Com ele saíram da Estrutura as citações de `kauschinger2024`, `kauschinger2023` e `zaim2019`.
+  As três continuam cadastradas e continuam sendo citadas pela ajuda do bloco de gerência da ficha,
+  em `meta.ajudas`
+- A aba descreve componentes que as fichas ainda não mostram. Elas seguem com recursos,
+  participação e ações de gerência, e só vão receber importância, atores e atividades depois da
+  leitura dos estudos primários. Enquanto isso, a Estrutura e a ficha falam de coisas diferentes,
+  e é a única divergência de nome aberta no catálogo
 - A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
@@ -335,6 +366,8 @@ nativamente pelo navegador com `type="module"`.
   ler, e foi apagada. Não volta
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura.
   A numeração vem escrita no `rotulo` de cada aba, em `meta.json`, então renumerar é editar ali
+- A revisão é escrita por extenso em toda a interface, "Revisão Rápida da Literatura". A sigla RR
+  não aparece em texto visível, e o nome dos campos e das funções não muda por causa disso
 - A sigla ECOS é apresentada por extenso uma vez por página, na linha de abertura, e daí em diante
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
@@ -384,32 +417,18 @@ nativamente pelo navegador com `type="module"`.
   `meta.json` junto. Nenhum módulo os lia depois da mudança
 - `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão no Ponto
   de Partida
-- A Base de Evidências mostra a revisão, depois as evidências do catálogo e por último os
-  desafios, em cartão próprio. Os desafios não viram quarta etapa. O cartão de desafios conta
-  associações entre desafio e conhecimento, 22, e o cartão de evidências conta desafios
-  distintos, 17. São números diferentes e cada rótulo diz qual é qual
-- Só `registrosRecuperados` é escrito em `meta.json`, porque é número do protocolo da revisão. O
-  total de estudos, de conhecimentos, de desafios e de associações sai dos próprios dados
-- A Base de Evidências tem uma citação só, embaixo dos três cartões, sem link e com os anos do
-  Cartaxo juntos, "Cartaxo et al. (2018, 2020); Charmaz (2006)". É referência de método, não
-  autoria dos números, e abrir a página de referências dali tiraria a pessoa da leitura
-- O `fonteConceitual` aceita `semLink` e `agrupar`. O `agrupar` junta os anos de obras seguidas
-  dos mesmos autores, derivando dos mesmos rótulos de `dados.js`, então continua havendo um lugar
-  só para a forma abreviada. Só agrupa onde é pedido, porque agrupar sempre mudaria as linhas que
-  hoje citam as duas obras do Cartaxo separadas de propósito
-- O bloco de Gerência tem três cartões, cada um com a sua citação no pé e nenhuma citação única no
-  pé do bloco. Recursos de conhecimento cita `kauschinger2024`, que define recurso de fronteira do
-  conhecimento e lista documentação, portais, treinamentos, exemplos de código, blogs e comunidades.
-  Participação e compartilhamento cita `kauschinger2023`, que estuda a comunidade patrocinada e os
-  papéis de organização central, desenvolvedores externos e comunidade. Ações de gerência cita
-  `zaim2019`, que trabalha com geração, captura, compartilhamento e utilização, e por isso a citação
-  leva "Adaptado de", já que os três nomes exibidos condensam esses quatro processos
 - O `zaim2019` está cadastrado com o ano do fascículo, volume 17, número 1, de 2019. A
   especificação da reformulação pediu 2018, que é o ano da publicação antecipada no DOI. Ficou
-  2019, que é o que a bibliografia traz, para a citação e o verbete não se contradizerem.
-  Conferir antes da defesa qual das duas o trabalho adota
-- As oito ações genéricas saíram. Não eram taxonomia de ninguém e não tinham descrição. O
-  vocabulário agora tem três, Criação e registro, Compartilhamento, e Uso e aplicação
+  2019, que é o que a bibliografia traz. Ele não é mais citado na Estrutura, só pela ajuda da
+  ficha. Conferir antes da defesa qual das duas o trabalho adota
+- O `lopes2026` está cadastrado com os sete autores, o título, os anais da 27th European
+  Conference on Knowledge Management, 2026, e o DOI. O verbete nasceu incompleto, porque a rede da
+  sessão não alcançava o DOI nem o Crossref, e a autora forneceu os dados a partir do PDF. Não tem
+  página, porque o PDF não foi consultado para isso
+- O vocabulário de `acaoGerencia` tem três valores, Criação e registro, Compartilhamento, e Uso e
+  aplicação. Ele não aparece mais na Estrutura, só na ficha. Os oito processos de `lopes2026`, que
+  a aba 3 apresenta, são outro esquema e não substituem esse vocabulário enquanto a ficha não for
+  revista
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
   nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
   painéis
