@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261104-64';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-3';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -88,6 +88,9 @@ const ICONES_ESTRUTURA = {
   recursos: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   participacao: [['circle', { cx: 7, cy: 7, r: 2.5 }], ['circle', { cx: 14, cy: 8, r: 2 }], ['path', { d: 'M2.8 16c.5-3 2-4.5 4.2-4.5s3.7 1.5 4.2 4.5M12.2 12.5c2.4-.1 4 1.2 4.5 3.5' }]],
   acoes: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
+  nivel: [['path', { d: 'M4 6h12M6 10h8M8 14h4' }]],
+  dimensao: [['circle', { cx: 7.5, cy: 8, r: 4 }], ['circle', { cx: 12.5, cy: 8, r: 4 }], ['circle', { cx: 10, cy: 12.5, r: 4 }]],
+  tipos: [['path', { d: 'M3 7.5h4v9H3zM8 4.5h4v12H8zM13 9.5h4v7h-4z' }]],
   nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]],
@@ -322,17 +325,8 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
   return raiz;
 }
 
-function nomeTipoEcos(valor) {
-  return {
-    'Código aberto': 'ECOS de Código Aberto',
-    'Híbrido': 'ECOS Híbrido',
-    'Proprietário': 'ECOS Proprietário'
-  }[valor] || valor;
-}
-
-/* Os dois blocos da aba abrem igual, com título, introdução, uma linha fina e
-   a chamada que apresenta as três categorias. A forma é a mesma para os dois
-   lerem como partes de uma seção só. */
+/* A abertura do bloco de gerência, com título, introdução, uma linha fina e a
+   chamada que apresenta os três cartões. */
 function aberturaDeBloco(conteudo, classe) {
   const bloco = criar('section', classe);
   bloco.append(
@@ -344,25 +338,60 @@ function aberturaDeBloco(conteudo, classe) {
 }
 
 /**
- * Primeiro bloco da aba. Um cartão só, com as três categorias numeradas
- * dentro dele, em leitura vertical. A tipologia é a de Manikas, e a relação de
- * cada modelo com a circulação do conhecimento é contextualização da
- * literatura de gerência de conhecimento, por isso a fonte traz as duas obras.
+ * Um cartão da aba de Classificação. Cabeçalho com ícone, introdução, as
+ * categorias numeradas dentro do próprio cartão e a citação no pé.
+ *
+ * Os três usam o mesmo construtor. O que muda é de onde vem o texto e se as
+ * categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
+ * componente, senão a aba teria três desenhos para a mesma coisa.
  */
-function blocoTiposEcos(dados, conteudo) {
-  const bloco = aberturaDeBloco(conteudo, 'estrutura__tipos-ecos');
-  const lista = criar('ol', 'estrutura__tipos-ecos-lista');
-  dados.classificacoes.tipoEcos.valores.forEach((valor) => {
-    const item = criar('li', 'estrutura__tipo-ecos');
+function cartaoDeClassificacao(conteudo, valores, classe = '') {
+  const cartao = criar('article', `estrutura__cartao-atributo ${classe}`.trim());
+  cartao.append(
+    cabecalhoComIcone(conteudo.icone, conteudo.titulo, 'estrutura__atributo-cabecalho'),
+    criar('p', 'estrutura__bloco-intro', conteudo.introducao)
+  );
+  const lista = criar('ol', 'estrutura__atributo-categorias');
+  valores.forEach((valor) => {
+    const item = criar('li', 'estrutura__atributo-categoria');
     item.append(
-      criar('h5', 'estrutura__tipo-ecos-titulo', nomeTipoEcos(valor.valor)),
-      criar('p', 'estrutura__tipo-ecos-texto', valor.explicacao)
+      criar('h5', 'estrutura__atributo-categoria-titulo', valor.valor),
+      criar('p', 'estrutura__atributo-categoria-texto', valor.explicacao)
     );
     lista.append(item);
   });
-  bloco.append(lista);
-  if (conteudo.referencias) bloco.append(fonteConceitual(conteudo.referencias));
-  return bloco;
+  cartao.append(lista);
+  if (conteudo.referencias) cartao.append(fonteConceitual(conteudo.referencias));
+  return cartao;
+}
+
+/* Nível e dimensão tiram título, introdução e citação do próprio vocabulário,
+   que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é
+   decisão de interface e não parte da classificação. */
+function cartaoDeAtributo(dados, atributo) {
+  const vocabulario = dados.classificacoes[atributo.chave];
+  return cartaoDeClassificacao(
+    {
+      icone: atributo.icone,
+      titulo: vocabulario.rotulo,
+      introducao: vocabulario.funcao,
+      referencias: vocabulario.referencia
+    },
+    vocabulario.valores
+  );
+}
+
+/* Os exemplos de ECOS são contexto de organização do ecossistema, não um
+   terceiro atributo de classificação, então o cartão vai abaixo dos dois e
+   ocupa a linha inteira. O título e a introdução moram na aba porque o rótulo
+   do vocabulário, "Tipo de ECOS observado", nomeia o campo da ficha e não
+   este cartão. */
+function cartaoDeExemplos(dados, conteudo) {
+  return cartaoDeClassificacao(
+    conteudo,
+    dados.classificacoes[conteudo.chave].valores,
+    'estrutura__cartao-atributo--largo'
+  );
 }
 
 /* Segundo bloco. Os três cartões de gerência vieram da etapa que existia
@@ -410,19 +439,29 @@ function explicacaoConhecimento(dados, aba, definicao) {
 }
 
 /**
- * A aba reúne os dois blocos, um abaixo do outro, na mesma etapa. A gerência
- * deixou de ser etapa própria porque é atributo do conhecimento, não uma fase
- * seguinte da leitura.
+ * A aba vai do propósito aos critérios, no mesmo arranjo do Ponto de Partida.
+ * Cartão de conceito, divisor, os dois cartões de classificação lado a lado e,
+ * abaixo deles, os exemplos de ECOS ocupando a linha inteira.
  *
- * O painel não leva introdução própria. Cada bloco já abre com a sua, e um
- * terceiro parágrafo antes deles diria pela terceira vez do que a aba trata.
+ * Os exemplos não levam divisor próprio nem título externo. Eles não são um
+ * terceiro critério de classificação, e um segundo divisor os anunciaria como
+ * se fossem.
  */
-function explicacaoAtributos(dados, aba, definicao) {
-  /* A nota entra como primeiro item da grade, e não antes dela, para herdar o
-     alinhamento lateral e o mesmo vão vertical que separa os dois blocos. */
-  const conteudo = [blocoTiposEcos(dados, definicao.tiposEcos), blocoGerenciaDoEcos(dados, definicao.gerencia)];
-  if (definicao.nota) conteudo.unshift(criar('p', 'estrutura__nota-secao', definicao.nota));
-  const resultado = painel(definicao, aba, '', conteudo, 'estrutura__grade--atributos');
+function explicacaoClassificacao(dados, aba, definicao) {
+  const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
+  if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
+  definicao.atributos.forEach((atributo) => conteudo.push(cartaoDeAtributo(dados, atributo)));
+  if (definicao.tiposEcos) conteudo.push(cartaoDeExemplos(dados, definicao.tiposEcos));
+  return painel(definicao, aba, '', conteudo, 'estrutura__grade--classificacao');
+}
+
+/**
+ * A gerência voltou a ser etapa própria. O bloco é o mesmo que vivia no fim da
+ * aba de Atributos, com o desenho preservado, só que agora sozinho na sua aba.
+ */
+function explicacaoGerencia(dados, aba, definicao) {
+  const resultado = painel(definicao, aba, '', [blocoGerenciaDoEcos(dados, definicao.gerencia)],
+    'estrutura__grade--atributos');
   resultado.classList.add('estrutura__painel--atributos');
   return resultado;
 }
@@ -459,7 +498,12 @@ function abasDaEstrutura(dados) {
   });
   navegacao.replaceChildren(...abas);
 
-  const criadores = { conhecimento: explicacaoConhecimento, atributos: explicacaoAtributos, evidencias: explicacaoEvidencias };
+  const criadores = {
+    conhecimento: explicacaoConhecimento,
+    classificacao: explicacaoClassificacao,
+    gerencia: explicacaoGerencia,
+    evidencias: explicacaoEvidencias
+  };
   let todosPaineis = [];
 
   const selecionar = (indice, focar = false) => {
