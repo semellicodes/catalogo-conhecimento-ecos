@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-8';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-9';
 
 const el = (seletor) => document.querySelector(seletor);
 
