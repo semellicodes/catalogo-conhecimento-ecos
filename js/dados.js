@@ -7,7 +7,7 @@
    Cada arquivo tinha a sua, elas desencontravam a cada mudança e o navegador
    servia metade nova e metade velha. O ferramentas/versionar.py troca esta
    linha e todas as outras de uma vez. */
-const VERSAO = '20261105-9';
+const VERSAO = '20261105-14';
 
 const ARQUIVOS = Object.fromEntries(
   ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
@@ -81,6 +81,10 @@ const ROTULOS_REFERENCIAS = {
      dois deles lado a lado. */
   kauschinger2023: 'Kauschinger, Münch e Schreieck (2023)',
   kauschinger2024: 'Kauschinger, Schreieck e Krcmar (2024)',
+  /* O verbete está incompleto, sem a lista de autores e sem o veículo. A
+     especificação forneceu só a forma curta, o ano e o DOI, e inventar o
+     resto seria pior do que deixar pendente. */
+  lopes2026: 'Lopes et al. (2026)',
   manikas2016: 'Manikas (2016)',
   nonaka1997: 'Nonaka e Takeuchi (1997)',
   /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */

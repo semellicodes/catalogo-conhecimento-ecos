@@ -1,6 +1,6 @@
 {
   "titulo": "Catálogo de Conhecimento em Ecossistemas de Software",
-  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura (RR). Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes participantes do ECOS.",
+  "subtitulo": "O KM4SECO é um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir dos resultados de uma Revisão Rápida da Literatura. Os conhecimentos identificados foram organizados segundo sua natureza epistemológica, nível e dimensão no ECOS, e associados às evidências científicas e orientações para sua gerência. Essa estrutura oferece uma visão integrada para apoiar a identificação, a compreensão e a gerência do conhecimento entre os diferentes participantes do ECOS.",
   "fonte": "Revisão Rápida da Literatura, conduzida sobre 18 estudos primários.",
   "estruturaCatalogo": {
     "abas": [
@@ -24,7 +24,7 @@
         "icone": "classificacao",
         "cartaoIntroducao": {
           "titulo": "Classificação do conhecimento em ECOS",
-          "texto": "Os conhecimentos identificados na Revisão Rápida são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. A apresentação dos diferentes tipos de ECOS complementa essa classificação, contextualizando os ambientes em que o conhecimento pode ser produzido, compartilhado e utilizado."
+          "texto": "Os conhecimentos identificados na Revisão Rápida da Literatura são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. A apresentação dos diferentes tipos de ECOS complementa essa classificação, contextualizando os ambientes em que o conhecimento pode ser produzido, compartilhado e utilizado."
         },
         "divisor": {
           "principal": "Classificação do conhecimento segundo níveis e dimensões do ECOS"
@@ -51,33 +51,63 @@
         "id": "gerencia",
         "rotulo": "3. Gerência do conhecimento",
         "icone": "gerencia",
-        "gerencia": {
-          "titulo": "Gerência do conhecimento no ECOS",
-          "introducao": "A gerência do conhecimento no ECOS envolve atividades voltadas à criação, ao registro, ao compartilhamento e à utilização de conhecimentos distribuídos entre diferentes participantes e organizações.",
-          "chamada": "A organização segue três recursos lógicos para identificar os meios utilizados no ECOS:",
-          "campos": [
+        "cartaoIntroducao": {
+          "titulo": "Como gerenciar esse conhecimento em ECOS",
+          "texto": "Esta seção apresenta a importância de gerenciar cada conhecimento, os atores envolvidos e as atividades de gerência identificadas na literatura. As informações são fundamentadas nos estudos primários associados, enquanto a classificação das atividades considera os processos de gerência do conhecimento adotados por Lopes et al. (2026)."
+        },
+        "componentes": [
+          {
+            "icone": "nota",
+            "titulo": "Importância de gerenciar esse conhecimento",
+            "introducao": "Este componente apresenta as razões pelas quais gerenciar determinado conhecimento é relevante no contexto de ECOS. Considera sua contribuição para as atividades dos participantes, a colaboração entre atores e a evolução de produtos, plataformas ou do próprio ecossistema, conforme as evidências identificadas nos estudos primários.",
+            "rodape": "Estudos primários associados"
+          },
+          {
+            "icone": "participacao",
+            "titulo": "Atores envolvidos",
+            "introducao": "Este componente identifica os participantes responsáveis por produzir, deter, compartilhar ou utilizar determinado conhecimento em ECOS. Considera os diferentes papéis exercidos pela organização central e pelos atores externos, conforme as relações efetivamente descritas nos estudos primários associados.",
+            "rodape": "Estudos primários associados"
+          }
+        ],
+        "atividades": {
+          "icone": "acoes",
+          "titulo": "Atividades de gerência do conhecimento",
+          "introducao": "Este componente apresenta as atividades de gerência identificadas na literatura para determinado conhecimento em ECOS, descrevendo como são realizadas. A análise considera oito processos de gerência do conhecimento, sem pressupor que todos estejam presentes em cada conhecimento catalogado.",
+          "processos": [
             {
-              "rotulo": "Recursos de conhecimento no ECOS",
-              "descricao": "São meios utilizados para disponibilizar e facilitar o acesso aos conhecimentos necessários aos participantes. Incluem documentações técnicas, portais de informação, materiais de aprendizagem, exemplos de código e comunidades on-line, que podem apoiar a compreensão das tecnologias e a resolução de problemas.",
-              "icone": "recursos",
-              "referencia": "kauschinger2024"
+              "nome": "Identificação",
+              "descricao": "Mapeamento do conhecimento disponível internamente."
             },
             {
-              "rotulo": "Participação e compartilhamento no ECOS",
-              "descricao": "Envolve a interação entre organizações responsáveis pelas plataformas, desenvolvedores externos e comunidades. Por meio dessas relações, os participantes podem trocar experiências, esclarecer dúvidas e compartilhar conhecimentos que contribuem para o desenvolvimento de soluções e a aprendizagem coletiva.",
-              "icone": "participacao",
-              "referencia": "kauschinger2023"
+              "nome": "Aquisição",
+              "descricao": "Captura do conhecimento proveniente de fontes externas."
             },
             {
-              "rotulo": "Ações de gerência",
-              "descricao": "São atividades relacionadas à criação, ao registro, ao compartilhamento e à utilização do conhecimento. Essas ações permitem que conhecimentos sejam desenvolvidos, preservados e utilizados pelos participantes, considerando as necessidades de cada contexto.",
-              "icone": "acoes",
-              "referencia": "zaim2019",
-              "prefixoFonte": "Adaptado de",
-              "acoes": true
+              "nome": "Compartilhamento",
+              "descricao": "Disseminação, distribuição, transferência e assimilação."
+            },
+            {
+              "nome": "Armazenamento",
+              "descricao": "Preservação, retenção e atualização do conhecimento."
+            },
+            {
+              "nome": "Codificação",
+              "descricao": "Indexação, codificação, filtragem e externalização."
+            },
+            {
+              "nome": "Criação",
+              "descricao": "Construção, desenvolvimento e inovação."
+            },
+            {
+              "nome": "Aplicação",
+              "descricao": "Uso, ação e internalização do conhecimento."
+            },
+            {
+              "nome": "Avaliação",
+              "descricao": "Revisão, validação e verificação."
             }
           ],
-          "nota": "As ações de gerência apresentadas nas fichas indicam práticas pertinentes a cada conhecimento, conforme as evidências dos estudos primários associados. Nem todas as ações se aplicam a todos os conhecimentos."
+          "referencias": "lopes2026"
         }
       },
       {
@@ -92,7 +122,7 @@
           {
             "icone": "estudos",
             "titulo": "Estudos primários associados",
-            "introducao": "São as publicações selecionadas na Revisão Rápida que apresentam evidências utilizadas para identificar e caracterizar determinado conhecimento em ECOS. Cada conhecimento pode estar associado a um ou mais estudos, conforme as evidências identificadas na pesquisa."
+            "introducao": "São as publicações selecionadas na Revisão Rápida da Literatura que apresentam evidências utilizadas para identificar e caracterizar determinado conhecimento em ECOS. Cada conhecimento pode estar associado a um ou mais estudos, conforme as evidências identificadas na pesquisa."
           },
           {
             "icone": "revisao",
