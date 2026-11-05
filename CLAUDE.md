@@ -247,18 +247,24 @@ nativamente pelo navegador com `type="module"`.
   citação é empurrada para o pé com `margin-top: auto`
 - A natureza epistemológica não se repete na aba 2. Ela é a etapa 1 inteira, e retomá-la aqui era
   a redundância que a reestruturação desfez
-- Os cartões da Estrutura leem à esquerda, sem hifenização, nas abas 2, 3 e 4. Vale para o
-  parágrafo do cartão verde, para a introdução de cada cartão e para o texto de cada categoria. São
-  textos curtos em coluna estreita, e ali a justificação abria vão entre as palavras e hifenizava
-  onde não precisava. Os três seletores saíram da lista do `base.css`, que é o lugar único dessa
-  decisão
-- O Ponto de Partida é a exceção, por decisão da autora. Os três cartões de categoria continuam na
-  lista do `base.css`, e o cartão verde dele tem uma regra própria em `paginas.css`, presa à grade
-  da aba, porque o seletor do parágrafo é o mesmo das outras abas. A exceção vale a partir de
-  36rem; abaixo disso ele volta à esquerda com a regra base, como toda a prosa do site
-- `word-break` e `overflow-wrap` ficam no valor padrão. Nenhum texto do catálogo tem palavra longa
-  o bastante para transbordar, e `break-word` reintroduziria a quebra no meio da palavra, que é
-  justamente o que a revisão tipográfica tirou
+- A prosa dos cartões da Estrutura é justificada nas quatro abas, com `hyphens: none` em vez do
+  `auto` da regra global. A decisão é a mesma do site, a receita é que difere, porque em coluna de
+  meia tela a hifenização partia palavra no meio. Os quatro seletores saíram da lista do
+  `base.css` e têm regra própria em `paginas.css`, num lugar só
+- `word-break` e `overflow-wrap` ficam no valor padrão, escritos na regra de propósito. Nenhum
+  texto do catálogo tem palavra longa o bastante para transbordar, e `break-word` reintroduziria a
+  quebra no meio da palavra
+- A justificação dos cartões vale em todas as larguras, inclusive no celular. É a exceção ao corte
+  de 36rem que o resto da prosa do site usa, por decisão da autora, pela consistência da camada
+- Abaixo de 36rem, e só ali, a hifenização automática volta. Sem ela a justificação em coluna de
+  220px abria vão de até 99px entre as palavras. Com ela o maior vão caiu para 37px a 320px e para
+  23px a 390px, na mesma faixa do desktop. Quem decide onde a palavra parte é o navegador, pelas
+  regras do português, porque as cinco páginas declaram `lang="pt-BR"`
+- O dicionário do navegador acerta quase sempre, "manu-tenção", "arquite-tura", "desen-volvido",
+  mas não é infalível. O "relaci-onado" que aparece a 320px parte dentro da sílaba. É o preço de
+  hifenizar automaticamente, e não há como corrigir caso a caso sem escrever `&shy;` no conteúdo,
+  o que poria marcação dentro de `dados/`
+- Título, nome de categoria, número e citação não são justificados. Não são prosa corrida
 - Nível cita `johnson2020` e `kauschinger2021`, dimensão cita `santos2011` e os exemplos citam
   `manikas2016`. O cartão verde não cita nada, porque a decisão de classificar por nível e
   dimensão é deste trabalho e não de um esquema alheio
