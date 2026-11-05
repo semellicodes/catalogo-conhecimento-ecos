@@ -431,7 +431,7 @@
   {
     "id": "C12",
     "nome": "Expertise dos participantes do ECOS",
-    "descricao": "Esse conhecimento permite identificar as competências, domínios de especialidade e conhecimentos práticos detidos por indivíduos e equipes no ecossistema. A falta desse conhecimento pode dificultar a localização do especialista adequado para resolver problemas complexos, o que pode prolongar a resolução de problemas técnicos.",
+    "descricao": "Esse conhecimento abrange as competências, experiências, habilidades especializadas e conhecimentos práticos desenvolvidos pelos participantes do ECOS em suas atividades e interações. Compreende a familiaridade desses participantes com tecnologias, domínios de aplicação, práticas de desenvolvimento e resolução de problemas, incluindo saberes adquiridos pela experiência e mobilizados na colaboração entre indivíduos e equipes.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Social",
@@ -472,10 +472,45 @@
         "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
       }
     },
-    "justificativaClassificacao": "A expertise dos participantes do ECOS é classificada como conhecimento tácito-cognitivo porque reside nas experiências, percepções e competências reconhecidas entre eles. O nível Ecossistema se aplica porque permite localizar pessoas capazes de atuar entre diferentes comunidades. A dimensão Social foi selecionada porque depende das relações e da colaboração entre participantes do ECOS.",
+    "justificativaClassificacao": "A expertise dos participantes do ECOS é classificada no nível Ecossistema porque envolve conhecimentos especializados distribuídos entre participantes de diferentes projetos e comunidades. A dimensão Social foi aplicada porque sua gerência está relacionada às competências dos atores, às relações de colaboração e ao compartilhamento de experiências entre participantes.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente nas habilidades demonstradas pelos participantes do ECOS e nas interações dos agentes de ligação entre comunidades.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que formam equipes, por novos integrantes que procuram orientação e por comunidades que dependem da resolução de problemas entre fronteiras.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário tornar localizável a expertise dos participantes do ECOS por mecanismos de recomendação baseados em repositórios semânticos e redes sociais, apoiados por intermediação entre comunidades."
+    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário tornar localizável a expertise dos participantes do ECOS por mecanismos de recomendação baseados em repositórios semânticos e redes sociais, apoiados por intermediação entre comunidades.",
+    "importanciaGerencia": "Gerenciar a expertise dos participantes do ECOS é importante para identificar pessoas com competências adequadas às necessidades dos projetos, apoiar a colaboração entre especialistas de diferentes áreas e facilitar o aproveitamento das experiências adquiridas pelos participantes. Essa gerência também contribui para a seleção de colaboradores e para o compartilhamento de conhecimentos necessários à realização de atividades e à resolução de problemas.",
+    "atoresEnvolvidos": "Os desenvolvedores, especialistas e demais participantes do ECOS desenvolvem e utilizam expertise a partir de suas experiências e atividades. Colaboradores experientes podem compartilhar conhecimentos com outros participantes, enquanto responsáveis por projetos e equipes podem utilizar informações sobre essas competências para identificar especialistas e apoiar a formação de colaborações. No Eclipse, usuários também compartilham aspectos de sua expertise por meio das composições de componentes que criam e utilizam.",
+    "atividadesGerencia": [
+      {
+        "processo": "Identificação",
+        "descricao": "Identificação das competências e dos conhecimentos especializados dos participantes a partir de suas contribuições, utilizando modelos semânticos e mecanismos de recuperação de expertise.",
+        "estudos": [
+          "E08"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "Troca de experiências e conhecimentos especializados entre participantes, por meio de discussões, colaboração entre projetos e compartilhamento de composições de componentes.",
+        "estudos": [
+          "E03",
+          "E17"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "Representação de aspectos da expertise dos participantes por meio de ontologias que relacionam colaboradores às suas competências e de composições de componentes que refletem experiências adquiridas durante suas atividades.",
+        "estudos": [
+          "E08",
+          "E17"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "Utilização de informações sobre a expertise dos participantes para recomendar colaboradores e aproveitar experiências de outros usuários na composição de ambientes de trabalho.",
+        "estudos": [
+          "E08",
+          "E17"
+        ]
+      }
+    ]
   },
   {
     "id": "C13",
