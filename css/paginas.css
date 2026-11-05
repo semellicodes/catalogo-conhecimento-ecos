@@ -678,6 +678,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   margin-top: var(--esp-1);
 }
 
+/* O prefixo e a citação são itens de flex, então o vão entre eles é o
+   column-gap e precisa medir um espaço de palavra, não um separador de lista,
+   senão o "Adaptado de" se solta do nome que ele qualifica.
+
+   Só onde há prefixo, para as duas citações do nível continuarem separadas
+   pelo vão de lista, que é o que mantém o ponto e vírgula legível. */
+.estrutura__cartao-atributo > .estrutura__fonte-conceitual:has(.estrutura__fonte-prefixo) {
+  column-gap: var(--esp-1);
+}
 /* A fonte fecha cada cartão, na mesma escala das outras abas, e é empurrada
    para o pé, para os dois cartões da fileira citarem na mesma altura. */
 .estrutura__cartao-atributo > .estrutura__fonte-conceitual {
