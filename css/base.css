@@ -155,7 +155,6 @@ button, input, select {
    curta, então lê como o resto do texto do site. */
 .abertura__resumo,
 .estrutura__painel-intro,
-.estrutura__evidencia-texto,
 .estrutura__conceito-texto,
 .atributo-card__intro,
 .estrutura__bloco-intro,
@@ -177,8 +176,7 @@ button, input, select {
 @media (max-width: 35.99rem) {
   .abertura__resumo,
   .estrutura__painel-intro,
-  .estrutura__evidencia-texto,
-  .estrutura__conceito-texto,
+    .estrutura__conceito-texto,
   .atributo-card__intro,
   .estrutura__bloco-intro,
   .estrutura__bloco-chamada,

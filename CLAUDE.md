@@ -229,6 +229,8 @@ nativamente pelo navegador com `type="module"`.
 - A categoria é item do cartão, não cartão dentro de cartão. Quem separa uma da outra é uma linha
   fina, não uma superfície. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e
   não pastilha nem ícone
+- O `cartaoDeEstrutura` serve às duas abas. A Classificação usa os três cartões com categorias e a
+  Base de Evidências usa os dois sem nenhuma, e a lista só é montada quando há valores
 - Nível e Dimensão tiram título, introdução e citação do próprio vocabulário, de `rotulo`, `funcao`
   e `referencia`, que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é decisão de
   interface e não parte da classificação
@@ -271,9 +273,9 @@ nativamente pelo navegador com `type="module"`.
   largura e o vão vertical dos três cartões de atributo. É o mesmo arranjo da nota que abre a aba
   de Atributos, e as duas usam o mesmo verde suave para as introduções da Estrutura se
   reconhecerem. O conteúdo dele mora em `cartaoIntroducao`, com `titulo`, `texto` e `referencias`
-- A aba 1 também não tem cabeçalho de painel, porque o título vive dentro do cartão. Como as
-  outras duas abas, quem decide isso é a ausência do `tituloPainel`. Hoje só a Base de Evidências
-  ainda declara um
+- A aba 1 não tem cabeçalho de painel, porque o título vive dentro do cartão. Quem decide isso é a
+  ausência do `tituloPainel`, e hoje nenhuma das quatro abas declara um. O construtor do painel
+  continua sabendo montá-lo, para quando alguma aba precisar
 - Os três cartões são as três categorias da natureza epistemológica, um por categoria, e não um
   por atributo com as categorias dentro. A ordem é Explícito, Tácito-cognitivo e Tácito-técnico
 - A ordem dentro do cartão é título, definição e fonte
@@ -360,29 +362,26 @@ nativamente pelo navegador com `type="module"`.
 - A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
   "Adaptação de" do cartão de ações, que avisa que os três nomes exibidos não são a taxonomia
   literal do artigo citado
-- A Base de Evidências não tem cabeçalho de painel. Abre com uma nota, no mesmo estilo da nota da
-  aba de Atributos, e as três abas usam o mesmo arranjo, nota ou cartão como item da grade
-- Os três cartões ficam numa grade só, duas colunas a partir de 48rem, com o dos desafios em
-  `grid-column: 1 / -1`. Não há invólucro agrupando os dois de cima
-- O cartão é coluna flex e o par de números é empurrado para o pé com `margin-top: auto`. Como a
-  fileira iguala a altura dos dois cartões e as caixas de indicador têm a mesma altura, encostar
-  no pé faz os dois pares começarem na mesma altura, por mais que as descrições tenham
-  comprimentos diferentes
-- O par de números já teve `flex: 1`, para crescer a partir da descrição. Era o contrário disso, e
-  as duas regras brigavam. Em grade com `auto 1fr auto` a folga também não ia para a faixa do
-  meio. O subgrid seria o certo, mas no teste o navegador repartia as faixas do pai em partes
-  iguais em vez de medi-las pelo conteúdo, então o arranjo ficou em flex
-- Cada indicador tem caixa própria, com superfície, borda e raio, para o número ler como dado e
-  não como parte do parágrafo acima. O rótulo reserva duas linhas onde os dois cartões dividem a
-  fileira, medidas na entrelinha do próprio texto e não em pixel, então rótulo mais longo cresce
-  em vez de ser cortado
-- A caixa do cartão de desafios não acompanha a largura do cartão, senão vira faixa. Usa
-  `--largura-indicador`, e no celular cede para a largura disponível
-- A seta de funil entre 1.096 e 18 saiu. Os dois pares de indicadores têm que ler igual, e uma
-  seta em um e não no outro quebrava isso
-- A escala do cartão de evidências mora na regra base, não na media query de 48rem. Enquanto morou
-  lá, abaixo de 768px tudo voltava ao tamanho cheio e o número da métrica chegava a 37px no tablet
-  contra 22 no desktop, maior no aparelho menor
+- A Base de Evidências tem dois componentes, e só eles, por orientação do professor. Estudos
+  primários associados e Referências bibliográficas. O arranjo é o da Classificação, cartão verde
+  atravessando a grade e os dois componentes dividindo a linha abaixo, com a mesma altura
+- Não leva divisor. Os dois cartões são os componentes de uma mesma coisa, não as categorias de um
+  critério, e um divisor os anunciaria como se fossem
+- A aba explica o que cada componente é. Os estudos de cada conhecimento ficam na ficha e os
+  verbetes ficam na página de referências, que é onde o dado específico mora. Repetir a lista aqui
+  seria uma terceira cópia
+- Os dois cartões não levam citação no pé. São componentes da estrutura metodológica deste
+  catálogo, e não esquema de um autor, então não há obra para citar
+- Os números da revisão saíram da aba, com o cartão da revisão, o das evidências e o dos desafios.
+  A aba passou a apresentar os componentes, e não os resultados quantitativos. Saíram com eles o
+  `numeroEvidencia`, o `cartaoEvidencia`, o `blocoDesafios`, o `composicaoEvidencias`, o token
+  `--largura-indicador` e as regras do arranjo antigo. Estão no histórico se a decisão voltar
+- Com os números saiu a citação de método, `cartaxo2018`, `cartaxo2020` e `charmaz2006`, que
+  sustentava os dados da revisão e não os componentes. Saíram com ela o `agruparPorAutores`, o
+  `semLink` e o `agrupar` do `fonteConceitual`, que existiam só para aquela linha. Os verbetes
+  continuam cadastrados e aparecem na página de referências
+- O `registrosRecuperados`, o `rotuloRecuperados` e os demais rótulos de indicador saíram do
+  `meta.json` junto. Nenhum módulo os lia depois da mudança
 - `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão no Ponto
   de Partida
 - A Base de Evidências mostra a revisão, depois as evidências do catálogo e por último os
