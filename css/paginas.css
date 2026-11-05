@@ -346,18 +346,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .estrutura__grade--conhecimento { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
-/* A exceção do Ponto de Partida. Lá o cartão verde continua justificado, por
-   decisão da autora, e a hifenização não é opcional, porque sem ela a
-   justificação abre rio.
-
-   Vale só a partir de 36rem, que é o corte do site inteiro. Abaixo disso ele
-   volta à esquerda com a regra base, como toda a prosa do catálogo. */
-@media (min-width: 36rem) {
-  .estrutura__grade--conhecimento > .estrutura__cartao-conceito .estrutura__conceito-texto {
-    text-align: justify;
-    hyphens: auto;
-  }
-}
 
 /* Os três cartões de atributo do Ponto de Partida, lado a lado. O align-items
    stretch é o padrão da grade e iguala a altura sem travá-la, para a última
@@ -471,6 +459,43 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: stretch;
 }
 .estrutura__grade--evidencias > .estrutura__cartao-conceito { grid-column: 1 / -1; }
+/* A prosa dos cartões da camada estrutural é justificada, como o resto do
+   site, mas com hyphens none em vez do auto da regra global. Em coluna de meia
+   tela a hifenização partia palavra no meio, e a justificação sem hífen abre
+   vão entre as palavras sem cortar nenhuma, que é a troca escolhida.
+
+   word-break e overflow-wrap ficam no valor padrão, escritos aqui de propósito
+   para a regra dizer inteira o que vale e ninguém precisar caçar herança.
+
+   Fora daqui ficam título, nome de categoria, número e citação, que não são
+   prosa corrida e mantêm o alinhamento próprio.
+
+   Vale em todas as larguras, inclusive no celular. A regra do site de voltar à
+   esquerda abaixo de 36rem não se aplica aqui, por decisão da autora. */
+.estrutura__conceito-texto,
+.estrutura__bloco-intro,
+.estrutura__atributo-categoria-texto,
+.atributo-card__intro {
+  text-align: justify;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+/* No celular a coluna cai para 220px e a justificação sem hífen abria vão de
+   até 99px entre as palavras. Ali, e só ali, a hifenização automática entra
+   para fechar esses buracos. Ela parte a palavra, mas pelas regras do
+   português, porque o `lang="pt-BR"` do html diz ao navegador onde pode
+   quebrar. É a troca que o resto do site faz ao contrário, voltando à
+   esquerda, e aqui se escolheu manter a justificação. */
+@media (max-width: 35.99rem) {
+  .estrutura__conceito-texto,
+  .estrutura__bloco-intro,
+  .estrutura__atributo-categoria-texto,
+  .atributo-card__intro {
+    hyphens: auto;
+  }
+}
+
 /* O cartão que abre o Ponto de Partida. Título com ícone, conceito e fonte
    numa composição só, e não três elementos soltos como antes. Entra na grade,
    então acompanha sozinho a largura e o vão dos três cartões de atributo.
@@ -494,15 +519,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   letter-spacing: var(--entre-letras-nome);
   line-height: 1.25;
 }
-/* O parágrafo do cartão verde lê à esquerda, sem hifenização, como o resto
-   dos cartões da Estrutura. O Ponto de Partida é a exceção, declarada junto da
-   grade dele, porque o seletor é o mesmo das outras abas. */
 .estrutura__conceito-texto {
   margin-top: var(--esp-2);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
-  text-align: left;
-  hyphens: manual;
   /* 1.5 em vez de 1.6. O corpo do texto não encolhe, só o vão entre as
      linhas, que é de onde vinha a maior parte da altura vazia do cartão. */
   line-height: 1.5;
@@ -601,8 +621,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   color: var(--cor-texto-suave);
   font-size: var(--tam-xs);
   line-height: 1.5;
-  text-align: left;
-  hyphens: manual;
 }
 
 /* As categorias leem em coluna dentro do próprio cartão, e não como três

@@ -142,19 +142,12 @@ button, input, select {
    etiqueta; e as células estreitas do glossário, onde justificar só produziria
    rio.
 
-   Os cartões da Estrutura ficam de fora, tanto o parágrafo do cartão verde
-   quanto a introdução e as categorias dos cartões. São textos curtos em coluna
-   estreita, e ali a justificação abria vão entre as palavras e hifenizava onde
-   não precisava.
-
-   O Ponto de Partida é a exceção, por decisão da autora. Os três cartões de
-   categoria e o cartão verde dele continuam justificados, e a hifenização não
-   é opcional ali, porque a coluna tem uns 314px e sem hífen a justificação
-   abre rio. A exceção do cartão verde mora em paginas.css, porque o seletor é
-   o mesmo das outras abas. */
+   Os cartões da camada estrutural ficam de fora desta lista, mas não da
+   justificação. Eles são justificados em paginas.css, com hyphens none em vez
+   de auto, porque ali a hifenização quebrava palavra no meio em coluna
+   estreita. A decisão é a mesma, a receita é que difere. */
 .abertura__resumo,
 .estrutura__painel-intro,
-.atributo-card__intro,
 .cartao__descricao,
 .explorar__intro,
 .item-listagem__texto,
@@ -171,8 +164,7 @@ button, input, select {
 @media (max-width: 35.99rem) {
   .abertura__resumo,
   .estrutura__painel-intro,
-  .atributo-card__intro,
-  .cartao__descricao,
+    .cartao__descricao,
   .explorar__intro,
   .item-listagem__texto,
   .secao__intro,
