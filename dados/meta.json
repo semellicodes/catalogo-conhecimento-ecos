@@ -52,11 +52,13 @@
         "id": "exemplos",
         "rotulo": "3. Exemplos",
         "icone": "tipos",
+        "cartaoIntroducao": {
+          "titulo": "Exemplos de ECOS",
+          "texto": "Os ECOS podem apresentar diferentes modelos de organização, conforme as formas de participação dos atores, a disponibilização de recursos e os mecanismos de controle sobre as contribuições realizadas no ecossistema."
+        },
         "tiposEcos": {
           "chave": "tipoEcos",
           "icone": "tipos",
-          "titulo": "Exemplos de ECOS",
-          "introducao": "Os ECOS podem apresentar diferentes modelos de organização, conforme as formas de participação dos atores, a disponibilização de recursos e os mecanismos de controle sobre as contribuições realizadas no ecossistema.",
           "referencias": "manikas2016",
           "rotulos": {
             "Proprietário": "Código fechado"
