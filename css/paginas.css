@@ -648,6 +648,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   counter-reset: categoria-atributo;
   list-style: none;
 }
+/* Sem cabeçalho nem introdução acima, a lista é o primeiro filho do cartão e
+   o vão dela sobraria em cima da linha da primeira categoria. É o caso da aba
+   dos Exemplos, onde o cartão verde já traz nome e apresentação. */
+.estrutura__cartao-atributo > .estrutura__atributo-categorias:first-child { margin-top: 0; }
 .estrutura__atributo-categoria {
   counter-increment: categoria-atributo;
   display: flex;

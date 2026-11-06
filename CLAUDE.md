@@ -263,9 +263,13 @@ nativamente pelo navegador com `type="module"`.
 - A aba tem dois cartões, Nível no ECOS e Dimensão do ECOS, que dividem a linha no desktop. A
   introdução do cartão verde remete à aba Identificação, porque a natureza epistemológica foi
   apresentada lá e não se repete aqui
-- A aba 3 tem um cartão só, Exemplos de ECOS, ocupando a largura inteira, e não leva cartão verde
-  de abertura. O próprio cartão traz título e introdução, e um segundo texto diria duas vezes a
-  mesma coisa numa aba de um item
+- A aba 3 repete o arranjo das outras, cartão verde com o nome e a apresentação do assunto, e
+  abaixo o cartão de conteúdo com os três tipos, na largura inteira. Ela já teve um cartão só, que
+  trazia tudo junto, e passou ao padrão da camada por orientação do professor
+- O cartão de conteúdo da aba 3 não repete título nem introdução, porque é o único da aba e o
+  verde logo acima já os traz. O `cartaoDeEstrutura` passou a tratar os dois como opcionais, e sem
+  cabeçalho a lista é o primeiro filho do cartão e perde o vão de cima, senão sobraria uma banda
+  vazia acima da linha da primeira categoria
 - O rótulo exibido de uma categoria pode diferir do valor do vocabulário. A aba declara a troca em
   `rotulos`, do valor para o que se lê em tela, e o `cartaoDeEstrutura` aplica. Hoje são duas,
   "Técnica" vira "Arquitetural (Técnica)" na Classificação e "Proprietário" vira "Código fechado"
@@ -278,8 +282,9 @@ nativamente pelo navegador com `type="module"`.
   fina, não uma superfície. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e
   não pastilha nem ícone
 - O `cartaoDeEstrutura` serve às quatro abas. A Classificação usa os dois cartões com categorias,
-  os Exemplos usam um, a Gerência usa dois sem e um com os oito processos, e a Base de evidências
-  usa os dois sem nenhuma. A lista só é montada quando há valores
+  os Exemplos usam um sem título nem introdução, a Gerência usa dois sem categorias e um com os
+  oito processos, e a Base de evidências usa os dois sem nenhuma. Cabeçalho, introdução, lista,
+  citação e rodapé são todos opcionais, e cada um só é montado quando o dado existe
 - O cartão aceita `referencias`, que vira citação com link, ou `rodape`, que é texto solto. O
   rodapé existe para quem diz de onde a informação vem quando a origem é a evidência deste
   trabalho e não uma obra publicada, como o "Estudos primários associados" dos dois primeiros
@@ -287,9 +292,10 @@ nativamente pelo navegador com `type="module"`.
 - Nível e Dimensão tiram título, introdução e citação do próprio vocabulário, de `rotulo`, `funcao`
   e `referencia`, que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é decisão de
   interface e não parte da classificação
-- Exemplos de ECOS tira o título e a introdução da aba, em `tiposEcos`, porque o `rotulo` do
-  vocabulário, "Tipo de ECOS observado", nomeia o campo da ficha e não este cartão. O `funcao` do
-  `tipoEcos` continua no arquivo sem leitor
+- O nome e a apresentação dos Exemplos de ECOS moram no `cartaoIntroducao` da aba 3, e não no
+  vocabulário, porque o `rotulo` "Tipo de ECOS observado" nomeia o campo da ficha e não esta
+  etapa. O `tiposEcos` ficou com a chave do vocabulário, o ícone, a citação e os rótulos de
+  exibição. O `funcao` do `tipoEcos` continua no arquivo sem leitor
 - Os dois cartões da fileira têm a mesma altura e as duas citações fecham na mesma linha. A altura
   igual vem de `align-items: stretch` na grade da aba, que sobrescreve o `start` da grade base, e a
   citação é empurrada para o pé com `margin-top: auto`

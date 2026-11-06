@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-3';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-4';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -205,10 +205,15 @@ function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
      os filtros e os dados usam. A aba declara a troca, num lugar só, para a
      Estrutura falar a linguagem do mapa conceitual sem reescrever o dado. */
   const rotulo = (valor) => conteudo.rotulos?.[valor] ?? valor;
-  cartao.append(
-    cabecalhoComIcone(conteudo.icone, conteudo.titulo, 'estrutura__atributo-cabecalho'),
-    criar('p', 'estrutura__bloco-intro', conteudo.introducao)
-  );
+  /* Título e introdução são opcionais. A aba dos Exemplos tem um cartão só, e
+     o verde acima dela já diz o nome e apresenta o assunto, então repeti-los
+     aqui seria o mesmo título duas vezes na mesma tela. */
+  if (conteudo.titulo) {
+    cartao.append(cabecalhoComIcone(conteudo.icone, conteudo.titulo, 'estrutura__atributo-cabecalho'));
+  }
+  if (conteudo.introducao) {
+    cartao.append(criar('p', 'estrutura__bloco-intro', conteudo.introducao));
+  }
   if (valores.length) {
     const lista = criar('ol', 'estrutura__atributo-categorias');
     valores.forEach((valor) => {
@@ -258,9 +263,9 @@ function cartaoDeAtributo(dados, atributo) {
 
 /* Os exemplos de ECOS são contexto de organização do ecossistema, não um
    atributo de classificação do conhecimento, então viraram etapa própria e o
-   cartão ocupa a linha inteira da sua aba. O título e a introdução moram na aba
-   porque o rótulo do vocabulário, "Tipo de ECOS observado", nomeia o campo da
-   ficha e não este cartão. */
+   cartão ocupa a linha inteira da sua aba. O nome e a apresentação moram no
+   cartão verde da aba, e não no vocabulário, porque o rótulo "Tipo de ECOS
+   observado" nomeia o campo da ficha e não esta etapa. */
 function cartaoDeExemplos(dados, conteudo) {
   return cartaoDeEstrutura(
     conteudo,
@@ -326,14 +331,17 @@ function explicacaoClassificacao(dados, aba, definicao) {
 }
 
 /**
- * A aba 3 tem um cartão só, os tipos de ECOS em que o conhecimento pode ser
- * observado. Não leva cartão verde de abertura, porque o próprio cartão já traz
- * título e introdução, e um segundo texto diria duas vezes a mesma coisa numa
- * aba de um item.
+ * A aba 3 repete o arranjo das outras, cartão verde com o nome e a
+ * apresentação do assunto, e abaixo o cartão de conteúdo com os três tipos.
+ *
+ * O cartão de baixo não repete título nem introdução, porque é o único da aba
+ * e o verde já os traz. Ele fica com os três tipos e a citação.
  */
 function explicacaoExemplos(dados, aba, definicao) {
-  return painel(definicao, aba, '', [cartaoDeExemplos(dados, definicao.tiposEcos)],
-    'estrutura__grade--exemplos');
+  return painel(definicao, aba, '', [
+    cartaoConceito(definicao.icone, definicao.cartaoIntroducao),
+    cartaoDeExemplos(dados, definicao.tiposEcos)
+  ], 'estrutura__grade--exemplos');
 }
 
 /**
