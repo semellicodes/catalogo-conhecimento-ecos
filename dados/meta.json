@@ -9,12 +9,18 @@
         "rotulo": "1. Identificação",
         "icone": "conhecimento",
         "cartaoIntroducao": {
-          "titulo": "Conhecimento em ECOS",
-          "texto": "Nos ECOS, o conhecimento compreende experiências, valores e informações contextuais relacionadas às atividades e interações dos participantes do ecossistema. Esse conhecimento pode estar distribuído entre diferentes atores e organizações, sendo utilizado e compartilhado para apoiar a colaboração, a tomada de decisões e a evolução de produtos e plataformas.",
-          "referencias": "davenport1998, seichter2010, viana2015"
+          "titulo": "Conceito de conhecimento",
+          "texto": "O conhecimento reúne experiências, valores e informações contextualizadas que auxiliam os indivíduos a interpretar situações e orientar suas ações. Nas organizações, manifesta-se tanto em documentos e registros quanto nas experiências, práticas e processos de trabalho.",
+          "referencias": "davenport1998"
         },
         "divisor": {
-          "principal": "Os conhecimentos em ECOS podem ser classificados por natureza epistemológica"
+          "principal": "Os conhecimentos podem ser classificados por natureza epistemológica"
+        },
+        "cartaoNatureza": {
+          "titulo": "Natureza do conhecimento",
+          "icone": "classificacao",
+          "texto": "Quanto à sua natureza epistemológica, o conhecimento pode ser explícito ou tácito. O conhecimento tácito compreende componentes técnicos e cognitivos, relacionados, respectivamente, às habilidades práticas e aos modelos mentais dos indivíduos.",
+          "referencias": "alavi2001"
         }
       },
       {
@@ -23,7 +29,7 @@
         "icone": "classificacao",
         "cartaoIntroducao": {
           "titulo": "Classificação do conhecimento em ECOS",
-          "texto": "Além da definição do conhecimento em ECOS e de sua natureza epistemológica, apresentadas na aba Identificação, o catálogo utiliza atributos para caracterizar cada conhecimento quanto ao nível e à dimensão do ECOS aos quais está relacionado."
+          "texto": "Além da definição geral de conhecimento e de sua natureza epistemológica, apresentadas na aba Identificação, o catálogo utiliza atributos para caracterizar cada conhecimento quanto ao nível e à dimensão do ECOS aos quais está relacionado."
         },
         "divisor": {
           "principal": "Classificação do conhecimento segundo níveis e dimensões do ECOS"

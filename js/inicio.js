@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-1';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-2';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -289,7 +289,8 @@ function cartaoConceito(icone, conteudo) {
  */
 /**
  * A aba vai do conceito à classificação, nessa ordem. Cartão de conceito,
- * divisor que anuncia a classificação, e os três cartões de categoria.
+ * divisor que anuncia a classificação, cartão da natureza e os três cartões de
+ * categoria.
  *
  * Nível no ECOS e dimensão do ECOS saíram daqui. Eles caracterizam o
  * conhecimento, não definem o que ele é, e a aba agora trata só do conceito e
@@ -298,6 +299,13 @@ function cartaoConceito(icone, conteudo) {
 function explicacaoConhecimento(dados, aba, definicao) {
   const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
   if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
+  /* O cartão da natureza diz por escrito que o conhecimento é explícito ou tácito e que o tácito
+     se divide em técnico e cognitivo. Sem ele os três cartões abaixo leem como três categorias no
+     mesmo nível, que é o que o orientador pediu para desfazer. Ele traz o próprio ícone, porque a
+     aba já gastou o dela no cartão de conceito. */
+  if (definicao.cartaoNatureza) {
+    conteudo.push(cartaoConceito(definicao.cartaoNatureza.icone, definicao.cartaoNatureza));
+  }
   conteudo.push(composicaoNaturezas(dados));
   return painel(definicao, aba, '', conteudo, 'estrutura__grade--conhecimento');
 }

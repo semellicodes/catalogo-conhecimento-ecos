@@ -346,11 +346,14 @@ nativamente pelo navegador com `type="module"`.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
   sequência
-- A Identificação tem três partes, nessa ordem. O cartão de conceito, com título, ícone,
-  parágrafo e fonte numa composição só. A ponte, que diz que o conhecimento se classifica em
-  explícito e tácito, define o tácito e anuncia a subdivisão. E os três cartões de categoria. Não
-  leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, número da revisão nem parágrafo de
-  encerramento
+- A Identificação tem quatro partes, nessa ordem. O cartão de conceito, o divisor, o cartão da
+  natureza e os três cartões de categoria. Os dois cartões verdes usam o mesmo `cartaoConceito`,
+  com título, ícone, parágrafo e fonte numa composição só. Não leva pergunta de pesquisa, exemplo
+  de conhecimento C01 a C20, número da revisão nem parágrafo de encerramento
+- A aba apresenta o conceito geral de conhecimento, e não o conhecimento em ECOS. Os conceitos
+  dela são fundamento de gerência do conhecimento, não achado deste trabalho, e por isso a palavra
+  ECOS não aparece na aba 1. O contexto do ecossistema entra da aba 2 em diante. É por isso que a
+  introdução da aba 2 fala em "definição geral de conhecimento"
 - A aba trata só do conceito e da sua classificação epistemológica. Nível no ECOS e dimensão do
   ECOS saíram dela, porque caracterizam o conhecimento e não definem o que ele é. Eles continuam
   na ficha, no bloco de classificação, e nos filtros do catálogo, então não sumiram do site. A
@@ -369,19 +372,33 @@ nativamente pelo navegador com `type="module"`.
   alta discreta, com uma linha fina saindo para cada lado. Sem fundo, borda, sombra, ícone nem
   cartão. A frase mora em `abas[0].divisor.principal`, em caixa normal, e quem põe em maiúscula é
   o CSS, como nos outros rótulos, para o acento se preservar no dado
-- A frase é "Os conhecimentos em ECOS podem ser classificados por natureza epistemológica". Ela
+- A frase é "Os conhecimentos podem ser classificados por natureza epistemológica". Ela
   anuncia o critério da classificação, e não o resultado dela. A redação anterior dizia o
   resultado, que o conhecimento pode ser explícito ou tácito, e os três cartões logo abaixo já
   dizem isso sozinhos
 - O divisor é `h4`, porque anuncia os três cartões e é ponto de navegação para leitor de tela
-- O divisor chegou a ter uma segunda linha, dizendo que o tácito se subdivide nos dois últimos,
-  e ela saiu por decisão da autora. Com isso nada na aba diz por escrito que tácito-cognitivo e
-  tácito-técnico não estão no mesmo nível do explícito, e o orientador tinha pedido que essa
-  distinção ficasse perceptível. O ponto está levantado e aguarda decisão
-- A atribuição é separada por afirmação. O conceito de conhecimento em ECOS cita `davenport1998`,
-  `seichter2010` e `viana2015`. A definição do explícito cita `nonaka1997` e as dos dois tácitos
-  citam `alavi2001`. Cada cartão carrega a sua, e o divisor não cita nada, porque é frase de
-  passagem e não afirmação com fonte própria
+- Quem diz a hierarquia por escrito é o cartão da natureza, depois do divisor. O conhecimento é
+  explícito ou tácito, e o tácito compreende componentes técnicos e cognitivos. Era a pendência
+  aberta desde que a segunda linha do divisor saiu, porque os três cartões sozinhos leem como três
+  categorias no mesmo nível, e o orientador tinha pedido que a distinção ficasse perceptível
+- Os três cartões continuam sendo três, e é de propósito. A hierarquia é conceitual e o catálogo
+  classifica os vinte conhecimentos nas três categorias operacionais, que são as mesmas do selo,
+  das pastilhas e da ordenação. O cartão da natureza diz como as três se encaixam, e nenhum
+  desenho de cartão tenta representar o aninhamento
+- A atribuição é separada por afirmação. O conceito de conhecimento cita `davenport1998`, e o
+  cartão da natureza e as três definições citam `alavi2001`. Cada cartão carrega a sua, e o
+  divisor não cita nada, porque é frase de passagem e não afirmação com fonte própria
+- O `seichter2010` e o `viana2015` saíram da citação do conceito junto com o texto que falava de
+  conhecimento em ECOS. O `nonaka1997` saiu da definição do explícito. Os três continuam
+  cadastrados, aparecem na página de referências, e o `nonaka1997` continua citado pelo glossário
+  do Explorar, que lê o `referencia` do atributo e não o de cada valor
+- Alavi e Leidner (2001) apresentam a distinção entre componente técnico e cognitivo do tácito com
+  base em Nonaka (1994). A obra de 1994 não tem verbete em `referencias.json`, e o `nonaka1997`
+  cadastrado é outro trabalho, o livro de Nonaka e Takeuchi. Enquanto o verbete de 1994 não
+  existir, o cartão cita só `alavi2001`, porque bibliografia não se inventa
+- As citações não levam página. A forma curta vem do `js/dados.js`, que guarda autor e ano, e
+  nenhum ponto do catálogo mostra página. O "p. 110" das definições das três naturezas fica de
+  fora por isso
 - O cartão verde é compacto de propósito. O que cede é o respiro, recuo vertical de `--esp-3`,
   vão de `--esp-2` entre cabeçalho, texto e fonte, e entrelinha 1.5 no parágrafo. Nenhum corpo de
   texto encolhe, porque a prioridade declarada da aba é a compreensão dos conceitos
@@ -426,9 +443,10 @@ nativamente pelo navegador com `type="module"`.
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
-- Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. O cartão verde do
-  Identificação escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
-  repetir a forma por extenso, e eram duas apresentações numa página só
+- Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. A aba 1 não usa a
+  sigla, porque passou a tratar do conceito geral de conhecimento. O cartão verde dela já escreveu
+  "Nos Ecossistemas de Software (ECOS)" e depois "Nos ECOS, o conhecimento", e as duas redações
+  saíram com a revisão conceitual
 - A classificação das dimensões do ECOS em Técnica, Negócio e Social foi mantida conforme a
   organização adotada na pesquisa. Santos e Werner (2011) apresentam originalmente as dimensões
   Arquitetural, Negócio e Social. No KM4SECO, a dimensão Técnica corresponde a uma interpretação
@@ -442,8 +460,9 @@ nativamente pelo navegador com `type="module"`.
   negócio e de participação da comunidade, mas não apresenta literalmente o mesmo recorte em três,
   então não foi acrescentado ao rodapé. A pendência que pedia conferência nas fontes originais está
   encerrada, porque a leitura foi feita pela autora
-- A `explicacao` das três naturezas é a definição que o cartão mostra, reescrita pela autora
-  conforme a orientação do professor. A de `nivel` e `dimensao` continua no arquivo mas não tem
+- A `explicacao` das três naturezas é a definição que o cartão mostra, adaptada de Alavi e Leidner
+  (2001) pela autora. A `descricao` do glossário do Explorar continua a redação anterior, e as duas
+  dizem a mesma coisa em registros diferentes, uma para o cartão e outra para a tabela. A de `nivel` e `dimensao` continua no arquivo mas não tem
   mais leitor, porque essas duas saíram da aba. A do `tipoEcos` é a do bloco de exemplos da aba de
   Atributos. Nenhuma é citação literal dos artigos primários. A `pergunta` continua literal
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
