@@ -28,7 +28,7 @@
         "rotulo": "2. Classificação",
         "icone": "classificacao",
         "cartaoIntroducao": {
-          "titulo": "Classificação do conhecimento em ECOS",
+          "titulo": "Classificação do conhecimento no ECOS",
           "texto": "Além da definição geral de conhecimento e de sua natureza epistemológica, apresentadas na aba Identificação, o catálogo utiliza atributos para caracterizar cada conhecimento quanto ao nível e à dimensão do ECOS aos quais está relacionado."
         },
         "divisor": {
@@ -42,7 +42,6 @@
           {
             "chave": "dimensao",
             "icone": "dimensao",
-            "prefixoFonte": "Adaptado de",
             "rotulos": {
               "Técnica": "Arquitetural (Técnica)"
             }

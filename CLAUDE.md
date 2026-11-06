@@ -447,15 +447,15 @@ nativamente pelo navegador com `type="module"`.
   sigla, porque passou a tratar do conceito geral de conhecimento. O cartão verde dela já escreveu
   "Nos Ecossistemas de Software (ECOS)" e depois "Nos ECOS, o conhecimento", e as duas redações
   saíram com a revisão conceitual
-- A classificação das dimensões do ECOS em Técnica, Negócio e Social foi mantida conforme a
-  organização adotada na pesquisa. Santos e Werner (2011) apresentam originalmente as dimensões
-  Arquitetural, Negócio e Social. No KM4SECO, a dimensão Técnica corresponde a uma interpretação
-  mais abrangente da perspectiva arquitetural, razão pela qual a referência é identificada como
-  adaptação conceitual
-- Por isso o rodapé do cartão diz "Adaptado de Santos e Werner (2011)". O prefixo vem de
-  `abas[1].atributos[].prefixoFonte`, na aba e não no vocabulário, porque é ressalva de atribuição
-  e não parte da classificação. A chave continua sendo `santos2011` e o link continua abrindo o
-  mesmo verbete
+- Santos e Werner (2011) apresentam as dimensões Arquitetural, Negócio e Social. O valor no dado
+  continua "Técnica", que é o que a ficha, os filtros e a ordenação usam, e quem lê em tela é o
+  rótulo "Arquitetural (Técnica)", por decisão do orientador. Como o nome do artigo está escrito
+  na própria caixa, o rodapé não precisa mais avisar que a nomenclatura foi adaptada
+- Por isso o rodapé do cartão diz só "Santos e Werner (2011)", como todos os outros cartões da
+  Estrutura. O `prefixoFonte` saiu da dimensão, e hoje nenhum cartão da Estrutura declara um. O
+  mecanismo continua no `fonteConceitual` e as duas regras de CSS dele continuam em
+  `paginas.css`, sem declarante, para a ressalva poder voltar sem reescrever componente. Na ficha
+  o `prefixoFonte` segue em uso, nas duas ajudas da gerência
 - O `santos2012` continua cadastrado, sem citação em tela. Ele discute aspectos técnicos, de
   negócio e de participação da comunidade, mas não apresenta literalmente o mesmo recorte em três,
   então não foi acrescentado ao rodapé. A pendência que pedia conferência nas fontes originais está
@@ -467,9 +467,10 @@ nativamente pelo navegador com `type="module"`.
   Atributos. Nenhuma é citação literal dos artigos primários. A `pergunta` continua literal
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
-- A palavra "Fonte" não aparece em cartão nenhum. A citação fica sozinha, com uma exceção, o
-  "Adaptado de" do cartão de dimensão, que avisa que os nomes exibidos adaptam a nomenclatura do
-  artigo citado. O prefixo e a citação são itens de flex, e o vão entre eles precisa medir um
+- A palavra "Fonte" não aparece em cartão nenhum, e hoje a citação fica sozinha em todos eles. O
+  cartão de dimensão já abriu exceção, com "Adaptado de" na frente, e ela saiu quando o rótulo
+  "Arquitetural (Técnica)" passou a dizer a mesma coisa dentro da caixa
+- Quando houver prefixo, ele e a citação são itens de flex, e o vão entre eles precisa medir um
   espaço de palavra, não um separador de lista, senão o prefixo se solta do nome que ele
   qualifica. A regra é presa ao cartão que tem prefixo, para as duas citações do nível
   continuarem separadas pelo vão de lista
