@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261105-31';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-1';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -107,15 +107,14 @@ function cabecalhoComIcone(icone, titulo, classe) {
  * Um cartão por categoria de natureza epistemológica, com título, definição e
  * fonte.
  *
- * O prefixo é opcional e vem da aba. Ele existe para o título do cartão ler
- * como frase inteira, "Conhecimento explícito", sem duplicar o nome da
- * categoria, que continua num lugar só, no vocabulário. Sem prefixo o título é
- * o nome da categoria, como nas pastilhas e no selo do catálogo.
+ * O título é o nome da categoria, igual ao das pastilhas de filtro, do selo do
+ * cartão do catálogo e do glossário. O prefixo "Conhecimento" saiu, porque o
+ * divisor logo acima já diz que a aba trata da natureza do conhecimento.
  */
-function cartaoDeNatureza(valor, prefixo) {
+function cartaoDeNatureza(valor) {
   const cartao = criar('article', 'atributo-card');
   cartao.append(
-    criar('h4', 'atributo-card__titulo', prefixo ? `${prefixo} ${valor.valor}` : valor.valor),
+    criar('h4', 'atributo-card__titulo', valor.valor),
     criar('p', 'atributo-card__intro', valor.explicacao)
   );
   if (valor.referencia) cartao.append(fonteConceitual(valor.referencia));
@@ -139,10 +138,10 @@ function divisorDeClassificacao(conteudo) {
   return divisor;
 }
 
-function composicaoNaturezas(dados, prefixo) {
+function composicaoNaturezas(dados) {
   const composicao = criar('div', 'estrutura__atributos-cards');
   dados.classificacoes.natureza.valores.forEach((valor) =>
-    composicao.append(cartaoDeNatureza(valor, prefixo))
+    composicao.append(cartaoDeNatureza(valor))
   );
   return composicao;
 }
@@ -202,6 +201,10 @@ function painel(definicao, aba, introducao, cartoes, classe = '', aviso, avisoDe
  */
 function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
   const cartao = criar('article', `estrutura__cartao-atributo ${classe}`.trim());
+  /* O rótulo exibido pode diferir do valor do vocabulário, que é o que a ficha,
+     os filtros e os dados usam. A aba declara a troca, num lugar só, para a
+     Estrutura falar a linguagem do mapa conceitual sem reescrever o dado. */
+  const rotulo = (valor) => conteudo.rotulos?.[valor] ?? valor;
   cartao.append(
     cabecalhoComIcone(conteudo.icone, conteudo.titulo, 'estrutura__atributo-cabecalho'),
     criar('p', 'estrutura__bloco-intro', conteudo.introducao)
@@ -211,7 +214,7 @@ function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
     valores.forEach((valor) => {
       const item = criar('li', 'estrutura__atributo-categoria');
       item.append(
-        criar('h5', 'estrutura__atributo-categoria-titulo', valor.valor),
+        criar('h5', 'estrutura__atributo-categoria-titulo', rotulo(valor.valor)),
         criar('p', 'estrutura__atributo-categoria-texto', valor.explicacao)
       );
       lista.append(item);
@@ -246,17 +249,18 @@ function cartaoDeAtributo(dados, atributo) {
       /* O prefixo vem da aba, e não do vocabulário, porque é ressalva de
          atribuição e não parte da classificação. O da dimensão avisa que os
          nomes exibidos adaptam a nomenclatura do artigo citado. */
-      prefixoFonte: atributo.prefixoFonte
+      prefixoFonte: atributo.prefixoFonte,
+      rotulos: atributo.rotulos
     },
     vocabulario.valores
   );
 }
 
 /* Os exemplos de ECOS são contexto de organização do ecossistema, não um
-   terceiro atributo de classificação, então o cartão vai abaixo dos dois e
-   ocupa a linha inteira. O título e a introdução moram na aba porque o rótulo
-   do vocabulário, "Tipo de ECOS observado", nomeia o campo da ficha e não
-   este cartão. */
+   atributo de classificação do conhecimento, então viraram etapa própria e o
+   cartão ocupa a linha inteira da sua aba. O título e a introdução moram na aba
+   porque o rótulo do vocabulário, "Tipo de ECOS observado", nomeia o campo da
+   ficha e não este cartão. */
 function cartaoDeExemplos(dados, conteudo) {
   return cartaoDeEstrutura(
     conteudo,
@@ -294,25 +298,34 @@ function cartaoConceito(icone, conteudo) {
 function explicacaoConhecimento(dados, aba, definicao) {
   const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
   if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
-  conteudo.push(composicaoNaturezas(dados, definicao.prefixoCategoria));
+  conteudo.push(composicaoNaturezas(dados));
   return painel(definicao, aba, '', conteudo, 'estrutura__grade--conhecimento');
 }
 
 /**
  * A aba vai do propósito aos critérios, no mesmo arranjo do Ponto de Partida.
- * Cartão de conceito, divisor, os dois cartões de classificação lado a lado e,
- * abaixo deles, os exemplos de ECOS ocupando a linha inteira.
+ * Cartão de conceito, divisor e os dois cartões de classificação lado a lado.
  *
- * Os exemplos não levam divisor próprio nem título externo. Eles não são um
- * terceiro critério de classificação, e um segundo divisor os anunciaria como
- * se fossem.
+ * Os exemplos de ECOS saíram para a aba 3. Eles não eram um terceiro critério
+ * de classificação do conhecimento, e sim contexto de organização do
+ * ecossistema, que agora é etapa própria.
  */
 function explicacaoClassificacao(dados, aba, definicao) {
   const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
   if (definicao.divisor) conteudo.push(divisorDeClassificacao(definicao.divisor));
   definicao.atributos.forEach((atributo) => conteudo.push(cartaoDeAtributo(dados, atributo)));
-  if (definicao.tiposEcos) conteudo.push(cartaoDeExemplos(dados, definicao.tiposEcos));
   return painel(definicao, aba, '', conteudo, 'estrutura__grade--classificacao');
+}
+
+/**
+ * A aba 3 tem um cartão só, os tipos de ECOS em que o conhecimento pode ser
+ * observado. Não leva cartão verde de abertura, porque o próprio cartão já traz
+ * título e introdução, e um segundo texto diria duas vezes a mesma coisa numa
+ * aba de um item.
+ */
+function explicacaoExemplos(dados, aba, definicao) {
+  return painel(definicao, aba, '', [cartaoDeExemplos(dados, definicao.tiposEcos)],
+    'estrutura__grade--exemplos');
 }
 
 /**
@@ -377,6 +390,7 @@ function abasDaEstrutura(dados) {
   const criadores = {
     conhecimento: explicacaoConhecimento,
     classificacao: explicacaoClassificacao,
+    exemplos: explicacaoExemplos,
     gerencia: explicacaoGerencia,
     evidencias: explicacaoEvidencias
   };

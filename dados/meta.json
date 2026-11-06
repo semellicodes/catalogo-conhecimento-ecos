@@ -6,7 +6,7 @@
     "abas": [
       {
         "id": "conhecimento",
-        "rotulo": "1. Ponto de Partida",
+        "rotulo": "1. Identificação",
         "icone": "conhecimento",
         "cartaoIntroducao": {
           "titulo": "Conhecimento em ECOS",
@@ -15,8 +15,7 @@
         },
         "divisor": {
           "principal": "Os conhecimentos em ECOS podem ser classificados por natureza epistemológica"
-        },
-        "prefixoCategoria": "Conhecimento"
+        }
       },
       {
         "id": "classificacao",
@@ -24,7 +23,7 @@
         "icone": "classificacao",
         "cartaoIntroducao": {
           "titulo": "Classificação do conhecimento em ECOS",
-          "texto": "Os conhecimentos identificados na Revisão Rápida da Literatura são classificados conforme o nível e a dimensão do ECOS aos quais estão relacionados. A apresentação dos diferentes tipos de ECOS complementa essa classificação, contextualizando os ambientes em que o conhecimento pode ser produzido, compartilhado e utilizado."
+          "texto": "Além da definição do conhecimento em ECOS e de sua natureza epistemológica, apresentadas na aba Identificação, o catálogo utiliza atributos para caracterizar cada conhecimento quanto ao nível e à dimensão do ECOS aos quais está relacionado."
         },
         "divisor": {
           "principal": "Classificação do conhecimento segundo níveis e dimensões do ECOS"
@@ -37,20 +36,31 @@
           {
             "chave": "dimensao",
             "icone": "dimensao",
-            "prefixoFonte": "Adaptado de"
+            "prefixoFonte": "Adaptado de",
+            "rotulos": {
+              "Técnica": "Arquitetural (Técnica)"
+            }
           }
-        ],
+        ]
+      },
+      {
+        "id": "exemplos",
+        "rotulo": "3. Exemplos",
+        "icone": "tipos",
         "tiposEcos": {
           "chave": "tipoEcos",
           "icone": "tipos",
           "titulo": "Exemplos de ECOS",
           "introducao": "Os ECOS podem apresentar diferentes modelos de organização, conforme as formas de participação dos atores, a disponibilização de recursos e os mecanismos de controle sobre as contribuições realizadas no ecossistema.",
-          "referencias": "manikas2016"
+          "referencias": "manikas2016",
+          "rotulos": {
+            "Proprietário": "Código fechado"
+          }
         }
       },
       {
         "id": "gerencia",
-        "rotulo": "3. Gerência do conhecimento",
+        "rotulo": "4. Atividades",
         "icone": "gerencia",
         "cartaoIntroducao": {
           "titulo": "Como gerenciar esse conhecimento em ECOS",
@@ -113,7 +123,7 @@
       },
       {
         "id": "evidencias",
-        "rotulo": "4. Base de evidências",
+        "rotulo": "5. Base de evidências",
         "icone": "evidencias",
         "cartaoIntroducao": {
           "titulo": "Base de evidências",
@@ -127,8 +137,8 @@
           },
           {
             "icone": "revisao",
-            "titulo": "Referências bibliográficas",
-            "introducao": "As referências bibliográficas apresentam as informações necessárias para identificar e consultar os estudos associados a cada conhecimento, incluindo autores, título, ano de publicação e acesso às respectivas publicações."
+            "titulo": "Referências adicionais",
+            "introducao": "As referências adicionais apresentam as informações necessárias para identificar e consultar os estudos associados a cada conhecimento, incluindo autores, título, ano de publicação e acesso às respectivas publicações."
           }
         ]
       }
