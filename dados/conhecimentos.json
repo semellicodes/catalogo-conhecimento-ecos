@@ -308,7 +308,7 @@
   {
     "id": "C06",
     "nome": "Critérios de aceitação de contribuições externas",
-    "descricao": "Esse conhecimento diz respeito às exigências formais para que um código, módulo ou correção enviado por desenvolvedores externos seja aprovado e incorporado à plataforma tecnológica comum. A falta de clareza nesses critérios pode resultar em altas taxas de rejeição, desperdício de esforço dos desenvolvedores externos e insatisfação da comunidade.",
+    "descricao": "Esse conhecimento abrange os requisitos, critérios de qualidade e diretrizes que orientam a avaliação e a aceitação de contribuições de software realizadas por participantes externos no ECOS. Envolve as condições estabelecidas para a submissão, a análise e a integração de códigos, correções e novas funcionalidades à plataforma tecnológica compartilhada, incluindo os padrões técnicos e os procedimentos utilizados para determinar se uma contribuição pode ser incorporada ao produto principal.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -320,12 +320,34 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "Os critérios de aceitação de contribuições externas são classificados como conhecimento explícito porque podem ser definidos, publicados e comunicados previamente. O nível Ecossistema se aplica porque orientam a participação de desenvolvedores externos. A dimensão Técnica foi selecionada porque estabelecem requisitos para a contribuição de software antes de sua integração.",
+    "justificativaClassificacao": "O conhecimento sobre os critérios de aceitação de contribuições externas é classificado no nível Ecossistema porque estabelece condições compartilhadas que orientam a participação de diferentes desenvolvedores e organizações na evolução da plataforma tecnológica comum. Enquadra-se na dimensão Arquitetural (Técnica) por envolver requisitos de qualidade, padrões de desenvolvimento e procedimentos de avaliação e integração de contribuições de software ao produto principal do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nas diretrizes que estabelecem os critérios para contribuições externas.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos antes de investir esforço na preparação e submissão de uma contribuição.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário disponibilizar diretrizes documentadas, claras e acessíveis antes da submissão de contribuições externas.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre os critérios de aceitação de contribuições externas ocorre por meio da disponibilização e comunicação de diretrizes aos participantes do ECOS. Esse processo envolve tornar acessíveis os requisitos de qualidade e as condições necessárias para a incorporação de contribuições ao software principal, utilizando documentação e orientações destinadas aos contribuidores. A comunicação antecipada desses critérios permite que os desenvolvedores compreendam as exigências estabelecidas antes de preparar e submeter suas contribuições.",
+        "estudos": ["E07"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre os critérios de aceitação de contribuições externas ocorre por meio da formalização dos requisitos de qualidade em diretrizes explícitas. Esse processo envolve representar os critérios de qualidade e as condições necessárias para a aceitação de contribuições em orientações compreensíveis aos participantes, tornando explícitas as exigências estabelecidas para a incorporação de código ao software principal do ECOS.",
+        "estudos": ["E07"]
+      },
+      {
+        "processo": "Criação",
+        "descricao": "A criação do conhecimento sobre os critérios de aceitação de contribuições externas ocorre por meio da definição de requisitos de qualidade pelos participantes responsáveis pela manutenção e evolução do software principal do ECOS. Esse processo envolve a elaboração de critérios técnicos que orientam a análise e a aceitação de contribuições, considerando a necessidade de preservar a consistência, a qualidade estrutural e a capacidade de integração do produto compartilhado. Esses critérios constituem conhecimentos utilizados para orientar a participação de desenvolvedores externos.",
+        "estudos": ["E07"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre os critérios de aceitação de contribuições externas ocorre quando os responsáveis pelo controle de qualidade utilizam os requisitos previamente estabelecidos para orientar a análise das contribuições destinadas ao software principal do ECOS. Esse processo envolve a utilização de critérios técnicos por profissionais designados e o apoio de ferramentas automatizadas de controle de qualidade, permitindo verificar a conformidade das contribuições com as exigências estabelecidas para sua incorporação ao produto compartilhado.",
+        "estudos": ["E07"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C07",
