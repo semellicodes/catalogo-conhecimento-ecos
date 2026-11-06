@@ -432,10 +432,13 @@ nativamente pelo navegador com `type="module"`.
   natureza e os três cartões de categoria. Os dois cartões verdes usam o mesmo `cartaoConceito`,
   com título, ícone, parágrafo e fonte numa composição só. Não leva pergunta de pesquisa, exemplo
   de conhecimento C01 a C20, número da revisão nem parágrafo de encerramento
-- A aba apresenta o conceito geral de conhecimento, e não o conhecimento em ECOS. Os conceitos
-  dela são fundamento de gerência do conhecimento, não achado deste trabalho, e por isso a palavra
-  ECOS não aparece na aba 1. O contexto do ecossistema entra da aba 2 em diante. É por isso que a
-  introdução da aba 2 fala em "definição geral de conhecimento"
+- O cartão de abertura chama-se "Conhecimento em ECOS". Ele parte do conceito geral, que é
+  fundamento de gerência do conhecimento e não achado deste trabalho, e situa o conhecimento no
+  ecossistema, distribuído entre atores e artefatos. A sigla aparece ali uma vez, em "Nos ECOS",
+  porque o resumo da abertura já a apresentou por extenso na mesma página
+- A classificação epistemológica que vem depois continua geral, e por isso o divisor e os três
+  cartões não falam de ECOS. A introdução da aba 2 segue dizendo "definição geral de conhecimento",
+  que é o que a primeira frase do cartão traz
 - A aba trata só do conceito e da sua classificação epistemológica. Nível no ECOS e dimensão do
   ECOS saíram dela, porque caracterizam o conhecimento e não definem o que ele é. Eles continuam
   na ficha, no bloco de classificação, e nos filtros do catálogo, então não sumiram do site. A
@@ -467,13 +470,14 @@ nativamente pelo navegador com `type="module"`.
   classifica os vinte conhecimentos nas três categorias operacionais, que são as mesmas do selo,
   das pastilhas e da ordenação. O cartão da natureza diz como as três se encaixam, e nenhum
   desenho de cartão tenta representar o aninhamento
-- A atribuição é separada por afirmação. O conceito de conhecimento cita `davenport1998`, e o
-  cartão da natureza e as três definições citam `alavi2001`. Cada cartão carrega a sua, e o
-  divisor não cita nada, porque é frase de passagem e não afirmação com fonte própria
-- O `seichter2010` e o `viana2015` saíram da citação do conceito junto com o texto que falava de
-  conhecimento em ECOS. O `nonaka1997` saiu da definição do explícito. Os três continuam
-  cadastrados, aparecem na página de referências, e o `nonaka1997` continua citado pelo glossário
-  do Explorar, que lê o `referencia` do atributo e não o de cada valor
+- A atribuição é separada por afirmação. O cartão de abertura cita `davenport1998`, `seichter2010`
+  e `viana2015`, e o cartão da natureza e as três definições citam `alavi2001`. Cada cartão carrega
+  a sua, e o divisor não cita nada, porque é frase de passagem e não afirmação com fonte própria
+- O cartão de abertura é o único do catálogo que repete as citações dentro do parágrafo, entre
+  parênteses, além do rodapé. É pedido da autora, porque ali três obras sustentam afirmações
+  diferentes da mesma passagem e o rodapé sozinho não diria qual sustenta qual
+- O `nonaka1997` saiu da definição do explícito e continua cadastrado. Ele segue citado pelo
+  glossário do Explorar, que lê o `referencia` do atributo e não o de cada valor
 - Alavi e Leidner (2001) apresentam a distinção entre componente técnico e cognitivo do tácito com
   base em Nonaka (1994). A obra de 1994 não tem verbete em `referencias.json`, e o `nonaka1997`
   cadastrado é outro trabalho, o livro de Nonaka e Takeuchi. Enquanto o verbete de 1994 não
@@ -525,10 +529,9 @@ nativamente pelo navegador com `type="module"`.
   só a sigla. O Sobre é a exceção, por decisão editorial: ali o subtítulo usa só a sigla, porque
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
-- Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. A aba 1 não usa a
-  sigla, porque passou a tratar do conceito geral de conhecimento. O cartão verde dela já escreveu
-  "Nos Ecossistemas de Software (ECOS)" e depois "Nos ECOS, o conhecimento", e as duas redações
-  saíram com a revisão conceitual
+- Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. O cartão de
+  abertura da aba 1 escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
+  escrever "Nos Ecossistemas de Software (ECOS)", e eram duas apresentações numa página só
 - Santos e Werner (2011) apresentam as dimensões Arquitetural, Negócio e Social. O valor no dado
   continua "Técnica", que é o que a ficha, os filtros e a ordenação usam, e quem lê em tela é o
   rótulo "Arquitetural (Técnica)", por decisão do orientador. Como o nome do artigo está escrito
