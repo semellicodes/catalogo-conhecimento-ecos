@@ -70,39 +70,22 @@
         "rotulo": "4. Atividades",
         "icone": "gerencia",
         "cartaoIntroducao": {
-          "titulo": "Como gerenciar esse conhecimento em ECOS",
-          "texto": "Esta seção apresenta a importância de gerenciar cada conhecimento, os atores envolvidos e as atividades de gerência identificadas na literatura. As informações são fundamentadas nos estudos primários associados, enquanto a classificação das atividades considera os processos de gerência do conhecimento adotados por Lopes et al. (2026)."
+          "titulo": "Atividades Associadas ao Conhecimento",
+          "texto": "A gerência do conhecimento pode ser analisada por meio de oito processos inter-relacionados, que abrangem desde a identificação e a aquisição até a aplicação e a avaliação do conhecimento. No catálogo, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento."
         },
-        "componentes": [
-          {
-            "icone": "nota",
-            "titulo": "Importância de gerenciar esse conhecimento",
-            "introducao": "Este componente apresenta as razões pelas quais gerenciar determinado conhecimento é relevante no contexto de ECOS. Considera sua contribuição para as atividades dos participantes, a colaboração entre atores e a evolução de produtos, plataformas ou do próprio ecossistema, conforme as evidências identificadas nos estudos primários.",
-            "rodape": "Estudos primários associados"
-          },
-          {
-            "icone": "participacao",
-            "titulo": "Atores envolvidos",
-            "introducao": "Este componente identifica os participantes responsáveis por produzir, deter, compartilhar ou utilizar determinado conhecimento em ECOS. Considera os diferentes papéis exercidos pela organização central e pelos atores externos, conforme as relações efetivamente descritas nos estudos primários associados.",
-            "rodape": "Estudos primários associados"
-          }
-        ],
         "atividades": {
-          "icone": "acoes",
-          "titulo": "Atividades de gerência do conhecimento",
-          "introducao": "Este componente apresenta as atividades de gerência identificadas na literatura para determinado conhecimento em ECOS, descrevendo como são realizadas. A análise considera oito processos de gerência do conhecimento, sem pressupor que todos estejam presentes em cada conhecimento catalogado.",
           "processos": [
             {
               "nome": "Identificação",
-              "descricao": "Mapeamento do conhecimento disponível internamente."
+              "descricao": "Mapeamento do conhecimento já disponível internamente."
             },
             {
               "nome": "Aquisição",
-              "descricao": "Captura do conhecimento proveniente de fontes externas."
+              "descricao": "Obtenção de conhecimento proveniente de fontes externas."
             },
             {
               "nome": "Compartilhamento",
-              "descricao": "Disseminação, distribuição, transferência e assimilação."
+              "descricao": "Disseminação, distribuição, transferência e assimilação do conhecimento."
             },
             {
               "nome": "Armazenamento",
@@ -110,19 +93,19 @@
             },
             {
               "nome": "Codificação",
-              "descricao": "Indexação, codificação, filtragem e externalização."
+              "descricao": "Indexação, representação, filtragem e externalização do conhecimento."
             },
             {
               "nome": "Criação",
-              "descricao": "Construção, desenvolvimento e inovação."
+              "descricao": "Construção e desenvolvimento de novos conhecimentos, incluindo inovação."
             },
             {
               "nome": "Aplicação",
-              "descricao": "Uso, ação e internalização do conhecimento."
+              "descricao": "Utilização e internalização do conhecimento nas atividades realizadas."
             },
             {
               "nome": "Avaliação",
-              "descricao": "Revisão, validação e verificação."
+              "descricao": "Revisão, validação e verificação do conhecimento."
             }
           ],
           "referencias": "lopes2026"

@@ -298,10 +298,8 @@ nativamente pelo navegador com `type="module"`.
   os Exemplos usam um sem título nem introdução, a Gerência usa dois sem categorias e um com os
   oito processos, e a Base de evidências usa os dois sem nenhuma. Cabeçalho, introdução, lista,
   citação e rodapé são todos opcionais, e cada um só é montado quando o dado existe
-- O cartão aceita `referencias`, que vira citação com link, ou `rodape`, que é texto solto. O
-  rodapé existe para quem diz de onde a informação vem quando a origem é a evidência deste
-  trabalho e não uma obra publicada, como o "Estudos primários associados" dos dois primeiros
-  cartões da Gerência. Os dois usam a mesma linha, para os cartões fecharem todos igual
+- O cartão aceita `referencias`, que vira citação com link. O `rodape`, que era texto solto na
+  mesma linha, saiu com os dois cartões da Gerência que o declaravam
 - Nível e Dimensão tiram título, introdução e citação do próprio vocabulário, de `rotulo`, `funcao`
   e `referencia`, que é onde o nome do atributo já mora. Só o ícone vem da aba, porque é decisão de
   interface e não parte da classificação
@@ -339,14 +337,33 @@ nativamente pelo navegador com `type="module"`.
 - O `kauschinger2024` saiu da citação dos exemplos. Ele sustentava a relação entre cada modelo e a
   circulação do conhecimento, que era o enquadramento do texto antigo. O texto novo descreve só o
   modelo de organização, que é Manikas, então a segunda obra passou a citar o que o cartão não diz
-- A aba de Atividades apresenta os três componentes que organizam a gerência de cada conhecimento, por
-  orientação do professor. Importância de gerenciar esse conhecimento e Atores envolvidos dividem
-  a linha, e Atividades de gerência do conhecimento atravessa a linha abaixo, com os oito
-  processos dentro do próprio cartão
+- A aba de Atividades apresenta só os oito processos de gerência do conhecimento, por orientação
+  do professor. É o arranjo dos Exemplos, cartão verde com o nome e a apresentação e, abaixo, um
+  painel único com os oito, que fecha com a citação
+- O cartão verde chama-se "Atividades Associadas ao Conhecimento". É o nome padronizado da seção
+  de atividades, e a ficha vai recebê-lo quando as vinte forem revistas. Hoje o bloco da ficha
+  ainda diz "Atividades de gerência do conhecimento", então o par de nomes está aberto
+- A aba 4 é a exceção à justificação no celular. Abaixo de 36rem a introdução do cartão verde e as
+  oito descrições vão alinhadas à esquerda, com `hyphens: manual`. São frases curtas, de duas ou
+  três linhas numa coluna de celular, e ali a justificação abria vão de até 23px entre as palavras
+  sem ter linha suficiente para a hifenização compensar. Alinhadas à esquerda o maior vão caiu
+  para 3,5px, que é o espaço normal de palavra
+- A exceção é presa à `.estrutura__grade--gerencia`, dentro da media query que já existia, e as
+  outras quatro abas continuam justificadas e hifenizadas no celular. Nenhuma regra global mudou
+- Os cartões de Importância de gerenciar esse conhecimento e de Atores envolvidos saíram da aba,
+  com os `componentes` do `meta.json`, a grade de duas colunas da Gerência, o `rodape` do
+  `cartaoDeEstrutura`, que existia só para o "Estudos primários associados" dos dois, e os ícones
+  `nota`, `participacao` e `acoes`, que ficaram sem declarante. Está no histórico se a decisão
+  voltar
+- Os dois nomes continuam vivos na ficha, nos blocos do C01 e do C12, que esta mudança não toca. A
+  reorganização das vinte fichas para os oito processos é trabalho à parte
 - Os oito processos são os de `lopes2026`, Identificação, Aquisição, Compartilhamento,
-  Armazenamento, Codificação, Criação, Aplicação e Avaliação. Eles fundamentam a análise, não as
-  atividades atribuídas a cada conhecimento. A introdução do cartão diz por escrito que não se
-  pressupõe que todos estejam presentes
+  Armazenamento, Codificação, Criação, Aplicação e Avaliação, com a descrição de cada um
+  sintetizada da Tabela 1 do artigo
+- Lopes et al. (2026) tratam de gerência do conhecimento em reúso de software. Aqui os oito
+  processos são a estrutura de análise que organiza as atividades observadas nos estudos primários
+  desta revisão, e o cartão verde diz isso por escrito. Em nenhum ponto o catálogo afirma que os
+  autores identificaram essas atividades nos estudos do KM4SECO
 - Cada processo ganha superfície e borda, diferente das categorias da Classificação, que só levam
   a linha fina. São oito itens curtos em duas colunas, e sem a caixa a leitura vira uma lista
   indistinta
