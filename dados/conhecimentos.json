@@ -176,7 +176,7 @@
   {
     "id": "C04",
     "nome": "Decisões arquiteturais anteriores e seu contexto",
-    "descricao": "Esse conhecimento diz respeito ao histórico de escolhas de design, padrões, táticas e trade-offs, e às justificativas técnicas e de negócio que motivaram essas decisões no passado. A ausência desse histórico pode levar equipes a repetir erros anteriores ou tomar decisões incompatíveis com a evolução do ecossistema.",
+    "descricao": "Esse conhecimento abrange o histórico de decisões arquiteturais tomadas durante o desenvolvimento e a evolução de soluções no ECOS, incluindo os contextos em que foram realizadas, as alternativas consideradas e as justificativas que orientaram suas escolhas. Envolve padrões arquiteturais, táticas de projeto, requisitos de qualidade, restrições técnicas e de negócio e relações entre decisões anteriores, permitindo compreender os critérios utilizados e as condições em que determinadas soluções foram adotadas.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -209,12 +209,49 @@
         "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária"
       }
     },
-    "justificativaClassificacao": "As decisões arquiteturais anteriores e seu contexto são classificadas como conhecimento explícito porque podem ser documentados, localizados e reutilizados em novas situações. O nível Ecossistema se aplica porque decisões tomadas por uma organização podem orientar outras em contextos semelhantes. A dimensão Técnica foi selecionada porque esse conhecimento orienta escolhas arquiteturais e a evolução de soluções integradas.",
+    "justificativaClassificacao": "O conhecimento sobre decisões arquiteturais anteriores e seu contexto é classificado no nível Ecossistema porque envolve o aproveitamento de experiências e decisões provenientes de diferentes participantes e organizações, permitindo que conhecimentos acumulados em situações anteriores apoiem novas escolhas arquiteturais. Enquadra-se na dimensão Arquitetural (Técnica) por abordar padrões, táticas, requisitos de qualidade, alternativas de projeto e critérios técnicos utilizados na definição e evolução das arquiteturas de software no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelas organizações que tomaram decisões arquiteturais e pelos repositórios que preservam suas justificativas e contextos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que enfrentam uma nova decisão arquitetural em contexto semelhante e precisam avaliar escolhas anteriores.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar decisões junto com seus contextos e disponibilizá-las em repositórios que permitam recuperar e comparar situações semelhantes.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da obtenção de informações arquiteturais provenientes de fontes externas à organização. Esse processo envolve a incorporação de conhecimentos sobre padrões de projeto, táticas arquiteturais e atributos de qualidade, extraídos de publicações especializadas e recursos disponíveis na internet, para fundamentar a análise de alternativas e a elaboração de novas decisões arquiteturais no ECOS.",
+        "estudos": ["E16"]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado pela disponibilização de informações arquiteturais em repositórios e ferramentas acessíveis aos participantes do ECOS. O modelo apresentado no E14 prevê o compartilhamento de informações de casos decisórios anteriores entre organizações, respeitando restrições de confidencialidade, enquanto o E16 apresenta mecanismos para disponibilizar padrões, táticas, modelos de decisão e informações contextuais, favorecendo a transferência e a reutilização desse conhecimento por diferentes participantes.",
+        "estudos": ["E14", "E16"]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "O armazenamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado por repositórios destinados à conservação de informações sobre decisões, alternativas e elementos contextuais. A arquitetura proposta no E14 contempla o registro de casos decisórios e o armazenamento de informações selecionadas para consultas futuras, enquanto o E16 apresenta um repositório de conhecimentos arquiteturais que mantém registros de padrões, táticas, atributos de qualidade e suas relações, permitindo sua recuperação e utilização em novas situações de projeto.",
+        "estudos": ["E14", "E16"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da representação estruturada de informações relacionadas às escolhas de projeto. Esse processo envolve a classificação de casos decisórios segundo objetivos, participantes, alternativas, métodos e contextos, conforme a taxonomia apresentada no E14, e a organização de padrões, táticas, atributos de qualidade e relações entre decisões em modelos e registros explícitos, conforme os mecanismos descritos no E16. Essas representações favorecem a interpretação e a recuperação do conhecimento arquitetural para reutilização.",
+        "estudos": ["E14", "E16"]
+      },
+      {
+        "processo": "Criação",
+        "descricao": "A criação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da elaboração de novos modelos de decisão a partir de conhecimentos arquiteturais previamente disponíveis. Esse processo envolve a combinação de padrões, táticas, atributos de qualidade e informações contextuais para construir modelos reutilizáveis, além da identificação e incorporação de novas relações entre esses elementos, ampliando o conhecimento registrado para apoiar decisões arquiteturais posteriores.",
+        "estudos": ["E16"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre quando arquitetos utilizam informações previamente registradas para orientar novas escolhas de projeto. Esse processo envolve a recuperação de padrões, táticas, atributos de qualidade e elementos contextuais de situações anteriores, utilizando-os na análise de alternativas e na elaboração de modelos reutilizáveis de decisão arquitetural. O uso desse conhecimento permite considerar soluções conhecidas e suas implicações técnicas em novos contextos de desenvolvimento no ECOS.",
+        "estudos": ["E16"]
+      },
+      {
+        "processo": "Avaliação",
+        "descricao": "A avaliação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da revisão de decisões e alternativas de projeto, considerando sua adequação aos requisitos e aos atributos de qualidade envolvidos. Esse processo inclui examinar os fundamentos das escolhas arquiteturais, comparar soluções possíveis e verificar suas consequências sobre características como desempenho, complexidade e compreensibilidade, permitindo reconhecer vantagens, limitações e compromissos técnicos associados às decisões analisadas.",
+        "estudos": ["E16"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C05",
