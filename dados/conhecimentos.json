@@ -7,20 +7,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S08",
-      "S21",
-      "S31"
-    ],
-    "estudos": [
-      "E03",
-      "E08",
-      "E09"
-    ],
+    "acaoGerencia": ["Criação e registro", "Uso e aplicação"],
+    "solucoes": ["S08", "S21", "S31"],
+    "estudos": ["E03", "E08", "E09"],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -35,25 +24,17 @@
       {
         "processo": "Identificação",
         "descricao": "A identificação das dependências técnicas entre componentes do ecossistema ocorre por meio da análise das relações entre pacotes e projetos que integram o ECOS. Essa atividade envolve a utilização de informações técnicas e dados disponíveis em repositórios para reconhecer quais componentes dependem de outros, compreender as tecnologias utilizadas e identificar relações entre projetos interdependentes. Essas informações contribuem para a compreensão das dependências e para a coordenação de alterações entre projetos conectados.",
-        "estudos": [
-          "E03",
-          "E08"
-        ]
+        "estudos": ["E03", "E08"]
       },
       {
         "processo": "Compartilhamento",
         "descricao": "O compartilhamento do conhecimento sobre as dependências técnicas entre componentes do ecossistema ocorre por meio da troca de informações entre colaboradores de projetos interdependentes. Essa atividade envolve discussões sobre relações de dependência e alterações, incluindo interações registradas em issues e pull requests. Essas trocas permitem comunicar mudanças e apoiar a coordenação entre participantes de projetos conectados.",
-        "estudos": [
-          "E03"
-        ]
+        "estudos": ["E03"]
       },
       {
         "processo": "Aplicação",
         "descricao": "A aplicação do conhecimento sobre as dependências técnicas entre componentes do ecossistema ocorre quando os participantes utilizam informações sobre as relações entre projetos e componentes para coordenar alterações em soluções interdependentes. Esse conhecimento também apoia a identificação de colaboradores com experiência nas tecnologias utilizadas, contribuindo para a colaboração e para a realização de atividades relacionadas à integração dos componentes.",
-        "estudos": [
-          "E03",
-          "E08"
-        ]
+        "estudos": ["E03", "E08"]
       }
     ],
     "atividadesAssociadas": true,
@@ -62,7 +43,7 @@
   {
     "id": "C02",
     "nome": "Arquitetura e tecnologias de base da plataforma",
-    "descricao": "Esse conhecimento abrange a plataforma tecnológica comum, os padrões arquiteturais e os componentes estruturais disponibilizados pela organização central. Sua falta pode dificultar que desenvolvedores externos construam complementos compatíveis e comprometer a continuidade do ECOS em momentos de transição de equipes.",
+    "descricao": "Esse conhecimento abrange a plataforma tecnológica comum, os padrões arquiteturais e os componentes estruturais disponibilizados pela organização central do ECOS. Envolve a compreensão da infraestrutura e da configuração arquitetural da plataforma, das tecnologias que a sustentam e das condições necessárias para o desenvolvimento, a compatibilidade e a integração de aplicações complementares por diferentes participantes.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -72,27 +53,11 @@
       "Compartilhamento",
       "Uso e aplicação"
     ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S16",
-      "S19",
-      "S22",
-      "S25",
-      "S30"
-    ],
-    "estudos": [
-      "E06",
-      "E07",
-      "E09"
-    ],
+    "solucoes": ["S01", "S05", "S16", "S19", "S22", "S25", "S30"],
+    "estudos": ["E06", "E07", "E09"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D09",
-      "D13"
-    ],
+    "desafios": ["D01", "D09", "D13"],
     "evidencia": {
       "D01": {
         "estudo": "E06, E09",
@@ -107,12 +72,38 @@
         "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento"
       }
     },
-    "justificativaClassificacao": "A arquitetura e as tecnologias de base da plataforma são classificadas como conhecimento explícito porque podem ser documentadas, transferidas e consultadas por quem desenvolve sobre ela. O nível Plataforma se aplica porque definem sua infraestrutura e configuração arquitetural. A dimensão Técnica foi selecionada porque esse conhecimento orienta a compatibilidade e a integração de produtos externos à base tecnológica comum.",
+    "justificativaClassificacao": "O conhecimento sobre a arquitetura e as tecnologias de base da plataforma é classificado no nível Plataforma porque está relacionado à infraestrutura tecnológica comum, aos padrões arquiteturais e aos componentes estruturais que sustentam o desenvolvimento de aplicações complementares. Enquadra-se na dimensão Arquitetural (Técnica) por abordar as características tecnológicas e a configuração arquitetural da plataforma, necessárias para garantir a compatibilidade e a integração de soluções desenvolvidas por diferentes participantes do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado pela organização central e registrado em documentos de arquitetura, especificações técnicas, repositórios, tutoriais e materiais de integração da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos e outros participantes do ECOS durante a criação, adaptação e integração de complementos à plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário versionar e atualizar a documentação técnica, relacioná-la a exemplos de implementação e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição do conhecimento sobre a arquitetura e as tecnologias de base da plataforma ocorre quando desenvolvedores externos obtêm informações tecnológicas disponibilizadas pelos responsáveis pela plataforma. Esse processo envolve a participação em treinamentos, a consulta a materiais de aprendizagem e o acesso a recursos que permitem compreender os fundamentos arquiteturais, conceituais e tecnológicos necessários ao desenvolvimento de aplicações complementares.",
+        "estudos": ["E06", "E09"]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre a arquitetura e as tecnologias de base da plataforma ocorre por meio da transferência e disseminação de informações técnicas entre os participantes do ECOS. Documentação, portais de informação, fóruns, materiais de capacitação e espaços colaborativos permitem que desenvolvedores externos compreendam a infraestrutura tecnológica da plataforma, favorecendo a colaboração entre diferentes atores e a continuidade do conhecimento diante de mudanças nas equipes responsáveis pelo desenvolvimento.",
+        "estudos": ["E06", "E07", "E09"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre a arquitetura e as tecnologias de base da plataforma ocorre por meio de sua representação em materiais estruturados, como documentação técnica, conteúdos de treinamento e livros digitais. Esses recursos registram e externalizam informações sobre os fundamentos tecnológicos e conceituais da plataforma, tornando o conhecimento acessível para consulta e aprendizagem pelos desenvolvedores externos.",
+        "estudos": ["E06"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre a arquitetura e as tecnologias de base da plataforma ocorre quando desenvolvedores externos utilizam informações sobre suas características tecnológicas para implementar funcionalidades e integrar aplicações complementares. Esse conhecimento orienta a utilização dos recursos disponíveis, a compreensão das interfaces e dependências da plataforma e a resolução de problemas técnicos durante o desenvolvimento de soluções no ECOS.",
+        "estudos": ["E06", "E09"]
+      },
+      {
+        "processo": "Avaliação",
+        "descricao": "A avaliação do conhecimento sobre a arquitetura e as tecnologias de base da plataforma ocorre quando desenvolvedores externos verificam a adequação dos recursos de conhecimento às suas necessidades de aprendizagem e desenvolvimento. Essa atividade envolve examinar a relevância, a abrangência e a especificidade das informações disponíveis, considerando sua capacidade de apoiar a compreensão da plataforma e a resolução de problemas técnicos.",
+        "estudos": ["E06"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C03",
@@ -122,29 +113,12 @@
     "nivel": "Plataforma",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S17",
-      "S22",
-      "S30",
-      "S34"
-    ],
-    "estudos": [
-      "E06",
-      "E12"
-    ],
+    "acaoGerencia": ["Criação e registro", "Compartilhamento"],
+    "solucoes": ["S01", "S05", "S17", "S22", "S30", "S34"],
+    "estudos": ["E06", "E12"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D09",
-      "D15"
-    ],
+    "desafios": ["D01", "D09", "D15"],
     "evidencia": {
       "D01": {
         "estudo": "E06",
@@ -166,6 +140,7 @@
     "atividadesGerencia": [],
     "atividadesAssociadas": "pendente"
   },
+
   {
     "id": "C04",
     "nome": "Decisões arquiteturais anteriores e seu contexto",
@@ -192,15 +167,10 @@
       "S33",
       "S35"
     ],
-    "estudos": [
-      "E14",
-      "E16"
-    ],
+    "estudos": ["E14", "E16"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D17"
-    ],
+    "desafios": ["D17"],
     "evidencia": {
       "D17": {
         "estudo": "E14",
@@ -222,23 +192,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S18",
-      "S29"
-    ],
-    "estudos": [
-      "E05"
-    ],
+    "acaoGerencia": ["Criação e registro", "Compartilhamento"],
+    "solucoes": ["S18", "S29"],
+    "estudos": ["E05"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D04",
-      "D08"
-    ],
+    "desafios": ["D04", "D08"],
     "evidencia": {
       "D04": {
         "estudo": "E05",
@@ -264,16 +223,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S20"
-    ],
-    "estudos": [
-      "E07"
-    ],
+    "acaoGerencia": ["Criação e registro", "Compartilhamento"],
+    "solucoes": ["S20"],
+    "estudos": ["E07"],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -293,22 +245,12 @@
     "nivel": "Plataforma",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S16",
-      "S25"
-    ],
-    "estudos": [
-      "E09"
-    ],
+    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
+    "solucoes": ["S16", "S25"],
+    "estudos": ["E09"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D13"
-    ],
+    "desafios": ["D13"],
     "evidencia": {
       "D13": {
         "estudo": "E09",
@@ -330,21 +272,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S26"
-    ],
-    "estudos": [
-      "E11"
-    ],
+    "acaoGerencia": ["Criação e registro", "Compartilhamento"],
+    "solucoes": ["S26"],
+    "estudos": ["E11"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D14"
-    ],
+    "desafios": ["D14"],
     "evidencia": {
       "D14": {
         "estudo": "E11",
@@ -366,17 +299,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S09",
-      "S35"
-    ],
-    "estudos": [
-      "E14"
-    ],
+    "acaoGerencia": ["Criação e registro", "Uso e aplicação"],
+    "solucoes": ["S09", "S35"],
+    "estudos": ["E14"],
     "pendencia": "Verificar se este conhecimento é específico de ECOS ou se é genérico de tomada de decisão",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -396,19 +321,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
+    "acaoGerencia": ["Criação e registro", "Uso e aplicação"],
     "solucoes": [],
-    "estudos": [
-      "E10"
-    ],
+    "estudos": ["E10"],
     "pendencia": "Único conhecimento sem nenhuma solução extraída no mesmo estudo",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D02"
-    ],
+    "desafios": ["D02"],
     "evidencia": {
       "D02": {
         "estudo": "E10",
@@ -430,15 +348,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S24"
-    ],
-    "estudos": [
-      "E09"
-    ],
+    "acaoGerencia": ["Compartilhamento"],
+    "solucoes": ["S24"],
+    "estudos": ["E09"],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -458,28 +370,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Social",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S08",
-      "S14",
-      "S18",
-      "S31"
-    ],
-    "estudos": [
-      "E03",
-      "E08",
-      "E17"
-    ],
+    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
+    "solucoes": ["S08", "S14", "S18", "S31"],
+    "estudos": ["E03", "E08", "E17"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D02",
-      "D03",
-      "D06"
-    ],
+    "desafios": ["D02", "D03", "D06"],
     "evidencia": {
       "D02": {
         "estudo": "E08",
@@ -504,33 +400,22 @@
       {
         "processo": "Identificação",
         "descricao": "Identificação das competências e dos conhecimentos especializados dos participantes a partir de suas contribuições, utilizando modelos semânticos e mecanismos de recuperação de expertise.",
-        "estudos": [
-          "E08"
-        ]
+        "estudos": ["E08"]
       },
       {
         "processo": "Compartilhamento",
         "descricao": "Troca de experiências e conhecimentos especializados entre participantes, por meio de discussões, colaboração entre projetos e compartilhamento de composições de componentes.",
-        "estudos": [
-          "E03",
-          "E17"
-        ]
+        "estudos": ["E03", "E17"]
       },
       {
         "processo": "Codificação",
         "descricao": "Representação de aspectos da expertise dos participantes por meio de ontologias que relacionam colaboradores às suas competências e de composições de componentes que refletem experiências adquiridas durante suas atividades.",
-        "estudos": [
-          "E08",
-          "E17"
-        ]
+        "estudos": ["E08", "E17"]
       },
       {
         "processo": "Aplicação",
         "descricao": "Utilização de informações sobre a expertise dos participantes para recomendar colaboradores e aproveitar experiências de outros usuários na composição de ambientes de trabalho.",
-        "estudos": [
-          "E08",
-          "E17"
-        ]
+        "estudos": ["E08", "E17"]
       }
     ],
     "atividadesAssociadas": true,
@@ -544,23 +429,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S10",
-      "S11",
-      "S18"
-    ],
-    "estudos": [
-      "E07",
-      "E16"
-    ],
+    "acaoGerencia": ["Compartilhamento"],
+    "solucoes": ["S10", "S11", "S18"],
+    "estudos": ["E07", "E16"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D11"
-    ],
+    "desafios": ["D11"],
     "evidencia": {
       "D11": {
         "estudo": "E07",
@@ -582,21 +456,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Social",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S18",
-      "S29"
-    ],
-    "estudos": [
-      "E05"
-    ],
+    "acaoGerencia": ["Compartilhamento"],
+    "solucoes": ["S18", "S29"],
+    "estudos": ["E05"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D04"
-    ],
+    "desafios": ["D04"],
     "evidencia": {
       "D04": {
         "estudo": "E05",
@@ -618,22 +483,12 @@
     "nivel": "Plataforma",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S01",
-      "S17",
-      "S34"
-    ],
-    "estudos": [
-      "E12"
-    ],
+    "acaoGerencia": ["Uso e aplicação"],
+    "solucoes": ["S01", "S17", "S34"],
+    "estudos": ["E12"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D15"
-    ],
+    "desafios": ["D15"],
     "evidencia": {
       "D15": {
         "estudo": "E12",
@@ -655,15 +510,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S07"
-    ],
-    "estudos": [
-      "E16"
-    ],
+    "acaoGerencia": ["Uso e aplicação"],
+    "solucoes": ["S07"],
+    "estudos": ["E16"],
     "pendencia": "Único conhecimento sem nenhum desafio extraído no mesmo estudo",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -683,21 +532,12 @@
     "nivel": "Produto",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S14"
-    ],
-    "estudos": [
-      "E17"
-    ],
+    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
+    "solucoes": ["S14"],
+    "estudos": ["E17"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D03"
-    ],
+    "desafios": ["D03"],
     "evidencia": {
       "D03": {
         "estudo": "E17",
@@ -719,16 +559,9 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S21"
-    ],
-    "estudos": [
-      "E03"
-    ],
+    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
+    "solucoes": ["S21"],
+    "estudos": ["E03"],
     "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
@@ -748,25 +581,12 @@
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S22",
-      "S30"
-    ],
-    "estudos": [
-      "E06"
-    ],
+    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
+    "solucoes": ["S01", "S05", "S22", "S30"],
+    "estudos": ["E06"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D10"
-    ],
+    "desafios": ["D01", "D10"],
     "evidencia": {
       "D01": {
         "estudo": "E06",
@@ -792,20 +612,12 @@
     "nivel": "Produto",
     "dimensao": "Técnica",
     "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S15"
-    ],
-    "estudos": [
-      "E04"
-    ],
+    "acaoGerencia": ["Compartilhamento"],
+    "solucoes": ["S15"],
+    "estudos": ["E04"],
     "pendencia": "",
     "relacoesConfirmadas": true,
-    "desafios": [
-      "D07"
-    ],
+    "desafios": ["D07"],
     "evidencia": {
       "D07": {
         "estudo": "E04",
