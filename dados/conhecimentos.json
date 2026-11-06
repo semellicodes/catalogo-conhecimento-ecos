@@ -256,7 +256,7 @@
   {
     "id": "C05",
     "nome": "Regras e estrutura de governança do ecossistema",
-    "descricao": "Esse conhecimento abrange as diretrizes, papéis organizacionais, responsabilidades, modelos de tomada de decisão e regras de engajamento que orientam a atuação dos participantes. O desconhecimento dessas regras pode gerar conflitos de interesse, comportamentos desalinhados e desorganização no fluxo de colaboração interorganizacional.",
+    "descricao": "Esse conhecimento abrange as regras, diretrizes e estruturas de governança que organizam a participação e a colaboração entre diferentes atores do ECOS. Envolve a definição de papéis organizacionais, responsabilidades, mecanismos de coordenação, procedimentos de tomada de decisão e regras de engajamento, incluindo os arranjos institucionais que regulam as relações entre as organizações participantes e orientam o funcionamento coletivo do ecossistema.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -277,12 +277,33 @@
         "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento"
       }
     },
-    "justificativaClassificacao": "As regras e a estrutura de governança do ecossistema são classificadas como conhecimento explícito porque papéis, critérios de engajamento e regras de decisão podem ser formalizados e compartilhados. O nível Ecossistema se aplica porque estruturam a colaboração entre organizações participantes. A dimensão Técnica foi selecionada conforme a categorização adotada para os conhecimentos que organizam a operação do ecossistema.",
+    "justificativaClassificacao": "O conhecimento sobre as regras e a estrutura de governança do ecossistema é classificado no nível Ecossistema porque está relacionado aos mecanismos que organizam a colaboração, a distribuição de responsabilidades e os processos decisórios entre diferentes organizações participantes. Enquadra-se na dimensão Arquitetural (Técnica), conforme a classificação adotada no catálogo, por abordar estruturas de coordenação e procedimentos que orientam o funcionamento e a organização das atividades desenvolvidas no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela estrutura de governança do consórcio, nas diretrizes, papéis e decisões que organizam a participação conjunta.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS, especialmente quando precisam compreender ou discutir decisões tomadas coletivamente.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário formalizar e tornar compreensíveis as regras de governança, recorrendo a papéis de intermediação quando necessários para ampliar a transparência.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre as regras e a estrutura de governança do ECOS ocorre por meio da disseminação de informações institucionais entre as organizações participantes. Esse processo envolve reuniões informativas, circulação de documentos, apresentações e interações entre representantes das organizações e responsáveis pela coordenação do consórcio, permitindo comunicar normas, responsabilidades e procedimentos de colaboração, além de favorecer a compreensão das práticas de governança adotadas coletivamente.",
+        "estudos": ["E05"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre as regras e a estrutura de governança do ECOS ocorre por meio da formalização de procedimentos e orientações institucionais em registros explícitos. Esse processo envolve a elaboração de registros de reuniões, acordos de confidencialidade e regras de participação, permitindo representar e comunicar as condições que orientam a colaboração, as responsabilidades dos participantes e o funcionamento dos mecanismos de governança do consórcio.",
+        "estudos": ["E05"]
+      },
+      {
+        "processo": "Criação",
+        "descricao": "A criação do conhecimento sobre as regras e a estrutura de governança do ECOS está relacionada ao desenvolvimento e ao aperfeiçoamento de práticas de coordenação a partir das experiências de colaboração entre as organizações participantes. Esse processo envolve a construção de entendimentos sobre formas de distribuir responsabilidades, organizar decisões coletivas e administrar interesses distintos, refletidos na elaboração e na reformulação de regras e estruturas institucionais conforme as necessidades do ecossistema evoluem.",
+        "estudos": ["E05"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre as regras e a estrutura de governança do ECOS ocorre quando os participantes utilizam procedimentos e orientações institucionais para organizar suas interações e conduzir decisões coletivas. Esse processo envolve o cumprimento de regras de participação, a utilização de mecanismos de votação e o encaminhamento de decisões às instâncias responsáveis, orientando a coordenação das atividades e a atuação das organizações conforme a estrutura de governança estabelecida.",
+        "estudos": ["E05"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C06",
