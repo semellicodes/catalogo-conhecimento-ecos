@@ -108,7 +108,7 @@
   {
     "id": "C03",
     "nome": "Especificações técnicas de implementação da plataforma",
-    "descricao": "Esse conhecimento detalha os procedimentos, protocolos de comunicação, esquemas de banco de dados, modelos de autenticação e barramentos de conectividade do ecossistema. Sem esse detalhamento, desenvolvedores podem enfrentar bloqueios técnicos ao integrar suas aplicações e gerar chamados recorrentes de suporte.",
+    "descricao": "Esse conhecimento abrange as especificações técnicas necessárias à implementação de funcionalidades e à integração de aplicações complementares à plataforma. Envolve procedimentos de desenvolvimento, protocolos de comunicação, mecanismos de autenticação, estruturas de dados, configurações de conectividade e demais informações tecnológicas que orientam a utilização dos recursos disponibilizados pela plataforma por diferentes participantes do ECOS.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -133,12 +133,44 @@
         "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento"
       }
     },
-    "justificativaClassificacao": "As especificações técnicas de implementação da plataforma são classificadas como conhecimento explícito porque podem ser registradas em documentação e disponibilizadas aos desenvolvedores. O nível Plataforma se aplica porque orientam a implementação de suas funcionalidades. A dimensão Técnica foi selecionada porque incluem autenticação, conectividade, estruturas de dados e demais tecnologias de implementação.",
+    "justificativaClassificacao": "O conhecimento sobre as especificações técnicas de implementação da plataforma é classificado no nível Plataforma porque está relacionado aos procedimentos, requisitos e informações tecnológicas necessários para implementar funcionalidades e desenvolver aplicações complementares sobre sua base tecnológica. Enquadra-se na dimensão Arquitetural (Técnica) por abordar aspectos de autenticação, conectividade, comunicação, estruturas de dados e integração técnica que orientam o desenvolvimento de soluções compatíveis com a plataforma.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, em documentação técnica, especificações de implementação e tutoriais da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento e a integração de aplicações à plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário manter atualizada a documentação das especificações e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre quando desenvolvedores externos obtêm informações necessárias ao desenvolvimento de aplicações complementares. Esse processo envolve a consulta à documentação técnica, aos tutoriais e às discussões em comunidades de desenvolvedores, permitindo compreender procedimentos de implementação, mecanismos de autenticação, configurações de conectividade e estruturas de dados disponibilizadas pela plataforma.",
+        "estudos": ["E06", "E12"]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre por meio da disseminação e transferência de informações entre a organização responsável pela plataforma e os desenvolvedores externos. Documentação técnica, portais de informação, tutoriais e comunidades on-line possibilitam a comunicação de procedimentos de implementação, esclarecimentos sobre funcionalidades e soluções para problemas técnicos, favorecendo a circulação desse conhecimento entre os participantes do ECOS.",
+        "estudos": ["E06", "E12"]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "O armazenamento do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre por meio da manutenção de informações técnicas em recursos documentais disponibilizados aos desenvolvedores externos. Esses recursos incluem documentação técnica com controle de versões, favorecendo a conservação e a consulta de informações sobre funcionalidades, parâmetros e estruturas da plataforma durante o desenvolvimento de aplicações complementares.",
+        "estudos": ["E06"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre por meio da representação de informações tecnológicas em materiais estruturados, como documentação técnica, tutoriais e conteúdos de capacitação. Esses recursos externalizam procedimentos, orientações e informações necessárias à implementação de funcionalidades, tornando o conhecimento explícito e organizado para consulta pelos desenvolvedores externos.",
+        "estudos": ["E06"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre quando desenvolvedores externos utilizam informações técnicas para implementar funcionalidades e solucionar problemas durante o desenvolvimento de aplicações complementares. Esse processo envolve a utilização de especificações sobre sintaxe de programação, parâmetros de funções, estruturas de dados e mecanismos de integração, incluindo a experimentação de soluções em ambientes de teste para verificar sua adequação às necessidades de implementação.",
+        "estudos": ["E06"]
+      },
+      {
+        "processo": "Avaliação",
+        "descricao": "A avaliação do conhecimento sobre as especificações técnicas de implementação da plataforma ocorre quando desenvolvedores verificam a adequação, a confiabilidade e a utilidade das informações técnicas para suas atividades de desenvolvimento. Esse processo envolve examinar a compatibilidade das orientações com os problemas enfrentados, verificar se soluções compartilhadas atendem às necessidades de implementação e identificar possíveis inconsistências ou informações desatualizadas em tutoriais e documentação técnica.",
+        "estudos": ["E06", "E12"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
 
   {
