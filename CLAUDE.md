@@ -212,7 +212,8 @@ nativamente pelo navegador com `type="module"`.
   quando a última ficha for revista
 - As atividades aparecem em cápsulas, uma por processo identificado. Só entram os processos que as
   evidências sustentam. Nenhum aparece apagado para completar a lista, porque ausência de evidência
-  não é evidência de ausência, e a aba 3 já diz que não se pressupõe que todos estejam presentes
+  não é evidência de ausência, e a aba de Atividades já diz que não se pressupõe que todos estejam
+  presentes
 - A cápsula reusa o desenho das categorias de ECOS, verde no texto, fundo neutro e borda discreta,
   e muda só o canto, totalmente arredondado, e a seta que diz que ela abre. O verde é da interação,
   não da natureza epistemológica, então a cor do explícito não entra ali
@@ -232,7 +233,7 @@ nativamente pelo navegador com `type="module"`.
 - Cartão em fileira segue sempre o mesmo padrão em toda a seção Estrutura. A fileira iguala a
   altura dos cartões, o espaçamento interno é o mesmo e a fonte é empurrada para o pé, senão as
   linhas de fonte terminam desencontradas quando os textos têm tamanhos diferentes. Vale para as
-  quatro abas, para não divergir de uma para outra
+  cinco abas, para não divergir de uma para outra
 - A altura igual numa fileira vem de `align-items: stretch`, que é o padrão da grade e deixa a
   linha crescer com o conteúdo. Nunca de `height: 100%` no filho nem de `grid-auto-rows: 1fr`, que
   travam a altura e fazem a última linha do texto vazar o bloco
@@ -240,31 +241,45 @@ nativamente pelo navegador com `type="module"`.
   vírgula fica preso ao item anterior, sem espaço antes dele, e não entra depois do último. O
   espaço entre as citações é o `gap` da lista, e o espaço do texto vai em `apenas-leitor`, para
   quem copia a linha receber a pontuação certa
-- A Estrutura tem quatro etapas, Ponto de Partida, Classificação, Gerência do conhecimento e Base
-  de Evidências. A etapa 2 chamava-se Atributos e reunia os exemplos de ECOS e a gerência. Ela
-  passou a tratar só dos critérios de classificação, e a gerência voltou a ser etapa própria, a 3,
-  com o bloco inteiro preservado. A Base de Evidências voltou a ser a 4
+- A Estrutura tem cinco etapas, Identificação, Classificação, Exemplos, Atividades e Base de
+  evidências, na ordem do mapa conceitual. A introdução da seção, no `index.html`, nomeia as cinco
+  por escrito, e mexer numa etapa pede conferir aquela frase. A 1 chamava-se Ponto de Partida e a 4 chamava-se
+  Gerência do conhecimento. Os exemplos de ECOS saíram da Classificação e viraram a etapa 3, porque
+  descrevem como o ecossistema se organiza e não como o conhecimento se classifica
 - A navegação é montada a partir de `estruturaCatalogo.abas`, então quem define quantas etapas
   existem é o arquivo de dados. O `criadores` do `inicio.js` casa por `id`, e um `id` sem
-  construtor quebra a aba. Os quatro hoje são `conhecimento`, `classificacao`, `gerencia` e
-  `evidencias`
-- A Classificação repete o arranjo do Ponto de Partida, e é de propósito. Cartão verde, divisor,
+  construtor quebra a aba. Os cinco hoje são `conhecimento`, `classificacao`, `exemplos`,
+  `gerencia` e `evidencias`. O `id` guarda o nome de origem de cada etapa, e renomear uma aba é
+  trocar o `rotulo`, não o `id`, que é a chave do construtor e do `aria-controls`
+- As colunas da fileira de abas vêm do número de abas, por `grid-auto-flow: column`, e não de uma
+  contagem escrita no CSS. Acrescentar ou tirar uma etapa é editar `meta.json`. Abaixo de 40rem são
+  duas colunas, e com cinco abas a última fica sozinha na terceira linha
+- O botão de aba é grade centrada em todas as larguras. Com cinco etapas o rótulo mais longo quebra
+  em duas linhas antes do celular, e sem o centro vertical ele subia enquanto os de uma linha
+  ficavam no meio
+- A Classificação repete o arranjo da Identificação, e é de propósito. Cartão verde, divisor,
   e os cartões, todos itens da mesma grade. Quem olha a aba 2 depois da 1 reconhece a forma antes
   de ler, e o paralelo diz que as duas apresentam critérios
-- A aba tem três cartões. Nível no ECOS e Dimensão do ECOS dividem a linha no desktop, e Exemplos
-  de ECOS ocupa a linha inteira abaixo deles, com `grid-column: 1 / -1`
-- Exemplos de ECOS não leva divisor próprio nem título externo. Não é um terceiro critério de
-  classificação do conhecimento, é contexto de organização do ecossistema, e um segundo divisor o
-  anunciaria como se fosse. O cartão já traz o seu título dentro
+- A aba tem dois cartões, Nível no ECOS e Dimensão do ECOS, que dividem a linha no desktop. A
+  introdução do cartão verde remete à aba Identificação, porque a natureza epistemológica foi
+  apresentada lá e não se repete aqui
+- A aba 3 tem um cartão só, Exemplos de ECOS, ocupando a largura inteira, e não leva cartão verde
+  de abertura. O próprio cartão traz título e introdução, e um segundo texto diria duas vezes a
+  mesma coisa numa aba de um item
+- O rótulo exibido de uma categoria pode diferir do valor do vocabulário. A aba declara a troca em
+  `rotulos`, do valor para o que se lê em tela, e o `cartaoDeEstrutura` aplica. Hoje são duas,
+  "Técnica" vira "Arquitetural (Técnica)" na Classificação e "Proprietário" vira "Código fechado"
+  nos Exemplos. O dado não muda, então a ficha, os filtros e a ordenação seguem com o valor
+  original, e é por isso que a ficha ainda diz "ECOS Proprietário"
 - Os três cartões usam o mesmo construtor, `cartaoDeEstrutura`. O que muda é de onde vem o
   texto e se as categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
   componente. Três desenhos para a mesma coisa fariam a aba parecer três seções
 - A categoria é item do cartão, não cartão dentro de cartão. Quem separa uma da outra é uma linha
   fina, não uma superfície. A numeração é o `counter` do `ol`, no `::before` do título, apagada, e
   não pastilha nem ícone
-- O `cartaoDeEstrutura` serve às três abas. A Classificação usa os três cartões com categorias, a
-  Gerência usa dois sem e um com os oito processos, e a Base de Evidências usa os dois sem nenhuma.
-  A lista só é montada quando há valores
+- O `cartaoDeEstrutura` serve às quatro abas. A Classificação usa os dois cartões com categorias,
+  os Exemplos usam um, a Gerência usa dois sem e um com os oito processos, e a Base de evidências
+  usa os dois sem nenhuma. A lista só é montada quando há valores
 - O cartão aceita `referencias`, que vira citação com link, ou `rodape`, que é texto solto. O
   rodapé existe para quem diz de onde a informação vem quando a origem é a evidência deste
   trabalho e não uma obra publicada, como o "Estudos primários associados" dos dois primeiros
@@ -278,9 +293,10 @@ nativamente pelo navegador com `type="module"`.
 - Os dois cartões da fileira têm a mesma altura e as duas citações fecham na mesma linha. A altura
   igual vem de `align-items: stretch` na grade da aba, que sobrescreve o `start` da grade base, e a
   citação é empurrada para o pé com `margin-top: auto`
-- A natureza epistemológica não se repete na aba 2. Ela é a etapa 1 inteira, e retomá-la aqui era
+- A natureza epistemológica não se repete na Classificação. Ela é a Identificação inteira, e
+  retomá-la aqui era
   a redundância que a reestruturação desfez
-- A prosa dos cartões da Estrutura é justificada nas quatro abas, com `hyphens: none` em vez do
+- A prosa dos cartões da Estrutura é justificada nas cinco abas, com `hyphens: none` em vez do
   `auto` da regra global. A decisão é a mesma do site, a receita é que difere, porque em coluna de
   meia tela a hifenização partia palavra no meio. Os quatro seletores saíram da lista do
   `base.css` e têm regra própria em `paginas.css`, num lugar só
@@ -304,7 +320,7 @@ nativamente pelo navegador com `type="module"`.
 - O `kauschinger2024` saiu da citação dos exemplos. Ele sustentava a relação entre cada modelo e a
   circulação do conhecimento, que era o enquadramento do texto antigo. O texto novo descreve só o
   modelo de organização, que é Manikas, então a segunda obra passou a citar o que o cartão não diz
-- A Gerência apresenta os três componentes que organizam a gerência de cada conhecimento, por
+- A aba de Atividades apresenta os três componentes que organizam a gerência de cada conhecimento, por
   orientação do professor. Importância de gerenciar esse conhecimento e Atores envolvidos dividem
   a linha, e Atividades de gerência do conhecimento atravessa a linha abaixo, com os oito
   processos dentro do próprio cartão
@@ -326,11 +342,11 @@ nativamente pelo navegador com `type="module"`.
   participação e ações de gerência, e só vão receber importância, atores e atividades depois da
   leitura dos estudos primários. Enquanto isso, a Estrutura e a ficha falam de coisas diferentes,
   e é a única divergência de nome aberta no catálogo
-- A natureza aparece uma vez só na Estrutura, no Ponto de Partida, como um dos três atributos.
+- A natureza aparece uma vez só na Estrutura, na Identificação, como um dos três atributos.
   Ela já foi definida numa camada e retomada como critério na seguinte, e era essa a redundância
   que a reestruturação desfaz. As três perspectivas são complementares, não etapas de uma
   sequência
-- O Ponto de Partida tem três partes, nessa ordem. O cartão de conceito, com título, ícone,
+- A Identificação tem três partes, nessa ordem. O cartão de conceito, com título, ícone,
   parágrafo e fonte numa composição só. A ponte, que diz que o conhecimento se classifica em
   explícito e tácito, define o tácito e anuncia a subdivisão. E os três cartões de categoria. Não
   leva pergunta de pesquisa, exemplo de conhecimento C01 a C20, número da revisão nem parágrafo de
@@ -344,7 +360,7 @@ nativamente pelo navegador com `type="module"`.
   de Atributos, e as duas usam o mesmo verde suave para as introduções da Estrutura se
   reconhecerem. O conteúdo dele mora em `cartaoIntroducao`, com `titulo`, `texto` e `referencias`
 - A aba 1 não tem cabeçalho de painel, porque o título vive dentro do cartão. Quem decide isso é a
-  ausência do `tituloPainel`, e hoje nenhuma das quatro abas declara um. O construtor do painel
+  ausência do `tituloPainel`, e hoje nenhuma das cinco abas declara um. O construtor do painel
   continua sabendo montá-lo, para quando alguma aba precisar
 - Os três cartões são as três categorias da natureza epistemológica, um por categoria, e não um
   por atributo com as categorias dentro. A ordem é Explícito, Tácito-cognitivo e Tácito-técnico
@@ -389,18 +405,17 @@ nativamente pelo navegador com `type="module"`.
 - Nada de carrossel, aba, acordeão, modal, texto escondido com expandir nem rolagem dentro do
   cartão. Toda explicação fica visível sem interação
 - `classificacoes.json` guarda dois textos por categoria, com papéis separados. `explicacao` é a
-  do cartão do Ponto de Partida e `descricao` é a completa do glossário do Explorar. A `pergunta`
+  do cartão da Identificação e `descricao` é a completa do glossário do Explorar. A `pergunta`
   de cada categoria é a linha "Responde à pergunta" da tabela do Explorar. O `definicaoBreve`, que
   existia só nas três naturezas, foi apagado por ser um terceiro texto sem leitor
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
   Ele aparece no selo do cartão do catálogo, nas pastilhas de filtro, na classificação da ficha, no
   glossário do Explorar e na ordenação, e um nome por lugar seria pior do que a frase mais completa
   num deles
-- O cartão do Ponto de Partida é a exceção, e diz "Conhecimento Explícito". A palavra não está
-  escrita no vocabulário nem repetida três vezes. Ela vem de `abas[0].prefixoCategoria`, num lugar
-  só, e o `cartaoDeNatureza` emenda prefixo e nome. Sem o prefixo o título continua sendo o nome da
-  categoria, como em todo o resto. Ali o cartão é a definição do conceito e precisa ler como frase
-  inteira, enquanto um selo ou uma pastilha com o prefixo ficaria longo demais
+- O cartão da Identificação chegou a dizer "Conhecimento Explícito", por um `prefixoCategoria` que
+  vivia na aba. O prefixo saiu, com o campo e com o parâmetro do `cartaoDeNatureza`, porque o
+  divisor logo acima já diz que a aba trata da natureza do conhecimento. O título é o nome da
+  categoria, igual em todo o resto do site
 - A forma longa "Conhecimentos explícitos", no plural, vivia em `tituloPorta` sem nenhum módulo
   ler, e foi apagada. Não volta
 - As abas são numeradas, porque a Estrutura é uma progressão e o número diz a ordem de leitura.
@@ -412,7 +427,7 @@ nativamente pelo navegador com `type="module"`.
   quem chega nessa página já passou pela inicial. O nome do catálogo, no `title`, na `meta description`, no `h1` da abertura e no
   rodapé, continua por extenso, porque ali é nome próprio e não texto corrido
 - Na inicial quem apresenta a sigla é o resumo da abertura, em `meta.subtitulo`. O cartão verde do
-  Ponto de Partida escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
+  Identificação escreve só "Nos ECOS", porque já é a segunda vez na mesma página. Ele chegou a
   repetir a forma por extenso, e eram duas apresentações numa página só
 - A classificação das dimensões do ECOS em Técnica, Negócio e Social foi mantida conforme a
   organização adotada na pesquisa. Santos e Werner (2011) apresentam originalmente as dimensões
@@ -439,8 +454,8 @@ nativamente pelo navegador com `type="module"`.
   espaço de palavra, não um separador de lista, senão o prefixo se solta do nome que ele
   qualifica. A regra é presa ao cartão que tem prefixo, para as duas citações do nível
   continuarem separadas pelo vão de lista
-- A Base de Evidências tem dois componentes, e só eles, por orientação do professor. Estudos
-  primários associados e Referências bibliográficas. O arranjo é o da Classificação, cartão verde
+- A Base de evidências tem dois componentes, e só eles, por orientação do professor. Estudos
+  primários associados e Referências adicionais. O arranjo é o da Classificação, cartão verde
   atravessando a grade e os dois componentes dividindo a linha abaixo, com a mesma altura
 - Não leva divisor. Os dois cartões são os componentes de uma mesma coisa, não as categorias de um
   critério, e um divisor os anunciaria como se fossem
@@ -459,8 +474,8 @@ nativamente pelo navegador com `type="module"`.
   continuam cadastrados e aparecem na página de referências
 - O `registrosRecuperados`, o `rotuloRecuperados` e os demais rótulos de indicador saíram do
   `meta.json` junto. Nenhum módulo os lia depois da mudança
-- `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão no Ponto
-  de Partida
+- `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão na
+  Identificação
 - O `zaim2019` está cadastrado com o ano do fascículo, volume 17, número 1, de 2019. A
   especificação da reformulação pediu 2018, que é o ano da publicação antecipada no DOI. Ficou
   2019, que é o que a bibliografia traz. Ele não é mais citado na Estrutura, só pela ajuda da
@@ -471,7 +486,8 @@ nativamente pelo navegador com `type="module"`.
   página, porque o PDF não foi consultado para isso
 - O vocabulário de `acaoGerencia` tem três valores, Criação e registro, Compartilhamento, e Uso e
   aplicação. Ele não aparece mais na Estrutura, só na ficha. Os oito processos de `lopes2026`, que
-  a aba 3 apresenta, são outro esquema e não substituem esse vocabulário enquanto a ficha não for
+  a aba de Atividades apresenta, são outro esquema e não substituem esse vocabulário enquanto a
+  ficha não for
   revista
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
   nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
@@ -516,7 +532,7 @@ nativamente pelo navegador com `type="module"`.
 - O bloco de gerência da ficha mostra recursos de conhecimento, participação e compartilhamento, e
   ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. O parágrafo genérico
   sobre o que é gerência do conhecimento saiu, porque repetia em cada uma das vinte fichas a
-  introdução da camada de Gerência. Ele existe num lugar só, na aba 3 da Estrutura, a da Gerência. Esses rótulos não
+  introdução da camada de Gerência. Ele existe num lugar só, na aba de Atividades da Estrutura. Esses rótulos não
   existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O conteúdo continua
   vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os

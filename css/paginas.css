@@ -244,19 +244,29 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   line-height: 1.45;
   text-align: center;
 }
+/* As colunas vêm do número de abas declarado em meta.json, por auto-flow, e
+   não de uma contagem escrita aqui. Acrescentar ou tirar uma etapa é editar o
+   arquivo de dados, sem passar pelo CSS. */
 .estrutura__navegacao {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: var(--esp-1);
   width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
   margin: var(--esp-4) auto 0;
   padding: 0;
   border-bottom: var(--borda-suave);
 }
+/* Grade centrada em todas as larguras. Com cinco etapas o rótulo mais longo
+   quebra em duas linhas antes do celular, e sem o centro vertical ele subia
+   enquanto os de uma linha ficavam no meio. */
 .estrutura__aba {
   position: relative;
+  display: grid;
+  place-items: center;
   min-height: var(--alvo-toque);
-  padding-inline: var(--esp-4);
+  padding-inline: var(--esp-2);
+  text-align: center;
   color: var(--cor-texto-suave);
   background: transparent;
   border: 0;
@@ -570,9 +580,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    divisor e os cartões, todos itens da mesma grade, então o vão entre eles é o
    gap e nenhum deles precisa de margem própria.
 
-   Os dois critérios dividem a linha e os exemplos de ECOS ocupam a linha
-   inteira logo abaixo, sem divisor nem título externo, porque são contexto do
-   ecossistema e não um terceiro critério. */
+   Os dois critérios dividem a linha. Os exemplos de ECOS saíram para a aba 3,
+   porque são contexto de organização do ecossistema e não um critério de
+   classificação do conhecimento. */
 .estrutura__grade--classificacao {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--esp-4);
@@ -582,8 +592,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: stretch;
 }
 .estrutura__grade--classificacao > .estrutura__cartao-conceito,
-.estrutura__grade--classificacao > .estrutura__divisor,
-.estrutura__grade--classificacao > .estrutura__cartao-atributo--largo { grid-column: 1 / -1; }
+.estrutura__grade--classificacao > .estrutura__divisor { grid-column: 1 / -1; }
+/* A aba dos exemplos tem um cartão só, que ocupa a largura inteira. */
+.estrutura__grade--exemplos { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
 /* A nota que abre a aba, no lugar do cabeçalho que havia ali. É item da
    grade, não um bloco antes dela, então acompanha sozinha a largura e o vão
    dos dois cartões. O espaço acima é o padding do painel, sem margem negativa
@@ -771,15 +782,15 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
      porque a prioridade declarada é a compreensão dos conceitos. */
   .atributo-card { padding: var(--esp-3); }
   .estrutura__mapa { margin-top: var(--esp-5); }
-  .estrutura__navegacao { grid-template-columns: repeat(2, minmax(0, 1fr)); width: var(--largura-cheia); }
+  .estrutura__navegacao {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: var(--largura-cheia);
+  }
   .estrutura__aba {
-    display: grid;
-    place-items: center;
     min-height: 48px;
     padding: var(--esp-1) var(--esp-2);
     line-height: 1.2;
-    text-align: center;
-    white-space: normal;
   }
   .estrutura__grade { grid-template-columns: minmax(0, 1fr); }
   .estrutura__painel,
@@ -841,7 +852,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 .explorar__aba {
   min-height: var(--alvo-toque);
-  padding-inline: var(--esp-4);
+  padding-inline: var(--esp-2);
   color: var(--cor-texto-suave);
   background: transparent;
   border: 0;
