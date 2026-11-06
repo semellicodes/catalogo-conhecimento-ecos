@@ -455,16 +455,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-underline-offset: var(--esp-1);
   cursor: pointer;
 }
-/* A Gerência segue o arranjo das outras duas. Cartão verde atravessando a
-   grade, os dois componentes dividindo a linha e as atividades atravessando de
-   novo, com os oito processos dentro do próprio cartão. */
-.estrutura__grade--gerencia {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--esp-4);
-  align-items: stretch;
-}
-.estrutura__grade--gerencia > .estrutura__cartao-conceito,
-.estrutura__grade--gerencia > .estrutura__cartao-atributo--largo { grid-column: 1 / -1; }
+/* A Gerência segue o arranjo dos Exemplos. Cartão verde e, abaixo dele, um
+   painel único com os oito processos, cada um na largura inteira. Os cartões
+   de importância e de atores saíram, e com eles a grade de duas colunas. */
+.estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
 /* A Base de Evidências repete o arranjo da Classificação. O cartão verde
    atravessa a grade e os dois componentes dividem a linha abaixo dele, com a
    mesma altura, porque align-items stretch sobrescreve o start da grade base. */
@@ -508,6 +502,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__atributo-categoria-texto,
   .atributo-card__intro {
     hyphens: auto;
+  }
+  /* A aba de Atividades é a exceção, por decisão da autora. As descrições dos
+     oito processos são curtas e cabem em duas ou três linhas numa coluna de
+     celular, e ali a justificação abria vão entre as palavras sem ter linha
+     suficiente para a hifenização compensar. Alinhadas à esquerda, e sem
+     hifenizar, para o texto não partir palavra numa frase de uma linha. Vale
+     só dentro desta grade, as outras quatro abas continuam justificadas. */
+  .estrutura__grade--gerencia .estrutura__conceito-texto,
+  .estrutura__grade--gerencia .estrutura__atributo-categoria-texto {
+    text-align: left;
+    hyphens: manual;
   }
 }
 
@@ -773,7 +778,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__categorias-classificacao--fileira { grid-template-columns: minmax(0, 1fr); }
   .estrutura__categorias-classificacao { grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); }
   .estrutura__grade--classificacao,
-  .estrutura__grade--gerencia,
   .estrutura__grade--evidencias { grid-template-columns: minmax(0, 1fr); }
   .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
     grid-template-columns: minmax(0, 1fr);

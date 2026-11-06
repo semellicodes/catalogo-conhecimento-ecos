@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-5';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-6';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -58,12 +58,9 @@ const ICONES_ESTRUTURA = {
   conhecimento: [['path', { d: 'M4 4.5h5.1c1.4 0 2.5.7 2.5 1.7v9c0-1-1.1-1.7-2.5-1.7H4z' }], ['path', { d: 'M16 4.5h-5.1c-1.4 0-2.5.7-2.5 1.7v9c0-1 1.1-1.7 2.5-1.7H16z' }]],
   classificacao: [['path', { d: 'M4 5h12M4 10h12M4 15h12' }], ['circle', { cx: 7, cy: 5, r: 1 }], ['circle', { cx: 13, cy: 10, r: 1 }], ['circle', { cx: 9, cy: 15, r: 1 }]],
   gerencia: [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }], ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.8 9 6.4-3.1M6.8 11l6.4 3.1' }]],
-  participacao: [['circle', { cx: 7, cy: 7, r: 2.5 }], ['circle', { cx: 14, cy: 8, r: 2 }], ['path', { d: 'M2.8 16c.5-3 2-4.5 4.2-4.5s3.7 1.5 4.2 4.5M12.2 12.5c2.4-.1 4 1.2 4.5 3.5' }]],
-  acoes: [['path', { d: 'M4.5 5.5h7M4.5 10h7M4.5 14.5h7' }], ['path', { d: 'm14 5.5 1.2 1.2 2.3-2.3M14 10l1.2 1.2 2.3-2.3M14 14.5l1.2 1.2 2.3-2.3' }]],
   nivel: [['path', { d: 'M4 6h12M6 10h8M8 14h4' }]],
   dimensao: [['circle', { cx: 7.5, cy: 8, r: 4 }], ['circle', { cx: 12.5, cy: 8, r: 4 }], ['circle', { cx: 10, cy: 12.5, r: 4 }]],
   tipos: [['path', { d: 'M3 7.5h4v9H3zM8 4.5h4v12H8zM13 9.5h4v7h-4z' }]],
-  nota: [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 9v4M10 6.5h.01' }]],
   evidencias: [['path', { d: 'M3.5 6.5h9v10h-9z' }], ['path', { d: 'M7 3.5h9.5v10' }], ['path', { d: 'M6 10h4M6 13h4' }]],
   revisao: [['path', { d: 'M5 3.5h7l3 3v10H5z' }], ['path', { d: 'M12 3.5v3h3M7.5 10h5M7.5 13h5' }]],
   estudos: [['path', { d: 'M4 5.5h12v10H4z' }], ['path', { d: 'M7 3.5v4M13 3.5v4M7 10h6M7 13h4' }]]
@@ -229,14 +226,6 @@ function cartaoDeEstrutura(conteudo, valores = [], classe = '') {
   if (conteudo.referencias) {
     cartao.append(fonteConceitual(conteudo.referencias, conteudo.prefixoFonte));
   }
-  /* O rodapé diz de onde a informação vem quando a origem é a evidência deste
-     trabalho e não uma obra publicada. Usa a mesma linha da citação, para os
-     cartões da Estrutura fecharem todos igual. */
-  if (conteudo.rodape) {
-    const rodape = criar('p', 'estrutura__fonte-conceitual');
-    rodape.append(criar('span', 'estrutura__fonte-item', conteudo.rodape));
-    cartao.append(rodape);
-  }
   return cartao;
 }
 
@@ -349,24 +338,24 @@ function explicacaoExemplos(dados, aba, definicao) {
  * aba de Atributos, com o desenho preservado, só que agora sozinho na sua aba.
  */
 /**
- * A aba apresenta os três componentes que organizam a gerência de cada
- * conhecimento. Importância e atores dividem a linha, e as atividades ocupam a
- * linha inteira abaixo, com os oito processos dentro do próprio cartão.
+ * A aba apresenta só os oito processos de gerência do conhecimento, no mesmo
+ * arranjo dos Exemplos. Cartão verde com o nome e a apresentação, e abaixo um
+ * painel único com os oito, que fecha com a citação do referencial.
  *
- * Os oito processos vêm do referencial, não das fichas. Nenhum deles é
- * atribuído a conhecimento nenhum aqui, e a introdução do cartão diz por
- * escrito que não se pressupõe que todos estejam presentes.
+ * Os oito vêm do referencial, não das fichas. Nenhum deles é atribuído a
+ * conhecimento nenhum aqui, e o cartão verde diz por escrito que eles servem
+ * para organizar as atividades identificadas nos estudos primários.
  */
 function explicacaoGerencia(dados, aba, definicao) {
-  const conteudo = [cartaoConceito(definicao.icone, definicao.cartaoIntroducao)];
-  definicao.componentes.forEach((componente) => conteudo.push(cartaoDeEstrutura(componente)));
   const atividades = definicao.atividades;
-  conteudo.push(cartaoDeEstrutura(
-    atividades,
-    atividades.processos.map((processo) => ({ valor: processo.nome, explicacao: processo.descricao })),
-    'estrutura__cartao-atributo--largo estrutura__cartao-atributo--processos'
-  ));
-  return painel(definicao, aba, '', conteudo, 'estrutura__grade--gerencia');
+  return painel(definicao, aba, '', [
+    cartaoConceito(definicao.icone, definicao.cartaoIntroducao),
+    cartaoDeEstrutura(
+      atividades,
+      atividades.processos.map((processo) => ({ valor: processo.nome, explicacao: processo.descricao })),
+      'estrutura__cartao-atributo--processos'
+    )
+  ], 'estrutura__grade--gerencia');
 }
 
 /**
