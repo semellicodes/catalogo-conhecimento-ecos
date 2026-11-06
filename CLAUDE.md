@@ -134,7 +134,7 @@ nativamente pelo navegador com `type="module"`.
 |---|---|
 | `dados/` | Os seis arquivos que o site carrega |
 | `origem/` | Insumo da pesquisa, não carregado por nenhum módulo |
-| `imagens/` | Retratos da seção de contato |
+| `imagens/` | Retratos da seção de contato, o mapa conceitual e a ilustração da abertura, cada um nas versões clara e escura |
 
 ## Convenções de interface
 
@@ -158,10 +158,23 @@ nativamente pelo navegador com `type="module"`.
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
 - A faixa de abertura compõe em duas colunas no desktop. À esquerda ficam o olho KM4SECO, título,
-  resumo de `meta.subtitulo` e o botão Entrar no catálogo. À direita, uma peça visual abstrata
-  original em tom verde, com os três números integrados em colunas de mesma largura. No celular, a
-  peça visual desce abaixo do texto. A explicação das naturezas epistemológicas fica concentrada na
-  aba Conhecimento da seção Estrutura
+  resumo de `meta.subtitulo` e os botões Explorar o catálogo e Sobre o catálogo. À direita, a
+  ilustração do catálogo em camadas. No celular, a ilustração desce abaixo do texto. A explicação
+  das naturezas epistemológicas fica concentrada na aba Identificação da seção Estrutura
+- A ilustração é imagem, `imagens/catalogo-camadas-claro.png` e `-escuro.png`, uma por tema. Ela
+  substituiu um SVG inline de livro aberto com conexões, que era desenhado à mão no `index.html` e
+  pintado com `currentColor`. O SVG saiu inteiro, com a regra `.abertura__diagrama` e o token
+  `--proporcao-diagrama-abertura`, que existia só para ele
+- A troca entre as duas é a mesma do mapa conceitual, duas `img` e o `data-tema` que o `js/tema.js`
+  grava na raiz. Não há JavaScript nesta tela e a imagem muda na hora que o interruptor é acionado,
+  sem recarregar. O preço é as duas serem baixadas, uns 390KB no total, como já acontece com o mapa
+- O painel da abertura não põe fundo, borda nem recuo por cima da ilustração, porque ela já traz
+  superfície, cantos e profundidade próprios e seria moldura dentro de moldura. Sobrou do painel o
+  recorte dos cantos no `--raio` do catálogo, porque o canto desenhado na imagem não acompanha o
+  raio do site, e a sombra que a separa da faixa
+- A ilustração vai com altura automática, nunca com `aspect-ratio` nem `object-fit`, para a
+  proporção ser a do arquivo e nenhuma das duas versões esticar ou cortar. As duas têm 1200 por
+  900, e trocá-las por outras de proporção diferente não pede mexer no CSS
 - Não existe legenda de cores da natureza. A cor voltou ao cartão pelo selo, mas o selo traz o nome
   escrito dentro dele, então não há cor para decifrar. Legenda só faria falta se a natureza voltasse
   a ser só um ponto colorido

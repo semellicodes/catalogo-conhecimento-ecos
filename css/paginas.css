@@ -90,24 +90,29 @@
   color: var(--cor-faixa-suave);
   max-width: 62ch;
 }
+/* A ilustração já traz fundo, cantos e profundidade próprios, então o painel
+   não repete superfície nem borda, que fariam moldura dentro de moldura. Ele
+   só recorta os cantos da imagem no raio do catálogo e dá a sombra que a
+   separa da faixa. */
 .abertura__painel {
   align-self: center;
   width: 100%;
   overflow: hidden;
-  background: var(--cor-faixa-painel);
-  border: 1px solid var(--cor-faixa-linha);
   border-radius: var(--raio);
   box-shadow: var(--sombra-2);
-  color: var(--cor-faixa-suave);
 }
-.abertura__diagrama {
+/* Altura automática, para a proporção ser a do arquivo e nenhuma versão
+   esticar ou cortar. */
+.abertura__ilustracao {
   display: block;
   width: 100%;
-  box-sizing: border-box;
-  aspect-ratio: var(--proporcao-diagrama-abertura);
-  padding: var(--esp-5);
-  color: var(--cor-faixa-suave);
+  height: auto;
 }
+/* A troca é a mesma do mapa conceitual, pelo data-tema que o js/tema.js grava
+   na raiz. Sem leitor de preferência próprio e sem JavaScript nesta tela. */
+.abertura__ilustracao--claro { display: none; }
+:root[data-tema="claro"] .abertura__ilustracao--escuro { display: none; }
+:root[data-tema="claro"] .abertura__ilustracao--claro { display: block; }
 /* Ações claras sobre a faixa escura. Não usam .botao porque aquele é da
    superfície da página e aqui o fundo é a faixa. */
 .abertura__acoes {
