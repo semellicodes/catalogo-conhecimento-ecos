@@ -62,17 +62,17 @@
           }
         }
       },
-{
-  "id": "gerencia",
-  "rotulo": "4. Atividades",
-  "icone": "gerencia",
-  "cartaoIntroducao": {
-  "titulo": "Atividades Associadas ao Conhecimento",
-  "texto": "A gerência do conhecimento pode ser analisada por meio de oito processos inter-relacionados, que abrangem desde a identificação e a aquisição até a aplicação e a avaliação do conhecimento. No catálogo, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento.",
-  "referencias": "lopes2026"
-},
-  "atividades": {
-    "processos": [
+      {
+        "id": "gerencia",
+        "rotulo": "4. Atividades",
+        "icone": "gerencia",
+        "cartaoIntroducao": {
+          "titulo": "Atividades Associadas ao Conhecimento",
+          "texto": "A gerência do conhecimento pode ser analisada por meio de oito processos inter-relacionados, que abrangem desde a identificação e a aquisição até a aplicação e a avaliação do conhecimento. No catálogo, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento.",
+          "referencias": "lopes2026"
+        },
+        "atividades": {
+          "processos": [
             {
               "nome": "Identificação",
               "descricao": "Mapeamento do conhecimento já disponível internamente."
@@ -175,6 +175,8 @@
   "fichaAtividades": {
     "tituloSemInformacao": "Informação não identificada",
     "textoSemInformacao": "Não foram identificadas, nos estudos primários analisados, informações sobre atividades de {atividade} relacionadas {conhecimento}.",
+    "tituloPendente": "Revisão pendente",
+    "textoPendente": "As atividades de {atividade} deste conhecimento ainda não foram revistas nos estudos primários associados. A ausência de texto aqui não afirma que a atividade não tenha sido observada, apenas que a leitura ainda não foi feita.",
     "rotuloEstudos": "Estudos associados:"
   },
   "totalEstudos": 18,
