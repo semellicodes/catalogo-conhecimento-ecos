@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261106-6';
+import { referenciaCurta } from './dados.js?v=20261106-7';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -189,10 +189,9 @@ function exemplosDeEcos(conhecimento) {
 
   const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Híbrido', 'ECOS Proprietário'];
   const lista = criar('div', 'exemplos-ecos__categorias');
-  /* A primeira categoria com evidência já abre, para a seção não começar vazia
-     e pedir um clique só para mostrar o que ela tem. O recolher continua, e
-     nada impede que nenhuma fique aberta depois. */
-  const primeiraComEvidencia = ordemCategorias.find((categoria) => grupos.has(categoria));
+  /* Nenhuma categoria começa aberta. A seção abre neutra e quem escolhe o que
+     consultar é quem lê, como nas atividades. A ficha é remontada a cada
+     abertura, então o estado não atravessa de um conhecimento para o outro. */
   lista.setAttribute('role', 'group');
   lista.setAttribute('aria-label', 'Categorias de ECOS observados');
   ordemCategorias.forEach((categoria) => {
@@ -214,11 +213,6 @@ function exemplosDeEcos(conhecimento) {
       painel.hidden = false;
     });
     lista.append(botao);
-    if (categoria === primeiraComEvidencia) {
-      botao.setAttribute('aria-expanded', 'true');
-      mostrar(categoria);
-      painel.hidden = false;
-    }
   });
   raiz.append(lista, painel);
   return raiz;
@@ -295,6 +289,41 @@ const CLASSIFICACAO = ['nivel', 'dimensao'];
  * fileira de caixas gastava altura para dizer o que o par rótulo e valor diz em
  * duas linhas, e empurrava as seções seguintes para fora da primeira tela no celular.
  */
+/* O valor que se lê em tela pode diferir do valor do dado, que é o que os
+   filtros, a ordenação e os arquivos usam. A troca mora no vocabulário, em
+   `rotulosExibicao`, num lugar só, e a Estrutura lê do mesmo campo. Hoje é uma,
+   "Técnica" lê "Arquitetural (Técnica)". */
+function valorExibido(dados, chave, valor) {
+  return dados.classificacoes[chave]?.rotulosExibicao?.[valor] ?? valor;
+}
+
+/* A justificativa cita o nível e a dimensão deste conhecimento, e os dois vão
+   em negrito. Quem decide o que destacar são os próprios valores exibidos, não
+   uma marcação escrita no texto, para `dados/` seguir sem marcação dentro. */
+function justificativaComDestaque(dados, conhecimento, texto) {
+  /* O valor bruto entra junto do rótulo de exibição, porque as justificativas
+     escritas antes da troca dizem "a dimensão Técnica" e continuariam sem
+     destaque. Quando os dois servem, vence o mais longo, para o rótulo inteiro
+     ficar em negrito e não só o pedaço dentro dos parênteses. */
+  const destaques = [...new Set(CLASSIFICACAO
+    .flatMap((chave) => [valorExibido(dados, chave, conhecimento[chave]), conhecimento[chave]])
+    .filter(Boolean))];
+  const paragrafo = criar('p', 'porque__texto');
+  let resto = texto;
+  while (resto) {
+    const achado = destaques
+      .map((termo) => ({ termo, posicao: resto.indexOf(termo) }))
+      .filter((item) => item.posicao >= 0)
+      .sort((a, b) => a.posicao - b.posicao || b.termo.length - a.termo.length)[0];
+    if (!achado) break;
+    if (achado.posicao) paragrafo.append(resto.slice(0, achado.posicao));
+    paragrafo.append(criar('strong', null, achado.termo));
+    resto = resto.slice(achado.posicao + achado.termo.length);
+  }
+  if (resto) paragrafo.append(resto);
+  return paragrafo;
+}
+
 function classificacao(dados, conhecimento) {
   const bloco = secao(dados, 'Classificação do conhecimento', 'classificacao');
 
@@ -303,7 +332,7 @@ function classificacao(dados, conhecimento) {
     const item = criar('div', 'classificacao__item');
     item.append(
       criar('dt', 'classificacao__rotulo', dados.classificacoes[chave].rotulo),
-      criar('dd', 'classificacao__valor', conhecimento[chave] || 'A definir')
+      criar('dd', 'classificacao__valor', valorExibido(dados, chave, conhecimento[chave]) || 'A definir')
     );
     grade.append(item);
   });
@@ -312,7 +341,7 @@ function classificacao(dados, conhecimento) {
   if (conhecimento.justificativaClassificacao) {
     const porque = criar('details', 'porque');
     const abrir = criar('summary', 'porque__abrir');
-    const texto = criar('p', 'porque__texto', conhecimento.justificativaClassificacao);
+    const texto = justificativaComDestaque(dados, conhecimento, conhecimento.justificativaClassificacao);
     texto.id = `justificativa-classificacao-${conhecimento.id}`;
     abrir.setAttribute('aria-controls', texto.id);
     abrir.setAttribute('aria-expanded', 'false');
@@ -501,8 +530,149 @@ function gerenciaPorComponentes(dados, conhecimento) {
   return bloco;
 }
 
+/* Um ícone por processo, no mesmo traço e no mesmo tamanho dos de categoria de
+   ECOS, para as duas fileiras de cartões fecharem com a mesma altura. */
+const ICONES_ATIVIDADE = {
+  'Identificação': [['circle', { cx: 9, cy: 9, r: 4.5 }], ['path', { d: 'm12.6 12.6 4 4' }]],
+  'Aquisição': [['path', { d: 'M10 3v8M7 8.5 10 11.5 13 8.5' }], ['path', { d: 'M4 14.5h12' }]],
+  'Compartilhamento': [['circle', { cx: 5, cy: 10, r: 2 }], ['circle', { cx: 15, cy: 5, r: 2 }],
+    ['circle', { cx: 15, cy: 15, r: 2 }], ['path', { d: 'm6.9 9.2 6.2-3.1M6.9 10.8l6.2 3.1' }]],
+  'Armazenamento': [['ellipse', { cx: 10, cy: 5.5, rx: 6, ry: 2.3 }],
+    ['path', { d: 'M4 5.5v9c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3v-9' }], ['path', { d: 'M4 10c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3' }]],
+  'Codificação': [['path', { d: 'M7 5 3 10l4 5M13 5l4 5-4 5' }], ['path', { d: 'M11.3 4 8.7 16' }]],
+  'Criação': [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'M10 6.6v6.8M6.6 10h6.8' }]],
+  'Aplicação': [['path', { d: 'M3.5 10h8M9 7.3 11.7 10 9 12.7' }], ['path', { d: 'M13.5 4.5h3v11h-3' }]],
+  'Avaliação': [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'm7 10.2 2.2 2.2 4-4.6' }]]
+};
+
+function iconeAtividade(processo) {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'exemplos-ecos__icone-categoria');
+  (ICONES_ATIVIDADE[processo] || []).forEach(([tag, atributos]) => svg.append(traco(tag, atributos)));
+  return svg;
+}
+
+function iconeLivro() {
+  const svg = document.createElementNS(SVG, 'svg');
+  svg.setAttribute('viewBox', '0 0 20 20');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('class', 'atividades__icone-estudos');
+  svg.append(
+    traco('path', { d: 'M4 4.5h4.2c1 0 1.8.6 1.8 1.4v9c0-.8-.8-1.4-1.8-1.4H4z' }),
+    traco('path', { d: 'M16 4.5h-4.2c-1 0-1.8.6-1.8 1.4v9c0-.8.8-1.4 1.8-1.4H16z' })
+  );
+  return svg;
+}
+
+/* O rodapé de procedência da atividade. Separador discreto, ícone de livro, o
+   rótulo e os identificadores em caixinhas, que são os mesmos links que a
+   seção de exemplos já usa, com o endereço vindo de dados/estudos.json. */
+function rodapeDeEstudos(dados, conhecimento, ids) {
+  const rodape = criar('p', 'atividades__estudos');
+  const porId = new Map(conhecimento.estudosResolvidos.map((estudo) => [estudo.id, estudo]));
+  rodape.append(iconeLivro(), criar('span', 'atividades__estudos-rotulo',
+    dados.meta.fichaAtividades?.rotuloEstudos || 'Estudos associados:'));
+  ids.forEach((id) => {
+    const estudo = porId.get(id);
+    rodape.append(estudo?.url ? linkDoEstudo(estudo) : criar('span', 'exemplos-ecos__referencia', id));
+  });
+  return rodape;
+}
+
+/* A ausência de informação é dita como ausência na revisão, nunca como
+   ausência na prática. O texto mora em dados/, com o nome da atividade e o do
+   conhecimento trocados na hora. */
+function painelSemInformacao(dados, conhecimento, processo) {
+  const copia = dados.meta.fichaAtividades || {};
+  const nome = conhecimento.nomeEmFrase || `a ${conhecimento.nome.toLowerCase()}`;
+  const texto = (copia.textoSemInformacao || '')
+    .replace('{atividade}', processo.toLowerCase())
+    .replace('{conhecimento}', nome);
+  return [
+    criar('p', 'acoes-gerencia__rotulo', copia.tituloSemInformacao || 'Informação não identificada'),
+    criar('p', 'exemplos-ecos__texto atividades__descricao', texto)
+  ];
+}
+
+/* Um cartão por processo, com o desenho das categorias de ECOS. O que muda é
+   só a cor, que vem do data-identificado, e nenhum deles é desabilitado,
+   porque o cartão sem informação precisa poder abrir o aviso. */
+function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lista) {
+  const botao = criar('button', 'exemplos-ecos__categoria');
+  botao.type = 'button';
+  botao.setAttribute('aria-controls', painel.id);
+  botao.setAttribute('aria-expanded', 'false');
+  botao.dataset.identificado = String(Boolean(atividade));
+  botao.append(iconeAtividade(processo), criar('span', '', processo));
+  botao.addEventListener('click', () => {
+    const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
+    lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
+    if (estavaAberto) {
+      painel.hidden = true;
+      return;
+    }
+    botao.setAttribute('aria-expanded', 'true');
+    if (atividade) {
+      painel.replaceChildren(
+        criar('p', 'acoes-gerencia__rotulo', processo),
+        criar('p', 'exemplos-ecos__texto atividades__descricao', atividade.descricao)
+      );
+      if (atividade.estudos?.length) painel.append(rodapeDeEstudos(dados, conhecimento, atividade.estudos));
+    } else {
+      painel.replaceChildren(...painelSemInformacao(dados, conhecimento, processo));
+    }
+    painel.hidden = false;
+  });
+  return botao;
+}
+
+/**
+ * Atividades Associadas ao Conhecimento, a seção que substituiu a gerência por
+ * componentes nas fichas migradas.
+ *
+ * Os oito processos aparecem sempre, em duas colunas, na ordem do referencial.
+ * Os que têm atividade identificada acendem em verde e os outros ficam
+ * neutros, e todos abrem, porque saber que nada foi encontrado também é
+ * informação. O painel fica abaixo da grade inteira, nunca dentro de uma
+ * célula, para a fileira não mudar de altura nem de posição quando abre.
+ */
+function atividadesAssociadas(dados, conhecimento) {
+  const bloco = secao(dados, 'Atividades Associadas ao Conhecimento', 'atividades');
+  const raiz = criar('div', 'exemplos-ecos atividades');
+  const painel = criar('div', 'exemplos-ecos__painel atividades__painel');
+  painel.id = `atividades-${conhecimento.id}`;
+  painel.hidden = true;
+
+  const lista = criar('div', 'atividades__cartoes');
+  lista.setAttribute('role', 'group');
+  lista.setAttribute('aria-label', 'Atividades associadas ao conhecimento');
+  const porProcesso = new Map((conhecimento.atividadesGerencia || [])
+    .map((atividade) => [atividade.processo, atividade]));
+  /* A lista dos oito e a ordem deles vêm da aba de Atividades da Estrutura,
+     num lugar só, para a ficha e a camada nunca divergirem. */
+  processosDoReferencial(dados).forEach((processo) =>
+    lista.append(cartaoDeAtividade(dados, conhecimento, processo, porProcesso.get(processo), painel, lista)));
+
+  raiz.append(lista, painel);
+  bloco.append(raiz);
+  return bloco;
+}
+
+function processosDoReferencial(dados) {
+  const aba = dados.meta.estruturaCatalogo?.abas?.find((item) => item.id === 'gerencia');
+  return (aba?.atividades?.processos || []).map((processo) => processo.nome);
+}
+
 /** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
 function gerencia(dados, conhecimento) {
+  /* Três formas convivem enquanto as vinte são revistas uma a uma. Quem decide
+     é o dado de cada conhecimento, e não uma lista de identificadores escrita
+     aqui, para a migração acontecer uma ficha por vez. */
+  if (conhecimento.atividadesAssociadas) return atividadesAssociadas(dados, conhecimento);
   if (conhecimento.atividadesGerencia?.length) return gerenciaPorComponentes(dados, conhecimento);
   const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');

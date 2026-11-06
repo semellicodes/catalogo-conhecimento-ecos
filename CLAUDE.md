@@ -198,8 +198,8 @@ nativamente pelo navegador com `type="module"`.
 - A ficha usa superfícies para classificação, exemplos de ecossistema, gerência e abas, sem cartões
   internos repetidos
 - A ficha tem quatro blocos, nesta ordem. Classificação do conhecimento, Exemplos de ECOS em que o
-  conhecimento foi observado, Como gerenciar esse conhecimento em ECOS e Estudos primários
-  associados
+  conhecimento foi observado, o bloco de atividades e Estudos primários associados. O terceiro
+  muda de nome conforme a forma da ficha, e no C01 chama-se Atividades Associadas ao Conhecimento
 - Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é onde a relação entre
   desafio e conhecimento se lê inteira, nos dois sentidos. Na ficha eram um quinto bloco sobre um
   assunto que a ficha não trata. Saíram com eles o `desafiosRelacionados`, o `linhaDesafio`, o
@@ -208,15 +208,51 @@ nativamente pelo navegador com `type="module"`.
 - A natureza saiu da classificação da ficha. Ela já aparece no selo do topo, ao lado do
   identificador, e repeti-la dizia duas vezes a mesma coisa na mesma tela. Ficam o nível e a
   dimensão, que o topo não mostra
-- A primeira categoria de ECOS com evidência já abre quando a ficha monta, para a seção não começar
-  vazia. O recolher continua e nada impede que nenhuma fique aberta depois
-- O bloco de gerência da ficha existe em duas formas, enquanto as vinte são revistas uma a uma. A
-  nova traz Importância de gerenciar esse conhecimento, Atores envolvidos e Atividades de gerência
-  do conhecimento, e a antiga traz recursos, participação e ações. Quem decide qual monta é a
-  presença de `atividadesGerencia` no conhecimento, não uma lista de identificadores, para a troca
-  acontecer sozinha conforme o dado for escrito
-- O C01 e o C12 têm a forma nova. Os outros dezoito continuam na antiga até a leitura dos estudos
-  primários de cada um
+- Nenhuma categoria de ECOS começa aberta. A seção abre neutra e quem escolhe o que consultar é
+  quem lê, como nas atividades. A ficha é remontada a cada abertura, então o estado não atravessa
+  de um conhecimento para o outro
+- O bloco de gerência da ficha existe em três formas, enquanto as vinte são revistas uma a uma.
+  "Atividades Associadas ao Conhecimento" é a de agora, com os oito processos. Antes dela vieram a
+  de importância, atores e atividades em cápsulas, e a mais antiga, com recursos, participação e
+  ações. Quem decide qual monta é o dado de cada conhecimento, `atividadesAssociadas` para a nova e
+  `atividadesGerencia` para a intermediária, e não uma lista de identificadores escrita no módulo,
+  para a migração acontecer uma ficha por vez
+- O C01 tem a forma nova, o C12 segue na intermediária e os outros dezoito na antiga. A migração é
+  gradual e controlada, uma ficha de cada vez, porque cada uma depende da leitura dos estudos
+  primários dela
+- A seção nova mostra sempre os oito processos, em duas colunas e quatro linhas, na ordem do
+  referencial. Os três com atividade identificada acendem em verde e os cinco sem informação ficam
+  neutros, e todos abrem, porque saber que nada foi encontrado na revisão também é informação.
+  Nenhum usa `disabled`, senão o aviso de ausência não poderia ser lido
+- O cartão de atividade é o mesmo botão das categorias de ECOS, `.exemplos-ecos__categoria`, então
+  altura, canto, recuo, ícone, tipografia, hover e foco vêm de lá sem uma linha a mais. Só a grade
+  é própria, porque são oito em duas colunas e as categorias são três
+- No celular as duas fileiras ficam em duas colunas e a altura passa a ser decidida pelo rótulo
+  mais longo. "ECOS de Código Aberto" quebra em mais linhas que "Identificação", então os cartões
+  de atividade ficam mais baixos que os de exemplo. O desenho é o mesmo, inclusive a altura mínima
+- O painel abre abaixo da grade inteira, nunca dentro de uma célula, para a fileira não mudar de
+  altura nem de posição quando ele aparece. Um por vez, nenhum aberto de início, e o segundo clique
+  no mesmo cartão recolhe
+- O texto do painel vai alinhado à esquerda e sem hifenizar. São parágrafos longos numa caixa
+  estreita, e a justificação abria vão entre as palavras
+- A procedência fecha a atividade identificada, num rodapé compacto com separador fino, ícone de
+  livro, o rótulo e os identificadores em caixinhas. Os links são os mesmos que a seção de exemplos
+  já usa, com o endereço vindo de `dados/estudos.json`. Nenhum endereço é escrito no módulo, e o
+  processo sem informação não leva rodapé
+- A frase de ausência diz que nada foi identificado nos estudos analisados, nunca que a atividade
+  não ocorre. Ela mora em `meta.fichaAtividades`, com `{atividade}` e `{conhecimento}` trocados na
+  hora. O `{conhecimento}` lê o `nomeEmFrase` do conhecimento, que traz o nome com a preposição
+  certa, e cai no nome em caixa baixa quando o campo não existe
+- A lista dos oito e a ordem deles vêm da aba de Atividades da Estrutura, num lugar só, para a
+  ficha e a camada nunca divergirem
+- As descrições das atividades do C01 foram ampliadas a partir das curtas já revistas. Elas nomeiam
+  o conhecimento na primeira frase, dizem como a atividade ocorre e para que serve, e nenhuma
+  acrescenta prática, tecnologia, ator ou resultado que o texto aprovado não sustentasse. Os pares
+  de estudo continuam os de antes, E03 e E08 na Identificação, E03 no Compartilhamento e E03 e E08
+  na Aplicação
+- Duas expressões da primeira redação ampliada saíram por extrapolarem o texto revisto, "compartilhar
+  experiências técnicas" no Compartilhamento e "evolução dos componentes" na Aplicação. O que ficou
+  é o que as descrições curtas, a importância e os atores já sustentavam
 - O número de atividades varia por conhecimento, porque só entram os processos que as evidências
   sustentam. O C01 tem três e o C12 tem quatro, e as cápsulas se reorganizam em mais linhas quando
   a largura acaba
@@ -283,11 +319,22 @@ nativamente pelo navegador com `type="module"`.
   verde logo acima já os traz. O `cartaoDeEstrutura` passou a tratar os dois como opcionais, e sem
   cabeçalho a lista é o primeiro filho do cartão e perde o vão de cima, senão sobraria uma banda
   vazia acima da linha da primeira categoria
-- O rótulo exibido de uma categoria pode diferir do valor do vocabulário. A aba declara a troca em
-  `rotulos`, do valor para o que se lê em tela, e o `cartaoDeEstrutura` aplica. Hoje são duas,
-  "Técnica" vira "Arquitetural (Técnica)" na Classificação e "Proprietário" vira "Código fechado"
-  nos Exemplos. O dado não muda, então a ficha, os filtros e a ordenação seguem com o valor
-  original, e é por isso que a ficha ainda diz "ECOS Proprietário"
+- O rótulo exibido de um valor pode diferir do valor do vocabulário. Quando a troca vale para o
+  catálogo inteiro ela mora no próprio vocabulário, em `rotulosExibicao`, e a Estrutura e a ficha
+  leem do mesmo campo. É o caso de "Técnica", que lê "Arquitetural (Técnica)" nos dois lugares
+- Quando a troca é só de uma aba, ela mora na aba, em `rotulos`, e o `cartaoDeEstrutura` aplica.
+  Hoje é uma, "Proprietário" lê "Código fechado" nos Exemplos, e a ficha continua dizendo "ECOS
+  Proprietário", que é o nome da caixa dela
+- O dado nunca muda, nos dois casos. Os filtros, a ordenação e os arquivos seguem com o valor
+  original, e quem troca é só a exibição
+- A justificativa da classificação destaca em negrito o nível e a dimensão deste conhecimento. Quem
+  decide o que destacar são os próprios valores, e não marcação escrita no texto, para `dados/`
+  seguir sem marcação dentro. Entram o rótulo de exibição e o valor bruto, porque as justificativas
+  escritas antes da troca dizem "a dimensão Técnica" e sem o bruto ficariam sem destaque. Quando os
+  dois servem vence o mais longo, para o rótulo inteiro ficar em negrito
+- Conferido nas vinte, cada justificativa recebe exatamente dois destaques, o nível e a dimensão, e
+  todas as ocorrências vêm anunciadas por "nível" ou "dimensão" na frase. Nenhum termo é destacado
+  fora desse papel
 - Os três cartões usam o mesmo construtor, `cartaoDeEstrutura`. O que muda é de onde vem o
   texto e se as categorias leem em coluna ou em fileira, e isso é decisão de grade, não de
   componente. Três desenhos para a mesma coisa fariam a aba parecer três seções
@@ -340,9 +387,8 @@ nativamente pelo navegador com `type="module"`.
 - A aba de Atividades apresenta só os oito processos de gerência do conhecimento, por orientação
   do professor. É o arranjo dos Exemplos, cartão verde com o nome e a apresentação e, abaixo, um
   painel único com os oito, que fecha com a citação
-- O cartão verde chama-se "Atividades Associadas ao Conhecimento". É o nome padronizado da seção
-  de atividades, e a ficha vai recebê-lo quando as vinte forem revistas. Hoje o bloco da ficha
-  ainda diz "Atividades de gerência do conhecimento", então o par de nomes está aberto
+- O cartão verde chama-se "Atividades Associadas ao Conhecimento", o mesmo nome do bloco da ficha
+  migrada e da ajuda dele. O C01 já usa os três, e o par fecha quando as vinte forem revistas
 - A aba 4 é a exceção à justificação no celular. Abaixo de 36rem a introdução do cartão verde e as
   oito descrições vão alinhadas à esquerda, com `hyphens: manual`. São frases curtas, de duas ou
   três linhas numa coluna de celular, e ali a justificação abria vão de até 23px entre as palavras

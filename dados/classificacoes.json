@@ -66,6 +66,9 @@
   },
   "dimensao": {
     "rotulo": "Dimensão do ECOS",
+    "rotulosExibicao": {
+      "Técnica": "Arquitetural (Técnica)"
+    },
     "principal": false,
     "pergunta": "Qual aspecto do ECOS é mais diretamente abordado?",
     "perguntaOrientadora": "A qual aspecto o conhecimento está relacionado?",
