@@ -401,7 +401,7 @@
   {
     "id": "C08",
     "nome": "Processos e ferramentas nos níveis de ecossistema e projeto",
-    "descricao": "Esse conhecimento envolve a compreensão do conjunto de ferramentas de desenvolvimento, pipelines de CI/CD, esteiras de build e fluxos de trabalho utilizados nas equipes. A falta desse conhecimento pode atrasar o onboarding de novos desenvolvedores e gerar ruídos operacionais nas entregas.",
+    "descricao": "Esse conhecimento abrange os processos, fluxos de trabalho e ferramentas utilizados na coordenação e no desenvolvimento de software nos níveis do ECOS e de seus projetos. Envolve práticas compartilhadas de colaboração entre projetos, acompanhamento de atividades, revisão de código, integração e entrega contínuas, além de procedimentos e ferramentas específicos de cada projeto. Inclui a compreensão de como essas práticas se relacionam e são utilizadas pelos participantes para desenvolver, testar e integrar suas contribuições ao ECOS.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -418,12 +418,34 @@
         "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento"
       }
     },
-    "justificativaClassificacao": "Os processos e as ferramentas nos níveis de ecossistema e projeto são classificados como conhecimento explícito porque seus fluxos de trabalho podem ser ensinados, atualizados e transferidos durante a integração de novos participantes do ECOS. O nível Ecossistema se aplica porque articulam práticas comuns e específicas de projetos participantes. A dimensão Técnica foi selecionada porque tratam da operação e da evolução dos projetos de software.",
+    "justificativaClassificacao": "O conhecimento sobre os processos e as ferramentas nos níveis de ecossistema e projeto é classificado no nível Ecossistema porque abrange práticas compartilhadas de coordenação e desenvolvimento, articuladas aos fluxos de trabalho e às ferramentas específicas dos projetos participantes. Enquadra-se na dimensão Arquitetural (Técnica) por envolver procedimentos de desenvolvimento, acompanhamento de atividades, revisão de código, testes e integração contínua que sustentam a colaboração técnica e a evolução dos projetos no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos materiais de treinamento sobre processos, ferramentas e projetos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por novos desenvolvedores externos durante sua integração às práticas e ferramentas do ECOS.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário estruturar programas de onboarding com materiais instrucionais atualizados conforme processos, ferramentas e projetos evoluem.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre os processos e ferramentas nos níveis de ecossistema e projeto ocorre por meio de treinamentos e atividades de mentoria destinados à integração de novos contribuidores ao ECOS. Esse processo envolve a transmissão de conhecimentos sobre fluxos de trabalho, ferramentas de coordenação entre projetos e procedimentos específicos de desenvolvimento, utilizando explicações conceituais, demonstrações e exercícios práticos. No OpenStack, o treinamento inicial aborda os processos e ferramentas compartilhados no ECOS, enquanto a mentoria individual aprofunda os conhecimentos específicos dos projetos.",
+        "estudos": ["E11"]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "O armazenamento do conhecimento sobre os processos e ferramentas nos níveis de ecossistema e projeto está relacionado à manutenção dos materiais de aprendizagem utilizados na integração de novos contribuidores. O estudo identifica a necessidade de atualizar esses materiais conforme os processos, as ferramentas e as práticas dos projetos evoluem, destacando o esforço exigido dos mentores para prepará-los e mantê-los atualizados. Essa manutenção é importante para que os conteúdos instrucionais continuem representando as práticas utilizadas no ECOS e em seus projetos.",
+        "estudos": ["E11"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre os processos e ferramentas nos níveis de ecossistema e projeto ocorre por meio de sua representação explícita em materiais instrucionais utilizados durante o onboarding. Esse processo envolve apresentar conhecimentos sobre fluxos de contribuição, ferramentas de acompanhamento de atividades, revisão de código, testes e integração contínua em conteúdos teóricos e orientações práticas. Esses materiais permitem comunicar as diferenças entre os procedimentos compartilhados no ECOS e aqueles específicos dos projetos participantes.",
+        "estudos": ["E11"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre os processos e ferramentas nos níveis de ecossistema e projeto ocorre quando os novos contribuidores utilizam os procedimentos e as ferramentas apresentados durante o onboarding para executar atividades práticas de desenvolvimento. Esse processo envolve configurar ambientes de trabalho, acompanhar problemas, utilizar sistemas de versionamento e revisão de código, executar testes e realizar atividades de integração contínua. No OpenStack, essas práticas são exercitadas com orientação dos mentores, permitindo que os participantes utilizem os conhecimentos adquiridos em tarefas relacionadas aos fluxos de trabalho do ECOS e de seus projetos.",
+        "estudos": ["E11"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C09",
