@@ -25,7 +25,7 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "As dependências técnicas entre componentes do ecossistema são classificadas no nível Ecossistema porque uma alteração pode se propagar entre pacotes, projetos e produtos conectados. A dimensão Técnica foi aplicada porque sua gerência exige compreender tecnologias, interfaces e interdependências de integração.",
+    "justificativaClassificacao": "O conhecimento dependências técnicas entre componentes do ecossistema é classificado no nível Ecossistema porque envolve dependências técnicas entre componentes, projetos e produtos interconectados, cujas alterações podem afetar diferentes partes do ECOS. Enquadra-se na dimensão Arquitetural (Técnica) por abordar aspectos relacionados às tecnologias, interfaces, compatibilidade e integração entre esses elementos.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos responsáveis pelo projeto que origina a dependência, em mapas e registros de dependências mantidos no repositório.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos responsáveis por pacotes dependentes e por participantes do ECOS que ingressam no projeto, durante mudanças e integrações à plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e atualizar as relações de dependência entre componentes e projetos, tornando esses mapas consultáveis antes de mudanças e integrações.",
@@ -34,7 +34,7 @@
     "atividadesGerencia": [
       {
         "processo": "Identificação",
-        "descricao": "Análise das relações de dependência entre pacotes e projetos, com base em informações técnicas e dados de repositórios.",
+        "descricao": "A identificação das dependências técnicas entre componentes do ecossistema ocorre por meio da análise das relações entre pacotes e projetos que integram o ECOS. Essa atividade envolve a utilização de informações técnicas e dados disponíveis em repositórios para reconhecer quais componentes dependem de outros, compreender as tecnologias utilizadas e identificar relações entre projetos interdependentes. Essas informações contribuem para a compreensão das dependências e para a coordenação de alterações entre projetos conectados.",
         "estudos": [
           "E03",
           "E08"
@@ -42,20 +42,22 @@
       },
       {
         "processo": "Compartilhamento",
-        "descricao": "Troca de informações sobre dependências e alterações entre colaboradores de projetos interdependentes, incluindo discussões em issues e pull requests.",
+        "descricao": "O compartilhamento do conhecimento sobre as dependências técnicas entre componentes do ecossistema ocorre por meio da troca de informações entre colaboradores de projetos interdependentes. Essa atividade envolve discussões sobre relações de dependência e alterações, incluindo interações registradas em issues e pull requests. Essas trocas permitem comunicar mudanças e apoiar a coordenação entre participantes de projetos conectados.",
         "estudos": [
           "E03"
         ]
       },
       {
         "processo": "Aplicação",
-        "descricao": "Utilização do conhecimento sobre dependências técnicas para coordenar alterações entre projetos interdependentes e apoiar a identificação de colaboradores com experiência nas tecnologias utilizadas.",
+        "descricao": "A aplicação do conhecimento sobre as dependências técnicas entre componentes do ecossistema ocorre quando os participantes utilizam informações sobre as relações entre projetos e componentes para coordenar alterações em soluções interdependentes. Esse conhecimento também apoia a identificação de colaboradores com experiência nas tecnologias utilizadas, contribuindo para a colaboração e para a realização de atividades relacionadas à integração dos componentes.",
         "estudos": [
           "E03",
           "E08"
         ]
       }
-    ]
+    ],
+    "atividadesAssociadas": true,
+    "nomeEmFrase": "às dependências técnicas entre componentes do ecossistema"
   },
   {
     "id": "C02",

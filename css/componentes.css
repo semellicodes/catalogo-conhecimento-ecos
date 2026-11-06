@@ -931,6 +931,48 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* Os oito processos, duas colunas e quatro linhas, em todas as larguras. O
+   cartão é o mesmo botão das categorias de ECOS, então altura, canto, recuo,
+   ícone, tipografia, hover e foco vêm de lá sem uma linha a mais. O que muda é
+   a grade, porque são oito e não três. */
+.atividades__cartoes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--esp-2);
+}
+/* O painel abre abaixo da grade inteira, nunca dentro de uma célula, e o texto
+   dele vai à esquerda. São parágrafos longos numa caixa estreita, e a
+   justificação abria vão entre as palavras. */
+.atividades__painel .atividades__descricao {
+  text-align: left;
+  hyphens: manual;
+}
+/* O rodapé de procedência fecha a atividade. Separador fino, ícone, rótulo e
+   os identificadores na mesma linha, quebrando sozinhos quando a largura
+   acaba. */
+.atividades__estudos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-1) var(--esp-2);
+  margin-top: var(--esp-2);
+  padding-top: var(--esp-2);
+  border-top: var(--borda-fina);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-citacao);
+}
+.atividades__icone-estudos {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: none;
+}
+.atividades__estudos .exemplos-ecos__referencia {
+  padding: 0.1rem var(--esp-1);
+  background: color-mix(in srgb, var(--cor-acento-fundo) 50%, transparent);
+  border: 1px solid var(--cor-acento-linha);
+  border-radius: calc(var(--raio) - 0.25rem);
+  font-size: var(--tam-citacao);
+}
 .exemplos-ecos__painel {
   display: grid;
   gap: var(--esp-2);

@@ -41,10 +41,7 @@
           },
           {
             "chave": "dimensao",
-            "icone": "dimensao",
-            "rotulos": {
-              "Técnica": "Arquitetural (Técnica)"
-            }
+            "icone": "dimensao"
           }
         ]
       },
@@ -157,6 +154,12 @@
       "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
       "referencia": "lopes2026"
     },
+    "atividades": {
+      "titulo": "Atividades Associadas ao Conhecimento",
+      "texto": "Os oito processos de gerência do conhecimento aparecem sempre, e cada um abre a descrição da atividade identificada para este conhecimento ou o aviso de que nenhuma informação foi encontrada. A associação entre cada atividade e o processo correspondente é análise deste trabalho, feita a partir dos estudos primários associados, e não classificação dos autores dos estudos. Ausência de informação na revisão não significa que a atividade não ocorra no ECOS.",
+      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
+      "referencia": "lopes2026"
+    },
     "desafios": {
       "titulo": "Desafios relacionados à Gerência de Conhecimento",
       "texto": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",
@@ -167,6 +170,11 @@
       "texto": "Os estudos primários associados a cada conhecimento constituem a base científica de sua identificação e caracterização. As informações bibliográficas permitem consultar as pesquisas que sustentam os conhecimentos apresentados no catálogo.",
       "referencia": "cartaxo2018, cartaxo2020"
     }
+  },
+  "fichaAtividades": {
+    "tituloSemInformacao": "Informação não identificada",
+    "textoSemInformacao": "Não foram identificadas, nos estudos primários analisados, informações sobre atividades de {atividade} relacionadas {conhecimento}.",
+    "rotuloEstudos": "Estudos associados:"
   },
   "totalEstudos": 18,
   "atualizadoEm": "2026-10-07",

@@ -2,7 +2,7 @@
  * Preenche a lista de estudos primários e as referências bibliográficas.
  */
 
-import { carregar, temVerbete, citacaoDaReferencia, urlDaReferencia } from './dados.js?v=20261106-6';
+import { carregar, temVerbete, citacaoDaReferencia, urlDaReferencia } from './dados.js?v=20261106-7';
 
 const el = (seletor) => document.querySelector(seletor);
 

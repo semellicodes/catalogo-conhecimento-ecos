@@ -2,7 +2,7 @@
  * Preenche a abertura e a explicação da estrutura do catálogo.
  */
 
-import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-6';
+import { carregar, rotuloDaReferencia, temVerbete } from './dados.js?v=20261106-7';
 
 const el = (seletor) => document.querySelector(seletor);
 
@@ -244,7 +244,9 @@ function cartaoDeAtributo(dados, atributo) {
          atribuição e não parte da classificação. O da dimensão avisa que os
          nomes exibidos adaptam a nomenclatura do artigo citado. */
       prefixoFonte: atributo.prefixoFonte,
-      rotulos: atributo.rotulos
+      /* O rótulo de exibição mora no vocabulário, e não na aba, porque a ficha
+         mostra o mesmo "Arquitetural (Técnica)" e os dois leem do mesmo lugar. */
+      rotulos: vocabulario.rotulosExibicao
     },
     vocabulario.valores
   );
