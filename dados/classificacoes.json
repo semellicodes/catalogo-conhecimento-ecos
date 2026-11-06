@@ -12,8 +12,8 @@
         "descricao": "Conhecimento que pode ser formalizado, documentado, registrado e compartilhado por meio de documentos, regras, especificações, processos ou registros técnicos.",
         "exemplos": "Exemplos incluem a arquitetura e as tecnologias de base da plataforma (C02), as especificações técnicas de implementação (C03), as regras de governança do ecossistema (C05) e os requisitos técnicos impostos pela plataforma (C07).",
         "pergunta": "Responde à pergunta: que informação pode ser registrada, consultada e reutilizada pelos participantes do ECOS?",
-        "referencia": "nonaka1997",
-        "explicacao": "É o conhecimento que pode ser formalizado, registrado e comunicado por meio de documentos, especificações e outros artefatos, facilitando sua transmissão e consulta pelos participantes do ECOS."
+        "referencia": "alavi2001",
+        "explicacao": "É o conhecimento que pode ser articulado, codificado e comunicado por meio de linguagem natural ou representações simbólicas, como documentos, manuais e especificações, facilitando seu registro e compartilhamento."
       },
       {
         "valor": "Tácito-cognitivo",
@@ -21,7 +21,7 @@
         "exemplos": "Exemplos incluem a expertise dos atores do ecossistema (C12), as necessidades e prioridades dos participantes (C13), a competência e confiabilidade dos atores (C14) e os impactos de mudanças de desenvolvedores externos no negócio (C16).",
         "pergunta": "Responde à pergunta: quais percepções e experiências dos participantes precisam ser compreendidas?",
         "referencia": "alavi2001",
-        "explicacao": "É o conhecimento que envolve modelos mentais, percepções e interpretações construídos a partir das experiências individuais."
+        "explicacao": "É o conhecimento relacionado aos modelos mentais, crenças, percepções e perspectivas dos indivíduos, que influenciam a maneira como interpretam e compreendem diferentes situações. Por sua natureza pessoal, é difícil de formalizar e comunicar integralmente."
       },
       {
         "valor": "Tácito-técnico",
@@ -29,7 +29,7 @@
         "exemplos": "Exemplos incluem problemas e soluções do ecossistema aplicáveis ao contexto (C19) e a experiência externa com tecnologias do ecossistema (C20).",
         "pergunta": "Responde à pergunta: quais experiências práticas podem apoiar a atuação dos participantes no ECOS?",
         "referencia": "alavi2001",
-        "explicacao": "É o conhecimento que envolve habilidades práticas, experiência na execução de atividades e o saber fazer desenvolvido pelos indivíduos."
+        "explicacao": "É o conhecimento relacionado às habilidades práticas e ao saber-fazer (know-how) desenvolvido por meio da experiência e aplicado à realização de atividades em contextos específicos. Sua transmissão pode depender da prática e da interação entre indivíduos."
       }
     ]
   },
