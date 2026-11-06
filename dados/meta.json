@@ -10,7 +10,7 @@
         "icone": "conhecimento",
         "cartaoIntroducao": {
           "titulo": "Conhecimento em ECOS",
-          "texto": "O conhecimento reúne experiências, valores e informações contextualizadas que auxiliam os indivíduos a interpretar situações e orientar suas ações (Davenport e Prusak, 1998). Nos ECOS, esse conhecimento ultrapassa as fronteiras de uma única organização, estando distribuído entre diferentes atores e artefatos do ecossistema. Sua circulação entre os participantes apoia as interações, o desenvolvimento e a evolução das soluções de software (Seichter et al., 2010; Viana e Conte, 2015).",
+          "texto": "O conhecimento reúne experiências, valores e informações contextualizadas que auxiliam os indivíduos a interpretar situações e orientar suas ações. Nos ECOS, esse conhecimento ultrapassa as fronteiras de uma única organização, estando distribuído entre diferentes atores e artefatos do ecossistema. Sua circulação entre os participantes apoia as interações, o desenvolvimento e a evolução das soluções de software.",
           "referencias": "davenport1998, seichter2010, viana2015"
         },
         "divisor": {
