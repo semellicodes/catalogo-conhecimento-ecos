@@ -352,7 +352,7 @@
   {
     "id": "C07",
     "nome": "Requisitos técnicos impostos pela plataforma",
-    "descricao": "Esse conhecimento especifica os padrões obrigatórios de desempenho, segurança, interface e conformidade que qualquer produto externo deve cumprir para ser publicado ou homologado. O descumprimento desses requisitos pode impedir a publicação de aplicações e comprometer a confiabilidade geral do ecossistema.",
+    "descricao": "Esse conhecimento abrange os requisitos técnicos estabelecidos pela plataforma que orientam o desenvolvimento, a integração e a disponibilização de produtos complementares no ECOS. Envolve especificações de projeto, padrões de qualidade de código, requisitos de compatibilidade, procedimentos de teste e condições de certificação que os desenvolvedores externos devem atender para integrar seus produtos à plataforma e disponibilizá-los em seu ambiente de aplicações.",
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
@@ -369,12 +369,34 @@
         "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir"
       }
     },
-    "justificativaClassificacao": "Os requisitos técnicos impostos pela plataforma são classificados como conhecimento explícito porque requisitos de design, qualidade, teste e certificação podem ser registrados e comunicados. O nível Plataforma se aplica porque definem como produtos externos devem se adequar a ela. A dimensão Técnica foi selecionada porque trata de condições de implementação e de qualidade do software.",
+    "justificativaClassificacao": "O conhecimento sobre os requisitos técnicos impostos pela plataforma é classificado no nível Plataforma porque envolve condições estabelecidas pelo proprietário da plataforma para orientar o desenvolvimento, a integração e a disponibilização de produtos complementares. Enquadra-se na dimensão Arquitetural (Técnica) por abordar especificações de projeto, padrões de qualidade de código, requisitos de compatibilidade e procedimentos de teste e certificação que condicionam a integração de soluções externas à plataforma tecnológica do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos requisitos técnicos que orientam a construção e homologação de produtos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento de produtos que precisam atender aos requisitos da plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário disponibilizar e comunicar os requisitos técnicos aos desenvolvedores externos, complementando esse acesso com programas de acesso antecipado e treinamento técnico quando aplicáveis.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição do conhecimento sobre os requisitos técnicos impostos pela plataforma ocorre quando os desenvolvedores de produtos complementares obtêm informações técnicas disponibilizadas pelo proprietário da plataforma, que constitui uma fonte externa às suas organizações. Esse processo envolve a consulta a documentos, especificações de projeto e padrões de qualidade de código para compreender as exigências estabelecidas e orientar a adequação dos produtos às condições técnicas da plataforma.",
+        "estudos": ["E09"]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre os requisitos técnicos impostos pela plataforma ocorre por meio da comunicação dos padrões e das exigências estabelecidas aos desenvolvedores de produtos complementares. Esse processo envolve a disponibilização de especificações de projeto, padrões de qualidade de código, procedimentos de teste e informações sobre certificação em documentação, blogs e websites acessíveis aos participantes, permitindo que compreendam as condições necessárias para desenvolver e disponibilizar seus produtos na plataforma.",
+        "estudos": ["E09"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre os requisitos técnicos impostos pela plataforma ocorre por meio da representação explícita das exigências técnicas em padrões de qualidade de código, especificações de projeto e documentação. Esse processo envolve formalizar as condições que orientam o desenvolvimento e a adequação dos produtos complementares, tornando os requisitos técnicos compreensíveis e acessíveis aos desenvolvedores externos.",
+        "estudos": ["E09"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre os requisitos técnicos impostos pela plataforma ocorre quando os desenvolvedores de produtos complementares utilizam as especificações de projeto e os padrões de qualidade estabelecidos pelo proprietário da plataforma durante o desenvolvimento de suas soluções. Esse processo envolve adequar os produtos às exigências técnicas e considerar os procedimentos de teste e certificação necessários para sua integração e disponibilização no ambiente de aplicações da plataforma.",
+        "estudos": ["E09"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C08",
