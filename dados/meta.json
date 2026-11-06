@@ -9,9 +9,9 @@
         "rotulo": "1. Identificação",
         "icone": "conhecimento",
         "cartaoIntroducao": {
-          "titulo": "Conceito de conhecimento",
-          "texto": "O conhecimento reúne experiências, valores e informações contextualizadas que auxiliam os indivíduos a interpretar situações e orientar suas ações. Nas organizações, manifesta-se tanto em documentos e registros quanto nas experiências, práticas e processos de trabalho.",
-          "referencias": "davenport1998"
+          "titulo": "Conhecimento em ECOS",
+          "texto": "O conhecimento reúne experiências, valores e informações contextualizadas que auxiliam os indivíduos a interpretar situações e orientar suas ações (Davenport e Prusak, 1998). Nos ECOS, esse conhecimento ultrapassa as fronteiras de uma única organização, estando distribuído entre diferentes atores e artefatos do ecossistema. Sua circulação entre os participantes apoia as interações, o desenvolvimento e a evolução das soluções de software (Seichter et al., 2010; Viana e Conte, 2015).",
+          "referencias": "davenport1998, seichter2010, viana2015"
         },
         "divisor": {
           "principal": "Os conhecimentos podem ser classificados por natureza epistemológica"
