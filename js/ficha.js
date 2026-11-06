@@ -583,17 +583,25 @@ function rodapeDeEstudos(dados, conhecimento, ids) {
   return rodape;
 }
 
-/* A ausência de informação é dita como ausência na revisão, nunca como
-   ausência na prática. O texto mora em dados/, com o nome da atividade e o do
-   conhecimento trocados na hora. */
+/* Um processo sem descrição cai em um de dois avisos, e a diferença importa.
+   Numa ficha já revista, a ausência é achado da revisão e se diz como tal. Numa
+   ficha ainda não revista, dizer o mesmo afirmaria uma ausência que ninguém
+   procurou, então o aviso é de revisão pendente. Quem separa as duas é o
+   `atividadesAssociadas` do conhecimento, `true` para revista e "pendente" para
+   as que esperam a leitura dos estudos primários. */
 function painelSemInformacao(dados, conhecimento, processo) {
   const copia = dados.meta.fichaAtividades || {};
+  const revista = conhecimento.atividadesAssociadas === true;
   const nome = conhecimento.nomeEmFrase || `a ${conhecimento.nome.toLowerCase()}`;
-  const texto = (copia.textoSemInformacao || '')
+  const modelo = revista ? copia.textoSemInformacao : copia.textoPendente;
+  const titulo = revista
+    ? (copia.tituloSemInformacao || 'Informação não identificada')
+    : (copia.tituloPendente || 'Revisão pendente');
+  const texto = (modelo || '')
     .replace('{atividade}', processo.toLowerCase())
     .replace('{conhecimento}', nome);
   return [
-    criar('p', 'acoes-gerencia__rotulo', copia.tituloSemInformacao || 'Informação não identificada'),
+    criar('p', 'acoes-gerencia__rotulo', titulo),
     criar('p', 'exemplos-ecos__texto atividades__descricao', texto)
   ];
 }

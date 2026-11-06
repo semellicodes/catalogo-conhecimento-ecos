@@ -211,15 +211,31 @@ nativamente pelo navegador com `type="module"`.
 - Nenhuma categoria de ECOS começa aberta. A seção abre neutra e quem escolhe o que consultar é
   quem lê, como nas atividades. A ficha é remontada a cada abertura, então o estado não atravessa
   de um conhecimento para o outro
-- O bloco de gerência da ficha existe em três formas, enquanto as vinte são revistas uma a uma.
-  "Atividades Associadas ao Conhecimento" é a de agora, com os oito processos. Antes dela vieram a
-  de importância, atores e atividades em cápsulas, e a mais antiga, com recursos, participação e
-  ações. Quem decide qual monta é o dado de cada conhecimento, `atividadesAssociadas` para a nova e
-  `atividadesGerencia` para a intermediária, e não uma lista de identificadores escrita no módulo,
-  para a migração acontecer uma ficha por vez
-- O C01 tem a forma nova, o C12 segue na intermediária e os outros dezoito na antiga. A migração é
-  gradual e controlada, uma ficha de cada vez, porque cada uma depende da leitura dos estudos
-  primários dela
+- As vinte fichas usam "Atividades Associadas ao Conhecimento", com os oito processos. Quem decide
+  é o `atividadesAssociadas` do conhecimento, e não uma lista de identificadores escrita no módulo
+- O `atividadesAssociadas` tem dois valores, e a diferença é acadêmica, não visual. `true` diz que
+  os oito foram conferidos contra os estudos primários daquele conhecimento, e hoje é o caso do C01
+  e do C12. `"pendente"` diz que a leitura ainda não foi feita, e é o caso dos outros dezoito
+- Um processo sem descrição cai em um de dois avisos. Na ficha revista, "Informação não
+  identificada", porque a ausência é achado da revisão. Na pendente, "Revisão pendente", porque
+  dizer o contrário afirmaria uma ausência que ninguém procurou. Os dois textos moram em
+  `meta.fichaAtividades`
+- O cartão cinza é o mesmo nos dois casos. A distinção é do texto do painel, não da cor, porque
+  para quem lê o cartão diz só que ali não há descrição
+- As duas formas anteriores do bloco continuam no `ficha.js`, a de importância, atores e cápsulas e
+  a de recursos, participação e ações, mas nenhuma ficha as alcança desde a migração das vinte.
+  Elas saem numa limpeza à parte, quando a revisão dos dezoito estiver fechada
+- Os dezoito pendentes ganharam `atividadesGerencia` vazio, que é o ponto de edição. Preencher uma
+  atividade é acrescentar ali `{"processo", "descricao", "estudos"}`, com o nome do processo escrito
+  igual ao da aba de Atividades. Os oito não se repetem em cada conhecimento, porque a lista e a
+  ordem vêm do `meta.json`
+- Os campos da gerência antiga continuam nos vinte, `recursosConhecimento`,
+  `participacaoCompartilhamento`, `praticasGerencia`, `acaoGerencia`, `importanciaGerencia` e
+  `atoresEnvolvidos`, sem leitor. Eles são o insumo da revisão que vem, e por isso não foram
+  apagados
+- O `acaoGerencia` não foi convertido em atividade de nenhum conhecimento. Ele é outro vocabulário,
+  de três valores, derivado dos verbos do `praticasGerencia` e não de uma leitura dos estudos, e
+  transformá-lo nos oito processos seria inventar classificação
 - A seção nova mostra sempre os oito processos, em duas colunas e quatro linhas, na ordem do
   referencial. Os três com atividade identificada acendem em verde e os cinco sem informação ficam
   neutros, e todos abrem, porque saber que nada foi encontrado na revisão também é informação.
@@ -253,9 +269,8 @@ nativamente pelo navegador com `type="module"`.
 - Duas expressões da primeira redação ampliada saíram por extrapolarem o texto revisto, "compartilhar
   experiências técnicas" no Compartilhamento e "evolução dos componentes" na Aplicação. O que ficou
   é o que as descrições curtas, a importância e os atores já sustentavam
-- O número de atividades varia por conhecimento, porque só entram os processos que as evidências
-  sustentam. O C01 tem três e o C12 tem quatro, e as cápsulas se reorganizam em mais linhas quando
-  a largura acaba
+- O número de atividades com descrição varia por conhecimento, porque só entram os processos que as
+  evidências sustentam. O C01 tem três e o C12 tem quatro
 - As duas formas têm ajuda própria, `gerencia` e `gerenciaComponentes`, porque uma descreve
   recursos, participação e ações e a outra descreve importância, atores e atividades. A antiga sai
   quando a última ficha for revista
