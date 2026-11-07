@@ -22,7 +22,6 @@ identidade visual muda sem tocar no conteúdo.
 | Arquivo | Conteúdo |
 |---|---|
 | `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, desafios e estudos relacionados, e a evidência de cada relação |
-| `dados/desafios.json` | 17 desafios (D01 a D17), com o texto, os estudos e os conhecimentos que os citam |
 | `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e a lista de tipos de ECOS que o estudo observou |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
 | `dados/referencias.json` | Citação completa de cada referência, identificada por chave. O valor é texto, ou o par `texto` e `url` quando há DOI ou publicação oficial aberta |
@@ -95,7 +94,6 @@ lista os dezessete, não só os ligados.
 |---|---|
 | `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
-| `explorar.html` | Glossário dos atributos com a referência de cada esquema e os 17 desafios, cada um com os conhecimentos ligados |
 | `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar. A coluna principal é dividida em dois blocos, abertura e método, só para o cartão de números poder entrar entre eles no celular. No desktop o cartão vai para a segunda coluna por posicionamento explícito e os dois blocos voltam a ler como um |
 | `referencias.html` | Estudos primários e referências bibliográficas |
 
@@ -110,7 +108,6 @@ lista os dezessete, não só os ligados.
 | `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
 | `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
-| `js/explorar.js` | Preenche o Explorar, o glossário e os desafios. Item sem conhecimento ligado aparece igual, só sem a lista |
 | `js/inicio.js` | Preenche o resumo da abertura, a tarja de números e as camadas |
 | `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |

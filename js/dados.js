@@ -10,7 +10,7 @@
 const VERSAO = '20261106-8';
 
 const ARQUIVOS = Object.fromEntries(
-  ['meta', 'conhecimentos', 'desafios', 'estudos', 'classificacoes', 'referencias'].map(
+  ['meta', 'conhecimentos', 'estudos', 'classificacoes', 'referencias'].map(
     (nome) => [nome, `dados/${nome}.json?v=${VERSAO}`]
   )
 );
