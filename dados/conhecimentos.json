@@ -700,33 +700,25 @@
   "atividadesAssociadas": true
 }
 ,
-  {
-    "id": "C14",
-    "nome": "Competência e confiabilidade dos participantes do ECOS",
-    "descricao": "Esse conhecimento envolve a avaliação da reputação, capacidade técnica comprovada e grau de compromisso dos participantes do ECOS ao longo das interações históricas. A falta dessa percepção pode aumentar o risco na escolha de participantes para projetos críticos e prejudicar a governança.",
-    "natureza": "Tácito-cognitivo",
-    "nivel": "Ecossistema",
-    "dimensao": "Social",
-    "tipoEcos": [],
-    "acaoGerencia": ["Compartilhamento"],
-    "solucoes": ["S18", "S29"],
-    "estudos": ["E05"],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": ["D04"],
-    "evidencia": {
-      "D04": {
-        "estudo": "E05",
-        "motivo": "A dominância percebida e a desconfiança entre organizações são o mesmo objeto"
-      }
-    },
-    "justificativaClassificacao": "A competência e confiabilidade dos participantes do ECOS são classificadas como conhecimento tácito-cognitivo porque são percebidas a partir das interações e da experiência acumulada. O nível Ecossistema se aplica porque influenciam relações entre organizações participantes. A dimensão Social foi selecionada porque sustentam confiança e legitimidade nas decisões coletivas.",
-    "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelas competências que os próprios participantes do ECOS demonstram em suas atividades e interações.",
-    "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que precisam decidir com quem cooperar e em quem confiar para realizar atividades conjuntas.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário promover reuniões informativas, compartilhamento de documentos e papéis de intermediação que apoiem o reconhecimento de competências e a construção de confiança.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
-  },
+
+{
+  "id": "C14",
+  "nome": "Competência e confiabilidade dos participantes do ECOS",
+  "descricao": "Esse conhecimento abrange as percepções e os julgamentos sobre as competências, a reputação e a confiabilidade dos participantes do ECOS, construídos a partir de suas experiências e interações ao longo do tempo. Envolve o reconhecimento das capacidades técnicas e das contribuições realizadas por indivíduos e organizações, bem como as expectativas sobre seu comportamento, compromisso e disposição para colaborar. Essas percepções influenciam as relações de confiança, o reconhecimento dos participantes e as decisões de cooperação e governança no ECOS.",
+  "natureza": "Tácito-cognitivo",
+  "nivel": "Ecossistema",
+  "dimensao": "Social",
+  "estudos": ["E05"],
+  "justificativaClassificacao": "O conhecimento sobre a competência e a confiabilidade dos participantes do ECOS é classificado no nível Ecossistema porque envolve percepções sobre as capacidades, a reputação e o comportamento de indivíduos e organizações que participam de atividades e decisões coletivas. Enquadra-se na dimensão Social por abordar relações de confiança, reconhecimento de competências e expectativas de colaboração que influenciam as interações e a cooperação entre os participantes do ECOS.",
+  "atividadesGerencia": [
+    {
+      "processo": "Aplicação",
+      "descricao": "A aplicação do conhecimento sobre a competência e a confiabilidade dos participantes do ECOS ocorre quando as percepções sobre suas capacidades, reputação e experiências anteriores são utilizadas para orientar decisões de colaboração e governança. No E05, essas percepções influenciam o estabelecimento de relações entre organizações e a escolha de representantes para os comitês de gestão do OSDU. O estudo demonstra que organizações maiores frequentemente receberam maior confiança nas decisões de representação, enquanto empresas menores enfrentaram dificuldades de reconhecimento, mesmo quando apresentavam competências técnicas relevantes. Dessa forma, a utilização desse conhecimento pode orientar a cooperação entre participantes, embora também esteja sujeita a percepções influenciadas por relações de poder e experiências anteriores.",
+      "estudos": ["E05"]
+    }
+  ],
+  "atividadesAssociadas": true
+},
   {
     "id": "C15",
     "nome": "Dificuldades dos desenvolvedores externos",
