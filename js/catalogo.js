@@ -38,13 +38,6 @@ function montarOpcao(chave, opcao, contagem, modificador) {
   texto.textContent = opcao.valor;
   botao.append(texto);
 
-  if (contagem !== undefined) {
-    const numero = document.createElement('span');
-    numero.className = 'chip__contagem';
-    numero.textContent = contagem;
-    botao.append(numero);
-  }
-
   botao.addEventListener('click', () => {
     estado[chave] = estado[chave].includes(opcao.valor)
       ? estado[chave].filter((v) => v !== opcao.valor)
@@ -217,12 +210,15 @@ function sincronizarUrl(id) {
   const url = (query ? `?${query}` : location.pathname) + location.hash;
   history.replaceState(null, '', url);
 }
-
 function atualizar() {
-  visiveis = filtros.ordenar(filtros.aplicar(dados.conhecimentos, estado), ordemDasNaturezas);
+  visiveis = filtros.ordenar(
+    filtros.aplicar(dados.conhecimentos, estado),
+    ordemDasNaturezas
+  );
   lista.renderizar(el('#lista'), visiveis, abrirFicha);
   el('#lista-vazia').hidden = visiveis.length > 0;
-  el('#contagem').textContent = `${visiveis.length} de ${dados.conhecimentos.length} conhecimentos`;
+  el('#contagem').textContent =
+    `${visiveis.length} ${visiveis.length === 1 ? 'conhecimento encontrado' : 'conhecimentos encontrados'}`;
   el('#limpar').hidden = !filtros.temFiltroAtivo(estado);
   marcarOpcoes();
   if (idAberto) posicionarNavegacao();

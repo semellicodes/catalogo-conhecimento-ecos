@@ -457,6 +457,7 @@
   .filtros__titulo { flex-basis: 100%; }
 }
 
+
 /* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
 .chip {
   display: inline-flex;
@@ -477,38 +478,37 @@
     border-color var(--dur-rapida) var(--curva),
     color var(--dur-rapida) var(--curva);
 }
-.chip:hover { color: var(--cor-texto); border-color: var(--cor-acento-linha); }
+
+.chip:hover {
+  color: var(--cor-texto);
+  border-color: var(--cor-acento-linha);
+}
+
 .chip[aria-pressed="true"] {
   background: var(--cor-acento-fundo);
   border-color: var(--cor-acento-linha);
   color: var(--cor-acento);
   font-weight: 500;
 }
-.chip__contagem {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  color: var(--cor-texto-fraco);
-}
-.chip[aria-pressed="true"] .chip__contagem { color: var(--cor-acento); }
 
 /* A natureza carrega a cor da própria classificação quando escolhida. */
 .chip--explicito[aria-pressed="true"] {
   color: var(--cor-explicito);
   border-color: var(--cor-explicito-linha);
 }
-.chip--explicito[aria-pressed="true"] .chip__contagem { color: var(--cor-explicito); }
+
 .chip--tacito-cognitivo[aria-pressed="true"] {
   color: var(--cor-tacito-cognitivo);
   border-color: var(--cor-tacito-cognitivo-linha);
   background: transparent;
 }
-.chip--tacito-cognitivo[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-cognitivo); }
+
 .chip--tacito-tecnico[aria-pressed="true"] {
   color: var(--cor-tacito-tecnico);
   border-color: var(--cor-tacito-tecnico-linha);
   background: transparent;
 }
-.chip--tacito-tecnico[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-tecnico); }
+
 
 .campo-busca {
   width: 100%;
