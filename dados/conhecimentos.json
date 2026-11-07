@@ -450,7 +450,7 @@
   {
     "id": "C09",
     "nome": "Boas práticas de tomada de decisão",
-    "descricao": "Esse conhecimento reúne abordagens consolidadas, heurísticas e lições aprendidas para apoiar a escolha entre alternativas técnicas ou operacionais em novos cenários. Ignorar essas práticas pode levar a decisões empíricas e propensas a falhas já superadas pelo ecossistema.",
+    "descricao": "Esse conhecimento abrange métodos, procedimentos e modelos consolidados que orientam a tomada de decisão na seleção de componentes de software no ECOS. Envolve processos estruturados para comparar alternativas, modelos que representam o contexto das decisões e métodos de avaliação de propriedades dos componentes. Essas boas práticas constituem conhecimento procedimental que pode ser compartilhado e reutilizado entre diferentes participantes e organizações, inclusive por meio de módulos de software que apoiam a análise e a escolha de alternativas.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -458,16 +458,33 @@
     "acaoGerencia": ["Criação e registro", "Uso e aplicação"],
     "solucoes": ["S09", "S35"],
     "estudos": ["E14"],
-    "pendencia": "Verificar se este conhecimento é específico de ECOS ou se é genérico de tomada de decisão",
+    "pendencia": "",
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "As boas práticas de tomada de decisão são classificadas como conhecimento explícito porque podem ser descritas, operacionalizadas e reutilizadas. O nível Ecossistema se aplica porque apoiam decisões de diferentes usuários e organizações. A dimensão Técnica foi selecionada porque orientam a seleção e a combinação de componentes de software.",
+    "justificativaClassificacao": "O conhecimento sobre as boas práticas de tomada de decisão é classificado no nível Ecossistema porque envolve métodos e modelos que podem ser compartilhados e reutilizados por diferentes participantes e organizações para apoiar decisões sobre componentes de software. Enquadra-se na dimensão Arquitetural (Técnica) por abordar processos de seleção, análise de alternativas, representação de contextos e avaliação de propriedades técnicas dos componentes, contribuindo para a tomada de decisão no desenvolvimento de sistemas no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente na literatura e em métodos já consolidados, quando são operacionalizados em módulos de software de apoio à decisão.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que precisam comparar alternativas e decidir sobre a seleção de componentes.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário encapsular o conhecimento procedimental em ferramentas interativas de suporte à decisão baseadas em casos anteriores.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento do conhecimento sobre boas práticas de tomada de decisão é proposto por meio da disponibilização de métodos e modelos entre diferentes participantes e organizações do ECOS. No sistema COACH, esse processo é apoiado por uma arquitetura extensível que permite disponibilizar módulos de software contendo processos de decisão, modelos de contexto e métodos de estimativa de propriedades. Esses módulos podem ser localizados e utilizados por outros participantes, favorecendo a disseminação e a reutilização do conhecimento procedimental na seleção de componentes de software.",
+        "estudos": ["E14"]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação do conhecimento sobre boas práticas de tomada de decisão ocorre por meio da representação de métodos e procedimentos consolidados em módulos de software reutilizáveis. Na arquitetura COACH, essa representação abrange processos que definem etapas de decisão e análise de compromissos entre alternativas, modelos que descrevem fatores contextuais e métodos de estimativa das propriedades dos componentes. Dessa forma, o conhecimento procedimental é formalizado em componentes executáveis que podem ser integrados ao sistema de apoio à decisão e disponibilizados aos participantes do ECOS.",
+        "estudos": ["E14"]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A aplicação do conhecimento sobre boas práticas de tomada de decisão ocorre por meio da utilização de métodos e modelos que orientam a análise e a seleção de componentes de software. Na arquitetura COACH, os participantes podem executar processos estruturados de decisão, considerar características do contexto e utilizar métodos de estimativa para comparar propriedades das alternativas disponíveis. O estudo apresenta uma prova de conceito que demonstra a utilização do método de análise Pugh na comparação de alternativas, evidenciando a aplicação de conhecimento procedimental no apoio à tomada de decisão.",
+        "estudos": ["E14"]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C10",
