@@ -132,73 +132,71 @@
       }
     ]
   },
-  "ajudas": {
-    "classificacao": {
-      "titulo": "Classificação do conhecimento",
-      "texto": "A classificação reúne três perspectivas complementares adotadas na revisão. A natureza epistemológica indica se o conhecimento pode ser formalizado ou se depende de percepções, experiência e saber fazer. O nível no ECOS mostra se ele se situa no produto, na plataforma ou nas relações do ECOS. A dimensão do ECOS aponta se seu foco é técnico, de negócio ou social. A combinação desses critérios descreve como o conhecimento se manifesta e onde ele circula no ECOS.",
-      "referencia": "nonaka1997, alavi2001, johnson2020, kauschinger2021, santos2011"
-    },
-    "tipoEcos": {
-      "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
-      "texto": "Este campo apresenta em que tipos de ECOS este conhecimento foi observado pelos estudos primários associados a ele. Quando os estudos primários não relatam explicitamente o conhecimento em determinado tipo de ecossistema, a seleção do card correspondente exibe uma mensagem informando a ausência de evidências, o que não significa que o conhecimento seja inaplicável àquele tipo, apenas que não há relato explícito nos estudos analisados.",
-      "referencia": "manikas2016"
-    },
-    "gerencia": {
-      "titulo": "Gerência do conhecimento no ECOS",
-      "texto": "Os recursos de conhecimento, a participação dos atores do ECOS e as ações de gerência compõem uma síntese aplicada, que articula os esquemas adotados na literatura com as evidências analisadas na Revisão Rápida da Literatura. As ações indicadas não representam necessariamente recomendações explícitas dos autores dos estudos primários.",
-      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
-      "referencia": "kauschinger2024, kauschinger2023, zaim2019"
-    },
-    "gerenciaComponentes": {
-      "titulo": "Como gerenciar esse conhecimento em ECOS",
-      "texto": "A importância de gerenciar o conhecimento e os atores envolvidos vêm das evidências dos estudos primários associados a ele. As atividades são classificadas segundo os processos de gerência do conhecimento apresentados por Lopes et al. (2026), e a associação entre cada atividade e o processo correspondente é análise deste trabalho, não classificação dos autores dos estudos.",
-      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
-      "referencia": "lopes2026"
-    },
-    "atividades": {
-      "titulo": "Atividades associadas à gerência do conhecimento",
-      "texto": "Os oito processos de gerência do conhecimento aparecem sempre, e cada um abre a descrição da atividade identificada para este conhecimento ou o aviso de que nenhuma informação foi encontrada. A associação entre cada atividade e o processo correspondente é análise deste trabalho, feita a partir dos estudos primários associados, e não classificação dos autores dos estudos. Ausência de informação na revisão não significa que a atividade não ocorra no ECOS.",
-      "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
-      "referencia": "lopes2026"
-    },
-    "desafios": {
-      "titulo": "Desafios relacionados à Gerência de Conhecimento",
-      "texto": "Os desafios identificados na literatura consistem em achados associados aos conhecimentos catalogados e às evidências científicas que os sustentam. Eles não constituem um atributo classificatório do conhecimento, mas subsidiam sua compreensão e sua gerência. A ausência de desafios confirmados para determinado conhecimento não significa que ele esteja livre de dificuldades, mas que não foi estabelecida uma associação específica com base nas evidências disponíveis.",
-      "referencia": "revisaoRapidaManuscrito"
-    },
-    "estudos": {
-      "titulo": "Estudos primários associados",
-      "texto": "Os estudos primários associados a cada conhecimento constituem a base científica de sua identificação e caracterização. As informações bibliográficas permitem consultar as pesquisas que sustentam os conhecimentos apresentados no catálogo.",
-      "referencia": "cartaxo2018, cartaxo2020"
-    }
+
+"ajudas": {
+  "classificacao": {
+    "titulo": "Classificação do conhecimento",
+    "texto": "A classificação do conhecimento no ECOS organiza os conhecimentos identificados na revisão rápida a partir de três perspectivas complementares: natureza epistemológica, nível no ECOS e dimensão do ECOS. Essa estrutura permite caracterizar cada conhecimento conforme sua natureza, sua abrangência e o aspecto predominante do ECOS ao qual está relacionado, facilitando sua organização, identificação e consulta no catálogo.",
+    "referencia": "alavi2001, campbell2010, johnson2020, kauschinger2021, santos2011, steglich2020"
   },
-  "fichaAtividades": {
-    "tituloSemInformacao": "Informação não identificada",
-    "textoSemInformacao": "Não foram identificadas, nos estudos primários analisados, informações sobre atividades de {atividade} relacionadas {conhecimento}.",
-    "tituloPendente": "Revisão pendente",
-    "textoPendente": "As atividades de {atividade} deste conhecimento ainda não foram revistas nos estudos primários associados. A ausência de texto aqui não afirma que a atividade não tenha sido observada, apenas que a leitura ainda não foi feita.",
-    "rotuloEstudos": "Estudos associados:"
+  "tipoEcos": {
+    "titulo": "Exemplos de ECOS em que o conhecimento foi observado",
+    "texto": "Esta seção apresenta os tipos de ECOS em que o conhecimento foi identificado nos estudos primários associados. Quando não há relatos explícitos sobre determinado tipo de ECOS, o catálogo informa a ausência de evidências. Essa ausência não significa que o conhecimento seja inaplicável ao tipo apresentado, mas apenas que sua ocorrência não foi explicitamente relatada nos estudos analisados.",
+    "referencia": "manikas2016"
   },
-  "totalEstudos": 18,
-  "atualizadoEm": "2026-10-07",
-  "camadas": [
-    {
-      "n": 1,
-      "nome": "Ponto de partida",
-      "conteudo": "20 conhecimentos específicos (C01 a C20)",
-      "origem": "Revisão rápida da literatura"
-    },
-    {
-      "n": 2,
-      "nome": "Atributos",
-      "conteudo": "Natureza, nível no ECOS, dimensão do ECOS, tipo de ECOS e ação de gerência requerida",
-      "origem": "Esquemas conceituais da literatura"
-    },
-    {
-      "n": 3,
-      "nome": "Base de evidências",
-      "conteudo": "18 estudos primários (E01 a E18)",
-      "origem": "Processo de seleção da revisão rápida"
-    }
-  ]
+  "atividades": {
+    "titulo": "Atividades associadas à gerência do conhecimento",
+    "texto": "A gerência do conhecimento é analisada a partir de oito processos inter-relacionados: identificação, aquisição, compartilhamento, armazenamento, codificação, criação, aplicação e avaliação. No KM4SECO, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento. A ausência de informações sobre determinada atividade não significa que ela não ocorra no ECOS, mas apenas que não foi explicitamente identificada nos estudos analisados.",
+    "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
+    "referencia": "lopes2026"
+  },
+  "estudos": {
+    "titulo": "Estudos primários associados",
+    "texto": "Os estudos primários associados a cada conhecimento correspondem às pesquisas identificadas e analisadas na revisão rápida da literatura que fundamenta o KM4SECO. Esses estudos constituem a base de evidências utilizada para identificar e caracterizar os conhecimentos apresentados no catálogo, permitindo consultar as publicações que sustentam cada conhecimento.",
+    "referencia": "cartaxo2018, cartaxo2020"
+  }
+},
+"fichaAtividades": {
+  "tituloSemInformacao": "Informação não identificada",
+  "textoSemInformacao": "Não foram identificadas, nos estudos primários associados, informações explícitas sobre atividades de {atividade} relacionadas {conhecimento}. Essa ausência não significa que a atividade não ocorra no ECOS.",
+  "tituloPendente": "Revisão pendente",
+  "textoPendente": "As atividades de {atividade} relacionadas {conhecimento} ainda não foram analisadas nos estudos primários associados. Portanto, não é possível afirmar se há ou não informações sobre essa atividade.",
+  "rotuloEstudos": "Estudos associados:"
+},
+
+"totalEstudos": 18,
+"atualizadoEm": "2026-11-07",
+"camadas": [
+  {
+    "n": 1,
+    "nome": "Identificação",
+    "conteudo": "Conceito de conhecimento em ECOS e natureza epistemológica: explícito, tácito-cognitivo e tácito-técnico",
+    "origem": "Fundamentação conceitual da literatura"
+  },
+  {
+    "n": 2,
+    "nome": "Classificação",
+    "conteudo": "Classificação do conhecimento por nível no ECOS (Produto, Plataforma e Ecossistema) e dimensão (Técnica, Negócio e Social)",
+    "origem": "Esquemas conceituais da literatura"
+  },
+  {
+    "n": 3,
+    "nome": "Exemplos",
+    "conteudo": "Modelos de ECOS: Código aberto, Híbrido e Código fechado",
+    "origem": "Caracterização dos modelos de ECOS na literatura"
+  },
+  {
+    "n": 4,
+    "nome": "Atividades",
+    "conteudo": "Oito processos de gerência do conhecimento e atividades identificadas nos estudos primários",
+    "origem": "Processos da literatura e análise dos estudos primários"
+  },
+  {
+    "n": 5,
+    "nome": "Base de evidências",
+    "conteudo": "18 estudos primários (E01 a E18) e referências bibliográficas adicionais",
+    "origem": "Revisão rápida da literatura e fundamentação conceitual"
+  }
+]
+
 }
