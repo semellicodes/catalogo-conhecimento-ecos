@@ -35,7 +35,7 @@
   },
   "nivel": {
     "rotulo": "Nível no ECOS",
-    "principal": false,
+
     "pergunta": "Em qual nível do ECOS esse conhecimento se concentra?",
     "perguntaOrientadora": "Onde o conhecimento está situado?",
     "funcao": "O nível no ECOS indica a abrangência do conhecimento, considerando se ele está relacionado a um produto específico, à plataforma tecnológica compartilhada ou ao ecossistema como um todo.",
@@ -64,93 +64,56 @@
       }
     ]
   },
-  "dimensao": {
-    "rotulo": "Dimensão do ECOS",
-    "rotulosExibicao": {
-      "Técnica": "Arquitetural (Técnica)"
+
+"dimensao": {
+  "rotulo": "Dimensão do ECOS",
+  "rotulosExibicao": {
+    "Técnica": "Técnica"
+  },
+  "principal": false,
+  "funcao": "A dimensão do ECOS indica o aspecto predominante ao qual o conhecimento está relacionado, considerando os elementos tecnológicos, econômicos ou sociais envolvidos no funcionamento do ecossistema.",
+  "referencia": "campbell2010, santos2011, steglich2020",
+  "valores": [
+    {
+      "valor": "Técnica",
+      "descricao": "Relacionada à plataforma tecnológica, arquitetura, infraestrutura, padrões de desenvolvimento e qualidade de software.",
+      "referencia": "campbell2010, santos2011, steglich2020",
+      "explicacao": "Compreende os aspectos tecnológicos que sustentam o ECOS, incluindo arquitetura e infraestrutura, tecnologias, padrões e recursos de desenvolvimento, integração e qualidade de produtos de software."
+
     },
-    "principal": false,
-    "pergunta": "Qual aspecto do ECOS é mais diretamente abordado?",
-    "perguntaOrientadora": "A qual aspecto o conhecimento está relacionado?",
-    "funcao": "A dimensão do ECOS indica o aspecto predominante ao qual o conhecimento está relacionado, considerando elementos tecnológicos, estratégicos ou sociais envolvidos no funcionamento do ecossistema.",
-    "referencia": "santos2011",
-    "valores": [
-      {
-        "valor": "Técnica",
-        "descricao": "Relacionada à plataforma tecnológica, infraestrutura, arquitetura, componentes e governança técnica.",
-        "referencia": "santos2011, santos2012",
-        "explicacao": "Compreende os aspectos tecnológicos que sustentam o ECOS, incluindo infraestrutura, arquitetura, desenvolvimento, integração e manutenção de componentes e soluções de software.",
-        "pergunta": "Responde à pergunta: o conhecimento diz respeito à plataforma e à arquitetura sobre a qual o ECOS é construído?"
-      },
-      {
-        "valor": "Negócio",
-        "descricao": "Relacionada à competitividade, inovação, mercado, geração de valor e interesses dos participantes.",
-        "referencia": "santos2011, santos2012",
-        "explicacao": "Compreende os aspectos econômicos e estratégicos do ECOS, incluindo modelos de negócio, competitividade, inovação, criação de valor e interesses das organizações e demais participantes.",
-        "pergunta": "Responde à pergunta: o conhecimento diz respeito a metas, mercado e planejamento do ECOS?"
-      },
-      {
-        "valor": "Social",
-        "descricao": "Relacionada às relações entre participantes, colaboração, comunidade, confiança e compartilhamento.",
-        "referencia": "santos2011, santos2012",
-        "explicacao": "Compreende os aspectos relacionados às interações entre os participantes do ECOS, incluindo comunicação, colaboração, relações entre organizações e formação de comunidades em torno da plataforma.",
-        "pergunta": "Responde à pergunta: o conhecimento diz respeito às relações entre os participantes e ao que os mantém engajados?"
-      }
-    ]
-  },
-  "tipoEcos": {
-    "rotulo": "Tipo de ECOS observado",
-    "principal": false,
-    "pendente": true,
-    "pergunta": "Em que modelo de ecossistema esse conhecimento foi relatado?",
-    "referencia": "manikas2016",
-    "valores": [
-      {
-        "valor": "Código aberto",
-        "descricao": "Participantes podem acessar, modificar e compartilhar componentes e conhecimentos, geralmente com forte atuação comunitária.",
-        "referencia": "manikas2016",
-        "explicacao": "Caracteriza-se pela disponibilização aberta de contribuições e recursos, permitindo a participação colaborativa de diferentes atores no desenvolvimento, na manutenção e na evolução de soluções de software.",
-        "pergunta": "Responde à pergunta: as contribuições circulam abertamente entre os participantes?"
-      },
-      {
-        "valor": "Híbrido",
-        "descricao": "Combina elementos abertos e proprietários, equilibrando a colaboração externa com o controle organizacional.",
-        "referencia": "manikas2016",
-        "explicacao": "Caracteriza-se pela combinação de elementos dos modelos abertos e proprietários, permitindo a coexistência de contribuições abertas com recursos ou componentes sujeitos a mecanismos específicos de controle.",
-        "pergunta": "Responde à pergunta: o ecossistema combina contribuição aberta e proprietária?"
-      },
-      {
-        "valor": "Proprietário",
-        "descricao": "Plataforma tecnológica, componentes e regras de participação são controlados pela organização central.",
-        "referencia": "manikas2016",
-        "explicacao": "Caracteriza-se pelo controle sobre recursos, tecnologias e contribuições, associado a mecanismos de propriedade intelectual, licenciamento e interesses comerciais.",
-        "pergunta": "Responde à pergunta: as contribuições são controladas pela organização central e remuneradas?"
-      }
-    ],
-    "funcao": "Identifica como o valor é criado no ecossistema e sob qual regime as contribuições circulam."
-  },
-  "acaoGerencia": {
-    "rotulo": "Ações de gerência",
-    "principal": false,
-    "pergunta": "Que ações de gerência apoiam esse conhecimento no ecossistema?",
-    "referencia": "zaim2019",
-    "valores": [
-      {
-        "valor": "Criação e registro",
-        "descricao": "Geração de novos conhecimentos e sua captura em documentos, processos e sistemas, de modo que fiquem recuperáveis para uso posterior.",
-        "referencia": "zaim2019"
-      },
-      {
-        "valor": "Compartilhamento",
-        "descricao": "Troca de conhecimento entre os participantes, para que ele circule além de quem o gerou.",
-        "referencia": "zaim2019"
-      },
-      {
-        "valor": "Uso e aplicação",
-        "descricao": "Utilização efetiva do conhecimento no trabalho, que é o que converte os demais processos em resultado.",
-        "referencia": "zaim2019"
-      }
-    ],
-    "funcao": "Reúnem ações que podem ser associadas aos conhecimentos catalogados para apoiar sua criação, registro, compartilhamento e aplicação no ECOS."
-  }
+    {
+      "valor": "Negócio",
+      "descricao": "Relacionada aos aspectos econômicos e estratégicos, incluindo mercado, inovação, planejamento e criação de valor.",
+      "referencia": "campbell2010, santos2011, steglich2020",
+      "explicacao": "Compreende os aspectos econômicos e estratégicos do ECOS, incluindo modelos de negócio, comercialização de software, inovação, planejamento estratégico e criação de valor entre os participantes."
+    },
+    {
+      "valor": "Social",
+      "descricao": "Relacionada aos participantes do ECOS, seus papéis, relacionamentos, colaboração e compartilhamento de conhecimentos.",
+      "referencia": "campbell2010, santos2011, steglich2020",
+      "explicacao": "Compreende os aspectos relacionados aos participantes do ECOS e suas interações, incluindo papéis, relacionamentos, colaboração, motivações e compartilhamento de conhecimentos."
+    }
+  ]
+},
+
+
+"tipoEcos": {
+  "rotulo": "Tipo de ECOS observado",
+  "referencia": "manikas2016",
+  "valores": [
+    {
+      "valor": "Código aberto",
+      "explicacao": "Caracteriza-se pela disponibilização aberta de contribuições e recursos, permitindo a participação colaborativa de diferentes atores no desenvolvimento, na manutenção e na evolução de soluções de software."
+    },
+    {
+      "valor": "Híbrido",
+      "explicacao": "Caracteriza-se pela combinação de elementos dos modelos abertos e proprietários, permitindo a coexistência de contribuições abertas com recursos ou componentes sujeitos a mecanismos específicos de controle."
+    },
+    {
+      "valor": "Proprietário",
+      "explicacao": "Caracteriza-se pelo controle sobre recursos, tecnologias e contribuições, associado a mecanismos de propriedade intelectual, licenciamento e interesses comerciais."
+    }
+  ]
+}
+
 }

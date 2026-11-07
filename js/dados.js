@@ -68,8 +68,11 @@ export function conhecimentoCompleto(dados, id) {
    porque "Nonaka e Takeuchi" e "Johnson et al." dependem de quantos autores a
    obra tem, então o rótulo fica escrito aqui, num lugar só, para a Estrutura e
    a ficha citarem igual. */
+
+
 const ROTULOS_REFERENCIAS = {
   alavi2001: 'Alavi e Leidner (2001)',
+  campbell2010: 'Campbell e Ahmed (2010)',
   cartaxo2018: 'Cartaxo et al. (2018)',
   cartaxo2020: 'Cartaxo et al. (2020)',
   charmaz2006: 'Charmaz (2006)',
@@ -92,9 +95,12 @@ const ROTULOS_REFERENCIAS = {
   santos2011: 'Santos e Werner (2011)',
   santos2012: 'Santos et al. (2012)',
   seichter2010: 'Seichter et al. (2010)',
+  steglich2020: 'Steglich et al. (2020)',
   viana2015: 'Viana e Conte (2015)',
   zaim2019: 'Zaim, Muhammed e Tarim (2019)'
 };
+
+
 
 export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;
 
