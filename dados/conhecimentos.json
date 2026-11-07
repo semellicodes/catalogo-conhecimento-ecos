@@ -214,44 +214,46 @@
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que enfrentam uma nova decisão arquitetural em contexto semelhante e precisam avaliar escolhas anteriores.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar decisões junto com seus contextos e disponibilizá-las em repositórios que permitam recuperar e comparar situações semelhantes.",
 
-    "atividadesGerencia": [
-      {
-        "processo": "Aquisição",
-        "descricao": "A aquisição do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da obtenção de informações arquiteturais provenientes de fontes externas à organização. Esse processo envolve a incorporação de conhecimentos sobre padrões de projeto, táticas arquiteturais e atributos de qualidade, extraídos de publicações especializadas e recursos disponíveis na internet, para fundamentar a análise de alternativas e a elaboração de novas decisões arquiteturais no ECOS.",
-        "estudos": ["E16"]
-      },
-      {
-        "processo": "Compartilhamento",
-        "descricao": "O compartilhamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado pela disponibilização de informações arquiteturais em repositórios e ferramentas acessíveis aos participantes do ECOS. O modelo apresentado no E14 prevê o compartilhamento de informações de casos decisórios anteriores entre organizações, respeitando restrições de confidencialidade, enquanto o E16 apresenta mecanismos para disponibilizar padrões, táticas, modelos de decisão e informações contextuais, favorecendo a transferência e a reutilização desse conhecimento por diferentes participantes.",
-        "estudos": ["E14", "E16"]
-      },
-      {
-        "processo": "Armazenamento",
-        "descricao": "O armazenamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado por repositórios destinados à conservação de informações sobre decisões, alternativas e elementos contextuais. A arquitetura proposta no E14 contempla o registro de casos decisórios e o armazenamento de informações selecionadas para consultas futuras, enquanto o E16 apresenta um repositório de conhecimentos arquiteturais que mantém registros de padrões, táticas, atributos de qualidade e suas relações, permitindo sua recuperação e utilização em novas situações de projeto.",
-        "estudos": ["E14", "E16"]
-      },
-      {
-        "processo": "Codificação",
-        "descricao": "A codificação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da representação estruturada de informações relacionadas às escolhas de projeto. Esse processo envolve a classificação de casos decisórios segundo objetivos, participantes, alternativas, métodos e contextos, conforme a taxonomia apresentada no E14, e a organização de padrões, táticas, atributos de qualidade e relações entre decisões em modelos e registros explícitos, conforme os mecanismos descritos no E16. Essas representações favorecem a interpretação e a recuperação do conhecimento arquitetural para reutilização.",
-        "estudos": ["E14", "E16"]
-      },
-      {
-        "processo": "Criação",
-        "descricao": "A criação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da elaboração de novos modelos de decisão a partir de conhecimentos arquiteturais previamente disponíveis. Esse processo envolve a combinação de padrões, táticas, atributos de qualidade e informações contextuais para construir modelos reutilizáveis, além da identificação e incorporação de novas relações entre esses elementos, ampliando o conhecimento registrado para apoiar decisões arquiteturais posteriores.",
-        "estudos": ["E16"]
-      },
-      {
-        "processo": "Aplicação",
-        "descricao": "A aplicação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre quando arquitetos utilizam informações previamente registradas para orientar novas escolhas de projeto. Esse processo envolve a recuperação de padrões, táticas, atributos de qualidade e elementos contextuais de situações anteriores, utilizando-os na análise de alternativas e na elaboração de modelos reutilizáveis de decisão arquitetural. O uso desse conhecimento permite considerar soluções conhecidas e suas implicações técnicas em novos contextos de desenvolvimento no ECOS.",
-        "estudos": ["E16"]
-      },
-      {
-        "processo": "Avaliação",
-        "descricao": "A avaliação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da revisão de decisões e alternativas de projeto, considerando sua adequação aos requisitos e aos atributos de qualidade envolvidos. Esse processo inclui examinar os fundamentos das escolhas arquiteturais, comparar soluções possíveis e verificar suas consequências sobre características como desempenho, complexidade e compreensibilidade, permitindo reconhecer vantagens, limitações e compromissos técnicos associados às decisões analisadas.",
-        "estudos": ["E16"]
-      }
-    ],
-    "atividadesAssociadas": true
+
+"atividadesGerencia": [
+  {
+    "processo": "Aquisição",
+    "descricao": "A aquisição do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da obtenção de informações arquiteturais provenientes de fontes externas à organização. Esse processo envolve a incorporação de conhecimentos sobre padrões de projeto, táticas arquiteturais e atributos de qualidade, extraídos de publicações especializadas e recursos disponíveis na internet, para fundamentar a análise de alternativas e a elaboração de novas decisões arquiteturais no ECOS.",
+    "estudos": ["E16"]
+  },
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado pela disponibilização de informações arquiteturais em repositórios e ferramentas acessíveis aos participantes do ECOS. A arquitetura COACH prevê o compartilhamento de informações de casos decisórios anteriores entre organizações, respeitando restrições de confidencialidade, enquanto a abordagem de apoio às decisões arquiteturais apresenta mecanismos para disponibilizar padrões, táticas, modelos de decisão e informações contextuais, favorecendo a transferência e a reutilização desse conhecimento por diferentes participantes.",
+    "estudos": ["E14", "E16"]
+  },
+  {
+    "processo": "Armazenamento",
+    "descricao": "O armazenamento do conhecimento sobre decisões arquiteturais anteriores e seu contexto é apoiado por repositórios destinados à conservação de informações sobre decisões, alternativas e elementos contextuais. A arquitetura COACH contempla o registro de casos decisórios e o armazenamento de informações selecionadas para consultas futuras, enquanto a abordagem de apoio às decisões arquiteturais apresenta um repositório de conhecimentos arquiteturais que mantém registros de padrões, táticas, atributos de qualidade e suas relações, permitindo sua recuperação e utilização em novas situações de projeto.",
+    "estudos": ["E14", "E16"]
+  },
+  {
+    "processo": "Codificação",
+    "descricao": "A codificação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da representação estruturada de informações relacionadas às escolhas de projeto. Esse processo envolve a classificação de casos decisórios segundo objetivos, participantes, alternativas, métodos e contextos, conforme a taxonomia utilizada na arquitetura COACH, e a organização de padrões, táticas, atributos de qualidade e relações entre decisões em modelos e registros explícitos, por meio de mecanismos de representação do conhecimento arquitetural. Essas representações favorecem a interpretação e a recuperação do conhecimento arquitetural para reutilização.",
+    "estudos": ["E14", "E16"]
+  },
+  {
+    "processo": "Criação",
+    "descricao": "A criação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da elaboração de novos modelos de decisão a partir de conhecimentos arquiteturais previamente disponíveis. Esse processo envolve a combinação de padrões, táticas, atributos de qualidade e informações contextuais para construir modelos reutilizáveis, além da identificação e incorporação de novas relações entre esses elementos, ampliando o conhecimento registrado para apoiar decisões arquiteturais posteriores.",
+    "estudos": ["E16"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre quando arquitetos utilizam informações previamente registradas para orientar novas escolhas de projeto. Esse processo envolve a recuperação de padrões, táticas, atributos de qualidade e elementos contextuais de situações anteriores, utilizando-os na análise de alternativas e na elaboração de modelos reutilizáveis de decisão arquitetural. O uso desse conhecimento permite considerar soluções conhecidas e suas implicações técnicas em novos contextos de desenvolvimento no ECOS.",
+    "estudos": ["E16"]
+  },
+  {
+    "processo": "Avaliação",
+    "descricao": "A avaliação do conhecimento sobre decisões arquiteturais anteriores e seu contexto ocorre por meio da revisão de decisões e alternativas de projeto, considerando sua adequação aos requisitos e aos atributos de qualidade envolvidos. Esse processo inclui examinar os fundamentos das escolhas arquiteturais, comparar soluções possíveis e verificar suas consequências sobre características como desempenho, complexidade e compreensibilidade, permitindo reconhecer vantagens, limitações e compromissos técnicos associados às decisões analisadas.",
+    "estudos": ["E16"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C05",
@@ -680,24 +682,26 @@
   "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos próprios participantes do ECOS, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
   "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS envolvidos em decisões conjuntas e pela organização central responsável pela plataforma tecnológica comum.",
   "praticasGerencia": "Para mantê-lo acessível e útil, é necessário promover espaços de articulação interorganizacional para compartilhar e compreender necessidades distintas, recorrendo à intermediação quando ela existir.",
-  "atividadesGerencia": [
-    {
-      "processo": "Compartilhamento",
-      "descricao": "O compartilhamento do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da comunicação e da troca de informações entre organizações e demais interessados envolvidos nas atividades do ecossistema. No E07, esse processo envolve discussões, negociações e utilização de ferramentas colaborativas, como fóruns e plataformas de decisão coletiva, permitindo que participantes com diferentes objetivos institucionais expressem suas demandas e compreendam as necessidades uns dos outros. No E16, a comunicação de requisitos e as discussões com especialistas e interessados contribuem para transmitir prioridades relacionadas aos atributos de qualidade e às decisões arquiteturais, favorecendo a compreensão de diferentes perspectivas durante o desenvolvimento das soluções.",
-      "estudos": ["E07", "E16"]
-    },
-    {
-      "processo": "Codificação",
-      "descricao": "A codificação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da representação explícita de demandas e expectativas que podem ser formalizadas como requisitos de desenvolvimento. No E16, esse processo envolve a documentação de requisitos funcionais e não funcionais e sua incorporação em especificações arquiteturais, considerando atributos de qualidade relevantes para os interessados. Essas representações tornam acessíveis determinadas necessidades e prioridades, como preocupações com segurança, escalabilidade, disponibilidade e conformidade com políticas, sem pressupor que todos os interesses e objetivos organizacionais dos participantes sejam integralmente formalizados.",
-      "estudos": ["E16"]
-    },
-    {
-      "processo": "Aplicação",
-      "descricao": "A aplicação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre quando essas informações são utilizadas para orientar decisões coletivas e escolhas relacionadas ao desenvolvimento das soluções. No E07, a consideração das demandas de diferentes organizações durante discussões e negociações contribui para a definição de funcionalidades alinhadas às necessidades dos participantes, reduzindo a predominância de decisões orientadas exclusivamente pelos interesses da organização orquestradora. No E16, os requisitos e as prioridades dos interessados são utilizados na análise de alternativas arquiteturais e na consideração de compromissos entre atributos de qualidade, permitindo que as decisões de projeto contemplem diferentes expectativas e restrições presentes no ECOS.",
-      "estudos": ["E07", "E16"]
-    }
-  ],
-  "atividadesAssociadas": true
+
+"atividadesGerencia": [
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da comunicação e da troca de informações entre organizações e demais interessados envolvidos nas atividades do ecossistema. Nos ECOS de código aberto analisados, esse processo envolve discussões, negociações e utilização de ferramentas colaborativas, como fóruns e plataformas de decisão coletiva, permitindo que participantes com diferentes objetivos institucionais expressem suas demandas e compreendam as necessidades uns dos outros. Na abordagem de apoio às decisões arquiteturais, a comunicação de requisitos e as discussões com especialistas e interessados contribuem para transmitir prioridades relacionadas aos atributos de qualidade e às decisões arquiteturais, favorecendo a compreensão de diferentes perspectivas durante o desenvolvimento das soluções.",
+    "estudos": ["E07", "E16"]
+  },
+  {
+    "processo": "Codificação",
+    "descricao": "A codificação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da representação explícita de demandas e expectativas que podem ser formalizadas como requisitos de desenvolvimento. Na abordagem de apoio às decisões arquiteturais, esse processo envolve a documentação de requisitos funcionais e não funcionais e sua incorporação em especificações arquiteturais, considerando atributos de qualidade relevantes para os interessados. Essas representações tornam acessíveis determinadas necessidades e prioridades, como preocupações com segurança, escalabilidade, disponibilidade e conformidade com políticas, sem pressupor que todos os interesses e objetivos organizacionais dos participantes sejam integralmente formalizados.",
+    "estudos": ["E16"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre quando essas informações são utilizadas para orientar decisões coletivas e escolhas relacionadas ao desenvolvimento das soluções. Nos ECOS de código aberto analisados, a consideração das demandas de diferentes organizações durante discussões e negociações contribui para a definição de funcionalidades alinhadas às necessidades dos participantes, contribuindo para evitar decisões orientadas exclusivamente pelos interesses da organização orquestradora. Na abordagem de apoio às decisões arquiteturais, os requisitos e as prioridades dos interessados são utilizados na análise de alternativas arquiteturais e na consideração de compromissos entre atributos de qualidade, permitindo que as decisões de projeto contemplem diferentes expectativas e restrições presentes no ECOS.",
+    "estudos": ["E07", "E16"]
+  }
+],
+"atividadesAssociadas": true
+
 }
 ,
 
@@ -710,19 +714,21 @@
   "dimensao": "Social",
   "estudos": ["E05"],
   "justificativaClassificacao": "O conhecimento sobre a competência e a confiabilidade dos participantes do ECOS é classificado no nível Ecossistema porque envolve percepções sobre as capacidades, a reputação e o comportamento de indivíduos e organizações que participam de atividades e decisões coletivas. Enquadra-se na dimensão Social por abordar relações de confiança, reconhecimento de competências e expectativas de colaboração que influenciam as interações e a cooperação entre os participantes do ECOS.",
-  "atividadesGerencia": [
-    {
-      "processo": "Aplicação",
-      "descricao": "A aplicação do conhecimento sobre a competência e a confiabilidade dos participantes do ECOS ocorre quando as percepções sobre suas capacidades, reputação e experiências anteriores são utilizadas para orientar decisões de colaboração e governança. No E05, essas percepções influenciam o estabelecimento de relações entre organizações e a escolha de representantes para os comitês de gestão do OSDU. O estudo demonstra que organizações maiores frequentemente receberam maior confiança nas decisões de representação, enquanto empresas menores enfrentaram dificuldades de reconhecimento, mesmo quando apresentavam competências técnicas relevantes. Dessa forma, a utilização desse conhecimento pode orientar a cooperação entre participantes, embora também esteja sujeita a percepções influenciadas por relações de poder e experiências anteriores.",
-      "estudos": ["E05"]
-    }
-  ],
-  "atividadesAssociadas": true
+
+"atividadesGerencia": [
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre a competência e a confiabilidade dos participantes do ECOS ocorre quando as percepções sobre suas capacidades, reputação e experiências anteriores são utilizadas para orientar decisões de colaboração e governança. No contexto do OSDU, essas percepções influenciam o estabelecimento de relações entre organizações e a escolha de representantes para os comitês de gestão. O estudo demonstra que organizações maiores frequentemente receberam maior confiança nas decisões de representação, enquanto empresas menores enfrentaram dificuldades de reconhecimento, mesmo quando apresentavam competências técnicas relevantes. Dessa forma, a utilização desse conhecimento pode orientar a cooperação entre participantes, embora também esteja sujeita a percepções influenciadas por relações de poder e experiências anteriores.",
+    "estudos": ["E05"]
+  }
+],
+"atividadesAssociadas": true
+
 },
   {
     "id": "C15",
     "nome": "Dificuldades dos desenvolvedores externos",
-    "descricao": "Esse conhecimento abrange os pontos de fricção, dúvidas recorrentes e barreiras enfrentadas por desenvolvedores externos ao utilizar a plataforma tecnológica comum. O não reconhecimento dessas barreiras pode comprometer a melhoria dos guias de apoio e contribuir para a desistência de desenvolvedores externos.",
+    "descricao": "Esse conhecimento abrange as dificuldades, dúvidas recorrentes e barreiras enfrentadas pelos desenvolvedores externos durante a utilização da plataforma tecnológica comum e o desenvolvimento de soluções complementares. Envolve problemas relacionados à autenticação, conectividade, instalação, configuração e utilização de tecnologias da plataforma, além de limitações identificadas em tutoriais e outros recursos de apoio. Essas informações permitem compreender os obstáculos encontrados pelos desenvolvedores e orientar melhorias na plataforma e nos recursos disponibilizados para apoiar suas atividades.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Plataforma",
     "dimensao": "Negócio",
@@ -739,17 +745,40 @@
         "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada"
       }
     },
-    "justificativaClassificacao": "As dificuldades dos desenvolvedores externos são classificadas como conhecimento tácito-cognitivo porque se revelam nas interpretações, dúvidas e erros recorrentes desses desenvolvedores. O nível Plataforma se aplica porque esse conhecimento orienta seus recursos de apoio. A dimensão Negócio foi selecionada porque essas dificuldades afetam o esforço e a atuação dos desenvolvedores externos.",
+    "justificativaClassificacao": "O conhecimento sobre as dificuldades dos desenvolvedores externos é classificado no nível Plataforma porque envolve obstáculos encontrados durante a utilização de seus recursos, serviços e tecnologias, incluindo aqueles relacionados ao desenvolvimento de soluções complementares. Enquadra-se na dimensão Negócio por considerar como essas dificuldades afetam o esforço necessário para desenvolver soluções, a experiência de participação dos desenvolvedores externos e as condições para sua atuação no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos, nos erros, dúvidas e discussões que registram nas comunidades.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por equipes da organização central para revisar documentação e outros recursos de apoio aos desenvolvedores externos.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário analisar discussões e dúvidas recorrentes nas comunidades e, quando pertinente, aplicar modelagem de tópicos para identificar lacunas nos recursos de apoio.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre as dificuldades dos desenvolvedores externos ocorre por meio da comunicação de dúvidas, problemas e experiências relacionadas à utilização da plataforma tecnológica comum. Na comunidade SAP, os participantes publicam perguntas e relatos de erros em fóruns de discussão, nos quais outros desenvolvedores e funcionários da organização proprietária da plataforma podem apresentar respostas e comentários. Essas interações tornam conhecidas dificuldades relacionadas à autenticação, conectividade, configuração, instalação e utilização de tecnologias da plataforma, permitindo que informações sobre obstáculos enfrentados individualmente sejam acessadas e compreendidas por outros participantes do ECOS.",
+    "estudos": ["E12"]
+  },
+  {
+    "processo": "Armazenamento",
+    "descricao": "O armazenamento do conhecimento sobre as dificuldades dos desenvolvedores externos ocorre por meio da preservação dos relatos e das discussões publicados na comunidade on-line da plataforma. A comunidade SAP funciona como um repositório de conhecimento que mantém perguntas, respostas e comentários relacionados aos problemas encontrados pelos participantes durante suas atividades de desenvolvimento. A permanência desses registros permite consultar experiências anteriores e recuperar informações sobre dificuldades recorrentes, além de possibilitar análises posteriores dos problemas relatados. Essa disponibilidade é demonstrada pela recuperação de milhares de páginas de discussões previamente publicadas na comunidade.",
+    "estudos": ["E12"]
+  },
+  {
+    "processo": "Codificação",
+    "descricao": "A codificação do conhecimento sobre as dificuldades dos desenvolvedores externos ocorre por meio da representação e organização explícita das informações presentes nos relatos publicados na comunidade. Em uma análise das discussões da comunidade SAP, os pesquisadores utilizaram técnicas de mineração de texto e modelagem de tópicos, baseadas no algoritmo Latent Dirichlet Allocation (LDA), para organizar os problemas identificados em 25 tópicos, posteriormente agrupados em seis categorias. Os tópicos receberam nomes, descrições e exemplos, permitindo representar de forma estruturada dificuldades relacionadas à autenticação, conectividade, bancos de dados, tecnologias específicas, recursos de apoio e instalação. Essa abordagem demonstra uma forma de organizar o conhecimento disperso nas discussões, sem pressupor sua adoção como rotina operacional pela SAP.",
+    "estudos": ["E12"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre as dificuldades dos desenvolvedores externos ocorre quando as informações provenientes de seus relatos são utilizadas para orientar ações de correção e melhoria da plataforma e de seus recursos de apoio. Na comunidade SAP, problemas relacionados ao funcionamento de instâncias na nuvem e ao SAP HANA Cockpit foram comunicados por desenvolvedores e resultaram em ações de correção. A análise dos assuntos recorrentes também é apresentada como uma possibilidade para apoiar a priorização de problemas e identificar informações ausentes, inadequadas ou desatualizadas em tutoriais e documentação técnica. Dessa forma, o conhecimento sobre as dificuldades pode orientar melhorias nos recursos disponibilizados aos desenvolvedores, distinguindo as correções efetivamente relatadas das possibilidades de utilização propostas na pesquisa.",
+    "estudos": ["E12"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C16",
     "nome": "Impactos de mudanças de desenvolvedores externos no negócio",
-    "descricao": "Esse conhecimento envolve a percepção das consequências econômicas e operacionais que alterações em serviços de desenvolvedores externos trazem para o seu produto. A incapacidade de antecipar esses impactos pode gerar perdas financeiras e quebras abruptas na entrega de valor.",
+    "descricao": "Esse conhecimento abrange a compreensão dos impactos que alterações em serviços e soluções disponibilizados por desenvolvedores externos podem provocar nas atividades de negócio dos participantes do ECOS. Envolve a interpretação das relações de dependência entre essas ofertas e os serviços utilizados, considerando como mudanças em componentes e tecnologias de terceiros podem afetar o funcionamento, o escopo e as capacidades dos serviços oferecidos. Essa compreensão permite considerar as consequências das alterações durante decisões relacionadas à arquitetura e à continuidade das atividades no ECOS.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -761,12 +790,20 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "Os impactos de mudanças de desenvolvedores externos no negócio são classificados como conhecimento tácito-cognitivo porque compreendê-los exige interpretar relações entre serviços e atividades em andamento. O nível Ecossistema se aplica porque envolvem ofertas de desenvolvedores externos conectadas a diferentes participantes. A dimensão Negócio foi selecionada porque essas mudanças afetam serviços e decisões em curso.",
+    "justificativaClassificacao": "O conhecimento sobre os impactos de mudanças de desenvolvedores externos no negócio é classificado no nível Ecossistema porque envolve relações entre serviços e soluções disponibilizados por diferentes participantes, cujas alterações podem afetar atividades e ofertas de outras organizações. Enquadra-se na dimensão Negócio por abordar as consequências dessas mudanças sobre o funcionamento, o escopo e a continuidade dos serviços utilizados pelos participantes do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos que mantêm os serviços dos quais o negócio depende, a partir das mudanças que realizam neles.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS cujas atividades em andamento dependem desses serviços e precisam antecipar seus impactos.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário considerar, nas decisões arquiteturais e de negócio, como mudanças em serviços de desenvolvedores externos podem afetar as atividades em andamento.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre os impactos de mudanças de desenvolvedores externos no negócio está relacionada à utilização da compreensão das dependências entre serviços e ofertas de terceiros para orientar decisões no ECOS. No contexto de cidades inteligentes, o estudo destaca a importância de compreender como alterações em serviços externos podem afetar atividades de negócio em andamento, considerando que escolhas relacionadas a dispositivos e tecnologias de terceiros influenciam o escopo e as capacidades dos serviços oferecidos. Esse conhecimento pode ser considerado durante a análise de alternativas e decisões arquiteturais que envolvem diferentes participantes, permitindo examinar possíveis consequências para os serviços utilizados. Essa associação representa uma possibilidade de aplicação fundamentada no estudo, sem pressupor a demonstração de uma prática específica de gestão desses impactos.",
+    "estudos": ["E16"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C17",
