@@ -546,7 +546,7 @@
 "atividadesAssociadas": true
 
   },
-  {
+{
     "id": "C11",
     "nome": "Necessidades de mercado e lacunas do ecossistema",
     "descricao": "Esse conhecimento abrange informações sobre as necessidades dos clientes, a evolução do mercado e as lacunas existentes na oferta de produtos e serviços do ECOS. Envolve a compreensão das demandas atendidas e não atendidas pelas soluções disponíveis, das condições competitivas e das oportunidades de diferenciação e inovação. Essas informações permitem aos participantes reconhecer possibilidades de desenvolvimento de novos produtos, funcionalidades e serviços complementares, considerando as necessidades do mercado e o posicionamento das soluções existentes no ECOS.",
@@ -586,92 +586,120 @@
 "atividadesAssociadas": true
 
   },
-  {
-    "id": "C12",
-    "nome": "Expertise dos participantes do ECOS",
-    "descricao": "Esse conhecimento abrange as competências, experiências, habilidades especializadas e conhecimentos práticos desenvolvidos pelos participantes do ECOS em suas atividades e interações. Compreende a familiaridade desses participantes com tecnologias, domínios de aplicação, práticas de desenvolvimento e resolução de problemas, incluindo saberes adquiridos pela experiência e mobilizados na colaboração entre indivíduos e equipes.",
-    "natureza": "Tácito-cognitivo",
-    "nivel": "Ecossistema",
-    "dimensao": "Social",
-    "tipoEcos": [],
-    "acaoGerencia": ["Compartilhamento", "Uso e aplicação"],
-    "solucoes": ["S08", "S14", "S18", "S31"],
-    "estudos": ["E03", "E08", "E17"],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": ["D02", "D03", "D06"],
-    "evidencia": {
-      "D02": {
-        "estudo": "E08",
-        "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento"
-      },
-      "D03": {
-        "estudo": "E17",
-        "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca"
-      },
-      "D06": {
-        "estudo": "E03",
-        "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
-      }
+
+{
+  "id": "C12",
+  "nome": "Expertise dos participantes do ECOS",
+  "descricao": "Esse conhecimento abrange as competências, experiências, habilidades especializadas e conhecimentos práticos desenvolvidos pelos participantes do ECOS em suas atividades e interações. Compreende a familiaridade desses participantes com tecnologias, domínios de aplicação, práticas de desenvolvimento e resolução de problemas, incluindo saberes adquiridos pela experiência e mobilizados na colaboração entre indivíduos e equipes.",
+  "natureza": "Tácito-cognitivo",
+  "nivel": "Ecossistema",
+  "dimensao": "Social",
+  "estudos": ["E03", "E08", "E17"],
+  "pendencia": "",
+  "relacoesConfirmadas": true,
+  "desafios": ["D02", "D03", "D06"],
+  "evidencia": {
+    "D02": {
+      "estudo": "E08",
+      "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento"
     },
-    "justificativaClassificacao": "A expertise dos participantes do ECOS é classificada no nível Ecossistema porque envolve conhecimentos especializados distribuídos entre participantes de diferentes projetos e comunidades. A dimensão Social foi aplicada porque sua gerência está relacionada às competências dos atores, às relações de colaboração e ao compartilhamento de experiências entre participantes.",
-    "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente nas habilidades demonstradas pelos participantes do ECOS e nas interações dos agentes de ligação entre comunidades.",
-    "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que formam equipes, por novos integrantes que procuram orientação e por comunidades que dependem da resolução de problemas entre fronteiras.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário tornar localizável a expertise dos participantes do ECOS por mecanismos de recomendação baseados em repositórios semânticos e redes sociais, apoiados por intermediação entre comunidades.",
-    "importanciaGerencia": "Gerenciar a expertise dos participantes do ECOS é importante para identificar pessoas com competências adequadas às necessidades dos projetos, apoiar a colaboração entre especialistas de diferentes áreas e facilitar o aproveitamento das experiências adquiridas pelos participantes. Essa gerência também contribui para a seleção de colaboradores e para o compartilhamento de conhecimentos necessários à realização de atividades e à resolução de problemas.",
-    "atoresEnvolvidos": "Os desenvolvedores, especialistas e demais participantes do ECOS desenvolvem e utilizam expertise a partir de suas experiências e atividades. Colaboradores experientes podem compartilhar conhecimentos com outros participantes, enquanto responsáveis por projetos e equipes podem utilizar informações sobre essas competências para identificar especialistas e apoiar a formação de colaborações. No Eclipse, usuários também compartilham aspectos de sua expertise por meio das composições de componentes que criam e utilizam.",
-    "atividadesGerencia": [
-      {
-        "processo": "Identificação",
-        "descricao": "Identificação das competências e dos conhecimentos especializados dos participantes a partir de suas contribuições, utilizando modelos semânticos e mecanismos de recuperação de expertise.",
-        "estudos": ["E08"]
-      },
-      {
-        "processo": "Compartilhamento",
-        "descricao": "Troca de experiências e conhecimentos especializados entre participantes, por meio de discussões, colaboração entre projetos e compartilhamento de composições de componentes.",
-        "estudos": ["E03", "E17"]
-      },
-      {
-        "processo": "Codificação",
-        "descricao": "Representação de aspectos da expertise dos participantes por meio de ontologias que relacionam colaboradores às suas competências e de composições de componentes que refletem experiências adquiridas durante suas atividades.",
-        "estudos": ["E08", "E17"]
-      },
-      {
-        "processo": "Aplicação",
-        "descricao": "Utilização de informações sobre a expertise dos participantes para recomendar colaboradores e aproveitar experiências de outros usuários na composição de ambientes de trabalho.",
-        "estudos": ["E08", "E17"]
-      }
-    ],
-    "atividadesAssociadas": true,
-    "nomeEmFrase": "à expertise dos participantes do ECOS"
-  },
-  {
-    "id": "C13",
-    "nome": "Necessidades e prioridades dos participantes do ECOS",
-    "descricao": "Esse conhecimento está relacionado às motivações, restrições e objetivos estratégicos dos diferentes tipos de participantes do ECOS, como governos, empresas e universidades. O desconhecimento dessas particularidades pode resultar em decisões unilaterais da organização central que desengajam outros participantes do ECOS.",
-    "natureza": "Tácito-cognitivo",
-    "nivel": "Ecossistema",
-    "dimensao": "Negócio",
-    "tipoEcos": [],
-    "acaoGerencia": ["Compartilhamento"],
-    "solucoes": ["S10", "S11", "S18"],
-    "estudos": ["E07", "E16"],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": ["D11"],
-    "evidencia": {
-      "D11": {
-        "estudo": "E07",
-        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos participantes do ECOS, o mesmo objeto"
-      }
+    "D03": {
+      "estudo": "E17",
+      "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca"
     },
-    "justificativaClassificacao": "As necessidades e prioridades dos participantes do ECOS são classificadas como conhecimento tácito-cognitivo porque dependem das percepções e dos interesses de cada participante. O nível Ecossistema se aplica porque decisões coletivas exigem entendimento entre participantes do ECOS com demandas distintas. A dimensão Negócio foi selecionada porque essas prioridades orientam investimentos e atributos de qualidade da plataforma tecnológica comum.",
-    "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos próprios participantes do ECOS, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
-    "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS envolvidos em decisões conjuntas e pela organização central responsável pela plataforma tecnológica comum.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário promover espaços de articulação interorganizacional para compartilhar e compreender necessidades distintas, recorrendo à intermediação quando ela existir.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    "D06": {
+      "estudo": "E03",
+      "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
+    }
   },
+  
+"justificativaClassificacao": "O conhecimento sobre a expertise dos participantes do ECOS é classificado no nível Ecossistema porque envolve competências e experiências especializadas distribuídas entre participantes de diferentes projetos, organizações e comunidades. Enquadra-se na dimensão Social por abordar conhecimentos relacionados às capacidades dos participantes, às relações de colaboração e ao compartilhamento de experiências entre indivíduos e equipes do ECOS.",
+  "atividadesGerencia": [
+    {
+      "processo": "Aquisição",
+      "descricao": "A aquisição do conhecimento sobre a expertise dos participantes do ECOS ocorre por meio da obtenção de informações sobre competências e experiências de colaboradores externos às organizações interessadas em sua participação nos projetos. No Collab-RS, essa atividade envolve a recuperação de dados de repositórios de desenvolvimento e redes sociotécnicas, incluindo contribuições em código-fonte, dependências utilizadas e discussões técnicas. Essas informações são processadas e relacionadas aos participantes e aos tópicos de conhecimento, permitindo ampliar o conhecimento disponível sobre suas competências especializadas.",
+      "estudos": ["E08"]
+    },
+    {
+      "processo": "Compartilhamento",
+      "descricao": "O compartilhamento do conhecimento sobre a expertise dos participantes do ECOS ocorre por meio da troca de experiências e conhecimentos especializados entre indivíduos, equipes e comunidades. No Astropy, participantes que atuam em diferentes projetos facilitam a circulação de conhecimentos por meio de discussões técnicas, esclarecimentos sobre decisões de implementação e colaboração na resolução de problemas. No Eclipse, o ShareXP permite compartilhar composições de componentes que refletem experiências adquiridas durante as atividades dos usuários, possibilitando que outros participantes conheçam e discutam essas escolhas em seus contextos de trabalho.",
+      "estudos": ["E03", "E17"]
+    },
+    {
+      "processo": "Armazenamento",
+      "descricao": "O armazenamento do conhecimento sobre a expertise dos participantes do ECOS está relacionado à manutenção de informações estruturadas que representam aspectos de suas competências e contribuições. No Collab-RS, essas informações são incorporadas à ontologia SECOn, que mantém relações entre colaboradores, projetos, artefatos e tópicos de conhecimento para apoiar consultas e recomendações posteriores. A arquitetura também prevê mecanismos de armazenamento de dados em estruturas específicas, embora utilize nativamente uma abordagem de dados virtuais. Dessa forma, são mantidas representações parciais da expertise dos participantes, sem pressupor o armazenamento integral de seus conhecimentos tácitos.",
+      "estudos": ["E08"]
+    },
+    {
+      "processo": "Codificação",
+      "descricao": "A codificação do conhecimento sobre a expertise dos participantes do ECOS ocorre por meio da representação explícita de aspectos de suas competências e experiências em estruturas que permitem sua consulta e interpretação. No Collab-RS, a ontologia SECOn relaciona colaboradores, contribuições e tópicos de conhecimento, utilizando modelos semânticos para representar indícios de conhecimentos especializados. No ShareXP, as composições de componentes utilizadas pelos participantes são representadas por descrições serializadas e capturas de tela, tornando acessíveis escolhas que refletem experiências adquiridas durante suas atividades. Essas representações expressam manifestações da expertise, sem abranger integralmente seu caráter tácito.",
+      "estudos": ["E08", "E17"]
+    },
+    {
+      "processo": "Criação",
+      "descricao": "A criação do conhecimento sobre a expertise dos participantes do ECOS está relacionada à construção de novas informações a partir da análise das relações entre colaboradores, contribuições e tópicos de conhecimento. No Collab-RS, mecanismos de inferência aplicados à ontologia SECOn permitem produzir relações anteriormente não explícitas, associando participantes a possíveis conhecimentos especializados com base em seus históricos de contribuição e nas tecnologias utilizadas. Esses resultados ampliam as informações disponíveis sobre a expertise dos colaboradores, sem significar a criação de novas competências individuais ou a comprovação definitiva dos conhecimentos inferidos.",
+      "estudos": ["E08"]
+    },
+    {
+      "processo": "Aplicação",
+      "descricao": "A aplicação do conhecimento sobre a expertise dos participantes do ECOS ocorre quando informações sobre competências e experiências são utilizadas para apoiar atividades e decisões relacionadas aos projetos. No Collab-RS, essas informações fundamentam a recomendação de colaboradores com conhecimentos especializados compatíveis com as necessidades dos projetos, considerando suas contribuições e os tópicos de interesse. No ShareXP, os usuários podem aproveitar experiências de outros participantes ao consultar composições de componentes e incorporar configurações ou ferramentas aos próprios ambientes de trabalho. Essas práticas permitem utilizar conhecimentos especializados previamente desenvolvidos para orientar a colaboração e a realização de atividades no ECOS.",
+      "estudos": ["E08", "E17"]
+    },
+    {
+      "processo": "Avaliação",
+      "descricao": "A avaliação do conhecimento sobre a expertise dos participantes do ECOS está relacionada à verificação das evidências que fundamentam as informações atribuídas às suas competências especializadas. No Collab-RS, os responsáveis pela seleção de colaboradores podem consultar registros de contribuições, commits e discussões técnicas associados aos tópicos de conhecimento utilizados nas recomendações. A ferramenta também disponibiliza informações sobre a proveniência e o contexto dessas associações, permitindo examinar a fundamentação das estimativas de expertise. Essa verificação contribui para a análise das recomendações, sem representar uma validação integral das competências dos participantes.",
+      "estudos": ["E08"]
+    }
+  ],
+  "atividadesAssociadas": true,
+  "nomeEmFrase": "à expertise dos participantes do ECOS"
+},
+
+
+{
+  "id": "C13",
+  "nome": "Necessidades e prioridades dos participantes do ECOS",
+  "descricao": "Esse conhecimento abrange as necessidades, interesses, prioridades e restrições dos diferentes participantes do ECOS, considerando seus objetivos organizacionais e as particularidades de suas atividades. Envolve a compreensão das demandas de organizações públicas e privadas, desenvolvedores e demais participantes, incluindo expectativas relacionadas à colaboração, à tomada de decisões e aos atributos de qualidade das soluções. Essas informações permitem considerar diferentes perspectivas nas decisões que orientam o desenvolvimento e a evolução do ECOS.",
+  "natureza": "Tácito-cognitivo",
+  "nivel": "Ecossistema",
+  "dimensao": "Negócio",
+  "tipoEcos": [],
+  "acaoGerencia": ["Compartilhamento"],
+  "solucoes": ["S10", "S11", "S18"],
+  "estudos": ["E07", "E16"],
+  "pendencia": "",
+  "relacoesConfirmadas": true,
+  "desafios": ["D11"],
+  "evidencia": {
+    "D11": {
+      "estudo": "E07",
+      "motivo": "A relutância dos membros em contribuir é sobre a disposição dos participantes do ECOS, o mesmo objeto"
+    }
+  },
+  "justificativaClassificacao": "O conhecimento sobre as necessidades e prioridades dos participantes do ECOS é classificado no nível Ecossistema porque envolve interesses e demandas de diferentes organizações e comunidades, que precisam ser considerados nas decisões coletivas. Enquadra-se na dimensão Negócio por abordar objetivos organizacionais, estratégias de participação e prioridades que orientam decisões sobre investimentos, soluções e atributos de qualidade no ECOS.",
+  "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos próprios participantes do ECOS, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
+  "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS envolvidos em decisões conjuntas e pela organização central responsável pela plataforma tecnológica comum.",
+  "praticasGerencia": "Para mantê-lo acessível e útil, é necessário promover espaços de articulação interorganizacional para compartilhar e compreender necessidades distintas, recorrendo à intermediação quando ela existir.",
+  "atividadesGerencia": [
+    {
+      "processo": "Compartilhamento",
+      "descricao": "O compartilhamento do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da comunicação e da troca de informações entre organizações e demais interessados envolvidos nas atividades do ecossistema. No E07, esse processo envolve discussões, negociações e utilização de ferramentas colaborativas, como fóruns e plataformas de decisão coletiva, permitindo que participantes com diferentes objetivos institucionais expressem suas demandas e compreendam as necessidades uns dos outros. No E16, a comunicação de requisitos e as discussões com especialistas e interessados contribuem para transmitir prioridades relacionadas aos atributos de qualidade e às decisões arquiteturais, favorecendo a compreensão de diferentes perspectivas durante o desenvolvimento das soluções.",
+      "estudos": ["E07", "E16"]
+    },
+    {
+      "processo": "Codificação",
+      "descricao": "A codificação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre por meio da representação explícita de demandas e expectativas que podem ser formalizadas como requisitos de desenvolvimento. No E16, esse processo envolve a documentação de requisitos funcionais e não funcionais e sua incorporação em especificações arquiteturais, considerando atributos de qualidade relevantes para os interessados. Essas representações tornam acessíveis determinadas necessidades e prioridades, como preocupações com segurança, escalabilidade, disponibilidade e conformidade com políticas, sem pressupor que todos os interesses e objetivos organizacionais dos participantes sejam integralmente formalizados.",
+      "estudos": ["E16"]
+    },
+    {
+      "processo": "Aplicação",
+      "descricao": "A aplicação do conhecimento sobre as necessidades e prioridades dos participantes do ECOS ocorre quando essas informações são utilizadas para orientar decisões coletivas e escolhas relacionadas ao desenvolvimento das soluções. No E07, a consideração das demandas de diferentes organizações durante discussões e negociações contribui para a definição de funcionalidades alinhadas às necessidades dos participantes, reduzindo a predominância de decisões orientadas exclusivamente pelos interesses da organização orquestradora. No E16, os requisitos e as prioridades dos interessados são utilizados na análise de alternativas arquiteturais e na consideração de compromissos entre atributos de qualidade, permitindo que as decisões de projeto contemplem diferentes expectativas e restrições presentes no ECOS.",
+      "estudos": ["E07", "E16"]
+    }
+  ],
+  "atividadesAssociadas": true
+}
+,
   {
     "id": "C14",
     "nome": "Competência e confiabilidade dos participantes do ECOS",
