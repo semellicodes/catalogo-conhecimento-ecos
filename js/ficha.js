@@ -583,15 +583,13 @@ function rodapeDeEstudos(dados, conhecimento, ids) {
   return rodape;
 }
 
-/* Um processo sem descrição cai em um de dois avisos, e a diferença importa.
-   Numa ficha já revista, a ausência é achado da revisão e se diz como tal. Numa
-   ficha ainda não revista, dizer o mesmo afirmaria uma ausência que ninguém
-   procurou, então o aviso é de revisão pendente. Quem separa as duas é o
-   `atividadesAssociadas` do conhecimento, `true` para revista e "pendente" para
-   as que esperam a leitura dos estudos primários. */
+/* Quando atividadesGerencia existe como lista, o conhecimento
+   já foi revisado, mesmo que nenhuma atividade tenha sido
+   identificada nos estudos primários associados.
+   Se o campo não existir, a revisão permanece pendente. */
 function painelSemInformacao(dados, conhecimento, processo) {
   const copia = dados.meta.fichaAtividades || {};
-  const revista = conhecimento.atividadesAssociadas === true;
+  const revista = Array.isArray(conhecimento.atividadesGerencia);
   const nome = conhecimento.nomeEmFrase || `a ${conhecimento.nome.toLowerCase()}`;
   const modelo = revista ? copia.textoSemInformacao : copia.textoPendente;
   const titulo = revista
