@@ -67,7 +67,7 @@
         "rotulo": "4. Atividades",
         "icone": "gerencia",
         "cartaoIntroducao": {
-          "titulo": "Atividades Associadas ao Conhecimento",
+          "titulo": "Atividades associadas à gerência do conhecimento",
           "texto": "A gerência do conhecimento pode ser analisada por meio de oito processos inter-relacionados, que abrangem desde a identificação e a aquisição até a aplicação e a avaliação do conhecimento. No catálogo, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento.",
           "referencias": "lopes2026"
         },
@@ -156,7 +156,7 @@
       "referencia": "lopes2026"
     },
     "atividades": {
-      "titulo": "Atividades Associadas ao Conhecimento",
+      "titulo": "Atividades associadas à gerência do conhecimento",
       "texto": "Os oito processos de gerência do conhecimento aparecem sempre, e cada um abre a descrição da atividade identificada para este conhecimento ou o aviso de que nenhuma informação foi encontrada. A associação entre cada atividade e o processo correspondente é análise deste trabalho, feita a partir dos estudos primários associados, e não classificação dos autores dos estudos. Ausência de informação na revisão não significa que a atividade não ocorra no ECOS.",
       "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
       "referencia": "lopes2026"

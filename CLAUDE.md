@@ -199,7 +199,7 @@ nativamente pelo navegador com `type="module"`.
   internos repetidos
 - A ficha tem quatro blocos, nesta ordem. Classificação do conhecimento, Exemplos de ECOS em que o
   conhecimento foi observado, o bloco de atividades e Estudos primários associados. O terceiro
-  muda de nome conforme a forma da ficha, e no C01 chama-se Atividades Associadas ao Conhecimento
+  muda de nome conforme a forma da ficha, e no C01 chama-se Atividades associadas à gerência do conhecimento
 - Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é onde a relação entre
   desafio e conhecimento se lê inteira, nos dois sentidos. Na ficha eram um quinto bloco sobre um
   assunto que a ficha não trata. Saíram com eles o `desafiosRelacionados`, o `linhaDesafio`, o
@@ -211,7 +211,7 @@ nativamente pelo navegador com `type="module"`.
 - Nenhuma categoria de ECOS começa aberta. A seção abre neutra e quem escolhe o que consultar é
   quem lê, como nas atividades. A ficha é remontada a cada abertura, então o estado não atravessa
   de um conhecimento para o outro
-- As vinte fichas usam "Atividades Associadas ao Conhecimento", com os oito processos. Quem decide
+- As vinte fichas usam "Atividades associadas à gerência do conhecimento", com os oito processos. Quem decide
   é o `atividadesAssociadas` do conhecimento, e não uma lista de identificadores escrita no módulo
 - O `atividadesAssociadas` tem dois valores, e a diferença é acadêmica, não visual. `true` diz que
   os oito foram conferidos contra os estudos primários daquele conhecimento, e hoje é o caso do C01
@@ -402,7 +402,7 @@ nativamente pelo navegador com `type="module"`.
 - A aba de Atividades apresenta só os oito processos de gerência do conhecimento, por orientação
   do professor. É o arranjo dos Exemplos, cartão verde com o nome e a apresentação e, abaixo, um
   painel único com os oito, que fecha com a citação
-- O cartão verde chama-se "Atividades Associadas ao Conhecimento", o mesmo nome do bloco da ficha
+- O cartão verde chama-se "Atividades associadas à gerência do conhecimento", o mesmo nome do bloco da ficha
   migrada e da ajuda dele. O C01 já usa os três, e o par fecha quando as vinte forem revistas
 - A aba 4 é a exceção à justificação no celular. Abaixo de 36rem a introdução do cartão verde e as
   oito descrições vão alinhadas à esquerda, com `hyphens: manual`. São frases curtas, de duas ou

@@ -649,7 +649,7 @@ function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lis
  * célula, para a fileira não mudar de altura nem de posição quando abre.
  */
 function atividadesAssociadas(dados, conhecimento) {
-  const bloco = secao(dados, 'Atividades Associadas ao Conhecimento', 'atividades');
+  const bloco = secao(dados, 'Atividades associadas à gerência do conhecimento', 'atividades');
   const raiz = criar('div', 'exemplos-ecos atividades');
   const painel = criar('div', 'exemplos-ecos__painel atividades__painel');
   painel.id = `atividades-${conhecimento.id}`;
@@ -657,7 +657,7 @@ function atividadesAssociadas(dados, conhecimento) {
 
   const lista = criar('div', 'atividades__cartoes');
   lista.setAttribute('role', 'group');
-  lista.setAttribute('aria-label', 'Atividades associadas ao conhecimento');
+  lista.setAttribute('aria-label', 'Atividades associadas à gerência do conhecimento');
   const porProcesso = new Map((conhecimento.atividadesGerencia || [])
     .map((atividade) => [atividade.processo, atividade]));
   /* A lista dos oito e a ordem deles vêm da aba de Atividades da Estrutura,
@@ -676,54 +676,9 @@ function processosDoReferencial(dados) {
 }
 
 
+
 function gerencia(dados, conhecimento) {
-  // Utiliza a estrutura atual, inclusive quando não há atividades.
-  if (Array.isArray(conhecimento.atividadesGerencia)) {
-    if (conhecimento.atividadesGerencia.length > 0) {
-      return atividadesAssociadas(dados, conhecimento);
-    }
-
-    const bloco = secao(
-      dados,
-      'Gerência do conhecimento no ECOS',
-      'gerencia'
-    );
-
-    const mensagem = criar(
-      'p',
-      'exemplos-ecos__texto',
-      'Não foram identificadas, nos estudos primários associados, atividades de gerência diretamente relacionadas a este conhecimento.'
-    );
-
-    bloco.append(mensagem);
-    return bloco;
-  }
-
-  // Compatibilidade com conhecimentos ainda não migrados.
-  const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
-  const lista = criar('dl', 'gerencia');
-
-  GERENCIA.forEach(([chave, rotulo]) => {
-    const conteudo = texto(conhecimento[chave]);
-
-    if (conteudo) {
-      lista.append(
-        criar('dt', 'gerencia__rotulo', rotulo),
-        criar('dd', 'gerencia__valor', conteudo)
-      );
-    }
-  });
-
-  const acoes = criar('dd', 'gerencia__valor gerencia__valor--acoes');
-  acoes.append(acoesDeGerencia(dados, conhecimento));
-
-  lista.append(
-    criar('dt', 'gerencia__rotulo', 'Ações de gerência'),
-    acoes
-  );
-
-  bloco.append(lista);
-  return bloco;
+  return atividadesAssociadas(dados, conhecimento);
 }
 
 
