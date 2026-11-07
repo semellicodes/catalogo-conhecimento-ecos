@@ -429,9 +429,6 @@ nativamente pelo navegador com `type="module"`.
   Participação e compartilhamento e Ações de gerência, as etiquetas de ação, a nota metodológica e
   os construtores `blocoGerencia`, `etiquetasDeAcao`, `notaMetodologica`, `aberturaDeBloco` e
   `blocoGerenciaDoEcos`, mais as regras de CSS deles. Está no histórico se a decisão voltar
-- Com ele saíram da Estrutura as citações de `kauschinger2024`, `kauschinger2023` e `zaim2019`.
-  As três continuam cadastradas e continuam sendo citadas pela ajuda do bloco de gerência da ficha,
-  em `meta.ajudas`
 - A aba descreve componentes que as fichas ainda não mostram. Elas seguem com recursos,
   participação e ações de gerência, e só vão receber importância, atores e atividades depois da
   leitura dos estudos primários. Enquanto isso, a Estrutura e a ficha falam de coisas diferentes,
@@ -593,10 +590,6 @@ nativamente pelo navegador com `type="module"`.
   `meta.json` junto. Nenhum módulo os lia depois da mudança
 - `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão na
   Identificação
-- O `zaim2019` está cadastrado com o ano do fascículo, volume 17, número 1, de 2019. A
-  especificação da reformulação pediu 2018, que é o ano da publicação antecipada no DOI. Ficou
-  2019, que é o que a bibliografia traz. Ele não é mais citado na Estrutura, só pela ajuda da
-  ficha. Conferir antes da defesa qual das duas o trabalho adota
 - O `lopes2026` está cadastrado com os sete autores, o título, os anais da 27th European
   Conference on Knowledge Management, 2026, e o DOI. O verbete nasceu incompleto, porque a rede da
   sessão não alcançava o DOI nem o Crossref, e a autora forneceu os dados a partir do PDF. Não tem
@@ -631,9 +624,6 @@ nativamente pelo navegador com `type="module"`.
 - O `prefixoFonte` em `meta.json` é opcional e só a ajuda da Gerência o declara, com "Síntese do
   KM4SECO elaborada com base em", porque só ela é síntese deste trabalho e não explicação de um
   esquema alheio. Sem ele a citação aparece sozinha, como em todo o resto do catálogo
-- A ajuda dos desafios cita `revisaoRapidaManuscrito`, porque os desafios são achado da revisão
-  deste trabalho e não de um esquema publicado. Essa chave não tem verbete, então a citação sai
-  como texto e não como link
 - O bloco da ficha, a ajuda dele e, quando existir, o cartão da Estrutura que trata do mesmo
   assunto levam o mesmo nome, palavra por palavra. A ajuda não usa forma curta. Nomes diferentes
   para a mesma coisa fazem parecer que são duas, e o catálogo já teve três redações para os
@@ -641,25 +631,10 @@ nativamente pelo navegador com `type="module"`.
 - Os cinco pares hoje são "Classificação do conhecimento", "Exemplos de ECOS em que o conhecimento
   foi observado", "Gerência do conhecimento no ECOS", "Desafios relacionados à Gerência de
   Conhecimento" e "Estudos primários associados". Mexer num exige mexer no outro
-- `revisaoRapidaManuscrito` não tem verbete na página de referências, porque o manuscrito não está
-  publicado, então quem cita essa chave escreve em texto e não abre link. Quem decide isso é o
-  `temVerbete` do `dados.js`, num lugar só
-- A descrição de cada valor possível fica no glossário do Explorar e no botão de ajuda da seção,
-  nunca dentro da caixa. Dois lugares já é o limite, e dentro da caixa seria o terceiro
-- O bloco de gerência da ficha mostra recursos de conhecimento, participação e compartilhamento, e
-  ações de gerência, um por linha, com as etiquetas das ações fechando o bloco. O parágrafo genérico
-  sobre o que é gerência do conhecimento saiu, porque repetia em cada uma das vinte fichas a
-  introdução da camada de Gerência. Ele existe num lugar só, na aba de Atividades da Estrutura. Esses rótulos não
-  existem em `classificacoes.json`, então moram no `ficha.js`, junto do desenho. O conteúdo continua
-  vindo só de `dados/`
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
-- O bloco de filtro tem duas linhas. Na primeira, a busca até perto da metade da largura, as
-  pastilhas de natureza e o contador no canto. Na segunda, o rótulo da faceta ao lado das pastilhas
-  dela, nunca acima. No rodapé do bloco, o aviso das facetas ainda não classificadas, em texto
-  menor e apagado. No celular tudo empilha e o bloco inteiro vira folha
 - O rótulo da natureza é só acessível, não escrito, porque ali ele não cabe sem empurrar as
   pastilhas para a linha de baixo, e as três pastilhas já dizem de que faceta são
 - O grupo de faceta é `div` com `role="group"` e `aria-labelledby`, não `fieldset`, porque `legend`

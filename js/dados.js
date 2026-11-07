@@ -78,42 +78,21 @@ const ROTULOS_REFERENCIAS = {
   campbell2010: 'Campbell e Ahmed (2010)',
   cartaxo2018: 'Cartaxo et al. (2018)',
   cartaxo2020: 'Cartaxo et al. (2020)',
-  charmaz2006: 'Charmaz (2006)',
   davenport1998: 'Davenport e Prusak (1998)',
   johnson2020: 'Johnson et al. (2020)',
   kauschinger2021: 'Kauschinger et al. (2021)',
-  /* Os três autores escritos por extenso, e não abreviados em et al., porque
-     são três trabalhos de Kauschinger no catálogo e a camada de Gerência cita
-     dois deles lado a lado. */
-  kauschinger2023: 'Kauschinger, Münch e Schreieck (2023)',
-  kauschinger2024: 'Kauschinger, Schreieck e Krcmar (2024)',
-  /* O verbete está incompleto, sem a lista de autores e sem o veículo. A
-     especificação forneceu só a forma curta, o ano e o DOI, e inventar o
-     resto seria pior do que deixar pendente. */
   lopes2026: 'Lopes et al. (2026)',
   manikas2016: 'Manikas (2016)',
-  nonaka1997: 'Nonaka e Takeuchi (1997)',
-  /* Sem autor e ano porque o manuscrito não está publicado. Quando sair, troca. */
-  revisaoRapidaManuscrito: 'Revisão rápida deste trabalho',
   santos2011: 'Santos e Werner (2011)',
-  santos2012: 'Santos et al. (2012)',
   seichter2010: 'Seichter et al. (2010)',
   steglich2020: 'Steglich et al. (2020)',
   viana2015: 'Viana e Conte (2015)',
-  zaim2019: 'Zaim, Muhammed e Tarim (2019)'
 };
 
 
 
+
 export const rotuloDaReferencia = (chave) => ROTULOS_REFERENCIAS[chave] || chave;
-
-/* O manuscrito da revisão fica nos dados como rastreabilidade interna, mas não
-   integra a lista pública de referências enquanto não houver publicação. Sem
-   verbete não há âncora, então quem cita essa chave escreve em texto, em vez de
-   abrir um link que cairia no topo da página de referências. */
-const SEM_VERBETE = new Set(['revisaoRapidaManuscrito']);
-
-export const temVerbete = (chave) => !SEM_VERBETE.has(chave);
 
 /* Uma referência é texto ou um par de texto e endereço. O endereço existe para
    as que têm DOI ou publicação oficial aberta, e quem desenha a lista decide se

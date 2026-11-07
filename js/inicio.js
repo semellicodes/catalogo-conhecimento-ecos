@@ -1,4 +1,4 @@
-import { carregar, rotuloDaReferencia, temVerbete, urlDaReferencia } from './dados.js?v=20261106-8';
+import { carregar, rotuloDaReferencia, urlDaReferencia } from './dados.js?v=20261106-8';
 let dadosReferencias;
 const el = (seletor) => document.querySelector(seletor);
 
@@ -9,39 +9,51 @@ function criar(tag, className, texto) {
   return elemento;
 }
 
+
 function fonteConceitual(chaves, prefixo) {
   const fonte = criar('p', 'estrutura__fonte-conceitual');
 
   if (prefixo) {
     fonte.append(criar('span', 'estrutura__fonte-prefixo', prefixo));
   }
+
   const referencias = (chaves || '')
     .split(',')
     .map((chave) => chave.trim())
     .filter(Boolean);
+
   referencias.forEach((chave, indice) => {
     const rotulo = rotuloDaReferencia(chave);
     const item = criar('span', 'estrutura__fonte-item');
 
-    if (temVerbete(chave)) {
+    const referencia = dadosReferencias?.referencias?.[chave];
+
+    if (referencia) {
       const link = criar('a', '', rotulo);
       const url = urlDaReferencia(dadosReferencias, chave);
+
       link.href = url || `referencias.html#referencia-${chave}`;
+
       if (url) {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
       }
+
       item.append(link);
     } else {
       item.append(rotulo);
     }
+
     if (indice < referencias.length - 1) {
       item.append(';', criar('span', 'apenas-leitor', ' '));
     }
+
     fonte.append(item);
   });
+
   return fonte;
 }
+
 
 
 const SVG = 'http://www.w3.org/2000/svg';
