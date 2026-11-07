@@ -489,7 +489,7 @@
   {
     "id": "C10",
     "nome": "Projetos que geram incidentes na plataforma",
-    "descricao": "Esse conhecimento identifica quais aplicações ou módulos desenvolvidos por participantes do ECOS apresentam histórico recorrente de falhas, gargalos ou indisponibilidade na plataforma tecnológica comum. Sem esse monitoramento, a estabilidade da plataforma tecnológica comum pode ficar comprometida sem que as causas-raiz sejam contidas.",
+    "descricao": "Esse conhecimento abrange informações sobre os projetos de software que originam incidentes na plataforma tecnológica de um ECOS, considerando a associação entre os incidentes registrados, os projetos responsáveis e a gravidade de seus impactos. Envolve o acompanhamento dos incidentes relacionados às entregas de software e a utilização de indicadores de confiabilidade para identificar projetos e fornecedores cujas contribuições afetam a estabilidade da plataforma. Essas informações permitem compreender a relação entre as atividades de desenvolvimento dos participantes e os problemas observados no ambiente operacional do ECOS.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -506,12 +506,45 @@
         "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10"
       }
     },
-    "justificativaClassificacao": "Os projetos que geram incidentes na plataforma são classificados como conhecimento explícito porque os incidentes e seus projetos de origem podem ser registrados e relacionados. O nível Ecossistema se aplica porque um projeto pode comprometer a estabilidade compartilhada por outros participantes. A dimensão Técnica foi selecionada porque esse conhecimento apoia o monitoramento da plataforma e o diagnóstico de incidentes.",
+    "justificativaClassificacao": "O conhecimento sobre os projetos que geram incidentes na plataforma é classificado no nível Ecossistema porque relaciona os incidentes originados por diferentes projetos e fornecedores aos seus impactos sobre a estabilidade da plataforma tecnológica compartilhada. Enquadra-se na dimensão Arquitetural (Técnica) por envolver o acompanhamento de incidentes, a análise de sua gravidade e a utilização de indicadores de confiabilidade para apoiar o diagnóstico de problemas e o monitoramento da plataforma do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente no processo de diagnóstico de incidentes e nos registros do backlog relacionados aos projetos de origem.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por uma equipe de gestão de TI da organização central, responsável por acompanhar a estabilidade da plataforma tecnológica comum e investigar seus incidentes.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e estruturar as informações sobre incidentes, relacionando-as aos projetos de origem para apoiar o monitoramento e a tomada de decisão.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Identificação",
+    "descricao": "A identificação do conhecimento sobre os projetos que geram incidentes na plataforma ocorre por meio da análise dos registros de incidentes e do reconhecimento dos projetos de software associados às ocorrências. Na abordagem PSECO-IM, o processo de tratamento e diagnóstico permite relacionar incidentes aos projetos de origem, especialmente quando estão associados a implantações recentes. Essas informações possibilitam identificar quais projetos contribuem para a instabilidade da plataforma tecnológica do ECOS e fornecem subsídios para seu acompanhamento pela organização central.",
+    "estudos": ["E10"]
+  },
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre os projetos que geram incidentes na plataforma ocorre por meio da disponibilização dos resultados do diagnóstico e dos indicadores de confiabilidade à equipe de gestão de TI da organização central. Na abordagem PSECO-IM, essas informações são apresentadas em relatórios e painéis que permitem consultar os projetos e fornecedores associados aos incidentes registrados. Essa disponibilização facilita a comunicação dos resultados do monitoramento e oferece subsídios para decisões relacionadas à governança e à estabilidade da plataforma tecnológica do ECOS.",
+    "estudos": ["E10"]
+  },
+  {
+    "processo": "Armazenamento",
+    "descricao": "O armazenamento do conhecimento sobre os projetos que geram incidentes na plataforma ocorre por meio da manutenção dos registros de incidentes e de suas associações aos projetos de software. Na abordagem PSECO-IM, a contabilização dos incidentes no backlog dos projetos gera um artefato denominado Incidents List, utilizado posteriormente no processo de diagnóstico. A ferramenta também utiliza informações do sistema de chamados da organização central e estruturas de persistência de dados, permitindo conservar os registros necessários ao acompanhamento dos projetos e ao cálculo dos indicadores de confiabilidade.",
+    "estudos": ["E10"]
+  },
+  {
+    "processo": "Codificação",
+    "descricao": "A codificação do conhecimento sobre os projetos que geram incidentes na plataforma ocorre por meio da estruturação das informações que relacionam os incidentes registrados aos projetos de software e seus impactos na plataforma tecnológica. Na abordagem PSECO-IM, esses dados são organizados considerando a quantidade e a gravidade dos incidentes, além do esforço de desenvolvimento dos projetos. As informações são representadas por indicadores de confiabilidade e painéis de acompanhamento, tornando explícitas e interpretáveis as relações entre os projetos, os fornecedores e os problemas que afetam a estabilidade do ECOS.",
+    "estudos": ["E10"]
+  },
+  {
+    "processo": "Criação",
+    "descricao": "A criação do conhecimento sobre os projetos que geram incidentes na plataforma está relacionada à produção de informações derivadas da análise dos registros de incidentes. Na abordagem PSECO-IM, o diagnóstico e o cálculo dos indicadores combinam dados sobre a quantidade e a gravidade das ocorrências com o esforço de desenvolvimento, produzindo medidas de confiabilidade dos projetos e fornecedores. Esses resultados permitem construir uma visão sobre os impactos das contribuições de software na estabilidade da plataforma tecnológica do ECOS, ampliando o conhecimento disponível para a equipe de gestão de TI.",
+    "estudos": ["E10"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre os projetos que geram incidentes na plataforma ocorre por meio da utilização das informações produzidas pelo diagnóstico e dos indicadores de confiabilidade para apoiar o monitoramento e as decisões de governança. Na abordagem PSECO-IM, a equipe de gestão de TI pode consultar os resultados para reconhecer projetos e fornecedores associados à instabilidade da plataforma, acompanhar seus indicadores e subsidiar decisões relacionadas à qualidade das entregas de software. O estudo apresenta o uso desses dados na ferramenta de apoio à decisão, sem demonstrar necessariamente a execução de todas as medidas gerenciais sugeridas.",
+    "estudos": ["E10"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C11",
