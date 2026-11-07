@@ -675,30 +675,57 @@ function processosDoReferencial(dados) {
   return (aba?.atividades?.processos || []).map((processo) => processo.nome);
 }
 
-/** Um campo de gerência por linha. Campo vazio não produz marcador na ficha. */
+
 function gerencia(dados, conhecimento) {
-  /* Três formas convivem enquanto as vinte são revistas uma a uma. Quem decide
-     é o dado de cada conhecimento, e não uma lista de identificadores escrita
-     aqui, para a migração acontecer uma ficha por vez. */
-  if (conhecimento.atividadesAssociadas) return atividadesAssociadas(dados, conhecimento);
-  if (conhecimento.atividadesGerencia?.length) return gerenciaPorComponentes(dados, conhecimento);
+  // Utiliza a estrutura atual, inclusive quando não há atividades.
+  if (Array.isArray(conhecimento.atividadesGerencia)) {
+    if (conhecimento.atividadesGerencia.length > 0) {
+      return atividadesAssociadas(dados, conhecimento);
+    }
+
+    const bloco = secao(
+      dados,
+      'Gerência do conhecimento no ECOS',
+      'gerencia'
+    );
+
+    const mensagem = criar(
+      'p',
+      'exemplos-ecos__texto',
+      'Não foram identificadas, nos estudos primários associados, atividades de gerência diretamente relacionadas a este conhecimento.'
+    );
+
+    bloco.append(mensagem);
+    return bloco;
+  }
+
+  // Compatibilidade com conhecimentos ainda não migrados.
   const bloco = secao(dados, 'Gerência do conhecimento no ECOS', 'gerencia');
   const lista = criar('dl', 'gerencia');
 
   GERENCIA.forEach(([chave, rotulo]) => {
     const conteudo = texto(conhecimento[chave]);
-    if (conteudo) lista.append(criar('dt', 'gerencia__rotulo', rotulo), criar('dd', 'gerencia__valor', conteudo));
+
+    if (conteudo) {
+      lista.append(
+        criar('dt', 'gerencia__rotulo', rotulo),
+        criar('dd', 'gerencia__valor', conteudo)
+      );
+    }
   });
 
-  /* Os três cartões fecham o bloco, sempre com o rótulo, porque agora são eles
-     que trazem a prática de gerência deste conhecimento. */
   const acoes = criar('dd', 'gerencia__valor gerencia__valor--acoes');
   acoes.append(acoesDeGerencia(dados, conhecimento));
-  lista.append(criar('dt', 'gerencia__rotulo', 'Ações de gerência'), acoes);
+
+  lista.append(
+    criar('dt', 'gerencia__rotulo', 'Ações de gerência'),
+    acoes
+  );
 
   bloco.append(lista);
   return bloco;
 }
+
 
 /* ---------- Relações e estudos ---------- */
 
