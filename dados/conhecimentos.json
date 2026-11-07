@@ -549,7 +549,7 @@
   {
     "id": "C11",
     "nome": "Necessidades de mercado e lacunas do ecossistema",
-    "descricao": "Esse conhecimento mapeia oportunidades de negócio, demandas não atendidas dos usuários e tendências de mercado relevantes para os participantes do ECOS. A ausência dessa visão pode levar desenvolvedores externos a criar soluções redundantes em vez de inovações complementares.",
+    "descricao": "Esse conhecimento abrange informações sobre as necessidades dos clientes, a evolução do mercado e as lacunas existentes na oferta de produtos e serviços do ECOS. Envolve a compreensão das demandas atendidas e não atendidas pelas soluções disponíveis, das condições competitivas e das oportunidades de diferenciação e inovação. Essas informações permitem aos participantes reconhecer possibilidades de desenvolvimento de novos produtos, funcionalidades e serviços complementares, considerando as necessidades do mercado e o posicionamento das soluções existentes no ECOS.",
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
@@ -561,12 +561,30 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "As necessidades de mercado e lacunas do ecossistema são classificadas como conhecimento explícito porque informações sobre clientes, mercado e produtos disponíveis podem ser coletadas e compartilhadas. O nível Ecossistema se aplica porque revelam oportunidades para diferentes participantes. A dimensão Negócio foi selecionada porque orientam diferenciação e decisões sobre a oferta de produtos.",
+    "justificativaClassificacao": "O conhecimento sobre as necessidades de mercado e lacunas do ecossistema é classificado no nível Ecossistema porque envolve informações sobre demandas dos clientes, oportunidades não atendidas e condições competitivas relacionadas ao conjunto de produtos e serviços oferecidos pelos participantes. Enquadra-se na dimensão Negócio por apoiar a identificação de oportunidades comerciais, a diferenciação competitiva e as decisões sobre o desenvolvimento de soluções complementares às ofertas existentes no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, a partir de dados de uso, dados de mercado e informações sobre necessidades e lacunas percebidas.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que buscam se diferenciar e identificar oportunidades para novos produtos ou serviços.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário compartilhar periodicamente dados de uso, necessidades de mercado, lacunas e análises competitivas com os desenvolvedores externos.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Aquisição",
+    "descricao": "A aquisição do conhecimento sobre as necessidades de mercado e lacunas do ecossistema ocorre quando os complementadores obtêm informações de fontes externas às suas organizações para compreender as demandas dos clientes, a evolução do mercado e as condições competitivas do ECOS. No estudo, essa atividade envolve o acompanhamento das necessidades dos consumidores e das soluções existentes, além da obtenção de estatísticas de utilização, informações sobre oportunidades não atendidas e análises competitivas disponibilizadas pelos proprietários das plataformas. Esses conhecimentos permitem aos complementadores ampliar sua compreensão sobre o ambiente de mercado e as possibilidades de diferenciação.",
+    "estudos": ["E09"]
+  },
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre as necessidades de mercado e lacunas do ecossistema ocorre por meio da disponibilização de informações relevantes aos complementadores pelos proprietários das plataformas. No estudo, essas informações incluem estatísticas gerais de utilização, necessidades dos clientes, lacunas na oferta de produtos e serviços e análises competitivas, comunicadas por recursos de fronteira da plataforma, como ferramentas de inteligência de mercado e informativos sobre o ECOS. O fornecimento periódico desses dados favorece a compreensão das oportunidades comerciais e do ambiente competitivo pelos participantes.",
+    "estudos": ["E09"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre as necessidades de mercado e lacunas do ecossistema ocorre quando os complementadores utilizam informações sobre clientes, concorrentes e soluções disponíveis para orientar suas estratégias comerciais e decisões sobre produtos e serviços. No estudo, o acompanhamento da evolução do mercado e das demandas ainda não atendidas permite reconhecer oportunidades de diferenciação, considerar novas funcionalidades e formular estratégias competitivas. As informações compartilhadas pelos proprietários das plataformas também apoiam essas decisões, contribuindo para direcionar iniciativas de inovação e desenvolvimento de soluções complementares no ECOS.",
+    "estudos": ["E09"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C12",
