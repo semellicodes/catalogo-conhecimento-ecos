@@ -13,18 +13,13 @@ async function iniciar() {
   dados.estudos.forEach((e) => {
     const linha = document.createElement('tr');
 
-    const tipos = e.tipoEcos.length
-      ? e.tipoEcos.join(', ')
-      : 'A definir';
-
     const celulas = [
-      e.id,
-      e.titulo,
-      e.autores,
-      e.ano,
-      e.pais,
-      tipos
-    ];
+  e.id,
+  e.titulo,
+  e.autores,
+  e.ano,
+  e.pais
+];
 
     celulas.forEach((valor, indice) => {
       const celula = document.createElement(
