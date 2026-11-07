@@ -1,12 +1,7 @@
 # Arquivos de origem
 
-O que está aqui é insumo da pesquisa, não dado que o site carrega. Nenhum módulo
-de `js/` lê esta pasta, e `js/dados.js` continua lendo apenas os seis arquivos de
-`dados/`.
+Esta pasta reúne materiais históricos e insumos da pesquisa utilizados durante o desenvolvimento do KM4SECO.
 
-| Arquivo | O que é |
-|---|---|
-| `relacoes-confirmadas.json` | Resultado da conferência dos 138 pares candidatos contra os artigos primários. Sobraram 78 confirmados, 56 de solução e 22 de desafio, com o motivo e, em 13 deles, o trecho literal |
+Os arquivos armazenados aqui não são carregados pela aplicação web. Os dados utilizados pelo catálogo estão organizados na pasta `dados/`.
 
-Fica versionado porque é a origem do que está em `dados/conhecimentos.json`. Se o
-conteúdo precisar ser refeito, é aqui que se mexe e depois se aplica.
+O arquivo `gerencia-conhecimento.json` corresponde a uma etapa anterior da pesquisa, cujas informações foram posteriormente incorporadas ao `dados/conhecimentos.json`.

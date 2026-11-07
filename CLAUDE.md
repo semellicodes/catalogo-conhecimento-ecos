@@ -30,9 +30,9 @@ identidade visual muda sem tocar no conteúdo.
 `conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
 relação e o motivo da ligação.
 
-`origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
-Está lá `relacoes-confirmadas.json` e `gerencia-conhecimento.json`, este último já fundido em
-`conhecimentos.json`.
+`origem/` armazena materiais históricos e insumos da pesquisa, que não são carregados pela aplicação web. Nenhum módulo JavaScript utiliza diretamente essa pasta.
+
+O arquivo `gerencia-conhecimento.json` contém dados de uma etapa anterior da pesquisa, posteriormente incorporados ao `dados/conhecimentos.json`. A estrutura atual do catálogo utiliza os conhecimentos, suas classificações, atividades de gerência e estudos primários associados.
 
 ### Campos ainda pendentes
 
