@@ -1,0 +1,122 @@
+[
+  {
+    "id": "C01",
+    "quemPossui": "Mantenedores do projeto que origina a dependência e os registros de dependência do próprio repositório.",
+    "quemPrecisa": "Mantenedores dos pacotes dependentes, colaboradores que entram em um projeto e complementadores que integram produtos à plataforma.",
+    "comoGerenciar": "Registrar e manter atualizado o mapa de dependências e torná-lo consultável por quem entra no projeto."
+  },
+  {
+    "id": "C02",
+    "quemPossui": "Organização central, nos materiais e canais que mantém sobre a plataforma.",
+    "quemPrecisa": "Desenvolvedores externos, complementadores e empresas recém contratadas que precisam atuar sobre a plataforma.",
+    "comoGerenciar": "Registrar em documentação e materiais instrucionais e disponibilizar em canal de acesso aberto aos atores externos."
+  },
+  {
+    "id": "C03",
+    "quemPossui": "Organização central, na documentação técnica e nos tutoriais.",
+    "quemPrecisa": "Desenvolvedores externos durante o desenvolvimento.",
+    "comoGerenciar": "Registrar em documentação técnica, manter atualizada e corrigir as lacunas sinalizadas pela comunidade."
+  },
+  {
+    "id": "C04",
+    "quemPossui": "Organizações que tomaram as decisões e os repositórios que as documentam.",
+    "quemPrecisa": "Atores que enfrentam uma nova decisão arquitetural em contexto semelhante.",
+    "comoGerenciar": "Documentar a decisão junto com o contexto e oferecer busca por semelhança entre contextos."
+  },
+  {
+    "id": "C05",
+    "quemPossui": "Estrutura de governança do consórcio.",
+    "quemPrecisa": "Organizações participantes, em especial as que discordam das decisões conjuntas.",
+    "comoGerenciar": "Formalizar as diretrizes de governança e torná-las visíveis aos participantes."
+  },
+  {
+    "id": "C06",
+    "quemPossui": "Organização central, nas diretrizes de contribuição.",
+    "quemPrecisa": "Contribuidores externos antes de investir esforço na contribuição.",
+    "comoGerenciar": "Publicar as diretrizes de forma acessível antes do início da contribuição."
+  },
+  {
+    "id": "C07",
+    "quemPossui": "Organização central.",
+    "quemPrecisa": "Complementadores durante o desenvolvimento do produto.",
+    "comoGerenciar": "Registrar os requisitos e comunicá-los antes da fase de desenvolvimento."
+  },
+  {
+    "id": "C08",
+    "quemPossui": "Organização central, no material de treinamento do ecossistema.",
+    "quemPrecisa": "Novos contribuidores em processo de integração.",
+    "comoGerenciar": "Manter o material de treinamento atualizado conforme os projetos evoluem e aplicá-lo na integração."
+  },
+  {
+    "id": "C09",
+    "quemPossui": "Literatura e métodos já consolidados, operacionalizados em módulos de software.",
+    "quemPrecisa": "Atores do ecossistema que precisam decidir sobre seleção de componentes.",
+    "comoGerenciar": "Operacionalizar os métodos em módulos de software disponíveis na arquitetura de apoio à decisão."
+  },
+  {
+    "id": "C10",
+    "quemPossui": "Processo de diagnóstico de incidentes do backlog.",
+    "quemPrecisa": "Equipe de gestão de TI responsável pela plataforma.",
+    "comoGerenciar": "Registrar o diagnóstico de incidentes e associá-lo aos projetos de origem."
+  },
+  {
+    "id": "C11",
+    "quemPossui": "Organização central, que coleta dados de uso e de mercado, e o próprio mercado.",
+    "quemPrecisa": "Complementadores que buscam se diferenciar e identificar oportunidades.",
+    "comoGerenciar": "Coletar e compartilhar periodicamente dados de uso, necessidades e lacunas com os atores externos."
+  },
+  {
+    "id": "C12",
+    "quemPossui": "Os próprios colaboradores, nas suas habilidades, e os agentes de ligação entre comunidades.",
+    "quemPrecisa": "Quem monta equipes, novatos que procuram orientação e comunidades que dependem da resolução de problemas entre fronteiras.",
+    "comoGerenciar": "Identificar e tornar localizável a expertise dos atores, já que a busca nos repositórios não oferece esse recurso."
+  },
+  {
+    "id": "C13",
+    "quemPossui": "Cada ator, sobre a própria necessidade.",
+    "quemPrecisa": "Os demais atores envolvidos na decisão conjunta e quem projeta a plataforma comum.",
+    "comoGerenciar": "Construir entendimento mútuo entre os atores por meio de espaços de troca e de intermediação."
+  },
+  {
+    "id": "C14",
+    "quemPossui": "Os próprios atores, pelas competências que demonstram.",
+    "quemPrecisa": "Organizações que decidem com quem cooperar e em quem confiar.",
+    "comoGerenciar": "Tornar visíveis as competências demonstradas para apoiar a formação de confiança entre organizações."
+  },
+  {
+    "id": "C15",
+    "quemPossui": "Os próprios desenvolvedores externos, nos erros e dúvidas que registram na comunidade.",
+    "quemPrecisa": "Organização central, para corrigir documentação e recursos.",
+    "comoGerenciar": "Analisar as interações da comunidade para identificar onde os atores travam e corrigir os recursos."
+  },
+  {
+    "id": "C16",
+    "quemPossui": "Provedores terceiros de serviço.",
+    "quemPrecisa": "Stakeholders que dependem desses serviços no negócio em andamento.",
+    "comoGerenciar": "Tornar rastreável a relação entre serviços de terceiros e o negócio apoiado por eles."
+  },
+  {
+    "id": "C17",
+    "quemPossui": "Quem montou a composição, e a própria composição como artefato.",
+    "quemPrecisa": "Outros atores que executam tarefa semelhante.",
+    "comoGerenciar": "Tornar as composições compartilháveis entre quem executa tarefas semelhantes."
+  },
+  {
+    "id": "C18",
+    "quemPossui": "Mantenedores que avaliam as contribuições, a partir dos projetos já existentes.",
+    "quemPrecisa": "Contribuidores que propõem novas funcionalidades.",
+    "comoGerenciar": "Tornar visível o que já existe no ecossistema antes da proposta de contribuição."
+  },
+  {
+    "id": "C19",
+    "quemPossui": "Comunidade de desenvolvedores que já enfrentou problemas comparáveis.",
+    "quemPrecisa": "Desenvolvedor diante de um erro desconhecido ou em busca de ideias.",
+    "comoGerenciar": "Manter canais de troca entre pares e apoiar a avaliação do encaixe da solução no contexto de quem consulta."
+  },
+  {
+    "id": "C20",
+    "quemPossui": "Complementadores experientes.",
+    "quemPrecisa": "Complementadores que ainda não acumularam essa experiência e têm dificuldade de inovar.",
+    "comoGerenciar": "Estimular a participação continuada para que a experiência seja acumulada e transferida."
+  }
+]
