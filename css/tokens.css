@@ -156,13 +156,10 @@
   --largura-menu: 14rem;
   --largura-interruptor: 4.25rem;
   --largura-min-busca: 16rem;
-  --tam-icone-relacao: 1.5rem;
-  --tam-desenho-relacao: 1rem;
   --tam-icone-controle: 1.125rem;
   --linhas-resumo-cartao: 3;
   /* A altura do cabeçalho fixo é a origem do scroll-margin-top das seções */
   --altura-cabecalho: 60px;
-  --coluna-id: 3.5rem;
   --retrato: 4.5rem;
   --largura-texto-contato: 60ch;
   --largura-contato: 50rem;
