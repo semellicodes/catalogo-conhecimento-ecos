@@ -668,6 +668,7 @@
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--linhas-resumo-cartao);
+  line-clamp: var(--linhas-resumo-cartao);
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
 }
@@ -1129,117 +1130,6 @@
   .porque__seta { transition: none; }
 }
 
-/* ---------- Relações do conhecimento ---------- */
-/* Os desafios usam cartões compactos, mantendo a seção alinhada aos estudos. */
-.relacoes-bloco { display: grid; }
-.relacoes { display: grid; gap: var(--esp-2); list-style: none; }
-.relacoes__vazio {
-  display: flex;
-  align-items: center;
-  gap: var(--esp-2);
-  padding: var(--esp-2) var(--esp-3);
-  border: var(--borda);
-  border-color: var(--cor-acento-linha);
-  border-radius: var(--raio);
-  background: var(--cor-acento-fundo);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-sm);
-}
-.relacoes__vazio svg {
-  flex: none;
-  width: var(--tam-desenho-relacao);
-  height: var(--tam-desenho-relacao);
-  color: var(--cor-acento);
-}
-.relacoes__vazio p { margin: 0; line-height: 1.45; }
-.desafio-card,
-.solucao-card {
-  display: grid;
-  grid-template-columns: var(--tam-icone-relacao) minmax(0, 1fr) auto;
-  gap: var(--esp-3);
-  align-items: start;
-  background: var(--cor-superficie-alta);
-  border: var(--borda);
-  border-radius: var(--raio);
-  padding: var(--esp-3);
-  font-size: var(--tam-sm);
-}
-.relacao__icone {
-  display: grid;
-  flex: none;
-  place-items: center;
-  width: var(--tam-icone-relacao);
-  height: var(--tam-icone-relacao);
-  border: var(--borda);
-  border-color: var(--cor-acento-linha);
-  border-radius: var(--raio);
-  background: var(--cor-acento-fundo);
-  color: var(--cor-acento);
-}
-.relacao__icone svg { width: var(--tam-desenho-relacao); height: var(--tam-desenho-relacao); }
-.desafio-card__conteudo {
-  display: grid;
-  gap: var(--esp-1);
-  min-width: 0;
-}
-.desafio-card__cabecalho { display: grid; gap: var(--esp-1); }
-.desafio-card__cabecalho .codigo-id {
-  color: var(--cor-acento);
-  font-size: var(--tam-xs);
-}
-.desafio-card__titulo {
-  margin: 0;
-  color: #F1F5F9;
-  font-size: var(--tam-sm);
-  font-weight: 700;
-  line-height: 1.4;
-}
-:root[data-tema="claro"] .desafio-card__titulo {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  color: #111827;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-.desafio-card__descricao {
-  margin: 0;
-  color: var(--cor-texto-suave);
-  line-height: 1.55;
-}
-.desafio-card__acessar,
-.solucao-card__acessar {
-  display: inline-flex;
-  align-items: center;
-  align-self: start;
-  gap: var(--esp-1);
-  min-height: 2rem;
-  padding: 0.35rem 0.62rem;
-  background: var(--cor-superficie);
-  border: var(--borda);
-  border-radius: calc(var(--raio) - 0.12rem);
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-xs);
-  font-weight: 600;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva), border-color var(--dur-rapida) var(--curva);
-}
-.desafio-card__acessar:hover,
-.solucao-card__acessar:hover {
-  background: var(--cor-acento-fundo);
-  border-color: var(--cor-acento-linha);
-  color: var(--cor-acento);
-}
-.desafio-card__acessar .estudo__icone-link,
-.solucao-card__acessar .estudo__icone-link { width: 0.82rem; height: 0.82rem; }
-@container (max-width: 34rem) {
-  .desafio-card,
-  .solucao-card { grid-template-columns: var(--tam-icone-relacao) minmax(0, 1fr); }
-  .desafio-card__acessar,
-  .solucao-card__acessar { grid-column: 2; justify-self: start; }
-}
 /* ---------- Estudos ---------- */
 .estudos-bloco { display: grid; }
 .estudos { list-style: none; display: grid; gap: var(--esp-0); }
@@ -1304,33 +1194,6 @@
   .porque { margin-top: var(--esp-2); }
   .porque__abrir { min-height: 2rem; padding: var(--esp-1) var(--esp-2); font-size: 0.8125rem; }
   .porque__texto { padding: var(--esp-2); font-size: 0.8125rem; line-height: 1.5; }
-
-  .relacoes { gap: var(--esp-2); }
-  .desafio-card,
-  .solucao-card {
-    grid-template-columns: 1.375rem minmax(0, 1fr) auto;
-    gap: var(--esp-2);
-    padding: 0.6875rem 0.75rem;
-    font-size: 0.8125rem;
-  }
-  .desafio-card .relacao__icone,
-  .solucao-card .relacao__icone { width: 1.375rem; height: 1.375rem; }
-  .desafio-card .relacao__icone svg,
-  .solucao-card .relacao__icone svg { width: 0.875rem; height: 0.875rem; }
-  .desafio-card__cabecalho { gap: 0.125rem; }
-  .desafio-card__cabecalho .codigo-id { font-size: 0.6875rem; }
-  .desafio-card__titulo { font-size: 0.875rem; line-height: 1.35; }
-  :root[data-tema="claro"] .desafio-card__titulo { font-size: 14px; line-height: 1.3; }
-  .desafio-card__descricao {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    font-size: 0.8125rem;
-    line-height: 1.45;
-  }
-  .desafio-card__acessar,
-  .solucao-card__acessar { min-height: 1.875rem; padding: 0.2rem 0.45rem; font-size: 0.6875rem; }
 
   .estudos {
     overflow: clip;
