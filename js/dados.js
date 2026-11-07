@@ -52,16 +52,19 @@ export function carregar() {
 
 export const porId = (lista, id) => lista.find((item) => item.id === id) || null;
 
-/** Devolve o conhecimento com desafios e estudos já resolvidos em objetos. */
+
 export function conhecimentoCompleto(dados, id) {
   const conhecimento = porId(dados.conhecimentos, id);
   if (!conhecimento) return null;
+
   return {
     ...conhecimento,
-    desafiosResolvidos: (conhecimento.desafios || []).map((d) => porId(dados.desafios, d)).filter(Boolean),
-    estudosResolvidos: conhecimento.estudos.map((e) => porId(dados.estudos, e)).filter(Boolean)
+    estudosResolvidos: conhecimento.estudos.map((e) =>
+      porId(dados.estudos, e)
+    ).filter(Boolean)
   };
 }
+
 
 /** Rótulo curto da referência, como aparece ao lado de um atributo. */
 /* Rótulo curto de cada referência. A forma abreviada não sai da citação sozinha,

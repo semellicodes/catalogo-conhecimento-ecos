@@ -6,31 +6,12 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S08",
-      "S21",
-      "S31"
-    ],
     "estudos": [
       "E03",
       "E08",
       "E09"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre as dependências técnicas entre componentes do ecossistema é classificado no nível Ecossistema porque envolve dependências técnicas entre componentes, projetos e produtos interconectados, cujas alterações podem afetar diferentes partes do ECOS. Enquadra-se na Técnica por abordar aspectos relacionados às tecnologias, interfaces, compatibilidade e integração entre esses elementos.",
-    "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos responsáveis pelo projeto que origina a dependência, em mapas e registros de dependências mantidos no repositório.",
-    "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos responsáveis por pacotes dependentes e por participantes do ECOS que ingressam no projeto, durante mudanças e integrações à plataforma tecnológica comum.",
-    "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e atualizar as relações de dependência entre componentes e projetos, tornando esses mapas consultáveis antes de mudanças e integrações.",
-    "importanciaGerencia": "Gerenciar as dependências técnicas entre componentes do ecossistema é importante para coordenar alterações entre projetos interdependentes, preservar a compatibilidade entre componentes e evitar impactos em cadeia que comprometam a integração de soluções à plataforma tecnológica comum.",
-    "atoresEnvolvidos": "A organização central pode disponibilizar informações sobre as dependências técnicas da plataforma, utilizadas pelos desenvolvedores externos na integração e manutenção de seus componentes. Entretanto, esse conhecimento também é produzido e compartilhado por colaboradores de diferentes projetos do ECOS, especialmente durante alterações, atualizações e atividades que exigem coordenação entre componentes interdependentes.",
     "atividadesGerencia": [
       {
         "processo": "Identificação",
@@ -66,76 +47,49 @@
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S16",
-      "S19",
-      "S22",
-      "S25",
-      "S30"
-    ],
     "estudos": [
       "E06",
       "E07",
       "E09"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D09",
-      "D13"
-    ],
-    "evidencia": {
-      "D01": {
-        "estudo": "E06, E09",
-        "motivo": "Localizar o conhecimento já registrado sobre a plataforma é o obstáculo descrito"
-      },
-      "D09": {
-        "estudo": "E06",
-        "motivo": "O paywall impede o acesso ao recurso que carrega esse conhecimento"
-      },
-      "D13": {
-        "estudo": "E09",
-        "motivo": "A documentação da plataforma não responder ao problema do ator atinge diretamente esse conhecimento"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre a arquitetura e as tecnologias de base da plataforma é classificado no nível Plataforma porque está relacionado à infraestrutura tecnológica comum, aos padrões arquiteturais e aos componentes estruturais que sustentam o desenvolvimento de aplicações complementares. Enquadra-se na Técnica) por abordar as características tecnológicas e a configuração arquitetural da plataforma, necessárias para garantir a compatibilidade e a integração de soluções desenvolvidas por diferentes participantes do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado pela organização central e registrado em documentos de arquitetura, especificações técnicas, repositórios, tutoriais e materiais de integração da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos e outros participantes do ECOS durante a criação, adaptação e integração de complementos à plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário versionar e atualizar a documentação técnica, relacioná-la a exemplos de implementação e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Aquisição",
-    "descricao": "A aquisição da arquitetura e das tecnologias de base da plataforma, enquanto conhecimento técnico, ocorre quando desenvolvedores externos consultam recursos disponibilizados pela organização central para compreender a infraestrutura e os fundamentos tecnológicos da plataforma. No ECOS associado à SAP, os desenvolvedores utilizam treinamentos, materiais de aprendizagem e documentação para conhecer aspectos arquiteturais e conceituais necessários às suas atividades. Nos ECOS de comércio eletrônico analisados, a consulta à documentação, às APIs e às oportunidades de capacitação permite compreender a configuração arquitetural e as tecnologias utilizadas na integração de produtos complementares.",
-    "estudos": ["E06", "E09"]
-  },
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento da arquitetura e das tecnologias de base da plataforma ocorre por meio da disponibilização de conhecimentos técnicos aos desenvolvedores externos. No ECOS associado à SAP, a organização central oferece documentação, portais de informação e materiais de capacitação que apresentam aspectos tecnológicos e conceituais da plataforma. Nos ECOS de comércio eletrônico analisados, documentação, tutoriais e treinamentos também permitem comunicar características da infraestrutura e da configuração arquitetural, favorecendo a compreensão das tecnologias necessárias ao desenvolvimento e à integração de produtos complementares.",
-    "estudos": ["E06", "E09"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A arquitetura e as tecnologias de base da plataforma são representadas de forma explícita em materiais estruturados que descrevem seus fundamentos e características tecnológicas. No ECOS associado à SAP, documentação técnica, conteúdos de treinamento e livros digitais organizam informações sobre tecnologias, funcionalidades e aspectos conceituais da plataforma. Esses recursos permitem registrar e disponibilizar conhecimentos técnicos para consulta e aprendizagem pelos desenvolvedores externos.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "A arquitetura e as tecnologias de base da plataforma são utilizadas pelos desenvolvedores externos para orientar a implementação de funcionalidades e a integração de produtos complementares. No ECOS associado à SAP, informações sobre os fundamentos tecnológicos da plataforma apoiam atividades de desenvolvimento e resolução de problemas. Nos ECOS de comércio eletrônico analisados, os desenvolvedores utilizam conhecimentos sobre infraestrutura, configuração arquitetural e dependências tecnológicas para integrar suas soluções à plataforma tecnológica comum, considerando as características e os recursos disponíveis.",
-    "estudos": ["E06", "E09"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição da arquitetura e das tecnologias de base da plataforma, enquanto conhecimento técnico, ocorre quando desenvolvedores externos consultam recursos disponibilizados pela organização central para compreender a infraestrutura e os fundamentos tecnológicos da plataforma. No ECOS associado à SAP, os desenvolvedores utilizam treinamentos, materiais de aprendizagem e documentação para conhecer aspectos arquiteturais e conceituais necessários às suas atividades. Nos ECOS de comércio eletrônico analisados, a consulta à documentação, às APIs e às oportunidades de capacitação permite compreender a configuração arquitetural e as tecnologias utilizadas na integração de produtos complementares.",
+        "estudos": [
+          "E06",
+          "E09"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento da arquitetura e das tecnologias de base da plataforma ocorre por meio da disponibilização de conhecimentos técnicos aos desenvolvedores externos. No ECOS associado à SAP, a organização central oferece documentação, portais de informação e materiais de capacitação que apresentam aspectos tecnológicos e conceituais da plataforma. Nos ECOS de comércio eletrônico analisados, documentação, tutoriais e treinamentos também permitem comunicar características da infraestrutura e da configuração arquitetural, favorecendo a compreensão das tecnologias necessárias ao desenvolvimento e à integração de produtos complementares.",
+        "estudos": [
+          "E06",
+          "E09"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A arquitetura e as tecnologias de base da plataforma são representadas de forma explícita em materiais estruturados que descrevem seus fundamentos e características tecnológicas. No ECOS associado à SAP, documentação técnica, conteúdos de treinamento e livros digitais organizam informações sobre tecnologias, funcionalidades e aspectos conceituais da plataforma. Esses recursos permitem registrar e disponibilizar conhecimentos técnicos para consulta e aprendizagem pelos desenvolvedores externos.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A arquitetura e as tecnologias de base da plataforma são utilizadas pelos desenvolvedores externos para orientar a implementação de funcionalidades e a integração de produtos complementares. No ECOS associado à SAP, informações sobre os fundamentos tecnológicos da plataforma apoiam atividades de desenvolvimento e resolução de problemas. Nos ECOS de comércio eletrônico analisados, os desenvolvedores utilizam conhecimentos sobre infraestrutura, configuração arquitetural e dependências tecnológicas para integrar suas soluções à plataforma tecnológica comum, considerando as características e os recursos disponíveis.",
+        "estudos": [
+          "E06",
+          "E09"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C03",
@@ -144,78 +98,53 @@
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S17",
-      "S22",
-      "S30",
-      "S34"
-    ],
     "estudos": [
       "E06",
       "E12"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D09",
-      "D15"
-    ],
-    "evidencia": {
-      "D01": {
-        "estudo": "E06",
-        "motivo": "A busca interna não localizar o artigo atinge exatamente a especificação procurada"
-      },
-      "D09": {
-        "estudo": "E06",
-        "motivo": "O paywall bloqueia o recurso que carrega a especificação"
-      },
-      "D15": {
-        "estudo": "E12",
-        "motivo": "Informação ausente ou desatualizada na documentação técnica é o próprio conteúdo do conhecimento"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre as especificações técnicas de implementação da plataforma é classificado no nível Plataforma porque está relacionado aos procedimentos, requisitos e informações tecnológicas necessários para implementar funcionalidades e desenvolver aplicações complementares sobre sua base tecnológica. Enquadra-se na dimensão Técnica por abordar aspectos de autenticação, conectividade, comunicação, estruturas de dados e integração técnica que orientam o desenvolvimento de soluções compatíveis com a plataforma.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, em documentação técnica, especificações de implementação e tutoriais da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento e a integração de aplicações à plataforma tecnológica comum.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário manter atualizada a documentação das especificações e incorporar o feedback da comunidade para identificar e corrigir lacunas informacionais.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Aquisição",
-    "descricao": "A aquisição das especificações técnicas de implementação da plataforma ocorre quando desenvolvedores externos consultam recursos disponibilizados pela organização central para obter orientações necessárias ao desenvolvimento de aplicações complementares. No ECOS associado à SAP, os desenvolvedores recorrem à documentação técnica e a outros recursos de conhecimento para localizar informações específicas sobre sintaxe de programação, parâmetros de funções, estruturas de dados e procedimentos de integração. Essa consulta permite obter conhecimentos técnicos necessários à implementação de funcionalidades e à resolução de problemas durante o desenvolvimento.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento das especificações técnicas de implementação da plataforma ocorre por meio da disponibilização e da troca de orientações técnicas entre a organização central e os desenvolvedores externos. No ECOS associado à SAP, documentação técnica, tutoriais e portais de informação comunicam procedimentos e características tecnológicas da plataforma. A comunidade SAP também permite que os participantes publiquem dúvidas e compartilhem respostas sobre autenticação, conectividade, estruturas de dados e outros aspectos de implementação. Esses recursos favorecem a circulação de especificações e orientações necessárias ao desenvolvimento de aplicações complementares.",
-    "estudos": ["E06", "E12"]
-  },
-  {
-    "processo": "Armazenamento",
-    "descricao": "As especificações técnicas de implementação da plataforma são preservadas em recursos documentais destinados à consulta pelos desenvolvedores externos. No ECOS associado à SAP, o SAP Help Portal disponibiliza documentação técnica sobre produtos e funcionalidades, incluindo informações necessárias à implementação de aplicações complementares. O estudo também destaca a importância do controle de versões desses recursos, considerando que alterações na plataforma podem modificar as especificações disponíveis. Essa organização permite consultar informações técnicas relacionadas às versões utilizadas durante o desenvolvimento.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A codificação das especificações técnicas de implementação da plataforma ocorre por meio de sua representação explícita em materiais estruturados. No ECOS associado à SAP, a documentação técnica e os tutoriais disponibilizados pela organização central apresentam informações sobre funcionalidades, procedimentos de implementação e características tecnológicas da plataforma. O SAP Developer Portal organiza tutoriais em instruções sequenciais, enquanto o SAP Help Portal reúne documentação técnica dos produtos. Essas representações tornam as especificações acessíveis para consulta e utilização pelos desenvolvedores externos.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As especificações técnicas de implementação da plataforma são aplicadas pelos desenvolvedores externos durante a construção de funcionalidades e a resolução de problemas técnicos em aplicações complementares. No ECOS associado à SAP, os desenvolvedores consultam informações sobre sintaxe de programação, parâmetros de funções, estruturas de dados e procedimentos de integração para orientar suas atividades. O estudo também descreve a experimentação de exemplos de código em ambientes de teste, permitindo verificar seu funcionamento e sua adequação às necessidades específicas de implementação.",
-    "estudos": ["E06"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição das especificações técnicas de implementação da plataforma ocorre quando desenvolvedores externos consultam recursos disponibilizados pela organização central para obter orientações necessárias ao desenvolvimento de aplicações complementares. No ECOS associado à SAP, os desenvolvedores recorrem à documentação técnica e a outros recursos de conhecimento para localizar informações específicas sobre sintaxe de programação, parâmetros de funções, estruturas de dados e procedimentos de integração. Essa consulta permite obter conhecimentos técnicos necessários à implementação de funcionalidades e à resolução de problemas durante o desenvolvimento.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento das especificações técnicas de implementação da plataforma ocorre por meio da disponibilização e da troca de orientações técnicas entre a organização central e os desenvolvedores externos. No ECOS associado à SAP, documentação técnica, tutoriais e portais de informação comunicam procedimentos e características tecnológicas da plataforma. A comunidade SAP também permite que os participantes publiquem dúvidas e compartilhem respostas sobre autenticação, conectividade, estruturas de dados e outros aspectos de implementação. Esses recursos favorecem a circulação de especificações e orientações necessárias ao desenvolvimento de aplicações complementares.",
+        "estudos": [
+          "E06",
+          "E12"
+        ]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "As especificações técnicas de implementação da plataforma são preservadas em recursos documentais destinados à consulta pelos desenvolvedores externos. No ECOS associado à SAP, o SAP Help Portal disponibiliza documentação técnica sobre produtos e funcionalidades, incluindo informações necessárias à implementação de aplicações complementares. O estudo também destaca a importância do controle de versões desses recursos, considerando que alterações na plataforma podem modificar as especificações disponíveis. Essa organização permite consultar informações técnicas relacionadas às versões utilizadas durante o desenvolvimento.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação das especificações técnicas de implementação da plataforma ocorre por meio de sua representação explícita em materiais estruturados. No ECOS associado à SAP, a documentação técnica e os tutoriais disponibilizados pela organização central apresentam informações sobre funcionalidades, procedimentos de implementação e características tecnológicas da plataforma. O SAP Developer Portal organiza tutoriais em instruções sequenciais, enquanto o SAP Help Portal reúne documentação técnica dos produtos. Essas representações tornam as especificações acessíveis para consulta e utilização pelos desenvolvedores externos.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As especificações técnicas de implementação da plataforma são aplicadas pelos desenvolvedores externos durante a construção de funcionalidades e a resolução de problemas técnicos em aplicações complementares. No ECOS associado à SAP, os desenvolvedores consultam informações sobre sintaxe de programação, parâmetros de funções, estruturas de dados e procedimentos de integração para orientar suas atividades. O estudo também descreve a experimentação de exemplos de código em ambientes de teste, permitindo verificar seu funcionamento e sua adequação às necessidades específicas de implementação.",
+        "estudos": [
+          "E06"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C04",
@@ -224,70 +153,48 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S06",
-      "S07",
-      "S09",
-      "S10",
-      "S11",
-      "S12",
-      "S13",
-      "S17",
-      "S32",
-      "S33",
-      "S35"
-    ],
     "estudos": [
       "E14",
       "E16"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D17"
-    ],
-    "evidencia": {
-      "D17": {
-        "estudo": "E14",
-        "motivo": "A tensão é justamente sobre alimentar os repositórios com casos que contêm informação proprietária"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre decisões arquiteturais anteriores e seu contexto é classificado no nível Ecossistema porque envolve o aproveitamento de experiências e decisões provenientes de diferentes participantes e organizações, permitindo que conhecimentos acumulados em situações anteriores apoiem novas escolhas arquiteturais. Enquadra-se na dimensão Técnica por abordar padrões, táticas, requisitos de qualidade, alternativas de projeto e critérios técnicos utilizados na definição e evolução das arquiteturas de software no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelas organizações que tomaram decisões arquiteturais e pelos repositórios que preservam suas justificativas e contextos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que enfrentam uma nova decisão arquitetural em contexto semelhante e precisam avaliar escolhas anteriores.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar decisões junto com seus contextos e disponibilizá-las em repositórios que permitam recuperar e comparar situações semelhantes.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento das decisões arquiteturais anteriores e de seus contextos é apoiado pela disponibilização de registros e representações arquiteturais para consulta pelos participantes do ECOS. A arquitetura COACH propõe o compartilhamento de informações de casos decisórios entre organizações, respeitando restrições de confidencialidade. A abordagem de apoio às decisões arquiteturais apresenta ferramentas para disponibilizar padrões, táticas, modelos de decisão e informações contextuais, favorecendo a circulação e a reutilização desses conhecimentos em novas situações de projeto.",
-    "estudos": ["E14", "E16"]
-  },
-  {
-    "processo": "Armazenamento",
-    "descricao": "As decisões arquiteturais anteriores e seus contextos são armazenados em repositórios destinados à preservação de registros para consultas futuras. A arquitetura COACH prevê uma base de casos e um repositório de conhecimentos que conserva informações selecionadas de decisões encerradas. A abordagem de apoio às decisões arquiteturais utiliza o NFR Repo para manter registros de padrões, táticas, atributos de qualidade e suas relações, além de propor a incorporação de conhecimentos provenientes de decisões arquiteturais documentadas.",
-    "estudos": ["E14", "E16"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A codificação das decisões arquiteturais anteriores e de seus contextos ocorre por meio da representação estruturada de elementos relevantes às escolhas de projeto. Na arquitetura COACH, a taxonomia GRADE organiza informações de casos decisórios segundo objetivos, participantes, alternativas, métodos e contextos. Na abordagem de apoio às decisões arquiteturais, padrões, táticas, atributos de qualidade e suas relações são representados em modelos e registros explícitos, permitindo organizar e recuperar conhecimentos arquiteturais para utilização em novas decisões.",
-    "estudos": ["E14", "E16"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As decisões arquiteturais anteriores e seus contextos são utilizados como referência para orientar novas escolhas de projeto. Na abordagem de apoio às decisões arquiteturais, ferramentas de consulta permitem recuperar padrões, táticas, atributos de qualidade e informações contextuais disponíveis no repositório. No exemplo de cidades inteligentes, esses conhecimentos são utilizados na elaboração de um modelo reutilizável de decisão, permitindo analisar alternativas e considerar as implicações de diferentes soluções arquiteturais.",
-    "estudos": ["E16"]
-  }
-],
-"atividadesAssociadas": true
-
-
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento das decisões arquiteturais anteriores e de seus contextos é apoiado pela disponibilização de registros e representações arquiteturais para consulta pelos participantes do ECOS. A arquitetura COACH propõe o compartilhamento de informações de casos decisórios entre organizações, respeitando restrições de confidencialidade. A abordagem de apoio às decisões arquiteturais apresenta ferramentas para disponibilizar padrões, táticas, modelos de decisão e informações contextuais, favorecendo a circulação e a reutilização desses conhecimentos em novas situações de projeto.",
+        "estudos": [
+          "E14",
+          "E16"
+        ]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "As decisões arquiteturais anteriores e seus contextos são armazenados em repositórios destinados à preservação de registros para consultas futuras. A arquitetura COACH prevê uma base de casos e um repositório de conhecimentos que conserva informações selecionadas de decisões encerradas. A abordagem de apoio às decisões arquiteturais utiliza o NFR Repo para manter registros de padrões, táticas, atributos de qualidade e suas relações, além de propor a incorporação de conhecimentos provenientes de decisões arquiteturais documentadas.",
+        "estudos": [
+          "E14",
+          "E16"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação das decisões arquiteturais anteriores e de seus contextos ocorre por meio da representação estruturada de elementos relevantes às escolhas de projeto. Na arquitetura COACH, a taxonomia GRADE organiza informações de casos decisórios segundo objetivos, participantes, alternativas, métodos e contextos. Na abordagem de apoio às decisões arquiteturais, padrões, táticas, atributos de qualidade e suas relações são representados em modelos e registros explícitos, permitindo organizar e recuperar conhecimentos arquiteturais para utilização em novas decisões.",
+        "estudos": [
+          "E14",
+          "E16"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As decisões arquiteturais anteriores e seus contextos são utilizados como referência para orientar novas escolhas de projeto. Na abordagem de apoio às decisões arquiteturais, ferramentas de consulta permitem recuperar padrões, táticas, atributos de qualidade e informações contextuais disponíveis no repositório. No exemplo de cidades inteligentes, esses conhecimentos são utilizados na elaboração de um modelo reutilizável de decisão, permitindo analisar alternativas e considerar as implicações de diferentes soluções arquiteturais.",
+        "estudos": [
+          "E16"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C05",
@@ -296,63 +203,44 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S18",
-      "S29"
-    ],
     "estudos": [
       "E05"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D04",
-      "D08"
-    ],
-    "evidencia": {
-      "D04": {
-        "estudo": "E05",
-        "motivo": "A mentalidade proprietária e a dominância percebida são sobre a dinâmica de poder do trecho"
-      },
-      "D08": {
-        "estudo": "E05",
-        "motivo": "Os silos reduzem a visibilidade das decisões, que é o conteúdo do conhecimento"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre as regras e a estrutura de governança do ecossistema é classificado no nível Ecossistema porque está relacionado aos mecanismos que organizam a colaboração, a distribuição de responsabilidades e os processos decisórios entre diferentes organizações participantes. Enquadra-se na dimensão Técnica, conforme a classificação adotada no catálogo, por abordar estruturas de coordenação e procedimentos que orientam o funcionamento e a organização das atividades desenvolvidas no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela estrutura de governança do consórcio, nas diretrizes, papéis e decisões que organizam a participação conjunta.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS, especialmente quando precisam compreender ou discutir decisões tomadas coletivamente.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário formalizar e tornar compreensíveis as regras de governança, recorrendo a papéis de intermediação quando necessários para ampliar a transparência.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento das regras e da estrutura de governança do ECOS ocorre por meio da comunicação de orientações e procedimentos institucionais entre as organizações participantes. No OSDU, reuniões informativas e documentos compartilhados por representantes das organizações e intermediários independentes contribuíram para estabelecer normas e práticas coletivas. Posteriormente, apresentações e negociações também foram utilizadas para esclarecer orientações, reduzir conflitos e favorecer a compreensão das formas de colaboração e coordenação adotadas no consórcio.",
-    "estudos": ["E05"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A codificação das regras e da estrutura de governança do ECOS é realizada por meio da formalização de orientações e procedimentos institucionais em registros explícitos. No OSDU, o consórcio utilizou regulamentações preexistentes, elaborou registros de reuniões e estabeleceu acordos de confidencialidade para organizar a participação das empresas. Essas formalizações documentaram condições de colaboração e procedimentos destinados a orientar o comportamento dos participantes, contribuindo para estabelecer referências institucionais compartilhadas.",
-    "estudos": ["E05"]
-  },
-  {
-    "processo": "Criação",
-    "descricao": "As regras e a estrutura de governança do ECOS são desenvolvidas e reformuladas conforme as necessidades de coordenação e colaboração entre as organizações participantes. No OSDU, foram estabelecidos mecanismos de votação compartilhada e, posteriormente, criados o OSDU Management Committee (OMC) e o Project Management Committee (PMC), com procedimentos de eleição e representação das organizações. A expansão do consórcio também levou à redefinição de papéis, grupos de trabalho e mecanismos de coordenação, demonstrando a construção e a adaptação de arranjos institucionais para organizar as decisões e responsabilidades coletivas.",
-    "estudos": ["E05"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As regras e a estrutura de governança do ECOS são aplicadas na organização das relações entre os participantes e na condução de decisões coletivas. No OSDU, mecanismos de votação compartilhada foram utilizados para apoiar decisões entre as organizações, enquanto comitês de gestão passaram a exercer responsabilidades relacionadas à coordenação das atividades e à definição de encaminhamentos. A utilização desses procedimentos permitiu distribuir funções decisórias, organizar a representação dos participantes e orientar a atuação das organizações conforme os arranjos institucionais estabelecidos.",
-    "estudos": ["E05"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento das regras e da estrutura de governança do ECOS ocorre por meio da comunicação de orientações e procedimentos institucionais entre as organizações participantes. No OSDU, reuniões informativas e documentos compartilhados por representantes das organizações e intermediários independentes contribuíram para estabelecer normas e práticas coletivas. Posteriormente, apresentações e negociações também foram utilizadas para esclarecer orientações, reduzir conflitos e favorecer a compreensão das formas de colaboração e coordenação adotadas no consórcio.",
+        "estudos": [
+          "E05"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação das regras e da estrutura de governança do ECOS é realizada por meio da formalização de orientações e procedimentos institucionais em registros explícitos. No OSDU, o consórcio utilizou regulamentações preexistentes, elaborou registros de reuniões e estabeleceu acordos de confidencialidade para organizar a participação das empresas. Essas formalizações documentaram condições de colaboração e procedimentos destinados a orientar o comportamento dos participantes, contribuindo para estabelecer referências institucionais compartilhadas.",
+        "estudos": [
+          "E05"
+        ]
+      },
+      {
+        "processo": "Criação",
+        "descricao": "As regras e a estrutura de governança do ECOS são desenvolvidas e reformuladas conforme as necessidades de coordenação e colaboração entre as organizações participantes. No OSDU, foram estabelecidos mecanismos de votação compartilhada e, posteriormente, criados o OSDU Management Committee (OMC) e o Project Management Committee (PMC), com procedimentos de eleição e representação das organizações. A expansão do consórcio também levou à redefinição de papéis, grupos de trabalho e mecanismos de coordenação, demonstrando a construção e a adaptação de arranjos institucionais para organizar as decisões e responsabilidades coletivas.",
+        "estudos": [
+          "E05"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As regras e a estrutura de governança do ECOS são aplicadas na organização das relações entre os participantes e na condução de decisões coletivas. No OSDU, mecanismos de votação compartilhada foram utilizados para apoiar decisões entre as organizações, enquanto comitês de gestão passaram a exercer responsabilidades relacionadas à coordenação das atividades e à definição de encaminhamentos. A utilização desses procedimentos permitiu distribuir funções decisórias, organizar a representação dos participantes e orientar a atuação das organizações conforme os arranjos institucionais estabelecidos.",
+        "estudos": [
+          "E05"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C06",
@@ -361,21 +249,9 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S20"
-    ],
     "estudos": [
       "E07"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre os critérios de aceitação de contribuições externas é classificado no nível Ecossistema porque estabelece condições compartilhadas que orientam a participação de diferentes desenvolvedores e organizações na evolução da plataforma tecnológica comum. Enquadra-se na dimensão Técnica por envolver requisitos de qualidade, padrões de desenvolvimento e procedimentos de avaliação e integração de contribuições de software ao produto principal do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nas diretrizes que estabelecem os critérios para contribuições externas.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos antes de investir esforço na preparação e submissão de uma contribuição.",
@@ -419,29 +295,9 @@
     "natureza": "Explícito",
     "nivel": "Plataforma",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S16",
-      "S25"
-    ],
     "estudos": [
       "E09"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D13"
-    ],
-    "evidencia": {
-      "D13": {
-        "estudo": "E09",
-        "motivo": "A documentação não responder ao problema específico atinge o requisito que o ator precisa cumprir"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre os requisitos técnicos impostos pela plataforma é classificado no nível Plataforma porque envolve condições estabelecidas pela organização central para orientar o desenvolvimento, a integração e a disponibilização de produtos complementares. Enquadra-se na dimensão Técnica por abordar especificações de projeto, padrões de qualidade de código, requisitos de compatibilidade e procedimentos de teste e certificação que condicionam a integração de soluções externas à plataforma tecnológica comum do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos requisitos técnicos que orientam a construção e homologação de produtos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos durante o desenvolvimento de produtos que precisam atender aos requisitos da plataforma tecnológica comum.",
@@ -485,28 +341,9 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S26"
-    ],
     "estudos": [
       "E11"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D14"
-    ],
-    "evidencia": {
-      "D14": {
-        "estudo": "E11",
-        "motivo": "Manter o material atualizado é a dificuldade descrita, e o material é esse conhecimento"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre os processos e as ferramentas nos níveis de ecossistema e projeto é classificado no nível Ecossistema porque abrange práticas compartilhadas de coordenação e desenvolvimento, articuladas aos fluxos de trabalho e às ferramentas específicas dos projetos participantes. Enquadra-se na dimensão Técnica por envolver procedimentos de desenvolvimento, acompanhamento de atividades, revisão de código, testes e integração contínua que sustentam a colaboração técnica e a evolução dos projetos no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, nos materiais de treinamento sobre processos, ferramentas e projetos.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por novos desenvolvedores externos durante sua integração às práticas e ferramentas do ECOS.",
@@ -550,22 +387,9 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S09",
-      "S35"
-    ],
     "estudos": [
       "E14"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre as boas práticas de tomada de decisão é classificado no nível Ecossistema porque envolve métodos e modelos que podem ser compartilhados e reutilizados por diferentes participantes e organizações para apoiar decisões sobre componentes de software. Enquadra-se na dimensão Técnica por abordar processos de seleção, análise de alternativas, representação de contextos e avaliação de propriedades técnicas dos componentes, contribuindo para a tomada de decisão no desenvolvimento de sistemas no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente na literatura e em métodos já consolidados, quando são operacionalizados em módulos de software de apoio à decisão.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que precisam comparar alternativas e decidir sobre a seleção de componentes.",
@@ -602,60 +426,51 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Criação e registro",
-      "Uso e aplicação"
-    ],
-    "solucoes": [],
     "estudos": [
       "E10"
     ],
-    "pendencia": "Único conhecimento sem nenhuma solução extraída no mesmo estudo",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D02"
-    ],
-    "evidencia": {
-      "D02": {
-        "estudo": "E10",
-        "motivo": "O artigo liga a concentração do tácito ao defeito que gera o incidente, que é o objeto do conhecimento do C10"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre os projetos que geram incidentes na plataforma é classificado no nível Ecossistema porque relaciona os incidentes originados por diferentes projetos e fornecedores aos seus impactos sobre a estabilidade da plataforma tecnológica comum. Enquadra-se na dimensão Técnica por envolver o acompanhamento de incidentes, a análise de sua gravidade e a utilização de indicadores de confiabilidade para apoiar o diagnóstico de problemas e o monitoramento da plataforma do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente no processo de diagnóstico de incidentes e nos registros do backlog relacionados aos projetos de origem.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por uma equipe de gestão de TI da organização central, responsável por acompanhar a estabilidade da plataforma tecnológica comum e investigar seus incidentes.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário registrar e estruturar as informações sobre incidentes, relacionando-as aos projetos de origem para apoiar o monitoramento e a tomada de decisão.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Identificação",
-    "descricao": "A identificação dos projetos que geram incidentes na plataforma ocorre por meio da análise dos registros de incidentes e do reconhecimento dos projetos de software associados às ocorrências. Na abordagem PSECO-IM, o processo de tratamento e diagnóstico permite relacionar incidentes aos projetos de origem, especialmente quando estão associados a implantações recentes. Essas informações possibilitam identificar quais projetos contribuem para a instabilidade da plataforma tecnológica comum do ECOS e fornecem subsídios para seu acompanhamento pela organização central.",
-    "estudos": ["E10"]
-  },
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento de informações sobre os projetos que geram incidentes na plataforma é apoiado pela disponibilização dos resultados do diagnóstico e dos indicadores de confiabilidade à equipe de gestão de TI da organização central. Na abordagem PSECO-IM, a ferramenta apresenta painéis que permitem consultar os indicadores de projetos e fornecedores associados aos incidentes registrados. Essa disponibilização torna os resultados do monitoramento acessíveis aos responsáveis pelo acompanhamento da estabilidade da plataforma tecnológica comum do ECOS.",
-    "estudos": ["E10"]
-  },
-  {
-    "processo": "Armazenamento",
-    "descricao": "O armazenamento de informações sobre os projetos que geram incidentes na plataforma ocorre por meio da manutenção dos registros de incidentes e de suas associações aos projetos de software. Na abordagem PSECO-IM, a contabilização dos incidentes no backlog dos projetos gera um artefato denominado Incidents List, utilizado posteriormente no processo de diagnóstico. A ferramenta também utiliza informações do sistema de chamados da organização central e estruturas de persistência de dados, permitindo conservar os registros necessários ao acompanhamento dos projetos e ao cálculo dos indicadores de confiabilidade.",
-    "estudos": ["E10"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A codificação de informações sobre os projetos que geram incidentes na plataforma ocorre por meio da estruturação das relações entre os incidentes registrados, os projetos de software e seus impactos na plataforma tecnológica. Na abordagem PSECO-IM, esses dados são organizados considerando a quantidade e a gravidade dos incidentes, além do esforço de desenvolvimento dos projetos. As informações são representadas por indicadores de confiabilidade e painéis de acompanhamento, tornando explícitas e interpretáveis as relações entre os projetos, os fornecedores e os problemas que afetam a estabilidade do ECOS.",
-    "estudos": ["E10"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As informações sobre os projetos que geram incidentes na plataforma são utilizadas no monitoramento da estabilidade e no apoio às decisões de governança. Na abordagem PSECO-IM, a ferramenta permite consultar diagnósticos e indicadores de confiabilidade de projetos e fornecedores, relacionando os incidentes registrados aos seus impactos sobre a plataforma tecnológica comum. O estudo apresenta a utilização dessas informações em uma ferramenta de apoio à gestão de TI, avaliada por profissionais de uma organização, sem demonstrar necessariamente a execução de todas as decisões gerenciais que os indicadores podem subsidiar.",
-    "estudos": ["E10"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Identificação",
+        "descricao": "A identificação dos projetos que geram incidentes na plataforma ocorre por meio da análise dos registros de incidentes e do reconhecimento dos projetos de software associados às ocorrências. Na abordagem PSECO-IM, o processo de tratamento e diagnóstico permite relacionar incidentes aos projetos de origem, especialmente quando estão associados a implantações recentes. Essas informações possibilitam identificar quais projetos contribuem para a instabilidade da plataforma tecnológica comum do ECOS e fornecem subsídios para seu acompanhamento pela organização central.",
+        "estudos": [
+          "E10"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento de informações sobre os projetos que geram incidentes na plataforma é apoiado pela disponibilização dos resultados do diagnóstico e dos indicadores de confiabilidade à equipe de gestão de TI da organização central. Na abordagem PSECO-IM, a ferramenta apresenta painéis que permitem consultar os indicadores de projetos e fornecedores associados aos incidentes registrados. Essa disponibilização torna os resultados do monitoramento acessíveis aos responsáveis pelo acompanhamento da estabilidade da plataforma tecnológica comum do ECOS.",
+        "estudos": [
+          "E10"
+        ]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "O armazenamento de informações sobre os projetos que geram incidentes na plataforma ocorre por meio da manutenção dos registros de incidentes e de suas associações aos projetos de software. Na abordagem PSECO-IM, a contabilização dos incidentes no backlog dos projetos gera um artefato denominado Incidents List, utilizado posteriormente no processo de diagnóstico. A ferramenta também utiliza informações do sistema de chamados da organização central e estruturas de persistência de dados, permitindo conservar os registros necessários ao acompanhamento dos projetos e ao cálculo dos indicadores de confiabilidade.",
+        "estudos": [
+          "E10"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação de informações sobre os projetos que geram incidentes na plataforma ocorre por meio da estruturação das relações entre os incidentes registrados, os projetos de software e seus impactos na plataforma tecnológica. Na abordagem PSECO-IM, esses dados são organizados considerando a quantidade e a gravidade dos incidentes, além do esforço de desenvolvimento dos projetos. As informações são representadas por indicadores de confiabilidade e painéis de acompanhamento, tornando explícitas e interpretáveis as relações entre os projetos, os fornecedores e os problemas que afetam a estabilidade do ECOS.",
+        "estudos": [
+          "E10"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As informações sobre os projetos que geram incidentes na plataforma são utilizadas no monitoramento da estabilidade e no apoio às decisões de governança. Na abordagem PSECO-IM, a ferramenta permite consultar diagnósticos e indicadores de confiabilidade de projetos e fornecedores, relacionando os incidentes registrados aos seus impactos sobre a plataforma tecnológica comum. O estudo apresenta a utilização dessas informações em uma ferramenta de apoio à gestão de TI, avaliada por profissionais de uma organização, sem demonstrar necessariamente a execução de todas as decisões gerenciais que os indicadores podem subsidiar.",
+        "estudos": [
+          "E10"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C11",
@@ -664,20 +479,9 @@
     "natureza": "Explícito",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S24"
-    ],
     "estudos": [
       "E09"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre as necessidades de mercado e lacunas do ecossistema é classificado no nível Ecossistema porque envolve informações sobre demandas dos clientes, oportunidades não atendidas e condições competitivas relacionadas ao conjunto de produtos e serviços oferecidos pelos participantes. Enquadra-se na dimensão Negócio por apoiar a identificação de oportunidades comerciais, a diferenciação competitiva e as decisões sobre o desenvolvimento de soluções complementares às ofertas existentes no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pela organização central, a partir de dados de uso, dados de mercado e informações sobre necessidades e lacunas percebidas.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que buscam se diferenciar e identificar oportunidades para novos produtos ou serviços.",
@@ -719,48 +523,34 @@
       "E08",
       "E17"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D02",
-      "D03",
-      "D06"
-    ],
-    "evidencia": {
-      "D02": {
-        "estudo": "E08",
-        "motivo": "Identificar quem detém o conhecimento é o próprio conteúdo do conhecimento"
-      },
-      "D03": {
-        "estudo": "E17",
-        "motivo": "O artigo coloca lado a lado quem faz a mesma tarefa e a falta de ferramenta que sustente essa troca"
-      },
-      "D06": {
-        "estudo": "E03",
-        "motivo": "O artigo diz que não dá para depender só de quem está há muito tempo na comunidade, que é exatamente o conhecimento do C12"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre a expertise dos participantes do ECOS é classificado no nível Ecossistema porque envolve competências e experiências especializadas distribuídas entre participantes de diferentes projetos, organizações e comunidades. Enquadra-se na dimensão Social por abordar conhecimentos relacionados às capacidades dos participantes, às relações de colaboração e ao compartilhamento de experiências entre indivíduos e equipes do ECOS.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento da expertise dos participantes do ECOS ocorre por meio da troca de experiências e conhecimentos especializados entre indivíduos, equipes e comunidades. No Astropy, participantes com conhecimentos interdisciplinares contribuem para a circulação de informações entre projetos, por meio de discussões técnicas, esclarecimentos e colaboração na resolução de problemas. No Eclipse, o ShareXP permite compartilhar composições de componentes que representam aspectos da experiência dos usuários, possibilitando que outros participantes consultem essas escolhas e discutam sua adequação às próprias atividades. Essas práticas favorecem o acesso às experiências de outros participantes, sem pressupor a transferência integral de seus conhecimentos tácitos.",
-    "estudos": ["E03", "E17"]
-  },
-  {
-    "processo": "Codificação",
-    "descricao": "A codificação de aspectos da expertise dos participantes do ECOS ocorre por meio da representação explícita de informações relacionadas às suas competências e experiências. No Collab-RS, a ontologia SECOn estabelece relações entre colaboradores, contribuições e tópicos de conhecimento, permitindo representar indícios de conhecimentos especializados a partir de dados de repositórios de desenvolvimento. No ShareXP, as composições de componentes utilizadas pelos participantes são representadas por descrições serializadas e capturas de tela, tornando acessíveis escolhas realizadas durante suas atividades. Essas representações permitem registrar manifestações da expertise, sem abranger integralmente seu caráter tácito.",
-    "estudos": ["E08", "E17"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "A expertise dos participantes do ECOS é utilizada para apoiar atividades de colaboração e orientar decisões relacionadas aos projetos. No Collab-RS, informações sobre competências especializadas são utilizadas para recomendar colaboradores externos compatíveis com as necessidades dos projetos, considerando históricos de contribuições e tópicos de conhecimento. No ShareXP, as experiências representadas nas composições de componentes podem ser aproveitadas por outros usuários, que consultam configurações compartilhadas e incorporam ferramentas ou perspectivas aos próprios ambientes de trabalho. Essas funcionalidades permitem utilizar informações e manifestações de experiências previamente desenvolvidas para apoiar a realização de atividades no ECOS.",
-    "estudos": ["E08", "E17"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento da expertise dos participantes do ECOS ocorre por meio da troca de experiências e conhecimentos especializados entre indivíduos, equipes e comunidades. No Astropy, participantes com conhecimentos interdisciplinares contribuem para a circulação de informações entre projetos, por meio de discussões técnicas, esclarecimentos e colaboração na resolução de problemas. No Eclipse, o ShareXP permite compartilhar composições de componentes que representam aspectos da experiência dos usuários, possibilitando que outros participantes consultem essas escolhas e discutam sua adequação às próprias atividades. Essas práticas favorecem o acesso às experiências de outros participantes, sem pressupor a transferência integral de seus conhecimentos tácitos.",
+        "estudos": [
+          "E03",
+          "E17"
+        ]
+      },
+      {
+        "processo": "Codificação",
+        "descricao": "A codificação de aspectos da expertise dos participantes do ECOS ocorre por meio da representação explícita de informações relacionadas às suas competências e experiências. No Collab-RS, a ontologia SECOn estabelece relações entre colaboradores, contribuições e tópicos de conhecimento, permitindo representar indícios de conhecimentos especializados a partir de dados de repositórios de desenvolvimento. No ShareXP, as composições de componentes utilizadas pelos participantes são representadas por descrições serializadas e capturas de tela, tornando acessíveis escolhas realizadas durante suas atividades. Essas representações permitem registrar manifestações da expertise, sem abranger integralmente seu caráter tácito.",
+        "estudos": [
+          "E08",
+          "E17"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "A expertise dos participantes do ECOS é utilizada para apoiar atividades de colaboração e orientar decisões relacionadas aos projetos. No Collab-RS, informações sobre competências especializadas são utilizadas para recomendar colaboradores externos compatíveis com as necessidades dos projetos, considerando históricos de contribuições e tópicos de conhecimento. No ShareXP, as experiências representadas nas composições de componentes podem ser aproveitadas por outros usuários, que consultam configurações compartilhadas e incorporam ferramentas ou perspectivas aos próprios ambientes de trabalho. Essas funcionalidades permitem utilizar informações e manifestações de experiências previamente desenvolvidas para apoiar a realização de atividades no ECOS.",
+        "estudos": [
+          "E08",
+          "E17"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C13",
@@ -769,30 +559,10 @@
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S10",
-      "S11",
-      "S18"
-    ],
     "estudos": [
       "E07",
       "E16"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D11"
-    ],
-    "evidencia": {
-      "D11": {
-        "estudo": "E07",
-        "motivo": "A relutância dos membros em contribuir é sobre a disposição dos participantes do ECOS, o mesmo objeto"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre as necessidades e prioridades dos participantes do ECOS é classificado no nível Ecossistema porque envolve interesses e demandas de diferentes organizações e comunidades, que precisam ser considerados nas decisões coletivas. Enquadra-se na dimensão Negócio por abordar objetivos organizacionais, estratégias de participação e prioridades que orientam decisões sobre investimentos, soluções e atributos de qualidade no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos próprios participantes do ECOS, ao expressarem suas necessidades, prioridades e restrições nas interações do ecossistema.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS envolvidos em decisões conjuntas e pela organização central responsável pela plataforma tecnológica comum.",
@@ -853,52 +623,37 @@
     "natureza": "Tácito-cognitivo",
     "nivel": "Plataforma",
     "dimensao": "Negócio",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S01",
-      "S17",
-      "S34"
-    ],
     "estudos": [
       "E12"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D15"
-    ],
-    "evidencia": {
-      "D15": {
-        "estudo": "E12",
-        "motivo": "O erro reportado é o que indica a informação ausente ou desatualizada"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre as dificuldades dos desenvolvedores externos é classificado no nível Plataforma porque envolve obstáculos encontrados durante a utilização de seus recursos, serviços e tecnologias, incluindo aqueles relacionados ao desenvolvimento de soluções complementares. Enquadra-se na dimensão Negócio por considerar como essas dificuldades afetam o esforço necessário para desenvolver soluções, a experiência de participação dos desenvolvedores externos e as condições para sua atuação no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos, nos erros, dúvidas e discussões que registram nas comunidades.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por equipes da organização central para revisar documentação e outros recursos de apoio aos desenvolvedores externos.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário analisar discussões e dúvidas recorrentes nas comunidades e, quando pertinente, aplicar modelagem de tópicos para identificar lacunas nos recursos de apoio.",
-"atividadesGerencia": [
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento das dificuldades dos desenvolvedores externos ocorre por meio da comunicação de dúvidas, problemas e experiências relacionadas à utilização da plataforma tecnológica comum. Na comunidade SAP, os participantes publicam perguntas e relatos de erros em fóruns de discussão, nos quais outros desenvolvedores e funcionários da organização central podem apresentar respostas e comentários. Essas interações tornam conhecidas dificuldades relacionadas à autenticação, conectividade, configuração, instalação e utilização de tecnologias da plataforma, permitindo que informações sobre obstáculos enfrentados individualmente sejam acessadas e compreendidas por outros participantes do ECOS.",
-    "estudos": ["E12"]
-  },
-  {
-    "processo": "Armazenamento",
-    "descricao": "Os relatos sobre dificuldades dos desenvolvedores externos são armazenados por meio da preservação de discussões publicadas na comunidade on-line da plataforma. A comunidade SAP funciona como um repositório de conhecimento que mantém perguntas, respostas e comentários relacionados aos problemas encontrados pelos participantes durante suas atividades de desenvolvimento. A permanência desses registros permite consultar experiências anteriores e recuperar informações sobre dificuldades recorrentes, além de possibilitar análises posteriores dos problemas relatados. Essa disponibilidade é demonstrada pela recuperação de milhares de páginas de discussões previamente publicadas na comunidade.",
-    "estudos": ["E12"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As dificuldades dos desenvolvedores externos são utilizadas como fonte de conhecimento para orientar ações de correção de problemas identificados na plataforma tecnológica comum. Na comunidade SAP, relatos sobre falhas no funcionamento de instâncias na nuvem e no SAP HANA Cockpit foram comunicados por desenvolvedores e resultaram em ações de correção informadas por funcionários da organização central. O estudo também apresenta a possibilidade de utilizar a análise de dificuldades recorrentes para priorizar problemas e identificar informações ausentes, inadequadas ou desatualizadas em tutoriais e documentação técnica. Dessa forma, distingue-se a aplicação demonstrada nos casos de correção das possibilidades adicionais de utilização propostas pelos pesquisadores.",
-    "estudos": ["E12"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento das dificuldades dos desenvolvedores externos ocorre por meio da comunicação de dúvidas, problemas e experiências relacionadas à utilização da plataforma tecnológica comum. Na comunidade SAP, os participantes publicam perguntas e relatos de erros em fóruns de discussão, nos quais outros desenvolvedores e funcionários da organização central podem apresentar respostas e comentários. Essas interações tornam conhecidas dificuldades relacionadas à autenticação, conectividade, configuração, instalação e utilização de tecnologias da plataforma, permitindo que informações sobre obstáculos enfrentados individualmente sejam acessadas e compreendidas por outros participantes do ECOS.",
+        "estudos": [
+          "E12"
+        ]
+      },
+      {
+        "processo": "Armazenamento",
+        "descricao": "Os relatos sobre dificuldades dos desenvolvedores externos são armazenados por meio da preservação de discussões publicadas na comunidade on-line da plataforma. A comunidade SAP funciona como um repositório de conhecimento que mantém perguntas, respostas e comentários relacionados aos problemas encontrados pelos participantes durante suas atividades de desenvolvimento. A permanência desses registros permite consultar experiências anteriores e recuperar informações sobre dificuldades recorrentes, além de possibilitar análises posteriores dos problemas relatados. Essa disponibilidade é demonstrada pela recuperação de milhares de páginas de discussões previamente publicadas na comunidade.",
+        "estudos": [
+          "E12"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As dificuldades dos desenvolvedores externos são utilizadas como fonte de conhecimento para orientar ações de correção de problemas identificados na plataforma tecnológica comum. Na comunidade SAP, relatos sobre falhas no funcionamento de instâncias na nuvem e no SAP HANA Cockpit foram comunicados por desenvolvedores e resultaram em ações de correção informadas por funcionários da organização central. O estudo também apresenta a possibilidade de utilizar a análise de dificuldades recorrentes para priorizar problemas e identificar informações ausentes, inadequadas ou desatualizadas em tutoriais e documentação técnica. Dessa forma, distingue-se a aplicação demonstrada nos casos de correção das possibilidades adicionais de utilização propostas pelos pesquisadores.",
+        "estudos": [
+          "E12"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C16",
@@ -907,28 +662,15 @@
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Negócio",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S07"
-    ],
     "estudos": [
       "E16"
     ],
-    "pendencia": "Único conhecimento sem nenhum desafio extraído no mesmo estudo",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre os impactos de mudanças de desenvolvedores externos no negócio é classificado no nível Ecossistema porque envolve relações entre serviços e soluções disponibilizados por diferentes participantes, cujas alterações podem afetar atividades e ofertas de outras organizações. Enquadra-se na dimensão Negócio por abordar as consequências dessas mudanças sobre o funcionamento, o escopo e a continuidade dos serviços utilizados pelos participantes do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos que mantêm os serviços dos quais o negócio depende, a partir das mudanças que realizam neles.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS cujas atividades em andamento dependem desses serviços e precisam antecipar seus impactos.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário considerar, nas decisões arquiteturais e de negócio, como mudanças em serviços de desenvolvedores externos podem afetar as atividades em andamento.",
-
-"atividadesGerencia": [],
-"atividadesAssociadas": false
-
+    "atividadesGerencia": [],
+    "atividadesAssociadas": false
   },
   {
     "id": "C17",
@@ -937,28 +679,9 @@
     "natureza": "Tácito-cognitivo",
     "nivel": "Produto",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S14"
-    ],
     "estudos": [
       "E17"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D03"
-    ],
-    "evidencia": {
-      "D03": {
-        "estudo": "E17",
-        "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre as composições de componentes para tarefas específicas é classificado no nível Produto porque envolve a seleção, a combinação e a configuração de componentes utilizados na realização de funcionalidades e atividades específicas em ambientes de software. Enquadra-se na dimensão Técnica por abordar a organização de módulos, ferramentas e configurações que permitem adaptar o ambiente de trabalho às necessidades dos participantes, considerando as relações entre os componentes e seu contexto de utilização.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por quem montou a composição de componentes e pela própria composição preservada como artefato.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que executam tarefas semelhantes e precisam avaliar composições já utilizadas.",
@@ -995,21 +718,9 @@
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S21"
-    ],
     "estudos": [
       "E03"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [],
-    "evidencia": {},
     "justificativaClassificacao": "O conhecimento sobre as funcionalidades e a complementaridade no ecossistema é classificado no nível Ecossistema porque envolve a compreensão das funcionalidades disponibilizadas por diferentes projetos e participantes, considerando suas relações, sobreposições e possibilidades de integração e reutilização. Enquadra-se na dimensão Técnica por abordar características funcionais das soluções, redundâncias de implementação e decisões relacionadas ao desenvolvimento, à adaptação e à integração de componentes e funcionalidades entre projetos do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que avaliam contribuições, a partir das funcionalidades e projetos já existentes.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que propõem novas funcionalidades e precisam avaliar sua complementaridade em relação ao que já existe.",
@@ -1046,65 +757,44 @@
     "natureza": "Tácito-técnico",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento",
-      "Uso e aplicação"
-    ],
-    "solucoes": [
-      "S01",
-      "S05",
-      "S22",
-      "S30"
-    ],
     "estudos": [
       "E06"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D01",
-      "D10"
-    ],
-    "evidencia": {
-      "D01": {
-        "estudo": "E06",
-        "motivo": "O artigo diz que para resolver problema o desenvolvedor exige alta capacidade de busca, que é justamente o que falha no portal"
-      },
-      "D10": {
-        "estudo": "E06",
-        "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto é classificado no nível Ecossistema porque envolve experiências e soluções compartilhadas por diferentes participantes, que podem ser consultadas e aproveitadas em outros projetos e ambientes de desenvolvimento. Enquadra-se na dimensão Técnica por abordar a resolução de problemas de software, a análise de compatibilidade entre soluções e ambientes tecnológicos e a utilização de conhecimentos práticos para orientar implementações e configurações durante o desenvolvimento no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que já enfrentaram problemas comparáveis e compartilharam suas soluções.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos diante de erros desconhecidos ou em busca de ideias que possam se adequar ao seu contexto.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário manter canais comunitários com boa capacidade de busca e apoiar a avaliação da adequação das soluções antes de aplicá-las.",
-
-"atividadesGerencia": [
-  {
-    "processo": "Aquisição",
-    "descricao": "A aquisição de soluções para problemas técnicos no ECOS ocorre quando desenvolvedores externos consultam fontes de conhecimento disponibilizadas por outros participantes e pela organização central. No ECOS associado à SAP, os desenvolvedores recorrem a fóruns comunitários, documentação técnica, exemplos de código e outros recursos para localizar problemas semelhantes e obter orientações aplicáveis às suas atividades. A busca envolve a consulta a diferentes fontes e a reformulação dos termos pesquisados, permitindo ampliar as alternativas disponíveis para resolver dificuldades de desenvolvimento, sem pressupor que todas as soluções encontradas sejam utilizadas.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Compartilhamento",
-    "descricao": "O compartilhamento de experiências sobre problemas e soluções do ECOS ocorre por meio da troca de orientações técnicas entre desenvolvedores externos e outros participantes. Na comunidade SAP, os desenvolvedores publicam dúvidas, relatam dificuldades e disponibilizam respostas relacionadas à resolução de problemas. Blogs independentes e grupos de usuários também permitem compartilhar experiências e recomendações de implementação. Quando não encontram soluções adequadas, os participantes podem solicitar apoio a colegas ou à própria comunidade, favorecendo a circulação de alternativas técnicas entre diferentes contextos de desenvolvimento.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Aplicação",
-    "descricao": "As soluções encontradas no ECOS são aplicadas pelos desenvolvedores externos quando alternativas técnicas obtidas em recursos de conhecimento são experimentadas para resolver problemas de seus projetos. No ECOS associado à SAP, desenvolvedores relatam a utilização de soluções encontradas em fóruns e exemplos de código, incluindo testes em ambientes isolados para verificar seu funcionamento. Essa prática permite experimentar orientações provenientes de outros participantes e observar seus resultados diante das condições específicas do ambiente de desenvolvimento, sem pressupor que todas as alternativas testadas sejam incorporadas aos sistemas.",
-    "estudos": ["E06"]
-  },
-  {
-    "processo": "Avaliação",
-    "descricao": "A avaliação da adequação das soluções disponíveis no ECOS ocorre quando desenvolvedores externos examinam sua compatibilidade com os problemas e ambientes tecnológicos em que trabalham. No ECOS associado à SAP, os participantes consideram características como credibilidade, especificidade e pertinência das orientações encontradas, descartando alternativas que não atendem às necessidades do projeto. Após experimentar uma solução, também podem verificar os resultados obtidos e reavaliar sua escolha, buscando outros recursos quando o problema permanece. Essa atividade corresponde ao julgamento contextual das alternativas técnicas, sem representar uma validação integral da experiência tácita dos desenvolvedores.",
-    "estudos": ["E06"]
-  }
-],
-"atividadesAssociadas": true
-
+    "atividadesGerencia": [
+      {
+        "processo": "Aquisição",
+        "descricao": "A aquisição de soluções para problemas técnicos no ECOS ocorre quando desenvolvedores externos consultam fontes de conhecimento disponibilizadas por outros participantes e pela organização central. No ECOS associado à SAP, os desenvolvedores recorrem a fóruns comunitários, documentação técnica, exemplos de código e outros recursos para localizar problemas semelhantes e obter orientações aplicáveis às suas atividades. A busca envolve a consulta a diferentes fontes e a reformulação dos termos pesquisados, permitindo ampliar as alternativas disponíveis para resolver dificuldades de desenvolvimento, sem pressupor que todas as soluções encontradas sejam utilizadas.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Compartilhamento",
+        "descricao": "O compartilhamento de experiências sobre problemas e soluções do ECOS ocorre por meio da troca de orientações técnicas entre desenvolvedores externos e outros participantes. Na comunidade SAP, os desenvolvedores publicam dúvidas, relatam dificuldades e disponibilizam respostas relacionadas à resolução de problemas. Blogs independentes e grupos de usuários também permitem compartilhar experiências e recomendações de implementação. Quando não encontram soluções adequadas, os participantes podem solicitar apoio a colegas ou à própria comunidade, favorecendo a circulação de alternativas técnicas entre diferentes contextos de desenvolvimento.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Aplicação",
+        "descricao": "As soluções encontradas no ECOS são aplicadas pelos desenvolvedores externos quando alternativas técnicas obtidas em recursos de conhecimento são experimentadas para resolver problemas de seus projetos. No ECOS associado à SAP, desenvolvedores relatam a utilização de soluções encontradas em fóruns e exemplos de código, incluindo testes em ambientes isolados para verificar seu funcionamento. Essa prática permite experimentar orientações provenientes de outros participantes e observar seus resultados diante das condições específicas do ambiente de desenvolvimento, sem pressupor que todas as alternativas testadas sejam incorporadas aos sistemas.",
+        "estudos": [
+          "E06"
+        ]
+      },
+      {
+        "processo": "Avaliação",
+        "descricao": "A avaliação da adequação das soluções disponíveis no ECOS ocorre quando desenvolvedores externos examinam sua compatibilidade com os problemas e ambientes tecnológicos em que trabalham. No ECOS associado à SAP, os participantes consideram características como credibilidade, especificidade e pertinência das orientações encontradas, descartando alternativas que não atendem às necessidades do projeto. Após experimentar uma solução, também podem verificar os resultados obtidos e reavaliar sua escolha, buscando outros recursos quando o problema permanece. Essa atividade corresponde ao julgamento contextual das alternativas técnicas, sem representar uma validação integral da experiência tácita dos desenvolvedores.",
+        "estudos": [
+          "E06"
+        ]
+      }
+    ],
+    "atividadesAssociadas": true
   },
   {
     "id": "C20",
@@ -1113,34 +803,14 @@
     "natureza": "Tácito-técnico",
     "nivel": "Produto",
     "dimensao": "Técnica",
-    "tipoEcos": [],
-    "acaoGerencia": [
-      "Compartilhamento"
-    ],
-    "solucoes": [
-      "S15"
-    ],
     "estudos": [
       "E04"
     ],
-    "pendencia": "",
-    "relacoesConfirmadas": true,
-    "desafios": [
-      "D07"
-    ],
-    "evidencia": {
-      "D07": {
-        "estudo": "E04",
-        "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto"
-      }
-    },
     "justificativaClassificacao": "O conhecimento sobre a experiência externa com tecnologias do ecossistema é classificado no nível Produto porque se manifesta nas atividades práticas de desenvolvimento e aperfeiçoamento de soluções complementares, a partir da utilização de tecnologias e recursos disponíveis no ECOS. Enquadra-se na dimensão Técnica por envolver habilidades de implementação, domínio prático de tecnologias e conhecimentos adquiridos durante a execução de tarefas relacionadas à construção e à evolução de produtos de software.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos experientes, a partir da vivência acumulada no uso de tecnologias da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que ainda não acumularam essa experiência e enfrentam dificuldades para inovar.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário incentivar a participação contínua e o compartilhamento de experiências na comunidade, utilizando mecanismos de reconhecimento ou recompensa quando adequados ao contexto.",
-
-"atividadesGerencia": [],
-"atividadesAssociadas": false
-
+    "atividadesGerencia": [],
+    "atividadesAssociadas": false
   }
 ]
