@@ -16,7 +16,7 @@ function criar(tag, className, texto) {
 
 /* Só a citação, sem o rótulo "Fonte" na frente. O lugar e o estilo já dizem
    que aquilo é a fonte do cartão.
-   
+
    Cada citação é um item que quebra inteiro, separado por espaço e não por
    ponto e vírgula, senão o separador sobra pendurado no fim da linha quando a
    lista quebra. */
