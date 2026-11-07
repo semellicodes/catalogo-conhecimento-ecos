@@ -808,7 +808,7 @@
   {
     "id": "C17",
     "nome": "Composições de componentes para tarefas específicas",
-    "descricao": "Esse conhecimento consiste na experiência prática sobre como combinar, configurar e otimizar múltiplos módulos para resolver uma demanda contextual. Sem esse conhecimento, desenvolvedores podem reconstruir soluções do zero em vez de reutilizar arranjos validados.",
+    "descricao": "Esse conhecimento abrange a experiência prática relacionada à seleção, combinação e configuração de componentes de software para a realização de tarefas específicas no ECOS. Envolve a compreensão de quais componentes são utilizados em determinado contexto de trabalho, como são organizados e de que maneira suas funcionalidades são combinadas para atender às necessidades dos participantes. Essas composições refletem escolhas realizadas a partir das experiências dos usuários e podem ser compartilhadas e reutilizadas por outros participantes que executam atividades semelhantes, permitindo conhecer diferentes formas de organizar e adaptar seus ambientes de trabalho.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Produto",
     "dimensao": "Técnica",
@@ -825,17 +825,35 @@
         "motivo": "O trecho diz que o compartilhamento de experiência sobre conjuntos de componentes não é sistematizado"
       }
     },
-    "justificativaClassificacao": "As composições de componentes para tarefas específicas são classificadas como conhecimento tácito-cognitivo porque incorporam a experiência de quem avaliou o contexto de trabalho. O nível Produto se aplica porque orientam a execução de tarefas específicas. A dimensão Técnica foi selecionada porque tratam da combinação de componentes e configurações adequadas à tarefa.",
+    "justificativaClassificacao": "O conhecimento sobre as composições de componentes para tarefas específicas é classificado no nível Produto porque envolve a seleção, a combinação e a configuração de componentes utilizados na realização de funcionalidades e atividades específicas em ambientes de software. Enquadra-se na dimensão Arquitetural (Técnica) por abordar a organização de módulos, ferramentas e configurações que permitem adaptar o ambiente de trabalho às necessidades dos participantes, considerando as relações entre os componentes e seu contexto de utilização.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por quem montou a composição de componentes e pela própria composição preservada como artefato.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por participantes do ECOS que executam tarefas semelhantes e precisam avaliar composições já utilizadas.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário compartilhar composições de componentes para que participantes do ECOS possam consultá-las, discuti-las e integrar uma composição completa ou parcial ao seu ambiente.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre as composições de componentes para tarefas específicas ocorre por meio da troca de experiências relacionadas à seleção, combinação e configuração de ferramentas utilizadas pelos participantes do ECOS. No Eclipse, o ShareXP permite compartilhar perspectivas que representam composições desenvolvidas durante a realização de determinadas tarefas. Os participantes podem consultar as configurações disponibilizadas por outros usuários, visualizar os componentes envolvidos e discutir suas escolhas por meio de ferramentas de comunicação integradas. Essas interações favorecem a circulação de experiências contextualizadas, permitindo que outros participantes conheçam diferentes formas de organizar seus ambientes de trabalho.",
+    "estudos": ["E17"]
+  },
+  {
+    "processo": "Codificação",
+    "descricao": "A codificação do conhecimento sobre as composições de componentes para tarefas específicas ocorre por meio da representação explícita de aspectos das configurações desenvolvidas pelos participantes. No ShareXP, as perspectivas do Eclipse são representadas por descrições serializadas e capturas de tela, que permitem identificar os componentes utilizados, suas funcionalidades e sua organização no ambiente de trabalho. Essas representações tornam acessíveis escolhas realizadas pelos usuários em contextos específicos, permitindo compreender como determinados conjuntos de componentes foram organizados para apoiar suas tarefas. O processo externaliza manifestações da experiência incorporada nas composições, sem pressupor a representação integral do conhecimento tácito dos participantes.",
+    "estudos": ["E17"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre as composições de componentes para tarefas específicas ocorre quando os participantes utilizam experiências incorporadas em configurações desenvolvidas por outros usuários para orientar a adaptação de seus próprios ambientes de trabalho. No ShareXP, os usuários podem consultar perspectivas compartilhadas, visualizar os componentes associados a determinada tarefa e selecionar elementos individuais ou composições completas para integração ao seu ambiente Eclipse. A ferramenta permite instalar os componentes necessários e incorporar a organização visual da perspectiva selecionada. Essa utilização possibilita aproveitar escolhas e configurações previamente desenvolvidas por outros participantes em atividades semelhantes, sem pressupor que todas as composições sejam adequadas a qualquer contexto.",
+    "estudos": ["E17"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C18",
     "nome": "Funcionalidades e complementaridade no ecossistema",
-    "descricao": "Esse conhecimento abrange o panorama geral do que já existe publicado no ecossistema para identificar como novas soluções podem agregar valor sem duplicar esforços. A falta dessa visão pode levar ao desperdício de recursos em projetos redundantes que são rejeitados pelo ecossistema.",
+    "descricao": "Esse conhecimento abrange a compreensão das funcionalidades existentes nos diferentes projetos e componentes do ECOS, considerando suas semelhanças, diferenças e possibilidades de complementaridade. Envolve reconhecer funcionalidades já implementadas, identificar sobreposições entre soluções e compreender como contribuições de diferentes projetos podem ser combinadas, adaptadas ou reutilizadas. Essa compreensão permite orientar decisões sobre o desenvolvimento e a integração de novas funcionalidades, contribuindo para evitar esforços redundantes e favorecer a colaboração entre projetos do ECOS.",
     "natureza": "Tácito-cognitivo",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -847,17 +865,35 @@
     "relacoesConfirmadas": true,
     "desafios": [],
     "evidencia": {},
-    "justificativaClassificacao": "As funcionalidades e a complementaridade no ecossistema são classificadas como conhecimento tácito-cognitivo porque identificá-las exige interpretar as funcionalidades já existentes. O nível Ecossistema se aplica porque considera a relação entre contribuições e projetos participantes. A dimensão Técnica foi selecionada porque trata das funcionalidades e de sua integração.",
+    "justificativaClassificacao": "O conhecimento sobre as funcionalidades e a complementaridade no ecossistema é classificado no nível Ecossistema porque envolve a compreensão das funcionalidades disponibilizadas por diferentes projetos e participantes, considerando suas relações, sobreposições e possibilidades de integração e reutilização. Enquadra-se na dimensão Arquitetural (Técnica) por abordar características funcionais das soluções, redundâncias de implementação e decisões relacionadas ao desenvolvimento, à adaptação e à integração de componentes e funcionalidades entre projetos do ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que avaliam contribuições, a partir das funcionalidades e projetos já existentes.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que propõem novas funcionalidades e precisam avaliar sua complementaridade em relação ao que já existe.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário tornar visíveis as funcionalidades existentes e utilizar referências cruzadas entre projetos antes de novas contribuições.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre as funcionalidades e a complementaridade no ECOS ocorre por meio da troca de informações entre participantes de diferentes projetos sobre funcionalidades existentes, suas implementações e possibilidades de integração. No Astropy, essa atividade envolve discussões em issues e pull requests do GitHub, incluindo referências cruzadas que conectam contribuições e problemas relacionados entre projetos. Essas interações permitem comunicar características de funcionalidades já desenvolvidas, esclarecer decisões de implementação e discutir semelhanças e possibilidades de complementaridade entre soluções. Dessa forma, os participantes podem compreender as relações entre funcionalidades disponibilizadas por diferentes projetos e coordenar suas contribuições no ECOS.",
+    "estudos": ["E03"]
+  },
+  {
+    "processo": "Armazenamento",
+    "descricao": "O armazenamento do conhecimento sobre as funcionalidades e a complementaridade no ECOS ocorre por meio da preservação de informações sobre funcionalidades existentes e suas relações nos registros de colaboração entre projetos. No Astropy, issues e pull requests do GitHub mantêm discussões sobre implementações semelhantes, propostas de integração e decisões relacionadas à complementaridade das funcionalidades. As referências cruzadas permitem conectar registros de diferentes projetos, conservando parte do contexto das discussões para consultas posteriores. Entretanto, essas informações permanecem distribuídas entre diferentes registros, e o estudo identifica dificuldades para localizar e recuperar conteúdos relevantes, sem demonstrar a existência de um repositório estruturado especificamente para esse conhecimento.",
+    "estudos": ["E03"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre as funcionalidades e a complementaridade no ECOS ocorre quando os participantes utilizam informações sobre funcionalidades existentes, suas semelhanças e possibilidades de integração para orientar decisões de desenvolvimento e manutenção. No Astropy, essa utilização é observada na colaboração entre projetos para incorporar funcionalidades anteriormente implementadas em outros pacotes e eliminar código redundante. Também é demonstrada em situações nas quais contribuições são analisadas considerando sua complementaridade em relação às funcionalidades disponíveis. No caso envolvendo Poliastro e Astroquery, uma contribuição foi rejeitada por reproduzir funcionalidades existentes sem acrescentar complementaridade suficiente, enquanto o responsável pelo Poliastro decidiu remover um módulo diante da disponibilidade de uma alternativa em outro projeto. Essas decisões evidenciam a utilização desse conhecimento para orientar a integração, a reutilização e a manutenção de soluções no ECOS.",
+    "estudos": ["E03"]
+  }
+],
+"atividadesAssociadas": true
+
   },
   {
     "id": "C19",
     "nome": "Problemas e soluções do ecossistema aplicáveis ao contexto",
-    "descricao": "Esse conhecimento envolve a habilidade prática de buscar resoluções de problemas em fóruns e comunidades e julgar se elas se adaptam ao cenário específico do seu projeto. A aplicação cega de soluções sem esse julgamento pode introduzir falhas e incompatibilidades nos sistemas.",
+    "descricao": "Esse conhecimento abrange a experiência prática necessária para localizar, analisar e utilizar soluções de problemas técnicos compartilhadas por diferentes participantes do ECOS, considerando sua adequação ao contexto específico de desenvolvimento. Envolve a compreensão de problemas semelhantes, a interpretação de orientações e exemplos de implementação e o julgamento sobre a compatibilidade das soluções disponíveis com as tecnologias, configurações e necessidades do projeto. Essa experiência permite selecionar e adaptar conhecimentos provenientes de comunidades, fóruns e outros recursos de apoio para orientar a resolução de problemas durante o desenvolvimento de software no ECOS.",
     "natureza": "Tácito-técnico",
     "nivel": "Ecossistema",
     "dimensao": "Técnica",
@@ -878,17 +914,39 @@
         "motivo": "O trecho é literalmente sobre avaliar se a solução do fórum serve antes de aplicá-la"
       }
     },
-    "justificativaClassificacao": "Os problemas e soluções do ecossistema aplicáveis ao contexto são classificados como conhecimento tácito-técnico porque sua aplicação exige julgamento prático sobre a adequação ao contexto. O nível Ecossistema se aplica porque recuperam experiências de diferentes participantes. A dimensão Técnica foi selecionada porque apoiam a resolução de problemas de software.",
+    "justificativaClassificacao": "O conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto é classificado no nível Ecossistema porque envolve experiências e soluções compartilhadas por diferentes participantes, que podem ser consultadas e aproveitadas em outros projetos e ambientes de desenvolvimento. Enquadra-se na dimensão Arquitetural (Técnica) por abordar a resolução de problemas de software, a análise de compatibilidade entre soluções e ambientes tecnológicos e a utilização de conhecimentos práticos para orientar implementações e configurações durante o desenvolvimento no ECOS.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente por participantes do ECOS que já enfrentaram problemas comparáveis e compartilharam suas soluções.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos diante de erros desconhecidos ou em busca de ideias que possam se adequar ao seu contexto.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário manter canais comunitários com boa capacidade de busca e apoiar a avaliação da adequação das soluções antes de aplicá-las.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Aquisição",
+    "descricao": "A aquisição do conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto ocorre quando desenvolvedores externos obtêm informações sobre dificuldades técnicas e alternativas de resolução provenientes de fontes externas às suas organizações. No ECOS SAP, essa atividade envolve a consulta a fóruns comunitários, documentação técnica, exemplos de código e outros recursos disponibilizados pela organização proprietária da plataforma e por diferentes participantes. Os desenvolvedores procuram problemas semelhantes aos que enfrentam e examinam as soluções compartilhadas para obter orientações que possam contribuir para suas atividades. Essa obtenção de conhecimentos externos amplia as alternativas disponíveis para a resolução de problemas, sem pressupor que todas as soluções encontradas sejam adequadas ou efetivamente utilizadas.",
+    "estudos": ["E06"]
+  },
+  {
+    "processo": "Compartilhamento",
+    "descricao": "O compartilhamento do conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto ocorre por meio da troca de informações e experiências técnicas entre participantes do ECOS. Na comunidade SAP, os desenvolvedores podem publicar dúvidas, relatar problemas e compartilhar respostas e orientações sobre alternativas de resolução. Outros recursos, como blogs mantidos por desenvolvedores e grupos de usuários, também possibilitam a disseminação de experiências relacionadas a dificuldades de implementação. Essas interações permitem que soluções conhecidas por determinados participantes sejam consultadas por outros desenvolvedores, favorecendo a circulação de conhecimentos sobre problemas semelhantes e possíveis formas de resolvê-los.",
+    "estudos": ["E06"]
+  },
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto ocorre quando desenvolvedores utilizam orientações e experiências obtidas em recursos de conhecimento para tentar resolver dificuldades técnicas em seus próprios projetos. No ECOS SAP, os desenvolvedores podem selecionar soluções encontradas em fóruns ou exemplos de código e experimentá-las em ambientes de teste, considerando as características tecnológicas de seus sistemas. Essa atividade envolve colocar em prática alternativas de resolução e observar seu funcionamento diante do problema enfrentado, sem pressupor que todas as soluções testadas sejam posteriormente incorporadas aos sistemas em desenvolvimento.",
+    "estudos": ["E06"]
+  },
+  {
+    "processo": "Avaliação",
+    "descricao": "A avaliação do conhecimento sobre os problemas e soluções do ecossistema aplicáveis ao contexto ocorre quando desenvolvedores examinam a adequação de soluções técnicas encontradas em diferentes recursos de conhecimento às necessidades de seus projetos. No ECOS SAP, essa atividade envolve considerar a credibilidade das informações, a semelhança entre os problemas relatados e a compatibilidade das orientações com o ambiente tecnológico utilizado. Os desenvolvedores também podem experimentar soluções em ambientes de teste e verificar seus resultados, descartando alternativas que não funcionam ou não se ajustam ao contexto. Essa verificação permite distinguir soluções potencialmente aplicáveis daquelas que não atendem às condições específicas do problema.",
+    "estudos": ["E06"]
+  }
+],
+"atividadesAssociadas": true
   },
   {
     "id": "C20",
     "nome": "Experiência externa com tecnologias do ecossistema",
-    "descricao": "Esse conhecimento diz respeito à experiência prática acumulada por desenvolvedores externos ao utilizar repetidamente as tecnologias da plataforma tecnológica comum em projetos reais. A falta dessa vivência pode reduzir a velocidade de inovação e limitar a capacidade do ECOS de evoluir com base no uso prático.",
+    "descricao": "Esse conhecimento abrange a experiência prática acumulada por desenvolvedores externos durante a utilização de tecnologias e recursos do ECOS para desenvolver produtos complementares. Envolve habilidades técnicas, conhecimentos adquiridos pela execução repetida de tarefas e julgamentos construídos ao longo das atividades de desenvolvimento, permitindo reconhecer situações recorrentes e orientar decisões práticas. Essa experiência pode ser mobilizada na criação e no aperfeiçoamento de soluções, especialmente quando combinada com conhecimentos e perspectivas obtidos por meio da participação na comunidade do ECOS.",
     "natureza": "Tácito-técnico",
     "nivel": "Produto",
     "dimensao": "Técnica",
@@ -905,11 +963,19 @@
         "motivo": "O trecho diz que o conhecimento experiencial não rende diante do baixo engajamento, é o mesmo objeto"
       }
     },
-    "justificativaClassificacao": "A experiência externa com tecnologias do ecossistema é classificada como conhecimento tácito-técnico porque resulta da execução repetida de tarefas e se incorpora às habilidades e ao julgamento do ator. O nível Produto se aplica porque se manifesta no uso das tecnologias em tarefas concretas. A dimensão Técnica foi selecionada porque trata desse saber fazer.",
+    "justificativaClassificacao": "O conhecimento sobre a experiência externa com tecnologias do ecossistema é classificado no nível Produto porque se manifesta nas atividades práticas de desenvolvimento e aperfeiçoamento de soluções complementares, a partir da utilização de tecnologias e recursos disponíveis no ECOS. Enquadra-se na dimensão Arquitetural (Técnica) por envolver habilidades de implementação, domínio prático de tecnologias e conhecimentos adquiridos durante a execução de tarefas relacionadas à construção e à evolução de produtos de software.",
     "recursosConhecimento": "Esse conhecimento é gerado ou registrado principalmente pelos desenvolvedores externos experientes, a partir da vivência acumulada no uso de tecnologias da plataforma tecnológica comum.",
     "participacaoCompartilhamento": "Esse conhecimento é utilizado principalmente por desenvolvedores externos que ainda não acumularam essa experiência e enfrentam dificuldades para inovar.",
     "praticasGerencia": "Para mantê-lo acessível e útil, é necessário incentivar a participação contínua e o compartilhamento de experiências na comunidade, utilizando mecanismos de reconhecimento ou recompensa quando adequados ao contexto.",
-    "atividadesGerencia": [],
-    "atividadesAssociadas": "pendente"
+    
+"atividadesGerencia": [
+  {
+    "processo": "Aplicação",
+    "descricao": "A aplicação do conhecimento sobre a experiência externa com tecnologias do ecossistema está relacionada à utilização das habilidades e dos julgamentos técnicos acumulados pelos desenvolvedores externos durante suas atividades de desenvolvimento. No contexto da criação de produtos complementares, essa experiência pode ser mobilizada para reconhecer situações recorrentes, orientar decisões e executar tarefas com base em conhecimentos adquiridos anteriormente. O estudo também discute como desenvolvedores experientes podem combinar seus conhecimentos prévios com informações obtidas por meio da participação comunitária, favorecendo o desenvolvimento de soluções complementares. Essa associação representa uma possibilidade de aplicação fundamentada na discussão teórica e nos resultados estatísticos do estudo, sem pressupor a observação direta de procedimentos técnicos específicos.",
+    "estudos": ["E04"]
+  }
+],
+"atividadesAssociadas": true
+
   }
 ]
