@@ -1771,3 +1771,14 @@ html.ficha-aberta body {
   margin-left: 0.25rem;
   font-size: 0.9em;
 }
+
+/* Refinamento visual do cabeçalho */
+.cabecalho__interno {
+  padding-block: 0.75rem;
+}
+
+@media (max-width: 47.99rem) {
+  .cabecalho__interno {
+    padding-block: 0.75rem;
+  }
+}
