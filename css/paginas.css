@@ -175,13 +175,16 @@
   }
 }
 
-.secao { padding-block: var(--esp-secao); }
+.secao--estrutura {
+  padding-top: var(--esp-8);
+  padding-bottom: var(--esp-5);
+}
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
    de que se destacar no tema claro. */
 .secao-catalogo {
-  padding-block: var(--esp-6);
+  padding: var(--esp-5) 0 var(--esp-6);
   background: var(--cor-miolo);
 }
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
@@ -196,7 +199,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 
 /* A abertura do mapa conceitual separa a visão institucional do diagrama
    consultável logo abaixo. */
-.secao--estrutura { padding-top: var(--esp-8); }
+.secao--estrutura {
+  padding-top: var(--esp-8);
+  padding-bottom: var(--esp-5);
+}
 .estrutura__abertura {
   display: grid;
   justify-items: center;
