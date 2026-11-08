@@ -100,7 +100,7 @@ campoBusca.addEventListener('input', () => {
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = 'Consultar fonte';
+      link.textContent = 'Consulte a fonte';
       item.append(' ', link);
     }
 
