@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="versao" content="20261106-8">
-<title>KM4SECO · Catálogo de Conhecimento em Ecossistemas de Software</title>
+<title>KM4SECO</title>
 <meta name="description" content="KM4SECO, catálogo de conhecimento em Ecossistemas de Software (ECOS) construído a partir de uma revisão rápida da literatura, com busca, filtros e estudos primários que sustentam os conhecimentos.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
@@ -93,7 +93,7 @@
       <header class="catalogo__cabecalho">
         <p class="catalogo__olho">Consulta ao catálogo</p>
         <h2 class="catalogo__titulo" id="titulo-catalogo">Catálogo de conhecimentos em ECOS</h2>
-        <p class="catalogo__intro">Explore os 20 conhecimentos identificados na Revisão Rápida da Literatura. Use a busca e os filtros para localizar o que deseja consultar.</p>
+        <p class="catalogo__intro">Filtre por nível, dimensão ou pesquise termos específicos do conhecimento.</p>
       </header>
 
       <div class="catalogo__barra">
@@ -150,6 +150,16 @@
     </div>
     <h2 class="ficha__nome" id="dialogo-ficha-nome"></h2>
     <p class="ficha__descricao" id="dialogo-ficha-descricao"></p>
+    <button
+  class="ficha__expandir"
+  id="dialogo-ficha-expandir"
+  type="button"
+  aria-controls="dialogo-ficha-descricao"
+  aria-expanded="false"
+>
+  <span id="dialogo-ficha-expandir-texto">Mostrar mais</span>
+  <span class="ficha__expandir-seta" aria-hidden="true"></span>
+</button>
   </div>
   <div class="dialogo-ficha__corpo" id="dialogo-ficha-corpo"></div>
   <div class="dialogo-ficha__rodape" id="ficha-navegacao">
@@ -180,7 +190,7 @@
       <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 5.5h14v9H3zM3 6l7 4.5L17 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       CONTATO
     </h2>
-    <p class="contato__intro">Para dúvidas, sugestões ou colaborações sobre o catálogo KM4SECO, entre em contato com os autores.</p>
+    <p class="contato__intro">Para dúvidas, sugestões ou colaborações sobre este catálogo, entre em contato com os autores.</p>
     <ul class="contato__lista">
       <li class="pessoa">
         <img class="pessoa__retrato pessoa__retrato--paula" src="imagens/paula.jpeg" alt="" width="500" height="625">

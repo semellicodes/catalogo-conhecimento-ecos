@@ -357,7 +357,7 @@ nativamente pelo navegador com `type="module"`.
   tácito-técnico não estão no mesmo nível do explícito, e o orientador tinha pedido que essa
   distinção ficasse perceptível. O ponto está levantado e aguarda decisão
 - A atribuição é separada por afirmação. O conceito de conhecimento em ECOS cita `davenport1998`,
-  `seichter2010` e `viana2015`. A definição do explícito cita `nonaka1997` e as dos dois tácitos
+  `seichter2010` e `viana2015`. A definição dos dois tácitos
   citam `alavi2001`. Cada cartão carrega a sua, e o divisor não cita nada, porque é frase de
   passagem e não afirmação com fonte própria
 - O cartão verde é compacto de propósito. O que cede é o respiro, recuo vertical de `--esp-3`,

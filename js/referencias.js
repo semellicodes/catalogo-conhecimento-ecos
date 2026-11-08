@@ -46,6 +46,49 @@ async function iniciar() {
     corpo.append(linha);
   });
 
+
+/* ---------- Busca dos estudos primários ---------- */
+
+const campoBusca = el('#busca-estudos');
+const resultadoBusca = el('#resultado-busca');
+
+const normalizar = (texto) =>
+  String(texto)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
+const linhasEstudos = [...corpo.querySelectorAll('tr')];
+
+campoBusca.addEventListener('input', () => {
+  const termo = normalizar(campoBusca.value);
+  let encontrados = 0;
+
+  linhasEstudos.forEach((linha) => {
+    const corresponde = normalizar(linha.textContent)
+      .includes(termo);
+
+    linha.hidden = !corresponde;
+
+    if (corresponde) {
+      encontrados++;
+    }
+  });
+
+  if (termo) {
+    resultadoBusca.hidden = false;
+
+    resultadoBusca.textContent = encontrados
+      ? `${encontrados} estudo(s) encontrado(s).`
+      : 'Nenhum estudo encontrado.';
+  } else {
+    resultadoBusca.hidden = true;
+    resultadoBusca.textContent = '';
+  }
+});
+
+
   const adicionarReferencia = (lista, chave) => {
     const item = document.createElement('li');
     item.id = `referencia-${chave}`;
@@ -57,7 +100,7 @@ async function iniciar() {
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = url.replace(/^https?:\/\//, '');
+      link.textContent = 'Consultar fonte';
       item.append(' ', link);
     }
 

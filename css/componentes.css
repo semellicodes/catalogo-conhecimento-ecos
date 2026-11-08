@@ -235,81 +235,143 @@
   border-bottom-color: var(--cor-acento);
 }
 
+
 /* ---------- Contato ---------- */
-/* Bloco centrado e curto. O assunto é um recado, não uma seção de conteúdo,
-   então ocupa o mínimo entre o fim da página e o crédito. */
+/* Seção compacta, com destaque discreto para os participantes. */
+
 .contato {
   flex: none;
   border-top: var(--borda);
-  padding: var(--esp-5) var(--esp-0) var(--esp-4);
+  padding: 1rem 0 0.75rem;
   background: var(--cor-superficie-alta);
   text-align: center;
 }
+
 .contato__olho {
   display: inline-flex;
   align-items: center;
   gap: var(--esp-2);
   margin: 0;
-  padding: var(--esp-2) var(--esp-3);
+  padding: 0.4rem 0.75rem;
   color: var(--cor-acento);
   border: var(--borda-acento-suave);
   border-radius: var(--raio-pilula);
   font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: var(--entre-letras-rotulo);
   line-height: 1;
 }
-.contato__olho svg { width: var(--tam-icone-controle); height: var(--tam-icone-controle); }
-.contato__intro {
-  max-width: var(--largura-texto-contato);
-  margin: var(--esp-3) auto 0;
-  color: var(--cor-texto-suave);
-  font-size: var(--tam-contato);
-  line-height: 1.6;
+
+.contato__olho svg {
+  width: 1rem;
+  height: 1rem;
 }
+
+.contato__intro {
+  max-width: 52rem;
+  margin: 0.5rem auto 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
 .contato__lista {
-  list-style: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--esp-4) var(--esp-5);
-  max-width: var(--largura-contato);
-  margin: var(--esp-4) auto 0;
+  gap: 0.75rem;
+  max-width: 48rem;
+  margin: 0.75rem auto 0;
+  list-style: none;
 }
+
+/* Quatro participantes lado a lado no desktop */
 @media (min-width: 64rem) {
-  .contato__lista { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .contato__lista {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
-.pessoa { display: grid; justify-items: center; align-content: start; row-gap: var(--esp-1); }
+
+.pessoa {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  row-gap: 0.25rem;
+}
+
 .pessoa__retrato {
-  width: var(--retrato);
-  height: var(--retrato);
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-bottom: 0.125rem;
   object-fit: cover;
   object-position: center;
   border: var(--borda-acento-suave);
   border-radius: var(--raio-pilula);
   box-shadow: var(--aro-retrato);
-  margin-bottom: var(--esp-1);
-  transition: border-color var(--dur-rapida) var(--curva), box-shadow var(--dur-rapida) var(--curva);
+  transition:
+    border-color var(--dur-rapida) var(--curva),
+    box-shadow var(--dur-rapida) var(--curva);
 }
-.pessoa__retrato--paula { object-position: center 42%; }
-.pessoa__retrato--mellynda { object-position: 66% 38%; }
-.pessoa__retrato--malcher { object-position: center 34%; }
-.pessoa__retrato--larissa { object-position: center 24%; }
-.pessoa__nome { font-size: var(--tam-contato); font-weight: 600; }
+
+/* Mantém o enquadramento individual das fotografias */
+.pessoa__retrato--paula {
+  object-position: center 42%;
+}
+
+.pessoa__retrato--mellynda {
+  object-position: 66% 38%;
+}
+
+.pessoa__retrato--malcher {
+  object-position: center 34%;
+}
+
+.pessoa__retrato--larissa {
+  object-position: center 24%;
+}
+
+.pessoa__nome {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
 .pessoa__email {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: auto;
-  font-size: var(--tam-xs);
+  font-size: 0.75rem;
   color: var(--cor-acento);
   overflow-wrap: anywhere;
   transition: color var(--dur-rapida) var(--curva);
 }
-.pessoa__email:hover { color: var(--cor-acento-forte); }
-@media (hover: hover) and (pointer: fine) {
-  .pessoa__retrato:hover { border-color: var(--cor-acento); box-shadow: var(--aro-retrato-hover); }
+
+.pessoa__email:hover {
+  color: var(--cor-acento-forte);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .pessoa__retrato:hover {
+    border-color: var(--cor-acento);
+    box-shadow: var(--aro-retrato-hover);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .contato {
+    padding-block: 1rem 0.75rem;
+  }
+
+  .contato__lista {
+    gap: 1rem 0.75rem;
+  }
+
+  .pessoa__retrato {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
 
 /* ---------- Rodapé ---------- */
 .rodape {
@@ -364,9 +426,9 @@
   color: var(--cor-acento);
 }
 
+
 /* ---------- Busca e filtros ---------- */
-/* Painel acima da lista. A busca vem primeiro, a natureza fica ao lado e as
-   demais facetas entram numa segunda linha compacta. */
+
 .filtros {
   margin-bottom: var(--esp-6);
   padding: var(--esp-3);
@@ -374,12 +436,15 @@
   border: var(--borda);
   border-radius: var(--raio);
 }
+
+/* Primeira linha: pesquisa e natureza */
 .filtros__linha {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--esp-2);
 }
+
 .filtros__busca {
   position: relative;
   flex: 1 1 var(--largura-min-busca);
@@ -387,9 +452,22 @@
   display: flex;
   align-items: center;
 }
-.filtros__busca .campo-busca { flex: 1 1 auto; min-width: 0; }
-.filtros__principal { flex: 0 1 auto; display: flex; min-width: 0; }
-.filtros__principal .filtros__opcoes { flex-wrap: nowrap; }
+
+.filtros__busca .campo-busca {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.filtros__principal {
+  flex: 0 1 auto;
+  display: flex;
+  min-width: 0;
+}
+
+.filtros__principal .filtros__opcoes {
+  flex-wrap: nowrap;
+}
+
 .filtros__contagem {
   flex: none;
   margin-left: auto;
@@ -399,37 +477,86 @@
   white-space: nowrap;
 }
 
+/* Segunda e terceira linhas */
 .filtros__grade {
   display: grid;
-  gap: var(--esp-2);
-  margin-top: var(--esp-2);
-  padding-top: var(--esp-2);
+  gap: 0;
+  margin-top: var(--esp-3);
+  padding-top: 0;
   border-top: var(--borda-suave);
 }
-.filtros__grade:empty { display: none; }
-/* Rótulo e pastilhas na mesma linha. No celular empilha. */
+
+.filtros__grade:empty {
+  display: none;
+}
+
 .filtros__grupo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--esp-2) var(--esp-3);
+  gap: var(--esp-2);
   min-width: 0;
+  padding-block: var(--esp-2);
 }
+
+/* Divisória entre nível e dimensão */
+.filtros__grupo + .filtros__grupo {
+  border-top: var(--borda-suave);
+}
+
+/* Títulos dos grupos */
 .filtros__titulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
+  font-weight: 600;
   letter-spacing: var(--entre-letras-rotulo);
   text-transform: uppercase;
   color: var(--cor-texto-fraco);
   white-space: nowrap;
 }
+
+/* Ícones dos títulos */
+.filtros__titulo svg {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--cor-acento);
+}
+
+/* Mantém o rótulo oculto da busca acessível */
 .filtros__titulo--oculto {
   position: absolute;
   clip-path: inset(50%);
   white-space: nowrap;
 }
-.filtros__opcoes { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 
+/* Opções de cada classificação */
+.filtros__opcoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-2);
+}
+
+/* Ícones nos botões de nível e dimensão */
+.filtros__grade .filtros__opcoes button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.filtros__grade .filtros__opcoes button svg {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  color: currentColor;
+}
+
+/* Ícone de pesquisa */
 .filtros__icone {
   position: absolute;
   left: var(--esp-3);
@@ -440,6 +567,7 @@
   pointer-events: none;
 }
 
+/* Rodapé dos filtros */
 .filtros__rodape {
   display: flex;
   align-items: center;
@@ -447,15 +575,44 @@
   gap: var(--esp-3);
   padding-top: var(--esp-1);
 }
-.filtros__rodape:not(:has(> :not([hidden]))) { display: none; }
-@media (max-width: 47.99rem) {
-  .filtros__busca { flex: 1 1 100%; }
-  .filtros__principal { flex: 1 1 100%; }
-  .filtros__principal .filtros__opcoes { flex-wrap: wrap; }
-  .filtros__contagem { margin-left: 0; }
-  .filtros__grupo { align-items: start; }
-  .filtros__titulo { flex-basis: 100%; }
+
+.filtros__rodape:not(:has(> :not([hidden]))) {
+  display: none;
 }
+
+
+/* Filtros mais compactos no desktop */
+@media (min-width: 64rem) {
+  .filtros {
+    padding: 0.625rem 0.75rem;
+    margin-bottom: var(--esp-4);
+  }
+
+  .filtros__linha {
+    gap: 0.5rem;
+  }
+
+  .filtros__grade {
+    margin-top: 0.5rem;
+    padding-top: 0;
+    gap: 0;
+  }
+
+  .filtros__grupo {
+    padding-block: 0.4rem;
+    gap: 0.5rem;
+  }
+
+  .filtros__opcoes {
+    gap: 0.5rem;
+  }
+
+  .filtros__rodape {
+    padding-top: 0.25rem;
+  }
+}
+
+
 
 
 /* Opção de faceta. Botão de verdade, o estado mora em aria-pressed. */
@@ -611,10 +768,10 @@
   --cor-cartao-natureza-fundo: var(--cor-acento-fundo);
   --cor-cartao-natureza-linha: var(--cor-acento-linha);
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
-  gap: var(--esp-3);
+  grid-template-rows: auto auto auto 1fr;
+  gap: var(--esp-2);
   width: 100%;
-  padding: var(--esp-5);
+  padding: var(--esp-4);
   background: var(--cor-cartao-catalogo);
   border: var(--borda);
   border-radius: var(--raio);
@@ -636,6 +793,7 @@
   .cartao:hover .cartao__abrir {
     border-color: currentColor;
     transform: translateX(var(--deslocamento-acao));
+    align-self: end;
   }
 }
 
@@ -658,27 +816,35 @@
 .cartao__topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3); }
 .cartao__id { font-size: var(--tam-xs); color: var(--cor-cartao-natureza); }
 .cartao__nome {
-  font-size: var(--tam-lg);
+  font-size: 1.125rem;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: var(--entre-letras-nome);
 }
+
+
 .cartao__descricao {
   display: -webkit-box;
-  overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--linhas-resumo-cartao);
-  line-clamp: var(--linhas-resumo-cartao);
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  min-height: 0;
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
+  text-align: left;
+  hyphens: none;
+  overflow-wrap: normal;
 }
+
 .cartao__abrir {
   display: inline-flex;
   align-items: center;
+  align-self: end;
   gap: var(--esp-2);
   width: fit-content;
   min-height: var(--alvo-toque);
-  margin-top: var(--esp-1);
+  margin-top: 0;
   background: transparent;
   border: 0;
   border-bottom: 1px solid transparent;
@@ -692,6 +858,7 @@
     color var(--dur-rapida) var(--curva),
     transform var(--dur-rapida) var(--curva-saida);
 }
+
 .cartao__abrir::after { content: '→'; }
 .cartao__abrir:active { transform: scale(0.97); }
 
@@ -701,11 +868,22 @@
   .cartao__abrir { transform: none; }
 }
 
+
 /* ---------- Ficha ---------- */
-/* O nome e a descrição abrem, seguidos de seções independentes. As listas
-   preservam sua própria altura para que cada relação fique legível no celular. */
-.ficha { display: grid; gap: var(--esp-3); }
-.ficha__nome { font-size: var(--tam-xl); line-height: 1.2; letter-spacing: var(--entre-letras-nome); }
+
+/* Estrutura principal da ficha */
+.ficha {
+  display: grid;
+  gap: var(--esp-3);
+}
+
+.ficha__nome {
+  font-size: var(--tam-xl);
+  line-height: 1.2;
+  letter-spacing: var(--entre-letras-nome);
+}
+
+/* Descrição do conhecimento */
 .ficha__descricao {
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
@@ -714,12 +892,100 @@
   hyphens: auto;
 }
 
+/* ---------- Descrição expansível ---------- */
+
+/* Botão exclusivo do celular */
+.dialogo-ficha .ficha__expandir {
+  display: none;
+}
+
+/* Esconde completamente o modal quando está fechado */
+.dialogo-ficha:not([open]) {
+  display: none !important;
+}
+
+/* Seta de expansão */
+.ficha__expandir-seta {
+  display: inline-block;
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.12rem) rotate(45deg);
+  transition: transform var(--dur-rapida) var(--curva);
+}
+
+/* Gira a seta quando a descrição está expandida */
+.ficha__expandir[aria-expanded="true"] .ficha__expandir-seta {
+  transform: translateY(0.08rem) rotate(225deg);
+}
+
+/* Comportamento exclusivo do celular */
+@media (max-width: 47.99rem) {
+
+  /* Mostra somente três linhas inicialmente */
+  .ficha__descricao:not(.ficha__descricao--expandida) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  /* Descrição completa após clicar */
+  .ficha__descricao--expandida {
+    display: block;
+    max-height: 35dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+
+  /* Botão Mostrar mais / Mostrar menos */
+  .dialogo-ficha .ficha__expandir{
+    display: inline-flex;
+    align-items: center;
+  justify-content: flex-start;
+    gap: var(--esp-2);
+    text-align: left;
+    width: fit-content;
+    min-height: var(--alvo-toque);
+    padding: 0 var(--esp-2);
+    background: transparent;
+    border: 0;
+    color: var(--cor-acento);
+    font: inherit;
+    font-size: var(--tam-sm);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .ficha__expandir:focus-visible {
+    outline: 2px solid var(--cor-acento);
+    outline-offset: 2px;
+    border-radius: var(--raio);
+  }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .ficha__expandir-seta {
+    transition: none;
+  }
+}
+
+
+/* ---------- Blocos da ficha ---------- */
+
 .bloco-ficha {
   padding: var(--esp-4);
   background: var(--cor-superficie);
   border: var(--borda);
   border-radius: var(--raio);
 }
+
 .bloco-ficha__topo {
   display: flex;
   align-items: start;
@@ -727,8 +993,17 @@
   gap: var(--esp-3);
   margin-bottom: var(--esp-3);
 }
-.bloco-ficha__textos { display: grid; gap: var(--esp-1); }
-.bloco-ficha__esquema { font-size: var(--tam-xs); color: var(--cor-texto-fraco); }
+
+.bloco-ficha__textos {
+  display: grid;
+  gap: var(--esp-1);
+}
+
+.bloco-ficha__esquema {
+  font-size: var(--tam-xs);
+  color: var(--cor-texto-fraco);
+}
+
 .bloco-ficha__titulo {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -736,6 +1011,8 @@
   text-transform: uppercase;
   color: var(--cor-acento);
 }
+
+
 
 /* A ajuda abre uma explicação detalhada em diálogo, sem disputar espaço com a ficha. */
 .ajuda { flex: none; }
@@ -946,13 +1223,30 @@
 .exemplos-ecos__referencia:hover { color: var(--cor-acento-forte); text-decoration: underline; }
 .exemplos-ecos__referencia .estudo__icone-link { width: 0.82rem; height: 0.82rem; }
 @media (max-width: 35.99rem) {
-  .exemplos-ecos__texto { text-align: left; hyphens: manual; }
-  .ficha__descricao { text-align: left; hyphens: manual; }
+  .exemplos-ecos__texto {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+  }
+
+.ficha__descricao {
+  text-align: justify;
+  hyphens: auto;
+}
+
   .exemplos-ecos__categorias,
-  .acoes-gerencia__cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .acoes-gerencia__cartoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .exemplos-ecos__categorias .exemplos-ecos__categoria:last-child,
-  .acoes-gerencia__cartoes .exemplos-ecos__categoria:last-child { grid-column: 1 / -1; }
-  .exemplos-ecos__categoria { width: 100%; }
+  .acoes-gerencia__cartoes .exemplos-ecos__categoria:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .exemplos-ecos__categoria {
+    width: 100%;
+  }
 }
 
 /* Cada rótulo permanece próximo do respectivo valor, mesmo quando ocupa duas linhas. */
@@ -1125,6 +1419,11 @@
   font-size: var(--tam-sm);
   color: var(--cor-texto-suave);
   line-height: 1.6;
+
+  /* Alinhamento do texto */
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
 }
 @media (prefers-reduced-motion: reduce) {
   .porque__seta { transition: none; }
@@ -1184,10 +1483,15 @@
   .estudo[data-com-link] { grid-template-columns: 36px minmax(0, 1fr); }
   .estudo__acessar { grid-column: 2; justify-self: start; }
 }
-/* A nota de atributo sai da linha. Recortar no eixo horizontal evita que ela
-   crie barra de rolagem lateral enquanto está escondida. */
-.dialogo-ficha__corpo { container-type: inline-size; overflow-x: clip; }
-
+/* Mantém a rolagem dentro da ficha e evita que ela se propague
+   para a página que está atrás do modal. */
+.dialogo-ficha__corpo {
+  container-type: inline-size;
+  min-height: 0;
+  overflow-x: clip;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
 /* Estas regras vêm após os componentes da ficha para vencer os estilos-base
    somente no desktop, sem reduzir leitura ou alvo de toque no celular. */
 @media (min-width: 48rem) {
@@ -1234,3 +1538,146 @@
   border-bottom: var(--borda);
 }
 .tabela--rolavel { display: block; overflow-x: auto; }
+
+
+/* ---------- Estudos primários no celular ---------- */
+@media (max-width: 47.99rem) {
+
+  .tabela--rolavel:has(.tabela--estudos) {
+    display: block;
+    overflow-x: visible;
+  }
+
+  .tabela--estudos,
+  .tabela--estudos tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela--estudos thead {
+    display: none;
+  }
+
+  .tabela--estudos tbody {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  /* Card compacto */
+  .tabela--estudos tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 0.25rem;
+    row-gap: 0.25rem;
+    align-items: baseline;
+    min-width: 0;
+    padding: 0.6rem 0.75rem;
+    background: var(--cor-superficie);
+    border: var(--borda);
+    border-radius: var(--raio);
+  }
+
+  /* Remove linhas e espaçamentos internos */
+  .tabela--estudos tbody td {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    overflow-wrap: break-word;
+  }
+
+  /* ID */
+  .tabela--estudos tbody td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    color: var(--cor-texto-fraco);
+    font-family: var(--fonte-mono);
+    font-size: var(--tam-xs);
+    font-weight: 600;
+  }
+
+  /* Ano */
+  .tabela--estudos tbody td:nth-child(4) {
+    grid-column: 2;
+    grid-row: 1;
+    color: var(--cor-texto-fraco);
+    font-size: var(--tam-xs);
+    white-space: nowrap;
+  }
+
+  /* País ao lado do ano */
+  .tabela--estudos tbody td:nth-child(5) {
+    grid-column: 3;
+    grid-row: 1;
+    color: var(--cor-texto-fraco);
+    font-size: var(--tam-xs);
+    white-space: nowrap;
+    visibility: visible;
+    border: none;
+  }
+
+  .tabela--estudos tbody td:nth-child(5)::before {
+    content: "· ";
+    font-weight: 400;
+  }
+
+  /* Título */
+  .tabela--estudos tbody td:nth-child(2) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    color: var(--cor-acento);
+    font-size: var(--tam-sm);
+    line-height: 1.4;
+    border: none;
+  }
+
+  /* Autores */
+  .tabela--estudos tbody td:nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    color: var(--cor-texto-suave);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    border: none;
+  }
+
+  .tabela--estudos tbody td:nth-child(3)::before {
+    content: none;
+  }
+}
+
+/* Ajustes finais dos estudos no celular */
+@media (max-width: 47.99rem) {
+
+  /* Remove as divisórias herdadas da tabela */
+  .tabela--estudos tbody tr,
+  .tabela--estudos tbody td,
+  .tabela--estudos tbody td::before,
+  .tabela--estudos tbody td::after {
+    border-bottom: none !important;
+    box-shadow: none;
+  }
+
+  /* Alinha a numeração à margem esquerda do título */
+  .tabela--estudos tbody td:first-child {
+    padding-left: 0 !important;
+    margin-left: 0;
+    text-indent: 0;
+    justify-self: start;
+    align-self: center;
+  }
+
+}
+
+/* Impede a rolagem da página enquanto a ficha está aberta. */
+html.ficha-aberta,
+html.ficha-aberta body {
+  overflow: hidden;
+}
+
+.lista-referencias__link::after {
+  content: '↗';
+  margin-left: 0.25rem;
+  font-size: 0.9em;
+}

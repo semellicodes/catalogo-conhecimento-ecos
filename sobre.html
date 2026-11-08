@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="versao" content="20261106-8">
 <title>Sobre · KM4SECO</title>
-<meta name="description" content="Método de pesquisa e esquemas de classificação adotados no KM4SECO, catálogo de conhecimento em Ecossistemas de Software (ECOS).">
+<meta name="description" content="Conheça o KM4SECO, um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir de uma Revisão Rápida da Literatura.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
   try {
@@ -49,72 +49,188 @@
   </div>
 </header>
 
+
 <main id="conteudo" class="container secao sobre">
+
   <header class="sobre__cabecalho">
     <p class="sobre__olho">KM4SECO</p>
     <h1>Sobre o catálogo</h1>
-    <p>Como os conhecimentos foram reunidos, classificados e disponibilizados para consulta no ECOS.</p>
+    <p>
+      Conheça o KM4SECO, sua organização e a origem das
+      informações disponibilizadas.
+    </p>
   </header>
 
-  <section class="sobre__pergunta" aria-labelledby="titulo-pergunta">
-    <h2 class="sobre__pergunta-rotulo" id="titulo-pergunta">A pergunta que este trabalho responde</h2>
-    <p class="sobre__pergunta-texto">Como um catálogo de conhecimento pode apoiar a gerência de conhecimento em ECOS?</p>
-  </section>
+  <div class="sobre__cards">
 
-  <div class="sobre__grade">
-    <section class="sobre__conteudo sobre__conteudo--abertura prosa" aria-labelledby="titulo-consulta">
-      <h2 id="titulo-consulta">Um ponto de consulta para o conhecimento em ECOS</h2>
-      <p>
-        Catálogos são artefatos usados para organizar, compartilhar, reutilizar e evoluir o
-        conhecimento de um domínio, favorecendo sua recuperação e aplicação em diferentes contextos.
-        Na Engenharia de Software a noção já foi aplicada em outros domínios, como no ReQSI CI, no
-        NFR4ES e no SECO-Risk, o que indica o formato como adequado para sistematizar os achados de
-        uma revisão da literatura.
-      </p>
-    </section>
+    <!-- 1. KM4SECO -->
+    <section class="sobre__card" aria-labelledby="titulo-km4seco">
 
-    <aside class="sobre__base" aria-labelledby="titulo-base">
-      <p class="sobre__olho">Base da pesquisa</p>
-      <h2 id="titulo-base">O catálogo em números</h2>
-      <dl class="sobre__numeros">
-        <div>
-          <dt>Conhecimentos</dt>
-          <dd id="sobre-conhecimentos">—</dd>
-        </div>
-        <div>
-          <dt>Estudos primários</dt>
-          <dd id="sobre-estudos">—</dd>
-        </div>
-      </dl>
-      <a class="sobre__referencias" href="referencias.html">Ver estudos e referências <span aria-hidden="true">→</span></a>
-    </aside>
-
-    <section class="sobre__conteudo sobre__conteudo--metodo prosa" aria-labelledby="titulo-facetas">
-      <h2 id="titulo-facetas">Classificação por facetas</h2>
-      <p>
-        O catálogo adota uma classificação por facetas, em que cada conhecimento é descrito por um
-        conjunto fixo de atributos, em vez de uma classificação enumerativa que exigiria definir todas
-        as classes previamente. Os valores possíveis de cada faceta vêm de esquemas já estabelecidos
-        na literatura, o que mantém o vocabulário controlado.
-      </p>
-
-      <h2>Origem dos dados</h2>
-      <p>
-        Todo o conteúdo vem de uma revisão rápida sobre gerência de conhecimento em ECOS, conduzida
-        sobre 18 estudos primários. O catálogo reúne os conhecimentos identificados na revisão e
-        os desafios que podem ser relacionados especificamente a eles.
-      </p>
-      <p>
-        Um catálogo não é estático. Ele representa o conhecimento acumulado até determinado momento e
-        deve ser atualizado conforme novas situações são encontradas por quem o utiliza.
-      </p>
-
-      <div class="sobre__acoes" aria-label="Acessos rápidos">
-        <a class="botao sobre__acao sobre__acao--primaria" href="index.html#catalogo">Catálogo</a>
-        <a class="botao sobre__acao" href="index.html#catalogo">Consultar conhecimentos</a>
+      <div class="sobre__card-topo">
+        <span class="sobre__card-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              d="M12 7.5C9.4 5.7 6.7 5.3 3 6.5v11c3.7-1.2 6.4-.8 9 1
+                 2.6-1.8 5.3-2.2 9-1v-11c-3.7-1.2-6.4-.8-9 1Z
+                 M12 7.5v11"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <h2 id="titulo-km4seco">KM4SECO</h2>
       </div>
+
+      <p>
+        O KM4SECO é um catálogo de conhecimentos em Ecossistemas
+        de Software (ECOS), desenvolvido para organizar e
+        disponibilizar informações relacionadas à gerência de
+        conhecimento nesse contexto.
+      </p>
+
+      <p>
+        Na Engenharia de Software, catálogos são utilizados para
+        reunir e organizar informações de determinado domínio,
+        facilitando sua localização e consulta. Um exemplo é o
+        ReQSI-CI, um catálogo que organiza requisitos não funcionais
+        relacionados a sistemas de informação em cidades inteligentes.
+      </p>
+
+      <p>
+        O KM4SECO reúne conhecimentos identificados na literatura
+        científica, apresentando suas características, informações
+        relacionadas à sua gerência e evidências que fundamentam
+        o conteúdo disponibilizado.
+      </p>
+
+      <div class="sobre__fontes" aria-label="Referência científica">
+        <a
+          href="https://doi.org/10.29327/1298356.26-9"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Barbosa, Malcher e Santos (2023)</a>
+      </div>
+
     </section>
+
+    <!-- 2. Organização dos conhecimentos -->
+    <section class="sobre__card" aria-labelledby="titulo-organizacao">
+
+      <div class="sobre__card-topo">
+        <span class="sobre__card-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"
+              fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"
+              fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"
+              fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"
+              fill="none" stroke="currentColor" stroke-width="1.7"/>
+          </svg>
+        </span>
+        <h2 id="titulo-organizacao">
+          Como os conhecimentos são organizados
+        </h2>
+      </div>
+
+      <p>
+        Cada conhecimento é apresentado por meio de atributos
+        e classificado a partir de três critérios:
+      </p>
+
+      <div class="sobre__criterios">
+
+        <div class="sobre__criterio">
+          <h3>Natureza epistemológica</h3>
+          <p>Explícito, tácito-cognitivo e tácito-técnico.</p>
+        </div>
+
+        <div class="sobre__criterio">
+          <h3>Nível no ECOS</h3>
+          <p>Produto, plataforma e ecossistema.</p>
+        </div>
+
+        <div class="sobre__criterio">
+          <h3>Dimensão do ECOS</h3>
+          <p>Técnica, negócio e social.</p>
+        </div>
+
+      </div>
+
+      <p>
+        Essa organização permite consultar os conhecimentos sob
+        diferentes perspectivas. O catálogo também apresenta
+        exemplos de ECOS, informações sobre a gerência de cada
+        conhecimento e suas evidências científicas.
+      </p>
+
+    </section>
+
+    <!-- 3. Origem das informações -->
+    <section class="sobre__card" aria-labelledby="titulo-origem">
+
+      <div class="sobre__card-topo">
+        <span class="sobre__card-icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path
+              d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7
+                 a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z
+                 M14 3.5v4h4 M9 12h6 M9 16h6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <h2 id="titulo-origem">De onde vêm as informações</h2>
+      </div>
+
+      <p>
+        O conteúdo do KM4SECO foi desenvolvido a partir dos
+        resultados de uma Revisão Rápida da Literatura sobre
+        gerência de conhecimento em ECOS.
+      </p>
+
+      <p>
+        Os estudos selecionados fundamentam a identificação e
+        a caracterização dos conhecimentos disponibilizados no
+        catálogo, acompanhados de suas respectivas evidências
+        científicas e referências bibliográficas.
+      </p>
+
+      <p>
+        O catálogo reúne os conhecimentos identificados na revisão
+        e pode ser atualizado à medida que novas evidências
+        científicas forem identificadas.
+      </p>
+
+    </section>
+
   </div>
+
+
+<div class="sobre__rodape-conteudo">
+  <p>Continue explorando o KM4SECO ou consulte as publicações que fundamentam o catálogo.</p>
+
+  <div class="sobre__acoes">
+    <a class="sobre__botao sobre__botao--principal"
+      href="index.html#catalogo">
+      Explorar catálogo →
+    </a>
+
+    <a class="sobre__botao sobre__botao--secundario"
+      href="referencias.html">
+      Estudos e referências →
+    </a>
+  </div>
+</div>
+
 
 </main>
 
@@ -127,6 +243,5 @@
 <script type="module" src="js/versao.js?v=20261106-8"></script>
 <script type="module" src="js/tema.js?v=20261106-8"></script>
 <script type="module" src="js/menu.js?v=20261106-8"></script>
-<script type="module" src="js/sobre.js?v=20261106-8"></script>
 </body>
 </html>

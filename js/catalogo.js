@@ -9,6 +9,81 @@ import * as ficha from './ficha.js?v=20261106-8';
 
 const el = (seletor) => document.querySelector(seletor);
 
+
+/* Ícones das classificações do catálogo */
+const ICONES_FILTROS = {
+  nivel: [
+    'M12 2 2 7l10 5 10-5-10-5Z',
+    'm2 12 10 5 10-5',
+    'm2 17 10 5 10-5'
+  ],
+  dimensao: [
+    'M12 2 3 7v10l9 5 9-5V7l-9-5Z',
+    'm3 7 9 5 9-5',
+    'M12 12v10'
+  ],
+  Produto: [
+    'M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z',
+    'm3.3 7 8.7 5 8.7-5',
+    'M12 22V12'
+  ],
+  Plataforma: [
+    'm12 2 9 5-9 5-9-5 9-5Z',
+    'm3 12 9 5 9-5',
+    'm3 17 9 5 9-5'
+  ],
+  Ecossistema: [
+    'M12 3v6',
+    'M5 21v-6',
+    'M19 21v-6',
+    'M5 15 12 9l7 6',
+    'M10 3a2 2 0 1 0 4 0a2 2 0 1 0-4 0',
+    'M3 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0',
+    'M17 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0'
+  ],
+  'Técnica': [
+    'M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8',
+    'M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.8 1.8-.06-.06A1.7 1.7 0 0 0 16 18.4a1.7 1.7 0 0 0-1 1.56V21h-3v-1.04A1.7 1.7 0 0 0 10 18.4a1.7 1.7 0 0 0-1.88.34l-.06.06-1.8-1.8.06-.06A1.7 1.7 0 0 0 6.6 15a1.7 1.7 0 0 0-1.56-1H4v-3h1.04A1.7 1.7 0 0 0 6.6 9a1.7 1.7 0 0 0-.34-1.88L6.2 7.06l1.8-1.8.06.06A1.7 1.7 0 0 0 10 5.6a1.7 1.7 0 0 0 1-1.56V3h3v1.04A1.7 1.7 0 0 0 16 5.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 1.8 1.8-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.56 1H22v3h-1.04A1.7 1.7 0 0 0 19.4 15Z'
+  ],
+  'Negócio': [
+    'M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12H3V7Z',
+    'M9 5V3h6v2',
+    'M3 12h18',
+    'M10 12v2h4v-2'
+  ],
+  'Social': [
+    'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2',
+    'M9 7a4 4 0 1 0 0 8a4 4 0 1 0 0-8',
+    'M22 21v-2a4 4 0 0 0-3-3.87',
+    'M16 3.13a4 4 0 0 1 0 7.75'
+  ]
+};
+
+function criarIconeFiltro(nome) {
+  const caminhos = ICONES_FILTROS[nome];
+  if (!caminhos) return null;
+
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(ns, 'svg');
+
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.7');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+
+  caminhos.forEach((d) => {
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', d);
+    svg.append(path);
+  });
+
+  return svg;
+}
+
+
 /* A natureza é a entrada principal. Nível e dimensão refinam a lista. */
 const FACETAS = ['natureza', 'nivel', 'dimensao'];
 
@@ -34,9 +109,15 @@ function montarOpcao(chave, opcao, contagem, modificador) {
   botao.dataset.valor = opcao.valor;
   botao.setAttribute('aria-pressed', 'false');
 
-  const texto = document.createElement('span');
-  texto.textContent = opcao.valor;
-  botao.append(texto);
+const texto = document.createElement('span');
+texto.textContent = opcao.valor;
+
+const icone = chave === 'natureza'
+  ? null
+  : criarIconeFiltro(opcao.valor);
+
+if (icone) botao.append(icone);
+botao.append(texto);
 
   botao.addEventListener('click', () => {
     estado[chave] = estado[chave].includes(opcao.valor)
@@ -88,9 +169,13 @@ function montarGrupoDeFiltros(chave, rotuloVisivel = true) {
     const titulo = document.createElement('p');
     titulo.className = 'filtros__titulo';
     titulo.id = `filtro-rotulo-${chave}`;
-    titulo.textContent = definicao.rotulo;
-    grupo.setAttribute('aria-labelledby', titulo.id);
-    grupo.append(titulo);
+titulo.textContent = definicao.rotulo;
+
+const icone = criarIconeFiltro(chave);
+if (icone) titulo.prepend(icone);
+
+grupo.setAttribute('aria-labelledby', titulo.id);
+grupo.append(titulo);
   } else {
     grupo.setAttribute('aria-label', definicao.rotulo);
   }
@@ -146,10 +231,18 @@ function animarTroca(corpo, direcao) {
 
 function mostrarFicha(dialogo) {
   dialogo.classList.add('dialogo-ficha--entrando');
+
+  /* Bloqueia a rolagem da página atrás da ficha. */
+  document.documentElement.classList.add('ficha-aberta');
+
   dialogo.showModal();
-  /* O diálogo preserva o foco inicial sem destacar um elemento do conteúdo. */
+
+  /* Preserva o foco sem deslocar a página. */
   dialogo.focus({ preventScroll: true });
-  requestAnimationFrame(() => dialogo.classList.remove('dialogo-ficha--entrando'));
+
+  requestAnimationFrame(() => {
+    dialogo.classList.remove('dialogo-ficha--entrando');
+  });
 }
 
 function abrirFicha(id, direcao = 0) {
@@ -162,22 +255,60 @@ function abrirFicha(id, direcao = 0) {
   animarTroca(corpo, direcao);
   el('#dialogo-ficha-id').textContent = completo.id;
 
-  /* Tudo que identifica o conhecimento fica no topo parado, que é o único lugar
-     visível em qualquer rolagem. Quem desce até os estudos continua vendo de
-     qual conhecimento é a ficha. */
-  const selo = el('#dialogo-ficha-natureza');
-  selo.className = `etiqueta etiqueta--${lista.classeNatureza(completo.natureza)}`;
-  selo.textContent = completo.natureza;
-  el('#dialogo-ficha-nome').textContent = completo.nome;
-  el('#dialogo-ficha-descricao').textContent = completo.descricao;
-  dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
-  idAberto = id;
-  posicionarNavegacao();
-  if (!dialogo.open) mostrarFicha(dialogo);
-  /* Quem rola é o corpo, já que o topo e o rodapé do diálogo ficam parados. */
-  corpo.scrollTop = 0;
-  sincronizarUrl(id);
+/* Tudo que identifica o conhecimento fica no topo parado,
+   mantendo o contexto da ficha durante a rolagem. */
+const selo = el('#dialogo-ficha-natureza');
+selo.className = `etiqueta etiqueta--${lista.classeNatureza(completo.natureza)}`;
+selo.textContent = completo.natureza;
+
+el('#dialogo-ficha-nome').textContent = completo.nome;
+
+/* Atualiza e recolhe a descrição ao trocar de conhecimento */
+const descricao = el('#dialogo-ficha-descricao');
+const botaoExpandir = el('#dialogo-ficha-expandir');
+
+descricao.textContent = completo.descricao;
+descricao.classList.remove('ficha__descricao--expandida');
+
+botaoExpandir.setAttribute('aria-expanded', 'false');
+el('#dialogo-ficha-expandir-texto').textContent = 'Mostrar mais';
+
+dialogo.setAttribute('aria-label', `${completo.id} · ${completo.nome}`);
+
+idAberto = id;
+posicionarNavegacao();
+
+if (!dialogo.open) mostrarFicha(dialogo);
+
+/* Quem rola é o corpo, pois topo e rodapé permanecem fixos. */
+corpo.scrollTop = 0;
+sincronizarUrl(id);
 }
+
+/* Expande e recolhe a descrição da ficha no celular */
+document.addEventListener('click', (evento) => {
+const botao = evento.target instanceof Element
+  ? evento.target.closest('#dialogo-ficha-expandir')
+  : null;
+  if (!botao) return;
+
+  const descricao = document.getElementById('dialogo-ficha-descricao');
+  if (!descricao) return;
+
+  const expandida = descricao.classList.toggle(
+    'ficha__descricao--expandida'
+  );
+
+  botao.setAttribute('aria-expanded', String(expandida));
+
+  const texto = document.getElementById(
+    'dialogo-ficha-expandir-texto'
+  );
+
+  if (texto) {
+    texto.textContent = expandida ? 'Mostrar menos' : 'Mostrar mais';
+  }
+});
 
 /** Índice do conhecimento aberto dentro da lista filtrada, ou menos um. */
 const posicaoAtual = () => visiveis.findIndex((c) => c.id === idAberto);
@@ -297,10 +428,13 @@ function ligarDialogo() {
   });
   el('#ficha-anterior').addEventListener('click', () => irPara(-1));
   el('#ficha-proximo').addEventListener('click', () => irPara(1));
-  dialogo.addEventListener('close', () => {
-    idAberto = null;
-    sincronizarUrl(null);
-  });
+dialogo.addEventListener('close', () => {
+  /* Libera a rolagem da página ao fechar a ficha */
+  document.documentElement.classList.remove('ficha-aberta');
+
+  idAberto = null;
+  sincronizarUrl(null);
+});
   dialogo.addEventListener('click', (evento) => {
     if (evento.target === dialogo) dialogo.close();
   });

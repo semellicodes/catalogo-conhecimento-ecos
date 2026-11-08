@@ -54,5 +54,13 @@
   "viana2015": {
     "texto": "VIANA, D.; CONTE, T. Oportunizando a aprendizagem e gerência do conhecimento em ecossistemas de software. In: IX Workshop em Desenvolvimento Distribuído de Software, Ecossistemas de Software e Sistemas-de-Sistemas, 2015, p. 73 a 76.",
     "url": "https://ptdocz.com/doc/1361582/wdes"
-  }
+  },
+  "barbosa2024": {
+    "texto": "BARBOSA, A.; MALCHER, P.; SANTOS, R. P. ReQSI-CI: A catalog of non-functional requirements for information systems in smart cities from the perspective of digital ecosystems. In: 29th European Conference on Knowledge Management, 2024, p. 1 a 10.",
+    "url": "https://doi.org/10.29327/1298356.26-9"
+  },
+  "cysneiros2003": {
+  "texto": "CYSNEIROS, L. M.; YU, E.; LEITE, J. C. S. P. Cataloguing non-functional requirements as softgoal networks. In: 11th IEEE International Requirements Engineering Conference, 2003, p. 13 a 20.",
+  "url": "https://www.yorku.ca/cysneiro/articles/facets-nfr-fv%20-rev02.pdf"
+}
 }

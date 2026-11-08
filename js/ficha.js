@@ -334,7 +334,6 @@ function classificacao(dados, conhecimento) {
 function tiposDeEcos(dados, conhecimento) {
   const bloco = secao(dados, 'Exemplos de ECOS em que o conhecimento foi observado', 'tipoEcos');
   bloco.classList.add('bloco-ficha--exemplos');
-  bloco.querySelector('.bloco-ficha__titulo').prepend(iconeEcossistema());
   bloco.append(exemplosDeEcos(conhecimento));
   return bloco;
 }

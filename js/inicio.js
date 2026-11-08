@@ -270,16 +270,19 @@ function abasDaEstrutura(dados) {
   const definicoes = dados.meta.estruturaCatalogo?.abas;
   if (!navegacao || !paineis || !definicoes?.length) return;
 
-  const abas = definicoes.map((definicao, indice) => {
-    const aba = criar('button', 'estrutura__aba', definicao.rotulo);
-    aba.id = `aba-${definicao.id}`;
-    aba.type = 'button';
-    aba.setAttribute('role', 'tab');
-    aba.setAttribute('aria-selected', String(indice === 0));
-    aba.setAttribute('aria-controls', `painel-${definicao.id}`);
-    aba.tabIndex = indice === 0 ? 0 : -1;
-    return aba;
-  });
+const abas = definicoes.map((definicao, indice) => {
+  const rotulo = definicao.rotulo.replace(/^\d+\.\s*/, '');
+  const aba = criar('button', 'estrutura__aba', rotulo);
+
+  aba.id = `aba-${definicao.id}`;
+  aba.type = 'button';
+  aba.setAttribute('role', 'tab');
+  aba.setAttribute('aria-selected', String(indice === 0));
+  aba.setAttribute('aria-controls', `painel-${definicao.id}`);
+  aba.tabIndex = indice === 0 ? 0 : -1;
+
+  return aba;
+});
   navegacao.replaceChildren(...abas);
 
   const criadores = {

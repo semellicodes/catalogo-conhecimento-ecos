@@ -485,12 +485,6 @@ nativamente pelo navegador com `type="module"`.
 - O cartão de abertura é o único do catálogo que repete as citações dentro do parágrafo, entre
   parênteses, além do rodapé. É pedido da autora, porque ali três obras sustentam afirmações
   diferentes da mesma passagem e o rodapé sozinho não diria qual sustenta qual
-- O `nonaka1997` saiu da definição do explícito e continua cadastrado. Ele segue citado pelo
-  glossário do Explorar, que lê o `referencia` do atributo e não o de cada valor
-- Alavi e Leidner (2001) apresentam a distinção entre componente técnico e cognitivo do tácito com
-  base em Nonaka (1994). A obra de 1994 não tem verbete em `referencias.json`, e o `nonaka1997`
-  cadastrado é outro trabalho, o livro de Nonaka e Takeuchi. Enquanto o verbete de 1994 não
-  existir, o cartão cita só `alavi2001`, porque bibliografia não se inventa
 - As citações não levam página. A forma curta vem do `js/dados.js`, que guarda autor e ano, e
   nenhum ponto do catálogo mostra página. O "p. 110" das definições das três naturezas fica de
   fora por isso

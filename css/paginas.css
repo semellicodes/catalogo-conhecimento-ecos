@@ -180,7 +180,10 @@
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
    de que se destacar no tema claro. */
-.secao-catalogo { padding-block: var(--esp-secao); background: var(--cor-miolo); }
+.secao-catalogo {
+  padding-block: var(--esp-6);
+  background: var(--cor-miolo);
+}
 .secao__titulo { font-size: var(--tam-xl); font-weight: 600; letter-spacing: var(--entre-letras-titulo); margin-bottom: var(--esp-3); }
 .secao__intro { color: var(--cor-texto-suave); max-width: var(--largura-texto); margin-bottom: var(--esp-5); }
 .secao__cabecalho {
@@ -227,7 +230,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-base);
 }
 .estrutura__mapa {
-  width: min(var(--largura-cheia), var(--largura-mapa-estrutura));
+  width: min(94%, var(--largura-mapa-estrutura));  
   margin: var(--esp-6) auto 0;
   border: var(--borda-suave);
   border-radius: var(--raio);
@@ -262,27 +265,44 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   padding: 0;
   border-bottom: var(--borda-suave);
 }
-/* Grade centrada em todas as larguras. Com cinco etapas o rótulo mais longo
-   quebra em duas linhas antes do celular, e sem o centro vertical ele subia
-   enquanto os de uma linha ficavam no meio. */
+
 .estrutura__aba {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-2);
   min-height: var(--alvo-toque);
-  padding-inline: var(--esp-2);
+  padding: var(--esp-3);
   text-align: center;
   color: var(--cor-texto-suave);
-  background: transparent;
-  border: 0;
+  background: var(--cor-superficie);
+  border: var(--borda);
   border-radius: var(--raio);
   font: inherit;
   font-size: var(--tam-sm);
   font-weight: 600;
   line-height: 1.3;
   cursor: pointer;
-  transition: color var(--dur-rapida) var(--curva), background-color var(--dur-rapida) var(--curva), transform var(--dur-rapida) var(--curva-saida);
+  transition:
+    color var(--dur-rapida) var(--curva),
+    background-color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva);
 }
+/* Indicador discreto de interação */
+.estrutura__aba::after {
+  content: "›";
+  color: var(--cor-acento);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.estrutura__aba[aria-selected="true"] .estrutura__aba-indice {
+  background: var(--cor-acento);
+  border-color: var(--cor-acento);
+  color: var(--cor-superficie);
+}
+
 .estrutura__aba[aria-selected="true"] {
   color: var(--cor-texto);
   background: var(--cor-superficie-alta);
@@ -800,6 +820,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: var(--largura-cheia);
   }
+  /* A última aba ocupa a largura das duas colunas no celular */
+.estrutura__navegacao > .estrutura__aba:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
   .estrutura__aba {
     min-height: 48px;
     padding: var(--esp-1) var(--esp-2);
@@ -809,18 +833,20 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__painel,
   .estrutura__cartao-atributo { padding: var(--esp-4); }
 }
+
+
 /* ---------- Sobre ---------- */
-/* A medida da página de texto é menor que a do Explorar, porque aqui é leitura
-   corrida e não tabela. A abertura abre o quadro sem o vão que a seção padrão
-   reserva para blocos que sangram. */
+
 .sobre {
   max-width: var(--largura-sobre);
   padding-block: var(--esp-7) var(--esp-5);
 }
+
 .sobre__cabecalho {
   max-width: var(--largura-texto);
   margin-bottom: var(--esp-5);
 }
+
 .sobre__olho {
   font-family: var(--fonte-mono);
   font-size: var(--tam-xs);
@@ -829,144 +855,335 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
   color: var(--cor-acento);
 }
+
 .sobre__cabecalho h1 {
   margin-top: var(--esp-2);
   font-size: var(--tam-titulo-pagina);
   letter-spacing: var(--entre-letras-titulo);
   line-height: 1.15;
 }
+
 .sobre__cabecalho > p:last-child {
   margin-top: var(--esp-3);
   color: var(--cor-texto-suave);
-}
-/* A pergunta do trabalho abre o Sobre, antes do método. Em destaque, porque é
-   o que o catálogo inteiro responde. */
-.sobre__pergunta {
-  max-width: var(--largura-texto);
-  margin-top: 0;
-  padding: var(--esp-4) var(--esp-sobre-lateral);
-  background: var(--cor-superficie-alta);
-  border: var(--borda-suave);
-  border-left: var(--borda-acento);
-  border-radius: var(--raio);
-}
-.sobre__pergunta-rotulo {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-xs);
-  font-weight: 500;
-  letter-spacing: var(--entre-letras-rotulo);
-  text-transform: uppercase;
-  color: var(--cor-texto-fraco);
-}
-.sobre__pergunta-texto {
-  margin-top: var(--esp-2);
-  color: var(--cor-acento);
-  font-size: var(--tam-lg);
-  font-weight: 600;
-  letter-spacing: var(--entre-letras-nome);
-  line-height: 1.35;
-  max-width: var(--largura-texto);
+  line-height: 1.6;
 }
 
-.sobre__grade {
+/* ---------- Cards principais ---------- */
+
+.sobre__cards {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--esp-5);
-  margin-top: var(--esp-sobre-pergunta);
-  align-items: start;
 }
-.sobre__conteudo { max-width: var(--largura-texto); }
-.sobre__conteudo.prosa h2 { font-size: var(--tam-secao); }
-.sobre__conteudo h2:first-child { margin-top: 0; }
-/* As duas metades da coluna principal são blocos separados só para a lateral
-   poder entrar entre elas no celular. Lidas em sequência, o vão entre elas é o
-   mesmo que separa duas seções dentro de uma. */
-.sobre__conteudo--metodo { margin-top: calc(var(--esp-6) - var(--esp-5)); }
-.sobre__acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--esp-3);
-  margin-top: var(--esp-6);
-}
-.sobre__acao { min-width: var(--alvo-toque); }
-.sobre__acao--primaria {
-  color: var(--cor-contraste);
-  background: var(--cor-acento);
-  border-color: var(--cor-acento);
-}
-.sobre__acao--primaria:hover {
-  color: var(--cor-contraste);
-  background: var(--cor-acento-forte);
-  border-color: var(--cor-acento-forte);
-}
-.sobre__acao:active { transform: scale(var(--escala-acao)); }
-.sobre__base {
-  padding: var(--esp-sobre-cartao);
+
+.sobre__card {
   min-width: 0;
-  background: var(--cor-superficie-alta);
+  padding: var(--esp-sobre-cartao);
+  background: #ffffff;
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
 }
-.sobre__base h2 {
-  margin-top: var(--esp-2);
-  font-size: var(--tam-lg);
+
+/* Fundo dos cards no modo escuro */
+[data-tema="escuro"] .sobre__card {
+  background: var(--cor-superficie-alta);
 }
-.sobre__numeros {
-  display: grid;
-  gap: var(--esp-3);
+
+.sobre__card h2 {
+  margin-bottom: var(--esp-4);
+  color: var(--cor-texto);
+  font-size: var(--tam-secao);
+  line-height: 1.3;
+}
+
+.sobre__card > p {
+  color: var(--cor-texto-suave);
+  line-height: 1.75;
+}
+
+.sobre__card > p + p {
   margin-top: var(--esp-4);
 }
-.sobre__numeros > div {
+
+/* ---------- Títulos com ícones ---------- */
+
+.sobre__card-topo {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--esp-4);
-  padding-bottom: var(--esp-2);
-  border-bottom: var(--borda-fina);
+  align-items: center;
+  gap: var(--esp-3);
+  margin-bottom: var(--esp-3);
 }
-.sobre__numeros dt { color: var(--cor-texto-suave); }
-.sobre__numeros dd {
-  font-family: var(--fonte-mono);
-  font-size: var(--tam-lg);
-  font-weight: 600;
-  /* Folga para a caixa caber o desenho inteiro do algarismo, como na Estrutura. */
-  line-height: 1.3;
+
+.sobre__card .sobre__card-topo h2 {
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.sobre__card-icone {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
   color: var(--cor-acento);
+  background: var(--cor-acento-fundo);
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio);
 }
-.sobre__referencias {
+
+.sobre__card-icone svg {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+
+/* Compactação da página Sobre em telas maiores */
+@media (min-width: 48rem) {
+  .sobre {
+    padding-block: var(--esp-6) var(--esp-4);
+  }
+
+  .sobre__cabecalho {
+    margin-bottom: var(--esp-4);
+  }
+
+  .sobre__cards {
+    gap: var(--esp-4);
+  }
+
+  .sobre__card {
+    padding: var(--esp-4);
+  }
+
+  .sobre__card > p {
+    line-height: 1.55;
+  }
+
+  .sobre__card > p + p {
+    margin-top: var(--esp-3);
+  }
+
+  .sobre__card-topo {
+    margin-bottom: var(--esp-3);
+  }
+
+  .sobre__criterios {
+    margin-block: var(--esp-3);
+  }
+
+  .sobre__criterio {
+    padding: var(--esp-3);
+  }
+}
+
+
+/* ---------- Critérios de classificação ---------- */
+
+.sobre__criterios {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--esp-3);
+  margin-block: var(--esp-4);
+}
+
+.sobre__criterio {
+  min-width: 0;
+  padding: var(--esp-4);
+  background: #f6f8f7;
+  border: var(--borda-suave);
+  border-radius: var(--raio);
+}
+
+/* Mesma paleta dos cartões de processos no modo escuro */
+[data-tema="escuro"] .sobre__criterio {
+  background: #161d27;
+  border-color: #202a36;
+}
+
+.sobre__criterio h3 {
+  margin: 0 0 var(--esp-2);
+  color: var(--cor-texto);
+  font-size: var(--tam-base);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sobre__criterio p {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.5;
+}
+
+/* ---------- Referências científicas ---------- */
+
+.sobre__fontes {
+  display: block;
+  margin-top: var(--esp-5);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-sm);
+  line-height: 1.6;
+}
+
+.sobre__fontes a {
+  color: var(--cor-acento);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.sobre__fontes a:hover {
+  text-decoration: underline;
+}
+
+.sobre__fontes a:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sobre__card > .sobre__fonte-pesquisa {
+  margin-top: var(--esp-5);
+  color: var(--cor-texto-fraco);
+  font-size: var(--tam-sm);
+}
+
+/* ---------- Acesso à base de evidências ---------- */
+
+
+/* ---------- Navegação ao final da página Sobre ---------- */
+
+.sobre__rodape-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+  margin-top: var(--esp-5);
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+
+.sobre__acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+}
+
+.sobre__botao {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: var(--alvo-toque);
-  margin-top: var(--esp-3);
+  padding: var(--esp-2) var(--esp-4);
+  border: 1px solid var(--cor-acento);
+  border-radius: var(--raio);
   font-size: var(--tam-sm);
   font-weight: 600;
   text-decoration: none;
+  transition:
+    background-color var(--dur-rapida) var(--curva),
+    color var(--dur-rapida) var(--curva),
+    border-color var(--dur-rapida) var(--curva);
 }
-.sobre__referencias span { margin-left: var(--esp-2); }
-/* A partir de 768px a coluna lateral sai da sequência e vai para a segunda
-   coluna, ao lado da primeira seção. Abaixo disso a grade é uma coluna e a
-   ordem da fonte vale, que é abertura, pergunta, primeira seção, números,
-   facetas e origem dos dados. */
-@media (min-width: 48rem) {
-  .sobre__grade { grid-template-columns: minmax(0, 1.65fr) minmax(17.5rem, 0.75fr); }
-  .sobre__conteudo--abertura { grid-column: 1; grid-row: 1; }
-  .sobre__base { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
-  .sobre__conteudo--metodo { grid-column: 1; grid-row: 2; margin-top: 0; }
-  .sobre__base { position: sticky; top: calc(var(--altura-cabecalho) + var(--esp-5)); }
+
+.sobre__botao--principal {
+  background: var(--cor-acento);
+  color: var(--cor-fundo);
 }
+
+.sobre__botao--secundario {
+  background: transparent;
+  color: var(--cor-acento);
+}
+
+.sobre__botao--principal:hover {
+  background: var(--cor-acento-forte);
+  border-color: var(--cor-acento-forte);
+}
+
+.sobre__botao--secundario:hover {
+  background: var(--cor-acento-fundo);
+}
+
+.sobre__botao:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 3px;
+}
+
+
+
+/* ---------- Responsividade ---------- */
+
+/* Telas intermediárias */
+@media (min-width: 48rem) and (max-width: 61.99rem) {
+  .sobre__criterios {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Celulares */
 @media (max-width: 47.99rem) {
   .sobre {
     padding-block: var(--esp-5) var(--esp-4);
     padding-inline: var(--esp-sobre-lateral);
   }
-  .sobre__pergunta {
-    max-width: none;
+
+  .sobre__cards {
+    gap: var(--esp-4);
+  }
+
+  .sobre__card {
     padding: var(--esp-4);
   }
+
+  .sobre__card > p {
+    line-height: 1.65;
+  }
+
+  .sobre__card-topo {
+    gap: var(--esp-2);
+    margin-bottom: var(--esp-3);
+  }
+
+  .sobre__card-icone {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .sobre__card-icone svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .sobre__criterios {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sobre__criterio {
+    padding: var(--esp-3);
+  }
+
+  .sobre__rodape-conteudo {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  /* Botões de navegação no celular */
+  .sobre__acoes {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .sobre__botao {
+    width: 100%;
+  }
 }
-@media (prefers-reduced-motion: reduce) {
-  .sobre__acao:active { transform: none; }
-}
+
+
 
 /* ---------- Página do catálogo ---------- */
 /* A consulta ganha uma abertura própria antes dos filtros, distinguindo o
@@ -975,7 +1192,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   display: grid;
   justify-items: center;
   max-width: 56rem;
-  margin: 0 auto var(--esp-6);
+  margin: 0 auto var(--esp-4);
   text-align: center;
 }
 .catalogo__olho {
@@ -994,7 +1211,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   text-transform: uppercase;
 }
 .catalogo__titulo {
-  margin-top: var(--esp-3);
+  margin-top: var(--esp-2);
   font-size: var(--tam-xl);
   font-weight: 600;
   letter-spacing: var(--entre-letras-titulo);
@@ -1016,9 +1233,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
   .catalogo__cabecalho {
-    justify-items: start;
-    margin-bottom: var(--esp-5);
-    text-align: left;
+    justify-items: center;
+    margin-bottom: var(--esp-3);
+    text-align: center;
   }
   .catalogo__titulo { font-size: var(--tam-xl); }
   .catalogo__intro { max-width: none; }
@@ -1191,7 +1408,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   align-items: start;
   justify-content: space-between;
   gap: var(--esp-3);
-  padding: var(--esp-5) var(--esp-5) var(--esp-3);
+  padding: var(--esp-4) var(--esp-5) var(--esp-2);
 }
 .dialogo-ajuda__titulo {
   min-width: 0;
@@ -1210,10 +1427,18 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .dialogo-ajuda__corpo {
   display: grid;
   gap: var(--esp-2);
-  padding: 0 var(--esp-5) var(--esp-5);
+  padding: 0 var(--esp-5) var(--esp-4);
   color: var(--cor-texto-suave);
   font-size: var(--tam-sm);
+  line-height: 1.55;
 }
+
+.dialogo-ajuda__corpo > p:not(.dialogo-ajuda__fonte) {
+  text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
 /* Citação acadêmica, na mesma escala das fontes no pé dos cartões. */
 .dialogo-ajuda__fonte {
   margin: 0;
@@ -1221,6 +1446,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-citacao);
   font-style: italic;
   line-height: 1.4;
+  text-align: left;
+  hyphens: none;
 }
 @media (max-width: 31.24rem) {
   .dialogo-ajuda__topo { padding: var(--esp-4) var(--esp-4) var(--esp-2); }
@@ -1273,16 +1500,29 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 }
 /* Em telas amplas, a ficha privilegia a leitura contínua: cabeçalho e
    navegação ocupam menos altura, preservando mais espaço para o conteúdo. */
+
+/* Em telas amplas, a ficha aproveita melhor a altura disponível. */
 @media (min-width: 48rem) {
   .dialogo-ficha {
     width: min(47.5rem, calc(100vw - 3rem));
     max-width: none;
-    max-height: 82dvh;
+    height: 90dvh;
+    max-height: 95dvh;
   }
-  .dialogo-ficha__topo { padding: var(--esp-3) var(--esp-4); }
-  .dialogo-ficha__corpo { padding: var(--esp-3) var(--esp-4) var(--esp-4); }
-  .dialogo-ficha__rodape { padding: var(--esp-2) var(--esp-4); }
+
+  .dialogo-ficha__topo {
+    padding: var(--esp-3) var(--esp-4);
+  }
+
+  .dialogo-ficha__corpo {
+    padding: var(--esp-3) var(--esp-4) var(--esp-4);
+  }
+
+  .dialogo-ficha__rodape {
+    padding: var(--esp-2) var(--esp-4);
+  }
 }
+
 .botao[disabled] { opacity: 0.45; cursor: default; }
 .botao[disabled]:hover {
   border-color: var(--cor-linha);
@@ -1311,3 +1551,265 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* Título que abre um assunto novo dentro da mesma página de texto, antes
    escrito como style inline em sobre.html e referencias.html. */
 .secao__titulo--afastado { margin-top: var(--esp-7); }
+
+/* ---------- Alinhamento dos textos explicativos ---------- */
+
+.abertura__resumo,
+.secao__intro,
+.estrutura__intro,
+.estrutura__painel-intro,
+.catalogo__intro,
+.sobre__cabecalho > p:last-child,
+.sobre__card > p,
+.prosa p {
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+
+/* Abertura mais compacta em telas amplas */
+@media (min-width: 64rem) {
+  .abertura {
+    padding-block: 2.5rem;
+  }
+
+  .abertura__conteudo {
+    gap: 0.75rem;
+  }
+
+  .abertura__titulo {
+    font-size: clamp(2.5rem, 4.5vw, 3.25rem);
+    line-height: 1.08;
+  }
+
+  .abertura__resumo {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+
+/* Mapa conceitual mais compacto no desktop */
+@media (min-width: 64rem) {
+  .secao--estrutura {
+    padding-top: var(--esp-6);
+  }
+
+  .estrutura__mapa {
+    margin-top: var(--esp-4);
+  }
+
+  .estrutura__painel {
+    padding: var(--esp-4);
+  }
+
+  .estrutura__grade--conhecimento,
+  .estrutura__grade--classificacao,
+  .estrutura__grade--exemplos,
+  .estrutura__grade--gerencia,
+  .estrutura__grade--evidencias {
+    gap: var(--esp-3);
+  }
+
+  .estrutura__atributos-cards {
+    gap: var(--esp-3);
+  }
+
+  .atributo-card {
+    padding: var(--esp-3);
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .estrutura__mapa,
+  .estrutura__navegacao,
+  .estrutura__paineis {
+    width: 100%;
+  }
+}
+
+
+/* ---------- Página de Referências ---------- */
+
+.referencias__hero {
+  padding: 2rem 0;
+  background: var(--cor-faixa);
+  color: var(--cor-faixa-texto);
+  border-bottom: 1px solid var(--cor-faixa-linha);
+}
+
+.referencias__hero-interno {
+  display: grid;
+  justify-items: start;
+  gap: 0.75rem;
+}
+
+.referencias__olho {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border: var(--borda-acento-suave);
+  border-radius: var(--raio-pilula);
+  background: var(--cor-acento-fundo);
+  color: var(--cor-acento);
+  font-family: var(--fonte-mono);
+  font-size: var(--tam-xs);
+  font-weight: 600;
+  letter-spacing: var(--entre-letras-rotulo);
+}
+
+.referencias__titulo {
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: var(--entre-letras-titulo);
+}
+
+.referencias__descricao {
+  max-width: 43rem;
+  color: var(--cor-faixa-suave);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.referencias__conteudo {
+  padding-block: 2rem;
+}
+
+.referencias__secao-titulo {
+  font-size: var(--tam-xl);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.referencias__secao-titulo span {
+  color: var(--cor-texto-fraco);
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.referencias__secao-titulo--afastado {
+  margin-top: 2.5rem;
+}
+
+.referencias__secao-intro {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+  line-height: 1.55;
+}
+
+/* Busca dos estudos */
+
+.referencias__busca {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 42rem;
+  margin-bottom: 1rem;
+}
+
+.referencias__busca svg {
+  position: absolute;
+  left: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: var(--cor-texto-fraco);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.referencias__busca input {
+  width: 100%;
+  min-height: var(--alvo-toque);
+  padding: 0.7rem 1rem 0.7rem 2.75rem;
+  border: var(--borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: var(--tam-sm);
+}
+
+.referencias__busca input::placeholder {
+  color: var(--cor-texto-fraco);
+}
+
+.referencias__busca input:focus-visible {
+  outline: 2px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+.referencias__resultado {
+  margin-bottom: 1rem;
+  color: var(--cor-texto-suave);
+  font-size: var(--tam-sm);
+}
+
+/* Mantém ocultos os estudos filtrados */
+.tabela--estudos tbody tr[hidden] {
+  display: none !important;
+}
+
+
+/* Ajustes para celulares */
+@media (max-width: 47.99rem) {
+
+  .referencias__hero {
+    padding-block: 1.75rem;
+  }
+
+  .referencias__titulo {
+    font-size: 1.875rem;
+  }
+
+  .referencias__descricao {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .referencias__conteudo {
+    padding-block: 1.25rem;
+  }
+
+  .referencias__secao-titulo--afastado {
+    margin-top: 2rem;
+  }
+
+  .referencias__busca {
+    max-width: none;
+  }
+
+  .tabela--estudos tbody {
+    gap: 0.625rem;
+  }
+
+  .tabela--estudos tbody tr {
+    padding: 0.6rem 0.75rem;
+  }
+}
+
+
+/* Catálogo mais compacto no desktop */
+@media (min-width: 64rem) {
+  .secao-catalogo {
+    padding-block: var(--esp-6);
+  }
+
+  .catalogo__cabecalho {
+    margin-bottom: var(--esp-4);
+  }
+
+  .catalogo__titulo {
+    margin-top: var(--esp-2);
+  }
+
+  .catalogo__intro {
+    line-height: 1.45;
+  }
+}
+
