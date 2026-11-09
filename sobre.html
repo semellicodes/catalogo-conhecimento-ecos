@@ -8,12 +8,13 @@
 <meta name="description" content="Conheça o KM4SECO, um catálogo de conhecimentos em Ecossistemas de Software (ECOS), desenvolvido a partir de uma Revisão Rápida da Literatura.">
 <script>
   /* Aplica o tema gravado antes da primeira pintura, para a página não piscar. */
+  document.documentElement.classList.add('js');
   try {
     var tema = localStorage.getItem('tema');
     if (tema === 'claro' || tema === 'escuro') document.documentElement.dataset.tema = tema;
   } catch (erro) {}
 </script>
-</script>
+<link rel="preload" href="assets/fonts/ibm-plex-sans/IBMPlexSans-VariableFont_wdth,wght.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="css/tokens.css?v=20261106-8">
 <link rel="stylesheet" href="css/base.css?v=20261106-8">
 <link rel="stylesheet" href="css/componentes.css?v=20261106-8">
@@ -245,6 +246,6 @@
 
 <script type="module" src="js/versao.js?v=20261106-8"></script>
 <script type="module" src="js/tema.js?v=20261106-8"></script>
-<script type="module" src="js/menu.js?v=20261106-8"></script>
+<script type="module" src="js/menu.js?v=20261106-8" onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

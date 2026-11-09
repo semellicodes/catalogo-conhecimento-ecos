@@ -233,6 +233,13 @@
     display: grid;
   }
 
+  /* O marcador entra no primeiro script do documento. Até menu.js definir o
+     estado correto, a navegação compacta já nasce recolhida, sem piscar aberta.
+     Sem JavaScript, a marca não existe e os links continuam disponíveis. */
+  :root.js .navegacao:not([data-menu-pronto]) {
+    display: none;
+  }
+
   .navegacao {
     position: absolute;
     top: calc(100% + var(--esp-1));

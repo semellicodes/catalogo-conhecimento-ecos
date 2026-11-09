@@ -461,6 +461,37 @@ function painelSemInformacao(dados, conhecimento, processo) {
   ];
 }
 
+/* O painel de uma atividade nasce depois da grade. Em fichas estreitas ele
+   pode abrir fora do trecho visível do miolo rolável, sem que a página atrás
+   do diálogo deva se mover. */
+function revelarPainelDeAtividade(painel) {
+  const corpo = painel.closest('.dialogo-ficha__corpo');
+  if (!corpo || painel.hidden) return;
+
+  const limitesDoCorpo = corpo.getBoundingClientRect();
+  const limitesDoPainel = painel.getBoundingClientRect();
+  const recuo = 12;
+  const inicioVisivel = limitesDoCorpo.top + recuo;
+  const trechoInicial = Math.min(limitesDoPainel.height, 72);
+  const inicioConfortavel = limitesDoCorpo.bottom - recuo - trechoInicial;
+
+  /* Se o título e o começo da explicação já cabem no miolo, não desloca a
+     leitura. Isso também evita movimento ao trocar entre atividades visíveis. */
+  if (limitesDoPainel.top >= inicioVisivel && limitesDoPainel.top <= inicioConfortavel) return;
+
+  const destino = Math.max(
+    0,
+    corpo.scrollTop + limitesDoPainel.top - inicioVisivel
+  );
+  if (Math.abs(destino - corpo.scrollTop) < 1) return;
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  corpo.scrollTo({
+    top: destino,
+    behavior: movimentoReduzido ? 'auto' : 'smooth'
+  });
+}
+
 /* Um cartão por processo, com o desenho das categorias de ECOS. O que muda é
    só a cor, que vem do data-identificado, e nenhum deles é desabilitado,
    porque o cartão sem informação precisa poder abrir o aviso. */
@@ -489,6 +520,10 @@ function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lis
       painel.replaceChildren(...painelSemInformacao(dados, conhecimento, processo));
     }
     painel.hidden = false;
+    /* O quadro seguinte mede o painel já aberto. Só atividades sustentadas
+       recebem o deslocamento, pois os avisos informativos não precisam tirar
+       a pessoa da posição em que estava. */
+    if (atividade) requestAnimationFrame(() => revelarPainelDeAtividade(painel));
   });
   return botao;
 }

@@ -458,22 +458,28 @@ function avisarFalha(mensagem, erro) {
 
 async function iniciar() {
   try {
-    dados = await carregar();
-  } catch (erro) {
-    avisarFalha(
-      'Não foi possível carregar os dados do catálogo. Confira se o servidor está no ar e se a página foi aberta pelo endereço dele, por exemplo o IP da máquina quando o acesso vem do celular.',
-      erro
-    );
-    return;
-  }
+    try {
+      dados = await carregar();
+    } catch (erro) {
+      avisarFalha(
+        'Não foi possível carregar os dados do catálogo. Confira se o servidor está no ar e se a página foi aberta pelo endereço dele, por exemplo o IP da máquina quando o acesso vem do celular.',
+        erro
+      );
+      return;
+    }
 
-  try {
-    montarCatalogo();
-  } catch (erro) {
-    avisarFalha(
-      'O catálogo não pôde ser montado. Se a página acabou de ser atualizada, esvazie o cache do navegador e recarregue. O console tem o erro.',
-      erro
-    );
+    try {
+      montarCatalogo();
+    } catch (erro) {
+      avisarFalha(
+        'O catálogo não pôde ser montado. Se a página acabou de ser atualizada, esvazie o cache do navegador e recarregue. O console tem o erro.',
+        erro
+      );
+    }
+  } finally {
+    /* Se os dados ou a montagem falharem, os filtros continuam visíveis no
+       fluxo original; a proteção contra a oscilação nunca pode prendê-los. */
+    el('#catalogo')?.dataset.catalogoPronto = '';
   }
 }
 

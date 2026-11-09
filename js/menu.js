@@ -10,6 +10,10 @@ function iniciarMenu() {
   const botao = document.querySelector('#botao-menu');
   const navegacao = document.querySelector('#navegacao-principal');
   if (!cabecalho || !botao || !navegacao) return;
+  /* A remoção é síncrona: em telas compactas sincronizarLargura fecha o menu
+     antes da próxima pintura. Se a montagem falhar depois daqui, os links
+     permanecem acessíveis em vez de ficarem ocultos. */
+  navegacao.dataset.menuPronto = '';
 
   function fechar() {
     botao.setAttribute('aria-expanded', 'false');

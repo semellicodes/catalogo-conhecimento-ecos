@@ -1223,6 +1223,13 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
    para dentro do bloco de filtro. */
 .catalogo__barra { display: none; }
 @media (max-width: 47.99rem) {
+  /* Até catalogo.js mover o painel para a folha móvel, ele não deve aparecer
+     brevemente no fluxo da página. Sem JavaScript, a marca não existe e a
+     busca continua disponível como conteúdo estático. */
+  :root.js #catalogo:not([data-catalogo-pronto]) .filtros {
+    display: none;
+  }
+
   .catalogo__cabecalho {
     justify-items: center;
     margin-bottom: var(--esp-3);
