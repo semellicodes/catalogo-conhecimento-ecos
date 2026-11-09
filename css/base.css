@@ -98,7 +98,7 @@ a, button, input, select, summary, [role="button"], [role="tab"] {
 /* ---------- Troca de tema ---------- */
 /* A classe só existe durante a troca, e anima cor, nunca posição ou tamanho. */
 :root.trocando-tema,
-:root.trocando-tema *,
+:root.trocando-tema *:not(.interruptor__deslizante),
 :root.trocando-tema *::before,
 :root.trocando-tema *::after {
   transition:
