@@ -479,7 +479,8 @@ async function iniciar() {
   } finally {
     /* Se os dados ou a montagem falharem, os filtros continuam visíveis no
        fluxo original; a proteção contra a oscilação nunca pode prendê-los. */
-    el('#catalogo')?.dataset.catalogoPronto = '';
+    const catalogo = el('#catalogo');
+    if (catalogo) catalogo.dataset.catalogoPronto = '';
   }
 }
 
