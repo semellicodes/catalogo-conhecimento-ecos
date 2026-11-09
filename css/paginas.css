@@ -1497,8 +1497,6 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .dialogo-ficha {
     width: min(47.5rem, calc(100vw - 3rem));
     max-width: none;
-    height: 90dvh;
-    max-height: 95dvh;
   }
 
   .dialogo-ficha__topo {

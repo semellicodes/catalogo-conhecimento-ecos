@@ -559,6 +559,25 @@
   flex-wrap: nowrap;
 }
 
+/* No painel móvel a busca fica numa linha própria e as quatro naturezas
+   repartem as linhas conforme a largura disponível. Assim nenhuma opção fica
+   fora da folha de filtros ou exige rolagem lateral. */
+@media (max-width: 47.99rem) {
+  .filtros__linha { align-items: stretch; }
+
+  .filtros__busca,
+  .filtros__principal,
+  .filtros__principal .filtros__grupo {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .filtros__principal .filtros__opcoes {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
 .filtros__contagem {
   flex: none;
   margin-left: auto;
