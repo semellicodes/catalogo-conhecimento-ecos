@@ -175,10 +175,6 @@
   }
 }
 
-.secao--estrutura {
-  padding-top: var(--esp-8);
-  padding-bottom: var(--esp-5);
-}
 /* Desvio do cabeçalho fixo, para a âncora não parar atrás dele. */
 section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 /* A seção recua um tom, o mesmo do miolo da ficha, senão o cartão claro não tem
@@ -886,15 +882,10 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .sobre__card {
   min-width: 0;
   padding: var(--esp-sobre-cartao);
-  background: #ffffff;
+  background: var(--cor-sobre-cartao);
   border: var(--borda);
   border-radius: var(--raio);
   box-shadow: var(--sombra-1);
-}
-
-/* Fundo dos cards no modo escuro */
-[data-tema="escuro"] .sobre__card {
-  background: var(--cor-superficie-alta);
 }
 
 .sobre__card h2 {
@@ -998,15 +989,9 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 .sobre__criterio {
   min-width: 0;
   padding: var(--esp-4);
-  background: #f6f8f7;
-  border: var(--borda-suave);
+  background: var(--cor-sobre-criterio);
+  border: 1px solid var(--cor-sobre-criterio-linha);
   border-radius: var(--raio);
-}
-
-/* Mesma paleta dos cartões de processos no modo escuro */
-[data-tema="escuro"] .sobre__criterio {
-  background: #161d27;
-  border-color: #202a36;
 }
 
 .sobre__criterio h3 {

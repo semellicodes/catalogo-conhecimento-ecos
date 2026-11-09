@@ -28,6 +28,11 @@
   --cor-acento-fundo: #12241E;
   --cor-acento-linha: #2E5A4C;
   --cor-contraste: #0D1117;
+  /* As superfícies da página Sobre têm valores próprios para preservar a
+     separação visual já aprovada entre os cartões e seus critérios. */
+  --cor-sobre-cartao: #FFFFFF;
+  --cor-sobre-criterio: #F6F8F7;
+  --cor-sobre-criterio-linha: var(--cor-linha-suave);
 
   /* Natureza, a classificação principal */
   --cor-explicito: #C69BF2;
@@ -200,6 +205,15 @@
   --cor-veu: rgb(0 0 0 / 0.45);
   --cor-veu-opaco: rgb(0 0 0 / 0.72);
   --desfoque-veu: 8px;
+}
+
+/* A folha original aplicava estas superfícies somente quando o atributo de
+   tema escuro estava presente. Mantê-las como tokens conserva a mesma cascata
+   e tira valores literais de páginas.css. */
+:root[data-tema="escuro"] {
+  --cor-sobre-cartao: var(--cor-superficie-alta);
+  --cor-sobre-criterio: #161D27;
+  --cor-sobre-criterio-linha: #202A36;
 }
 
 /* O escuro é o padrão da página inteira, para acompanhar a faixa de abertura.

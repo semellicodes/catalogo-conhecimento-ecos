@@ -20,6 +20,7 @@
   align-items: center;
   gap: var(--esp-1) var(--esp-4);
   min-height: var(--altura-cabecalho);
+  padding-block: 0.75rem;
   padding-inline: var(--esp-cabecalho-lateral);
 }
 
@@ -1771,15 +1772,4 @@ html.ficha-aberta body {
   content: '↗';
   margin-left: 0.25rem;
   font-size: 0.9em;
-}
-
-/* Refinamento visual do cabeçalho */
-.cabecalho__interno {
-  padding-block: 0.75rem;
-}
-
-@media (max-width: 47.99rem) {
-  .cabecalho__interno {
-    padding-block: 0.75rem;
-  }
 }
