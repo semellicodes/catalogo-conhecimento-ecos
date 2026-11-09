@@ -51,6 +51,13 @@ button, input, select {
   color: inherit;
 }
 
+/* O Chrome Android acrescenta um brilho azul ao toque, independente dos
+   estados visuais do catálogo. Este ajuste remove só esse brilho nativo;
+   o :focus-visible global continua garantindo foco de teclado em verde. */
+a, button, input, select, summary, [role="button"], [role="tab"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Qualquer classe de componente com display próprio vence o display none que o
    navegador dá ao atributo hidden, então aqui ele volta a mandar. */
 [hidden] { display: none !important; }
