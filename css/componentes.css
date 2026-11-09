@@ -1253,10 +1253,9 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-/* Os oito processos, duas colunas e quatro linhas, em todas as larguras. O
-   cartão é o mesmo botão das categorias de ECOS, então altura, canto, recuo,
-   ícone, tipografia, hover e foco vêm de lá sem uma linha a mais. O que muda é
-   a grade, porque são oito e não três. */
+/* Cada atividade precisa de 9.375rem para acomodar o rótulo mais longo, seu
+   recuo e a borda. A grade mantém no máximo duas colunas para preservar a
+   composição das oito atividades. */
 .atividades__cartoes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1593,6 +1592,12 @@
   .estudo { grid-template-columns: 36px minmax(0, 1fr); }
   .estudo[data-com-link] { grid-template-columns: 36px minmax(0, 1fr); }
   .estudo__acessar { grid-column: 2; justify-self: start; }
+}
+/* O contêiner é o miolo real da ficha, já descontadas as margens do diálogo.
+   Abaixo de 20.875rem, o bloco interno não entrega 9.375rem para cada uma das
+   duas atividades e o vão entre elas; a leitura passa a uma coluna. */
+@container (max-width: 20.875rem) {
+  .atividades__cartoes { grid-template-columns: minmax(0, 1fr); }
 }
 /* Mantém a rolagem dentro da ficha e evita que ela se propague
    para a página que está atrás do modal. */
