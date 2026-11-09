@@ -1245,9 +1245,10 @@
 /* O painel abre abaixo da grade inteira, nunca dentro de uma célula, e o texto
    dele vai à esquerda. São parágrafos longos numa caixa estreita, e a
    justificação abria vão entre as palavras. */
+/* Descrições das atividades de gerência do conhecimento */
 .atividades__painel .atividades__descricao {
-  text-align: left;
-  hyphens: manual;
+  text-align: justify;
+  hyphens: auto;
 }
 /* O rodapé de procedência fecha a atividade. Separador fino, ícone, rótulo e
    os identificadores na mesma linha, quebrando sozinhos quando a largura
