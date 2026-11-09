@@ -72,7 +72,7 @@ a, button, input, select, summary, [role="button"], [role="tab"] {
   color: var(--cor-contraste);
   text-decoration: none;
   font-weight: 600;
-  transition: top 0.20s;
+  transition: top 0.10s;
 }
 .pular-para-conteudo:focus { top: var(--esp-4); color: var(--cor-contraste); }
 
