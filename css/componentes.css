@@ -7,7 +7,6 @@
   z-index: 5;
   background: var(--cor-cabecalho);
   border-bottom: var(--borda);
-  view-transition-name: cabecalho;
 }
 
 .cabecalho__interno {
