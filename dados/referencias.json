@@ -1,3 +1,4 @@
+
 {
   "alavi2001": {
     "texto": "ALAVI, M.; LEIDNER, D. E. Review: knowledge management and knowledge management systems, conceptual foundations and research issues. MIS Quarterly, v. 25, n. 1, p. 107 a 136, 2001.",
@@ -14,6 +15,14 @@
   "cartaxo2020": {
     "texto": "CARTAXO, B.; PINTO, G.; SOARES, S. Rapid reviews in software engineering. In: Contemporary empirical methods in software engineering. Springer, 2020, p. 357 a 384.",
     "url": "https://doi.org/10.1007/978-3-030-32489-6_13"
+  },
+  "chazette2022": {
+    "texto": "CHAZETTE, L.; BRUNOTTE, W.; SPEITH, T. Explainable software systems: from requirements analysis to system evaluation. Requirements Engineering, v. 27, p. 457-487, 2022. DOI: 10.1007/s00766-022-00393-5.",
+    "url": "https://doi.org/10.1007/s00766-022-00393-5"
+  },
+  "cysneiros2003": {
+    "texto": "CYSNEIROS, L. M.; YU, E.; LEITE, J. C. S. P. Cataloguing non-functional requirements as softgoal networks. In: 11th IEEE International Requirements Engineering Conference, 2003, p. 13 a 20.",
+    "url": "https://www.yorku.ca/cysneiro/articles/facets-nfr-fv%20-rev02.pdf"
   },
   "davenport1998": {
     "texto": "DAVENPORT, T. Conhecimento empresarial. Rio de Janeiro: Campus, 1998.",
@@ -50,9 +59,5 @@
   "viana2015": {
     "texto": "VIANA, D.; CONTE, T. Oportunizando a aprendizagem e gerência do conhecimento em ecossistemas de software. In: IX Workshop em Desenvolvimento Distribuído de Software, Ecossistemas de Software e Sistemas-de-Sistemas, 2015, p. 73 a 76.",
     "url": "https://ptdocz.com/doc/1361582/wdes"
-  },
-  "cysneiros2003": {
-  "texto": "CYSNEIROS, L. M.; YU, E.; LEITE, J. C. S. P. Cataloguing non-functional requirements as softgoal networks. In: 11th IEEE International Requirements Engineering Conference, 2003, p. 13 a 20.",
-  "url": "https://www.yorku.ca/cysneiro/articles/facets-nfr-fv%20-rev02.pdf"
-}
+  }
 }
