@@ -108,19 +108,23 @@ function autoresDoEstudo(estudo) {
 }
 
 const NOMES_ECOSSISTEMAS = {
-  E01: 'Apple, Android, SAP, Salesforce e Oracle',
-  E02: 'PaddlePaddle, Apollo, openEuler, OpenHarmony, MindSpore, openGauss e EdgeGallery',
-  E03: 'Astropy', E04: 'Nexus Mods', E05: 'OSDU', E06: 'SAP Business Technology Platform',
-  E07: 'Oskari, Decidim e PloneGov', E08: 'Node.js e E-SECO', E10: 'Ecossistema proprietário do setor de seguros',
-  E11: 'OpenStack', E12: 'SAP Cloud Platform e SAP Developer Community',
-  E13: 'Go, npm, Bower, PyPI, RubyGems, Packagist e Maven',
-  E15: 'Portal do Software Público Brasileiro e 4CMBr', E16: 'Ecossistema industrial de cidade inteligente',
-  E17: 'Eclipse e Eclipse Marketplace', E18: 'Indústria de software empacotado',
-  'E09:ECOS de Código Aberto': 'WordPress', 'E09:ECOS Híbrido': 'Magento', 'E09:ECOS Proprietário': 'Shopify'
+  E01: ['Apple', 'Android', 'SAP', 'Salesforce', 'Oracle'],
+  E02: ['PaddlePaddle', 'Apollo', 'openEuler', 'OpenHarmony', 'MindSpore', 'openGauss', 'EdgeGallery'],
+  E03: ['Astropy'], E04: ['Nexus Mods'], E05: ['OSDU'], E06: ['SAP Business Technology Platform'],
+  E07: ['Oskari', 'Decidim', 'PloneGov'], E08: ['Node.js', 'E-SECO'], E10: ['Ecossistema proprietário do setor de seguros'],
+  E11: ['OpenStack'], E12: ['SAP Cloud Platform', 'SAP Developer Community'],
+  E13: ['Go', 'npm', 'Bower', 'PyPI', 'RubyGems', 'Packagist', 'Maven'],
+  E15: ['Portal do Software Público Brasileiro', '4CMBr'], E16: ['Ecossistema industrial de cidade inteligente'],
+  E17: ['Eclipse', 'Eclipse Marketplace'], E18: ['Indústria de software empacotado'],
+  'E09:ECOS de Código Aberto': ['WordPress'], 'E09:ECOS Híbrido': ['Magento'], 'E09:ECOS Proprietário': ['Shopify']
 };
 
-function nomeDoEcossistema(estudo, categoria) {
-  return NOMES_ECOSSISTEMAS[`${estudo.id}:${categoria}`] || NOMES_ECOSSISTEMAS[estudo.id];
+function ecossistemasDoEstudo(estudo, categoria) {
+  return NOMES_ECOSSISTEMAS[`${estudo.id}:${categoria}`] || NOMES_ECOSSISTEMAS[estudo.id] || [];
+}
+
+function listarEcossistemas(nomes) {
+  return new Intl.ListFormat('pt-BR', { style: 'long', type: 'conjunction' }).format(nomes);
 }
 
 /** Os exemplos nascem apenas dos estudos já ligados a cada conhecimento. */
@@ -152,13 +156,18 @@ function exemplosDeEcos(conhecimento) {
       return;
     }
 
-    painel.append(criar('p', 'exemplos-ecos__texto', `Esse conhecimento foi observado em ${categoria}, especialmente em contextos nos quais o conhecimento associado aparece nas práticas, tecnologias ou interações do ecossistema. Os estudos abaixo identificaram esse conhecimento nos seguintes ${categoria}:`));
+    const quantidadeEstudos = new Set(estudos.map((estudo) => estudo.id)).size;
+    const quantidadeEcos = new Set(
+      estudos.flatMap((estudo) => ecossistemasDoEstudo(estudo, categoria))
+    ).size;
+    const sujeito = quantidadeEstudos === 1 ? 'O estudo abaixo identificou' : 'Os estudos abaixo identificaram';
+    const destino = quantidadeEcos === 1 ? `no seguinte ${categoria}` : `nos seguintes ${categoria}`;
+    painel.append(criar('p', 'exemplos-ecos__texto', `Esse conhecimento foi observado em ${categoria}, especialmente em contextos nos quais o conhecimento associado aparece nas práticas, tecnologias ou interações do ecossistema. ${sujeito} esse conhecimento ${destino}:`));
     const listaEstudos = criar('ul', 'exemplos-ecos__lista');
     estudos.forEach((estudo) => {
       const item = criar('li', 'exemplos-ecos__item');
-      const autoria = criar('strong', '', `${autoresDoEstudo(estudo)} (${estudo.ano}): `);
-      const ecossistema = criar('strong', '', `${nomeDoEcossistema(estudo, categoria)}.`);
-      item.append(autoria, ecossistema, ' ', linkDoEstudo(estudo));
+      const ecossistema = criar('strong', '', `${listarEcossistemas(ecossistemasDoEstudo(estudo, categoria))}.`);
+      item.append(`${autoresDoEstudo(estudo)} (${estudo.ano}): `, ecossistema, ' ', linkDoEstudo(estudo));
       listaEstudos.append(item);
     });
     painel.append(listaEstudos);
