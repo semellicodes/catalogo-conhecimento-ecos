@@ -173,7 +173,7 @@ function exemplosDeEcos(conhecimento) {
     painel.append(listaEstudos);
   }
 
-  const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Híbrido', 'ECOS Proprietário'];
+  const ordemCategorias = ['ECOS de Código Aberto', 'ECOS Proprietário', 'ECOS Híbrido'];
   const lista = criar('div', 'exemplos-ecos__categorias');
   /* Nenhuma categoria começa aberta. A seção abre neutra e quem escolhe o que
      consultar é quem lê, como nas atividades. A ficha é remontada a cada

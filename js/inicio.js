@@ -204,9 +204,14 @@ function cartaoDeAtributo(dados, atributo) {
 }
 
 function cartaoDeExemplos(dados, conteudo) {
+  const ordemTiposEcos = ['Código aberto', 'Proprietário', 'Híbrido'];
+  const valores = dados.classificacoes[conteudo.chave].valores
+    .slice()
+    .sort((a, b) => ordemTiposEcos.indexOf(a.valor) - ordemTiposEcos.indexOf(b.valor));
+
   return cartaoDeEstrutura(
     conteudo,
-    dados.classificacoes[conteudo.chave].valores,
+    valores,
     'estrutura__cartao-atributo--largo'
   );
 }
