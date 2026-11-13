@@ -1564,6 +1564,12 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   overflow-wrap: break-word;
 }
 
+/* A abertura do mapa é uma apresentação institucional, não prosa corrida. */
+.estrutura__abertura .estrutura__intro {
+  text-align: center;
+  text-align-last: center;
+}
+
 
 /* Abertura mais compacta em telas amplas */
 @media (min-width: 64rem) {
