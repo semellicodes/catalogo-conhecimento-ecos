@@ -354,7 +354,7 @@ function capsulaDeAtividade(atividade, painel, lista) {
   botao.type = 'button';
   botao.setAttribute('aria-controls', painel.id);
   botao.setAttribute('aria-expanded', 'false');
-  botao.append(criar('span', '', atividade.processo), criar('span', 'atividade-gerencia__seta'));
+  botao.append(criar('span', '', atividade.atividade), criar('span', 'atividade-gerencia__seta'));
   botao.addEventListener('click', () => {
     const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
     lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
@@ -364,7 +364,7 @@ function capsulaDeAtividade(atividade, painel, lista) {
     }
     botao.setAttribute('aria-expanded', 'true');
     painel.replaceChildren(
-      criar('p', 'acoes-gerencia__rotulo', atividade.processo),
+      criar('p', 'acoes-gerencia__rotulo', atividade.atividade),
       criar('p', 'exemplos-ecos__texto', atividade.descricao)
     );
     if (atividade.estudos?.length) {
@@ -379,7 +379,7 @@ function capsulaDeAtividade(atividade, painel, lista) {
 /**
  * As atividades identificadas para este conhecimento, nas cápsulas.
  *
- * Só entram os processos que as evidências sustentam. Nenhum processo do
+ * Só entram as atividades que as evidências sustentam. Nenhuma atividade do
  * referencial é exibido apagado para completar a lista, porque ausência de
  * evidência não é evidência de ausência e a aba 3 já diz que não se pressupõe
  * que todos estejam presentes.
@@ -413,13 +413,13 @@ const ICONES_ATIVIDADE = {
   'Avaliação': [['circle', { cx: 10, cy: 10, r: 6.5 }], ['path', { d: 'm7 10.2 2.2 2.2 4-4.6' }]]
 };
 
-function iconeAtividade(processo) {
+function iconeAtividade(nomeAtividade) {
   const svg = document.createElementNS(SVG, 'svg');
   svg.setAttribute('viewBox', '0 0 20 20');
   svg.setAttribute('aria-hidden', 'true');
   svg.setAttribute('focusable', 'false');
   svg.setAttribute('class', 'exemplos-ecos__icone-categoria');
-  (ICONES_ATIVIDADE[processo] || []).forEach(([tag, atributos]) => svg.append(traco(tag, atributos)));
+  (ICONES_ATIVIDADE[nomeAtividade] || []).forEach(([tag, atributos]) => svg.append(traco(tag, atributos)));
   return svg;
 }
 
@@ -453,7 +453,7 @@ function rodapeDeEstudos(dados, conhecimento, ids) {
    já foi revisado, mesmo que nenhuma atividade tenha sido
    identificada nos estudos primários associados.
    Se o campo não existir, a revisão permanece pendente. */
-function painelSemInformacao(dados, conhecimento, processo) {
+function painelSemInformacao(dados, conhecimento, nomeAtividade) {
   const copia = dados.meta.fichaAtividades || {};
   const revista = Array.isArray(conhecimento.atividadesGerencia);
   const nome = conhecimento.nomeEmFrase || `a ${conhecimento.nome.toLowerCase()}`;
@@ -462,7 +462,7 @@ function painelSemInformacao(dados, conhecimento, processo) {
     ? (copia.tituloSemInformacao || 'Informação não identificada')
     : (copia.tituloPendente || 'Revisão pendente');
   const texto = (modelo || '')
-    .replace('{atividade}', processo.toLowerCase())
+    .replace('{atividade}', nomeAtividade.toLowerCase())
     .replace('{conhecimento}', nome);
   return [
     criar('p', 'acoes-gerencia__rotulo', titulo),
@@ -501,16 +501,16 @@ function revelarPainelDeAtividade(painel) {
   });
 }
 
-/* Um cartão por processo, com o desenho das categorias de ECOS. O que muda é
+/* Um cartão por atividade, com o desenho das categorias de ECOS. O que muda é
    só a cor, que vem do data-identificado, e nenhum deles é desabilitado,
    porque o cartão sem informação precisa poder abrir o aviso. */
-function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lista) {
+function cartaoDeAtividade(dados, conhecimento, nomeAtividade, atividade, painel, lista) {
   const botao = criar('button', 'exemplos-ecos__categoria');
   botao.type = 'button';
   botao.setAttribute('aria-controls', painel.id);
   botao.setAttribute('aria-expanded', 'false');
   botao.dataset.identificado = String(Boolean(atividade));
-  botao.append(iconeAtividade(processo), criar('span', '', processo));
+  botao.append(iconeAtividade(nomeAtividade), criar('span', '', nomeAtividade));
   botao.addEventListener('click', () => {
     const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
     lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
@@ -521,12 +521,12 @@ function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lis
     botao.setAttribute('aria-expanded', 'true');
     if (atividade) {
       painel.replaceChildren(
-        criar('p', 'acoes-gerencia__rotulo', processo),
+        criar('p', 'acoes-gerencia__rotulo', nomeAtividade),
         criar('p', 'exemplos-ecos__texto atividades__descricao', atividade.descricao)
       );
       if (atividade.estudos?.length) painel.append(rodapeDeEstudos(dados, conhecimento, atividade.estudos));
     } else {
-      painel.replaceChildren(...painelSemInformacao(dados, conhecimento, processo));
+      painel.replaceChildren(...painelSemInformacao(dados, conhecimento, nomeAtividade));
     }
     painel.hidden = false;
     /* O quadro seguinte mede o painel já aberto. Só atividades sustentadas
@@ -541,7 +541,7 @@ function cartaoDeAtividade(dados, conhecimento, processo, atividade, painel, lis
  * Atividades Associadas ao Conhecimento, a seção que substituiu a gerência por
  * componentes nas fichas migradas.
  *
- * Os oito processos aparecem sempre, em duas colunas, na ordem do referencial.
+ * As seis atividades aparecem sempre, na ordem do referencial.
  * Os que têm atividade identificada acendem em verde e os outros ficam
  * neutros, e todos abrem, porque saber que nada foi encontrado também é
  * informação. O painel fica abaixo da grade inteira, nunca dentro de uma
@@ -557,21 +557,21 @@ function atividadesAssociadas(dados, conhecimento) {
   const lista = criar('div', 'atividades__cartoes');
   lista.setAttribute('role', 'group');
   lista.setAttribute('aria-label', 'Atividades associadas à gerência do conhecimento');
-  const porProcesso = new Map((conhecimento.atividadesGerencia || [])
-    .map((atividade) => [atividade.processo, atividade]));
-  /* A lista dos oito e a ordem deles vêm da aba de Atividades da Estrutura,
+  const porAtividade = new Map((conhecimento.atividadesGerencia || [])
+    .map((atividade) => [atividade.atividade, atividade]));
+  /* A lista das seis e a ordem delas vêm da aba de Atividades da Estrutura,
      num lugar só, para a ficha e a camada nunca divergirem. */
-  processosDoReferencial(dados).forEach((processo) =>
-    lista.append(cartaoDeAtividade(dados, conhecimento, processo, porProcesso.get(processo), painel, lista)));
+  atividadesDoReferencial(dados).forEach((nomeAtividade) =>
+    lista.append(cartaoDeAtividade(dados, conhecimento, nomeAtividade, porAtividade.get(nomeAtividade), painel, lista)));
 
   raiz.append(lista, painel);
   bloco.append(raiz);
   return bloco;
 }
 
-function processosDoReferencial(dados) {
+function atividadesDoReferencial(dados) {
   const aba = dados.meta.estruturaCatalogo?.abas?.find((item) => item.id === 'gerencia');
-  return (aba?.atividades?.processos || []).map((processo) => processo.nome);
+  return (aba?.atividades?.itens || []).map((atividade) => atividade.nome);
 }
 
 

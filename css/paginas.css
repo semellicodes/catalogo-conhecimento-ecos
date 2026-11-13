@@ -478,7 +478,7 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   cursor: pointer;
 }
 /* A Gerência segue o arranjo dos Exemplos. Cartão verde e, abaixo dele, um
-   painel único com os oito processos, cada um na largura inteira. Os cartões
+   painel único com as seis atividades. Os cartões
    de importância e de atores saíram, e com eles a grade de duas colunas. */
 .estrutura__grade--gerencia { grid-template-columns: minmax(0, 1fr); gap: var(--esp-4); }
 /* A Base de Evidências repete o arranjo da Classificação. O cartão verde
@@ -525,8 +525,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .atributo-card__intro {
     hyphens: auto;
   }
-  /* A aba de Atividades é a exceção, por decisão da autora. As descrições dos
-     oito processos são curtas e cabem em duas ou três linhas numa coluna de
+  /* A aba de Atividades é a exceção, por decisão da autora. As descrições das
+     seis atividades são curtas e cabem em duas ou três linhas numa coluna de
      celular, e ali a justificação abria vão entre as palavras sem ter linha
      suficiente para a hifenização compensar. Alinhadas à esquerda, e sem
      hifenizar, para o texto não partir palavra numa frase de uma linha. Vale
@@ -711,17 +711,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   font-size: var(--tam-xs);
   line-height: 1.55;
 }
-/* Os oito processos do referencial. Dividem o cartão em duas colunas e cada um
+/* As seis atividades do referencial. Dividem o cartão em três colunas e cada uma
    ganha superfície e borda, diferente das categorias da Classificação, que só
-   levam a linha fina. São oito itens curtos, e sem a caixa a leitura em duas
+   levam a linha fina. São seis itens curtos, e sem a caixa a leitura em três
    colunas vira uma lista indistinta. */
-.estrutura__cartao-atributo--processos .estrutura__atributo-categoria {
+.estrutura__cartao-atributo--atividades .estrutura__atributo-categoria {
   padding: var(--esp-3);
   background: var(--cor-superficie);
   border: var(--borda-suave);
   border-radius: var(--raio);
 }
-.estrutura__cartao-atributo--processos .estrutura__atributo-categoria-texto {
+.estrutura__cartao-atributo--atividades .estrutura__atributo-categoria-texto {
   margin-top: var(--esp-1);
 }
 
@@ -789,8 +789,8 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .estrutura__cartao-atributo--largo .estrutura__atributo-categorias {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .estrutura__cartao-atributo--processos .estrutura__atributo-categorias {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .estrutura__cartao-atributo--atividades .estrutura__atributo-categorias {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (max-width: 61.99rem) {

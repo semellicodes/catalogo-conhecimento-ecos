@@ -257,8 +257,8 @@ function explicacaoGerencia(dados, aba, definicao) {
     cartaoConceito(definicao.icone, definicao.cartaoIntroducao),
     cartaoDeEstrutura(
       atividades,
-      atividades.processos.map((processo) => ({ valor: processo.nome, explicacao: processo.descricao })),
-      'estrutura__cartao-atributo--processos'
+      atividades.itens.map((atividade) => ({ valor: atividade.nome, explicacao: atividade.descricao })),
+      'estrutura__cartao-atributo--atividades'
     )
   ], 'estrutura__grade--gerencia');
 }

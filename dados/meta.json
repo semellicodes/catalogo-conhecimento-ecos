@@ -68,45 +68,37 @@
         "icone": "gerencia",
         "cartaoIntroducao": {
           "titulo": "Atividades associadas à gerência do conhecimento",
-          "texto": "A gerência do conhecimento pode ser analisada por meio de oito processos inter-relacionados, que abrangem desde a identificação e a aquisição até a aplicação e a avaliação do conhecimento. No catálogo, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento.",
-          "referencias": "lopes2026"
+          "texto": "A gerência do conhecimento pode ser analisada por meio de seis atividades inter-relacionadas, que abrangem desde a identificação e a aquisição até o compartilhamento e a aplicação do conhecimento. No catálogo, essas atividades são utilizadas para organizar as evidências identificadas nos estudos primários associados a cada conhecimento.",
+          "referencias": "heisig2009, leoni2024"
         },
         "atividades": {
-          "processos": [
+          "itens": [
             {
               "nome": "Identificação",
-              "descricao": "Mapeamento do conhecimento já disponível internamente."
+              "descricao": "Identificar, organizar, classificar, estruturar, analisar, determinar, revisar, localizar e mapear o conhecimento."
             },
             {
               "nome": "Aquisição",
-              "descricao": "Obtenção de conhecimento proveniente de fontes externas."
-            },
-            {
-              "nome": "Compartilhamento",
-              "descricao": "Disseminação, distribuição, transferência e assimilação do conhecimento."
-            },
-            {
-              "nome": "Armazenamento",
-              "descricao": "Preservação, retenção e atualização do conhecimento."
-            },
-            {
-              "nome": "Codificação",
-              "descricao": "Indexação, representação, filtragem e externalização do conhecimento."
+              "descricao": "Adquirir, coletar, importar, prover, obter e reunir o conhecimento."
             },
             {
               "nome": "Criação",
-              "descricao": "Construção e desenvolvimento de novos conhecimentos, incluindo inovação."
+              "descricao": "Criar, gerar, desenvolver, inovar, construir, experimentar e evoluir o conhecimento."
+            },
+            {
+              "nome": "Armazenamento",
+              "descricao": "Armazenar, reter, capturar, codificar, arquivar, documentar, manter e preservar o conhecimento."
+            },
+            {
+              "nome": "Compartilhamento",
+              "descricao": "Compartilhar, transferir, distribuir, comunicar, colaborar, difundir e disseminar o conhecimento."
             },
             {
               "nome": "Aplicação",
-              "descricao": "Utilização e internalização do conhecimento nas atividades realizadas."
-            },
-            {
-              "nome": "Avaliação",
-              "descricao": "Revisão, validação e verificação do conhecimento."
+              "descricao": "Usar, aplicar, alavancar, reutilizar, explorar e implantar o conhecimento."
             }
           ],
-          "referencias": "lopes2026"
+          "referencias": "heisig2009, leoni2024"
         }
       },
       {
@@ -146,9 +138,9 @@
   },
   "atividades": {
     "titulo": "Atividades associadas à gerência do conhecimento",
-    "texto": "A gerência do conhecimento é analisada a partir de oito processos inter-relacionados: identificação, aquisição, compartilhamento, armazenamento, codificação, criação, aplicação e avaliação. No KM4SECO, esses processos são utilizados para organizar as atividades identificadas nos estudos primários associados a cada conhecimento. A ausência de informações sobre determinada atividade não significa que ela não ocorra no ECOS, mas apenas que não foi explicitamente identificada nos estudos analisados.",
+    "texto": "A gerência do conhecimento pode ser analisada por meio de seis atividades inter-relacionadas: identificação, aquisição, criação, armazenamento, compartilhamento e aplicação. No KM4SECO, essas atividades organizam as evidências identificadas nos estudos primários associados a cada conhecimento. A ausência de informações sobre determinada atividade não significa que ela não ocorra no ECOS, mas apenas que não foi explicitamente identificada nos estudos analisados.",
     "prefixoFonte": "Síntese do KM4SECO elaborada com base em",
-    "referencia": "lopes2026"
+    "referencia": "heisig2009, leoni2024"
   },
   "estudos": {
     "titulo": "Estudos primários associados",
@@ -188,8 +180,8 @@
   {
     "n": 4,
     "nome": "Atividades",
-    "conteudo": "Oito processos de gerência do conhecimento e atividades identificadas nos estudos primários",
-    "origem": "Processos da literatura e análise dos estudos primários"
+    "conteudo": "Seis atividades de gerência do conhecimento e evidências identificadas nos estudos primários",
+    "origem": "Atividades da literatura e análise dos estudos primários"
   },
   {
     "n": 5,

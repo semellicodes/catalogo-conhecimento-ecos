@@ -27,6 +27,10 @@
     "texto": "DAVENPORT, T. Conhecimento empresarial. Rio de Janeiro: Campus, 1998.",
     "url": "https://pt.scribd.com/document/377074189/DAVENPORT-PRUSAK-Conhecimento-Empresarial-Como-as-Organizacoes-Gerenciam-o-Seu-Capital-Intelectual"
   },
+  "heisig2009": {
+    "texto": "HEISIG, P. Harmonisation of knowledge management – comparing 160 KM frameworks around the globe. Journal of Knowledge Management, v. 13, n. 4, p. 4–31, 2009.",
+    "url": "https://doi.org/10.1108/13673270910971798"
+  },
   "johnson2020": {
     "texto": "JOHNSON, D.; TIZARD, J.; DAMIAN, D.; BLINCOE, K.; CLEAR, T. Open CrowdRE challenges in software ecosystems. In: 4th International Workshop on Crowd-Based Requirements Engineering, 2020, p. 1 a 4.",
     "url": "https://doi.org/10.1109/CrowdRE51214.2020.00007"
@@ -38,6 +42,10 @@
   "lopes2026": {
     "texto": "LOPES, E.; BARBOSA, C. E.; ARGÔLO, M.; NÓBREGA, L.; MARTINEZ, L. F.; WERNER, C.; SOUZA, J. Knowledge Management Processes in Software Reuse: A Rapid Review. In: 27th European Conference on Knowledge Management, 2026. p. 679–685.",
     "url": "https://doi.org/10.34190/eckm.27.1.4908"
+  },
+  "leoni2024": {
+    "texto": "LEONI, L.; GUELI, G.; ARDOLINO, M.; PANIZZON, M. S.; GUPTA, S. AI-empowered KM processes for decision-making: empirical evidence from worldwide organisations. Journal of Knowledge Management, v. 28, n. 11, p. 320–347, 2024.",
+    "url": "https://doi.org/10.1108/JKM-03-2024-0262"
   },
   "manikas2016": {
     "texto": "MANIKAS, K. Revisiting software ecosystems research, a longitudinal literature study. Journal of Systems and Software, v. 117, p. 84 a 103, 2016.",

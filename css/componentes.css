@@ -1169,7 +1169,7 @@
 .exemplos-ecos { display: grid; gap: var(--esp-2); }
 /* As cápsulas de atividade não dividem a linha em colunas iguais como as
    categorias de ECOS. Elas são três pílulas de larguras diferentes, que
-   acompanham o nome de cada processo e se reorganizam em mais linhas quando a
+   acompanham o nome de cada atividade e se reorganizam em mais linhas quando a
    largura acaba. */
 .acoes-gerencia__capsulas {
   display: flex;
