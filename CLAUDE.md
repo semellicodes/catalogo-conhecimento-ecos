@@ -21,81 +21,91 @@ identidade visual muda sem tocar no conteúdo.
 
 | Arquivo | Conteúdo |
 |---|---|
-| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, desafios e estudos relacionados, e a evidência de cada relação |
-| `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e a lista de tipos de ECOS que o estudo observou |
+| `dados/conhecimentos.json` | 20 conhecimentos (C01 a C20), com atributos, justificativa da classificação, atividades de gerência e estudos primários |
+| `dados/estudos.json` | 18 estudos primários (E01 a E18), com título, autores, ano, país e os tipos de ECOS que o estudo observou |
 | `dados/classificacoes.json` | Vocabulário dos atributos, com rótulo, valores, descrição, pergunta e chave da referência |
 | `dados/referencias.json` | Citação completa de cada referência, identificada por chave. O valor é texto, ou o par `texto` e `url` quando há DOI ou publicação oficial aberta |
-| `dados/meta.json` | Título, fonte e camadas da estrutura |
+| `dados/meta.json` | Título, fonte, camadas da estrutura, abas e textos de ajuda |
 
-`conhecimentos[].evidencia` guarda, por identificador de desafio, o estudo que sustenta aquela
-relação e o motivo da ligação.
+São cinco os arquivos que o site carrega. Quem decide a lista é o `ARQUIVOS` do `js/dados.js`.
 
-`origem/` armazena materiais históricos e insumos da pesquisa, que não são carregados pela aplicação web. Nenhum módulo JavaScript utiliza diretamente essa pasta.
+`dados/solucoes.json` está na pasta mas **não é carregado por módulo nenhum**. Guarda as 36 soluções
+da revisão rápida, com a avaliação de cada uma. É resultado complementar da pesquisa, fora do
+escopo do catálogo web, e fica onde está pela rastreabilidade. O mesmo vale para
+`origem/evidencia-solucoes.json`.
 
-O arquivo `gerencia-conhecimento.json` contém dados de uma etapa anterior da pesquisa, posteriormente incorporados ao `dados/conhecimentos.json`. A estrutura atual do catálogo utiliza os conhecimentos, suas classificações, atividades de gerência e estudos primários associados.
+`origem/` guarda o insumo da pesquisa, não dado que o site carrega. Nenhum módulo lê essa pasta.
 
-### Campos ainda pendentes
+### Resultados consolidados
 
-`tipoEcos` está vazio em todos os conhecimentos e em todos os estudos.
+O que o catálogo apresenta tem que bater com estes números, que são os do TCC.
 
-`acaoGerencia` está preenchido nos vinte, de uma a três ações do vocabulário, nunca as três por
-padrão. Só o C02 e o C04 recebem as três. A atribuição foi derivada dos verbos do
-`praticasGerencia` de cada conhecimento, que é texto literal da planilha de extração, e não de uma
-leitura nova dos estudos E01 a E18. Registrar e versionar levam a Criação e registro, disponibilizar
-e compartilhar levam a Compartilhamento, e consultar, integrar e apoiar decisão levam a Uso e
-aplicação. Cada par continua precisando de conferência contra o artigo primário antes da defesa.
-Enquanto um conhecimento estiver sem ação, a ficha diz que ainda não foram atribuídas, em vez de
-acender todas.
+| | |
+|---|---|
+| Estudos primários | 18 |
+| Conhecimentos catalogados | 20, de C01 a C20 |
+| Explícitos | 11 |
+| Tácito-cognitivos | 7 |
+| Tácito-técnicos | 2 |
+| Atividades de gerência | 6 |
+| Associações entre conhecimento e atividade | 55 |
+| Conhecimentos com atividades associadas | 18 |
+| Conhecimentos sem atividades associadas | 2, o C16 e o C20 |
 
-`recursosConhecimento`, `participacaoCompartilhamento` e `praticasGerencia` estão preenchidos nos
-vinte, texto literal da planilha de extração, e são o que o bloco de gerência da ficha mostra. A
-origem está em `origem/gerencia-conhecimento.json`, onde ainda se chamam `quemPossui`, `quemPrecisa`
-e `comoGerenciar`. Os nomes antigos afirmavam posse do conhecimento e saíram por isso. O texto dos
-vinte continua o da planilha e ainda está escrito na moldura antiga, de onde o conhecimento vem e
-quem o utiliza, então reescrevê-lo em termos de recursos e de participação é trabalho pendente que
-depende da planilha, não do código.
+As seis atividades são Identificação, Aquisição, Criação, Armazenamento, Compartilhamento e
+Aplicação, fundamentadas em Heisig (2009) e Leoni (2024). Elas vivem em
+`meta.estruturaCatalogo.abas`, na aba `gerencia`, em `atividades.itens`, e a ficha lê dali. A
+lista e a ordem existem num lugar só, para a ficha e a camada nunca divergirem.
 
-`portador` e `tipoSaber` foram apagados dos vinte. Eram anteriores aos três campos de gerência,
-nasceram vazios, nunca apareceram em tela e nenhum módulo os lia. Não voltam.
+A ausência de uma associação não significa que a atividade seja inaplicável ao conhecimento. Significa
+que não foram estabelecidas associações fundamentadas em evidências suficientes no contexto desta
+pesquisa. A ficha diz isso por escrito, em `meta.fichaAtividades.textoSemInformacao`, e a frase
+fecha com a ressalva de que a ausência não quer dizer que a atividade não ocorra no ECOS.
 
-Existem dois campos de tipo de ECOS, com papéis separados. Não é a mesma informação em dois lugares.
+As soluções, as avaliações delas e os desafios permanecem como resultados complementares da revisão
+rápida. Eles não integram o escopo atual do catálogo web, saíram da interface e dos dados que o
+site carrega, e continuam registrados no documento científico.
 
-`conhecimentos[].tipoEcos` diz em que ecossistemas **aquele conhecimento** foi observado. É o que a
-ficha lê. Enquanto estiver vazio, as três caixas aparecem apagadas.
+### Campos de cada conhecimento
 
-`conhecimentos[].observacoesTipoEcos` é opcional e usa o nome do tipo de ECOS como chave. Cada valor
-tem `descricao` e a lista opcional `exemplos`. Quando existir para um tipo observado, a caixa vira um
-botão e abre esse contexto abaixo da fileira. Sem esse dado, a caixa permanece apenas informativa para
-não apresentar exemplo inventado.
+`conhecimentos[].atividadesGerencia` é a lista de atividades daquele conhecimento. Cada item tem
+`atividade`, `descricao` e `estudos`. O nome em `atividade` precisa ser escrito igual ao da aba de
+Atividades, senão o cartão não acende. O C16 e o C20 têm a lista vazia.
 
-`estudos[].tipoEcos` diz que tipos de ecossistema **aquele estudo** examinou, e é lista porque um
-estudo sozinho pode comparar mais de um, como o E09, que olha um aberto, um fechando e um fechado.
-Aparece só na tabela de estudos, como dado do estudo.
+`conhecimentos[].atividadesAssociadas` é `true` nos dezoito que têm atividade e `false` no C16 e no
+C20. Hoje nenhum módulo decide nada por esse campo, porque quem distingue o aviso é a existência do
+array `atividadesGerencia`, que os vinte têm. Por isso o `tituloPendente` e o `textoPendente` do
+`meta.fichaAtividades` ficaram sem leitor.
 
-Um nunca é somado para dentro do outro. Um estudo que compara três ecossistemas não autoriza afirmar
-que o conhecimento tirado dele apareceu nos três, e cada classificação ainda vai precisar de
-justificativa escrita.
+`justificativaClassificacao` está preenchido nos vinte. A ficha mostra esse texto no item
+expansível "Por que essa classificação?", com o nível e a dimensão em negrito. Quem decide o que
+destacar são os próprios valores, não marcação escrita no texto, para `dados/` seguir sem marcação
+dentro.
 
-`justificativaClassificacao` está preenchido nos vinte com a explicação da natureza epistemológica,
-do nível e da dimensão adotados para cada conhecimento. A ficha mostra esse texto no item expansível
-"Por que essa classificação?". Os estudos permanecem em sua própria aba.
+`recursosConhecimento`, `participacaoCompartilhamento` e `praticasGerencia` continuam nos vinte,
+texto literal da planilha de extração, sem leitor. São insumo de revisão, e por isso não foram
+apagados. A origem está em `origem/gerencia-conhecimento.json`.
 
-`conhecimentos[].relacoesConfirmadas` é `true` nos vinte. Os pares de desafio foram conferidos
-contra os artigos primários e os que não se sustentaram foram retirados da relação.
+`nomeEmFrase` traz o nome do conhecimento com a preposição certa, para entrar na frase de ausência
+da ficha. Sem ele, a frase cai no nome em caixa baixa.
 
-Os 22 pares de desafio estão em `conhecimentos[].desafios` e, no outro sentido, em
-`desafios[].conhecimentos`. D05, D12 e D16 não se ligam a nenhum conhecimento, porque vêm de estudos
-sem conhecimento extraído. Eles não aparecem em ficha nenhuma, e é por isso que o Explorar
-lista os dezessete, não só os ligados.
+`conhecimentos[].tipoEcos` não existe mais nos dados. Os exemplos de ECOS da ficha são derivados dos
+estudos primários do conhecimento, pelo `tipoEcos` de cada estudo em `dados/estudos.json`. O
+vocabulário `tipoEcos` continua em `classificacoes.json`, porque é dele que saem os nomes e as
+descrições das três categorias.
 
 ## Páginas
 
 | Arquivo | Função |
 |---|---|
-| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura e a tarja de números, `#estrutura` com a lógica de camadas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
+| `index.html` | Página única com seções ancoradas, `#inicio` com a faixa de abertura, `#estrutura` com as cinco abas, `#catalogo` com busca, filtros, a grade de cartões e a ficha em diálogo, e `#contato` |
 | `catalogo.html` | Só redireciona para `index.html#catalogo`, preservando a busca. Existe para os links antigos não quebrarem |
-| `sobre.html` | Método de pesquisa. As tabelas de vocabulário saíram para o Explorar. A coluna principal é dividida em dois blocos, abertura e método, só para o cartão de números poder entrar entre eles no celular. No desktop o cartão vai para a segunda coluna por posicionamento explícito e os dois blocos voltam a ler como um |
+| `sobre.html` | Método de pesquisa |
 | `referencias.html` | Estudos primários e referências bibliográficas |
+
+A página Explorar não existe mais. Ela saiu com o glossário dos atributos e a listagem de
+desafios, e com ela saíram o `js/explorar.js` e o `js/listagem.js`. As definições dos atributos
+vivem hoje na seção Estrutura e nos botões de ajuda da ficha.
 
 ## Módulos
 
@@ -105,10 +115,11 @@ lista os dezessete, não só os ligados.
 | `js/filtros.js` | Filtra e ordena listas. Não conhece o DOM |
 | `js/lista.js` | Monta os cards do catálogo |
 | `js/ficha.js` | Monta a ficha de um conhecimento |
-| `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha |
+| `js/catalogo.js` | Liga os módulos na seção `#catalogo`, inclusive o anterior e o próximo da ficha e o "Mostrar mais" da descrição |
 | `js/navegacao.js` | Marca o item do cabeçalho conforme a seção visível, com `IntersectionObserver` |
-| `js/listagem.js` | Monta um item de listagem. Não lê arquivo e não sabe de qual lista veio |
-| `js/inicio.js` | Preenche o resumo da abertura, a tarja de números e as camadas |
+| `js/menu.js` | Abre e fecha a navegação no celular |
+| `js/inicio.js` | Preenche o resumo da abertura e as cinco abas da Estrutura |
+| `js/sobre.js` | Preenche a página Sobre |
 | `js/referencias.js` | Preenche a página de referências |
 | `js/tema.js` | Alterna claro e escuro, grava em `localStorage` na chave `tema` e monta o botão do cabeçalho |
 | `js/versao.js` | Recarrega a página uma vez quando o HTML guardado pelo navegador ficou para trás da versão publicada |
@@ -129,7 +140,7 @@ nativamente pelo navegador com `type="module"`.
 
 | Pasta | Conteúdo |
 |---|---|
-| `dados/` | Os seis arquivos que o site carrega |
+| `dados/` | Os cinco arquivos que o site carrega, mais o `solucoes.json`, que nenhum módulo lê |
 | `origem/` | Insumo da pesquisa, não carregado por nenhum módulo |
 | `imagens/` | Retratos da seção de contato, o mapa conceitual e a ilustração da abertura, cada um nas versões clara e escura |
 
@@ -147,15 +158,14 @@ nativamente pelo navegador com `type="module"`.
   `componentes.css` carrega depois e venceria a regra do `base.css` por ordem, já que media query
   não acrescenta especificidade
 - Não se justifica a intro centralizada de cada seção, que não é prosa corrida; a lista de
-  referências, que a ABNT NBR 6023 manda alinhar à esquerda; a fileira de conhecimentos ligados do
-  Explorar, que é etiqueta e não texto; nem as células estreitas do glossário
+  referências, que a ABNT NBR 6023 manda alinhar à esquerda; nem as células estreitas das tabelas
 - O card mostra o identificador no topo e o selo da natureza epistemológica à direita. Abaixo, o
   nome em título, uma prévia visual de até três linhas da descrição e um link "Ver ficha completa"
   no pé. A ficha preserva a descrição completa. A dimensão não aparece no card, só na ficha
 - Quem abre a ficha é o link do pé, não o cartão inteiro. Cartão clicável com botão dentro é alvo
   dentro de alvo
 - A faixa de abertura compõe em duas colunas no desktop. À esquerda ficam o olho KM4SECO, título,
-  resumo de `meta.subtitulo` e os botões Explorar o catálogo e Sobre o catálogo. À direita, a
+  resumo de `meta.subtitulo` e os botões de acesso ao catálogo e ao Sobre. À direita, a
   ilustração do catálogo em camadas. No celular, a ilustração desce abaixo do texto. A explicação
   das naturezas epistemológicas fica concentrada na aba Identificação da seção Estrutura
 - A ilustração é imagem, `imagens/catalogo-camadas-claro.png` e `-escuro.png`, uma por tema. Ela
@@ -184,8 +194,8 @@ nativamente pelo navegador com `type="module"`.
   `classificacoes.json`, da maior quantidade para a menor, hoje Explícito, Tácito-cognitivo e
   Tácito-técnico. Dentro do grupo a ordem é por identificador, e a mesma sequência vale para o
   anterior e o próximo da ficha
-- A contagem de cada natureza fica nos filtros, e as definições completas ficam na aba Conhecimento
-  da seção Estrutura e no glossário do Explorar. Por isso o grupo não precisa de cabeçalho repetindo
+- A contagem de cada natureza fica nos filtros, e as definições completas ficam na aba
+  Identificação da seção Estrutura. Por isso o grupo não precisa de cabeçalho repetindo
   essas informações
 - O diálogo da ficha tem 760px de largura e 86% da altura da janela. Topo e rodapé ficam parados e
   só o miolo rola. O topo leva o identificador, o selo da natureza, o fechar em ✕ redondo, o nome e
@@ -197,19 +207,15 @@ nativamente pelo navegador com `type="module"`.
 - A ficha tem quatro blocos, nesta ordem. Classificação do conhecimento, Exemplos de ECOS em que o
   conhecimento foi observado, o bloco de atividades e Estudos primários associados. O terceiro
   muda de nome conforme a forma da ficha, e no C01 chama-se Atividades associadas à gerência do conhecimento
-- Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é onde a relação entre
-  desafio e conhecimento se lê inteira, nos dois sentidos. Na ficha eram um quinto bloco sobre um
-  assunto que a ficha não trata. Saíram com eles o `desafiosRelacionados`, o `linhaDesafio`, o
-  `estudosDoDesafio`, o `acessoAosEstudos`, o `iconeDesafio` e o `iconeInformacao`. A
-  `meta.ajudas.desafios` continua no arquivo, sem leitor, como os outros campos sem uso
 - A natureza saiu da classificação da ficha. Ela já aparece no selo do topo, ao lado do
   identificador, e repeti-la dizia duas vezes a mesma coisa na mesma tela. Ficam o nível e a
   dimensão, que o topo não mostra
 - Nenhuma categoria de ECOS começa aberta. A seção abre neutra e quem escolhe o que consultar é
   quem lê, como nas atividades. A ficha é remontada a cada abertura, então o estado não atravessa
   de um conhecimento para o outro
-- As vinte fichas usam "Atividades associadas à gerência do conhecimento", com os oito processos. Quem decide
-  é o `atividadesAssociadas` do conhecimento, e não uma lista de identificadores escrita no módulo
+- As vinte fichas usam "Atividades associadas à gerência do conhecimento", com as seis atividades.
+  A lista e a ordem vêm da aba de Atividades do `meta.json`, nunca de identificadores escritos no
+  módulo
 - O `atividadesAssociadas` tem dois valores, e a diferença é acadêmica, não visual. `true` diz que
   os oito foram conferidos contra os estudos primários daquele conhecimento, e hoje é o caso do C01
   e do C12. `"pendente"` diz que a leitura ainda não foi feita, e é o caso dos outros dezoito
@@ -226,23 +232,31 @@ nativamente pelo navegador com `type="module"`.
   atividade é acrescentar ali `{"processo", "descricao", "estudos"}`, com o nome do processo escrito
   igual ao da aba de Atividades. Os oito não se repetem em cada conhecimento, porque a lista e a
   ordem vêm do `meta.json`
-- Os campos da gerência antiga continuam nos vinte, `recursosConhecimento`,
-  `participacaoCompartilhamento`, `praticasGerencia`, `acaoGerencia`, `importanciaGerencia` e
-  `atoresEnvolvidos`, sem leitor. Eles são o insumo da revisão que vem, e por isso não foram
-  apagados
-- O `acaoGerencia` não foi convertido em atividade de nenhum conhecimento. Ele é outro vocabulário,
-  de três valores, derivado dos verbos do `praticasGerencia` e não de uma leitura dos estudos, e
-  transformá-lo nos oito processos seria inventar classificação
-- A seção nova mostra sempre os oito processos, em duas colunas e quatro linhas, na ordem do
-  referencial. Os três com atividade identificada acendem em verde e os cinco sem informação ficam
-  neutros, e todos abrem, porque saber que nada foi encontrado na revisão também é informação.
-  Nenhum usa `disabled`, senão o aviso de ausência não poderia ser lido
+- A seção mostra sempre as seis atividades, em duas colunas, na ordem do referencial. As que têm
+  atividade identificada acendem em verde e as sem informação ficam neutras, e todas abrem, porque
+  saber que nada foi encontrado na revisão também é informação. Nenhuma usa `disabled`, senão o
+  aviso de ausência não poderia ser lido
 - O cartão de atividade é o mesmo botão das categorias de ECOS, `.exemplos-ecos__categoria`, então
   altura, canto, recuo, ícone, tipografia, hover e foco vêm de lá sem uma linha a mais. Só a grade
   é própria, porque são oito em duas colunas e as categorias são três
 - No celular as duas fileiras ficam em duas colunas e a altura passa a ser decidida pelo rótulo
   mais longo. "ECOS de Código Aberto" quebra em mais linhas que "Identificação", então os cartões
   de atividade ficam mais baixos que os de exemplo. O desenho é o mesmo, inclusive a altura mínima
+- O `revelarPainel` do `ficha.js` traz o painel à vista ao abrir, nas atividades e nas categorias
+  de ECOS. O painel nasce depois da grade, então quem clica num cartão de cima abria um texto fora
+  da área visível. Medido antes, a 390px o painel de "Aquisição" do C01 aparecia com zero pixel à
+  vista, e no C16 isso valia para os seis cartões
+- A rolagem é a menor possível e para quando o painel cabe inteiro, ou quando preenche o miolo se
+  for mais alto que ele. O limiar anterior, de 72px, dava por confortável um painel de 187px com
+  dois terços cortados. Painel já visível não desloca nada
+- O aviso de ausência também é revelado. Ele é a resposta da interação, e sem isso a pessoa clica
+  num cartão sem evidência e não vê nada acontecer, que foi o que a avaliação de usabilidade
+  apontou
+- O cartão aberto leva o tom cheio do acento, sem anel nem sombra. Antes era um `color-mix` a 72%,
+  quase igual ao de um cartão apenas identificado
+- Cada cartão que abre painel leva uma seta no canto de cima, a mesma do "Mostrar mais" e da
+  cápsula de atividade. Em repouso nada distinguia um botão de uma caixa informativa. Ela é
+  posicionada fora da grade do cartão, então a altura não muda
 - O painel abre abaixo da grade inteira, nunca dentro de uma célula, para a fileira não mudar de
   altura nem de posição quando ele aparece. Um por vez, nenhum aberto de início, e o segundo clique
   no mesmo cartão recolhe
@@ -307,6 +321,10 @@ nativamente pelo navegador com `type="module"`.
   por escrito, e mexer numa etapa pede conferir aquela frase. A 1 chamava-se Ponto de Partida e a 4 chamava-se
   Gerência do conhecimento. Os exemplos de ECOS saíram da Classificação e viraram a etapa 3, porque
   descrevem como o ecossistema se organiza e não como o conhecimento se classifica
+- Trocar de aba revela a fileira de abas, com a menor rolagem possível. Os painéis têm alturas
+  muito diferentes, a altura da página muda na troca e o navegador mantém o deslocamento cru.
+  Medido antes, ir da aba 2 para a 3 a 390px deixava o começo do painel novo 788px acima da área
+  visível. Quem já está com a fileira à vista não se move
 - A navegação é montada a partir de `estruturaCatalogo.abas`, então quem define quantas etapas
   existem é o arquivo de dados. O `criadores` do `inicio.js` casa por `id`, e um `id` sem
   construtor quebra a aba. Os cinco hoje são `conhecimento`, `classificacao`, `exemplos`,
@@ -355,7 +373,7 @@ nativamente pelo navegador com `type="module"`.
   não pastilha nem ícone
 - O `cartaoDeEstrutura` serve às quatro abas. A Classificação usa os dois cartões com categorias,
   os Exemplos usam um sem título nem introdução, a Gerência usa dois sem categorias e um com os
-  oito processos, e a Base de evidências usa os dois sem nenhuma. Cabeçalho, introdução, lista,
+  seis atividades, e a Base de evidências usa os dois sem nenhuma. Cabeçalho, introdução, lista,
   citação e rodapé são todos opcionais, e cada um só é montado quando o dado existe
 - O cartão aceita `referencias`, que vira citação com link. O `rodape`, que era texto solto na
   mesma linha, saiu com os dois cartões da Gerência que o declaravam
@@ -396,7 +414,7 @@ nativamente pelo navegador com `type="module"`.
 - O `kauschinger2024` saiu da citação dos exemplos. Ele sustentava a relação entre cada modelo e a
   circulação do conhecimento, que era o enquadramento do texto antigo. O texto novo descreve só o
   modelo de organização, que é Manikas, então a segunda obra passou a citar o que o cartão não diz
-- A aba de Atividades apresenta só os oito processos de gerência do conhecimento, por orientação
+- A aba de Atividades apresenta só as seis atividades de gerência do conhecimento, por orientação
   do professor. É o arranjo dos Exemplos, cartão verde com o nome e a apresentação e, abaixo, um
   painel único com os oito, que fecha com a citação
 - O cartão verde chama-se "Atividades associadas à gerência do conhecimento", o mesmo nome do bloco da ficha
@@ -413,11 +431,10 @@ nativamente pelo navegador com `type="module"`.
   `cartaoDeEstrutura`, que existia só para o "Estudos primários associados" dos dois, e os ícones
   `nota`, `participacao` e `acoes`, que ficaram sem declarante. Está no histórico se a decisão
   voltar
-- Os dois nomes continuam vivos na ficha, nos blocos do C01 e do C12, que esta mudança não toca. A
-  reorganização das vinte fichas para os oito processos é trabalho à parte
-- Os oito processos são os de `lopes2026`, Identificação, Aquisição, Compartilhamento,
-  Armazenamento, Codificação, Criação, Aplicação e Avaliação, com a descrição de cada um
-  sintetizada da Tabela 1 do artigo
+- As seis atividades são Identificação, Aquisição, Criação, Armazenamento, Compartilhamento e
+  Aplicação, fundamentadas em `heisig2009` e `leoni2024`. A descrição de cada uma reúne os verbos
+  que a caracterizam. Elas substituíram os oito processos de `lopes2026` da organização anterior,
+  e a mudança está em `50f4ad7`
 - Lopes et al. (2026) tratam de gerência do conhecimento em reúso de software. Aqui os oito
   processos são a estrutura de análise que organiza as atividades observadas nos estudos primários
   desta revisão, e o cartão verde diz isso por escrito. Em nenhum ponto o catálogo afirma que os
@@ -510,14 +527,12 @@ nativamente pelo navegador com `type="module"`.
   as outras
 - Nada de carrossel, aba, acordeão, modal, texto escondido com expandir nem rolagem dentro do
   cartão. Toda explicação fica visível sem interação
-- `classificacoes.json` guarda dois textos por categoria, com papéis separados. `explicacao` é a
-  do cartão da Identificação e `descricao` é a completa do glossário do Explorar. A `pergunta`
-  de cada categoria é a linha "Responde à pergunta" da tabela do Explorar. O `definicaoBreve`, que
-  existia só nas três naturezas, foi apagado por ser um terceiro texto sem leitor
+- `classificacoes.json` guarda dois textos por categoria. `explicacao` é a do cartão da
+  Identificação, e `descricao` ficou sem leitor quando o glossário do Explorar saiu, junto com a
+  `pergunta`. Os dois continuam no arquivo, sem uso
 - O nome da categoria é um só em todo o site, "Explícito", "Tácito-cognitivo" e "Tácito-técnico".
-  Ele aparece no selo do cartão do catálogo, nas pastilhas de filtro, na classificação da ficha, no
-  glossário do Explorar e na ordenação, e um nome por lugar seria pior do que a frase mais completa
-  num deles
+  Ele aparece no selo do cartão do catálogo, nas pastilhas de filtro, na classificação da ficha e
+  na ordenação, e um nome por lugar seria pior do que a frase mais completa num deles
 - O cartão da Identificação chegou a dizer "Conhecimento Explícito", por um `prefixoCategoria` que
   vivia na aba. O prefixo saiu, com o campo e com o parâmetro do `cartaoDeNatureza`, porque o
   divisor logo acima já diz que a aba trata da natureza do conhecimento. O título é o nome da
@@ -549,10 +564,9 @@ nativamente pelo navegador com `type="module"`.
   então não foi acrescentado ao rodapé. A pendência que pedia conferência nas fontes originais está
   encerrada, porque a leitura foi feita pela autora
 - A `explicacao` das três naturezas é a definição que o cartão mostra, adaptada de Alavi e Leidner
-  (2001) pela autora. A `descricao` do glossário do Explorar continua a redação anterior, e as duas
-  dizem a mesma coisa em registros diferentes, uma para o cartão e outra para a tabela. A de `nivel` e `dimensao` continua no arquivo mas não tem
-  mais leitor, porque essas duas saíram da aba. A do `tipoEcos` é a do bloco de exemplos da aba de
-  Atributos. Nenhuma é citação literal dos artigos primários. A `pergunta` continua literal
+  (2001) pela autora. A `descricao` de cada uma continua no arquivo sem leitor, assim como a de
+  `nivel` e `dimensao`. A do `tipoEcos` é a do bloco de exemplos. Nenhuma é citação literal dos
+  artigos primários
 - As questões de pesquisa do artigo, QP1 a QP4, não aparecem na interface. A pergunta que o site
   mostra é a do trabalho, no topo do Sobre
 - A palavra "Fonte" não aparece em cartão nenhum, e hoje a citação fica sozinha em todos eles. O
@@ -572,9 +586,9 @@ nativamente pelo navegador com `type="module"`.
   seria uma terceira cópia
 - Os dois cartões não levam citação no pé. São componentes da estrutura metodológica deste
   catálogo, e não esquema de um autor, então não há obra para citar
-- Os números da revisão saíram da aba, com o cartão da revisão, o das evidências e o dos desafios.
+- Os números da revisão saíram da aba, com o cartão da revisão e o das evidências.
   A aba passou a apresentar os componentes, e não os resultados quantitativos. Saíram com eles o
-  `numeroEvidencia`, o `cartaoEvidencia`, o `blocoDesafios`, o `composicaoEvidencias`, o token
+  `numeroEvidencia`, o `cartaoEvidencia`, o `composicaoEvidencias`, o token
   `--largura-indicador` e as regras do arranjo antigo. Estão no histórico se a decisão voltar
 - Com os números saiu a citação de método, `cartaxo2018`, `cartaxo2020` e `charmaz2006`, que
   sustentava os dados da revisão e não os componentes. Saíram com ela o `agruparPorAutores`, o
@@ -584,15 +598,8 @@ nativamente pelo navegador com `type="module"`.
   `meta.json` junto. Nenhum módulo os lia depois da mudança
 - `classificacoes[].funcao` diz o que o atributo identifica, e é a introdução do cartão na
   Identificação
-- O `lopes2026` está cadastrado com os sete autores, o título, os anais da 27th European
-  Conference on Knowledge Management, 2026, e o DOI. O verbete nasceu incompleto, porque a rede da
-  sessão não alcançava o DOI nem o Crossref, e a autora forneceu os dados a partir do PDF. Não tem
-  página, porque o PDF não foi consultado para isso
-- O vocabulário de `acaoGerencia` tem três valores, Criação e registro, Compartilhamento, e Uso e
-  aplicação. Ele não aparece mais na Estrutura, só na ficha. Os oito processos de `lopes2026`, que
-  a aba de Atividades apresenta, são outro esquema e não substituem esse vocabulário enquanto a
-  ficha não for
-  revista
+- O `lopes2026` continua cadastrado em `referencias.json`, sem citação em tela, desde que as seis
+  atividades substituíram os oito processos
 - O mapa conceitual é imagem, `imagens/mapa-conceitual-claro.png` e `-escuro.png`. Mudança de texto
   nas camadas não chega até ele, e a imagem precisa ser refeita à parte para não contradizer os
   painéis
@@ -622,22 +629,40 @@ nativamente pelo navegador com `type="module"`.
   assunto levam o mesmo nome, palavra por palavra. A ajuda não usa forma curta. Nomes diferentes
   para a mesma coisa fazem parecer que são duas, e o catálogo já teve três redações para os
   exemplos de ECOS, uma na camada, outra no bloco e outra na ajuda
-- Os cinco pares hoje são "Classificação do conhecimento", "Exemplos de ECOS em que o conhecimento
-  foi observado", "Gerência do conhecimento no ECOS", "Desafios relacionados à Gerência de
-  Conhecimento" e "Estudos primários associados". Mexer num exige mexer no outro
+- Os quatro pares hoje são "Classificação do conhecimento", "Exemplos de ECOS em que o
+  conhecimento foi observado", "Atividades associadas à gerência do conhecimento" e "Estudos
+  primários associados". Mexer num exige mexer no outro
 - Abaixo do título do bloco de classificação vai o nome do esquema. Está provisório como "Segundo os
   esquemas adotados na revisão", à espera do nome definitivo
 - A entrada principal do catálogo é a natureza do conhecimento
 - Busca e filtros acontecem no cliente e vão para a query string, então o link pode ser compartilhado
 - O rótulo da natureza é só acessível, não escrito, porque ali ele não cabe sem empurrar as
   pastilhas para a linha de baixo, e as três pastilhas já dizem de que faceta são
+- As três facetas marcam a escolha do mesmo jeito, com preenchimento, borda e texto combinando. A
+  natureza troca só o matiz, pelo par `--cor-<natureza>-pilula` e `--cor-<natureza>-pilula-texto`
+  que a etiqueta do cartão já usa, então nenhuma cor nova entra. Antes o tácito-cognitivo e o
+  tácito-técnico zeravam o fundo ao serem marcados, ficando mais apagados que desmarcados, e o
+  explícito herdava o fundo do acento sob texto violeta
 - O grupo de faceta é `div` com `role="group"` e `aria-labelledby`, não `fieldset`, porque `legend`
   dentro de contêiner flex ainda não se comporta igual em todo navegador
 - Todos os cartões do catálogo usam `--cor-cartao-catalogo`, quase neutro com verde apenas sugerido.
   O ID, o selo e o link de abertura usam a cor da natureza. O explícito usa violeta para não se
   perder sobre o verde, o tácito-cognitivo usa amarelo e o tácito-técnico usa azul. A cor não
   preenche a superfície inteira nem transforma o link em botão pesado
+- Abaixo de 48rem a ficha é compactada. O que cede é respiro, não tipografia de corpo nem alvo de
+  toque. A margem do diálogo passou de `--esp-4` para `--esp-2`, o que devolve 16px de altura e
+  16px de largura, e a largura extra tira uma linha do título em telas estreitas. O recuo do topo,
+  do miolo e do rodapé encolhe, o vão do topo vai a `--esp-1`, os blocos ficam a `--esp-2` um do
+  outro e o título usa um corpo um pouco menor
+- As regras dessa compactação ficam depois das definições base no arquivo, de propósito. Media
+  query não acrescenta especificidade, então antes delas as regras perdiam por ordem de arquivo e
+  o rodapé continuava com o recuo antigo
+- Nível e dimensão dividem a linha no celular, em vez de empilhar. Abaixo de uns 23rem de caixa
+  voltam a empilhar sozinhos, porque os dois rótulos não cabem lado a lado
 - Alvo de toque de no mínimo 44px, rótulo em todo campo, foco visível e contraste mínimo de 4.5 para 1
+- A marca, o botão de menu e o interruptor de tema estavam em 28px e 42px no celular, os dois
+  últimos em medida literal em vez de token. Passaram a `--alvo-toque`, e a altura do cabeçalho
+  não mudou, porque ele já era mais alto que isso
 - `button`, `a` e `input` de verdade. Nunca `role` ou clique em `div`
 - Canto arredondado com `--raio` em card, painel, diálogo e campo, e `--raio-pilula` em
   etiqueta e chip. Nunca valor solto, sempre a variável
