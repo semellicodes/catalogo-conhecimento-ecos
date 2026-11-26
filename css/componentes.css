@@ -29,6 +29,9 @@
   align-items: center;
   gap: var(--esp-3);
   min-width: 0;
+  /* A área clicável media 28px de altura. O cabeçalho já é mais alto que o
+     mínimo de toque, então crescer o alvo não muda nada do que se vê. */
+  min-height: var(--alvo-toque);
   padding-block: var(--esp-2);
   color: var(--cor-texto);
   text-decoration: none;
@@ -304,13 +307,15 @@
     gap: 0.5rem;
   }
 
+  /* Os dois ficavam em 42px, abaixo do mínimo de toque do projeto, e em
+     medida literal em vez de token. */
   .menu {
-    width: 42px;
-    height: 42px;
+    width: var(--alvo-toque);
+    height: var(--alvo-toque);
   }
 
   .interruptor {
-    height: 42px;
+    height: var(--alvo-toque);
   }
 }
 
@@ -764,23 +769,34 @@
   font-weight: 500;
 }
 
-/* A natureza carrega a cor da própria classificação quando escolhida. */
+/* A natureza carrega a cor da própria classificação quando escolhida, mas no
+   mesmo formato das outras duas facetas, que ganham preenchimento ao serem
+   marcadas. Antes o tácito-cognitivo e o tácito-técnico zeravam o fundo, então
+   marcados ficavam mais apagados que desmarcados, e o explícito herdava o
+   fundo verde do acento sob texto violeta.
+
+   O par de preenchimento e texto é o mesmo que a etiqueta da natureza já usa,
+   então nenhuma cor nova entra no catálogo. */
 .chip--explicito[aria-pressed="true"] {
-  color: var(--cor-explicito);
+  background: var(--cor-explicito-pilula);
   border-color: var(--cor-explicito-linha);
+  color: var(--cor-explicito-pilula-texto);
 }
+.chip--explicito[aria-pressed="true"] .chip__contagem { color: var(--cor-explicito-pilula-texto); }
 
 .chip--tacito-cognitivo[aria-pressed="true"] {
-  color: var(--cor-tacito-cognitivo);
+  background: var(--cor-tacito-cognitivo-pilula);
   border-color: var(--cor-tacito-cognitivo-linha);
-  background: transparent;
+  color: var(--cor-tacito-cognitivo-pilula-texto);
 }
+.chip--tacito-cognitivo[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-cognitivo-pilula-texto); }
 
 .chip--tacito-tecnico[aria-pressed="true"] {
-  color: var(--cor-tacito-tecnico);
+  background: var(--cor-tacito-tecnico-pilula);
   border-color: var(--cor-tacito-tecnico-linha);
-  background: transparent;
+  color: var(--cor-tacito-tecnico-pilula-texto);
 }
+.chip--tacito-tecnico[aria-pressed="true"] .chip__contagem { color: var(--cor-tacito-tecnico-pilula-texto); }
 
 
 .campo-busca {
@@ -1222,6 +1238,7 @@
   gap: var(--esp-2);
 }
 .exemplos-ecos__categoria {
+  position: relative;
   min-height: var(--alvo-toque);
   display: grid;
   justify-items: center;
@@ -1244,12 +1261,38 @@
   border-color: var(--cor-acento-linha);
   color: color-mix(in srgb, var(--cor-acento) 82%, var(--cor-texto-suave));
 }
+/* O cartão aberto precisa se distinguir do apenas identificado, que já vem
+   com um tingido de acento. O preenchimento fica no tom cheio do acento, sem
+   anel nem sombra, e quem completa o sinal é a seta virada. */
 .exemplos-ecos__categoria[aria-expanded="true"] {
-  background: color-mix(in srgb, var(--cor-acento-fundo) 72%, transparent);
+  background: var(--cor-acento-fundo);
   border-color: var(--cor-acento);
   color: var(--cor-acento);
   font-weight: 600;
 }
+/* A seta fica no canto de cima, onde o cartão é livre, porque o ícone é
+   centrado e menor que a caixa. No pé ela esbarraria nos rótulos longos. Ela
+   não entra na grade do cartão, então a altura não muda. */
+.exemplos-ecos__seta {
+  position: absolute;
+  top: var(--esp-2);
+  right: var(--esp-2);
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  opacity: 0.5;
+  transform: rotate(45deg);
+  transition: transform var(--dur-rapida) var(--curva), opacity var(--dur-rapida) var(--curva);
+}
+.exemplos-ecos__categoria[aria-expanded="true"] .exemplos-ecos__seta {
+  opacity: 1;
+  transform: rotate(225deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .exemplos-ecos__seta { transition: none; }
+}
+
 .exemplos-ecos__icone-categoria {
   width: 1.1rem;
   height: 1.1rem;
@@ -1453,6 +1496,28 @@
   .classificacao { gap: var(--esp-3); }
   .bloco-ficha { padding: var(--esp-3); }
   .bloco-ficha__topo { margin-bottom: var(--esp-2); }
+
+  /* O título da ficha cede um pouco de corpo, e só ele. A entrelinha de 1.12
+     é a mesma que o desktop já usa, e num título de três linhas ela devolve
+     mais altura que o tamanho da fonte. */
+  .ficha__nome { font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.4375rem); line-height: 1.15; }
+
+  /* Os quatro blocos ficam mais próximos entre si. */
+  .ficha { gap: var(--esp-2); }
+
+  /* Nível e dimensão dividem a linha em vez de empilhar, o que aproveita a
+     largura e economiza uma altura de atributo inteira. Abaixo de 23rem
+     voltam a empilhar, porque os dois rótulos não cabem lado a lado. */
+  .classificacao { grid-template-columns: repeat(auto-fit, minmax(min(8rem, 100%), 1fr)); }
+
+  /* O expansor da justificativa encosta menos no atributo acima. O alvo de
+     toque continua inteiro, porque só o recuo de cima e de baixo cede. */
+  .porque { margin-top: var(--esp-2); }
+  .porque__abrir { padding: var(--esp-1) var(--esp-3); }
+
+  /* O botão do "Mostrar mais" mantém os 44px de alvo, e o que sai é o recuo
+     lateral, que não é área útil de leitura. */
+  .dialogo-ficha .ficha__expandir { padding: 0; }
 }
 
 /* A compactação é exclusiva de desktop/notebook. No celular, os tamanhos e

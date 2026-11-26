@@ -1353,12 +1353,17 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
   .dialogo-ficha[open] { opacity: 0; transform: translateY(var(--deslocamento-entrada-ficha)) scale(var(--escala-entrada-ficha)); }
 }
 @media (max-width: 47.99rem) {
+  /* A margem passou de --esp-4 para --esp-2. São 16px a mais de altura e 16px
+     a mais de largura, e a largura extra tira uma linha do título em telas
+     estreitas, o que economiza altura de novo. O diálogo continua descolado
+     da borda. */
   .dialogo-ficha {
-    width: calc(100dvw - var(--esp-4) * 2);
+    width: calc(100dvw - var(--esp-2) * 2);
     max-width: none;
-    max-height: calc(100dvh - var(--esp-4) * 2);
-    margin-inline: var(--esp-4);
+    max-height: calc(100dvh - var(--esp-2) * 2);
+    margin-inline: var(--esp-2);
   }
+
 }
 
 .dialogo-ficha::backdrop {
@@ -1516,6 +1521,29 @@ section[id] { scroll-margin-top: calc(var(--altura-cabecalho) + var(--esp-3)); }
 
   .dialogo-ficha__rodape {
     padding: var(--esp-2) var(--esp-4);
+  }
+}
+
+/* Compactação do celular. Medido antes, a 320x667 o topo parado ocupava 292px
+   contra 272px de área de leitura, mais alto que o texto que ele emoldura. O
+   que cede é respiro, não tipografia nem alvo de toque.
+
+   O bloco vem depois das definições base de propósito. Media query não
+   acrescenta especificidade, então antes delas estas regras perdiam por ordem
+   de arquivo. */
+@media (max-width: 47.99rem) {
+  .dialogo-ficha__topo {
+    padding: var(--esp-3);
+    gap: var(--esp-1);
+  }
+
+  .dialogo-ficha__corpo {
+    padding: var(--esp-3) var(--esp-3) var(--esp-4);
+  }
+
+  /* Os botões continuam com os 44px de alvo. O que sai é o vão em volta. */
+  .dialogo-ficha__rodape {
+    padding: var(--esp-2) var(--esp-3);
   }
 }
 

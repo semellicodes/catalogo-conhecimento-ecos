@@ -1,4 +1,4 @@
-import { carregar, citacaoDaReferencia, urlDaReferencia } from './dados.js?v=20261106-8';
+import { carregar, citacaoDaReferencia, urlDaReferencia } from './dados.js?v=20261126-1';
 const el = (seletor) => document.querySelector(seletor);
 async function iniciar() {
   let dados;

@@ -5,7 +5,7 @@
  * não se repetem aqui. As relações e os estudos aparecem em seções próprias.
  */
 
-import { referenciaCurta } from './dados.js?v=20261106-8';
+import { referenciaCurta } from './dados.js?v=20261126-1';
 
 function criar(tag, className, texto) {
   const el = document.createElement(tag);
@@ -74,6 +74,13 @@ function linkDoEstudo(estudo) {
   link.setAttribute('aria-label', `Acessar publicação ${estudo.id}`);
   link.append(iconeLinkExterno());
   return link;
+}
+
+/* A seta que diz que o cartão abre um painel. Em repouso nada no cartão o
+   distinguia de uma caixa informativa. É o mesmo desenho da seta do "Mostrar
+   mais" e da cápsula de atividade. */
+function setaDeAbertura() {
+  return criar('span', 'exemplos-ecos__seta');
 }
 
 function iconeCategoriaEcos(categoria) {
@@ -186,7 +193,7 @@ function exemplosDeEcos(conhecimento) {
     botao.setAttribute('aria-controls', idPainel);
     botao.setAttribute('aria-expanded', 'false');
     botao.dataset.identificado = String(grupos.has(categoria));
-    botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria));
+    botao.append(iconeCategoriaEcos(categoria), criar('span', '', categoria), setaDeAbertura());
     botao.addEventListener('click', () => {
       const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
       lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
@@ -197,6 +204,7 @@ function exemplosDeEcos(conhecimento) {
       botao.setAttribute('aria-expanded', 'true');
       mostrar(categoria);
       painel.hidden = false;
+      requestAnimationFrame(() => revelarPainel(painel));
     });
     lista.append(botao);
   });
@@ -470,10 +478,10 @@ function painelSemInformacao(dados, conhecimento, nomeAtividade) {
   ];
 }
 
-/* O painel de uma atividade nasce depois da grade. Em fichas estreitas ele
-   pode abrir fora do trecho visível do miolo rolável, sem que a página atrás
-   do diálogo deva se mover. */
-function revelarPainelDeAtividade(painel) {
+/* O painel nasce depois da grade de cartões, tanto nas atividades quanto nas
+   categorias de ECOS. Em fichas estreitas ele pode abrir fora do trecho
+   visível do miolo rolável, sem que a página atrás do diálogo deva se mover. */
+function revelarPainel(painel) {
   const corpo = painel.closest('.dialogo-ficha__corpo');
   if (!corpo || painel.hidden) return;
 
@@ -481,11 +489,14 @@ function revelarPainelDeAtividade(painel) {
   const limitesDoPainel = painel.getBoundingClientRect();
   const recuo = 12;
   const inicioVisivel = limitesDoCorpo.top + recuo;
-  const trechoInicial = Math.min(limitesDoPainel.height, 72);
-  const inicioConfortavel = limitesDoCorpo.bottom - recuo - trechoInicial;
+  /* O painel precisa caber inteiro no miolo, ou ocupá-lo por completo quando
+     for mais alto que ele. Medido antes, bastarem 72px deixava um painel de
+     187px com dois terços cortados, e a interação parecia não ter resposta. */
+  const trechoNecessario = Math.min(limitesDoPainel.height, limitesDoCorpo.height - recuo * 2);
+  const inicioConfortavel = limitesDoCorpo.bottom - recuo - trechoNecessario;
 
-  /* Se o título e o começo da explicação já cabem no miolo, não desloca a
-     leitura. Isso também evita movimento ao trocar entre atividades visíveis. */
+  /* Já à vista por inteiro, não desloca a leitura. Isso também evita
+     movimento ao trocar entre painéis que já estão visíveis. */
   if (limitesDoPainel.top >= inicioVisivel && limitesDoPainel.top <= inicioConfortavel) return;
 
   const destino = Math.max(
@@ -510,7 +521,7 @@ function cartaoDeAtividade(dados, conhecimento, nomeAtividade, atividade, painel
   botao.setAttribute('aria-controls', painel.id);
   botao.setAttribute('aria-expanded', 'false');
   botao.dataset.identificado = String(Boolean(atividade));
-  botao.append(iconeAtividade(nomeAtividade), criar('span', '', nomeAtividade));
+  botao.append(iconeAtividade(nomeAtividade), criar('span', '', nomeAtividade), setaDeAbertura());
   botao.addEventListener('click', () => {
     const estavaAberto = botao.getAttribute('aria-expanded') === 'true';
     lista.querySelectorAll('button').forEach((outro) => outro.setAttribute('aria-expanded', 'false'));
@@ -529,10 +540,11 @@ function cartaoDeAtividade(dados, conhecimento, nomeAtividade, atividade, painel
       painel.replaceChildren(...painelSemInformacao(dados, conhecimento, nomeAtividade));
     }
     painel.hidden = false;
-    /* O quadro seguinte mede o painel já aberto. Só atividades sustentadas
-       recebem o deslocamento, pois os avisos informativos não precisam tirar
-       a pessoa da posição em que estava. */
-    if (atividade) requestAnimationFrame(() => revelarPainelDeAtividade(painel));
+    /* O quadro seguinte mede o painel já aberto. O aviso de ausência também
+       é revelado, porque é a resposta da interação, e sem ele a pessoa clica
+       e não vê nada acontecer. Quem já está com o painel à vista não se move,
+       porque a rolagem é a menor possível. */
+    requestAnimationFrame(() => revelarPainel(painel));
   });
   return botao;
 }
@@ -631,10 +643,6 @@ function estudosPrimariosAssociados(dados, conhecimento) {
 export function renderizar(dados, conhecimento) {
   const raiz = criar('div', 'ficha');
 
-  /* Os desafios saíram da ficha. Eles continuam nos dados e no Explorar, que é
-     onde a relação entre desafio e conhecimento se lê inteira, nos dois
-     sentidos. Na ficha eram uma sexta seção sobre um assunto que a ficha não
-     trata. */
   const secoes = [
     classificacao(dados, conhecimento),
     tiposDeEcos(dados, conhecimento),

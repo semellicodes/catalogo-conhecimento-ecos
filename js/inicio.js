@@ -1,4 +1,4 @@
-import { carregar, rotuloDaReferencia, urlDaReferencia } from './dados.js?v=20261106-8';
+import { carregar, rotuloDaReferencia, urlDaReferencia } from './dados.js?v=20261126-1';
 let dadosReferencias;
 const el = (seletor) => document.querySelector(seletor);
 
@@ -299,27 +299,50 @@ const abas = definicoes.map((definicao, indice) => {
   };
   let todosPaineis = [];
 
-  const selecionar = (indice, focar = false) => {
+  /* Os painéis têm alturas muito diferentes, então trocar de aba muda a altura
+     da página e o navegador mantém o deslocamento cru. Medido no celular, ir da
+     aba 2 para a 3 deixava o começo do painel novo 788px acima da área visível.
+     Revelar a fileira de abas põe o começo do painel logo abaixo dela.
+
+     A rolagem é a menor possível e nunca passa do ponto em que a fileira
+     encosta no cabeçalho fixo, então quem já está com ela à vista não se move. */
+  const revelarAbas = () => {
+    const alturaDoCabecalho =
+      Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--altura-cabecalho')) || 0;
+    const caixa = navegacao.getBoundingClientRect();
+    let deslocamento = 0;
+    if (caixa.top < alturaDoCabecalho) {
+      deslocamento = caixa.top - alturaDoCabecalho;
+    } else if (caixa.bottom > window.innerHeight) {
+      deslocamento = Math.min(caixa.bottom - window.innerHeight, caixa.top - alturaDoCabecalho);
+    }
+    if (Math.abs(deslocamento) < 1) return;
+    const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollBy({ top: deslocamento, behavior: movimentoReduzido ? 'auto' : 'smooth' });
+  };
+
+  const selecionar = (indice, focar = false, revelar = false) => {
     abas.forEach((aba, atual) => {
       const ativo = atual === indice;
       aba.setAttribute('aria-selected', String(ativo));
       aba.tabIndex = ativo ? 0 : -1;
       todosPaineis[atual].hidden = !ativo;
     });
+    if (revelar) revelarAbas();
     if (focar) abas[indice].focus();
   };
   todosPaineis = abas.map((aba, indice) => criadores[definicoes[indice].id](dados, aba, definicoes[indice], selecionar));
   paineis.replaceChildren(...todosPaineis);
   abas.forEach((aba, indice) => {
-    aba.addEventListener('click', () => selecionar(indice));
+    aba.addEventListener('click', () => selecionar(indice, false, true));
     aba.addEventListener('keydown', (evento) => {
       const deslocamentos = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
       if (evento.key in deslocamentos) {
         evento.preventDefault();
-        selecionar((indice + deslocamentos[evento.key] + abas.length) % abas.length, true);
+        selecionar((indice + deslocamentos[evento.key] + abas.length) % abas.length, true, true);
       }
-      if (evento.key === 'Home') { evento.preventDefault(); selecionar(0, true); }
-      if (evento.key === 'End') { evento.preventDefault(); selecionar(abas.length - 1, true); }
+      if (evento.key === 'Home') { evento.preventDefault(); selecionar(0, true, true); }
+      if (evento.key === 'End') { evento.preventDefault(); selecionar(abas.length - 1, true, true); }
     });
   });
   selecionar(0);
